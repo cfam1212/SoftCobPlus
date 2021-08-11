@@ -39,6 +39,7 @@
     <script type="text/javascript" src="./vendors/jquery/js/jquery.min.js"></script>
     <script type="text/javascript" src="./vendors/alertify/js/alertify.min.js"></script>
     <script type="text/javascript" src="./vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    
     <script type="text/javascript" src="login.js"></script>
   </body>
 </html>
