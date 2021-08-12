@@ -3,7 +3,7 @@
 class Conexion{
     public static function Conectar(){
         define('servidor', 'localhost');
-        define('nombre_bd','demosoftcob');
+        define('nombre_bd','softcobdb');
         define('usuario','root');
         define('password','');
 
