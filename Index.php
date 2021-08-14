@@ -8,7 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <link href='./vendors_login/css/style.css' rel='stylesheet' type='text/css'>
     <link href='./vendors/alertify/css/alertify.min.css' rel='stylesheet' type='text/css'>
-    <link href='./vendors/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='./vendors/bootstrap/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
 </head>
   <body>
     <div class="container">
@@ -38,7 +38,7 @@
 
     <script type="text/javascript" src="./vendors/jquery/js/jquery.min.js"></script>
     <script type="text/javascript" src="./vendors/alertify/js/alertify.min.js"></script>
-    <script type="text/javascript" src="./vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./vendors/bootstrap/js/bootstrap.min.js"></script>
     
     <script type="text/javascript" src="login.js"></script>
   </body>
