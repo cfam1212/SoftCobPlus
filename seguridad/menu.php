@@ -29,7 +29,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="x_content">
                         <br />
                       
-                        <table id="tablenoorder" class="table table-striped table-border table-condensed" style="width: 100%;">
+                        <table id="tablenoorder" class="table table-striped jambo_table bulk_action" style="width: 100%;">
                                 <thead>
                                     <tr>                            
                                         <th>Id</th>
