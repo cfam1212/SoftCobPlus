@@ -2,7 +2,7 @@ $('#formLogin').submit(function(e){
     e.preventDefault();
     
     var usuario = $.trim($("#username").val()); 
-    //console.log(usuario);
+    console.log(usuario);
     var password =$.trim($("#password").val());    
     if(usuario.length == "" || password == ""){
      
