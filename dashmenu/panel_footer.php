@@ -65,5 +65,7 @@
 
     <script src="../vendors/select2/js/select2.min.js"></script>
 
+    <script src="../codejs/funciones.js"></script>
+
     <script src="../js/custom.min.js"></script>
     

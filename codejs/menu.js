@@ -5,7 +5,7 @@ $(document).ready(function(){
     _mensaje = $('input#mensaje').val();
 
     if(_mensaje != ''){
-        alertify.success(_mensaje);
+        mensajesalertify(_mensaje,"S","top-right",5);
     }
 
     $('#btnNuevo').click(function(){

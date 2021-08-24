@@ -107,7 +107,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td style="text-align: center">
                                             <input type="checkbox" id="recs" name="check[]" value="<?php echo $dat['TareaId'];?>"/>
                                         </td>                              
-                                        <td style="text-align: center;"><?php echo $dat['Tarea']; ?></td>
+                                        <td><?php echo $dat['Tarea']; ?></td>
                                         <td style="text-align: center;"><?php echo $dat['Ruta']; ?></td>
                                         <td style="text-align: center;"><?php echo $dat['Estado']; ?></td>
                                     </tr>
