@@ -56,13 +56,13 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
 
                                 <div class="row">
-                                    <div class="form-group col-md-4" id="divmp" style="display:none">
+                                    <div class="form-group col-md-6" id="divmp" style="display:none">
                                         <label for="menump" class="control-label">Nombre Menú Padre:</label>
                                         <input id="txtmenump" name="menump" type="text" placeholder="Menú Padre" 
                                             class="form-control">
                                     </div>
 
-                                    <div class="form-group col-md-4" id="divip" style="display:none">
+                                    <div class="form-group col-md-6" id="divip" style="display:none">
                                         <label for="iconomp" class="control-label">Icono Menú Padre:</label>
                                         <input id="txtsiconomp" name="iconomp" type="text" placeholder="ej.: fas fa-user" 
                                             class="form-control">
@@ -107,9 +107,9 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td style="text-align: center">
                                             <input type="checkbox" id="recs" name="check[]" value="<?php echo $dat['TareaId'];?>"/>
                                         </td>                              
-                                        <td><?php echo $dat['Tarea']; ?></td>
-                                        <td><?php echo $dat['Ruta']; ?></td>
-                                        <td><?php echo $dat['Estado']; ?></td>
+                                        <td style="text-align: center;"><?php echo $dat['Tarea']; ?></td>
+                                        <td style="text-align: center;"><?php echo $dat['Ruta']; ?></td>
+                                        <td style="text-align: center;"><?php echo $dat['Estado']; ?></td>
                                     </tr>
                                     <?php } ?>          
                                 </tbody>
@@ -122,8 +122,8 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="container">
             <div class='btn-group'>
-                <button class="btn btn-outline-secondary" id = "btnRegresar" ><i class='fas fa-undo'></i> Regresar</button>
-                <button class="btn btn-outline-primary ml-3" id="btnSave"><i class='fas fa-bookmark'></i> Guardar</button>
+                <button class="btn btn-outline-primary" id = "btnRegresar" ><i class='fa fa-undo'></i> Regresar</button>
+                <button class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-bookmark'></i> Guardar</button>
             </div>
         </div>
     </div>
@@ -131,7 +131,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>
 <script src="../codejs/menu.js" type="text/javascript"></script>
-<script src="../vendor/select2/js/select2.min.js"></script>
+<script src="../vendors/select2/js/select2.min.js"></script>
 
 <script>
     $(document).ready(function() {

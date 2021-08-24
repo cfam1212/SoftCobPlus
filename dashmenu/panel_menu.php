@@ -47,6 +47,8 @@ $padremenu = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
     <link href="../vendors/datatable/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../vendors/select2/css/select2.css">
+
     <link href="../vendors/datatable/css/fixedHeader.bootstrap.min.css" rel="stylesheet" />
 
     <link href="../vendors/jquery/css/jquery-ui.min.css" rel="stylesheet" />
@@ -54,6 +56,8 @@ $padremenu = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <link href="../vendors/jqvmap/css/jqvmap.min.css" rel="stylesheet" />
 
     <link href="../vendors/sweetalert2/css/sweetalert2.min.css" rel="stylesheet" />
+
+    <link href="../vendors/alertify/css/alertify.min.css" rel="stylesheet" />
 
     <link href="../vendors/bootstrap-daterangepicker/css/daterangepicker.css" rel="stylesheet" />
 

@@ -36,7 +36,7 @@ $(document).ready(function(){
         // }
 
         $.ajax({
-            url: "../bd/menucrud.php",
+            url: "../db/menucrud.php",
             type: "POST",
             dataType: "json",
             data: {id : _id, opcion : _opcion},            
@@ -65,53 +65,80 @@ $(document).ready(function(){
     });   
     
     $(document).on("click","#btnEliminar",function(e){        
-        _fila = $(this).closest("tr");
-        _data = $('#tablenoorder').dataTable().fnGetData(_fila);
+        _fila = $(this); 
+        _row = $(this).closest('tr');  
+        _data = $('#tablenoorder').dataTable().fnGetData(_row);
         _id = _data[0];
         _opcion = 1;
         //nombremenu = "", iconome = "", opcionmp = "", menupadre = "", iconomp = "", estado ="Activo";
         //result = [];
-        _menu = fila.find('td:eq(0)').text();
+        //_menu = fila.find('td:eq(0)').text();
+        _menu = _data[1];
         DeleteMenu();
     });     
 
     function DeleteMenu(){
-        Swal.fire({
-            title: 'Está Seguro de Borrar '+ _menu ,
-            text: 'El registro será eliminado..',
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Eliminar',
-            showLoaderOnConfirm: true,
-            preConfirm: function() {
-                return new Promise(function(resolve) {
-                    $.ajax({
-                        url: "../bd/menucrud.php",
+        // Swal.fire({
+        //     title: 'Está Seguro de Borrar '+ _menu ,
+        //     text: 'El registro será eliminado..',
+        //     type: 'warning',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: 'Eliminar',
+        //     showLoaderOnConfirm: true,
+        //     preConfirm: function() {
+        //         return new Promise(function(resolve) {
+        //             // $.ajax({
+        //             //     url: "../bd/menucrud.php",
+        //             //     type: "POST",
+        //             //     dataType: "json",
+        //             //     data: {id : _id, opcion : _opcion},
+        //             //     success: function(data){
+        //             //         if(data == 'NO'){
+        //             //             Swal.fire({
+        //             //                 type:'warning',
+        //             //                 title:'Menu no se puede Eliminar, Tiene Tareas Asociadas..!',
+        //             //             });  
+        //             //         }       
+        //             //         else {
+        //             //             Swal.close();
+        //             //             tableData.row(fila.parents('tr')).remove().draw();
+        //             //             alertify.error('Registro Eliminado..!');
+        //             //         }
+        //             //     },
+        //             //     error: function (error) {
+        //             //         console.log(error);
+        //             //     }                  
+        //             // });
+        //         });
+        //       }            
+        // });
+
+        alertify.confirm('Confirm Title', 'Confirm Message', function(){ alertify.success('Ok') 
+    
+                     $.ajax({
+                        url: "../db/menucrud.php",
                         type: "POST",
                         dataType: "json",
                         data: {id : _id, opcion : _opcion},
                         success: function(data){
                             if(data == 'NO'){
-                                Swal.fire({
-                                    type:'warning',
-                                    title:'Menu no se puede Eliminar, Tiene Tareas Asociadas..!',
-                                });  
+                             
+                                alertify.error('Menu no se puede Eliminar, Tiene Tareas Asociadas..!'); 
                             }       
                             else {
-                                Swal.close();
-                                tableData.row(fila.parents('tr')).remove().draw();
-                                alertify.error('Registro Eliminado..!');
+                            
+                                alertify.success('Registro Eliminado..!'); 
                             }
                         },
                         error: function (error) {
                             console.log(error);
                         }                  
                     });
-                });
-              }            
-        });
+              
+              }
+                , function(){ alertify.error('Cancel')});
     }
 
     $('#btnSave').click(function(){
@@ -126,21 +153,15 @@ $(document).ready(function(){
 
         if(_nombremenu == '')
         {
-            Swal.fire({
-                type: 'info',
-                title: 'Información',
-                text: 'Ingrese Nombre del Menú..!'
-            });    
+              
+            alertify.warning('Ingrese Nombre del Menú..!'); 
             return false;
         }
 
         if(_opcionmp == 2){
             if(_menupadre == ''){
-                Swal.fire({
-                    type: 'info',
-                    title: 'Información',
-                    text: 'Ingrese Nombre del Menú Padre..!'
-                });                  
+                
+                alertify.warning('Ingrese Nombre del Menú Padre..!');              
                 return false;                
             }
         }
@@ -152,16 +173,13 @@ $(document).ready(function(){
 
         if(i == 0)
         {
-            Swal.fire({
-                type: 'info',
-                title: 'Información',
-                text: 'Seleccione al menos una tarea..!'
-            }); 
+         
+            alertify.warning('Seleccione al menos una tarea..!');   
             return false;
         }
 
         $.ajax({
-            url: "../bd/menucrud.php",
+            url: "../db/menucrud.php",
             type: "POST",
             dataType: "json",
             data: {nombremenu: _nombremenu, iconome: _iconome, opcionmp: _opcionmp, menupadre: _menupadre, iconomp: _iconomp, result: _result, 
@@ -170,11 +188,12 @@ $(document).ready(function(){
                 if(data == '0'){
                     $.redirect('menu.php', {'mensaje': 'Guardado con Exito..!'});
                 }else{
-                    Swal.fire({
-                        type: 'warning',
-                        title: 'Información',
-                        text: 'Nombre del Menú/o Menú Padre ya Existe..!'
-                    });                    
+                    // Swal.fire({
+                    //     type: 'warning',
+                    //     title: 'Información',
+                    //     text: 'Nombre del Menú/o Menú Padre ya Existe..!'
+                    // }); 
+                    alertify.error('Nombre del Menú/o Menú Padre ya Existe..!');               
                 }
             },
             error: function (error) {
