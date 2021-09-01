@@ -110,6 +110,14 @@ $(document).ready(function(){
         _tarea = $.trim($("#txtTarea").val());
         _ruta = $.trim($("#txtRuta").val());
         _icono = $.trim($("#txtIcono").val());
+        if(_tarea == ''){
+            mensajesalertify("Ingrese Tarea!!.","W","top-center",5); 
+            return;   
+        }
+        if(_ruta == ''){
+            mensajesalertify("Ingrese una Ruta!!.","W","top-center",5); 
+            return;   
+        }
         if(_opcion == 2){            
             if(_nameoldtarea != _tarea){
                 $.ajax({
@@ -160,8 +168,8 @@ $(document).ready(function(){
                         _desactivar = '';
                     }
                     _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3"' +
-                             'id="btnEditar"><i class="fa fa-file"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
-                            _desactivar + 'id="btnEliminar"><i class="fa fa-trash"></i></button></div></div></td>'   
+                             'id="btnEditar"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                            _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
                     if(_opcion == 1){
                         TableData.row.add([_tareaid, _tarea, _ruta, _icono, _estado, _boton]).draw();
                     }

@@ -83,8 +83,8 @@ $(document).ready(function(){
                     deshabilitaSub  = 'disabled="disabled"';
                 }
                 return '<div class="text-center"><div class="btn-group"><button class="btn btn-outline-primary btn-sm" id="btnSubirNivel" '+
-                deshabilitaSub+'><i class="fas fa-arrow-up"></i></button><button class="btn btn-outline-info btn-sm ml-3" id="btnBajarNivel" '+
-                deshabilitaBaj+'><i class="fas fa-arrow-down"></i></button></div></div>'
+                deshabilitaSub+'><i class="fa fa-arrow-up"></i></button><button class="btn btn-outline-info btn-sm ml-3" id="btnBajarNivel" '+
+                deshabilitaBaj+'><i class="fa fa-arrow-down"></i></button></div></div>'
             }
         },
             { targets: 'no-sort' },
