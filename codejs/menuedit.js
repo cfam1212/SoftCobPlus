@@ -7,7 +7,7 @@ $(document).ready(function(){
     _nameoldmenu = $.trim($("#txtMenuname").val());
     //cbomenupadre = $.trim($("#cbomenupadre option:selected").text());  
     _menuid = $.trim($("#menuid").val());
-    _estado = $("#lblEstado").text();
+    _estado = $("#lblEstado").text();   
 
     if(_estado == "Activo"){
         $("#chkEstado").prop("checked", true);
