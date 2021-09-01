@@ -6,7 +6,7 @@ $('#formLogin').submit(function(e){
     var password =$.trim($("#password").val());    
     if(usuario.length == "" || password == ""){
      
-       alertify.warning('ingrese usuario y/o password');
+        mensajesalertify("ingrese usuario y/o password","W","top-center",5);
        return false; 
      }else{        
          $.ajax({
@@ -18,7 +18,7 @@ $('#formLogin').submit(function(e){
                 console.log(data);              
                 if(data == 'null'){
                  
-                    alertify.error('usuario y/o password incorrecto');
+                    mensajesalertify("usuario y/o password incorrecto","E","bottom-right",5);
                     $("#username").val('');
                     $("#password").val('');                    
                 }else{

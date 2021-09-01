@@ -37,3 +37,4 @@
       <script src="./vendors_login/js/login.js"></script>
       <script src="./login.js"></script>
       <script src="./vendors/alertify/js/alertify.min.js"></script>
+      <script src="./codejs/funciones.js"></script>

@@ -98,7 +98,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="form-group">
                         <label for="icono" class="col-form-label">Icono:</label>
-                        <input type="text" class="form-control" id="txtIcono" placeholder="ej: fas fa-user">
+                        <input type="text" class="form-control" id="txtIcono" placeholder="ej: fa fa-user">
                     </div>                    
                     <div class="form-check" id="divcheck">
                         <input type="checkbox" class="form-check-input" id="chkEstado">

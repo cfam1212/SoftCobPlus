@@ -72,17 +72,17 @@ switch($opcion){
         }
         break;    
     case "1": //ELIMINAR
-        $consulta = "SELECT COUNT(1) FROM menu_tarea WHERE menu_id='$id' AND empr_id='$emprid'";
+        $consulta = "SELECT COUNT(1) FROM seguridad_menu_tarea WHERE menu_id='$id' AND empr_id='$emprid'";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data = $resultado->fetchColumn();
         if($data == 0){
-            $consulta = "DELETE FROM menu WHERE menu_id='$id' AND empr_id='$emprid'";
+            $consulta = "DELETE FROM seguridad_menu WHERE menu_id='$id' AND empr_id='$emprid'";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();  
 
-            $consulta = "SELECT menu_id AS MenuId, menu_descripcion AS Menu, CASE menu_estado WHEN 1 THEN 'Activo' ELSE 'Inactivo' END AS Estado 
-                        menu_icono AS Icono WHERE empr_id='$emprid' FROM menu ORDER BY menu_orden";
+            $consulta = "SELECT menu_id AS MenuId, menu_descripcion AS Menu, CASE menu_estado WHEN 'A' THEN 'Activo' ELSE 'Inactivo' END AS Estado 
+                        menu_icono AS Icono FROM seguridad_menu WHERE empr_id='$emprid'  ORDER BY menu_orden";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -106,7 +106,7 @@ switch($opcion){
             $consulta = "UPDATE seguridad_menu SET menu_descripcion=?,menu_estado=?,menu_icono=?,menu_fum=?,menu_uum=?,menu_tum=? 
                         WHERE menu_id=? AND empr_id=?";
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array($nombremenu,$valestado,$iconome,$currentdate,$userid,$host,$id,$emprecodigo));
+            $resultado->execute(array($nombremenu,$valestado,$iconome,$currentdate,$userid,$host,$id,$emprid));
             // $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             if($opcionmp == 1)
             {

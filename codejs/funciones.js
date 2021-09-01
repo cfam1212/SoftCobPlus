@@ -12,5 +12,11 @@ function mensajesalertify(_mensaje, _tipo, _position, _tiempo){
        case "E":
             alertify.error(_mensaje , _tiempo , function(){console.log('dismissed');});
            break; 
+        case "N":
+            alertify.notify(_mensaje , _tiempo , function(){console.log('dismissed');});
+            break;  
+        case "M":
+            alertify.message(_mensaje , _tiempo , function(){console.log('dismissed');});
+            break;       
     }
 }

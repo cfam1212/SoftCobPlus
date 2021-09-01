@@ -43,7 +43,7 @@ $(document).ready(function(){
         }
 
         $("#divcheck").show();
-        $("#header").css("background-color","#6491C2");
+        $("#header").css("background-color","#183456");
         $("#header").css("color","white");
         $(".modal-title").text("Editar Tarea");
         $("#modalTAREA").modal("show");
@@ -73,42 +73,36 @@ $(document).ready(function(){
     });
     
     function DeleteTarea(){
-        Swal.fire({
-            icon: 'error',
-            title: 'Está Seguro de Borrar '+ _tarea ,
-            text: 'El registro será eliminado..',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Eliminar',
-            showLoaderOnConfirm: true,
-            preConfirm: function() {
-                return new Promise(function(resolve) {
-                    $.ajax({
-                        url: "../bd/tareacrud.php",
-                        type: "POST",
-                        dataType: "json",
-                        data: {opcion: 1, id: _id},                        
-                        success: function(data){
-                            //console.log(data);
-                            if(data == "NO"){
-                                swal.close();
-                                alertify.notify('Tarea no se puede Eliminar, está asociada a un Menú..!', 'success', 2, 
-                                function () { console.log('dismissed'); });  
-                            }       
-                            else {
-                                Swal.close();
-                                TableData.row(_fila.parents('tr')).remove().draw();
-                                alertify.notify('Registro Eliminado..!', 'error', 2, function () { console.log('dismissed'); });
-                            }                            
-                        },
-                        error: function (error) {
-                            console.log(error);
-                        }                  
-                    });
-                });
-              }            
+       
+     alertify.confirm('Eliminar', 'esta seguro de eliminar' + ' ' + _tarea, function(){ //alertify.success('Ok') 
+    
+        $.ajax({
+            url: "../db/tareacrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {opcion: 1, id: _id},                        
+            success: function(data){
+                //console.log(data);
+                if(data == "NO"){
+                    swal.close();
+                    // alertify.notify('Tarea no se puede Eliminar, está asociada a un Menú..!', 'success', 2, 
+                    // function () { console.log('dismissed'); });
+                    mensajesalertify("Tarea no se puede Eliminar, está asociada a un Menú..!","E","bottom-right",5);  
+                }       
+                else {
+                    Swal.close();
+                    TableData.row(_fila.parents('tr')).remove().draw();
+                    mensajesalertify("Registro Eliminado","S","bottom-center",5);
+                }                            
+            },
+            error: function (error) {
+                console.log(error);
+            }                  
         });
+    
+    
+              }
+                , function(){ alertify.error('eliminar cancelado')});
     }
     
     $("#formTarea").submit(function(e){
@@ -119,17 +113,14 @@ $(document).ready(function(){
         if(_opcion == 2){            
             if(_nameoldtarea != _tarea){
                 $.ajax({
-                    url: "../bd/tareacrud.php",
+                    url: "../db/tareacrud.php",
                     type: "POST",
                     dataType: "json",
                     data: {opcion:2, id: _id, tarea: _tarea, ruta:_ruta, icono:_icono, estado:_estado},            
                     success: function(data){
                         if(data == '1'){
-                            Swal.fire({
-                                icon: 'info',
-                                title: 'Información',
-                                text: 'Tarea ya Existe!!.'                                
-                            });                    
+                           
+                            mensajesalertify("Tarea ya Existe!!.","E","bottom-right",5);                   
                         }else{
                             FunGrabar();
                         }
@@ -148,17 +139,14 @@ $(document).ready(function(){
     
     function FunGrabar(){
         $.ajax({
-            url: "../bd/tareacrud.php",
+            url: "../db/tareacrud.php",
             type: "POST",
             dataType: "json",
             data: {opcion:0, id:_id, tarea:_tarea, ruta:_ruta, icono:_icono, estado:_estado},            
             success: function(data){
                 if(data == 'SI'){
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Información',
-                        text: 'Tarea ya Existe!!.'
-                    });                    
+                
+                    mensajesalertify("Tarea ya Existe!!","E","bottom-right",5);                   
                 }else{
                     //console.log(data);
                     _tareaid = data[0].TareaId;
@@ -172,15 +160,16 @@ $(document).ready(function(){
                         _desactivar = '';
                     }
                     _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3"' +
-                             'id="btnEditar"><i class="fas fa-file"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
-                            _desactivar + 'id="btnEliminar"><i class="fas fa-trash"></i></button></div></div></td>'   
+                             'id="btnEditar"><i class="fa fa-file"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                            _desactivar + 'id="btnEliminar"><i class="fa fa-trash"></i></button></div></div></td>'   
                     if(_opcion == 1){
                         TableData.row.add([_tareaid, _tarea, _ruta, _icono, _estado, _boton]).draw();
                     }
                     else{
                         TableData.row(_fila).data([_tareaid, _tarea, _ruta, _icono, _estado, _boton]).draw();
                     }  
-                    alertify.success("Grabado Correctamente..!");  
+                  
+                    mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);  
                     $("#modalTAREA").modal("hide");
                 }
             },

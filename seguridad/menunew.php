@@ -42,7 +42,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                     <div class="form-group col-md-6">
                                         <label for="iconome" class="control-label">Icono Menú</label>
-                                        <input id="txticonome" name="iconome" type="text" placeholder="ej:. fas fa-user" class="form-control">
+                                        <input id="txticonome" name="iconome" type="text" placeholder="ej:. fa fa-user" class="form-control">
                                     </div>   
                                 </div>             
 

@@ -78,44 +78,9 @@ $(document).ready(function(){
     });     
 
     function DeleteMenu(){
-        // Swal.fire({
-        //     title: 'Está Seguro de Borrar '+ _menu ,
-        //     text: 'El registro será eliminado..',
-        //     type: 'warning',
-        //     showCancelButton: true,
-        //     confirmButtonColor: '#3085d6',
-        //     cancelButtonColor: '#d33',
-        //     confirmButtonText: 'Eliminar',
-        //     showLoaderOnConfirm: true,
-        //     preConfirm: function() {
-        //         return new Promise(function(resolve) {
-        //             // $.ajax({
-        //             //     url: "../bd/menucrud.php",
-        //             //     type: "POST",
-        //             //     dataType: "json",
-        //             //     data: {id : _id, opcion : _opcion},
-        //             //     success: function(data){
-        //             //         if(data == 'NO'){
-        //             //             Swal.fire({
-        //             //                 type:'warning',
-        //             //                 title:'Menu no se puede Eliminar, Tiene Tareas Asociadas..!',
-        //             //             });  
-        //             //         }       
-        //             //         else {
-        //             //             Swal.close();
-        //             //             tableData.row(fila.parents('tr')).remove().draw();
-        //             //             alertify.error('Registro Eliminado..!');
-        //             //         }
-        //             //     },
-        //             //     error: function (error) {
-        //             //         console.log(error);
-        //             //     }                  
-        //             // });
-        //         });
-        //       }            
-        // });
+        
 
-        alertify.confirm('Confirm Title', 'Confirm Message', function(){ alertify.success('Ok') 
+        alertify.confirm('Eliminar', 'Esta seguro de eliminar el menu..?', function(){ //alertify.success('Ok') 
     
                      $.ajax({
                         url: "../db/menucrud.php",
@@ -125,20 +90,22 @@ $(document).ready(function(){
                         success: function(data){
                             if(data == 'NO'){
                              
-                                alertify.error('Menu no se puede Eliminar, Tiene Tareas Asociadas..!'); 
+                               
+                                mensajesalertify("Menu no se puede Eliminar, Tiene Tareas Asociadas..!","E","bottom-right",5);
                             }       
                             else {
                             
-                                alertify.success('Registro Eliminado..!'); 
+                              
+                                mensajesalertify("Registro Eliminado..!","S","bottom-center",5);
                             }
                         },
                         error: function (error) {
-                            console.log(error);
+                            console.error(error);
                         }                  
                     });
               
               }
-                , function(){ alertify.error('Cancel')});
+                , function(){ alertify.error('eliminar cancelado')});
     }
 
     $('#btnSave').click(function(){
@@ -154,14 +121,14 @@ $(document).ready(function(){
         if(_nombremenu == '')
         {
               
-            alertify.warning('Ingrese Nombre del Menú..!'); 
+            mensajesalertify("Ingrese Nombre del Menú..!","W","top-center",5); 
             return false;
         }
 
         if(_opcionmp == 2){
             if(_menupadre == ''){
                 
-                alertify.warning('Ingrese Nombre del Menú Padre..!');              
+                mensajesalertify("Ingrese Nombre del Menú Padre..!","W","top-center",5);              
                 return false;                
             }
         }
@@ -174,7 +141,7 @@ $(document).ready(function(){
         if(i == 0)
         {
          
-            alertify.warning('Seleccione al menos una tarea..!');   
+            mensajesalertify("Seleccione al menos una tarea..!","W","top-center",5);
             return false;
         }
 
@@ -187,13 +154,10 @@ $(document).ready(function(){
             success: function(data){   
                 if(data == '0'){
                     $.redirect('menu.php', {'mensaje': 'Guardado con Exito..!'});
+                    //$.redirect('menu.php',mensajesalertify("Guardado con exito..!","S","bottom-center",5));
                 }else{
-                    // Swal.fire({
-                    //     type: 'warning',
-                    //     title: 'Información',
-                    //     text: 'Nombre del Menú/o Menú Padre ya Existe..!'
-                    // }); 
-                    alertify.error('Nombre del Menú/o Menú Padre ya Existe..!');               
+                  
+                    mensajesalertify("Nombre del Menú ya exixte..!","E","bottom-right",5);              
                 }
             },
             error: function (error) {
