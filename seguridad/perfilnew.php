@@ -10,6 +10,7 @@ $resultado->execute(array(13,$_SESSION["i_emprid"],'','','','','','',0,0,0,0,0,0
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
+<input type="hidden" id="mensaje">
 <div class="right_col" role="main"> 
     <div class="clearfix"></div>
         <div class="row">

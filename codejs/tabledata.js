@@ -41,8 +41,8 @@ $(document).ready(function(){
                 }
                 return '<div class="text-center"><div class="btn-group"><button class="btn btn-outline-primary btn-sm" id="btnSubirNivel" '+
                     deshabilitaSub+'><i class="fa fa-arrow-up"></i></button><button class="btn btn-outline-info btn-sm ml-3" id="btnEditar">'+
-                    '<i class="fa fa-file"></i></button><button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminar" ' + 
-                    deshabilEliminar +'><i class="fa fa-trash"></i></button></div></div>'
+                    '<i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminar" ' + 
+                    deshabilEliminar +'><i class="fa fa-trash-o"></i></button></div></div>'
             }            
         },
             { targets: 'no-sort' },

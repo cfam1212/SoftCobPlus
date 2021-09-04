@@ -81,7 +81,7 @@ switch($opcion){
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();  
 
-            $consulta = "SELECT menu_id AS MenuId, menu_descripcion AS Menu, CASE menu_estado WHEN 'A' THEN 'Activo' ELSE 'Inactivo' END AS Estado 
+            $consulta = "SELECT menu_id AS MenuId, menu_descripcion AS Menu, CASE menu_estado WHEN 'A' THEN 'Activo' ELSE 'Inactivo' END AS Estado,
                         menu_icono AS Icono FROM seguridad_menu WHERE empr_id='$emprid'  ORDER BY menu_orden";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
