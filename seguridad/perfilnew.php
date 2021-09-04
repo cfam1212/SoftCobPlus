@@ -118,11 +118,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-</div>
-
-
-
-              
+</div>             
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>
 <script src="../codejs/perfil.js" type="text/javascript"></script>

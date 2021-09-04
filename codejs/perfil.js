@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var _mensaje,_continuar,_crear,_modificar,_eliminar,_result,_fila,_row,_data,_id,_perfil,_observacion,_estado;
+    var _mensaje,_continuar,_crear,_modificar,_eliminar,_result,_fila,_row,_data,_id,_perfil,_observacion,_estado,_result = [];
 
     _mensaje = $('input#mensaje').val();
     
@@ -10,7 +10,7 @@ $(document).ready(function(){
 
     _continuar = true;
     _crear = 'NO', _modificar = 'NO', _eliminar = 'NO';
-    _result = [];
+    
 
     $('#btnNuevo').click(function(){        
         $.redirect('perfilnew.php', {'mensaje': ''});
@@ -156,12 +156,12 @@ $(document).ready(function(){
         _estado = "Activo";
 
         if(_perfil == '')
-        {
-        
+        {       
             // mensajesalertify("Ingrese Nombre del Perfil..!","W","top-center",5);
             mensajesalertify("Ingrese Nombre del Perfil..!","W","top-center",5);  
             return;
         }
+
         var i = 0;
 
         $("input[type=checkbox]:checked").map(function(){

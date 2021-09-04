@@ -20,10 +20,7 @@ $modificar = (isset($_POST['modificar'])) ? $_POST['modificar'] : 'NO';
 $eliminar = (isset($_POST['eliminar'])) ? $_POST['eliminar'] : 'NO';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '0';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '0';
-$valestado = $estado == "Activo" ? true : false;
-$valcrear = $crear == "SI" ? true : false;
-$valmodificar = $modificar == "SI" ? true : false;
-$valeliminar = $eliminar == "SI" ? true : false;
+$valestado = $estado == "Activo" ? 'A' : 'I';
 
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
@@ -32,14 +29,14 @@ switch($opcion){
     case 0: //NUEVO
         $consulta = "CALL sp_New_Perfil(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(0,$empreid,0,0,$nombreperfil,$observacion,$valestado,$valcrear,$valmodificar,$valeliminar,$currentdate,
+        $resultado->execute(array(0,$empreid,0,0,$nombreperfil,$observacion,$valestado,$crear,$modificar,$eliminar,$currentdate,
         $userid,$host));
         //$id = $resultado->fetchAll(PDO::FETCH_ASSOC);
         $id = $resultado->fetchColumn();
         foreach($result as $drfila){
             $consulta = "CALL sp_New_Perfil(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array(1,$empreid,$id,$drfila,"","",false,false,false,false,$currentdate,$userid,$host));
+            $resultado->execute(array(1,$empreid,$id,$drfila,"","",'','','','',$currentdate,$userid,$host));
         }
         $data = "OK";
         break;    

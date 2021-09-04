@@ -22,7 +22,7 @@ $result = (isset($_POST['result'])) ? $_POST['result'] : '';
 $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
-$valestado = $estado == "Activo" ? true : false;
+$valestado = $estado == "Activo" ? 'A' : 'I';
 
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
@@ -127,7 +127,7 @@ switch($opcion){
             foreach($result as $drfila){
                 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
-                $resultado->execute(array(10,$emprid,'',$host,$drfila['check'],'','','',$id,$drfila['tareaid'],$userid,0,0,0)); 
+                $resultado->execute(array(10,$emprid,'','',$drfila['check'],'',$host,'',$id,$drfila['tareaid'],$userid,0,0,0)); 
                 // $data = $resultado->fetchAll(PDO::FETCH_ASSOC);                  
             }  
         }catch(Exception $e)
