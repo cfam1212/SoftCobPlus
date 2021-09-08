@@ -73,7 +73,8 @@ $padremenu = $resultado->fetchAll(PDO::FETCH_ASSOC);
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">              
               <a href="../dashmenu/panel_content.php" class="site_title">                
-                <span>SoftCob-Plus</span>
+                <!-- <span>SoftCob-Plus</span> -->
+                <h3 style="text-align: center;">SoftCob-Plus</h3>
               </a>             
             </div>
 
