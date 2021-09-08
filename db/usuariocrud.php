@@ -54,10 +54,10 @@ switch($opcion){
                     move_uploaded_file($tmpFoto,"../images/".$nombreArchivo);
                 }
             }
-            $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,0,$perfil,$empreid,$username,$lastname,'',$login,$password,$estado,$caduca,$fechacaduca,$cambiar,
-            $nombreArchivo,$currentdate,$userid,$host));
+            $nombreArchivo,$userid,$host));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC); 
         }        
     break;
