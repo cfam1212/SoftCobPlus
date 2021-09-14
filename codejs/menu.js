@@ -95,7 +95,7 @@ $(document).ready(function(){
                             }       
                             else {
                             
-                              
+                                TableNoOrder.row(_fila.parents('tr')).remove().draw();
                                 mensajesalertify("Registro Eliminado..!","S","bottom-center",5);
                             }
                         },
