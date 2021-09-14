@@ -74,7 +74,7 @@ $(document).ready(function(){
     
     function DeleteTarea(){
        
-     alertify.confirm('Eliminar', 'esta seguro de eliminar' + ' ' + _tarea, function(){ //alertify.success('Ok') 
+     alertify.confirm('El registro sera eliminado', 'Esta seguro de eliminar' + ' ' + _tarea + '..?', function(){ //alertify.success('Ok') 
     
         $.ajax({
             url: "../db/tareacrud.php",

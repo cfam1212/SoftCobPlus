@@ -24,7 +24,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Registro de Menus</h2>
+                        <h2>Nuevo Menu</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -80,7 +80,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Listado de Opciones</h2>
+                            <h2>Asignar Tarea</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>

@@ -78,14 +78,15 @@ $(document).ready(function(){
 
         if(_nombreperfil == '')
         {
-            alertify.warning('Ingrese Nombre del Perfil..!','mensaje', 2, function(){console.log('dismissed');});    
+           
+            mensajesalertify("Ingrese Nombre del Perfil..!","W","top-center",5);	    
             return;
         }
 
         if(_nameoldperfil != _nombreperfil){
             //BUSCAR SI EL NOMBRE DE PERFIL YA EXISTE
             $.ajax({
-                url: "../bd/consultadatos.php",
+                url: "../db/consultadatos.php",
                 type: "POST",
                 dataType: "json",
                 data: {tipo:14, auxv1:"", auxv2:_nombreperfil, auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:0, auxi2:0, auxi3:0, auxi4:0, 
@@ -109,7 +110,8 @@ $(document).ready(function(){
     
     function FunGrabar(response){
         if(!response){
-            alertify.warning('Nombre del Perfil ya Existe..!','mensaje', 2, function(){console.log('dismissed');});      
+            
+            mensajesalertify("Nombre del Perfil ya Existe..!","E","bottom-right",5);	      
         }else{
 
             _rowcollection =  TableData.$('input[type="checkbox"]', {"page": "all"});
@@ -120,7 +122,7 @@ $(document).ready(function(){
             });
 
             $.ajax({
-                url: "../bd/perfilcrud.php",
+                url: "../db/perfilcrud.php",
                 type: "POST",
                 dataType: "json",
                 data: {nombreperfil:_nombreperfil, observacion:_observacion, result:_result, estado:_estado, crear:_crear, modificar:_modificar, 

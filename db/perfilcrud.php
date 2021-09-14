@@ -45,14 +45,14 @@ switch($opcion){
         {
             $consulta = "CALL sp_New_Perfil(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array(2,$empreid,$id,0,$nombreperfil,$observacion,$valestado,$valcrear,$valmodificar,$valeliminar,
+            $resultado->execute(array(2,$empreid,$id,0,$nombreperfil,$observacion,$valestado,$crear,$modificar,$eliminar,
             $currentdate,$userid,$host));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             if($result != '0'){
                 foreach($result as $drfila){
                     $consulta = "CALL sp_New_Perfil(?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     $resultado = $conexion->prepare($consulta);
-                    $resultado->execute(array(1,$empreid,$id,$drfila,'','',false,false,false,false,$currentdate,$userid,$host));
+                    $resultado->execute(array(1,$empreid,$id,$drfila,'','','','','','',$currentdate,$userid,$host));
                 }
             }
         }catch(Exception $e)

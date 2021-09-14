@@ -100,7 +100,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </td>                              
                                         <td><?php echo $dat['Menu']; ?></td>
                                         <td><?php echo $dat['Tarea']; ?></td>
-                                        <td><?php echo $dat['Estado']; ?></td>
+                                        <td style="text-align: center;"><?php echo $dat['Estado']; ?></td>
                                     </tr>
                                     <?php } ?>         
                                 </tbody>

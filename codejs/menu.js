@@ -80,7 +80,7 @@ $(document).ready(function(){
     function DeleteMenu(){
         
 
-        alertify.confirm('Eliminar', 'Esta seguro de eliminar el menu..?', function(){ //alertify.success('Ok') 
+        alertify.confirm('El Registro sera eliminado', 'Esta seguro de eliminar el menu..?', function(){ //alertify.success('Ok') 
     
                      $.ajax({
                         url: "../db/menucrud.php",
