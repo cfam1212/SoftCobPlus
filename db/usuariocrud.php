@@ -81,10 +81,10 @@ switch($opcion){
                 move_uploaded_file($tmpFoto,"../images/".$nombreArchivo);                
             }                
         }
-        $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array($opc,$id,$perfil,$empreid,$username,$lastname,'',$login,'',$estado,$caduca,$fechacaduca,$cambiar,$nombreArchivo,
-                $currentdate,$userid,$host));
+                $userid,$host));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         $consulta = "SELECT u.usua_id AS UserId, CONCAT_WS(' ',u.usua_nombres,u.usua_apellidos) AS Usuario, u.usua_login AS Namelogin, 
@@ -114,14 +114,14 @@ switch($opcion){
                 move_uploaded_file($tmpFoto,"../images/".$nombreArchivo);                
             }
         }        
-        $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array($opc,$id,$perfil,$empreid,$username,$lastname,'',$login,$password,$estado,$caduca,$fechacaduca,$cambiar,
-                $nombreArchivo,$currentdate,$userid,$host));  
+                $nombreArchivo,$userid,$host));  
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         $consulta = "SELECT u.usua_id AS UserId, CONCAT_WS(' ',u.usua_nombres,u.usua_apellidos) AS Usuario, u.usua_login AS Namelogin, 
-                    p.perf_descripcion AS Perfil, CASE u.usua_estado WHEN 1 THEN 'Activo' ELSE 'Inactivo' END AS Estado 
+                    p.perf_descripcion AS Perfil, CASE u.usua_estado WHEN 'A' THEN 'Activo' ELSE 'Inactivo' END AS Estado 
                     FROM seguridad_usuario u INNER JOIN seguridad_perfil p ON u.perf_id = p.perf_id WHERE u.usua_id = '$id'";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
