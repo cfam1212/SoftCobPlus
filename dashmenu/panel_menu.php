@@ -78,7 +78,7 @@ $padremenu = $resultado->fetchAll(PDO::FETCH_ASSOC);
               </a>             
             </div>
 
-            <div class="clearfix"></div>
+            <div class="clearfix"></div>            
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
@@ -152,8 +152,6 @@ $padremenu = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         $menusuperior = $menurow['CodigoMenuPadre'];                
                       }
                     ?>
-
-
                 </ul>
               </div>
 
@@ -197,8 +195,9 @@ $padremenu = $resultado->fetchAll(PDO::FETCH_ASSOC);
                           <span class="badge bg-red pull-right">50%</span>
                           <span>Settings</span>
                         </a>
-                    <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="javascript:;">Help</a>
+                      <a class="dropdown-item" href="../index.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                      
                     </div>
                   </li>
   
