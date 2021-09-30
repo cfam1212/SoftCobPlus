@@ -2,7 +2,7 @@ $('#formLogin').submit(function(e){
     e.preventDefault();
     
     var usuario = $.trim($("#username").val()); 
-    console.log(usuario);
+    //console.log(usuario);
     var password =$.trim($("#password").val());    
     if(usuario.length == "" || password == ""){
      
@@ -15,7 +15,7 @@ $('#formLogin').submit(function(e){
             datatype: "json",
             data: {usuario:usuario, password:password}, 
             success:function(data){   
-                console.log(data);              
+                //console.log(data);              
                 if(data == 'null'){
                  
                     mensajesalertify("usuario y/o password incorrecto","E","bottom-right",5);
