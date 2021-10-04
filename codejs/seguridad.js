@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var _contactual, _contnueva, _contconfi  , _usuaid, _continuar;
+    var _contactual, _contnueva, _contconfi  , _usuaid, _continuar,_id;
 
     _usuaid = $.trim($("#txtusuaid").val());
 
@@ -71,4 +71,28 @@ $(document).ready(function(){
             }
         });                        
     }); 
+
+
+    //Resetear Password
+     $(document).on("click","#btnReset",function(){
+        _fila = $(this).closest("tr");
+        _data = $('#tabledata').dataTable().fnGetData(_fila);
+        _id = _data[0];
+        //console.log(_id);
+        $.ajax({
+            url: "../db/consultadatos.php",
+            type: "POST",
+            dataType: "json",
+            data: {tipo:27, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_id, auxi2:0, auxi3:0, auxi4:0, auxi5:0, auxi6:0, 
+            opcion:0},
+            success: function(data){
+                mensajesalertify("Password reseteado exitosamente..!","S","bottom-center",5);   
+            },
+            error: function (error) {
+                console.log(error);
+            }                  
+        });
+    });
+        
+
 });

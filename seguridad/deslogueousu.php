@@ -3,10 +3,10 @@ require_once '../dashmenu/panel_menu.php';
 
 $consulta = "CALL sp_consulta_datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(0,$_SESSION["i_emprid"],'','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(26,$_SESSION["i_emprid"],'','','','','','',0,0,0,0,0,0));
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-
+ 
 ?>
 <div class="right_col" role="main"> 
     <div class="">
@@ -40,14 +40,17 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </thead>
                                 <tbody>
                                     <?php
+                                  
                                     foreach($data as $datos){
+                                     
+                                        
                                     ?>  
                                         <tr>
-                                            <td><?php echo $datos['TareaId'] ?></td>
-                                            <td><?php echo $datos['Tarea'] ?></td>
-                                            <td><?php echo $datos['Ruta'] ?></td>
-                                            <td><?php echo $datos['Icono'] ?></td>
+                                            <td><?php echo $datos['Id'] ?></td>
+                                            <td><?php echo $datos['Usuario'] ?></td>
+                                            <td><?php echo $datos['Perfil'] ?></td>
                                             <td><?php echo $datos['Estado'] ?></td>
+                                            <td><?php echo $datos['FechaLogueo'] ?></td>
                                             <td>
                                                 <div class="text-center">
                                                     <button class="btn btn-outline-info btn-sm ml-3" id="btnDes">
