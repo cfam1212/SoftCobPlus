@@ -44,8 +44,9 @@ $(document).ready(function(){
             auxi6:0, opcion:0},
             success: function(data){       
                 console.log(data);                           
-                if(data.Codigo == 'null'){                         
-                    mensajesalertify("La contraseña actual es incorrecta..!","E","top-center",5);                 
+                if(data[0].Codigo == '0'){
+                    mensajesalertify("La contraseña actual es incorrecta..!","E","top-center",5);
+                    return;
                 }else{ 
                     $.ajax({
                         url: "../db/consultadatos.php",
