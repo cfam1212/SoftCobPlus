@@ -137,7 +137,7 @@ $(document).ready(function(){
              success: function(data){
                     Swal.close();
                     tableData.row(fila.parents('tr')).remove().draw();
-                    // alertify.error('Regisro Eliminado..!','mensaje', 2, function(){console.log('dismissed');});
+                   
                     mensajesalertify("Regisro Eliminado..!","S","bottom-center",5);
                             },
                             error: function (error) {
@@ -157,7 +157,7 @@ $(document).ready(function(){
 
         if(_perfil == '')
         {       
-            // mensajesalertify("Ingrese Nombre del Perfil..!","W","top-center",5);
+
             mensajesalertify("Ingrese Nombre del Perfil..!","W","top-center",5);  
             return;
         }
@@ -173,7 +173,7 @@ $(document).ready(function(){
 
         if(i == 0)
         {
-            // alertify.warning('Seleccione al menos un opción Menu/Tareal..!','mensaje', 2, function(){console.log('dismissed');});
+           
             mensajesalertify("Seleccione al menos un opción Menu/Tareal..!","W","top-center",5);
             return;
         }
