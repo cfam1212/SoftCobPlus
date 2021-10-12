@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    var _id, _opcion, _data, _estado, _fila, _checked,_depa;
+    var _id, _opcion, _data, _estado, _fila, _checked, _depa;
 
-    $("#modalTAREA").draggable({
+    $("#modalDEPAR").draggable({
         handle: ".modal-header"
     }); 
 
@@ -11,11 +11,11 @@ $(document).ready(function(){
         $("#header").css("background-color","#183456");
         $("#header").css("color","white");
         $(".modal-title").text("Nuevo Departamento");  
-        $("#modalTAREA").modal("show");
+        $("#modalDEPAR").modal("show");
         _id = 0;
-        _opcion = 1;
+        _opcion = 0;
         _data = null;
-        _estado = 'Activo';
+        _estado = 'A';
     });
 
     $(document).on("click","#chkEstado",function(){
@@ -23,36 +23,52 @@ $(document).ready(function(){
       
         if(_checked){
           $("#lblEstado").text("Activo");
-          _estado = 'Activo';
+          _estado = 'A';
       }else{
           $("#lblEstado").text("Inactivo");
-          _estado = 'Inactivo';
+          _estado = 'I';
       }
     });
 
-
-
-
     $('#btnSave').click(function(){
-        _depa = $.trim($("#txtDepa").val());
-        _estado = "Activo";
+        _depa = $.trim($("#txtDepa").val());        
 
         if(_depa == '')
-        {       
-            
+        {                   
             mensajesalertify("Ingrese Nombre del Departamento..!","W","top-center",5);  
             return;
         }
-
   
         $.ajax({
             url: "../db/depacrud.php",
             type: "POST",
             dataType: "json",
-            data: {tipo:14, auxv1:"", auxv2:_perfil, auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:0, auxi2:0, auxi3:0, auxi4:0, auxi5:0, auxi6:0, 
-            opcion:1},
-            success: function(data){                    
-               
+            data: {id:_id, nomdepa:_depa, estado:_estado, opcion:_opcion},
+            success: function(data){     
+                console.log(data);               
+                _depaid = data[0].Depaid;
+                _nomdepa = data[0].Departamento;
+                _estado = data[0].Estado;
+
+                if(_depaid == 1){
+                    _desactivar = 'disabled="disabled"';
+                }else{
+                    _desactivar = '';
+                }
+
+                _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3"' +
+                         'id="btnEditar"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                        _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
+
+                if(_opcion == 0){
+                    TableData.row.add([_depaid, _nomdepa, _estado, _boton]).draw();
+                }
+                else{
+                    TableData.row(_fila).data([_depaid, _nomdepa, _estado, _boton]).draw();
+                }  
+              
+                mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);  
+                $("#modalDEPAR").modal("hide");               
             },
             error: function (error) {
                 console.log(error);

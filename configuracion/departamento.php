@@ -2,10 +2,11 @@
 
 require_once '../dashmenu/panel_menu.php'; 
 
-$consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(1,$_SESSION["i_emprid"],'','','','','',0,0,0,0,0,'',0,0,''));
+$resultado->execute(array(0,$_SESSION["i_emprid"],'','','','','',0,0,0,0,0,''));
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <div class="right_col" role="main"> 
     <div class="">
@@ -72,7 +73,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>   
 </div>
-<div class="modal fade" id="modalTAREA" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal fade" id="modalDEPAR" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header" id="header">
