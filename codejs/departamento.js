@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var _id, _opcion, _data, _estado, _fila, _checked, _depa;
 
-    $("#modalDEPAR").draggable({
+    $("#modalTAREA").draggable({
         handle: ".modal-header"
     }); 
 
@@ -11,7 +11,7 @@ $(document).ready(function(){
         $("#header").css("background-color","#183456");
         $("#header").css("color","white");
         $(".modal-title").text("Nuevo Departamento");  
-        $("#modalDEPAR").modal("show");
+        $("#modalTAREA").modal("show");
         _id = 0;
         _opcion = 0;
         _data = null;
@@ -44,8 +44,7 @@ $(document).ready(function(){
             type: "POST",
             dataType: "json",
             data: {id:_id, nomdepa:_depa, estado:_estado, opcion:_opcion},
-            success: function(data){     
-                console.log(data);               
+            success: function(data){                                 
                 _depaid = data[0].Depaid;
                 _nomdepa = data[0].Departamento;
                 _estado = data[0].Estado;
@@ -68,7 +67,7 @@ $(document).ready(function(){
                 }  
               
                 mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);  
-                $("#modalDEPAR").modal("hide");               
+                $("#modalTAREA").modal("hide");               
             },
             error: function (error) {
                 console.log(error);

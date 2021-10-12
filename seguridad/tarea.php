@@ -108,7 +108,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-footer">
                     <button class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                     <!-- <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button> -->
-                    <button type="submit" class="btn btn-outline-success ml-3" id="btnSave"><i class='<i class="fa fa-save"></i>'></i> Guardar</button>
+                    <button type="button" class="btn btn-outline-success ml-3" id="btnSave"><i class='<i class="fa fa-save"></i>'></i> Guardar</button>
                 </div>
             </form>
         </div>
