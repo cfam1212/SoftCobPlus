@@ -29,7 +29,12 @@ switch($opcion){
         $resultado->execute(array(0,$empreid,'','','','','',0,0,0,'',0,''));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);              
         break;
-    
+    case 1:
+        $consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(2,$empreid,$nombredepa,'','','','',$id,0,0,'',0,''));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);              
+        break;
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);
