@@ -12,8 +12,12 @@ $empreid = $_SESSION["i_emprid"];
 
 $id = (isset($_POST['id'])) ? $_POST['id'] : '0';
 $nombredepa = (isset($_POST['nomdepa'])) ? $_POST['nomdepa'] : '';
-$estado = (isset($_POST['estado'])) ? $_POST['estado'] : 'A';
+$estado = (isset($_POST['estado'])) ? $_POST['estado'] : 'Activo';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '0';
+
+if($estado == 'Activo'){
+    $estado = 'A';
+}else $estado = 'I';
 
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');

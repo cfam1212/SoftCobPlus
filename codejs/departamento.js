@@ -15,7 +15,7 @@ $(document).ready(function(){
         _id = 0;
         _opcion = 0;
         _data = null;
-        _estado = 'A';
+        _estado = 'Activo';
     });
 
     $(document).on("click","#chkEstado",function(){
@@ -23,10 +23,10 @@ $(document).ready(function(){
       
         if(_checked){
           $("#lblEstado").text("Activo");
-          _estado = 'A';
+          _estado = 'Activo';
       }else{
           $("#lblEstado").text("Inactivo");
-          _estado = 'I';
+          _estado = 'Inactivo';
       }
     });
 
@@ -115,9 +115,11 @@ $(document).ready(function(){
       }
     });
 
-    $('#btnSave').click(function(){
+    $("#formTarea").submit(function(e){
+        e.preventDefault();
 
         _depa = $.trim($("#txtDepa").val());  
+
         if(_opcion == 1){            
             if(_namedepaold != _depa){
                 $.ajax({
@@ -126,7 +128,7 @@ $(document).ready(function(){
                     dataType: "json",
                     data: {opcion:1, id: _id, nomdepa: _depa},            
                     success: function(data){
-                        if(data == '1'){
+                        if(data[0].contar == '1'){
                            
                             mensajesalertify("Departamento ya Existe!!.","E","bottom-right",5);                   
                         }else{
