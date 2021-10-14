@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var _fecha, _fechacaduca, _caduca, _cambiar, _id, _opcion, _data, _estado, _fila, _loginold, _passold, _imagen, _row,
-    _username, _lastname, _login, _password, _perfil, _userid, _usuario, _continuar, _button;
+    _username, _lastname, _login, _password, _perfil, _userid, _usuario, _continuar, _button, _depar;
 
     $("#modalNewUser").draggable({
         handle: ".modal-header"
@@ -113,6 +113,7 @@ $(document).ready(function(){
                 $("#txtLogin").val(data[0].Login);
                 $("#txtPassword").val(data[0].Pass);
                 $("#cboPerfil").val(data[0].CodigoPerf);
+                $("#cboDepa").val(data[0].CodigoDepa);
 
                 if(_caduca == 'SI'){
                     $("#chkcaduca").prop("checked", true);
@@ -232,6 +233,8 @@ $(document).ready(function(){
         _password = $.trim($("#txtPassword").val());
         _fechacaduca = $.trim($("#txtFechacaduca").val());
         _perfil = $('#cboPerfil').val();
+        _depar = $('#cboDepa').val();
+
         _imagen = document.getElementById("txtImagen");
 
         if(_opcion == 1){
@@ -241,39 +244,40 @@ $(document).ready(function(){
         }
 
         if(_username == '')
-        {
-          
+        {          
             mensajesalertify("Ingrese Nombre del Usuario..!","W","top-center",5);
             return;
         }
 
         if(_lastname == '')
-        {
-        
+        {        
             mensajesalertify("Ingrese Apellido del Usuario..!","W","top-center",5);
             return;
         }
         
         if(_login == '')
-        {
-           
+        {           
             mensajesalertify("Ingrese Login..!","W","top-center",5);
             return;    
         }
         
         if(_password == '')
-        {
-            
+        {            
             mensajesalertify("Ingrese Password..!","W","top-center",5);
             return;    
         }
                
         if(_perfil == '0')
-        {
-            
+        {            
             mensajesalertify("Seleccione Perfil..!","W","top-center",5);
             return;    
         }
+
+        if(_depar == '0')
+        {            
+            mensajesalertify("Seleccione Departamento..!","W","top-center",5);
+            return;    
+        }        
 
         if(_loginold != _login){
             $.ajax({
@@ -307,6 +311,7 @@ $(document).ready(function(){
             _file = _imagen.files[0];
             form_data = new FormData();            
             form_data.append('perfil', _perfil);
+            form_data.append('depar', _depar);
             form_data.append('username', _username);
             form_data.append('lastname', _lastname);
             form_data.append('login', _login);

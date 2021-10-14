@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var _id, _opcion, _data, _estado,_row, _fila, _checked, _depa,_namedepaold,_depa;
+    var _id, _opcion, _data, _estado,_row, _fila, _checked, _depa, _namedepaold, _depa, _tipo;
 
     $("#modalTAREA").draggable({
         handle: ".modal-header"
@@ -14,6 +14,7 @@ $(document).ready(function(){
         $("#modalTAREA").modal("show");
         _id = 0;
         _opcion = 0;
+        _tipo = 1;
         _data = null;
         _estado = 'Activo';
     });
@@ -30,8 +31,6 @@ $(document).ready(function(){
       }
     });
 
-
-    
     $(document).on("click","#btnEditar",function(e){      
         _fila = $(this).closest("tr");
         _data = $('#tabledata').dataTable().fnGetData(_fila);
@@ -41,8 +40,8 @@ $(document).ready(function(){
 
         $("#txtDepa").val(_namedepaold);
       
-
         _opcion = 1;
+        _tipo = 3;
 
         if(_estado == "Activo"){
             $("#chkEstado").prop("checked", true);
@@ -82,20 +81,19 @@ $(document).ready(function(){
             return;
         }
   
-
         if(_opcion == 1){            
             if(_namedepaold != _depa){
                 $.ajax({
                     url: "../db/depacrud.php",
                     type: "POST",
                     dataType: "json",
-                    data: {opcion:1, id: _id, nomdepa: _depa},            
+                    data: {id:_id, nomdepa:_depa, estado:_estado, opcion:_opcion, tipo:_tipo},            
                     success: function(data){
                         if(data[0].contar == '1'){
                            
                             mensajesalertify("Departamento ya Existe!!.","E","bottom-right",5);                   
                         }else{
-                            FunGrabar();
+                            FunGrabar(1);
                         }
                     },
                     error: function (error) {
@@ -103,26 +101,26 @@ $(document).ready(function(){
                     }                            
                 });                
             }else{
-                FunGrabar();
+                FunGrabar(1);
             }
         }else{
-            FunGrabar();
+            FunGrabar(0);
         }  
        
     });
 
-    function FunGrabar(){
+    function FunGrabar(opc){
        
         $.ajax({
             url: "../db/depacrud.php",
             type: "POST",
             dataType: "json",
-            data: {id:_id, nomdepa:_depa, estado:_estado, opcion:3},
+            data: {id:_id, nomdepa:_depa, estado:_estado, opcion:opc, tipo:_tipo},
             success: function(data){                                 
                 _depaid = data[0].Depaid;
                 _nomdepa = data[0].Departamento;
                 _estado = data[0].Estado;
-
+                
                 if(_depaid == 1){
                     _desactivar = 'disabled="disabled"';
                 }else{
@@ -150,51 +148,40 @@ $(document).ready(function(){
 
     }
 
-    function Editar(){
-
-        
-    }
-
     $(document).on("click","#btnEliminar",function(e){
         _fila = $(this);  
         _row = $(this).closest('tr');
         _data = $('#tabledata').dataTable().fnGetData(_row);
         _id = _data[0];
         _depa = $(this).closest("tr").find('td:eq(0)').text(); 
-        _opcion = 4;
-        DeleteTarea();        
+        _tipo = 4;
+        DeleteDepar();        
     });
 
-    function DeleteTarea(){
+    function DeleteDepar(){
        
-        alertify.confirm('El registro sera eliminado', 'Esta seguro de eliminar' + ' ' + _depa + '..?', function(){ //alertify.success('Ok') 
-       
+        alertify.confirm('El registro sera eliminado', 'Esta seguro de eliminar' + ' ' + _depa + '..?', function(){ //alertify.success('Ok')        
            $.ajax({
                url: "../db/depacrud.php",
                type: "POST",
                dataType: "json",
-               data: {opcion: 1, id: _id},                        
+               data: {id:_id, nomdepa:_depa, estado:_estado, opcion:1, tipo:_tipo},                        
                success: function(data){
-                   //console.log(data);
-                   if(data == "NO"){
-                       swal.close();
-                     
+                   console.log(data);
+                   if(data[0].Valor == "Existe"){
                        mensajesalertify("Departamento no se puede Eliminar, está asociada a un Usuario..!","E","bottom-right",5);  
                    }       
                    else {
-                       Swal.close();
                        TableData.row(_fila.parents('tr')).remove().draw();
-                       mensajesalertify("Registro Eliminado","S","bottom-center",5);
+                       mensajesalertify("Registro Eliminado","E","bottom-center",5);
                    }                            
                },
                error: function (error) {
                    console.log(error);
                }                  
-           });
-       
-       
-                 }
-                   , function(){ alertify.error('eliminar cancelado')});
+           });              
+        },        
+            function(){ /*alertify.error('eliminar cancelado')*/});
        }
 
 });
