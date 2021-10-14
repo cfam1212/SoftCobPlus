@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var _id, _opcion, _data, _estado, _fila, _checked, _depa,_namedepaold;
+    var _id, _opcion, _data, _estado,_row, _fila, _checked, _depa,_namedepaold,_depa;
 
     $("#modalTAREA").draggable({
         handle: ".modal-header"
@@ -113,7 +113,6 @@ $(document).ready(function(){
 
     function FunGrabar(){
        
-
         $.ajax({
             url: "../db/depacrud.php",
             type: "POST",
@@ -150,5 +149,52 @@ $(document).ready(function(){
         });
 
     }
+
+    function Editar(){
+
+        
+    }
+
+    $(document).on("click","#btnEliminar",function(e){
+        _fila = $(this);  
+        _row = $(this).closest('tr');
+        _data = $('#tabledata').dataTable().fnGetData(_row);
+        _id = _data[0];
+        _depa = $(this).closest("tr").find('td:eq(0)').text(); 
+        _opcion = 4;
+        DeleteTarea();        
+    });
+
+    function DeleteTarea(){
+       
+        alertify.confirm('El registro sera eliminado', 'Esta seguro de eliminar' + ' ' + _depa + '..?', function(){ //alertify.success('Ok') 
+       
+           $.ajax({
+               url: "../db/depacrud.php",
+               type: "POST",
+               dataType: "json",
+               data: {opcion: 1, id: _id},                        
+               success: function(data){
+                   //console.log(data);
+                   if(data == "NO"){
+                       swal.close();
+                     
+                       mensajesalertify("Departamento no se puede Eliminar, está asociada a un Usuario..!","E","bottom-right",5);  
+                   }       
+                   else {
+                       Swal.close();
+                       TableData.row(_fila.parents('tr')).remove().draw();
+                       mensajesalertify("Registro Eliminado","S","bottom-center",5);
+                   }                            
+               },
+               error: function (error) {
+                   console.log(error);
+               }                  
+           });
+       
+       
+                 }
+                   , function(){ alertify.error('eliminar cancelado')});
+       }
 
 });

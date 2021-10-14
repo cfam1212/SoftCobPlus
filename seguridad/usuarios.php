@@ -14,6 +14,11 @@ $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(19,$_SESSION["i_emprid"],'','','','','','',0,0,0,0,0,0));
 $cboperfil = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
+$consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(5,$_SESSION["i_emprid"],'','','','','',0,0,0,'',0,''));
+$cbodepa = $resultado->fetchAll(PDO::FETCH_ASSOC);   
+
 ?>
 <div class="right_col" role="main"> 
     <div class="">
@@ -123,6 +128,15 @@ $cboperfil = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <input type="checkbox" id="chkEstado"></input>
                             <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
                         </div>                                                 
+                    </div>
+                    <div class="form-group row">
+                        <label for="perfil" class="control-label col-md-2">Departamento:</label>
+                        <select class="form-control col-md-4" id="cboDepa" name="cbodepa">
+                            <?php foreach($cbodepa as $fila): ?>
+                                <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
+                            <?php endforeach ?>
+                        </select>
+                                                                      
                     </div>
 
                     <div class="form-group row">
