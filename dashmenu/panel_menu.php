@@ -57,9 +57,9 @@ $padremenu = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
     <link href="../vendors/sweetalert2/css/sweetalert2.min.css" rel="stylesheet" />
 
-    <link href="../vendors/alertify/css/alertify.css" rel="stylesheet" />
+    <link href="../vendors/alertify/css/alertify.css" rel="stylesheet"/>
 
-    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet"/>
 
     <link href="../vendors/bootstrap-daterangepicker/css/daterangepicker.css" rel="stylesheet" />
 
