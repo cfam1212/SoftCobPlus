@@ -6,7 +6,7 @@ $mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(11,$_SESSION["i_emprid"],'','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(28,$_SESSION["i_emprid"],'','','','','','',0,0,0,0,0,0));
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -38,7 +38,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <th>Id</th>
                                         <th>Cuidad</th>
                                         <th>Cedente</th>
-                                        <th>Codigo</th>
                                         <th>Telefono</th>
                                         <th>Estado</th>
                                         <th>Opciones</th>
@@ -51,11 +50,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     ?>
                                                                           
                                     <tr>
-                                        <td><?php echo $datos['PerfilId'] ?></td>
-                                        <td><?php echo $datos['Perfil'] ?></td>
-                                        <td><?php echo $datos['Descripcion'] ?></td>
-                                        <td><?php echo $datos['Estado'] ?></td>
-                                        <td><?php echo $datos['Estado'] ?></td>
+                                        <td><?php echo $datos['CedeId'] ?></td>
+                                        <td><?php echo $datos['Ciudad'] ?></td>
+                                        <td><?php echo $datos['Cedente'] ?></td>
+                                        <td><?php echo $datos['Telefono'] ?></td>
                                         <td><?php echo $datos['Estado'] ?></td>
                                         <td>
                                             <div class="text-center">

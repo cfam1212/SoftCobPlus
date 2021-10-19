@@ -2,7 +2,10 @@
 
 require_once '../dashmenu/panel_menu.php'; 
 
-
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(29,0,'','','','','','',0,0,0,0,0,0));
+$dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -53,19 +56,17 @@ require_once '../dashmenu/panel_menu.php';
                                 <div class="form-group col-md-3"> 
                                    
                                     <select class="form-control" id="cboProvincia" name="cboprovincia">
-                                            <?php foreach($menump as $fila): ?>
-                                                <option value="<?=$fila['Codigo']?>"></option>
+                                            <option value="0">--Seleccione Provincia--</option>
+                                            <?php foreach($dataprov as $fila): ?>
+                                                <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
                                             <?php endforeach ?>
                                     </select>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="cbocuidad" class="control-label col-md-1">Cuidad</label>
-                                <div class="form-group col-md-3"> 
-                                    
-                                    <select class="form-control" id="cboCuidad" name="cbocuidad">
-                                            <?php foreach($menump as $fila): ?>
-                                                <option value="<?=$fila['Codigo']?>"></option>
-                                            <?php endforeach ?>
+                                <div class="form-group col-md-3">                                     
+                                    <select class="form-control" id="cboCiudad" name="cbociudad">
+                                            <option value="0">--Seleccione Ciudad--</option>
                                     </select>
                                 </div>
                                 </div>             
@@ -88,9 +89,9 @@ require_once '../dashmenu/panel_menu.php';
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Direccion</label> 
-                                    <div class="form-group col-md-8">
-                                        
-                                        <input type="text" required class="form-control" id="txtDireccion" name="menuname" placeholder="" maxlength="200">
+                                    <div class="form-group col-md-10">                                    
+                                        <textarea name="observa" id="txtDireccion" class="form-control col-md-10" maxlength="200" 
+                                            onkeydown = "return (event.keyCode!=13);"></textarea>                                        
                                    </div> 
 
                                 </div>
