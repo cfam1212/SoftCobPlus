@@ -7,8 +7,8 @@ $(document).ready(function(){
     });
 
 
-    $('#cboProvincia').select2();
-    $('#cboCiudad').select2();
+      $('#cboProvincia').select2();
+      $('#cboCiudad').select2();
 
     _opcaccion = $.trim($("#cboProvincia").val());
     _cbociudad = $('#cboCiudad'); 

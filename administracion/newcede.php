@@ -22,7 +22,6 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
-                   
                         </ul>
                         <div class="clearfix"></div>
                     </div>
@@ -46,7 +45,7 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                       <div class="tab-pane fade show active" id="cedente" role="tabpanel" aria-labelledby="cedente-tab">
                       <form class="form-horizontal" role="form">      
                             <fieldset>
-                                </br>
+                                <br>
                                 <div class="row">
                                 <label for="espacio" class="control-label col-md-1"></label>    
                                 <label for="cboprovincia" class="control-label col-md-1">Provincia</label>
@@ -123,14 +122,14 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </select>
                                     </div>
                                 </div>
-                                </br>
-                                </br>
-                                </br>    
+                                <br>
+                                <br>
+                                <br>    
                             </fieldset>
                         </form>    
                       </div>
                       <div class="tab-pane fade" id="contacto" role="tabpanel" aria-labelledby="contacto-tab">
-                        </br>  
+                        <br>  
                           <div class="row">
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="menuname" class="control-label col-md-1">Contacto</label>
@@ -171,8 +170,8 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <input id="txtEmail2" name="email" type="text" placeholder=" " class="form-control" maxlength="80">
                                     </div> 
                               </div>
-                            </br>
-                            </br>
+                            <br>
+                            <br>
                             <div class="row">
                                 <label for="espacio" class="control-label col-md-11"></label>
                                 <button type="button" class="btn btn-outline-success" id="btnContacto" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
@@ -188,7 +187,7 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                           </a>
                         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                           <div class="panel-body">
-                          </br>
+                          <br>
                           <div class="row">
                                    <label for="espacio" class="control-label col-md-1"></label>
                                    <label for="menuname" class="control-label col-md-1">Producto</label>
@@ -218,7 +217,7 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </a>
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                           <div class="panel-body">
-                          </br>
+                          <br>
                               <div class="row">
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="espacio" class="control-label col-md-1">Producto</label>
@@ -231,8 +230,8 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </select>
                                 </div>                  
                               </div>
-                              </br>
-                              </br>
+                              <br>
+                              <br>
                               <div class="row">
                                    <label for="espacio" class="control-label col-md-1"></label>
                                    <label for="menuname" class="control-label col-md-2">Codigo Catalogo</label>
@@ -256,7 +255,7 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                       <input id="txtFamilia" name="iconome" type="text" placeholder=" " class="form-control" maxlength="250">
                                     </div>                  
                               </div>
-                              </br>
+                              <br>
                               <div class="row">
                                  <label for="espacio" class="control-label col-md-11"></label>
                                  <button type="button" class="btn btn-outline-success" id="btnContalogoPro" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
@@ -267,8 +266,8 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     
                     </div>
                     <!-- end of accordion -->
-                              </br>
-                              </br>
+                              <br>
+                              <br>
                       </div>
                       <div class="tab-pane fade" id="agencia" role="tabpanel" aria-labelledby="agencia-tab">
                               </br>
@@ -287,7 +286,7 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>           
                               </div>
                               <div class="row">
-                              <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="menuname" class="control-label col-md-1">Sucursal</label>
                                 <div class="form-group col-md-3">
                                 <select class="form-control" id="cboProvincia" name="cboprovincia">
@@ -307,9 +306,9 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </select>
                                 </div>       
                               </div>
-                              </br>
-                              </br>
-                              </br>
+                              <br>
+                              <br>
+                              <br>
                               <div class="container">
                                  <div class='btn-group'>
                                      <button class="btn btn-outline-primary" id = "btnRegresar" ><i class='fa fa-undo'></i> Regresar</button>
