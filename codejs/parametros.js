@@ -1,7 +1,7 @@
 $(document).ready(function(){
     
-    var _error_parametro = '', _tipoSave = 'add', _count = 0, _result = [], _continuar = true, _mensaje, __fila, __data,
-    __id, _detalle, _valorv, _valori, _detalleold, __output;
+    var _error_parametro = '', _tipoSave = 'add', _count = 0, _result = [], _continuar = true, _mensaje, _fila, _data,
+    _id, _detalle, _valorv, _valori, _detalleold, _output, _seguir, __valoriold, _norden, _objIndex, _valorvold, _valoriold;
 
     // $('#parameter_dialog').dialog({
     //     autoOpen:false,
@@ -21,10 +21,10 @@ $(document).ready(function(){
     });
 
     $(document).on("click","#btnEditar",function(){        
-        __fila = $(this).closest("tr");
-        __data = $('#table_data')._dataTable().fnGet_data(__fila);
-        __id = __data[0];
-        $.redirect('parametroedit.php', {'id': __id});
+        _fila = $(this).closest("tr");
+        _data = $('#table_data')._dataTable().fnGet_data(_fila);
+        _id = _data[0];
+        $.redirect('parametroedit.php', {'id': _id});
     });
 
     $(document).on("click","#btnEliminar",function(){        
@@ -35,50 +35,50 @@ $(document).ready(function(){
         //$.redirect('parametroedit.php', {'id': _id});
     });
 
-    $('#btnNext').click(function(){
-        if($.trim($('#parametro').val()).length == 0)
-        {
-            _error_parametro = 'Nombre del Parámetro es requer_ido';
-            $('#error_parametro').text(_error_parametro);
-            $('#parametro').addClass('has-error');
-        }else{
-            error_parametro = '';
-            $('#error_parametro').text(_error_parametro);
-            $('#parametro').removeClass('has-error');
-        }
+    // $('#btnNext').click(function(){
+    //     if($.trim($('#parametro').val()).length == 0)
+    //     {
+    //         _error_parametro = 'Nombre del Parámetro es requer_ido';
+    //         $('#error_parametro').text(_error_parametro);
+    //         $('#parametro').addClass('has-error');
+    //     }else{
+    //         _error_parametro = '';
+    //         $('#error_parametro').text(_error_parametro);
+    //         $('#parametro').removeClass('has-error');
+    //     }
 
-        if(_error_parametro != '')
-        {
-            return false;
-        }else
-        {
-            $('#list_parametrocab').removeClass('active active_tab1');
-            $('#list_parametrocab').removeAttr('href _data-toggle');
-            $('#parametrocab').removeClass('active');
-            $('#list_parametrocab').addClass('inactive_tab1');
-            $('#list_parametrodet').removeClass('inactive_tab1');
-            $('#list_parametrodet').addClass('active_tab1 active');
-            $('#list_parametrodet').attr('href', '#parametrodet');
-            $('#list_parametrodet').attr('_data-toggle', 'tab');
-            $('#parametrodet').addClass('active in');
-        }
-    });
+    //     if(_error_parametro != '')
+    //     {
+    //         return false;
+    //     }else
+    //     {
+    //         $('#list_parametrocab').removeClass('active active_tab1');
+    //         $('#list_parametrocab').removeAttr('href _data-toggle');
+    //         $('#parametrocab').removeClass('active');
+    //         $('#list_parametrocab').addClass('inactive_tab1');
+    //         $('#list_parametrodet').removeClass('inactive_tab1');
+    //         $('#list_parametrodet').addClass('active_tab1 active');
+    //         $('#list_parametrodet').attr('href', '#parametrodet');
+    //         $('#list_parametrodet').attr('_data-toggle', 'tab');
+    //         $('#parametrodet').addClass('active in');
+    //     }
+    // });
 
     $('#btnPrev1').click(function(){
         $.redirect('parametroadmin.php');
     });
 
-    $('#btnPrev2').click(function(){
-        $('#list_parametrodet').removeClass('active active_tab1');
-        $('#list_parametrodet').removeAttr('href _data-toggle');
-        $('#parametrodet').removeClass('active in');
-        $('#list_parametrodet').addClass('inactive_tab1');
-        $('#list_parametrocab').removeClass('inactive_tab1');
-        $('#list_parametrocab').addClass('active_tab1 active');
-        $('#list_parametrocab').attr('href', '#parametrocab');
-        $('#list_parametrocab').attr('_data-toggle', 'tab');
-        $('#parametrocab').addClass('active in');
-    });
+    // $('#btnPrev2').click(function(){
+    //     $('#list_parametrodet').removeClass('active active_tab1');
+    //     $('#list_parametrodet').removeAttr('href _data-toggle');
+    //     $('#parametrodet').removeClass('active in');
+    //     $('#list_parametrodet').addClass('inactive_tab1');
+    //     $('#list_parametrocab').removeClass('inactive_tab1');
+    //     $('#list_parametrocab').addClass('active_tab1 active');
+    //     $('#list_parametrocab').attr('href', '#parametrocab');
+    //     $('#list_parametrocab').attr('_data-toggle', 'tab');
+    //     $('#parametrocab').addClass('active in');
+    // });
 
     $("#btnAdd").click(function(){        
         $("#formParam").trigger("reset");
@@ -127,8 +127,7 @@ $(document).ready(function(){
         {
             $.each(_result,function(i,item){
                 if(item.arrydetalle.toUpperCase() == _detalle.toUpperCase())
-                {
-                  
+                {                  
                     mensajesalertify("Nombre del Parámetro ya Existe..!","E","bottom-center",5);                    
                     _continuar = false;
                     return false;
@@ -137,8 +136,7 @@ $(document).ready(function(){
                         if(_valori == 0)
                         {
                             if(item.arryvalorv.toUpperCase() == _valorv.toUpperCase())
-                            {
-                               
+                            {                               
                                 mensajesalertify("Valor Texto de Parámetro ya Existe..!","E","bottom-center",5);    
                                 _continuar = false;
                                 return false;
@@ -148,8 +146,7 @@ $(document).ready(function(){
                         }else
                         {
                             if(item.arryvalori == _valori)
-                            {
-                               
+                            {                               
                                 mensajesalertify("Valor Entero de Parámetro ya Existe..!","E","bottom-center",5); 
                                 _continuar = false;
                                 return false;
@@ -169,10 +166,10 @@ $(document).ready(function(){
                 }
                 _output = '<tr id="row_' + _count + '">';
                 _output += '<td style="display: none;">' + _count + ' <input type="h_idden" name="hidden_orden[]" id="orden' + _count + '" value="' + _count + '" /></td>';                
-                _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="detalle' + _count + '" value="' + _detalle + '" /></td>';
-                _output += '<td>' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="valorv' +_count + '" value="' + _valorv + '" /></td>';
-                _output += '<td>' + _valori + ' <input type="hidden" name="hidden_valori[]" id="valori' + _count + '" value="' + _valori + '" /></td>';
-                _output += '<td>' + _estado + ' <input type="hidden" name="hidden_estado[]" id="estado' + _count + '" value="' + _estado + '" /></td>';
+                _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + _count + '" value="' + _detalle + '" /></td>';
+                _output += '<td>' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' +_count + '" value="' + _valorv + '" /></td>';
+                _output += '<td>' + _valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + _count + '" value="' + _valori + '" /></td>';
+                _output += '<td>' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="subirnivel" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + _count + '"><i class="fa fa-arrow-up"></i></button>';
                 _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
@@ -202,31 +199,30 @@ $(document).ready(function(){
             {
                 $.each(_result,function(i,item)
                 {
-                    if(item.arrydetalle.toUpperCase() == detalle.toUpperCase())
-                    {
-                        
-                        mensajesalertify("Nombre del Parámetro ya Existe..!","E","bottom-center",5);                        
-                        continuar = false;
+                    if(item.arrydetalle.toUpperCase() == _detalle.toUpperCase())
+                    {                        
+                        mensajesalertify("Nombre del Parámetro ya Existe..!","E","bottom-center",5); 
+                        _continuar = false;
                         return false;
                     }else{
-                        continuar = true;
+                        _continuar = true;
                     }
                 });
-            }else continuar = true;
+            }else _continuar = true;
 
-            if(continuar)
+            if(_continuar)
             {
-                if(valori != 0)
+                if(_valori != 0)
                 {
-                    if(valoriold != valori)
+                    if(__valoriold != _valori)
                     {
-                        $.each(result,function(i,item)
+                        $.each(_result,function(i,item)
                         {
-                            if(item.arryvalori == valori)
+                            if(item.arryvalori == _valori)
                             {
                              
                                 mensajesalertify("Valor Entero de Parámetro ya Existe..!","E","bottom-center",5);                     
-                                seguir = false;
+                                _seguir = false;
                                 return false;
                             }else{
                                 seguir = true;
@@ -234,43 +230,44 @@ $(document).ready(function(){
                         });                        
                     }
                 }else{
-                    if(valorvold.toUpperCase() != valorv.toUpperCase())
+                    if(_valorvold.toUpperCase() != _valorv.toUpperCase())
                     {
-                        $.each(result,function(i,item)
+                        $.each(_result,function(i,item)
                         {
-                            if(item.arryvalorv.toUpperCase() == valorv.toUpperCase())
-                            {
-                              
+                            if(item.arryvalorv.toUpperCase() == _valorv.toUpperCase())
+                            {                              
                                 mensajesalertify("Valor Texto de Parámetro ya Existe..!","E","bottom-center",5);                     
-                                seguir = false;
+                                _seguir = false;
                                 return false;
                             }else{
-                                seguir = true;
+                                _seguir = true;
                             }
                         });
-                    }else seguir = true;    
+                    }else _seguir = true;    
                 }
             }
 
-            if(seguir)
+            if(_seguir)
             {
                 row_id = $('#hidden_row_id').val();
-                _output = '<td style="display: none;">' + norden + ' <input type="h_idden" name="h_idden_orden[]" id="orden' + row_id + '" value="'+ row_id + '" /></td>';
-                _output += '<td>' + _detalle + ' <input type="h_idden" name="h_idden_detalle[]" _id="detalle' + row_id + '" value="' + detalle + '" /></td>';
-                _output += '<td>' + _valorv + ' <input type="h_idden" name="h_idden_valorv[]" _id="valorv' + row_id + '" value="'+ valorv + '" /></td>';
-                _output += '<td>' + _valori + ' <input type="h_idden" name="h_idden_valori[]" _id="valori' + row_id + '" value="'+ valori + '" /></td>';
-                _output += '<td>' + _estado + ' <input type="h_idden" name="h_idden_estado[]" _id="estado' + row_id + '" value="'+ estado + '" /></td>';
+                _output = '<td style="display: none;">' + _norden + ' <input type="hidden" name="hidden_orden[]" id="orden' + row_id + '" value="'+ row_id + '" /></td>';
+                _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + row_id + '" value="' + _detalle + '" /></td>';
+                _output += '<td>' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + row_id + '" value="'+ _valorv + '" /></td>';
+                _output += '<td>' + _valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + row_id + '" value="'+ _valori + '" /></td>';
+                _output += '<td>' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + row_id + '" value="'+ _estado + '" /></td>';
     
                 _output += '<td><div class="text-center"><div class="btn-group">'
-                _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' _id="btnUp' + row__id + '"><i class="fas fa-arrow-up"></i></button>';
-                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" _id="' + row__id + '"><i class="fa fa-pencil-square-o"></i></button>';
-                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" _id="'+ row__id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' _id="btnUp' + row_id + '"><i class="fa fa-arrow-up"></i></button>';
+                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" _id="' + row_id + '"><i class="fa fa-pencil-square-o"></i></button>';
+                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" _id="'+ row_id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';                
+               
                 $('#row_'+row_id+'').html(_output);
-
-                objIndex = _result.findIndex((obj => obj.arry_id == row_id));
-                result[objIndex].arrydetalle = _detalle;
-                result[objIndex].arryvalorv = _valorv;
-                result[objIndex].arryvalori = _valori;
+                console.log(_output);
+                
+                _objIndex = _result.findIndex((obj => obj.arry_id == row_id));
+                _result[_objIndex].arrydetalle = _detalle;
+                _result[_objIndex].arryvalorv = _valorv;
+                _result[_objIndex].arryvalori = _valori;
                 $("#modalPARAMETER").modal("hide");
             }
         }
@@ -278,25 +275,31 @@ $(document).ready(function(){
 
     $(document).on("click",".btnEdit",function(){
         $("#formParam").trigger("reset");
-        row_id = $(this).attr("_id");
-        norden = $('#orden'+row_id+'').val();
-        detalleold = $('#detalle'+row_id+'').val();
-        valorvold = $('#valorv'+row_id+'').val();
-        valoriold = $('#valori'+row_id+'').val();
-        _estadoold = $('#estado'+row_id+'').val();
+        row_id = $(this).attr("id");
+        _nid = $('#hidden_row_id').val();
+        if(row_id==null) {
+            row_id=_nid;
+        }
+        _norden = $('#orden'+row_id+'').val();
+        console.log(row_id);
+        _detalleold = $('#txtDetalle'+row_id+'').val();
+        _valorvold = $('#txtValorv'+row_id+'').val();
+        _valoriold = $('#txtValori'+row_id+'').val();
+        _estadoold = $('#txtEstado'+row_id+'').val();
         _deshabilitar = $('#btnUp'+row_id+'').attr('disabled');
         _tipoSave = 'edit';
 
         if(_estadoold == "Activo"){
-            $("#chkestado").prop("checked", true);
-            $("#lblestado").text("Activo");
+            $("#chkEstado").prop("checked", true);
+            $("#lblEstado").text("Activo");
         }else{
-            $("#chkestado").prop("checked", false);
-            $("#lblestado").text("Inactivo");
+            $("#chkEstado").prop("checked", false);
+            $("#lblEstado").text("Inactivo");
         }
-        $('#detalle').val(detalleold);
-        $('#valorv').val(valorvold);
-        $('#valori').val(valoriold == 0 ? '': valoriold);
+
+        $('#txtDetalle').val(_detalleold);
+        $('#txtValorv').val(_valorvold);
+        $('#txtValori').val(_valoriold == 0 ? '': _valoriold);
         $('#hidden_row_id').val(row_id);
         $("#header").css("background-color","#183456");
         $("#header").css("color","white");

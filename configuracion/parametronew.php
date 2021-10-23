@@ -83,7 +83,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="table-responsive">
                                         <table id="tblparameter" class="table table-striped table-border table-condensed table-info"  style="width: 100%;">
                                             <thead class="text-center">
-                                                <tr>                                            
+                                                <tr> 
                                                     <th style="display: none;">NOrden</th>
                                                     <th>Detalle</th>
                                                     <th>Valor Texto</th>
