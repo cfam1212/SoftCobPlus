@@ -83,7 +83,7 @@ $(document).ready(function(){
     $("#btnAdd").click(function(){        
         $("#formParam").trigger("reset");
         $("#divcheck").hide();
-        $("#header").css("background-color","#6491C2");
+        $("#header").css("background-color","#183456");
         $("#header").css("color","white");
         $(".modal-title").text("Nuevo Parametro");  
         $("#btnAgregar").text("Agregar");
@@ -95,34 +95,22 @@ $(document).ready(function(){
     $('#btnAgregar').click(function(){
         if($.trim($('#txtDetalle').val()).length == 0)
         {
-            Swal.fire({
-                title: 'Información',
-                type:'warning',
-                text: 'Ingrese Detalle del Parámetro..!',
-                showCloseButton: true,
-            });
+           
+            mensajesalertify("Ingrese Detalle del Parámetro..!","W","top-center",5);
             return false;
         }
 
         if($.trim($('#txtValorv').val()).length == 0 && $.trim($('#txtValori').val()).length == 0 )
         {
-            Swal.fire({
-                title: 'Información',
-                type:'warning',
-                text: 'Ingrese Valor Texto o Valor Entero..!',
-                showCloseButton: true,
-            });
+            
+            mensajesalertify("Ingrese Valor Texto o Valor Entero..!","W","top-center",5);
             return false;
         }
 
         if($.trim($('#txtValorv').val()).length > 0 && $.trim($('#txtValori').val()).length > 0 )
         {
-            Swal.fire({
-                title: 'Información',
-                type:'warning',
-                text: 'Ingrese Solo Valor Texto o Valor Entero..!',
-                showCloseButton: true,
-            });
+          
+            mensajesalertify("Ingrese Solo Valor Texto o Valor Entero..!","E","bottom-center",5);
             return false;
         }
 
@@ -138,26 +126,20 @@ $(document).ready(function(){
         if(_tipoSave == 'add')
         {
             $.each(_result,function(i,item){
-                if(item.arrydetalle.toUpperCase() == detalle.toUpperCase())
+                if(item.arrydetalle.toUpperCase() == _detalle.toUpperCase())
                 {
-                    Swal.fire({
-                        title: 'Información',
-                        type:'warning',
-                        text: 'Nombre del Parámetro ya Existe..!'
-                    });                    
+                  
+                    mensajesalertify("Nombre del Parámetro ya Existe..!","E","bottom-center",5);                    
                     _continuar = false;
                     return false;
                 }else{
-                    $.each(result,function(i,item){
+                    $.each(_result,function(i,item){
                         if(_valori == 0)
                         {
                             if(item.arryvalorv.toUpperCase() == _valorv.toUpperCase())
                             {
-                                Swal.fire({
-                                    title: 'Información',
-                                    type:'warning',
-                                    text: 'Valor Texto de Parámetro ya Existe..!'
-                                });
+                               
+                                mensajesalertify("Valor Texto de Parámetro ya Existe..!","E","bottom-center",5);    
                                 _continuar = false;
                                 return false;
                             }else{
@@ -167,11 +149,8 @@ $(document).ready(function(){
                         {
                             if(item.arryvalori == _valori)
                             {
-                                Swal.fire({
-                                    title: 'Información',
-                                    type:'warning',
-                                    text: 'Valor Entero de Parámetro ya Existe..!'
-                                });
+                               
+                                mensajesalertify("Valor Entero de Parámetro ya Existe..!","E","bottom-center",5); 
                                 _continuar = false;
                                 return false;
                             }else{
@@ -196,8 +175,8 @@ $(document).ready(function(){
                 _output += '<td>' + _estado + ' <input type="hidden" name="hidden_estado[]" id="estado' + _count + '" value="' + _estado + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="subirnivel" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + _count + '"><i class="fa fa-arrow-up"></i></button>';
-                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + _count + '"><i class="fa fa-file"></i></button>';
-                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="' + _count + '"><i class="fa fa-trash"></i></button></div></div></td>';
+                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                 _output += '</tr>';
                 //console.log(_output);
                 
@@ -225,11 +204,8 @@ $(document).ready(function(){
                 {
                     if(item.arrydetalle.toUpperCase() == detalle.toUpperCase())
                     {
-                        Swal.fire({
-                            title: 'Información',
-                            type:'warning',
-                            text: 'Nombre del Parámetro ya Existe..!'
-                        });                    
+                        
+                        mensajesalertify("Nombre del Parámetro ya Existe..!","E","bottom-center",5);                        
                         continuar = false;
                         return false;
                     }else{
@@ -248,11 +224,8 @@ $(document).ready(function(){
                         {
                             if(item.arryvalori == valori)
                             {
-                                Swal.fire({
-                                    title: 'Información',
-                                    type:'warning',
-                                    text: 'Valor Entero de Parámetro ya Existe..!'
-                                });                    
+                             
+                                mensajesalertify("Valor Entero de Parámetro ya Existe..!","E","bottom-center",5);                     
                                 seguir = false;
                                 return false;
                             }else{
@@ -267,11 +240,8 @@ $(document).ready(function(){
                         {
                             if(item.arryvalorv.toUpperCase() == valorv.toUpperCase())
                             {
-                                Swal.fire({
-                                    title: 'Información',
-                                    type:'warning',
-                                    text: 'Valor Texto de Parámetro ya Existe..!'
-                                });                    
+                              
+                                mensajesalertify("Valor Texto de Parámetro ya Existe..!","E","bottom-center",5);                     
                                 seguir = false;
                                 return false;
                             }else{
@@ -293,8 +263,8 @@ $(document).ready(function(){
     
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' _id="btnUp' + row__id + '"><i class="fas fa-arrow-up"></i></button>';
-                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" _id="' + row__id + '"><i class="fas fa-file"></i></button>';
-                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" _id="'+ row__id + '"><i class="fas fa-trash"></i></button></div></div></td>';
+                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" _id="' + row__id + '"><i class="fa fa-pencil-square-o"></i></button>';
+                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" _id="'+ row__id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                 $('#row_'+row_id+'').html(_output);
 
                 objIndex = _result.findIndex((obj => obj.arry_id == row_id));
@@ -313,7 +283,7 @@ $(document).ready(function(){
         detalleold = $('#detalle'+row_id+'').val();
         valorvold = $('#valorv'+row_id+'').val();
         valoriold = $('#valori'+row_id+'').val();
-        estadoold = $('#estado'+row_id+'').val();
+        _estadoold = $('#estado'+row_id+'').val();
         _deshabilitar = $('#btnUp'+row_id+'').attr('disabled');
         _tipoSave = 'edit';
 
@@ -327,8 +297,8 @@ $(document).ready(function(){
         $('#detalle').val(detalleold);
         $('#valorv').val(valorvold);
         $('#valori').val(valoriold == 0 ? '': valoriold);
-        $('#h_idden_row__id').val(row__id);
-        $("#header").css("background-color","#6491C2");
+        $('#hidden_row_id').val(row_id);
+        $("#header").css("background-color","#183456");
         $("#header").css("color","white");
         $(".modal-title").text("Editar Parametro");
         $("#divcheck").show();
@@ -481,8 +451,8 @@ $(document).ready(function(){
         _output += '<td>' + estado + ' <input type="h_idden" name="h_idden_estado[]" _id="estado' + row_id + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' _id="btnUp' + row_id + '"><i class="fas fa-arrow-up"></i></button>';
-        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" _id="' + row_id + '"><i class="fas fa-file"></i></button>';
-        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" _id="'+ row_id + '"><i class="fas fa-trash"></i></button></div></div></td>';
+        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" _id="' + row_id + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" _id="'+ row_id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
         $('#row_' + row_id + '').html(_output);
     }
 
@@ -505,8 +475,8 @@ $(document).ready(function(){
         _output += '<td>' + estado + ' <input type="h_idden" name="h_idden_estado[]" _id="estado' + row_id + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' _id="btnUp' + row_id + '"><i class="fas fa-arrow-up"></i></button>';
-        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" _id="' + row_id + '"><i class="fas fa-file"></i></button>';
-        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" _id="'+ row_id + '"><i class="fas fa-trash"></i></button></div></div></td>';
+        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" _id="' + row_id + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" _id="'+ row_id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
         $('#row_' + row_id + '').html(_output);
     }
 
@@ -519,8 +489,8 @@ $(document).ready(function(){
         _output += '<td>' + estado + ' <input type="h_idden" name="h_idden_estado[]" _id="estado' + ordenx + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + disable + ' _id="btnUp' + ordenx + '"><i class="fas fa-arrow-up"></i></button>';
-        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" _id="' + ordenx + '"><i class="fas fa-file"></i></button>';
-        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" _id="'+ ordenx + '"><i class="fas fa-trash"></i></button></div></div></td>';
+        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" _id="' + ordenx + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" _id="'+ ordenx + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
         $('#row_' + rowmod + '').html(_output);
     }
 
@@ -535,30 +505,24 @@ $(document).ready(function(){
     }
 
     $('#btnSave').click(function(){
-        nomparametro = $.trim($("#parametro").val());
-        detalle = $.trim($("#descrip").val());
+        nomparametro = $.trim($("#txtParametro").val());
+        detalle = $.trim($("#txtDescripcion").val());
 
         if(nomparametro == ''){
-            Swal.fire({
-                title: 'Información',
-                type:'warning',
-                text: 'Ingrese Nombre del  Parámetro..!'
-            });
+          
+            mensajesalertify("Ingrese Nombre del  Parámetro..!","W","top-center",5);
             return false;            
         }
 
         if(_count == 0)
         {
-            Swal.fire({
-                title: 'Información',
-                type:'warning',
-                text: 'Ingrese al menos un Parámetro..!'
-            });
+         
+            mensajesalertify("Ingrese al menos un Detalle..!","W","top-center",5);
             return false;
         }
 
         $.ajax({
-            url: "../../bd/parametrocrud.php",
+            url: "../../db/parametrocrud.php",
             type: "POST",
             _dataType: "json",
             _data: {nomparametro:nomparametro, detalle:detalle, result:result, estado:'Activo', _id:0, opcion:0},            
@@ -566,11 +530,8 @@ $(document).ready(function(){
                 if(_data == 'OK-Insert'){
                     $.redirect('parametroadmin.php', {'mensaje': 'Grabado con Exito..!'}); 
                 }else{
-                    Swal.fire({
-                        title: 'Información',
-                        type:'warning',
-                        text: 'Nombre del Parámetro ya Existe..!'
-                    });
+                  
+                    mensajesalertify("Nombre del Parámetro ya Existe..!","E","bottom-right",5);
                 }                
             },
             error: function (error) {

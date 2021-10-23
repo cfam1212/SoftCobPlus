@@ -58,7 +58,14 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                                    
                             </fieldset>
-                        </form>    
+                        </form> 
+                        <br>
+                        <br>
+                            <div class='btn-group'>
+                                <button class="btn btn-outline-primary" id = "btnRegresar" ><i class='fa fa-undo'></i> Regresar</button>
+                                <button class="btn btn-outline-success ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                            </div>
+                            
                       </div>
                       <div class="tab-pane fade" id="detalle" role="tabpanel" aria-labelledby="detalle-tab">
                           
@@ -74,7 +81,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="col-md-10 col-sm-10">
                                 <form method="post" id="user_form">
                                     <div class="table-responsive">
-                                        <table id="tblparameter" class="table table-striped table-border table-condensed"  style="width: 100%;">
+                                        <table id="tblparameter" class="table table-striped table-border table-condensed table-info"  style="width: 100%;">
                                             <thead class="text-center">
                                                 <tr>                                            
                                                     <th style="display: none;">NOrden</th>
@@ -132,8 +139,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="row_id" id="hidden_row_id" />
-                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" id="btnAgregar" class="btn btn-outline-primary ml-3">Agregar</button>
+                        <button type="button" id="btnAgregar" class="btn btn-outline-success ml-3"><i class='fa fa-plus'></i> Agregar</button>
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button>
+                        
                     </div>
                 </form>
             </div>

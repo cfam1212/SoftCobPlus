@@ -27,7 +27,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     
                     <div class="x_content">
                         <br />
-                        <table id="tabledata" class="table table-striped jambo_table bulk_action" style="width: 100%;">
+                        <table id="tabledata" class="table table-striped jambo_table bulk_action table-info" style="width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -95,9 +95,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                    <!-- <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button> -->
-                    <button type="submit" class="btn btn-outline-success ml-3" id="btnSave"><i class='<i class="fa fa-save"></i>'></i> Guardar</button>
+                    <button type="submit" class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                    <button class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button>                  
                 </div>
             </form>
         </div>

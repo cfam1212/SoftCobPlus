@@ -79,7 +79,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="clearfix"></div>
                         </div>      
                         <div class="x_content">                    
-                            <table id="tabledata" class="table table-striped jambo_table bulk_action" style="width: 100%;">
+                            <table id="tabledata" class="table table-striped jambo_table bulk_action table-info" style="width: 100%;">
                              <thead class="text-center">
                                     <tr>
                                         <th>Id</th>
@@ -114,7 +114,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="container">
             <div class='btn-group'>
                 <button class="btn btn-outline-primary" id = "btnRegresar" ><i class='fa fa-undo'></i> Regresar</button>
-                <button class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-bookmark'></i> Guardar</button>
+                <button class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
             </div>
         </div>
     </div>

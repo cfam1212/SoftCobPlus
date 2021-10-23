@@ -91,19 +91,19 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Telefono 1</label>
                                     <div class="form-group col-md-3">
-                                        <input type="text" required class="form-control" id="txtTel1" name="menuname" placeholder="" maxlength="15">
+                                        <input type="text" required class="form-control" id="txtTel1" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="telefono1" placeholder="" maxlength="15">
                                     </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="iconome" class="control-label col-md-1">Telefono 2</label>
                                     <div class="form-group col-md-3">
-                                        <input id="txtTel2" name="iconome" type="text" placeholder=" " class="form-control" maxlength="15">
+                                        <input id="txtTel2" name="iconome" type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" placeholder=" " class="form-control" maxlength="15">
                                     </div> 
                                 </div>
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Fax</label>
                                     <div class="form-group col-md-3">
-                                        <input type="text" required class="form-control" id="txtFax" name="menuname" placeholder="" maxlength="10">
+                                        <input type="text" required class="form-control" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="txtFax" name="menuname" placeholder="" maxlength="10">
                                     </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="iconome" class="control-label col-md-1">Url</label>
@@ -150,12 +150,12 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                               <label for="espacio" class="control-label col-md-1"></label>
                               <label for="ext" class="control-label col-md-1">Ext</label>
                               <div class="form-group col-md-3">
-                                  <input type="text" required class="form-control" id="txtFax" name="menuname" placeholder="" maxlength="10">
+                                  <input type="text" required class="form-control" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="txtFax" name="menuname" placeholder="" maxlength="10">
                               </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="celular" class="control-label col-md-1">Celular</label>
                                     <div class="form-group col-md-3">
-                                        <input id="txtCelular" name="iconome" type="text" placeholder=" " class="form-control" maxlength="10">
+                                        <input id="txtCelular" name="iconome" type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" placeholder=" " class="form-control" maxlength="10">
                                     </div> 
                          </div>
                               <div class="row">
@@ -312,7 +312,7 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                               <div class="container">
                                  <div class='btn-group'>
                                      <button class="btn btn-outline-primary" id = "btnRegresar" ><i class='fa fa-undo'></i> Regresar</button>
-                                     <button class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-bookmark'></i> Guardar</button>
+                                     <button class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                                  </div>
                               </div>
                         </div>
