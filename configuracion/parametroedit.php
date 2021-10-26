@@ -60,7 +60,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Descripción</label> 
                                     <div class="form-group col-md-10">                                    
-                                        <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" value="<?php echo $datapara[0]['descripcion'] ?>" ></textarea>                                        
+                                        <textarea name="observa" id="txtDescripcion" class="form-control col-md-8"><?php echo $datapara[0]['descripcion'] ?></textarea>                                        
                                    </div> 
                                 </div>
                                 <div class="row">
@@ -116,7 +116,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                             <div class="btn-group">
                                                                 <button class="btn btn-outline-info btn-sm ml-3" id="btnEditar">
                                                                 <i class="fa fa-pencil-square-o"></i></button>
-                                                                <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarEdit">
+                                                                <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarEdit" disabled>
                                                                 <i class="fa fa-trash-o"></i>
                                                                 </button>
                                                             </div>

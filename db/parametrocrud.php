@@ -22,15 +22,12 @@ $valestado = $estado == "Activo" ? 'A' : 'I';
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
 
-$consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-$resultado = $conexion->prepare($consulta);
-$resultado->execute(array($opcion,$emprid,$id,$nomparametro,$descripcion,$valestado,0,0,'','',0,'','','',0,0,0,$userid,$host));
-// $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-$idPara = $resultado->fetchColumn();
-
 switch($opcion){
     case "0": //NUEVO
-        
+        $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(0,$emprid,$id,$nomparametro,$descripcion,$valestado,0,0,'','',0,'','','',0,0,0,$userid,$host));
+        $idPara = $resultado->fetchColumn();        
         foreach($result as $drfila){
             $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -40,8 +37,19 @@ switch($opcion){
         }
         $data = '0';
         break;    
-    case "1": //ELIMINAR
-
+    case "1": //MODIFICAR
+        $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(0,$emprid,$id,$nomparametro,$descripcion,$valestado,0,0,'','',0,'','','',0,0,0,$userid,$host));
+        $idPara = $resultado->fetchColumn();        
+        foreach($result as $drfila){
+            $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(1,0,$idPara,'','',$drfila['arryestado'],0,$drfila['arry_id'],$drfila['arrydetalle'],
+            $drfila['arryvalorv'],$drfila['arryvalori'],'','','',0,0,0,0,''));
+            $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        }
+        $data = '0';        
         break;
     case "2": // ORDER MENU
    

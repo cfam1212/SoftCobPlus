@@ -496,31 +496,7 @@ $(document).ready(function(){
             }                            
         }); 
 
-        // $("#tblparameter tbody tr").each(function (items) {
-        //     var _orden, _detalle, _valorv, _valori, _estado;
-        //     //console.log($(this).closest('tr').attr('_id'));
-        //     $(this).children("td").each(function (index) {
-        //         switch(index){
-        //             case 0:
-        //                 _orden = $(this).text();
-        //                 break;
-        //             case 1:
-        //                 _detalle = $(this).text();
-        //                 break;
-        //             case 2:
-        //                 _valorv = $(this).text();
-        //                 break;
-        //             case 3:
-        //                 _valori = $(this).text();
-        //                 break;
-        //             case 4:
-        //                 _estado = $(this).text();
-        //                 break;
-        //         }
-               
-        //     });
-        //     alert(_orden+' '+_detalle+' '+_valorv+' '+_valori+' '+_estado);
-        // });
+
     });
 
 
@@ -530,8 +506,44 @@ $(document).ready(function(){
         _fila = $(this).closest("tr");
         _data = $('#tabledata').dataTable().fnGetData(_fila);
         _id = _data[0];
-        _menu = _fila.find('td:eq(0)').text();
+        //_menu = _fila.find('td:eq(0)').text();
         $.redirect('parametroedit.php', {'id': _id}); //POR METODO POST
+
+        $("#tblparameter tbody tr").each(function (items) {
+            var _orden, _detalle, _valorv, _valori, _estado;
+            //console.log($(this).closest('tr').attr('_id'));
+            $(this).children("td").each(function (index) {
+                switch(index){
+                    case 0:
+                        _orden = $(this).text();
+                        break;
+                    case 1:
+                        _detalle = $(this).text();
+                        break;
+                    case 2:
+                        _valorv = $(this).text();
+                        break;
+                    case 3:
+                        _valori = $(this).text();
+                        break;
+                    case 4:
+                        _estado = $(this).text();
+                        break;
+                }
+               
+            });
+            alert(_orden+' '+_detalle+' '+_valorv+' '+_valori+' '+_estado);
+            _objeto = {
+                arry_id : parseInt(_orden),
+                arrydetalle : _detalle,
+                arryvalorv : _valorv,
+                arryvalori : _valori,
+                arryestado : _estado,
+                arrydisable : 'disabled'            }
+
+            _result.push(_objeto);
+        });        
+
     });  
     
     $(document).on("click","#btnEliminarEdit",function(e){        
