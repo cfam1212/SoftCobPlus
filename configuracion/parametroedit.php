@@ -3,12 +3,20 @@
 require_once '../dashmenu/panel_menu.php'; 
 
 $mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
+$paraid = (isset($_POST['id'])) ? $_POST['id'] : '';
 
-$consulta = "CALL sp_consulta_datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(0,$_SESSION["i_emprid"],'','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(32,$_SESSION["i_emprid"],'','','','','','',$paraid,0,0,0,0,0));
+$datapara = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(33,$_SESSION["i_emprid"],'','','','','','',$paraid,0,0,0,0,0));
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
+<input type="hidden" id="paraid" value="<?php echo $paraid ?>">
 <div class="right_col" role="main"> 
     <input type="hidden" id="mensaje" value="<?php echo $mensaje ?>">
     <div class="">
@@ -45,21 +53,21 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Parámetro:</label>
                                     <div class="form-group col-md-3">
-                                      <input type="text" required class="form-control" id="txtParametro" name="parametro" placeholder="" maxlength="80">
+                                      <input type="text" required class="form-control" id="txtParametro" name="parametro" value="<?php echo $datapara[0]['parametro'] ?>" >
                                     </div>
                                 </div>
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Descripción</label> 
                                     <div class="form-group col-md-10">                                    
-                                        <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" maxlength="255" 
-                                         onkeydown = "return (event.keyCode!=13);"></textarea>                                        
+                                        <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" value="<?php echo $datapara[0]['descripcion'] ?>" ></textarea>                                        
                                    </div> 
                                 </div>
                                 <div class="row">
+                                    <label for="espacio" class="control-label col-md-1"></label>
                                     <div class="form-check" id="divcheck">
                                       <input type="checkbox" class="form-check-input" id="chkEstado">
-                                      <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
+                                      <label for="estadolabel" class="form-check-label" id="lblEstado"><?php echo $datapara[0]['estado'] ?></label>
                                   </div>
                                 </div>
                                    
@@ -75,10 +83,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                       </div>
                       <div class="tab-pane fade" id="detalle" role="tabpanel" aria-labelledby="detalle-tab">
                           
-                        <div class="row">
-                            <label for="espacio" class="control-label col-md-11"></label>
-                            <button type="button" class="btn btn-outline-success" id="btnAdd" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
-                        </div>
                         <br>
                         <br>
                         <div class="col-md-12 col-sm-12">
@@ -98,7 +102,30 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
-                                            <tbody></tbody> 
+                                            <tbody>
+                                            <?php
+                                                foreach($data as $dat){
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $dat['detalle']; ?></td>
+                                                    <td><?php echo $dat['valortxt']; ?></td>
+                                                    <td><?php echo $dat['valornum']; ?></td>                                       
+                                                    <td><?php echo $dat['estado']; ?></td>                              
+                                                    <td>                                                  
+                                                        <div class="text-center">
+                                                            <div class="btn-group">
+                                                                <button class="btn btn-outline-info btn-sm ml-3" id="btnEditar">
+                                                                <i class="fa fa-pencil-square-o"></i></button>
+                                                                <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarEdit">
+                                                                <i class="fa fa-trash-o"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>    
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                                <?php } ?>     
+                                            </tbody> 
                                         </table>
                                     </div> 
                                 </form>                                 
@@ -156,7 +183,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>
-<script src="../codejs/parametros.js" type="text/javascript"></script>
+<script src="../codejs/paraedit.js" type="text/javascript"></script>
 
 </body>
 

@@ -52,9 +52,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     <div class="text-center">
                                                         <div class="btn-group">
                                                             <button class="btn btn-outline-info btn-sm ml-3" id="btnEditar">
-                                                            <i class="fa fa-file"></i></button>
-                                                            <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminar">
-                                                            <i class="fa fa-trash"></i>
+                                                            <i class="fa fa-pencil-square-o"></i></button>
+                                                            <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarEdit">
+                                                            <i class="fa fa-trash-o"></i>
                                                             </button>
                                                         </div>
                                                     </div>                                                                                                     

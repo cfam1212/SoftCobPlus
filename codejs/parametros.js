@@ -27,12 +27,7 @@ $(document).ready(function(){
         $.redirect("parametroadmin.php");
     });  
 
-    $(document).on("click","#btnEditar",function(){        
-        _fila = $(this).closest("tr");
-        _data = $('#table_data')._dataTable().fnGet_data(_fila);
-        _id = _data[0];
-        $.redirect('parametroedit.php', {'id': _id});
-    });
+ 
 
     $(document).on("click","#btnEliminar",function(){        
         _fila = $(this).closest("tr");
@@ -527,5 +522,57 @@ $(document).ready(function(){
         //     alert(_orden+' '+_detalle+' '+_valorv+' '+_valori+' '+_estado);
         // });
     });
+
+
+    //EDITAR PARAMETROS
+
+    $(document).on("click","#btnEditar",function(){        
+        _fila = $(this).closest("tr");
+        _data = $('#tabledata').dataTable().fnGetData(_fila);
+        _id = _data[0];
+        _menu = _fila.find('td:eq(0)').text();
+        $.redirect('parametroedit.php', {'id': _id}); //POR METODO POST
+    });  
+    
+    $(document).on("click","#btnEliminarEdit",function(e){        
+        _fila = $(this); 
+        _row = $(this).closest('tr');  
+        _data = $('#tabledata').dataTable().fnGetData(_row);
+        _id = _data[0];
+        _opcion = 1;
+        _menu = _data[1];
+        DeletePara();
+    });    
+
+    function DeletePara(){
+        
+
+        alertify.confirm('El Registro sera eliminado', 'Esta seguro de eliminar el parametro..?', function(){ //alertify.success('Ok') 
+    
+                     $.ajax({
+                        url: "../db/parametrocrud.php",
+                        type: "POST",
+                        dataType: "json",
+                        data: {id : _id, opcion : _opcion},
+                        success: function(data){
+                            if(data == 'NO'){
+                             
+                               
+                                mensajesalertify("Menu no se puede Eliminar, Tiene Tareas Asociadas..!","E","bottom-right",5);
+                            }       
+                            else {
+                            
+                                TableNoOrder.row(_fila.parents('tr')).remove().draw();
+                                mensajesalertify("Registro Eliminado..!","S","bottom-center",5);
+                            }
+                        },
+                        error: function (error) {
+                            console.error(error);
+                        }                  
+                    });
+              
+              }
+                , function(){});
+    }
 
 });
