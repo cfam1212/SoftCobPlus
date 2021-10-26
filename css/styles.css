@@ -40,3 +40,7 @@ h1 {
     font-family: Arial;
     text-transform: lowercase;
   }
+
+  #myModal{
+    background-color: rgb(222, 230, 221) !important;
+}

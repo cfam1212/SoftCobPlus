@@ -23,6 +23,10 @@ $(document).ready(function(){
         
     });
 
+    $('#btnRegresar').click(function(){        
+        $.redirect("parametroadmin.php");
+    });  
+
     $(document).on("click","#btnEditar",function(){        
         _fila = $(this).closest("tr");
         _data = $('#table_data')._dataTable().fnGet_data(_fila);
@@ -479,10 +483,10 @@ $(document).ready(function(){
         $.ajax({
             url: "../db/parametrocrud.php",
             type: "POST",
-            _dataType: "json",
-            _data: {nomparametro:nomparametro, detalle:detalle, result:_result, estado:'Activo', _id:0, opcion:0},            
-            success: function(_data){
-                if(_data == 'OK-Insert'){
+            dataType: "json",
+            data: {nomparametro:_nomparametro, descripcion:_descripcion, result:_result, estado:'Activo', id:0, opcion:0},            
+            success: function(data){
+                if(data == 'OK-Insert'){
                     $.redirect('parametroadmin.php', {'mensaje': 'Grabado con Exito..!'}); 
                 }else{
                   

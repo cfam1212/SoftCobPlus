@@ -17,7 +17,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-md-12 col-sm-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>NUEVO PARAMETRO</h2>
+                        <h2>EDITAR PARAMETRO</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -55,6 +55,12 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" maxlength="255" 
                                          onkeydown = "return (event.keyCode!=13);"></textarea>                                        
                                    </div> 
+                                </div>
+                                <div class="row">
+                                    <div class="form-check" id="divcheck">
+                                      <input type="checkbox" class="form-check-input" id="chkEstado">
+                                      <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
+                                  </div>
                                 </div>
                                    
                             </fieldset>
