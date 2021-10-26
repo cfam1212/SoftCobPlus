@@ -24,20 +24,21 @@ $currentdate = date('Y-m-d H:i:s');
 
 $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array($opcion,$empreid,$id,$nomparametro,$descripcion,$valestado,0,0,'','',0,'','','',0,0,0,$userid,$host));
+$resultado->execute(array($opcion,$emprid,$id,$nomparametro,$descripcion,$valestado,0,0,'','',0,'','','',0,0,0,$userid,$host));
 // $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-$data = $resultado->fetchColumn();
+$idPara = $resultado->fetchColumn();
 
 switch($opcion){
     case "0": //NUEVO
-        $idpara = $data['Id'];
+        
         foreach($result as $drfila){
             $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array(1,0,$idpara,'','',$drfila['arryestado'],0,$drfila['arry_id'],$drfila['arrydetalle'],
+            $resultado->execute(array(1,0,$idPara,'','',$drfila['arryestado'],0,$drfila['arry_id'],$drfila['arrydetalle'],
             $drfila['arryvalorv'],$drfila['arryvalori'],'','','',0,0,0,0,''));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         }
+        $data = '0';
         break;    
     case "1": //ELIMINAR
 

@@ -44,10 +44,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         foreach($data as $datos){
                                         ?>  
                                             <tr>
-                                                <td><?php echo $dat['ParaId'] ?></td>
-                                                <td><?php echo $dat['Parametro'] ?></td>
-                                                <td><?php echo $dat['Descripcion'] ?></td>
-                                                <td><?php echo $dat['Estado'] ?></td>
+                                                <td><?php echo $datos['ParaId'] ?></td>
+                                                <td><?php echo $datos['Parametro'] ?></td>
+                                                <td><?php echo $datos['Descripcion'] ?></td>
+                                                <td><?php echo $datos['Estado'] ?></td>
                                                 <td>
                                                     <div class="text-center">
                                                         <div class="btn-group">

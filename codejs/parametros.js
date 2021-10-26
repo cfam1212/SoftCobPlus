@@ -14,7 +14,7 @@ $(document).ready(function(){
 
     if(_mensaje != ''){
 
-        mensajesalertify(_mensaje,"E","bottom-right",5);
+        mensajesalertify(_mensaje,"S","bottom-center",5);
     }
 
     $('#btnNuevo').click(function(){        
@@ -479,6 +479,7 @@ $(document).ready(function(){
             mensajesalertify("Ingrese al menos un Detalle..!","W","top-center",5);
             return false;
         }
+        
 
         $.ajax({
             url: "../db/parametrocrud.php",
@@ -486,7 +487,9 @@ $(document).ready(function(){
             dataType: "json",
             data: {nomparametro:_nomparametro, descripcion:_descripcion, result:_result, estado:'Activo', id:0, opcion:0},            
             success: function(data){
-                if(data == 'OK-Insert'){
+              
+                if(data == '0'){
+
                     $.redirect('parametroadmin.php', {'mensaje': 'Grabado con Exito..!'}); 
                 }else{
                   
