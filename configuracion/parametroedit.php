@@ -82,7 +82,11 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             
                       </div>
                       <div class="tab-pane fade" id="detalle" role="tabpanel" aria-labelledby="detalle-tab">
-                          
+                            <div class="row">
+                                    <label for="espacio" class="control-label col-md-11"></label>
+                                    <button type="button" class="btn btn-outline-success" id="btnAdd" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                            </div>
+                        
                         <br>
                         <br>
                         <div class="col-md-12 col-sm-12">
@@ -114,6 +118,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     <td>                                                  
                                                         <div class="text-center">
                                                             <div class="btn-group">
+                                                                <button class="btn btn-outline-primary btn-sm">
+                                                                <i class="fa fa-arrow-up"></i></button>
                                                                 <button class="btn btn-outline-info btn-sm ml-3" id="btnEditar">
                                                                 <i class="fa fa-pencil-square-o"></i></button>
                                                                 <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarEdit" disabled>
