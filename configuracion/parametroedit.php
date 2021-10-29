@@ -112,46 +112,46 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             foreach($data as $dat){
                                             ?>
                                             <tr id="row_<?php echo $dat['Orden']; ?>">
-                                            <td style="display: none;">
-                                                <?php echo $dat['padeid']; ?>
-                                                <input type="hidden" name="hidden_codigo[]" id="codigo<?php echo $dat['Orden'];?>" value="<?php echo $dat['Padeid']; ?>"/>
-                                            </td>
-                                            <td style="display: none;">
-                                                <?php echo $dat['Orden']; ?>
-                                                <input type="hidden" name="hidden_orden[]" id="orden<?php echo $dat['Orden'];?>" value="<?php echo $dat['Orden']; ?>"/>
-                                            </td>
-                                            <td>
-                                                <?php echo $dat['Detalle']; ?>
-                                                <input type="hidden" name="hidden_detalle[]" id="txtDetalle<?php echo $dat['Orden'];?>" value="<?php echo $dat['Detalle']; ?>"/>
-                                            </td>
-                                            <td>
-                                                <?php echo $dat['ValorV']; ?>
-                                                <input type="hidden" name="hidden_valorv[]" id="txtValorv<?php echo $dat['Orden'];?>" value="<?php echo $dat['ValorV']; ?>"/>
-                                            </td>
-                                            <td>
-                                                <?php echo $dat['ValorI']; ?>
-                                                <input type="hidden" name="hidden_valori[]" id="txtValori<?php echo $dat['Orden'];?>" value="<?php echo $dat['ValorI']; ?>"/>
-                                            </td>
-                                            <td>
-                                                <?php echo $dat['Estado']; ?>
-                                                <input type="hidden" name="hidden_estado[]" id="txtEstado<?php echo $dat['Orden'];?>" value="<?php echo $dat['Estado']; ?>"/>
-                                            </td>
-                                            <td>
-                                                <?php
-                                                    if($dat['Orden'] == '1'){
-                                                        $desactivar = "disabled";
-                                                    }else{
-                                                        $desactivar = '';
-                                                    }
-                                                ?>
-                                                <div class="text-center">
-                                                    <div class="btn-group">
-                                                        <button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" id="btnUp<?php echo $dat['Orden']; ?>"<?php echo $desactivar; ?>><i class="fa fa-arrow-up"></i></button>
-                                                        <button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id=<?php echo $dat['Orden'];?>><i class="fa fa-file"></i></button>
-                                                        <button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3" id="<?php echo $dat['Orden']; ?>" disabled><i class="fa fa-trash"></i></button>                                                        
+                                                <td style="display: none;">
+                                                <?php echo $dat['Padeid']; ?> 
+                                                    <input type="hidden" name="hidden_codigo[]" id="codigo<?php echo $dat['Orden'];?>" value="<?php echo $dat['Padeid']; ?>"/>
+                                                </td>                                          
+                                                <td style="display: none;">
+                                                    <?php echo $dat['Orden']; ?>
+                                                    <input type="hidden" name="hidden_orden[]" id="orden<?php echo $dat['Orden'];?>" value="<?php echo $dat['Orden']; ?>"/>
+                                                </td>
+                                                <td>
+                                                    <?php echo $dat['Detalle']; ?>
+                                                    <input type="hidden" name="hidden_detalle[]" id="txtDetalle<?php echo $dat['Orden'];?>" value="<?php echo $dat['Detalle']; ?>"/>
+                                                </td>
+                                                <td class="text-center">
+                                                    <?php echo $dat['ValorV']; ?>
+                                                    <input type="hidden" name="hidden_valorv[]" id="txtValorv<?php echo $dat['Orden'];?>" value="<?php echo $dat['ValorV']; ?>"/>
+                                                </td>
+                                                <td class="text-center">
+                                                    <?php echo $dat['ValorI']; ?>
+                                                    <input type="hidden" name="hidden_valori[]" id="txtValori<?php echo $dat['Orden'];?>" value="<?php echo $dat['ValorI']; ?>"/>
+                                                </td>
+                                                <td class="text-center">
+                                                    <?php echo $dat['Estado']; ?>
+                                                    <input type="hidden" name="hidden_estado[]" id="txtEstado<?php echo $dat['Orden'];?>" value="<?php echo $dat['Estado']; ?>"/>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                        if($dat['Orden'] == '1'){
+                                                            $desactivar = "disabled";
+                                                        }else{
+                                                            $desactivar = '';
+                                                        }
+                                                    ?>
+                                                    <div class="text-center">
+                                                        <div class="btn-group">
+                                                            <button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" id="btnUp<?php echo $dat['Orden']; ?>"<?php echo $desactivar; ?>><i class="fa fa-arrow-up"></i></button>
+                                                            <button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id=<?php echo $dat['Orden'];?>><i class="fa fa-pencil-square-o"></i></button>
+                                                            <button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3" id="<?php echo $dat['Orden']; ?>" disabled><i class="fa fa-trash-o"></i></button>                                                        
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
+                                                </td>
                                             </tr>
                                         <?php } ?>     
                                             </tbody> 

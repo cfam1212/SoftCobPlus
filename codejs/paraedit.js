@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var _estado, _result = [], _id;
+    var _estado, _result = [], _id, _count, _deshabilitar, _deshabilitae, _resultado = [];
 
     _estado = $("#lblEstadoCab").text();   
     _id = $("#paraid").text();
@@ -19,36 +19,46 @@ $(document).ready(function(){
         $(this).children("td").each(function (index) {
             switch(index){
                 case 0:
-                    _orden = $(this).text();
+                    _codigo = $.trim($(this).text());
                     break;
                 case 1:
-                    _detalle = $(this).text();
+                    _orden = $.trim($(this).text());
                     break;
                 case 2:
-                    _valorv = $(this).text();
+                    _detalle = $.trim($(this).text());
                     break;
                 case 3:
-                    _valori = $(this).text();
+                    _valorv = $.trim($(this).text());
                     break;
                 case 4:
-                    _estado = $(this).text();
+                    _valori = $.trim($(this).text());
+                    break;
+                case 5:
+                    _estado = $.trim($(this).text());
                     break;
             }
            
-        });
+        });        
         //alert(_orden+' '+_detalle+' '+_valorv+' '+_valori+' '+_estado);
+        if(_orden == 1){
+           _deshabilitar  = 'disabled';
+        }  
+
         _objeto = {
+            arrycodigo : parseInt(_codigo),
             arry_id : parseInt(_orden),
             arrydetalle : _detalle,
             arryvalorv : _valorv,
-            arryvalori : _valori,
+            arryvalori : parseInt(_valori),
             arryestado : _estado,
-            arrydisable : 'disabled'}
+            arrydisable : _deshabilitar        
+        }
 
         _result.push(_objeto);
+        _count =  parseInt(_orden);
     });       
     
-    //console.log(_result);
+    
 
     $("#btnAdd").click(function(){        
         $("#formParam").trigger("reset");
@@ -134,6 +144,7 @@ $(document).ready(function(){
             }
 
             _output = '<tr id="row_' + _count + '">';
+            _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + 0 + '" /></td>';
             _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_orden[]" id="orden' + _count + '" value="' + _count + '" /></td>';                
             _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + _count + '" value="' + _detalle + '" /></td>';
             _output += '<td class="text-center">' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' +_count + '" value="' + _valorv + '" /></td>';
@@ -148,6 +159,7 @@ $(document).ready(function(){
             $('#tblparameter').append(_output);
 
             _objeto = {
+                arrycodigo : 0,
                 arry_id : _count,
                 arrydetalle : _detalle,
                 arryvalorv : _valorv,
@@ -219,15 +231,18 @@ $(document).ready(function(){
             FunRemoveItemFromArr(_result, _detalleold);
 
             _objeto = {
+                arrycodigo : _codigoold,
                 arry_id : parseInt(_norden),
                 arrydetalle : _detalle,
                 arryvalorv : _valorv,
                 arryvalori : _valori,
-                arryestado : _estado,
+                arryestado : _estadoold,
                 arrydisable : _deshabilitar
             }
 
             _result.push(_objeto);
+
+            console.log(_result);
             
             $("#modalPARAMETER").modal("hide");
             
@@ -242,6 +257,7 @@ $(document).ready(function(){
 $(document).on("click",".btnEdit",function(){
     $("#formParam").trigger("reset"); 
     row_id = $(this).attr("id");
+    _codigoold = $('#codigo' + row_id + '').val();
     _norden = $('#orden' + row_id + '').val();
     _detalleold = $('#txtDetalle' + row_id + '').val();
     _valorvold = $('#txtValorv' + row_id + '').val();
@@ -250,6 +266,8 @@ $(document).on("click",".btnEdit",function(){
     _deshabilitar = $('#btnUp' + row_id + '').attr('disabled');        
     _tipoSave = 'edit';
 
+    console.log(_estadoold);
+
     if(_estadoold == "Activo"){
         $("#chkEstado").prop("checked", true);
         $("#lblEstado").text("Activo");
@@ -257,8 +275,7 @@ $(document).on("click",".btnEdit",function(){
         $("#chkEstado").prop("checked", false);
         $("#lblEstado").text("Inactivo");
     }
-
-    $("#lblEstado").text("Inactivo");
+    
     $('#txtDetalle').val(_detalleold);
     $('#txtValorv').val(_valorvold);
     $('#txtValori').val(_valoriold == 0 ? '': _valoriold);
@@ -275,10 +292,10 @@ $("#chkEstado").click(function(){
     _checked = $("#chkEstado").is(":checked");
     if(_checked){
         $("#lblEstado").text("Activo");
-        _estado = 'Activo';
+        _estadoold = 'Activo';
     }else{
         $("#lblEstado").text("Inactivo");
-        _estado = 'Inactivo';
+        _estadoold = 'Inactivo';
     }
 });
 
@@ -301,6 +318,7 @@ $(document).on("click",".btnDelete",function(){
                 $('#row_' + row_id + '').remove();
                 _count--;
                 FunReorganizarOrder(_result);
+                DeletePara();
             });
           }
     });
@@ -333,7 +351,7 @@ function FunReorganizarOrder(arr)
     otroval = 0;
     $.each(arr,function(i,item){
         otroval = otroval + 1; 
-        FunOrderDelete(otroval,item.arry_id,item.arrydetalle,item.arryvalorv,item.arryvalori,item.arryestado);
+        FunOrderDelete(otroval,item.arry_id,item.arrydetalle,item.arryvalorv,item.arryvalori,item.arryestado,item.codigo);
         item['arry_id'] = parseInt(otroval);
     });
     
@@ -353,7 +371,7 @@ function FunCambiar_id()
 function FunReorganizarEdit(arr)
 {        
     $.each(arr,function(i,item){            
-        FunOrderEdit(item.arry_id,item.arrydetalle,item.arryvalorv,item.arryvalori,item.arryestado);
+        FunOrderEdit(item.arry_id,item.arrydetalle,item.arryvalorv,item.arryvalori,item.arryestado,item.arrycodigo);
     });
 
 }    
@@ -363,6 +381,7 @@ $(document).on("click",".btnUp",function(){
     row_id = $(this).attr("id");        
     id_now = $('#orden' + row_id.substr(5) + '').val();
    
+    _codigonow = $('#codigo' + id_now + '').val();
     _ordennow = $('#orden' + id_now + '').val();
     _detallenow = $('#txtDetalle' + id_now + '').val();
     _valorvnow = $('#txtValorv' + id_now + '').val();
@@ -370,18 +389,22 @@ $(document).on("click",".btnUp",function(){
     _estadonow = $('#txtEstado' + id_now + '').val();
 
     id_ant = id_now - 1;
+    _codigoant = $('#codigo' + id_ant + '').val();
     _ordenant = $('#orden' + id_ant + '').val();
     _detalleant = $('#txtDetalle' + id_ant + '').val();       
     _valorvant = $('#txtValorv' + id_ant + '').val();
     _valoriant = $('#txtValori' + id_ant + '').val();
     _estadoant = $('#txtEstado' + id_ant + '').val();
+
+    alert(_codigonow);
+    alert(_codigoant);
     
-    FunOrderFirts(_ordenant,_detallenow,_valorvnow,_valorinow,_estadonow);
-    FunOrderLast(_ordennow,_detalleant,_valorvant,_valoriant,_estadoant,);
+    FunOrderFirts(_ordenant,_detallenow,_valorvnow,_valorinow,_estadonow,_codigonow);
+    FunOrderLast(_ordennow,_detalleant,_valorvant,_valoriant,_estadoant,_codigoant);
     
 });
 
-function FunOrderFirts(orden,detalle,valorv,valori,estado)
+function FunOrderFirts(orden,detalle,valorv,valori,estado,codigo)
 {        
     if(orden == '1'){
         _deshabilitar  = 'disabled="disabled"';
@@ -390,10 +413,18 @@ function FunOrderFirts(orden,detalle,valorv,valori,estado)
         _deshabilitar = ''
     }
 
+    console.log(codigo);
+    if(codigo != 0){
+        _deshabilitae = 'disabled'
+    }else{
+        _deshabilitae = ''
+    }    
+
     _resultado = _result.find(d => d.arrydetalle == detalle);
     _resultado['arry_id'] = parseInt(orden);
 
-    _output = '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + orden + '" value="'+ orden + '" /></td>';
+    _output = '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + orden + '" value="'+ codigo + '" /></td>';
+    _output += '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + orden + '" value="'+ orden + '" /></td>';
     _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + orden + '" value="' + detalle + '" /></td>';
     _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + orden + '" value="'+ valorv + '" /></td>';
     _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + orden + '" value="'+ valori + '" /></td>';
@@ -401,20 +432,29 @@ function FunOrderFirts(orden,detalle,valorv,valori,estado)
     _output += '<td><div class="text-center"><div class="btn-group">'
     _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
     _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
-    _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+    _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" ' + _deshabilitae + ' id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
     $('#row_' + orden + '').html(_output);
+
+    console.log(_output);
 }
 
-function FunOrderLast(orden,detalle,valorv,valori,estado)
+function FunOrderLast(orden,detalle,valorv,valori,estado,codigo)
 {        
     if(orden != 'disabled'){
         _deshabilitar = ''
     }
+    
+    if(codigo != 0){
+        _deshabilitae = 'disabled'
+    }else{
+        _deshabilitae = ''
+    }    
 
     _resultado = _result.find(d => d.arrydetalle == detalle);
     _resultado['arry_id'] = parseInt(orden);
 
-    _output = '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + orden + '" value="'+ orden + '" /></td>';
+    _output = '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + orden + '" value="'+ codigo + '" /></td>';
+    _output += '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + orden + '" value="'+ orden + '" /></td>';
     _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + orden + '" value="' + detalle + '" /></td>';
     _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + orden + '" value="'+ valorv + '" /></td>';
     _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + orden + '" value="'+ valori + '" /></td>';
@@ -422,11 +462,13 @@ function FunOrderLast(orden,detalle,valorv,valori,estado)
     _output += '<td><div class="text-center"><div class="btn-group">'
     _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
     _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
-    _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+    _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" ' + _deshabilitae + ' id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
     $('#row_' + orden + '').html(_output);
+
+    console.log(_output);
 }
 
-function FunOrderDelete(ordenx,rowmod,detalle,valorv,valori,estado)
+function FunOrderDelete(ordenx,rowmod,detalle,valorv,valori,estado,codigo)
 {        
     if(ordenx == 1){
         _deshabilitar  = 'disabled';
@@ -434,7 +476,14 @@ function FunOrderDelete(ordenx,rowmod,detalle,valorv,valori,estado)
         _deshabilitar = '';
     }
 
-    _output = '<td style="display: none;">' + ordenx + ' <input type="hidden" name="hidden_orden[]" id="orden' + ordenx + '" value="'+ ordenx + '" /></td>';
+    if(codigo != 0){
+        _deshabilitae = 'disabled'
+    }else{
+        _deshabilitae = ''
+    } 
+
+    _output = '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + orden + '" value="'+ codigo + '" /></td>';
+    _output += '<td style="display: none;">' + ordenx + ' <input type="hidden" name="hidden_orden[]" id="orden' + ordenx + '" value="'+ ordenx + '" /></td>';
     _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + ordenx + '" value="' + detalle + '" /></td>';
     _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + ordenx + '" value="'+ valorv + '" /></td>';
     _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + ordenx + '" value="'+ valori + '" /></td>';
@@ -442,11 +491,11 @@ function FunOrderDelete(ordenx,rowmod,detalle,valorv,valori,estado)
     _output += '<td><div class="text-center"><div class="btn-group">'
     _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + ordenx + '"><i class="fa fa-arrow-up"></i></button>';
     _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + ordenx + '"><i class="fa fa-pencil-square-o"></i></button>';
-    _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="'+ ordenx + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+    _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" ' + _deshabilitae + ' id="'+ ordenx + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
     $('#row_' + rowmod + '').html(_output);
 }
 
-function FunOrderEdit(norden,detalle,valorv,valori,estado)
+function FunOrderEdit(norden,detalle,valorv,valori,estado,codigo)
 {
     if(norden == '1'){
         _deshabilitar  = 'disabled';
@@ -455,7 +504,15 @@ function FunOrderEdit(norden,detalle,valorv,valori,estado)
         _deshabilitar = ''
     }
 
+    if(codigo != 0){
+        _deshabilitae = 'disabled'
+    }else{
+        _deshabilitae = ''
+    }
+
+
     _output = '<tr id="row_' + norden + '">';
+    _output = '<td style="display: none;">' + norden + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + norden + '" value="'+ codigo + '" /></td>';
     _output += '<td style="display: none;">' + norden + ' <input type="hidden" name="hidden_orden[]" id="orden' + norden + '" value="' + norden + '" /></td>';                
     _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + norden + '" value="' + detalle + '" /></td>';
     _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + norden + '" value="' + valorv + '" /></td>';
@@ -464,10 +521,11 @@ function FunOrderEdit(norden,detalle,valorv,valori,estado)
     _output += '<td><div class="text-center"><div class="btn-group">'
     _output += '<button type="button" name="subirnivel" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + norden + '"><i class="fa fa-arrow-up"></i></button>';
     _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + norden + '"><i class="fa fa-pencil-square-o"></i></button>';
-    _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="' + norden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+    _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" ' + _deshabilitae + ' id="' + norden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
     _output += '</tr>';
                     
-    $('#tblparameter').append(_output);        
+    $('#tblparameter').append(_output);     
+        
 }
 
 $('#btnSave').click(function(){
