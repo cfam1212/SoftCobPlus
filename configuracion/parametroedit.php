@@ -194,7 +194,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <label for="valori" class="col-form-label">Valor Entero</label>
                             <input type="text" id="txtValori" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="5">
                         </div>                                            
-                        <div class="form-check" id="divcheck">
+                        <div class="form-check" id="divcheckedit">
                             <input type="checkbox" id="chkEstado" class="form-check-input">
                             <label for="estadolabel" class="form-check-label" id="lblEstado"></label>
                         </div>
