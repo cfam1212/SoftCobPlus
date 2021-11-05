@@ -59,7 +59,7 @@ $(document).ready(function(){
     });       
     
     
-
+    //modal
     $("#btnAdd").click(function(){        
         $("#formParam").trigger("reset");
         $("#divcheck").hide();
@@ -299,29 +299,43 @@ $("#chkEstado").click(function(){
     }
 });
 
+
 $(document).on("click",".btnDelete",function(){
     row_id = $(this).attr("id");
     _detalle = $('#txtDetalle' + row_id + '').val();
-    Swal.fire({
-        title: 'Está Seguro de Borrar ' + _detalle ,
-        text: 'El registro será eliminado..',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Eliminar',
-        showLoaderOnConfirm: true,
-        preConfirm: function() {
-            return new Promise(function(resolve) {
-                Swal.close();                    
-                FunRemoveItemFromArr(_result, _detalle);
-                $('#row_' + row_id + '').remove();
-                _count--;
-                FunReorganizarOrder(_result);
-                DeletePara();
-            });
-          }
-    });
+    // Swal.fire({
+    //     title: 'Está Seguro de Borrar ' + _detalle ,
+    //     text: 'El registro será eliminado..',
+    //     type: 'warning',
+    //     showCancelButton: true,
+    //     confirmButtonColor: '#3085d6',
+    //     cancelButtonColor: '#d33',
+    //     confirmButtonText: 'Eliminar',
+    //     showLoaderOnConfirm: true,
+    //     preConfirm: function() {
+    //         return new Promise(function(resolve) {
+    //             Swal.close();                    
+    //             FunRemoveItemFromArr(_result, _detalle);
+    //             $('#row_' + row_id + '').remove();
+    //             _count--;
+    //             FunReorganizarOrder(_result);
+    //             DeletePara();
+    //         });
+    //       }
+    // });
+
+    alertify.confirm('Eliminar', 'Esta seguro de eliminar' + ' ' +  _detalle, function(){  mensajesalertify("Registro Eliminado","E","bottom-center",5)	
+
+                                   
+                    FunRemoveItemFromArr(_result, _detalle);
+                    $('#row_' + row_id + '').remove();
+                    _count--;
+                    FunReorganizarOrder(_result);
+                    DeletePara();
+
+
+        }
+                , function(){});
 });
 
 // function FunInactivaButton() 

@@ -39,7 +39,8 @@ $(document).ready(function(){
     // $('#btnPrev1').click(function(){
     //     $.redirect('parametroadmin.php');
     // });
-
+     
+    //modal
     $("#btnAdd").click(function(){        
         $("#formParam").trigger("reset");
         $("#divcheck").hide();
@@ -51,7 +52,7 @@ $(document).ready(function(){
         _tipoSave = 'add';
         _estado = 'Activo';
     });    
-
+    //nuevo parametro
     $('#btnAgregar').click(function(){
         if($.trim($('#txtDetalle').val()).length == 0)
         {           
@@ -270,7 +271,7 @@ $(document).ready(function(){
             _estado = 'Inactivo';
         }
     });
-
+   
     $(document).on("click",".btnDelete",function(){
         row_id = $(this).attr("id");
         _detalle = $('#txtDetalle' + row_id + '').val();
@@ -511,13 +512,13 @@ $(document).ready(function(){
 
     });  
     
+    //eliminar parametros
     $(document).on("click","#btnEliminarEdit",function(e){        
         _fila = $(this); 
         _row = $(this).closest('tr');  
         _data = $('#tabledata').dataTable().fnGetData(_row);
         _id = _data[0];
-        _opcion = 1;
-        _menu = _data[1];
+        _opcion = 2;
         DeletePara();
     });    
 
@@ -535,12 +536,12 @@ $(document).ready(function(){
                             if(data == 'NO'){
                              
                                
-                                mensajesalertify("Menu no se puede Eliminar, Tiene Tareas Asociadas..!","E","bottom-right",5);
+                                mensajesalertify("Parametro no se puede Eliminar, Tiene Detalles Asociados..!","E","bottom-center",5);
                             }       
                             else {
                             
                                 TableNoOrder.row(_fila.parents('tr')).remove().draw();
-                                mensajesalertify("Registro Eliminado..!","S","bottom-center",5);
+                                mensajesalertify("Parametro Eliminado..!","E","bottom-center",5);
                             }
                         },
                         error: function (error) {

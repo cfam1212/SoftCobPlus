@@ -52,8 +52,19 @@ switch($opcion){
         }
         $data = '0';        
         break;
-    case "2": // ORDER MENU
-   
+    case "2": // ELIMINNAR PARAMETRO-DETALLE
+        $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(34,$_SESSION["i_emprid"],'','','','','','',$id,0,0,0,0,0));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC); 
+        if($data == 0) {
+            $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(35,$_SESSION["i_emprid"],'','','','','','',$id,0,0,0,0,0));
+            $data = $resultado->fetchAll(PDO::FETCH_ASSOC);     
+        }else{
+            $data = "NO";
+        }   
     break;
     case "3": //GRABAR EDITAR MENU
 
