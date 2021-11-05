@@ -43,11 +43,12 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $valestado = $drfila['arryestado'] == "Activo" ? 'A' : 'I';
         $resultado->execute(array(2,$emprid,$id,$nomparametro,$descripcion,$valestado,0,0,'','',0,'','','',0,0,0,$userid,$host));
-        //$idPara = $resultado->fetchColumn();        
+              
         foreach($result as $drfila){
             $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array(1,0,$idPara,'','',$drfila['arryestado'],0,$drfila['arry_id'],$drfila['arrydetalle'],
+            $valestado = $drfila['arryestado'] == "Activo" ? 'A' : 'I';
+            $resultado->execute(array(1,0,$id,'','',$valestado,0,$drfila['arry_id'],$drfila['arrydetalle'],
             $drfila['arryvalorv'],$drfila['arryvalori'],'','','',0,0,0,0,''));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         }
