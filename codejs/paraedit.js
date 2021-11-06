@@ -4,7 +4,9 @@ $(document).ready(function()
     var _estado, _result = [], _id, _count, _deshabilitar, _deshabilitae, _resultado = [], _checked, _estadocab, _checkedcab;
 
     _estadocab = $("#lblEstadoCab").text();   
-    _id = $("#paraid").text();
+    _id = $("#paraid").val();
+    // alert(_id);
+    // console.log(_id);
     
     $('#btnRegresar').click(function()
     {        

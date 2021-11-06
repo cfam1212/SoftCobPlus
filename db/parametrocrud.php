@@ -41,7 +41,6 @@ switch($opcion){
     case "1": //MODIFICAR
         $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $valestado = $drfila['arryestado'] == "Activo" ? 'A' : 'I';
         $resultado->execute(array(2,$emprid,$id,$nomparametro,$descripcion,$valestado,0,0,'','',0,'','','',0,0,0,$userid,$host));
               
         foreach($result as $drfila){

@@ -10,7 +10,7 @@ $(document).ready(function(){
     //     w_idth:400
     // });
     
-    _mensaje = $('input#mensaje').val();
+    _mensaje = $('#mensaje').val();
 
     if(_mensaje != ''){
 
@@ -507,6 +507,7 @@ $(document).ready(function(){
         _fila = $(this).closest("tr");
         _data = $('#tabledata').dataTable().fnGetData(_fila);
         _id = _data[0];
+       
         //_menu = _fila.find('td:eq(0)').text();
         $.redirect('parametroedit.php', {'id': _id}); //POR METODO POST
 
