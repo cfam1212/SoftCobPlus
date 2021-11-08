@@ -27,41 +27,30 @@ require_once '../dashmenu/panel_menu.php';
                 </div>
                 <div class="x_content">
                         <br />
-                        <div class="col-xs-3">
-                    
-                            <div class="nav nav-tabs flex-column  bar_tabs" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
-                                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home1" role="tab" aria-controls="v-pills-home" aria-selected="true">Perfiles</a>
-                                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile1" role="tab" aria-controls="v-pills-profile" aria-selected="false">Descripcion</a>    
-                            </div>
-                
-                        </div>
-
-                        <div class="col-xs-9">
-                        <!-- Tab panes -->
-                        
-                        <div class="tab-content" id="v-pills-tabContent">
-                                <div class="tab-pane fade show active" id="v-pills-home1" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                                        
-                                        <div class="form-group col-md-12"> 
-                                            <select class="form-control" id="cboProvincia" name="cboprovincia">
-                                                    <option value="0">--Seleccione Perfil--</option>
-                                                    <?php foreach($dataprov as $fila): ?>
-                                                        <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
-                                                    <?php endforeach ?>
-                                            </select>
-                                        </div>                                 
-                                    
+                        <form class="form-horizontal" role="form">
+                        <fieldset>
+                        <div class="row">
+                                <label for="espacio" class="control-label col-md-1"></label>    
+                                <label for="cboprovincia" class="control-label col-md-1">Perfil</label>
+                                <div class="form-group col-md-7"> 
+                                    <select class="form-control" id="cboProvincia" name="cboprovincia">
+                                            <option value="0">--Seleccione Perfil--</option>
+                                            <?php foreach($dataprov as $fila): ?>
+                                                <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
+                                            <?php endforeach ?>
+                                    </select>
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-profile1" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                    <div class="row">
-                                        <div class="form-group col-md-12">
-                                        <input id="txtRuc" name="iconome" type="text" placeholder=" " class="form-control" maxlength="13">
-                                    </div>
-                                    </div>
+                            </div>    
+                        <div class="row">
+                                <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="menuname" class="control-label col-md-1">Descripcion</label>
+                                <div class="form-group col-md-7">
+                                    <input type="text"  required class="form-control" id="txtDescripcion" name="menuname" placeholder="" maxlength="150">
                                 </div>
-                                
                             </div>
-                        </div>
+                        </fieldset>
+                            
+                        </form>
 
                     <div class="clearfix"></div>
                     <br>
@@ -72,13 +61,50 @@ require_once '../dashmenu/panel_menu.php';
                             <button type="button" class="btn btn-outline-success" id="btnPerfiles" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                         </div>                       
                 </div>
-               
-                  <div class="container">
-                        <div class='btn-group'>
-                            <button class="btn btn-outline-primary" id = "btnRegresar" ><i class='fa fa-undo'></i> Regresar</button>
-                            <button class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
-                        </div>
-                  </div>
+                <div class="col-md-10 col-sm-10">
+                    <form method="post" id="user_form">
+                        <div class="table-responsive">
+                            <table id="tblparameter" class="table table-striped table-border table-condensed table-info"  style="width: 100%;">
+                                <thead class="text-center">
+                                    <tr> 
+                                        <th style="display: none;">Id</th>
+                                        <th>Descripcion</th>
+                                        <th>Activo</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                foreach($data as $dat){
+                                ?>
+                                <tr id="row_<?php echo $dat['Orden']; ?>">
+                                    <td style="display: none;">
+                                    <?php echo $dat['Padeid']; ?> 
+                                        <input type="hidden" name="hidden_codigo[]" id="codigo<?php echo $dat['Orden'];?>" value="<?php echo $dat['Padeid']; ?>"/>
+                                    </td>                                          
+                                    <td style="display: none;">
+                                        <?php echo $dat['Orden']; ?>
+                                        <input type="hidden" name="hidden_orden[]" id="orden<?php echo $dat['Orden'];?>" value="<?php echo $dat['Orden']; ?>"/>
+                                    </td>
+                                    <td style="display: none;">
+                                        <?php echo $dat['Orden']; ?>
+                                        <input type="hidden" name="hidden_orden[]" id="orden<?php echo $dat['Orden'];?>" value="<?php echo $dat['Orden']; ?>"/>
+                                    </td>                                   
+                                    <td>
+                                        <div class="text-center">
+                                            <div class="btn-group">
+                                                <button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="">><i class="fa fa-pencil-square-o"></i></button>
+                                                <button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3" id=""><i class="fa fa-trash-o"></i></button>                                                        
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                             <?php } ?>     
+                                </tbody> 
+                            </table>
+                        </div> 
+                    </form>                                 
+                </div>
             </div>
         </div>
     </div>    
