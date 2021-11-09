@@ -57,10 +57,6 @@ $(document).ready(function(){
             _result.push(_objeto);     
         }   
 
-
     });
-
-
-
 
 });
