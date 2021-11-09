@@ -131,7 +131,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>
 <script src="../codejs/menu.js" type="text/javascript"></script>
-<script src="../vendors/select2/js/select2.min.js"></script>
+<!-- <script src="../vendors/select2/js/select2.min.js"></script> -->
 
 <script>
     $(document).ready(function() {

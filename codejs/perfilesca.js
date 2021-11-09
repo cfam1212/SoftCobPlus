@@ -1,6 +1,8 @@
 $(document).ready(function(){
     var _codigo, _descripcion, _count = 0, _result = [], _objeto, _estado, _continuar;
 
+    $('#cboperfil').select2();
+
     $('#btnPerfiles').click(function(){        
         
         _codigo = $('#cboperfil').val();
