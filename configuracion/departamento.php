@@ -23,7 +23,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="clearfix"></div>
                     </div>
                                                 
-                      <button type="button" class="btn btn-outline-primary" id="btnNuevo" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                      <button type="button" class="btn btn-outline-success" id="btnNuevo" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                     
                     <div class="x_content">
                         <br />
@@ -95,8 +95,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
-                    <button class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button>                  
+                    <button type="submit" class="btn btn-success ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                    <!-- <button class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button>                   -->
                 </div>
             </form>
         </div>

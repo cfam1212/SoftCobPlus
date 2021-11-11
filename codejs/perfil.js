@@ -96,36 +96,8 @@ $(document).ready(function(){
             // alertify.warning('Perfil tiene Menú/Tareas Asociadas..!','mensaje', 2, function(){console.log('dismissed');}); 
             mensajesalertify("Perfil tiene Menú/Tareas Asociadas..!","E","bottom-right",5);
         }else{
-            // Swal.fire({
-            //     title: 'Está Seguro de Borrar '+ _perfil ,
-            //     text: 'El registro será eliminado..',
-            //     type: 'warning',
-            //     showCancelButton: true,
-            //     confirmButtonColor: '#3085d6',
-            //     cancelButtonColor: '#d33',
-            //     confirmButtonText: 'Eliminar',
-            //     showLoaderOnConfirm: true,
-            //     preConfirm: function() {
-            //         return new Promise(function(resolve) {
-            //             $.ajax({
-            //                 url: "../bd/consultadatos.php",
-            //                 type: "POST",
-            //                 dataType: "json",
-            //                 data: {tipo:15, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_id, auxi2:0, auxi3:0, auxi4:0, 
-            //                 auxi5:0, auxi6:0, opcion:0},
-            //                 success: function(data){
-            //                     Swal.close();
-            //                     tableData.row(fila.parents('tr')).remove().draw();
-            //                     alertify.error('Regisro Eliminado..!','mensaje', 2, function(){console.log('dismissed');});
-            //                 },
-            //                 error: function (error) {
-            //                     console.log(error);
-            //                 }                  
-            //             });
-            //         });
-            //       }            
-            // });
-    alertify.confirm('Eliminar', 'Esta seguro de eliminar'+ _perfil, function(){ //alertify.success('Ok') 
+     
+    alertify.confirm('El registro sera eliminado', 'Esta seguro de eliminar'+''+ _perfil +'..?', function(){ 
 
 
         $.ajax({

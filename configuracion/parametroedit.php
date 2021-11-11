@@ -201,8 +201,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="row_id" id="hidden_row_id" />
-                        <button type="button" id="btnAgregar" class="btn btn-outline-success ml-3"><i class='fa fa-plus'></i> Agregar</button>
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button>
+                        <button type="button" id="btnAgregar" class="btn btn-success ml-3"><i class='fa fa-plus'></i> Agregar</button>
+                        <!-- <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button> -->
                         
                     </div>
                 </form>

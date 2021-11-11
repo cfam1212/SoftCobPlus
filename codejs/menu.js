@@ -25,15 +25,6 @@ $(document).ready(function(){
         //result = [];
         _opcion = 2;
 
-        // if(row_index == 0)
-        // {
-        //     Swal.fire({
-        //         type: 'warning',
-        //         title: 'Información',
-        //         text: 'No se puede Subir de Nivel..!'
-        //     });             
-        //     return;
-        // }
 
         $.ajax({
             url: "../db/menucrud.php",
@@ -70,9 +61,6 @@ $(document).ready(function(){
         _data = $('#tablenoorder').dataTable().fnGetData(_row);
         _id = _data[0];
         _opcion = 1;
-        //nombremenu = "", iconome = "", opcionmp = "", menupadre = "", iconomp = "", estado ="Activo";
-        //result = [];
-        //_menu = fila.find('td:eq(0)').text();
         _menu = _data[1];
         DeleteMenu();
     });     
@@ -80,7 +68,7 @@ $(document).ready(function(){
     function DeleteMenu(){
         
 
-        alertify.confirm('El Registro sera eliminado', 'Esta seguro de eliminar el menu..?', function(){ //alertify.success('Ok') 
+        alertify.confirm('El Registro sera eliminado', 'Esta seguro de eliminar el menu..?', function(){ 
     
                      $.ajax({
                         url: "../db/menucrud.php",
@@ -96,7 +84,7 @@ $(document).ready(function(){
                             else {
                             
                                 TableNoOrder.row(_fila.parents('tr')).remove().draw();
-                                mensajesalertify("Registro Eliminado..!","S","bottom-center",5);
+                                mensajesalertify("Registro Eliminado..!","E","bottom-center",5);
                             }
                         },
                         error: function (error) {
@@ -105,7 +93,7 @@ $(document).ready(function(){
                     });
               
               }
-                , function(){ alertify.error('eliminar cancelado')});
+                , function(){ });
     }
 
     $('#btnSave').click(function(){

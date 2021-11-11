@@ -26,36 +26,30 @@ require_once '../dashmenu/panel_menu.php';
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <br />
+                    <br>
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-                        
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Contraseña Actual:
-                            </label>
+                            <label for="detalle" class="col-form-label col-md-2">Contraseña Actual:</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="password" id="txtcontactual" required="required" class="form-control" maxlength="20">
                             </div>
                         </div>
-                        
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Nueva Contraseña:
-                            </label>
+                            <label for="detalle" class="col-form-label col-md-2">Nueva Contraseña:</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="password" id="txtcontnueva" name="last-name" required="required" class="form-control" maxlength="10">
                             </div>
                         </div>
-
                         <div class="item form-group">
-                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Confirmar Contraseña:</label>
+                            <label for="detalle" class="col-form-label col-md-2 ">Confirmarcion:</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input id="txtconfcont" class="form-control" type="password" name="middle-name" maxlength="10">
                             </div>
                         </div>
-      
                         <div class="ln_solid"></div>
-                        <div class="col-md-6 col-sm-6 offset-md-3">
+                        <div class="col-md-6 col-sm-6">
                             <div class='btn-group'>
-                                <button class="btn btn-outline-primary" id = "btnRegresar" ><i class='fa fa-undo'></i> Regresar</button>
+                                <!-- <button class="btn btn-outline-primary" id = "btnRegresar" ><i class='fa fa-undo'></i> Regresar</button> -->
                                 <button class="btn btn-outline-success ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                             </div>
                         </div>  

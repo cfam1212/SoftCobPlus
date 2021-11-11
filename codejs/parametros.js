@@ -5,10 +5,7 @@ $(document).ready(function(){
     _deshabilitar, id_now, _ordennow, _checked, _detallenow, _valorvnow, _valorinow, _estadonow, id_ant,
     _ordenant, _detalleant, _valorvant, _valoriant, _estadoant, _resultado;
 
-    // $('#parameter_dialog').dialog({
-    //     autoOpen:false,
-    //     w_idth:400
-    // });
+  
     
     _mensaje = $('#mensaje').val();
 
@@ -36,10 +33,7 @@ $(document).ready(function(){
         //$.redirect('parametroedit.php', {'id': _id});
     });
 
-    // $('#btnPrev1').click(function(){
-    //     $.redirect('parametroadmin.php');
-    // });
-     
+ 
     //modal
     $("#btnAdd").click(function(){        
         $("#formParam").trigger("reset");
@@ -275,35 +269,17 @@ $(document).ready(function(){
     $(document).on("click",".btnDelete",function(){
         row_id = $(this).attr("id");
         _detalle = $('#txtDetalle' + row_id + '').val();
-        Swal.fire({
-            title: 'Está Seguro de Borrar ' + _detalle ,
-            text: 'El registro será eliminado..',
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Eliminar',
-            showLoaderOnConfirm: true,
-            preConfirm: function() {
-                return new Promise(function(resolve) {
-                    Swal.close();                    
-                    FunRemoveItemFromArr(_result, _detalle);
+       
+        alertify.confirm('El registro sera eliminado', 'Estas seguro de eliminar'+ ' ' + _detalle +'..?', function(){ 
+                   FunRemoveItemFromArr(_result, _detalle);
                     $('#row_' + row_id + '').remove();
                     _count--;
                     FunReorganizarOrder(_result);
-                });
-              }
-        });
+         }
+                , function(){ });
     });
 
-    // function FunInactivaButton() 
-    // {
-    //     x = document.getElementsByClassName("btnUp");
-    //     console.log(x);
-    //     id = $("#" + x[0].id);
-    //     alert(id);
-    //     $("#"+x[0].id).prop('disabled',true);
-    // }
+  
     
     function FunRemoveItemFromArr(arr, deta)
     {
