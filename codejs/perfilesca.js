@@ -62,8 +62,8 @@ $(document).ready(function(){
             _result.push(_objeto);     
         }   
 
-
     });
+
 
     $(document).on("click",".btnEdit",function(){
         $("#formParam").trigger("reset"); 
@@ -128,4 +128,6 @@ $(document).ready(function(){
 
 
 
+=======
+>>>>>>> 0bf0495b7c375c3334a696e139471b846ccf9028
 });
