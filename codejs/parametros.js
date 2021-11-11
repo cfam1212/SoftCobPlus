@@ -278,9 +278,7 @@ $(document).ready(function(){
          }
                 , function(){ });
     });
-
-  
-    
+      
     function FunRemoveItemFromArr(arr, deta)
     {
         $.each(arr,function(i,item){

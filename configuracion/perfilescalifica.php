@@ -4,7 +4,7 @@ require_once '../dashmenu/panel_menu.php';
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(36,$_SESSION["i_emprid"],'Tipo Perfiles Calificacion','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(36,$_SESSION["i_emprid"],'Tipo Perfiles','','','','','',0,0,0,0,0,0));
 $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -42,7 +42,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="espacio" class="control-label col-md-1"></label>                                
-                                <button type="button" class="btn btn-outline-success" id="btnPerfiles" style="margin-bottom:10px">
+                                <button type="button" class="btn btn-outline-success" id="btnAgregar" style="margin-bottom:10px">
                                 <i class="fa fa-plus"></i></button>                            
                             </div>    
                             <div class="row">
@@ -80,8 +80,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="col-md-1 col-sm-1">
                         </div>                            
-                    </div>
-                                                     
+                    </div>                                                     
                 </div>
                 <br>  
                 <div class='btn-group'>
@@ -92,43 +91,38 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>    
 </div>
+
 <div class="modal fade" id="modalPARAMETER" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="max-width: 35%" role="document">
-            <div class="modal-content" id="myModal">
-                <div class="modal-header" id="header">
-                    <h5 class="modal-title" id="modalLabel"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form id="formParam">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="detalle" class="col-form-label">Descripcion</label>
-                            <input type="text" id="txtDescripcionedit"  required class="form-control" maxlength="80">
-                        </div>
-                        <!-- <div class="form-group">
-                            <label for="valorv" class="col-form-label">Estado</label>
-                            <input type="text" id="txtValorv" class="form-control" maxlength="255">
-                        </div>-->
-                        <div class="form-check" id="divcheck">
-                            <input type="checkbox" id="chkEstado" class="form-check-input">
-                            <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="row_id" id="hidden_row_id" />
-                        <button type="button" id="btnAgregar" class="btn btn-success ml-3">Modificar</button>
-                        <!-- <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button> -->          
-                    </div>
-                </form>
+    <div class="modal-dialog" style="max-width: 35%" role="document">
+        <div class="modal-content" id="myModal">
+            <div class="modal-header" id="header">
+                <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <form id="formParam">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="detalle" class="col-form-label">Descripcion</label>
+                        <input type="text" id="txtDescripcionedit"  required class="form-control" maxlength="80">
+                    </div>
+                    <div class="form-check" id="divcheck">
+                        <input type="checkbox" id="chkEstado" class="form-check-input">
+                        <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="row_id" id="hidden_row_id" />
+                    <button type="button" id="btnModificar" class="btn btn-success ml-3">Modificar</button>
+                </div>
+            </form>
         </div>
-    </div>  
+    </div>
+</div>  
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>
 <script src="../codejs/perfilesca.js" type="text/javascript"></script>
-
 
 </body>
 
