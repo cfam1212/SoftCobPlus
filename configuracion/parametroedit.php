@@ -184,11 +184,11 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="detalle" class="col-form-label">Detalle</label>
-                            <input type="text" id="txtDetalle" required class="form-control" maxlength="80">
+                            <input type="text" id="txtDetalle" required class="form-control" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
                         </div>
                         <div class="form-group">
                             <label for="valorv" class="col-form-label">Valor Text</label>
-                            <input type="text" id="txtValorv" class="form-control" maxlength="255">
+                            <input type="text" id="txtValorv" class="form-control" maxlength="255" onKeyUp="this.value=this.value.toUpperCase();">
                         </div>
                         <div class="form-group">
                             <label for="valori" class="col-form-label">Valor Entero</label>

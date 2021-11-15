@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var _codigo, _descripcion, _count = 0, _result = [], _objeto, _estado, _continuar, 
-    _estadoold,_descripcionold, _checked;
+    _estadoold,_descripcionold, _checked, tblperfil;
 
     $('#cboperfil').select2();
 
@@ -210,7 +210,7 @@ $(document).ready(function(){
         }
         
         $.ajax({
-            url: "../db/perfiescacrud.php",
+            url: "../db/perfilescacrud.php",
             type: "POST",
             dataType: "json",
             data: {codigo:_codigo, result:_result, opcion:0},            
@@ -218,11 +218,10 @@ $(document).ready(function(){
               
                 if(data == '0'){
 
-                    $.redirect('parametroadmin.php', {'mensaje': 'Grabado con Exito..!'}); 
-                }else{
-                  
-                    mensajesalertify("Nombre del Parámetro ya Existe..!","E","bottom-right",5);
-                }                
+                     $.redirect('perfilescalifica.php', {'mensaje': 'Grabado con Exito..!'}); 
+                    // mensajesalertify("Grabado con exito..!","S","bottom-center",5);
+                }    
+                            
             },
             error: function (error) {
                 console.log(error);
@@ -230,6 +229,59 @@ $(document).ready(function(){
         }); 
 
 
-    });    
+    });   
+    
+    
+
+    $('#cboperfil').change(function(){
+        _cboid = $(this).val(); //obtener el id seleccionado
+     
+    //  if(_cboid !== '0'){ 
+    //    $.ajax({
+    //      data: {opcion:1, id:_cboid},
+    //      dataType: 'json',
+    //      type: 'POST',
+    //      url: '../db/perfilescacrud.php'
+    //        }).done(function(data){
+    //          // tblperfil.clear().draw();
+    //              $.each(data,function(i,item){                    
+    //                  _id = data[i].Codigo;
+    //                  _desc = data[i].Descripcion;
+    //                  _est = data[i].Estado;
+    //                  _icono = data[i].Estado;
+    //                  tblperfil.row.add([_id, _desc, _est,_icono]).draw();                
+    //              });               
+            
+    //       });
+    //      }else{
+    //          tblperfil.val('');
+    //          tblperfil.empty();
+                     
+    //      }    
+         if(_cboid !== '0'){
+            $.ajax({
+                url: "../db/perfilescacrud.php",
+                type: "POST",
+                dataType: "json",
+                data: {opcion:1, id:_cboid},            
+                success: function(data){
+                    //tblperfil.clear().draw();
+                    $.each(data,function(i,item){                    
+                        _id = data[i].Codigo;
+                        _desc = data[i].Descripcion;
+                        _est = data[i].Estado;
+                        _icono = data[i].Estado;
+                        tblperfil.row.add([_id, _desc, _est,_icono]).draw();              
+                    }); 
+                                     
+                },
+                error: function (error) {
+                    console.log(error);
+                  }
+            }); 
+
+          }
+      
+  });
 
 });

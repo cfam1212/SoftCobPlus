@@ -18,7 +18,13 @@
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(30,0,'','','','','','',$id,0,0,0,0,0));        
         $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);                  
-         break;       
+         break;
+    case 1: 
+        $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(30,0,'','','','','','',$id,0,0,0,0,0));        
+        $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);                  
+        break;          
 
     }
 

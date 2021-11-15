@@ -2,6 +2,8 @@
 
 require_once '../dashmenu/panel_menu.php'; 
 
+$mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
+
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(36,$_SESSION["i_emprid"],'Tipo Perfiles','','','','','',0,0,0,0,0,0));
@@ -49,7 +51,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <!-- <label for="espacio" class="control-label col-md-1"></label>-->
                                 <label for="menuname" class="control-label col-md-1">Descripcion</label>
                                 <div class="form-group col-md-7">
-                                    <input type="text"  required class="form-control" id="txtDescripcion" name="menuname" placeholder="" maxlength="150">
+                                    <input type="text"  required class="form-control" id="txtDescripcion" name="menuname" placeholder="" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                 </div>
                             </div>
                         </fieldset>                            
@@ -73,7 +75,9 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
-                                        <tbody></tbody> 
+                                        <tbody>
+                                    
+                                        </tbody> 
                                     </table>
                                 </div> 
                             </form>                                 
