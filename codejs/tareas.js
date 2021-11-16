@@ -158,7 +158,7 @@ $(document).ready(function(){
                     _icono = data[0].Icono
                     _estado = data[0].Estado;
                     if(_tareaid == 100001 || _tareaid == 100002 || _tareaid == 100003 || _tareaid == 100004){
-                        _desactivar = 'disabled="disabled"';
+                        _desactivar = 'disabled';
                     }else{
                         _desactivar = '';
                     }

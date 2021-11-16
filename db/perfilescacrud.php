@@ -20,20 +20,29 @@ date_default_timezone_set("America/Guayaquil");
 
 switch($opcion){
     case "0": //NUEVO  
+        $consulta = "CALL sp_New_Perfiles(?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(2,'','',$cboid,0,0,0,0,''));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);        
         foreach($result as $drfila){
             $consulta = "CALL sp_New_Perfiles(?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $valestado = $drfila['arryestado'] == "Activo" ? 'A' : 'I';
-            $resultado->execute(array(0,$drfila['arrydescripcion'],$drfila['arryestado'],$codigo,0,0,0,$userid,$host));
+            $resultado->execute(array(0,$drfila['arrydescripcion'],$valestado,$codigo,0,0,0,$userid,$host));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         }
         $data = '0';
         break;    
     case "1": //CONSULTAR
+        try {
             $consulta = "CALL sp_New_Perfiles(?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(1,'','',$cboid,0,0,0,0,''));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\Throwable $th) {
+            $data = null;
+        }
+
         break;
     case "2": // ELIMINNAR 
       

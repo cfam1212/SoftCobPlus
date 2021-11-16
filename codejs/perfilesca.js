@@ -8,6 +8,14 @@ $(document).ready(function(){
         $.redirect("");
     });  
 
+    tblperfil = $('#tblperfil').DataTable({
+        "columnDefs": [{
+            "data": null
+        },
+        { visible: false, targets: [0] }
+    ],
+    });
+
     $('#btnAgregar').click(function(){        
         
         _codigo = $('#cboperfil').val();
@@ -69,6 +77,7 @@ $(document).ready(function(){
     $(document).on("click",".btnEdit",function(){
         $("#formParam").trigger("reset"); 
         row_id = $(this).attr("id");
+        
         _descripcionold = $('#txtDescripcion' + row_id + '').val();
         _estadoold = $('#txtEstado' + row_id + '').val();         
       
@@ -213,7 +222,7 @@ $(document).ready(function(){
             url: "../db/perfilescacrud.php",
             type: "POST",
             dataType: "json",
-            data: {codigo:_codigo, result:_result, opcion:0},            
+            data: {codigo:_codigo, result:_result, opcion:0, id:_codigo},            
             success: function(data){
               
                 if(data == '0'){
@@ -227,37 +236,12 @@ $(document).ready(function(){
                 console.log(error);
             }                            
         }); 
-
-
     });   
-    
-    
+        
 
     $('#cboperfil').change(function(){
         _cboid = $(this).val(); //obtener el id seleccionado
-     
-    //  if(_cboid !== '0'){ 
-    //    $.ajax({
-    //      data: {opcion:1, id:_cboid},
-    //      dataType: 'json',
-    //      type: 'POST',
-    //      url: '../db/perfilescacrud.php'
-    //        }).done(function(data){
-    //          // tblperfil.clear().draw();
-    //              $.each(data,function(i,item){                    
-    //                  _id = data[i].Codigo;
-    //                  _desc = data[i].Descripcion;
-    //                  _est = data[i].Estado;
-    //                  _icono = data[i].Estado;
-    //                  tblperfil.row.add([_id, _desc, _est,_icono]).draw();                
-    //              });               
-            
-    //       });
-    //      }else{
-    //          tblperfil.val('');
-    //          tblperfil.empty();
-                     
-    //      }    
+        tblperfil.clear().draw();
          if(_cboid !== '0'){
             $.ajax({
                 url: "../db/perfilescacrud.php",
@@ -265,13 +249,38 @@ $(document).ready(function(){
                 dataType: "json",
                 data: {opcion:1, id:_cboid},            
                 success: function(data){
+                    
+                    _desactivar = 'disabled';
+                    console.log(_desactivar);
                     //tblperfil.clear().draw();
                     $.each(data,function(i,item){                    
-                        _id = data[i].Codigo;
+                        _id = parseInt(data[i].Codigo);
                         _desc = data[i].Descripcion;
-                        _est = data[i].Estado;
-                        _icono = data[i].Estado;
-                        tblperfil.row.add([_id, _desc, _est,_icono]).draw();              
+                        _estado = data[i].Estado;
+                    //     _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit"' +
+                    //     'id=' + _id + '><i class="fa fa-pencil-square-o"></i></button><button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete "' +
+                    //    _desactivar + ' id=' + _id + '><i class="fa fa-trash-o"></i></button></div></div></td>'
+
+                    //     tblperfil.row.add([_id, _desc, _estado, _boton]).draw();
+                        _output = '<tr id="row_' + _id + '">';
+                        _output += '<td style="display: none;">' + _id  + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _id  + '" value="' + _id + '" /></td>';                
+                        _output += '<td>' + _desc + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _id  + '" value="' + _desc + '" /></td>';
+                        _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' +_id  + '" value="' + _estado + '" /></td>';
+                        _output += '<td><div class="text-center"><div class="btn-group">'
+                        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + _id  + '"><i class="fa fa-pencil-square-o"></i></button>';
+                        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete " disabled id="' + _id  + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                        _output += '</tr>';
+                        
+                        $('#tblperfil').append(_output);  
+                        
+                        _objeto = {
+                            arrycodigo : parseInt(_id),
+                            arrydescripcion : _desc,
+                            arryestado : _estado,
+                        }            
+            
+                        _result.push(_objeto);                        
+                        _count++;                       
                     }); 
                                      
                 },
