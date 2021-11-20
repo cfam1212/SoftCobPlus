@@ -45,14 +45,14 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Parámetro:</label>
                                     <div class="form-group col-md-3">
-                                      <input type="text" required class="form-control" id="txtParametro" name="parametro" placeholder="" maxlength="80">
+                                      <input type="text" required class="form-control" id="txtParametro" name="parametro" placeholder="" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Descripción</label> 
                                     <div class="form-group col-md-10">                                    
-                                        <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" maxlength="255" 
+                                        <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" onKeyUp="this.value=this.value.toUpperCase();" maxlength="255" 
                                          onkeydown = "return (event.keyCode!=13);"></textarea>                                        
                                    </div> 
                                 </div>
@@ -122,11 +122,11 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="detalle" class="col-form-label">Detalle</label>
-                            <input type="text" id="txtDetalle" required class="form-control" maxlength="80">
+                            <input type="text" id="txtDetalle" required class="form-control" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
                         </div>
                         <div class="form-group">
                             <label for="valorv" class="col-form-label">Valor Text</label>
-                            <input type="text" id="txtValorv" class="form-control" maxlength="255">
+                            <input type="text" id="txtValorv" class="form-control" maxlength="255" onKeyUp="this.value=this.value.toUpperCase();">
                         </div>
                         <div class="form-group">
                             <label for="valori" class="col-form-label">Valor Entero</label>

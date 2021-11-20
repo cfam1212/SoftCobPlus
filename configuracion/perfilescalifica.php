@@ -6,7 +6,7 @@ $mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(36,$_SESSION["i_emprid"],'Tipo Perfiles','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(36,$_SESSION["i_emprid"],'Tipo Perfiles','','','','','',1,0,0,0,0,0));
 $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -35,7 +35,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <!-- <label for="espacio" class="control-label col-md-1"></label>-->
                                 <label for="cboperfil" class="control-label col-md-1">Perfil</label>
                                 <div class="form-group col-md-7"> 
-                                    <select class="form-control" id="cboperfil" name="cboperfil">
+                                    <select class="form-control" id="cboPerfil" name="cboperfil">
                                             <option value="0">--Seleccione Tipo--</option>
                                             <?php foreach($datos as $fila): ?>
                                                 <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>

@@ -7,6 +7,28 @@ $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(29,0,'','','','','','',0,0,0,0,0,0));
 $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(36,$_SESSION["i_emprid"],'NIVEL ARBOL','','','','','',0,0,0,0,0,0));
+$datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(36,$_SESSION["i_emprid"],'SUCURSAL','','','','','',0,0,0,0,0,0));
+$sucursal = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(36,$_SESSION["i_emprid"],'ZONAS','','','','','',0,0,0,0,0,0));
+$zona = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(36,$_SESSION["i_emprid"],'CARGOS','','','','','',0,0,0,0,0,0));
+$cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 ?>
 
 <input type="hidden" id="mensaje" value="<?php echo $mensaje ?>">
@@ -76,7 +98,7 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="iconome" class="control-label col-md-1">Ruc</label>
                                     <div class="form-group col-md-3">
-                                        <input id="txtRuc" name="iconome" type="text" placeholder=" " class="form-control" maxlength="13">
+                                        <input id="txtRuc" name="iconome" type="text" class="form-control" maxlength="13" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -115,9 +137,10 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                    <label for="espacio" class="control-label col-md-1"></label>   
                                    <label for="cboArbol" class="control-label col-md-1">Nivel Arbol</label>  
                                     <div class="form-group col-md-3"> 
-                                        <select class="form-control" id="cboArbol" name="cboarbol">
-                                            <?php foreach($menump as $fila): ?>
-                                                <option value="<?=$fila['Codigo']?>"></option>
+                                        <select class="form-control" id="cboArbol" name="cboarbol" style="width: 100%;">
+                                            <option value="0">--Seleccione Nivel--</option>
+                                            <?php foreach($datos as $fila): ?>
+                                                <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
                                             <?php endforeach ?>
                                         </select>
                                     </div>
@@ -129,7 +152,7 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </form>    
                       </div>
                       <div class="tab-pane fade" id="contacto" role="tabpanel" aria-labelledby="contacto-tab">
-                        <br>  
+                          <br>  
                           <div class="row">
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="menuname" class="control-label col-md-1">Contacto</label>
@@ -139,9 +162,10 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="cbomenupadre" class="control-label col-md-1">Cargo</label>
                                 <div class="form-group col-md-3"> 
-                                    <select class="form-control" id="cboCargo" name="cbocargo">
-                                            <?php foreach($menump as $fila): ?>
-                                                <option value="<?=$fila['Codigo']?>"></option>
+                                    <select class="form-control" id="cboCargo" name="cbocargo" style="width: 100%;">
+                                            <option value="0">--Seleccione Cargo--</option>
+                                            <?php foreach($cargo as $fila): ?>
+                                                <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
                                             <?php endforeach ?>
                                     </select>
                                 </div>
@@ -150,19 +174,19 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                               <label for="espacio" class="control-label col-md-1"></label>
                               <label for="ext" class="control-label col-md-1">Ext</label>
                               <div class="form-group col-md-3">
-                                  <input type="text" required class="form-control" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="txtFax" name="menuname" placeholder="" maxlength="10">
+                                  <input type="text" required class="form-control" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="txtExt" name="menuname" maxlength="10">
                               </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="celular" class="control-label col-md-1">Celular</label>
                                     <div class="form-group col-md-3">
-                                        <input id="txtCelular" name="iconome" type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" placeholder=" " class="form-control" maxlength="10">
+                                        <input id="txtCelular" name="iconome" type="tel" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="10">
                                     </div> 
                          </div>
                               <div class="row">
                                    <label for="espacio" class="control-label col-md-1"></label>
                                    <label for="email" class="control-label col-md-1">Email 1</label>
                                     <div class="form-group col-md-3">
-                                        <input type="text" required class="form-control" id="txtEmail1" name="menuname" placeholder="" maxlength="80">
+                                        <input type="text" required class="form-control" id="txtEmail1" name="menuname" maxlength="80">
                                     </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="email" class="control-label col-md-1">Email 2</label>
@@ -176,49 +200,83 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <label for="espacio" class="control-label col-md-11"></label>
                                 <button type="button" class="btn btn-outline-success" id="btnContacto" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                             </div>
+                            <br>
+                            <div class="col-md-10 col-sm-11">
+                                <form method="post" id="user_form">
+                                    <div class="table-responsive">
+                                        <table id="tblcontacto" class="table table-striped table-border table-condensed table-info"  style="width: 100%;">
+                                            <thead class="text-center">
+                                                <tr> 
+                                                    <th style="display: none;">Id</th>
+                                                    <th>Contacto</th>
+                                                    <th>Cargo</th>
+                                                    <th>Celular</th>
+                                                    <th>Ext</th>
+                                                    <th>Email</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody> 
+                                        </table>
+                                    </div> 
+                                </form>                                 
+                            </div>
                         </div>
                       <div class="tab-pane fade" id="producto" role="tabpanel" aria-labelledby="producto-tab">
                               
-                                    <!-- start accordion -->
-                       <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                         <div class="panel">
-                          <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                             <h4 class="panel-title">Producto</h4>
-                          </a>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                          <div class="panel-body">
-                          <br>
-                          <div class="row">
-                                   <label for="espacio" class="control-label col-md-1"></label>
-                                   <label for="menuname" class="control-label col-md-1">Producto</label>
-                                    <div class="form-group col-md-7">
-                                        <input type="text" required class="form-control" id="txtProducto" name="producto" placeholder="" maxlength="150">
-                                    </div>                    
-                              </div>
-                              <div class="row">
-                                   <label for="espacio" class="control-label col-md-1"></label>
-                                   <label for="menuname" class="control-label col-md-1">Descripcion</label>
-                                    <div class="form-group col-md-9">
-                                        <!-- <input type="text" required class="form-control" id="txtDescripcion" name="descripcion" placeholder="" maxlength="250"> -->
-                                        <textarea name="observa" id="txtDescripcion" class="form-control col-md-9" maxlength="250" 
-                                         onkeydown = "return (event.keyCode!=13);"></textarea>  
-                                    </div>                    
-                              </div>
-                              <div class="row">
-                                 <label for="espacio" class="control-label col-md-11"></label>
-                                 <button type="button" class="btn btn-outline-success" id="btnProducto" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
-                             </div>
-                          </div>
+                        <!-- start accordion -->
+                        <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#demo">
+                        Producto
+                        </button>
+
+                        <div id="demo" class="collapse in">
+                        <br>  
+                                <div class="row">
+                                    <label for="espacio" class="control-label col-md-1"></label>
+                                    <label for="menuname" class="control-label col-md-1">Producto</label>
+                                        <div class="form-group col-md-7">
+                                            <input type="text" required class="form-control" id="txtProducto" name="producto" placeholder="" maxlength="150">   
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                        <button type="button" class="btn btn-outline-success" id="btnProducto" style="margin-bottom:10px"><i class="fa fa-plus"></i></button> 
+                                        </div>                        
+                                </div>
+                                <div class="row">
+                                    <label for="espacio" class="control-label col-md-1"></label>
+                                    <label for="menuname" class="control-label col-md-1">Descripcion</label>
+                                        <div class="form-group col-md-9">
+                                            <!-- <input type="text" required class="form-control" id="txtDescripcion" name="descripcion" placeholder="" maxlength="250"> -->
+                                            <textarea name="observa" id="txtDescripcion" class="form-control col-md-9" maxlength="250" 
+                                            onkeydown = "return (event.keyCode!=13);"></textarea>  
+                                        </div>                    
+                                </div>
+                                <br>
+                                <div class="col-md-10 col-sm-10">
+                                    <form method="post" id="user_form">
+                                        <div class="table-responsive">
+                                            <table id="tblproducto" class="table table-striped table-border table-condensed table-info"  style="width: 100%;">
+                                                <thead class="text-center">
+                                                    <tr> 
+                                                        <th style="display: none;">Id</th>
+                                                        <th>Producto</th>
+                                                        <th>Estado</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody> 
+                                            </table>
+                                        </div> 
+                                    </form>                                 
+                               </div>    
                         </div>
-                      </div>
-                      <div class="panel">
-                        <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          <h4 class="panel-title">Catalogo Producto</h4>
-                        </a>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                          <div class="panel-body">
-                          <br>
-                              <div class="row">
+                          
+                      <button type="button" class="btn btn-info  btn-block" data-toggle="collapse" data-target="#catalogo">
+                      Catalogo Producto
+                      </button>
+                      
+                      <div id="catalogo" class="collapse in">
+                            <br>
+                            <div class="row">
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="espacio" class="control-label col-md-1">Producto</label>
                                 <label for="cbomenupadre" class="control-label col-md-1"></label>
@@ -228,46 +286,60 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <option value="<?=$fila['Codigo']?>"></option>
                                             <?php endforeach ?>
                                     </select>
-                                </div>                  
-                              </div>
-                              <br>
-                              <br>
-                              <div class="row">
-                                   <label for="espacio" class="control-label col-md-1"></label>
-                                   <label for="menuname" class="control-label col-md-2">Codigo Catalogo</label>
-                                    <div class="form-group col-md-3">
-                                        <input type="text" required class="form-control" id="txtCatalogo" name="catalogo" placeholder="" maxlength="80">
-                                    </div>
-                                     <label for="iconome" class="control-label col-md-2">Catalogo Producto</label>
-                                    <div class="form-group col-md-3">
-                                        <input id="txtCatProd" name="iconome" type="text" placeholder=" " class="form-control" maxlength="80">
-                                    </div>                
-                              </div>
-                              <div class="row">
-                                   <label for="espacio" class="control-label col-md-1"></label>    
-                                   <label for="menuname" class="control-label col-md-2">Codigo Familia</label>
-                                    <div class="form-group col-md-3">
-                                      <input type="text" required class="form-control" id="txtCodFa" name="menuname" placeholder="" maxlength="10">
-                                    </div>
-                                    
-                                    <label for="iconome" class="control-label col-md-2">Familia</label>
-                                    <div class="form-group col-md-3">
-                                      <input id="txtFamilia" name="iconome" type="text" placeholder=" " class="form-control" maxlength="250">
-                                    </div>                  
-                              </div>
-                              <br>
-                              <div class="row">
-                                 <label for="espacio" class="control-label col-md-11"></label>
-                                 <button type="button" class="btn btn-outline-success" id="btnContalogoPro" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
-                             </div>
-                          </div>
-                        </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <button type="button" class="btn btn-outline-success" id="btnContalogoPro" style="margin-bottom:10px"><i class="fa fa-plus"></i></button> 
+                                </div>                    
+                            </div>
+                                  <br>
+                                  <br>
+                            <div class="row">
+                                  <label for="espacio" class="control-label col-md-1"></label>
+                                  <label for="menuname" class="control-label col-md-2">Codigo Catalogo</label>
+                                  <div class="form-group col-md-3">
+                                      <input type="text" required class="form-control" id="txtCatalogo" name="catalogo" placeholder="" maxlength="80">
+                                  </div>
+                                    <label for="iconome" class="control-label col-md-2">Catalogo Producto</label>
+                                  <div class="form-group col-md-3">
+                                      <input id="txtCatProd" name="iconome" type="text" placeholder=" " class="form-control" maxlength="80">
+                                  </div>                
+                            </div>
+                            <div class="row">
+                                  <label for="espacio" class="control-label col-md-1"></label>    
+                                  <label for="menuname" class="control-label col-md-2">Codigo Familia</label>
+                                  <div class="form-group col-md-3">
+                                    <input type="text" required class="form-control" id="txtCodFa" name="menuname" placeholder="" maxlength="10">
+                                  </div>
+                                  
+                                  <label for="iconome" class="control-label col-md-2">Familia</label>
+                                  <div class="form-group col-md-3">
+                                    <input id="txtFamilia" name="iconome" type="text" placeholder=" " class="form-control" maxlength="250">
+                                  </div>                  
+                            </div>
+                            <br>
+                            <div class="col-md-10 col-sm-10">
+                                <form method="post" id="user_form">
+                                    <div class="table-responsive">
+                                        <table id="tblcatalogo" class="table table-striped table-border table-condensed table-info"  style="width: 100%;">
+                                            <thead class="text-center">
+                                                <tr> 
+                                                    <th style="display: none;">Id</th>
+                                                    <th>Producto</th>
+                                                    <th>Cod.Catalogo</th>
+                                                    <th>Catalogo</th>
+                                                    <th>Familia</th>
+                                                    <th>Estado</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody> 
+                                        </table>
+                                    </div> 
+                                </form>                                 
+                            </div>
                       </div>
-                    
-                    </div>
                     <!-- end of accordion -->
-                              <br>
-                              <br>
+                              
                       </div>
                       <div class="tab-pane fade" id="agencia" role="tabpanel" aria-labelledby="agencia-tab">
                               </br>
@@ -289,9 +361,10 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="menuname" class="control-label col-md-1">Sucursal</label>
                                 <div class="form-group col-md-3">
-                                <select class="form-control" id="cboProvincia" name="cboprovincia">
-                                            <?php foreach($menump as $fila): ?>
-                                                <option value="<?=$fila['Codigo']?>"></option>
+                                <select class="form-control" id="cboSucursal" name="cbosucursal" style="width: 100%;">
+                                           <option value="0">--Seleccione Sucursal--</option>
+                                            <?php foreach($sucursal as $fila): ?>
+                                                <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
                                             <?php endforeach ?>
                                     </select>
                                 </div>
@@ -299,9 +372,10 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <label for="cbomenupadre" class="control-label col-md-1">Zona</label>
                                 <div class="form-group col-md-3"> 
                                    
-                                    <select class="form-control" id="cboProvincia" name="cboprovincia">
-                                            <?php foreach($menump as $fila): ?>
-                                                <option value="<?=$fila['Codigo']?>"></option>
+                                    <select class="form-control" id="cboZona" name="cbozona" style="width: 100%;">
+                                            <option value="0">--Seleccione Zona--</option>
+                                            <?php foreach($zona as $fila): ?>
+                                                <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
                                             <?php endforeach ?>
                                     </select>
                                 </div>       
@@ -316,7 +390,8 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                  </div>
                               </div>
                         </div>
-                    </div>                             
+                    </div> 
+                                                
                 </div>
              </div>
         </div>

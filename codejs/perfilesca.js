@@ -2,7 +2,7 @@ $(document).ready(function(){
     var _codigo, _descripcion, _count = 0, _result = [], _objeto, _estado, _continuar, 
     _estadoold,_descripcionold, _checked, tblperfil;
 
-    $('#cboperfil').select2();
+    $('#cboPerfil').select2();
 
     $('#btnRegresar').click(function(){        
         $.redirect("");
@@ -11,14 +11,20 @@ $(document).ready(function(){
     tblperfil = $('#tblperfil').DataTable({
         "columnDefs": [{
             "data": null
-        },
-        { visible: false, targets: [0] }
+        }     
     ],
+        "language": {
+        "emptyTable": "datos"
+         }
     });
+
+    
+
+    
 
     $('#btnAgregar').click(function(){        
         
-        _codigo = $('#cboperfil').val();
+        _codigo = $('#cboPerfil').val();
         _descripcion = $.trim($('#txtDescripcion').val());
         _estado = 'Activo';
         _continuar = true;
