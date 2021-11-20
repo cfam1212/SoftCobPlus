@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid,_cedente, _cbocargo, _ext,_celular,_result = [];
+    var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid,_cedente, _cbocargo, _ext,_celular,_result = [], _cargo;
 
     $('#btnNuevo').click(function(){        
         $.redirect('newcede.php', {'mensaje': ''});
