@@ -53,7 +53,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Parámetro:</label>
                                     <div class="form-group col-md-3">
-                                      <input type="text" required class="form-control" id="txtParametro" name="parametro" value="<?php echo $datapara[0]['parametro'] ?>" >
+                                      <input type="text" required class="form-control" id="txtParametro" onKeyUp="this.value=this.value.toUpperCase();" maxlength="80" name="parametro" value="<?php echo $datapara[0]['parametro'] ?>" >
                                     </div>
                                 </div>
                                 <div class="row">

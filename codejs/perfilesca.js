@@ -245,8 +245,9 @@ $(document).ready(function(){
     });   
         
 
-    $('#cboperfil').change(function(){
+    $('#cboPerfil').change(function(){
         _cboid = $(this).val(); //obtener el id seleccionado
+        console.log(_cboid);
         tblperfil.clear().draw();
          if(_cboid !== '0'){
             $.ajax({

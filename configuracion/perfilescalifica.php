@@ -6,7 +6,7 @@ $mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(36,$_SESSION["i_emprid"],'Tipo Perfiles','','','','','',1,0,0,0,0,0));
+$resultado->execute(array(36,$_SESSION["i_emprid"],'TIPO PERFILES','','','','','',0,0,0,0,0,0));
 $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
