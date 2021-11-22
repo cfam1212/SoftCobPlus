@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-    var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid,_cedente, _cbocargo, _ext,_celular,_result = [], _cargo;
+    var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid,_cedente, _cbocargo, _ext,_celular,_result = [], _cargo,
+    _codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado;
 
     $('#btnNuevo').click(function(){        
         $.redirect('newcede.php', {'mensaje': ''});
@@ -46,11 +47,11 @@ $(document).ready(function(){
         }    
     });
 
-
+     //Contactos
     $('#btnContacto').click(function(){
 
       _contacto = $('#txtContacto').val();
-      _cbocargo = $('#cboCargo').val();
+     _cbocargo = $('#cboCargo').val();
       _cargo =$("#cboCargo option:selected").text();      
       _ext = $('#txtExt').val();
       _celular = $('#txtCelular').val();
@@ -88,12 +89,12 @@ $(document).ready(function(){
           _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _count + '" /></td>';                
           _output += '<td>' + _contacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + _count + '" value="' + _contacto + '" /></td>';
           _output += '<td class="text-center">' + _cargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + _count + '" value="' + _cbocargo + '" /></td>';
-          _output += '<td class="text-center">' + _ext + ' <input type="hidden" name="hidden_fax[]" id="txtFax' + _count + '" value="' + _ext + '" /></td>';
-          _output += '<td class="text-center">' + _celular + ' <input type="hidden" name="hidden_celular[]" id="txtCelular' + _count + '" value="' + _celular + '" /></td>';
+          _output += '<td class="text-center">' + _celular + ' <input type="hidden" name="hidden_fax[]" id="txtFax' + _count + '" value="' + _celular + '" /></td>';
+          _output += '<td class="text-center">' + _ext + ' <input type="hidden" name="hidden_celular[]" id="txtCelular' + _count + '" value="' + _ext + '" /></td>';
           _output += '<td class="text-center">' + _email1 + ' <input type="hidden" name="hidden_email1[]" id="txtEmail1' + _count + '" value="' + _email1 + '" /></td>';
           _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditCon" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCon" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
           _output += '</tr>';
           
           $('#tblcontacto').append(_output);
@@ -113,6 +114,108 @@ $(document).ready(function(){
           $('#txtExt').val('');
           $('#txtCelular').val('');
           $('#txtEmail1').val('');                      
+          
+      }   
+    
+
+    });
+
+    $(document).on("click",".btnEditCon",function(){
+      $("#formContacto").trigger("reset"); 
+      row_id = $(this).attr("id");
+      _norden = $('#orden' + row_id + '').val();
+      _detalleold = $('#txtDetalle' + row_id + '').val();
+      _valorvold = $('#txtValorv' + row_id + '').val();
+      _valoriold = $('#txtValori' + row_id + '').val();
+      _estadoold = $('#txtEstado' + row_id + '').val();
+      _deshabilitar = $('#btnUp' + row_id + '').attr('disabled');        
+      _tipoSave = 'edit';
+
+
+      $('#txtDetalle').val(_detalleold);
+      $('#txtValorv').val(_valorvold);
+      $('#txtValori').val(_valoriold == 0 ? '': _valoriold);
+      $('#hidden_row_id').val(row_id);
+      $("#header").css("background-color","#183456");
+      $("#header").css("color","white");
+      $(".modal-title").text("Editar Parametro");       
+      $("#btnAgregar").text("Modificar");
+      $("#modalPARAMETER").modal("show");
+  });
+
+     //Agencias
+    $('#btnAgencia').click(function(){
+
+      _agencia = $('#txtAgencia').val();
+      _codigo = $('#txtCodigo').val();
+      _cbosucursal = $('#cboSucursal').val();
+      _sucursal =$("#cboSucursal option:selected").text(); 
+      _cbozona = $('#cboZona').val();     
+      _zona =$("#cboZona option:selected").text();
+      _estado = 'Activo';
+      _continuar = true;
+
+      if(_codigo == '')
+      {
+          mensajesalertify("Ingrese Codigo..!","W","top-center",5);
+          return;
+      } 
+      
+      if(_agencia == '')
+      {
+          mensajesalertify("Ingrese Agencia..!","W","top-center",5);
+          return;
+      } 
+
+      if(_cbosucursal == '0')
+      {
+          mensajesalertify("Seleccione Sucursal..!","W","top-center",5);
+          return;
+      }
+      
+      $.each(_result,function(i,item)
+      {
+          if(item.arryagencia.toUpperCase() == _contacto.toUpperCase())
+          {                        
+              mensajesalertify("Agencia ya Existe..!","E","bottom-center",5); 
+              _continuar = false;
+              return false;
+          }else{
+              _continuar = true;
+          }
+      });
+
+      if(_continuar)
+      {
+          _count++;
+          _output = '<tr id="row_' + _count + '">';
+          _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _count + '" /></td>';                
+          _output += '<td>' + _agencia + ' <input type="hidden" name="hidden_agencia[]" id="txtAgencia' + _count + '" value="' + _agencia + '" /></td>';
+          _output += '<td class="text-center">' + _codigo + ' <input type="hidden" name="hidden_codigo[]" id="txtCodigo' + _count + '" value="' + _codigo + '" /></td>';
+          _output += '<td class="text-center">' + _sucursal + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + _count + '" value="' + _sucursal + '" /></td>';
+          _output += '<td class="text-center">' + _zona + ' <input type="hidden" name="hidden_zona[]" id="cboZona' + _count + '" value="' + _zona + '" /></td>';
+          _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_email1[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
+          _output += '<td><div class="text-center"><div class="btn-group">'
+          _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEditAgencia" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+          _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDeleteAgencia" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          _output += '</tr>';
+          
+          $('#tblagencia').append(_output);
+
+          _objeto = {
+              arrycodigo : parseInt(_count),
+              arryagencia : _agencia,
+              arrycodigo : _codigo,
+              arrysucursal : _sucursal,
+              arryzona : _zona,
+              arryestado : _estado,
+          }
+
+          _result.push(_objeto);   
+          $('#txtAgencia').val('');
+          $('#txtCodigo').val('');
+          $('#_cbosucursal').val('');
+          $('#_cbozona').val('');                    
           
       }   
     
