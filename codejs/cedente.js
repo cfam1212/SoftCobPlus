@@ -89,6 +89,7 @@ $(document).ready(function(){
           _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _count + '" /></td>';                
           _output += '<td>' + _contacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + _count + '" value="' + _contacto + '" /></td>';
           _output += '<td class="text-center">' + _cargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + _count + '" value="' + _cbocargo + '" /></td>';
+          _output += '<td style="display: none;" class="text-center">' + _cbocargo + ' <input type="hidden" name="hidden_codigocargo[]" id="codCargo' + _count + '" value="' + _cbocargo + '" /></td>';
           _output += '<td class="text-center">' + _celular + ' <input type="hidden" name="hidden_fax[]" id="txtFax' + _count + '" value="' + _celular + '" /></td>';
           _output += '<td class="text-center">' + _ext + ' <input type="hidden" name="hidden_celular[]" id="txtCelular' + _count + '" value="' + _ext + '" /></td>';
           _output += '<td class="text-center">' + _email1 + ' <input type="hidden" name="hidden_email1[]" id="txtEmail1' + _count + '" value="' + _email1 + '" /></td>';
@@ -125,6 +126,7 @@ $(document).ready(function(){
       row_id = $(this).attr("id");
       _norden = $('#orden' + row_id + '').val();
       _detalleold = $('#txtDetalle' + row_id + '').val();
+      _codcargoold = $('#codCargo' + row_id + '').val();
       _valorvold = $('#txtValorv' + row_id + '').val();
       _valoriold = $('#txtValori' + row_id + '').val();
       _estadoold = $('#txtEstado' + row_id + '').val();
@@ -132,9 +134,14 @@ $(document).ready(function(){
       _tipoSave = 'edit';
 
 
+      alert(_codcargoold);
       $('#txtDetalle').val(_detalleold);
+      $('#cboCargo1').val('GRF');
+      $('#cboCargo1').prop('selectedIndex', 1);
+      //$("#cboCargo1").prop("selectedIndex", 2);
+      //$("#cboCargo1").change();
       $('#txtValorv').val(_valorvold);
-      $('#txtValori').val(_valoriold == 0 ? '': _valoriold);
+      $('#txtValori').val(_valoriold == 0 ? '': _valoriold);      
       $('#hidden_row_id').val(row_id);
       $("#header").css("background-color","#183456");
       $("#header").css("color","white");
@@ -175,7 +182,7 @@ $(document).ready(function(){
       
       $.each(_result,function(i,item)
       {
-          if(item.arryagencia.toUpperCase() == _contacto.toUpperCase())
+          if(item.arryagencia.toUpperCase() == _agencia.toUpperCase())
           {                        
               mensajesalertify("Agencia ya Existe..!","E","bottom-center",5); 
               _continuar = false;
