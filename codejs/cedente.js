@@ -1,32 +1,11 @@
 $(document).ready(function(){
 
-    var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid,_cedente, _cbocargo, _ext,_celular,_resultcon = [],_resultpro = [], _cargo,_resultcat =[],
-    _resultage = [],_codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,_descripcion,_newproducto,_codigocat,_catalogo,_estadocat,_produc;
+    var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid,_cedente, _cbocargo, _ext,_celular,_resultcon = [], 
+    _resultpro = [], _cargo,_resultcat =[], _resultage = [],_codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
+    _descripcion, _newproducto, _codigocat, _catalogo, _estadocat, _produc, _email1, _email2;
 
     
     //validar email ingresado
-    $('#btnSave').click(function() {
-
-        _email = $('#txtEmail1').val();
-
-        if(_email != '')
-        {
-            var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-    
-            if (regex.test($('#txtEmail1').val().trim())) {
-                console.log('correcto');
-                
-        
-            } else {
-                mensajesalertify("Email es invalido","E","bottom-right",5);
-            }
-        }
-        
-    });
-
-    
-    
-    
     $('#btnNuevo').click(function(){        
         $.redirect('newcede.php', {'mensaje': ''});
     });
@@ -34,8 +13,6 @@ $(document).ready(function(){
     $('#btnRegresar').click(function(){        
       $.redirect("admincede.php");
     });  
-
-
 
       $('#cboProvincia').select2();
       $('#cboCiudad').select2();
@@ -79,7 +56,8 @@ $(document).ready(function(){
       _cargo =$("#cboCargo option:selected").text();      
       _ext = $('#txtExt').val();
       _celular = $('#txtCelular').val();
-      _email1 = $('#txtEmail1').val();
+      _email1 = $.trim($('#txtEmail1').val());
+      _email2 = $.trim($('#txtEmail2').val());
       _continuar = true;
 
       if(_contacto == '')
@@ -100,11 +78,23 @@ $(document).ready(function(){
           {                        
               mensajesalertify("Contacto ya Existe..!","E","bottom-center",5); 
               _continuar = false;
-              return false;
-          }else{
-              _continuar = true;
+              return;
           }
       });
+
+      if(_email1 != '')
+      {
+        var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+    
+        if (regex.test($('#txtEmail1').val().trim())) {
+            console.log('correcto');                            
+        } else {
+            mensajesalertify("Email es invalido","E","bottom-right",5);
+            _continuar = false;   
+            return;
+        }        
+      }
+      
 
       if(_continuar)
       {
@@ -118,9 +108,11 @@ $(document).ready(function(){
           _output += '<td class="text-center">' + _ext + ' <input type="hidden" name="hidden_ext[]" id="txtExt' + _count + '" value="' + _ext + '" /></td>';
           _output += '<td class="text-center">' + _email1 + ' <input type="hidden" name="hidden_email1[]" id="txtEmail1' + _count + '" value="' + _email1 + '" /></td>';
           _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btnEditCon  data-toggle="tooltip" data-placement="top" title="editar" btn-sm ml-3" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon data-toggle="tooltip" data-placement="top" title="eliminar" btn-sm ml-3" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btnEditCon btn-sm ml-3 data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3 data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
           _output += '</tr>';
+
+          console.log(_output);
           
           $('#tblcontacto').append(_output);
 
@@ -131,11 +123,13 @@ $(document).ready(function(){
               arrycelular : _celular,
               arryext : _ext,
               arryemail1 : _email1,
+              arryemail2 : _email2
           }
 
           _resultcon.push(_objeto);   
+
           $('#txtContacto').val('');
-          $('#cboCargo').val('');
+          $('#cboCargo').val('0').change();
           $('#txtExt').val('');
           $('#txtCelular').val('');
           $('#txtEmail1').val('');                      
@@ -158,12 +152,8 @@ $(document).ready(function(){
       _tipoSave = 'edit';
 
 
-    //   alert(_codcargoold);
       _newcontacto = $('#txtContactoMo').val(_contactoold);
-      //$('#cboCargo1').val('GRF');
-      //$('#cboCargo1').prop('selectedIndex', 1);
-      //$("#cboCargo1").prop("selectedIndex", 2);
-      //$("#cboCargo1").change();
+      $('#cboCargoMo').val(_codcargoold).change();
 
       $('#hidden_row_id').val(row_id);
       $("#header").css("background-color","#183456");
@@ -171,9 +161,6 @@ $(document).ready(function(){
       $(".modal-title").text("Editar Contacto");       
       $("#btnAgregar").text("Modificar");
       $("#modalCONTACTO").modal("show");
-
-
-
 
   });
 
@@ -185,6 +172,27 @@ $(document).ready(function(){
     _descripcion = $('#txtDescripcion').val();
     _estado = 'Activo';
     _continuar = true;
+    
+    //$("#tblcatalogo").children().remove();
+    //$("#tblcatalogo tr").remove(); 
+    // $("#tblcatalogo tbody tr").each(function (items) {
+        
+    //     $(this).children("td").each(function (index) {
+            
+            
+    //     });
+
+    // });
+
+    // var Table = document.getElementById("tblcatalogo");
+    // Table.innerHTML = "";    
+
+    var tableHeaderRowCount = 1;
+    var table = document.getElementById('tblcatalogo');
+    var rowCount = table.rows.length;
+    for (var i = tableHeaderRowCount; i < rowCount; i++) {
+        table.deleteRow(tableHeaderRowCount);
+    }    
 
     if(_producto == '')
       {
@@ -241,21 +249,20 @@ $(document).ready(function(){
     _produc = $('#txtProducto' + row_id + '').val();
     _tipoSave = 'save';
 
-
-    _newproducto = $('#txtProductoMo').val(_produc);
-    _codigocat = $('txtCodigoMo').val();
-    _catalogo = $('txtCatalogoMo').val();
-    _estadocat = 'Activo';
+    // _newproducto = $('#txtProductoMo').val(_produc);
+    // _codigocat = $('#txtCodigoMo').val();
+    // _catalogo = $('#txtCatalogoMo').val();
     
-    if(_estadocat == "Activo"){
-        $("#chkEstado").prop("checked", true);
-        $("#lblEstado").text("Activo");
-    }else{
-        $("#chkEstado").prop("checked", false);
-        $("#lblEstado").text("Inactivo");
-    }
+    // _estadocat = 'Activo';
+    
+    // if(_estadocat == "Activo"){
+    //     $("#chkEstado").prop("checked", true);
+    //     $("#lblEstado").text("Activo");
+    // }else{
+    //     $("#chkEstado").prop("checked", false);
+    //     $("#lblEstado").text("Inactivo");
+    // }
    
-
     $('#hidden_row_id').val(row_id);
     $("#header").css("background-color","#183456");
     $("#header").css("color","white");
@@ -265,27 +272,28 @@ $(document).ready(function(){
 
 });
 
-$("#chkEstado").click(function(){
-    _checked = $("#chkEstado").is(":checked");
-    if(_checked){
-        $("#lblEstado").text("Activo");
-        _estado = 'Activo';
-    }else{
-        $("#lblEstado").text("Inactivo");
-        _estado = 'Inactivo';
-    }
-});
+// $("#chkEstado").click(function(){
+//     _checked = $("#chkEstado").is(":checked");
+//     if(_checked){
+//         $("#lblEstado").text("Activo");
+//         _estado = 'Activo';
+//     }else{
+//         $("#lblEstado").text("Inactivo");
+//         _estado = 'Inactivo';
+//     }
+// });
 
 //agregar -catalogo-modal
 $('#btnAddCatalogo').click(function(){
 
-    _newproducto = $('#txtProductoMo').val(_produc);
-    _codigocat = $('txtCodigoMo').val();
-    _catalogo = $('txtCatalogoMo').val();
+    //_newproducto = $('#txtProductoMo').val(_produc);
+    _codigocat = $('#txtCodigoMo').val();
+    _catalogo = $('#txtCatalogoMo').val();
     _estadocat = 'Activo';
     _continuar = true;
 
-    alert(_codigocat);
+   // alert(_codigocat);
+   console.log(_resultcat);
 
     if(_codigocat == '')
       {
@@ -301,13 +309,11 @@ $('#btnAddCatalogo').click(function(){
       
       $.each(_resultcat,function(i,item)
       {
-          if(item.arrycodigocat.toUpperCase() == _codigocat.toUpperCase())
+          if(item.arryproductocat.toUpperCase() == _produc.toUpperCase() && item.arrycodigocat.toUpperCase() == _codigocat.toUpperCase())
           {                        
-              mensajesalertify("Producto ya Existe..!","E","bottom-center",5); 
+              mensajesalertify("Catalogo ya Existe..!","E","bottom-center",5); 
               _continuar = false;
-              return false;
-          }else{
-              _continuar = true;
+              return;
           }
       });
 
@@ -316,7 +322,7 @@ $('#btnAddCatalogo').click(function(){
           _count++;
           _output = '<tr id="row_' + _count + '">';
           _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _count + '" /></td>';                
-          _output += '<td>' + _newproducto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _count + '" value="' + _newproducto + '" /></td>';
+          _output += '<td>' + _produc + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _count + '" value="' + _produc + '" /></td>';
           _output += '<td class="text-center">' + _codigocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _count + '" value="' + _codigocat + '" /></td>';
           _output += '<td class="text-center">' + _catalogo + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _count + '" value="' + _catalogo + '" /></td>';
           _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _count + '" value="' + _estadocat + '" /></td>';
@@ -329,18 +335,15 @@ $('#btnAddCatalogo').click(function(){
 
           _objeto = {
               arrycodigo : parseInt(_count),
-              arryproductocat : _newproducto,
+              arryproductocat : _produc,
               arrycodigocat : _codigocat,
               arrycatalogo : _catalogo,
               arryestado : _estadocat,
           }
 
           _resultcat.push(_objeto);
-          $("#modalCATALOGO").modal("hide");   
-                        
-          
+          $("#modalCATALOGO").modal("hide");                                     
       }   
-
   });
 
 
@@ -423,9 +426,6 @@ $('#btnAddCatalogo').click(function(){
     
 
     });
-
-
-
 
     $('#btnSave').click(function(){
 

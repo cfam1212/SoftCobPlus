@@ -5,8 +5,6 @@ $(document).ready(function(){
     _deshabilitar, id_now, _ordennow, _checked, _detallenow, _valorvnow, _valorinow, _estadonow, id_ant,
     _ordenant, _detalleant, _valorvant, _valoriant, _estadoant, _resultado;
 
-  
-    
     _mensaje = $('#mensaje').val();
 
     if(_mensaje != ''){
@@ -24,8 +22,6 @@ $(document).ready(function(){
         $.redirect("parametroadmin.php");
     });  
 
- 
-
     $(document).on("click","#btnEliminar",function(){        
         _fila = $(this).closest("tr");
         _data = $('#table_data')._dataTable().fnGet_data(_fila);
@@ -33,7 +29,6 @@ $(document).ready(function(){
         //$.redirect('parametroedit.php', {'id': _id});
     });
 
- 
     //modal
     $("#btnAdd").click(function(){        
         $("#formParam").trigger("reset");

@@ -220,7 +220,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <br>
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-11"></label>
-                                    <button type="button" class="btn btn-outline-success data-toggle="tooltip" data-placement="top" title="agregar" " id="btnContacto"
+                                    <button type="button" class="btn btn-outline-success data-toggle="tooltip data-placement="top" title="agregar" id="btnContacto"
                                         style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                 </div>
                                 <br>
@@ -493,22 +493,22 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formCatalogo">
                 <div class="modal-body">
-                   <div class="form-group">
+                   <!-- <div class="form-group">
                         <label for="menuname" class="control-label col-md-2">Producto</label>
                         <input type="text" required class="form-control" id="txtProductoMo" name="catalogo" maxlength="80">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="menuname" class="control-label col-md-4">Codigo Catalogo</label>
                         <input type="text" required class="form-control" id="txtCodigoMo" name="catalogo" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
                     <div class="form-group">
-                        <label for="iconome" class="control-label col-md-2">Catalogo</label>
-                        <input id="txtCatalogoMo" name="iconome" type="text" class="form-control" maxlength="250" onKeyUp="this.value=this.value.toUpperCase();">
+                        <label for="catalogo" class="control-label col-md-2">Catalogo</label>
+                        <input id="txtCatalogoMo" name="txtcatalogo" type="text" class="form-control" maxlength="250" onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
-                    <div class="form-check" id="divcheck">
+                    <!-- <div class="form-check" id="divcheck">
                         <input type="checkbox" id="chkEstado" class="form-check-input">
                         <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
