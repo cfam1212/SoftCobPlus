@@ -143,8 +143,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="iconome" class="control-label col-md-1">Url</label>
                                             <div class="form-group col-md-3">
-                                                <input id="txtUrl" name="iconome" type="text" placeholder=" "
-                                                    class="form-control" maxlength="80">
+                                                <input id="txtUrl" name="iconome" type="text" class="form-control" maxlength="80">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -209,57 +208,61 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="email" class="control-label col-md-1">Email 1</label>
                                     <div class="form-group col-md-3">
-                                        <input type="text" required class="form-control" id="txtEmail1" name="menuname"
-                                            maxlength="80">
+                                        <input type="text" required class="form-control" id="txtEmail1" maxlength="80" onKeyUp="this.value=this.value.toLowerCase();">
                                     </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="email" class="control-label col-md-1">Email 2</label>
                                     <div class="form-group col-md-3">
-                                        <input id="txtEmail2" name="email" type="text" placeholder=" "
-                                            class="form-control" maxlength="80">
+                                        <input id="txtEmail2" name="email" type="text" class="form-control" maxlength="80" onKeyUp="this.value=this.value.toLowerCase();">
                                     </div>
                                 </div>
                                 <br>
                                 <br>
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-11"></label>
-                                    <button type="button" class="btn btn-outline-success" id="btnContacto"
+                                    <button type="button" class="btn btn-outline-success data-toggle="tooltip" data-placement="top" title="agregar" " id="btnContacto"
                                         style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                 </div>
                                 <br>
-                                <div class="col-md-10 col-sm-11">
-                                    <form method="post" id="user_form">
-                                        <div class="table-responsive">
-                                            <table id="tblcontacto"
-                                                class="table table-striped table-border table-condensed table-info"
-                                                style="width: 100%;">
-                                                <thead class="text-center">
-                                                    <tr>
-                                                        <th style="display: none;">Id</th>
-                                                        <th>Contacto</th>
-                                                        <th>Cargo</th>
-                                                        <th style="display: none;">CodigoCargo</th>
-                                                        <th>Celular</th>
-                                                        <th>Ext</th>
-                                                        <th>Email</th>
-                                                        <th>Acciones</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody></tbody>
-                                            </table>
-                                        </div>
-                                    </form>
-                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="col-md-1 col-sm-1">
+                                    </div>
+                                    <div class="col-md-10 col-sm-10">
+                                        <form method="post" id="user_form">
+                                            <div class="table-responsive">
+                                                <table id="tblcontacto"
+                                                    class="table table-striped table-border table-condensed table-info"
+                                                    style="width: 100%;">
+                                                    <thead class="text-center">
+                                                        <tr>
+                                                            <th style="display: none;">Id</th>
+                                                            <th>Contacto</th>
+                                                            <th>Cargo</th>
+                                                            <th style="display: none;">CodigoCargo</th>
+                                                            <th>Celular</th>
+                                                            <th>Ext</th>
+                                                            <th>Email</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-1 col-sm-1">
+                                    </div>
+                               </div>
                             </div>
 
                             <div class="tab-pane fade" id="producto" role="tabpanel" aria-labelledby="producto-tab">
                                 <br>
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-1"></label>
-                                    <label for="menuname" class="control-label col-md-1">Producto</label>
+                                    <label for="producto" class="control-label col-md-1">Producto</label>
                                     <div class="form-group col-md-7">
                                         <input type="text" required class="form-control" id="txtProducto"
-                                            name="producto" placeholder="" maxlength="150">
+                                            name="producto" placeholder="" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <button type="button" class="btn btn-outline-success" id="btnProducto"
@@ -270,7 +273,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Descripcion</label>
                                     <div class="form-group col-md-9">
-                                        <!-- <input type="text" required class="form-control" id="txtDescripcion" name="descripcion" placeholder="" maxlength="250"> -->
                                         <textarea name="observa" id="txtDescripcion" class="form-control col-md-9"
                                             maxlength="250" onkeydown="return (event.keyCode!=13);"></textarea>
                                     </div>
@@ -378,7 +380,10 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                 </div>
                                 <br>
-                                <div class="col-md-10 col-sm-11">
+                                <div class="col-md-12 col-sm-12">
+                                <div class="col-md-1 col-sm-1">
+                                </div>
+                                <div class="col-md-10 col-sm-10">
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
                                             <table id="tblagencia"
@@ -399,6 +404,9 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             </table>
                                         </div>
                                     </form>
+                                </div>
+                                <div class="col-md-1 col-sm-1">
+                                </div>
                                 </div>
                                 <br>
                                 <br>
@@ -421,7 +429,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 
-<div class="modal fade" id="modalPARAMETER" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal fade" id="modalCONTACTO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModal">
             <div class="modal-header" id="header">
@@ -434,12 +442,12 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="contacto" class="col-form-label">Contacto</label>
-                        <input type="text" id="txtContacto" required class="form-control" maxlength="150"
+                        <input type="text" id="txtContactoMo" required class="form-control" maxlength="150"
                             onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
                     <div class="form-group">
                         <label for="cbocargo" class="control-label">Cargo</label>
-                        <select class="form-control" id="cboCargo1" name="cboCargo1" style="width: 100%;">
+                        <select class="form-control" id="cboCargoMo" name="cboCargo1" style="width: 100%;">
                             <option value="0">--Seleccione Cargo--</option>
                             <?php foreach($cargo as $fila): ?>
                             <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
@@ -448,25 +456,25 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="form-group">
                         <label for="valorv" class="col-form-label">Celular</label>
-                        <input type="text" id="txtCelular" class="form-control" maxlength="10"
+                        <input type="text" id="txtCelularMo" class="form-control" maxlength="10"
                             onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                     </div>
                     <div class="form-group">
                         <label for="valori" class="col-form-label">Ext</label>
-                        <input type="text" id="txtExt"
+                        <input type="text" id="txtExtMo"
                             onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
                             class="form-control" maxlength="10">
                     </div>
 
                     <div class="form-group">
                         <label for="email" class="col-form-label">Email</label>
-                        <input type="text" id="txtEmail" required class="form-control" maxlength="80">
+                        <input type="text" id="txtEmail1Mo" required class="form-control" maxlength="80">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAgregarCon" class="btn btn-success ml-3"><i class='fa fa-plus'></i>
-                        Agregar</button>
+                    <button type="button" id="btnEditarCon" class="btn btn-success ml-3"><i class='fa fa-plus'></i>
+                    Modificar</button>
                     <!-- <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button> -->
                 </div>
             </form>
@@ -485,27 +493,32 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formCatalogo">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="menuname" class="control-label col-md-2">Codigo Catalogo</label>
-                        <input type="text" required class="form-control" id="txtCatalogo" name="catalogo" placeholder=""
-                            maxlength="80">
+                   <div class="form-group">
+                        <label for="menuname" class="control-label col-md-2">Producto</label>
+                        <input type="text" required class="form-control" id="txtProductoMo" name="catalogo" maxlength="80">
                     </div>
                     <div class="form-group">
-                        <label for="iconome" class="control-label col-md-2">Catalogo Producto</label>
-                        <input id="txtCatProd" name="iconome" type="text" placeholder=" " class="form-control"
-                            maxlength="80">
+                        <label for="menuname" class="control-label col-md-4">Codigo Catalogo</label>
+                        <input type="text" required class="form-control" id="txtCodigoMo" name="catalogo" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
+                    </div>
+                    <div class="form-group">
+                        <label for="iconome" class="control-label col-md-2">Catalogo</label>
+                        <input id="txtCatalogoMo" name="iconome" type="text" class="form-control" maxlength="250" onKeyUp="this.value=this.value.toUpperCase();">
+                    </div>
+                    <div class="form-check" id="divcheck">
+                        <input type="checkbox" id="chkEstado" class="form-check-input">
+                        <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAddCatalogo" class="btn btn-success ml-3"><i class='fa fa-plus'></i>
-                        Agregar</button>
-                    <!-- <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button> -->
+                    <button type="button" id="btnAddCatalogo" class="btn btn-success ml-3"><i class='fa fa-plus'></i>Agregar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>
 <script src="../codejs/cedente.js" type="text/javascript"></script>
