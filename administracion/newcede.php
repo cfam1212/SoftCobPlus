@@ -306,7 +306,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Codigo</label>
                                     <div class="form-group col-md-3">
-                                        <input type="text" required class="form-control" id="txtCodigo" name="codagencia" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
+                                        <input type="text" required class="form-control" id="txtCodigoAge" name="codagencia" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
                                     </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="cbomenupadre" class="control-label col-md-1">Agencia</label>
@@ -437,7 +437,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 <div class="modal fade" id="modalCATALOGO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModal">
-            <div class="modal-header" id="header">
+            <div class="modal-header" id="headercat">
                 <h5 class="modal-title" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -474,7 +474,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 <div class="modal fade" id="modalAGENCIA" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModal">
-            <div class="modal-header" id="header">
+            <div class="modal-header" id="headeragencia">
                 <h5 class="modal-title" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -488,7 +488,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="form-group">
                         <label for="codigo" class="control-label col-md-4">Codigo</label>
-                        <input type="text" required class="form-control" id="txtCodigoMo" name="codigo" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
+                        <input type="text" required class="form-control" id="txtCodigoAgeMo" name="codigo" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
                     <div class="form-group">
                         <label for="cbosucursal" class="control-label">Sucursal</label>
