@@ -7,6 +7,10 @@ $(document).ready(function(){
 
     _mensaje = $('#mensaje').val();
 
+    $("#modalPARAMETER").draggable({
+        handle: ".modal-header"
+    });  
+
     if(_mensaje != ''){
 
         mensajesalertify(_mensaje,"S","bottom-center",5);
@@ -121,8 +125,8 @@ $(document).ready(function(){
                 _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="subirnivel" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + _count + '"><i class="fa fa-arrow-up"></i></button>';
-                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit"data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                 _output += '</tr>';
                 
                 $('#tblparameter').append(_output);
@@ -359,8 +363,8 @@ $(document).ready(function(){
         _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
-        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
-        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
         $('#row_' + orden + '').html(_output);
     }
 
@@ -380,8 +384,8 @@ $(document).ready(function(){
         _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
-        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
-        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
         $('#row_' + orden + '').html(_output);
     }
 
@@ -400,8 +404,8 @@ $(document).ready(function(){
         _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + ordenx + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + ordenx + '"><i class="fa fa-arrow-up"></i></button>';
-        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + ordenx + '"><i class="fa fa-pencil-square-o"></i></button>';
-        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="'+ ordenx + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + ordenx + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="'+ ordenx + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
         $('#row_' + rowmod + '').html(_output);
     }
 
@@ -422,8 +426,8 @@ $(document).ready(function(){
         _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + norden + '" value="' + estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="subirnivel" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + norden + '"><i class="fa fa-arrow-up"></i></button>';
-        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" id="' + norden + '"><i class="fa fa-pencil-square-o"></i></button>';
-        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="' + norden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + norden + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + norden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
         _output += '</tr>';
                         
         $('#tblparameter').append(_output);        

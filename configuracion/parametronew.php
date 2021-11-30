@@ -1,12 +1,12 @@
 <?php
 
-require_once '../dashmenu/panel_menu.php'; 
+require_once '../dashmenu/panel_menu.php';
 
 $mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
 
 $consulta = "CALL sp_consulta_datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(0,$_SESSION["i_emprid"],'','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(0, $_SESSION["i_emprid"], '', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="right_col" role="main">
@@ -29,18 +29,15 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="x_content">
                         <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="parametro-tab" data-toggle="tab" href="#parametro"
-                                    role="tab" aria-controls="parametro" aria-selected="true">Datos Parámetro</a>
+                                <a class="nav-link active" id="parametro-tab" data-toggle="tab" href="#parametro" role="tab" aria-controls="parametro" aria-selected="true">Datos Parámetro</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="detalle-tab" data-toggle="tab" href="#detalle" role="tab"
-                                    aria-controls="detalle" aria-selected="false">Detalles</a>
+                                <a class="nav-link" id="detalle-tab" data-toggle="tab" href="#detalle" role="tab" aria-controls="detalle" aria-selected="false">Detalles</a>
                             </li>
 
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="parametro" role="tabpanel"
-                                aria-labelledby="parametro-tab">
+                            <div class="tab-pane fade show active" id="parametro" role="tabpanel" aria-labelledby="parametro-tab">
                                 <br>
                                 <form class="form-horizontal" role="form">
                                     <fieldset>
@@ -48,19 +45,14 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Parámetro:</label>
                                             <div class="form-group col-md-3">
-                                                <input type="text" required class="form-control" id="txtParametro"
-                                                    name="parametro" placeholder="" maxlength="80"
-                                                    onKeyUp="this.value=this.value.toUpperCase();">
+                                                <input type="text" required class="form-control" id="txtParametro" name="parametro" placeholder="" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Descripción</label>
                                             <div class="form-group col-md-10">
-                                                <textarea name="observa" id="txtDescripcion"
-                                                    class="form-control col-md-8"
-                                                    onKeyUp="this.value=this.value.toUpperCase();" maxlength="255"
-                                                    onkeydown="return (event.keyCode!=13);"></textarea>
+                                                <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" onKeyUp="this.value=this.value.toUpperCase();" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
                                             </div>
                                         </div>
 
@@ -71,8 +63,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class='btn-group'>
                                     <button class="btn btn-outline-primary" id="btnRegresar"><i class='fa fa-undo'></i>
                                         Regresar</button>
-                                    <button class="btn btn-outline-success ml-3 float-end" id="btnSave"><i
-                                            class='fa fa-save'></i> Guardar</button>
+                                    <button class="btn btn-outline-success ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                                 </div>
 
                             </div>
@@ -80,8 +71,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-11"></label>
-                                    <button type="button" class="btn btn-outline-success" id="btnAdd"
-                                        style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                                    <button type="button" class="btn btn-outline-success" id="btnAdd" data-toggle="tooltip" data-placement="top" title="agregar detalle" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                 </div>
                                 <br>
                                 <br>
@@ -91,9 +81,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblparameter"
-                                                    class="table table-striped table-border table-condensed table-info"
-                                                    style="width: 100%;">
+                                                <table id="tblparameter" class="table table-striped table-border table-condensed table-info" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">NOrden</th>
@@ -134,19 +122,15 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="detalle" class="col-form-label">Detalle</label>
-                        <input type="text" id="txtDetalle" required class="form-control" maxlength="80"
-                            onKeyUp="this.value=this.value.toUpperCase();">
+                        <input type="text" id="txtDetalle" required class="form-control" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
                     <div class="form-group">
                         <label for="valorv" class="col-form-label">Valor Text</label>
-                        <input type="text" id="txtValorv" class="form-control" maxlength="255"
-                            onKeyUp="this.value=this.value.toUpperCase();">
+                        <input type="text" id="txtValorv" class="form-control" maxlength="255" onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
                     <div class="form-group">
                         <label for="valori" class="col-form-label">Valor Entero</label>
-                        <input type="text" id="txtValori"
-                            onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
-                            class="form-control" maxlength="5">
+                        <input type="text" id="txtValori" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="5">
                     </div>
                     <div class="form-check" id="divcheck">
                         <input type="checkbox" id="chkEstado" class="form-check-input">

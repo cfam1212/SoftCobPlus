@@ -2,18 +2,18 @@
 
 
 
-require_once '../dashmenu/panel_menu.php'; 
+require_once '../dashmenu/panel_menu.php';
 
 ?>
 
 <input type="hidden" id="txtusuaid" value="<?php echo $_SESSION["i_usuaid"] ?>">
 
 
-<div class="right_col" role="main"> 
+<div class="right_col" role="main">
     <div class="">
-        <div class="clearfix"></div>      
-    </div>   
-   
+        <div class="clearfix"></div>
+    </div>
+
     <div class="row">
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
@@ -31,19 +31,19 @@ require_once '../dashmenu/panel_menu.php';
                         <div class="item form-group">
                             <label for="detalle" class="col-form-label col-md-2">Contraseña Actual:</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="password" id="txtcontactual" required="required" class="form-control" maxlength="20">
+                                <input type="password" id="txtcontactual" required="required" class="form-control" maxlength="50">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label for="detalle" class="col-form-label col-md-2">Nueva Contraseña:</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="password" id="txtcontnueva" name="last-name" required="required" class="form-control" maxlength="10">
+                                <input type="password" id="txtcontnueva" name="last-name" required="required" class="form-control" maxlength="50">
                             </div>
                         </div>
                         <div class="item form-group">
                             <label for="detalle" class="col-form-label col-md-2 ">Confirmarcion:</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input id="txtconfcont" class="form-control" type="password" name="middle-name" maxlength="10">
+                                <input id="txtconfcont" class="form-control" type="password" name="middle-name" maxlength="50">
                             </div>
                         </div>
                         <div class="ln_solid"></div>
@@ -52,13 +52,13 @@ require_once '../dashmenu/panel_menu.php';
                                 <!-- <button class="btn btn-outline-primary" id = "btnRegresar" ><i class='fa fa-undo'></i> Regresar</button> -->
                                 <button class="btn btn-outline-success ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                             </div>
-                        </div>  
-                                        
+                        </div>
+
                     </form>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>

@@ -1,11 +1,11 @@
 <?php
-require_once '../dashmenu/panel_menu.php'; 
+require_once '../dashmenu/panel_menu.php';
 
 $mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(1,$_SESSION["i_emprid"],'','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(1, $_SESSION["i_emprid"], '', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -26,39 +26,39 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </ul>
                         <div class="clearfix"></div>
                     </div>
-                                                
-                      <button type="button" class="btn btn-outline-success" id="btnNuevo" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
-                    
+
+                    <button type="button" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="nuevo menu" id="btnNuevo" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+
                     <div class="x_content">
                         <br />
-                      
-                        <table id="tablenoorder" class="table table-striped jambo_table bulk_action table-info" style="width: 100%;">
-                                <thead>
-                                    <tr>                            
-                                        <th>Id</th>
-                                        <th>Menu</th>
-                                        <th>Icono</th>
-                                        <th>Estado</th>
-                                        <th style="text-align: center;">Opciones</th>
-                                    </tr>
-                                </thead>                        
-                                <tbody>
-                                    <?php
-                                        if(count($data) == 0){
-                                            $disablesub = 'disabled="disabled"';
-                                        }else{
-                                            $disablesub = '';
-                                        }                                        
-                                    foreach($data as $datos){
-                                    ?>
-                                        <?php
 
-                                            if($datos['MenuId']=='200001'){
-                                                $disabledel = 'disabled="disabled"';
-                                            }else{
-                                                $disabledel = '';
-                                            }                                            
-                                        ?>                                        
+                        <table id="tablenoorder" class="table table-striped jambo_table bulk_action table-info" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Menu</th>
+                                    <th>Icono</th>
+                                    <th>Estado</th>
+                                    <th style="text-align: center;">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if (count($data) == 0) {
+                                    $disablesub = 'disabled="disabled"';
+                                } else {
+                                    $disablesub = '';
+                                }
+                                foreach ($data as $datos) {
+                                ?>
+                                    <?php
+
+                                    if ($datos['MenuId'] == '200001') {
+                                        $disabledel = 'disabled="disabled"';
+                                    } else {
+                                        $disabledel = '';
+                                    }
+                                    ?>
                                     <tr>
                                         <td><?php echo $datos['MenuId'] ?></td>
                                         <td><?php echo $datos['Menu'] ?></td>
@@ -66,19 +66,19 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td><?php echo $datos['Estado'] ?></td>
                                         <td></td>
                                     </tr>
-                                    <?php }
-                                    ?>                          
-                                </tbody>
-                            </table>                        
+                                <?php }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
 </div>
 
-</div>     
-     <?php require_once '../dashmenu/panel_footer.php'; ?>
-     <script src="../codejs/menu.js" type="text/javascript"></script>
-   </body>
-</html> 
+
+<?php require_once '../dashmenu/panel_footer.php'; ?>
+<script src="../codejs/menu.js" type="text/javascript"></script>
+
+</html>

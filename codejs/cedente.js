@@ -4,8 +4,21 @@ $(document).ready(function(){
     _resultpro = [], _cargo,_resultcat =[], _resultage = [],_codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
     _descripcion, _newproducto, _codigocat, _catalogo, _estadocat, _produc, _email1, _email2;
 
+
+
+    $("#modalCONTACTO").draggable({
+        handle: ".modal-header"
+    }); 
     
-    //validar email ingresado
+    $("#modalCATALOGO").draggable({
+        handle: ".modal-header"
+    });  
+
+    $("#modalAGENCIA").draggable({
+        handle: ".modal-header"
+    }); 
+
+    
     $('#btnNuevo').click(function(){        
         $.redirect('newcede.php', {'mensaje': ''});
     });
@@ -108,8 +121,8 @@ $(document).ready(function(){
           _output += '<td class="text-center">' + _ext + ' <input type="hidden" name="hidden_ext[]" id="txtExt' + _count + '" value="' + _ext + '" /></td>';
           _output += '<td class="text-center">' + _email1 + ' <input type="hidden" name="hidden_email1[]" id="txtEmail1' + _count + '" value="' + _email1 + '" /></td>';
           _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btnEditCon btn-sm ml-3 data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3 data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btnEditCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
           _output += '</tr>';
 
           console.log(_output);
@@ -152,8 +165,11 @@ $(document).ready(function(){
       _tipoSave = 'edit';
 
 
-      _newcontacto = $('#txtContactoMo').val(_contactoold);
+      $('#txtContactoMo').val(_contactoold);
       $('#cboCargoMo').val(_codcargoold).change();
+      $('#txtCelularMo').val(_celularold);
+      $('#txtExtMo').val(_extold);
+      $('#txtEmail1Mo').val(_email1old);
 
       $('#hidden_row_id').val(row_id);
       $("#header").css("background-color","#183456");
@@ -172,20 +188,7 @@ $(document).ready(function(){
     _descripcion = $('#txtDescripcion').val();
     _estado = 'Activo';
     _continuar = true;
-    
-    //$("#tblcatalogo").children().remove();
-    //$("#tblcatalogo tr").remove(); 
-    // $("#tblcatalogo tbody tr").each(function (items) {
-        
-    //     $(this).children("td").each(function (index) {
-            
-            
-    //     });
-
-    // });
-
-    // var Table = document.getElementById("tblcatalogo");
-    // Table.innerHTML = "";    
+      
 
     var tableHeaderRowCount = 1;
     var table = document.getElementById('tblcatalogo');
@@ -220,9 +223,9 @@ $(document).ready(function(){
           _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _count + '" value="' + _producto + '" /></td>';
           _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _count + '" value="' + _estado + '" /></td>';
           _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" id="' + _count + '"><i class="fa fa-upload"></i></button>';
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _count + '"><i class="fa fa-upload"></i></button>';
+          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
           _output += '</tr>';
           
           $('#tblproducto').append(_output);
@@ -249,19 +252,6 @@ $(document).ready(function(){
     _produc = $('#txtProducto' + row_id + '').val();
     _tipoSave = 'save';
 
-    // _newproducto = $('#txtProductoMo').val(_produc);
-    // _codigocat = $('#txtCodigoMo').val();
-    // _catalogo = $('#txtCatalogoMo').val();
-    
-    // _estadocat = 'Activo';
-    
-    // if(_estadocat == "Activo"){
-    //     $("#chkEstado").prop("checked", true);
-    //     $("#lblEstado").text("Activo");
-    // }else{
-    //     $("#chkEstado").prop("checked", false);
-    //     $("#lblEstado").text("Inactivo");
-    // }
    
     $('#hidden_row_id').val(row_id);
     $("#header").css("background-color","#183456");
@@ -272,16 +262,6 @@ $(document).ready(function(){
 
 });
 
-// $("#chkEstado").click(function(){
-//     _checked = $("#chkEstado").is(":checked");
-//     if(_checked){
-//         $("#lblEstado").text("Activo");
-//         _estado = 'Activo';
-//     }else{
-//         $("#lblEstado").text("Inactivo");
-//         _estado = 'Inactivo';
-//     }
-// });
 
 //agregar -catalogo-modal
 $('#btnAddCatalogo').click(function(){
@@ -327,8 +307,8 @@ $('#btnAddCatalogo').click(function(){
           _output += '<td class="text-center">' + _catalogo + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _count + '" value="' + _catalogo + '" /></td>';
           _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _count + '" value="' + _estadocat + '" /></td>';
           _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
           _output += '</tr>';
           
           $('#tblcatalogo').append(_output);
@@ -399,10 +379,10 @@ $('#btnAddCatalogo').click(function(){
           _output += '<td class="text-center">' + _codigo + ' <input type="hidden" name="hidden_codigo[]" id="txtCodigo' + _count + '" value="' + _codigo + '" /></td>';
           _output += '<td class="text-center">' + _sucursal + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + _count + '" value="' + _sucursal + '" /></td>';
           _output += '<td class="text-center">' + _zona + ' <input type="hidden" name="hidden_zona[]" id="cboZona' + _count + '" value="' + _zona + '" /></td>';
-          _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_email1[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
+          _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_email1[]" id="txtEstadoAg' + _count + '" value="' + _estado + '" /></td>';
           _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEditAgencia" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDeleteAgencia" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+          _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
           _output += '</tr>';
           
           $('#tblagencia').append(_output);
@@ -426,6 +406,91 @@ $('#btnAddCatalogo').click(function(){
     
 
     });
+
+    //Modal Agencia-editar
+
+    $(document).on("click",".btnEditAgencia",function(){
+        $("#formAgencia").trigger("reset"); 
+        row_id = $(this).attr("id");
+        _agenciaold = $('#txtAgencia' + row_id + '').val();
+        _codigold = $('#txtCodigo' + row_id + '').val();
+        _sucursalold = $('#cboSucursal' + row_id + '').val();
+        _zonaold = $('#cboZona' + row_id + '').val();
+        _estadooldag = $('#txtEstadoAg' + row_id + '').val();
+        _tipoSave = 'edit';
+
+        // alert(_zonaold);
+  
+  
+        $('#txtAgenciaMo').val(_agenciaold);
+        $('#txtCodigoMo').val(_codigold);
+
+        $('#cboSucursalMo').val(_sucursalold).change();
+        $('#cboZonaMo').val(_zonaold).change();
+
+
+
+        if(_estadooldag == "Activo"){
+            $("#chkEstadoAg").prop("checked", true);
+            $("#lblEstadoAg").text("Activo");
+        }else{
+            $("#chkEstadoAg").prop("checked", false);
+            $("#lblEstadoAg").text("Inactivo");
+        }
+  
+        // $('#hidden_row_id').val(row_id);
+        $("#header").css("background-color","#183456");
+        $("#header").css("color","white");
+        $(".modal-title").text("Editar Agencia");       
+        $("#btnAgregar").text("Modificar");
+        $("#modalAGENCIA").modal("show");
+
+    });
+
+
+    //eliminar -agencia-modal
+
+    $(document).on("click",".btnDeleteAgencia",function(){
+        row_id = $(this).attr("id");
+        _agencia = $('#txtAgencia').val();
+         
+        alertify.confirm('El registro sera eliminado', 'Esta seguro de eliminar' +' '+ _agencia +'..?' , function(){ 
+
+            FunRemoveItemFromArr(_resultage, _agencia);
+            $('#row_' + row_id + '').remove();
+            _count--;
+
+         }
+        , function(){ });
+    });
+
+    function FunRemoveItemFromArr(arr, deta)
+    {
+        $.each(arr,function(i,item){
+            if(item.arrydescripcion == deta)
+            {
+                arr.splice(i, 1);
+                return false;
+            }else{
+                continuar = true;
+            }
+        });        
+    }; 
+
+    
+
+    $("#chkEstadoAg").click(function(){
+        _checked = $("#lblEstadoAg").is(":checked");
+        if(_checked){
+            $("#lblEstado").text("Activo");
+            _estado = 'Activo';
+        }else{
+            $("#lblEstado").text("Inactivo");
+            _estado = 'Inactivo';
+        }
+    });	
+
+    //GRABAR CEDENTE
 
     $('#btnSave').click(function(){
 

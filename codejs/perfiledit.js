@@ -3,6 +3,8 @@ $(document).ready(function(){
     var _continuar = true, _result = [], i = 0, _nameoldperfil, _idperfil, _crear, _modificar, _eliminar, _estado, _checked, _nombreperfil,
     _observacion, _rowcollection;
 
+    
+
     _nameoldperfil = $.trim($("#txtPerfil").val());
     _idperfil = $.trim($("#idPerfil").val());
     _crear = $("#lblCrear").text();

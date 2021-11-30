@@ -1,30 +1,30 @@
 <?php
 
-require_once '../dashmenu/panel_menu.php'; 
+require_once '../dashmenu/panel_menu.php';
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(29,0,'','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(29, 0, '', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
 $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(36,$_SESSION["i_emprid"],'NIVEL ARBOL','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(36, $_SESSION["i_emprid"], 'NIVEL ARBOL', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
 $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(36,$_SESSION["i_emprid"],'SUCURSAL','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(36, $_SESSION["i_emprid"], 'SUCURSAL', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
 $sucursal = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(36,$_SESSION["i_emprid"],'ZONAS','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(36, $_SESSION["i_emprid"], 'ZONAS', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
 $zona = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(36,$_SESSION["i_emprid"],'CARGOS','','','','','',0,0,0,0,0,0));
+$resultado->execute(array(36, $_SESSION["i_emprid"], 'CARGOS', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
 $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -49,25 +49,20 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="x_content">
                         <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="cedente-tab" data-toggle="tab" href="#cedente" role="tab"
-                                    aria-controls="cedente" aria-selected="true">Datos Cedente</a>
+                                <a class="nav-link active" id="cedente-tab" data-toggle="tab" href="#cedente" role="tab" aria-controls="cedente" aria-selected="true">Datos Cedente</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="contacto-tab" data-toggle="tab" href="#contacto" role="tab"
-                                    aria-controls="contacto" aria-selected="false">Contactos</a>
+                                <a class="nav-link" id="contacto-tab" data-toggle="tab" href="#contacto" role="tab" aria-controls="contacto" aria-selected="false">Contactos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="producto-tab" data-toggle="tab" href="#producto" role="tab"
-                                    aria-controls="producto" aria-selected="false">Productos</a>
+                                <a class="nav-link" id="producto-tab" data-toggle="tab" href="#producto" role="tab" aria-controls="producto" aria-selected="false">Productos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="agencia-tab" data-toggle="tab" href="#agencia" role="tab"
-                                    aria-controls="agencia" aria-selected="false">Agencias</a>
+                                <a class="nav-link" id="agencia-tab" data-toggle="tab" href="#agencia" role="tab" aria-controls="agencia" aria-selected="false">Agencias</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="cedente" role="tabpanel"
-                                aria-labelledby="cedente-tab">
+                            <div class="tab-pane fade show active" id="cedente" role="tabpanel" aria-labelledby="cedente-tab">
                                 <form class="form-horizontal" role="form">
                                     <fieldset>
                                         <br>
@@ -78,9 +73,9 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                                 <select class="form-control" id="cboProvincia" name="cboprovincia">
                                                     <option value="0">--Seleccione Provincia--</option>
-                                                    <?php foreach($dataprov as $fila): ?>
-                                                    <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?>
-                                                    </option>
+                                                    <?php foreach ($dataprov as $fila) : ?>
+                                                        <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
+                                                        </option>
                                                     <?php endforeach ?>
                                                 </select>
                                             </div>
@@ -97,48 +92,38 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Cedente</label>
                                             <div class="form-group col-md-3">
-                                                <input type="text" required class="form-control" id="txtCedente"
-                                                    name="menuname" placeholder="" maxlength="150">
+                                                <input type="text" required class="form-control" id="txtCedente" name="menuname" maxlength="150">
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="iconome" class="control-label col-md-1">Ruc</label>
                                             <div class="form-group col-md-3">
-                                                <input id="txtRuc" name="iconome" type="text" class="form-control"
-                                                    maxlength="13"
-                                                    onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                                                <input id="txtRuc" name="iconome" type="text" class="form-control" maxlength="13" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Direccion</label>
                                             <div class="form-group col-md-10">
-                                                <textarea name="observa" id="txtDireccion" class="form-control col-md-8"
-                                                    maxlength="200" onkeydown="return (event.keyCode!=13);"></textarea>
+                                                <textarea name="observa" id="txtDireccion" class="form-control col-md-8" maxlength="200" onkeydown="return (event.keyCode!=13);"></textarea>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Telefono 1</label>
                                             <div class="form-group col-md-3">
-                                                <input type="text" required class="form-control" id="txtTel1"
-                                                    onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
-                                                    name="telefono1" placeholder="" maxlength="15">
+                                                <input type="text" required class="form-control" id="txtTel1" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="telefono1" maxlength="15">
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="iconome" class="control-label col-md-1">Telefono 2</label>
                                             <div class="form-group col-md-3">
-                                                <input id="txtTel2" name="iconome" type="text"
-                                                    onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
-                                                    placeholder=" " class="form-control" maxlength="15">
+                                                <input id="txtTel2" name="iconome" type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="15">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Fax</label>
                                             <div class="form-group col-md-3">
-                                                <input type="text" required class="form-control"
-                                                    onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
-                                                    id="txtFax" name="menuname" placeholder="" maxlength="10">
+                                                <input type="text" required class="form-control" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="txtFax" name="fax" maxlength="10">
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="iconome" class="control-label col-md-1">Url</label>
@@ -150,12 +135,11 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="cboArbol" class="control-label col-md-1">Nivel Arbol</label>
                                             <div class="form-group col-md-3">
-                                                <select class="form-control" id="cboArbol" name="cboarbol"
-                                                    style="width: 100%;">
+                                                <select class="form-control" id="cboArbol" name="cboarbol" style="width: 100%;">
                                                     <option value="0">--Seleccione Nivel--</option>
-                                                    <?php foreach($datos as $fila): ?>
-                                                    <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?>
-                                                    </option>
+                                                    <?php foreach ($datos as $fila) : ?>
+                                                        <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
+                                                        </option>
                                                     <?php endforeach ?>
                                                 </select>
                                             </div>
@@ -173,35 +157,32 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Contacto</label>
                                     <div class="form-group col-md-3">
-                                        <input type="text" required class="form-control" id="txtContacto"
-                                            name="contacto" placeholder="" maxlength="150"
-                                            onKeyUp="this.value=this.value.toUpperCase();">
+                                        <input type="text" required class="form-control" id="txtContacto" name="contacto" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                     </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="cbomenupadre" class="control-label col-md-1">Cargo</label>
                                     <div class="form-group col-md-3">
                                         <select class="form-control" id="cboCargo" name="cbocargo" style="width: 100%;">
                                             <option value="0">--Seleccione Cargo--</option>
-                                            <?php foreach($cargo as $fila): ?>
-                                            <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
+                                            <?php foreach ($cargo as $fila) : ?>
+                                                <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                                             <?php endforeach ?>
                                         </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <button type="button" class="btn btn-outline-success" id="btnContacto" data-toggle="tooltip" data-placement="top" title="agregar contacto" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="ext" class="control-label col-md-1">Ext</label>
                                     <div class="form-group col-md-3">
-                                        <input type="text" required class="form-control"
-                                            onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
-                                            id="txtExt" name="menuname" maxlength="10">
+                                        <input type="text" required class="form-control" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="txtExt" name="ext" maxlength="10">
                                     </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="celular" class="control-label col-md-1">Celular</label>
                                     <div class="form-group col-md-3">
-                                        <input id="txtCelular" name="iconome" type="tel"
-                                            onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
-                                            class="form-control" maxlength="10">
+                                        <input id="txtCelular" name="iconome" type="tel" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="10">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -218,11 +199,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                                 <br>
                                 <br>
-                                <div class="row">
-                                    <label for="espacio" class="control-label col-md-11"></label>
-                                    <button type="button" class="btn btn-outline-success data-toggle="tooltip data-placement="top" title="agregar" id="btnContacto"
-                                        style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
-                                </div>
                                 <br>
                                 <div class="col-md-12 col-sm-12">
                                     <div class="col-md-1 col-sm-1">
@@ -230,9 +206,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblcontacto"
-                                                    class="table table-striped table-border table-condensed table-info"
-                                                    style="width: 100%;">
+                                                <table id="tblcontacto" class="table table-striped table-border table-condensed table-info" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -252,29 +226,26 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                     <div class="col-md-1 col-sm-1">
                                     </div>
-                               </div>
+                                </div>
                             </div>
 
                             <div class="tab-pane fade" id="producto" role="tabpanel" aria-labelledby="producto-tab">
                                 <br>
                                 <div class="row">
-                                    <label for="espacio" class="control-label col-md-1"></label>
+                                    <label for="espacio" class="control-label col-md-2"></label>
                                     <label for="producto" class="control-label col-md-1">Producto</label>
                                     <div class="form-group col-md-7">
-                                        <input type="text" required class="form-control" id="txtProducto"
-                                            name="producto" placeholder="" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                                        <input type="text" required class="form-control" id="txtProducto" name="producto" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <button type="button" class="btn btn-outline-success" id="btnProducto"
-                                            style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-outline-success" id="btnProducto" data-toggle="tooltip" data-placement="top" title="agregar producto" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label for="espacio" class="control-label col-md-1"></label>
+                                    <label for="espacio" class="control-label col-md-2"></label>
                                     <label for="menuname" class="control-label col-md-1">Descripcion</label>
                                     <div class="form-group col-md-9">
-                                        <textarea name="observa" id="txtDescripcion" class="form-control col-md-9"
-                                            maxlength="250" onkeydown="return (event.keyCode!=13);"></textarea>
+                                        <textarea name="observa" id="txtDescripcion" class="form-control col-md-9" maxlength="250" onkeydown="return (event.keyCode!=13);"></textarea>
                                     </div>
                                 </div>
                                 <br>
@@ -284,9 +255,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblproducto"
-                                                    class="table table-striped table-border table-condensed table-info"
-                                                    style="width: 100%;">
+                                                <table id="tblproducto" class="table table-striped table-border table-condensed table-info" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -310,9 +279,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblcatalogo"
-                                                    class="table table-striped table-border table-condensed table-info"
-                                                    style="width: 100%;">
+                                                <table id="tblcatalogo" class="table table-striped table-border table-condensed table-info" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -334,89 +301,78 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
 
                             <div class="tab-pane fade" id="agencia" role="tabpanel" aria-labelledby="agencia-tab">
-                                </br>
+                                <br>
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Codigo</label>
                                     <div class="form-group col-md-3">
-                                        <input type="text" required class="form-control" id="txtCodigo" name="menuname"
-                                            placeholder="" maxlength="10"
-                                            onKeyUp="this.value=this.value.toUpperCase();">
+                                        <input type="text" required class="form-control" id="txtCodigo" name="codagencia" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
                                     </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="cbomenupadre" class="control-label col-md-1">Agencia</label>
                                     <div class="form-group col-md-3">
-                                        <input type="text" required class="form-control" id="txtAgencia" name="menuname"
-                                            placeholder="" maxlength="250"
-                                            onKeyUp="this.value=this.value.toUpperCase();">
+                                        <input type="text" required class="form-control" id="txtAgencia" name="agencia" maxlength="250" onKeyUp="this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <button type="button" class="btn btn-outline-success" id="btnAgencia"
-                                            style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-outline-success" id="btnAgencia" data-toggle="tooltip" data-placement="top" title="agregar agencia" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Sucursal</label>
                                     <div class="form-group col-md-3">
-                                        <select class="form-control" id="cboSucursal" name="cbosucursal"
-                                            style="width: 100%;">
+                                        <select class="form-control" id="cboSucursal" name="cbosucursal" style="width: 100%;">
                                             <option value="0">--Seleccione Sucursal--</option>
-                                            <?php foreach($sucursal as $fila): ?>
-                                            <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
+                                            <?php foreach ($sucursal as $fila) : ?>
+                                                <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                                             <?php endforeach ?>
                                         </select>
                                     </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="cbomenupadre" class="control-label col-md-1">Zona</label>
                                     <div class="form-group col-md-3">
-
                                         <select class="form-control" id="cboZona" name="cbozona" style="width: 100%;">
                                             <option value="0">--Seleccione Zona--</option>
-                                            <?php foreach($zona as $fila): ?>
-                                            <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
+                                            <?php foreach ($zona as $fila) : ?>
+                                                <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                                             <?php endforeach ?>
                                         </select>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="col-md-12 col-sm-12">
-                                <div class="col-md-1 col-sm-1">
-                                </div>
-                                <div class="col-md-10 col-sm-10">
-                                    <form method="post" id="user_form">
-                                        <div class="table-responsive">
-                                            <table id="tblagencia"
-                                                class="table table-striped table-border table-condensed table-info"
-                                                style="width: 100%;">
-                                                <thead class="text-center">
-                                                    <tr>
-                                                        <th style="display: none;">Id</th>
-                                                        <th>Agencia</th>
-                                                        <th>Codigo</th>
-                                                        <th>Sucursal</th>
-                                                        <th>Zona</th>
-                                                        <th>Estado</th>
-                                                        <th>Acciones</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody></tbody>
-                                            </table>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="col-md-1 col-sm-1">
-                                </div>
+                                    <div class="col-md-1 col-sm-1">
+                                    </div>
+                                    <div class="col-md-10 col-sm-10">
+                                        <form method="post" id="user_form">
+                                            <div class="table-responsive">
+                                                <table id="tblagencia" class="table table-striped table-border table-condensed table-info" style="width: 100%;">
+                                                    <thead class="text-center">
+                                                        <tr>
+                                                            <th style="display: none;">Id</th>
+                                                            <th>Agencia</th>
+                                                            <th>Codigo</th>
+                                                            <th>Sucursal</th>
+                                                            <th>Zona</th>
+                                                            <th>Estado</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-1 col-sm-1">
+                                    </div>
                                 </div>
                                 <br>
                                 <br>
                                 <br>
                                 <div class="container">
                                     <div class='btn-group'>
-                                        <button class="btn btn-outline-primary" id="btnRegresar"><i
-                                                class='fa fa-undo'></i> Regresar</button>
-                                        <button class="btn btn-outline-success ml-3" id="btnSave"><i
-                                                class='fa fa-save'></i> Guardar</button>
+                                        <button class="btn btn-outline-primary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
+                                        <button class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                                     </div>
                                 </div>
                             </div>
@@ -442,28 +398,24 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="contacto" class="col-form-label">Contacto</label>
-                        <input type="text" id="txtContactoMo" required class="form-control" maxlength="150"
-                            onKeyUp="this.value=this.value.toUpperCase();">
+                        <input type="text" id="txtContactoMo" required class="form-control" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
                     <div class="form-group">
                         <label for="cbocargo" class="control-label">Cargo</label>
                         <select class="form-control" id="cboCargoMo" name="cboCargo1" style="width: 100%;">
                             <option value="0">--Seleccione Cargo--</option>
-                            <?php foreach($cargo as $fila): ?>
-                            <option value="<?=$fila['Codigo']?>"><?=$fila['Descripcion']?></option>
+                            <?php foreach ($cargo as $fila) : ?>
+                                <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="valorv" class="col-form-label">Celular</label>
-                        <input type="text" id="txtCelularMo" class="form-control" maxlength="10"
-                            onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                        <input type="text" id="txtCelularMo" class="form-control" maxlength="10" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                     </div>
                     <div class="form-group">
                         <label for="valori" class="col-form-label">Ext</label>
-                        <input type="text" id="txtExtMo"
-                            onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
-                            class="form-control" maxlength="10">
+                        <input type="text" id="txtExtMo" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="10">
                     </div>
 
                     <div class="form-group">
@@ -474,7 +426,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
                     <button type="button" id="btnEditarCon" class="btn btn-success ml-3"><i class='fa fa-plus'></i>
-                    Modificar</button>
+                        Modificar</button>
                     <!-- <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button> -->
                 </div>
             </form>
@@ -493,7 +445,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formCatalogo">
                 <div class="modal-body">
-                   <!-- <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="menuname" class="control-label col-md-2">Producto</label>
                         <input type="text" required class="form-control" id="txtProductoMo" name="catalogo" maxlength="80">
                     </div> -->
@@ -513,6 +465,57 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
                     <button type="button" id="btnAddCatalogo" class="btn btn-success ml-3"><i class='fa fa-plus'></i>Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAGENCIA" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 35%" role="document">
+        <div class="modal-content" id="myModal">
+            <div class="modal-header" id="header">
+                <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formAgencia">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="agencia" class="control-label col-md-2">Agencia</label>
+                        <input type="text" required class="form-control" id="txtAgenciaMo" name="agencia" maxlength="250" onKeyUp="this.value=this.value.toUpperCase();">
+                    </div>
+                    <div class="form-group">
+                        <label for="codigo" class="control-label col-md-4">Codigo</label>
+                        <input type="text" required class="form-control" id="txtCodigoMo" name="codigo" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
+                    </div>
+                    <div class="form-group">
+                        <label for="cbosucursal" class="control-label">Sucursal</label>
+                        <select class="form-control" id="cboSucursalMo" name="cboSucursal" style="width: 100%;">
+                            <option value="0">--Seleccione Sucursal--</option>
+                            <?php foreach ($sucursal as $fila) : ?>
+                                <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cbocargo" class="control-label">Zona</label>
+                        <select class="form-control" id="cboZonaMo" name="cboZona" style="width: 100%;">
+                            <option value="0">--Seleccione Zona--</option>
+                            <?php foreach ($zona as $fila) : ?>
+                                <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    <div class="form-check" id="divcheck">
+                        <input type="checkbox" id="chkEstadoAg" class="form-check-input">
+                        <label for="estadolabel" class="form-check-label" id="lblEstadoAg">Activo</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="row_id" id="hidden_row_id" />
+                    <button type="button" id="btnAddAgencia" class="btn btn-success ml-3">Modificar</button>
                 </div>
             </form>
         </div>
