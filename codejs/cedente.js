@@ -3,7 +3,7 @@ $(document).ready(function(){
     var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid,_cedente, _cbocargo, _ext,_celular,_resultcon = [], 
     _resultpro = [], _cargo,_resultcat =[], _resultage = [],_codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
     _descripcion, _newproducto, _codigocat, _catalogo, _estadocat, _produc, _email1, _email2, _countagen = 0, _codigoagen
-    ,_continuamod;
+    ,_continuamod, _countproduc = 0;
 
 
     $("#modalCONTACTO").draggable({
@@ -208,7 +208,7 @@ $(document).ready(function(){
 
         alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Contacto' +' '+ _contacto +'..?' , function(){ 
 
-            FunRemoveItemFromArr(_resultcon, _contacto);
+            FunRemoveContacto(_resultcon, _contacto);
             $('#row_' + row_id + '').remove();
             _count--;
 
@@ -216,7 +216,7 @@ $(document).ready(function(){
         , function(){ });
     });
 
-    function FunRemoveItemFromArr(arr, deta)
+    function FunRemoveContacto(arr, deta)
     {
         $.each(arr,function(i,item){
             if(item.arrycontacto == deta)
@@ -229,8 +229,6 @@ $(document).ready(function(){
         });        
     };  
 
-
-
     //Producto
 
     $('#btnProducto').click(function(){
@@ -238,13 +236,14 @@ $(document).ready(function(){
         _producto = $('#txtProducto').val();
         _descripcion = $('#txtDescripcion').val();
         _estado = 'Activo';
-        _continuar = true;
+        _continuarproduc = true;
         _tipoSave = 'add';
         
 
-        var tableHeaderRowCount = 1;
-        var table = document.getElementById('tblcatalogo');
-        var rowCount = table.rows.length;
+        let tableHeaderRowCount = 1;
+        let table = document.getElementById('tblcatalogo');
+        let rowCount = table.rows.length;
+
         for (var i = tableHeaderRowCount; i < rowCount; i++) {
             table.deleteRow(tableHeaderRowCount);
         }    
@@ -260,30 +259,30 @@ $(document).ready(function(){
             if(item.arryproducto.toUpperCase() == _producto.toUpperCase())
             {                        
                 mensajesalertify("Producto ya Existe..!","E","bottom-center",5); 
-                _continuar = false;
+                _continuarproduc = false;
                 return false;
             }else{
-                _continuar = true;
+                _continuarproduc = true;
             }
         });
 
-        if(_continuar)
+        if(_continuarproduc)
         {
-            _count++;
-            _output = '<tr id="row_' + _count + '">';
-            _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _count + '" /></td>';                
-            _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _count + '" value="' + _producto + '" /></td>';
-            _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _count + '" value="' + _estado + '" /></td>';
+            _countproduc++;
+            _output = '<tr id="row_' + _countproduc + '">';
+            _output += '<td style="display: none;">' + _countproduc + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countproduc + '" value="' + _countproduc + '" /></td>';                
+            _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countproduc + '" value="' + _producto + '" /></td>';
+            _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _countproduc + '" value="' + _estado + '" /></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
-            _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _count + '"><i class="fa fa-upload"></i></button>';
-            _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-            _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+            _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _countproduc + '"><i class="fa fa-upload"></i></button>';
+            _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countproduc + '"><i class="fa fa-pencil-square-o"></i></button>';
+            _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countproduc + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
             _output += '</tr>';
             
             $('#tblproducto').append(_output);
 
             _objeto = {
-                arrycodigo : parseInt(_count),
+                arrycodigo : parseInt(_countproduc),
                 arryproducto : _producto,
                 arryestado : _estado,
             }
@@ -298,9 +297,9 @@ $(document).ready(function(){
     //editar producto
     $(document).on("click",".btnEditPro",function(){
         $("#formProducto").trigger("reset"); 
-        row_id = $(this).attr("id");
-        _productoant = $('#txtProducto' + row_id + '').val();
-        _estadoantpro = $('#txtEsTado' + row_id + '').val();   
+        _idproduc = $(this).attr("id");
+        _productoant = $('#txtProducto' + _idproduc + '').val();
+        _estadoantpro = $('#txtEsTado' + _idproduc + '').val();   
         _tipoSave = 'edit';
     
         $('#txtProductoMo').val(_productoant);
@@ -313,7 +312,7 @@ $(document).ready(function(){
             $("#lblEstadoPro").text("Inactivo");
         }
 
-        $('#hidden_row_id').val(row_id);
+        $('#hidden_row_id').val(_idproduc);
         $("#headerpro").css("background-color","#183456");
         $("#headerpro").css("color","white");
         $(".modal-title").text("Editar Producto");       
@@ -364,22 +363,18 @@ $(document).ready(function(){
 
         if(_continuamod)
         {
-            FunRemoveItemProduc(_resultpro, _productoant);
+            FunRemoveProduc(_resultpro, _productoant);
 
             _objeto = {
-                arrycodigo : parseInt(row_id),
+                arrycodigo : parseInt(_idproduc),
                 arryproducto : _productonew,
                 arryestado : _estado,
             }
-
-            _resultpro.push(_objeto);
 
             $("#modalPRODUCTO").modal("hide"); 
             $("tbody").children().remove();
 
             _resultpro.sort((a,b) => a.arrycodigo - b.arrycodigo)
-
-            console.log(_resultpro);
             
             $.each(_resultpro, function(i,item){
                 _output = '<tr id="row_' + item.arrycodigo + '">';
@@ -399,7 +394,7 @@ $(document).ready(function(){
     });
 
     //Remove Producto
-    function FunRemoveItemProduc(arr, deta)
+    function FunRemoveProduc(arr, deta)
     {
         $.each(arr,function(i,item){
             if(item.arryproducto == deta)
@@ -413,17 +408,30 @@ $(document).ready(function(){
     //delete producto
 
     $(document).on("click",".btnDeletePro",function(){
-        row_id = $(this).attr("id");
-        _producto = $('#txtProducto' + row_id + '').val();
+        _idproduc = $(this).attr("id");
+        _producto = $('#txtProducto' + _idproduc + '').val();
+        let _contdelcat = true;
 
-        alertify.confirm('El registro sera eliminado..!', 'Esta seguro de eliminar Producto' +' '+ _producto +'..?' , function(){ 
+        $.each(_resultcat,function(i,item){
+            if(item.arryproductocat == _producto)
+            {
+                mensajesalertify("Existen Catalagos Asociados al Producto..!","W","bottom-center",5); 
+                _contdelcat = false;
+                return false;
+            }
+        });          
 
-            FunRemoveItemFromArr(_resultpro, _producto);
-            $('#row_' + row_id + '').remove();
-            _count--;
+        if(_contdelcat)
+        {
+            alertify.confirm('El registro sera eliminado..!', 'Esta seguro de eliminar Producto' +' '+ _producto +'..?' , function(){ 
 
+                FunRemoveProduc(_resultpro, _producto);
+                $('#row_' + _idproduc + '').remove();
+                _countproduc--;
+
+            }
+            , function(){ });
         }
-        , function(){ });
     });
 
     //Catalogo-Producto-Modal
@@ -722,9 +730,7 @@ $(document).ready(function(){
                 continuar = true;
             }
         });        
-    }; 
-
-    
+    };     
 
     $("#chkEstadoAg").click(function(){
         _checked = $("#lblEstadoAg").is(":checked");
