@@ -77,14 +77,14 @@ $(document).ready(function(){
      //Contactos
     $('#btnContacto').click(function(){
 
-      _contacto = $('#txtContacto').val();
-     _cbocargo = $('#cboCargo').val();
-      _cargo =$("#cboCargo option:selected").text();      
-      _ext = $('#txtExt').val();
-      _celular = $('#txtCelular').val();
-      _email1 = $.trim($('#txtEmail1').val());
-      _email2 = $.trim($('#txtEmail2').val());
-      _continuar = true;
+        _contacto = $('#txtContacto').val();
+        _cbocargo = $('#cboCargo').val();
+        _cargo =$("#cboCargo option:selected").text();      
+        _ext = $('#txtExt').val();
+        _celular = $('#txtCelular').val();
+        _email1 = $.trim($('#txtEmail1').val());
+        _email2 = $.trim($('#txtEmail2').val());
+        _continuar = true;
 
       if(_contacto == '')
       {
@@ -190,266 +190,261 @@ $(document).ready(function(){
 
   });
 
-  //botton editar-contacto
+    //botton editar-contacto
 
-  $('btnEditCon').click(function(){
-
-
+    $('btnEditCon').click(function(){
 
 
 
-  });
 
-  //delete-contacto
 
-  $(document).on("click",".btnDeleteCon",function(){
-    row_id = $(this).attr("id");
-    _contacto = $('#txtContacto' + row_id + '').val();
+    });
 
-    alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Contacto' +' '+ _contacto +'..?' , function(){ 
+    //delete-contacto
 
-        FunRemoveItemFromArr(_resultcon, _contacto);
-        $('#row_' + row_id + '').remove();
-        _count--;
+    $(document).on("click",".btnDeleteCon",function(){
+        row_id = $(this).attr("id");
+        _contacto = $('#txtContacto' + row_id + '').val();
 
-     }
-    , function(){ });
-});
+        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Contacto' +' '+ _contacto +'..?' , function(){ 
 
-function FunRemoveItemFromArr(arr, deta)
-{
-    $.each(arr,function(i,item){
-        if(item.arrycontacto == deta)
-        {
-            arr.splice(i, 1);
-            return false;
-        }else{
-            continuar = true;
+            FunRemoveItemFromArr(_resultcon, _contacto);
+            $('#row_' + row_id + '').remove();
+            _count--;
+
         }
-    });        
-};  
+        , function(){ });
+    });
 
-
-
-  //Producto
-
-  $('#btnProducto').click(function(){
-
-    _producto = $('#txtProducto').val();
-    _descripcion = $('#txtDescripcion').val();
-    _estado = 'Activo';
-    _continuar = true;
-      
-
-    var tableHeaderRowCount = 1;
-    var table = document.getElementById('tblcatalogo');
-    var rowCount = table.rows.length;
-    for (var i = tableHeaderRowCount; i < rowCount; i++) {
-        table.deleteRow(tableHeaderRowCount);
-    }    
-
-    if(_producto == '')
-      {
-          mensajesalertify("Ingrese Producto..!","W","top-center",5);
-          return;
-      } 
-      
-      $.each(_resultpro,function(i,item)
-      {
-          if(item.arryproducto.toUpperCase() == _producto.toUpperCase())
-          {                        
-              mensajesalertify("Producto ya Existe..!","E","bottom-center",5); 
-              _continuar = false;
-              return false;
-          }else{
-              _continuar = true;
-          }
-      });
-
-      if(_continuar)
-      {
-          _count++;
-          _output = '<tr id="row_' + _count + '">';
-          _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _count + '" /></td>';                
-          _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _count + '" value="' + _producto + '" /></td>';
-          _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _count + '" value="' + _estado + '" /></td>';
-          _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _count + '"><i class="fa fa-upload"></i></button>';
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-          _output += '</tr>';
-          
-          $('#tblproducto').append(_output);
-
-          _objeto = {
-              arrycodigo : parseInt(_count),
-              arryproducto : _producto,
-              arryestado : _estado,
-          }
-
-          _resultpro.push(_objeto);   
-          $('#txtProducto').val('');
-          $('#txtDescripcion').val('');                  
-          
-      }   
-  });
-
-  //editar producto
-  $(document).on("click",".btnEditPro",function(){
-    $("#formProducto").trigger("reset"); 
-    row_id = $(this).attr("id");
-    _productoant = $('#txtProducto' + row_id + '').val();
-    _estadoantpro = $('#txtEsTado' + row_id + '').val();
-    
-    _tipoSave = 'edit';
-   
-    $('#txtProductoMo').val(_productoant);
-
-    if(_estadoantpro == "Activo"){
-        $("#chkEstadoPro").prop("checked", true);
-        $("#lblEstadoPro").text("Activo");
-    }else{
-        $("#chkEstadoPro").prop("checked", false);
-        $("#lblEstadoPro").text("Inactivo");
-    }
-
-    $('#hidden_row_id').val(row_id);
-    $("#headerpro").css("background-color","#183456");
-    $("#headerpro").css("color","white");
-    $(".modal-title").text("Editar Producto");       
-    $("#btnModProduc").text("Modificar");
-    $("#modalPRODUCTO").modal("show");
-
-});
-
-//cheked producto-modal
-$("#chkEstadoPro").click(function(){
-    _checkedPro = $("#chkEstadoPro").is(":checked");
-    if(_checkedPro){
-        $("#lblEstadoPro").text("Activo");
-        _estadopro = 'Activo';
-    }else{
-        $("#lblEstadoPro").text("Inactivo");
-        _estadopro = 'Inactivo';
-    }
-});
-
-//button-editar-producto
-
- $('#btnModProduc').click(function(){
-
-    _continuamod = false;
-    _productonew = $.trim($('#txtProductoMo').val());
-
-    if(_productonew == ''){
-        mensajesalertify("Ingrese Producto..!!","W","top-center",5);
-        return;
-    }
-
-    if(_productoant.toUpperCase() != _productonew.toUpperCase()){
-       $.each(_resultpro,function(i,item)
-       {
-
-              if(item.arryproducto.toUpperCase() == _productonew.toUpperCase())
-              {
-
-                mensajesalertify("Producto ya Existe..!","E","bottom-center",5); 
-                _continuamod = false;
-                return false;
-              }else
-              {
-                _continuamod = true;
-              }
-       });
-
-    }else  _continuamod = true;
-
-    if(_continuamod)
+    function FunRemoveItemFromArr(arr, deta)
     {
-        FunRemoveItemFromArr(_resultpro, _productoant);
+        $.each(arr,function(i,item){
+            if(item.arrycontacto == deta)
+            {
+                arr.splice(i, 1);
+                return false;
+            }else{
+                continuar = true;
+            }
+        });        
+    };  
 
-        _objeto = {
-            arrycodigo : parseInt(row_id),
-            arryproducto : _productonew,
-            arryestado : _estado,
+
+
+    //Producto
+
+    $('#btnProducto').click(function(){
+
+        _producto = $('#txtProducto').val();
+        _descripcion = $('#txtDescripcion').val();
+        _estado = 'Activo';
+        _continuar = true;
+        _tipoSave = 'add';
+        
+
+        var tableHeaderRowCount = 1;
+        var table = document.getElementById('tblcatalogo');
+        var rowCount = table.rows.length;
+        for (var i = tableHeaderRowCount; i < rowCount; i++) {
+            table.deleteRow(tableHeaderRowCount);
+        }    
+
+        if(_producto == '')
+        {
+            mensajesalertify("Ingrese Producto..!","W","top-center",5);
+            return;
+        } 
+        
+        $.each(_resultpro,function(i,item)
+        {
+            if(item.arryproducto.toUpperCase() == _producto.toUpperCase())
+            {                        
+                mensajesalertify("Producto ya Existe..!","E","bottom-center",5); 
+                _continuar = false;
+                return false;
+            }else{
+                _continuar = true;
+            }
+        });
+
+        if(_continuar)
+        {
+            _count++;
+            _output = '<tr id="row_' + _count + '">';
+            _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _count + '" /></td>';                
+            _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _count + '" value="' + _producto + '" /></td>';
+            _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _count + '" value="' + _estado + '" /></td>';
+            _output += '<td><div class="text-center"><div class="btn-group">'
+            _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _count + '"><i class="fa fa-upload"></i></button>';
+            _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+            _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+            _output += '</tr>';
+            
+            $('#tblproducto').append(_output);
+
+            _objeto = {
+                arrycodigo : parseInt(_count),
+                arryproducto : _producto,
+                arryestado : _estado,
+            }
+
+            _resultpro.push(_objeto);   
+            $('#txtProducto').val('');
+            $('#txtDescripcion').val('');                  
+            
+        }   
+    });
+
+    //editar producto
+    $(document).on("click",".btnEditPro",function(){
+        $("#formProducto").trigger("reset"); 
+        row_id = $(this).attr("id");
+        _productoant = $('#txtProducto' + row_id + '').val();
+        _estadoantpro = $('#txtEsTado' + row_id + '').val();   
+        _tipoSave = 'edit';
+    
+        $('#txtProductoMo').val(_productoant);
+
+        if(_estadoantpro == "Activo"){
+            $("#chkEstadoPro").prop("checked", true);
+            $("#lblEstadoPro").text("Activo");
+        }else{
+            $("#chkEstadoPro").prop("checked", false);
+            $("#lblEstadoPro").text("Inactivo");
         }
 
-        _resultpro.push(_objeto);
+        $('#hidden_row_id').val(row_id);
+        $("#headerpro").css("background-color","#183456");
+        $("#headerpro").css("color","white");
+        $(".modal-title").text("Editar Producto");       
+        $("#btnModProduc").text("Modificar");
+        $("#modalPRODUCTO").modal("show");
 
-        $("#modalPRODUCTO").modal("hide"); 
-        $("tbody").children().remove();
+    });
 
-        _resultpro.sort((a,b) => a.arrycodigo - b.arrycodigo)
-        
-        $.each(_resultpro, function(i,item){
-          _output = '<tr id="row_' + item.arrycodigo + '">';
-          _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
-          _output += '<td>' + item.arryproducto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproducto + '" /></td>';
-          _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + item.arrycodigo + '" value="' + item.arryestado + '" /></td>';
-          _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + item.arrycodigo + '"><i class="fa fa-upload"></i></button>';
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-          _output += '</tr>';
-          
-          $('#tblproducto').append(_output);
-           
+    //cheked producto-modal
+    $("#chkEstadoPro").click(function(){
+        _checkedPro = $("#chkEstadoPro").is(":checked");
+        if(_checkedPro){
+            $("#lblEstadoPro").text("Activo");
+            _estadopro = 'Activo';
+        }else{
+            $("#lblEstadoPro").text("Inactivo");
+            _estadopro = 'Inactivo';
+        }
+    });
 
-        });
-    }
+    //button-editar-producto
 
- });
- //Remove Producto
- function FunRemoveItemFromArr(arr, deta)
- {
-     $.each(arr,function(i,item){
-         if(item.arryproducto == deta)
-         {
-             arr.splice(i, 1);
-             return false;
-         }else{
-             continuar = true;
-         }
-     });        
- };  
+    $('#btnModProduc').click(function(){
 
- //delete producto
+        _continuamod = false;
+        _productonew = $.trim($('#txtProductoMo').val());
 
- $(document).on("click",".btnDeletePro",function(){
-    row_id = $(this).attr("id");
-    _producto = $('#txtProducto' + row_id + '').val();
+        if(_productonew == ''){
+            mensajesalertify("Ingrese Producto..!!","W","top-center",5);
+            return;
+        }
 
-    alertify.confirm('El registro sera eliminado..!', 'Esta seguro de eliminar Producto' +' '+ _producto +'..?' , function(){ 
-
-        FunRemoveItemFromArr(_resultpro, _producto);
-        $('#row_' + row_id + '').remove();
-        _count--;
-
-     }
-    , function(){ });
-});
-
-  //Catalogo-Producto-Modal
-
-  $(document).on("click",".btnCatPro",function(){
-    $("#formCatalogo").trigger("reset"); 
-    row_id = $(this).attr("id");
-    _produc = $('#txtProducto' + row_id + '').val();
-    _tipoSave = 'save';
-   
-    $('#hidden_row_id').val(row_id);
-    $("#headercat").css("background-color","#183456");
-    $("#headercat").css("color","white");
-    $(".modal-title").text("Agregar Catalogo");       
-    $("#btnAgregar").text("Agregar");
-    $("#modalCATALOGO").modal("show");
-
-});
+        if(_productoant.toUpperCase() != _productonew.toUpperCase()){
+            $.each(_resultpro,function(i,item)
+            {
+                if(item.arryproducto.toUpperCase() == _productonew.toUpperCase())
+                {
+                    mensajesalertify("Producto ya Existe..!","E","bottom-center",5); 
+                    _continuamod = false;
+                    return false;
+                }else
+                {
+                    _continuamod = true;
+                }
+            });
+        }else  _continuamod = true;
 
 
+        if(_continuamod)
+        {
+            FunRemoveItemProduc(_resultpro, _productoant);
 
-//botton-agregar -catalogo-modal
-$('#btnAddCatalogo').click(function(){
+            _objeto = {
+                arrycodigo : parseInt(row_id),
+                arryproducto : _productonew,
+                arryestado : _estado,
+            }
+
+            _resultpro.push(_objeto);
+
+            $("#modalPRODUCTO").modal("hide"); 
+            $("tbody").children().remove();
+
+            _resultpro.sort((a,b) => a.arrycodigo - b.arrycodigo)
+
+            console.log(_resultpro);
+            
+            $.each(_resultpro, function(i,item){
+                _output = '<tr id="row_' + item.arrycodigo + '">';
+                _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
+                _output += '<td>' + item.arryproducto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproducto + '" /></td>';
+                _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + item.arrycodigo + '" value="' + item.arryestado + '" /></td>';
+                _output += '<td><div class="text-center"><div class="btn-group">'
+                _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + item.arrycodigo + '"><i class="fa fa-upload"></i></button>';
+                _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
+                _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                _output += '</tr>';
+                
+                $('#tblproducto').append(_output);  
+            });
+        }
+
+    });
+
+    //Remove Producto
+    function FunRemoveItemProduc(arr, deta)
+    {
+        $.each(arr,function(i,item){
+            if(item.arryproducto == deta)
+            {
+                arr.splice(i, 1);
+                return false;
+            }
+        });        
+    };  
+
+    //delete producto
+
+    $(document).on("click",".btnDeletePro",function(){
+        row_id = $(this).attr("id");
+        _producto = $('#txtProducto' + row_id + '').val();
+
+        alertify.confirm('El registro sera eliminado..!', 'Esta seguro de eliminar Producto' +' '+ _producto +'..?' , function(){ 
+
+            FunRemoveItemFromArr(_resultpro, _producto);
+            $('#row_' + row_id + '').remove();
+            _count--;
+
+        }
+        , function(){ });
+    });
+
+    //Catalogo-Producto-Modal
+
+    $(document).on("click",".btnCatPro",function(){
+        $("#formCatalogo").trigger("reset"); 
+        row_id = $(this).attr("id");
+        _produc = $('#txtProducto' + row_id + '').val();
+        _tipoSave = 'save';
+
+        $('#hidden_row_id').val(row_id);
+        $("#headercat").css("background-color","#183456");
+        $("#headercat").css("color","white");
+        $(".modal-title").text("Agregar Catalogo");       
+        $("#btnAgregar").text("Agregar");
+        $("#modalCATALOGO").modal("show");
+
+    });
+
+    //botton-agregar -catalogo-modal
+    $('#btnAddCatalogo').click(function(){
 
     //_newproducto = $('#txtProductoMo').val(_produc);
     _codigocat = $('#txtCodigoMo').val();
@@ -458,127 +453,127 @@ $('#btnAddCatalogo').click(function(){
     _continuar = true;
 
     if(_codigocat == '')
-      {
-          mensajesalertify("Ingrese Codigo..!","W","top-center",5);
-          return;
-      } 
-
-      if(_catalogo == '')
-      {
-          mensajesalertify("Ingrese Catalogo..!","W","top-center",5);
-          return;
-      } 
-      
-      $.each(_resultcat,function(i,item)
-      {
-          if(item.arryproductocat.toUpperCase() == _produc.toUpperCase() && item.arrycodigocat.toUpperCase() == _codigocat.toUpperCase())
-          {                        
-              mensajesalertify("Catalogo ya Existe..!","E","bottom-center",5); 
-              _continuar = false;
-              return;
-          }
-      });
-
-      if(_continuar)
-      {
-          _count++;
-          _output = '<tr id="row_' + _count + '">';
-          _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _count + '" /></td>';                
-          _output += '<td>' + _produc + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _count + '" value="' + _produc + '" /></td>';
-          _output += '<td class="text-center">' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _count + '" value="' + _codigocat + '" /></td>';
-          _output += '<td class="text-center">' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _count + '" value="' + _catalogo + '" /></td>';
-          _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + _count + '" value="' + _estadocat + '" /></td>';
-          _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-          _output += '</tr>';
-          
-          $('#tblcatalogo').append(_output);
-
-          _objeto = {
-              arrycodigo : parseInt(_count),
-              arryproductocat : _produc,
-              arrycodigocat : _codigocat,
-              arrycatalogo : _catalogo,
-              arryestado : _estadocat,
-          }
-
-          _resultcat.push(_objeto);
-          $("#modalCATALOGO").modal("hide");                                     
-      }   
-  });
-
-  //editar-catalogo-modal
-  $(document).on("click",".btnEditCat",function(){
-    $("#formEditCatalogo").trigger("reset"); 
-    row_id = $(this).attr("id");
-    
-    _codcatold = $('#txtCodigoCat' + row_id + '').val();
-    _catalogoold = $('#txtCatalogo' + row_id + '').val();
-    _estadoold = $('#txtEsTadoCat' + row_id + '').val(); 
-    
-    $('#txtEditCodMo').val(_codcatold);
-    $('#txtEditCat').val(_catalogoold);
-  
-    if(_estadoold == "Activo"){
-        $("#chkEstado").prop("checked", true);
-        $("#lblEstado").text("Activo");
-    }else{
-        $("#chkEstado").prop("checked", false);
-        $("#lblEstado").text("Inactivo");
-    }
-
-   
-    $("#headercatalog").css("background-color","#183456");
-    $("#headercatalog").css("color","white");
-    $(".modal-title").text("Editar Catalogo");       
-    $("#modalEDITCATALOGO").modal("show");
-});
-
-//checked modal-editar-catalogo
-
-$("#chkEstado").click(function(){
-    _checked = $("#chkEstado").is(":checked");
-    if(_checked){
-        $("#lblEstado").text("Activo");
-        _estado = 'Activo';
-    }else{
-        $("#lblEstado").text("Inactivo");
-        _estado = 'Inactivo';
-    }
-});
-
-//botton-editar-catalogo
-
-
-//delete catalogo
-
-$(document).on("click",".btnDeleteCat",function(){
-    row_id = $(this).attr("id");
-    _catalogo = $('#txtCatalogo' + row_id + '').val();
-
-    alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Catalogo' +' '+ _catalogo +'..?' , function(){ 
-
-        FunRemoveItemFromArr(_resultcat, _catalogo);
-        $('#row_' + row_id + '').remove();
-        _count--;
-
-     }
-    , function(){ });
-});
-
-function FunRemoveItemFromArr(arr, deta)
-{
-    $.each(arr,function(i,item){
-        if(item.arrycatalogo == deta)
         {
-            arr.splice(i, 1);
-            return false;
+            mensajesalertify("Ingrese Codigo..!","W","top-center",5);
+            return;
+        } 
+
+        if(_catalogo == '')
+        {
+            mensajesalertify("Ingrese Catalogo..!","W","top-center",5);
+            return;
+        } 
+        
+        $.each(_resultcat,function(i,item)
+        {
+            if(item.arryproductocat.toUpperCase() == _produc.toUpperCase() && item.arrycodigocat.toUpperCase() == _codigocat.toUpperCase())
+            {                        
+                mensajesalertify("Catalogo ya Existe..!","E","bottom-center",5); 
+                _continuar = false;
+                return;
+            }
+        });
+
+        if(_continuar)
+        {
+            _count++;
+            _output = '<tr id="row_' + _count + '">';
+            _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _count + '" /></td>';                
+            _output += '<td>' + _produc + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _count + '" value="' + _produc + '" /></td>';
+            _output += '<td class="text-center">' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _count + '" value="' + _codigocat + '" /></td>';
+            _output += '<td class="text-center">' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _count + '" value="' + _catalogo + '" /></td>';
+            _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + _count + '" value="' + _estadocat + '" /></td>';
+            _output += '<td><div class="text-center"><div class="btn-group">'
+            _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+            _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+            _output += '</tr>';
+            
+            $('#tblcatalogo').append(_output);
+
+            _objeto = {
+                arrycodigo : parseInt(_count),
+                arryproductocat : _produc,
+                arrycodigocat : _codigocat,
+                arrycatalogo : _catalogo,
+                arryestado : _estadocat,
+            }
+
+            _resultcat.push(_objeto);
+            $("#modalCATALOGO").modal("hide");                                     
+        }   
+    });
+
+    //editar-catalogo-modal
+    $(document).on("click",".btnEditCat",function(){
+        $("#formEditCatalogo").trigger("reset"); 
+        row_id = $(this).attr("id");
+        
+        _codcatold = $('#txtCodigoCat' + row_id + '').val();
+        _catalogoold = $('#txtCatalogo' + row_id + '').val();
+        _estadoold = $('#txtEsTadoCat' + row_id + '').val(); 
+        
+        $('#txtEditCodMo').val(_codcatold);
+        $('#txtEditCat').val(_catalogoold);
+    
+        if(_estadoold == "Activo"){
+            $("#chkEstado").prop("checked", true);
+            $("#lblEstado").text("Activo");
         }else{
-            continuar = true;
+            $("#chkEstado").prop("checked", false);
+            $("#lblEstado").text("Inactivo");
         }
-    });        
-};   
+
+    
+        $("#headercatalog").css("background-color","#183456");
+        $("#headercatalog").css("color","white");
+        $(".modal-title").text("Editar Catalogo");       
+        $("#modalEDITCATALOGO").modal("show");
+    });
+
+    //checked modal-editar-catalogo
+
+    $("#chkEstado").click(function(){
+        _checked = $("#chkEstado").is(":checked");
+        if(_checked){
+            $("#lblEstado").text("Activo");
+            _estado = 'Activo';
+        }else{
+            $("#lblEstado").text("Inactivo");
+            _estado = 'Inactivo';
+        }
+    });
+
+    //botton-editar-catalogo
+
+
+    //delete catalogo
+
+    $(document).on("click",".btnDeleteCat",function(){
+        row_id = $(this).attr("id");
+        _catalogo = $('#txtCatalogo' + row_id + '').val();
+
+        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Catalogo' +' '+ _catalogo +'..?' , function(){ 
+
+            FunRemoveItemFromArr(_resultcat, _catalogo);
+            $('#row_' + row_id + '').remove();
+            _count--;
+
+        }
+        , function(){ });
+    });
+
+    function FunRemoveItemFromArr(arr, deta)
+    {
+        $.each(arr,function(i,item){
+            if(item.arrycatalogo == deta)
+            {
+                arr.splice(i, 1);
+                return false;
+            }else{
+                continuar = true;
+            }
+        });        
+    };   
 
 
 
