@@ -2,7 +2,8 @@ $(document).ready(function(){
 
     var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid,_cedente, _cbocargo, _ext,_celular,_resultcon = [], 
     _resultpro = [], _cargo,_resultcat =[], _resultage = [],_codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
-    _descripcion, _newproducto, _codigocat, _catalogo, _estadocat, _produc, _email1, _email2, _countagen = 0, _codigoagen;
+    _descripcion, _newproducto, _codigocat, _catalogo, _estadocat, _produc, _email1, _email2, _countagen = 0, _codigoagen
+    ,_continuamod;
 
 
     $("#modalCONTACTO").draggable({
@@ -17,7 +18,17 @@ $(document).ready(function(){
         handle: ".modal-header"
     }); 
 
+    $("#modalPRODUCTO").draggable({
+        handle: ".modal-header"
+    }); 
+
+    $("#modalEDITCATALOGO").draggable({
+        handle: ".modal-header"
+    }); 
+
     
+
+    // nuevo-cedente
     $('#btnNuevo').click(function(){        
         $.redirect('newcede.php', {'mensaje': ''});
     });
@@ -33,6 +44,8 @@ $(document).ready(function(){
       $('#cboZona').select2();
       $('#cboCargo').select2();
       $('#cboCargoMo').select2();
+      $('#cboSucursalMo').select2();
+      $('#cboZonaMo').select2();
 
     
     _opcaccion = $.trim($("#cboProvincia").val());
@@ -125,7 +138,7 @@ $(document).ready(function(){
           _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
           _output += '</tr>';
 
-          //console.log(_output);
+       
           
           $('#tblcontacto').append(_output);
 
@@ -176,6 +189,47 @@ $(document).ready(function(){
       $("#modalCONTACTO").modal("show");
 
   });
+
+  //botton editar-contacto
+
+  $('btnEditCon').click(function(){
+
+
+
+
+
+  });
+
+  //delete-contacto
+
+  $(document).on("click",".btnDeleteCon",function(){
+    row_id = $(this).attr("id");
+    _contacto = $('#txtContacto' + row_id + '').val();
+
+    alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Contacto' +' '+ _contacto +'..?' , function(){ 
+
+        FunRemoveItemFromArr(_resultcon, _contacto);
+        $('#row_' + row_id + '').remove();
+        _count--;
+
+     }
+    , function(){ });
+});
+
+function FunRemoveItemFromArr(arr, deta)
+{
+    $.each(arr,function(i,item){
+        if(item.arrycontacto == deta)
+        {
+            arr.splice(i, 1);
+            return false;
+        }else{
+            continuar = true;
+        }
+    });        
+};  
+
+
 
   //Producto
 
@@ -240,6 +294,141 @@ $(document).ready(function(){
       }   
   });
 
+  //editar producto
+  $(document).on("click",".btnEditPro",function(){
+    $("#formProducto").trigger("reset"); 
+    row_id = $(this).attr("id");
+    _productoant = $('#txtProducto' + row_id + '').val();
+    _estadoantpro = $('#txtEsTado' + row_id + '').val();
+    
+    _tipoSave = 'edit';
+   
+    $('#txtProductoMo').val(_productoant);
+
+    if(_estadoantpro == "Activo"){
+        $("#chkEstadoPro").prop("checked", true);
+        $("#lblEstadoPro").text("Activo");
+    }else{
+        $("#chkEstadoPro").prop("checked", false);
+        $("#lblEstadoPro").text("Inactivo");
+    }
+
+    $('#hidden_row_id').val(row_id);
+    $("#headerpro").css("background-color","#183456");
+    $("#headerpro").css("color","white");
+    $(".modal-title").text("Editar Producto");       
+    $("#btnModProduc").text("Modificar");
+    $("#modalPRODUCTO").modal("show");
+
+});
+
+//cheked producto-modal
+$("#chkEstadoPro").click(function(){
+    _checkedPro = $("#chkEstadoPro").is(":checked");
+    if(_checkedPro){
+        $("#lblEstadoPro").text("Activo");
+        _estadopro = 'Activo';
+    }else{
+        $("#lblEstadoPro").text("Inactivo");
+        _estadopro = 'Inactivo';
+    }
+});
+
+//button-editar-producto
+
+ $('#btnModProduc').click(function(){
+
+    _continuamod = false;
+    _productonew = $.trim($('#txtProductoMo').val());
+
+    if(_productonew == ''){
+        mensajesalertify("Ingrese Producto..!!","W","top-center",5);
+        return;
+    }
+
+    if(_productoant.toUpperCase() != _productonew.toUpperCase()){
+       $.each(_resultpro,function(i,item)
+       {
+
+              if(item.arryproducto.toUpperCase() == _productonew.toUpperCase())
+              {
+
+                mensajesalertify("Producto ya Existe..!","E","bottom-center",5); 
+                _continuamod = false;
+                return false;
+              }else
+              {
+                _continuamod = true;
+              }
+       });
+
+    }else  _continuamod = true;
+
+    if(_continuamod)
+    {
+        FunRemoveItemFromArr(_resultpro, _productoant);
+
+        _objeto = {
+            arrycodigo : parseInt(row_id),
+            arryproducto : _productonew,
+            arryestado : _estado,
+        }
+
+        _resultpro.push(_objeto);
+
+        $("#modalPRODUCTO").modal("hide"); 
+        $("tbody").children().remove();
+
+        _resultpro.sort((a,b) => a.arrycodigo - b.arrycodigo)
+        
+        $.each(_resultpro, function(i,item){
+          _output = '<tr id="row_' + item.arrycodigo + '">';
+          _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
+          _output += '<td>' + item.arryproducto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproducto + '" /></td>';
+          _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + item.arrycodigo + '" value="' + item.arryestado + '" /></td>';
+          _output += '<td><div class="text-center"><div class="btn-group">'
+          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + item.arrycodigo + '"><i class="fa fa-upload"></i></button>';
+          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
+          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          _output += '</tr>';
+          
+          $('#tblproducto').append(_output);
+           
+
+        });
+    }
+
+ });
+ //Remove Producto
+ function FunRemoveItemFromArr(arr, deta)
+ {
+     $.each(arr,function(i,item){
+         if(item.arryproducto == deta)
+         {
+             arr.splice(i, 1);
+             return false;
+         }else{
+             continuar = true;
+         }
+     });        
+ };  
+
+ //delete producto
+
+ $(document).on("click",".btnDeletePro",function(){
+    row_id = $(this).attr("id");
+    _producto = $('#txtProducto' + row_id + '').val();
+
+    alertify.confirm('El registro sera eliminado..!', 'Esta seguro de eliminar Producto' +' '+ _producto +'..?' , function(){ 
+
+        FunRemoveItemFromArr(_resultpro, _producto);
+        $('#row_' + row_id + '').remove();
+        _count--;
+
+     }
+    , function(){ });
+});
+
   //Catalogo-Producto-Modal
 
   $(document).on("click",".btnCatPro",function(){
@@ -258,7 +447,8 @@ $(document).ready(function(){
 });
 
 
-//agregar -catalogo-modal
+
+//botton-agregar -catalogo-modal
 $('#btnAddCatalogo').click(function(){
 
     //_newproducto = $('#txtProductoMo').val(_produc);
@@ -297,10 +487,10 @@ $('#btnAddCatalogo').click(function(){
           _output += '<td>' + _produc + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _count + '" value="' + _produc + '" /></td>';
           _output += '<td class="text-center">' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _count + '" value="' + _codigocat + '" /></td>';
           _output += '<td class="text-center">' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _count + '" value="' + _catalogo + '" /></td>';
-          _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _count + '" value="' + _estadocat + '" /></td>';
+          _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + _count + '" value="' + _estadocat + '" /></td>';
           _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+          _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
           _output += '</tr>';
           
           $('#tblcatalogo').append(_output);
@@ -317,6 +507,80 @@ $('#btnAddCatalogo').click(function(){
           $("#modalCATALOGO").modal("hide");                                     
       }   
   });
+
+  //editar-catalogo-modal
+  $(document).on("click",".btnEditCat",function(){
+    $("#formEditCatalogo").trigger("reset"); 
+    row_id = $(this).attr("id");
+    
+    _codcatold = $('#txtCodigoCat' + row_id + '').val();
+    _catalogoold = $('#txtCatalogo' + row_id + '').val();
+    _estadoold = $('#txtEsTadoCat' + row_id + '').val(); 
+    
+    $('#txtEditCodMo').val(_codcatold);
+    $('#txtEditCat').val(_catalogoold);
+  
+    if(_estadoold == "Activo"){
+        $("#chkEstado").prop("checked", true);
+        $("#lblEstado").text("Activo");
+    }else{
+        $("#chkEstado").prop("checked", false);
+        $("#lblEstado").text("Inactivo");
+    }
+
+   
+    $("#headercatalog").css("background-color","#183456");
+    $("#headercatalog").css("color","white");
+    $(".modal-title").text("Editar Catalogo");       
+    $("#modalEDITCATALOGO").modal("show");
+});
+
+//checked modal-editar-catalogo
+
+$("#chkEstado").click(function(){
+    _checked = $("#chkEstado").is(":checked");
+    if(_checked){
+        $("#lblEstado").text("Activo");
+        _estado = 'Activo';
+    }else{
+        $("#lblEstado").text("Inactivo");
+        _estado = 'Inactivo';
+    }
+});
+
+//botton-editar-catalogo
+
+
+//delete catalogo
+
+$(document).on("click",".btnDeleteCat",function(){
+    row_id = $(this).attr("id");
+    _catalogo = $('#txtCatalogo' + row_id + '').val();
+
+    alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Catalogo' +' '+ _catalogo +'..?' , function(){ 
+
+        FunRemoveItemFromArr(_resultcat, _catalogo);
+        $('#row_' + row_id + '').remove();
+        _count--;
+
+     }
+    , function(){ });
+});
+
+function FunRemoveItemFromArr(arr, deta)
+{
+    $.each(arr,function(i,item){
+        if(item.arrycatalogo == deta)
+        {
+            arr.splice(i, 1);
+            return false;
+        }else{
+            continuar = true;
+        }
+    });        
+};   
+
+
 
      //Agencias
     $('#btnAgencia').click(function(){
@@ -409,7 +673,7 @@ $('#btnAddCatalogo').click(function(){
         _estadooldag = $('#txtEstadoAg' + row_id + '').val();
         _tipoSave = 'edit';
 
-        alert(_agenciaold+' '+_codigoldagen+' '+_sucursalold+' '+_zonaold);
+        // alert(_agenciaold+' '+_codigoldagen+' '+_sucursalold+' '+_zonaold);
 
 
         $('#txtAgenciaMo').val(_agenciaold);
@@ -439,9 +703,10 @@ $('#btnAddCatalogo').click(function(){
 
     $(document).on("click",".btnDeleteAgencia",function(){
         row_id = $(this).attr("id");
-        _agencia = $('#txtAgencia').val();
-         
-        alertify.confirm('El registro sera eliminado', 'Esta seguro de eliminar' +' '+ _agencia +'..?' , function(){ 
+
+        _agencia = $('#txtAgencia' + row_id + '').val();
+        
+        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Agencia' +' '+ _agencia +'..?' , function(){ 
 
             FunRemoveItemFromArr(_resultage, _agencia);
             $('#row_' + row_id + '').remove();
@@ -481,13 +746,30 @@ $('#btnAddCatalogo').click(function(){
 
     $('#btnSave').click(function(){
 
-      _cedente = $('#txtCedente').val();
+      let _cedente = $('#txtCedente').val();
 
-      //  if(_opcaccion == '0')
-      //  {
-      //   mensajesalertify("Seleccione Provincia..!","W","top-center",5);
-      //   return;
-      //  }
+      let _cboprovincia = $('#cboProvincia').val();
+      let _provincia =$("#cboProvincia option:selected").text();  
+
+      let _cbocuidad = $('#cboCiudad').val();
+      let _cuidad =$("#cboCiudad option:selected").text();  
+
+      let _cboarbol = $('#cboArbol').val();
+      let _arbol =$("#cboArbol option:selected").text(); 
+
+
+      if(_cboprovincia == '0')
+      {
+          mensajesalertify("Seleccione Provincia..!","W","top-center",5);
+          return;
+      }	 
+      
+      if(_cbocuidad == '0')
+      {
+          mensajesalertify("Seleccione Cuidad..!","W","top-center",5);
+          return;
+      }	 
+
 
       if(_cedente == '')
       {

@@ -269,7 +269,7 @@ $(document).ready(function(){
         row_id = $(this).attr("id");
         _detalle = $('#txtDetalle' + row_id + '').val();
        
-        alertify.confirm('El registro sera eliminado', 'Estas seguro de eliminar'+ ' ' + _detalle +'..?', function(){ 
+        alertify.confirm('El registro sera eliminado..!!', 'Estas seguro de eliminar'+ ' ' + _detalle +'..?', function(){ 
                    FunRemoveItemFromArr(_result, _detalle);
                     $('#row_' + row_id + '').remove();
                     _count--;
@@ -499,7 +499,7 @@ $(document).ready(function(){
     function DeletePara(){
         
 
-        alertify.confirm('El Registro sera eliminado', 'Esta seguro de eliminar el parametro..?', function(){ //alertify.success('Ok') 
+        alertify.confirm('El Registro sera eliminado..!!', 'Esta seguro de eliminar el parametro..?', function(){ //alertify.success('Ok') 
     
                      $.ajax({
                         url: "../db/parametrocrud.php",
@@ -510,7 +510,7 @@ $(document).ready(function(){
                             if(data == 'NO'){
                              
                                
-                                mensajesalertify("Parametro no se puede Eliminar, Tiene Detalles Asociados..!","E","bottom-center",5);
+                                mensajesalertify("Parametro no se puede Eliminar, Tiene Detalles Asociados..!!","E","bottom-center",5);
                             }       
                             else {
                             

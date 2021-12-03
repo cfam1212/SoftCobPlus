@@ -74,7 +74,7 @@ $(document).ready(function(){
     
     function DeleteTarea(){
        
-     alertify.confirm('El registro sera eliminado', 'Esta seguro de eliminar' + ' ' + _tarea + '..?', function(){ 
+     alertify.confirm('El Registro sera eliminado..!!', 'Esta seguro de eliminar' + ' ' + _tarea + '..?', function(){ 
     
         $.ajax({
             url: "../db/tareacrud.php",
@@ -84,7 +84,7 @@ $(document).ready(function(){
             success: function(data){
                 if(data == "NO"){
                     swal.close();
-                    mensajesalertify("Tarea no se puede Eliminar, está asociada a un Menú..!","E","bottom-right",5);  
+                    mensajesalertify("Tarea no se puede Eliminar, está asociada a un Menú..!!","E","bottom-right",5);  
                 }       
                 else {
                     Swal.close();
@@ -125,7 +125,7 @@ $(document).ready(function(){
                     success: function(data){
                         if(data == '1'){
                            
-                            mensajesalertify("Tarea ya Existe!!.","E","bottom-right",5);                   
+                            mensajesalertify("Tarea ya Existe..!!","E","bottom-right",5);                   
                         }else{
                             FunGrabar();
                         }
@@ -150,7 +150,7 @@ $(document).ready(function(){
             data: {opcion:0, id:_id, tarea:_tarea, ruta:_ruta, icono:_icono, estado:_estado},            
             success: function(data){
                 if(data == 'SI'){
-                    mensajesalertify("Tarea ya Existe!!","E","bottom-right",5);                   
+                    mensajesalertify("Tarea ya Existe..!!","E","bottom-right",5);                   
                 }else{
                     _tareaid = data[0].TareaId;
                     _tarea = data[0].Tarea;

@@ -106,19 +106,19 @@ $(document).ready(function()
    {
         if($.trim($('#txtDetalle').val()).length == 0)
         {           
-            mensajesalertify("Ingrese Detalle del Parámetro..!","W","top-center",5);
+            mensajesalertify("Ingrese Detalle del Parámetro..!!","W","top-center",5);
             return false;
         }
 
         if($.trim($('#txtValorv').val()).length == 0 && $.trim($('#txtValori').val()).length == 0 )
         {            
-            mensajesalertify("Ingrese Valor Texto o Valor Entero..!","W","top-center",5);
+            mensajesalertify("Ingrese Valor Texto o Valor Entero..!!","W","top-center",5);
             return false;
         }
 
         if($.trim($('#txtValorv').val()).length > 0 && $.trim($('#txtValori').val()).length > 0 )
         {          
-            mensajesalertify("Ingrese Solo Valor Texto o Valor Entero..!","E","bottom-center",5);
+            mensajesalertify("Ingrese Solo Valor Texto o Valor Entero..!!","E","bottom-center",5);
             return false;
         }
 
@@ -136,7 +136,7 @@ $(document).ready(function()
             $.each(_result,function(i,item){
                 if(item.arrydetalle.toUpperCase() == _detalle.toUpperCase())
                 {                  
-                    mensajesalertify("Nombre del Parámetro ya Existe..!","E","bottom-center",5);                    
+                    mensajesalertify("Nombre del Parámetro ya Existe..!!","E","bottom-center",5);                    
                     _continuar = false;
                     return false;
                 }
@@ -148,7 +148,7 @@ $(document).ready(function()
                         {
                             if(item.arryvalorv.toUpperCase() == _valorv.toUpperCase())
                             {                               
-                                mensajesalertify("Valor Texto de Parámetro ya Existe..!","E","bottom-center",5);    
+                                mensajesalertify("Valor Texto de Parámetro ya Existe..!!","E","bottom-center",5);    
                                 _continuar = false;
                                 return false;
                             }
@@ -158,7 +158,7 @@ $(document).ready(function()
                         {
                             if(item.arryvalori == _valori)
                             {                               
-                                mensajesalertify("Valor Entero de Parámetro ya Existe..!","E","bottom-center",5); 
+                                mensajesalertify("Valor Entero de Parámetro ya Existe..!!","E","bottom-center",5); 
                                 _continuar = false;
                                 return false;
                             }
@@ -214,7 +214,7 @@ $(document).ready(function()
                 {
                     if(item.arrydetalle.toUpperCase() == _detalle.toUpperCase())
                     {                        
-                        mensajesalertify("Nombre del Parámetro ya Existe..!","E","bottom-center",5); 
+                        mensajesalertify("Nombre del Parámetro ya Existe..!!","E","bottom-center",5); 
                         _continuar = false;
                         return false;
                     }
@@ -233,7 +233,7 @@ $(document).ready(function()
                         {
                             if(item.arryvalori == _valori)
                             {                             
-                                mensajesalertify("Valor Entero de Parámetro ya Existe..!","E","bottom-center",5);                     
+                                mensajesalertify("Valor Entero de Parámetro ya Existe..!!","E","bottom-center",5);                     
                                 _seguir = false;
                                 return false;
                             }
@@ -249,7 +249,7 @@ $(document).ready(function()
                         {
                             if(item.arryvalorv.toUpperCase() == _valorv.toUpperCase())
                             {                              
-                                mensajesalertify("Valor Texto de Parámetro ya Existe..!","E","bottom-center",5);                     
+                                mensajesalertify("Valor Texto de Parámetro ya Existe..!!","E","bottom-center",5);                     
                                 _seguir = false;
                                 return false;
                             }
@@ -354,7 +354,7 @@ $(document).ready(function()
         //       }
         // });
 
-        alertify.confirm('Eliminar', 'Esta seguro de eliminar' + ' ' +  _detalle, function(){  mensajesalertify("Registro Eliminado","E","bottom-center",5)	
+        alertify.confirm('El Registro seta eliminado..!!', 'Esta seguro de eliminar..' + ' ' + _detalle + '..?', function(){  mensajesalertify("Registro Eliminado","E","bottom-center",5)	
 
                                     
                         FunRemoveItemFromArr(_result, _detalle);
@@ -564,13 +564,13 @@ $(document).ready(function()
 
         if(_nomparametro == ''){
         
-            mensajesalertify("Ingrese Nombre del  Parámetro..!","W","top-center",5);
+            mensajesalertify("Ingrese Nombre del  Parámetro..!!","W","top-center",5);
             return false; 
         }
 
         if(_count == 0)
         {         
-            mensajesalertify("Ingrese al menos un Detalle..!","W","top-center",5);
+            mensajesalertify("Ingrese al menos un Detalle..!!","W","top-center",5);
             return false;
         }
         
@@ -584,7 +584,7 @@ $(document).ready(function()
             
                 if(data == '0'){
 
-                    $.redirect('parametroadmin.php', {'mensaje': 'Grabado con Exito..!'}); 
+                    $.redirect('parametroadmin.php', {'mensaje': 'Grabado con Exito..!!'}); 
                 }else{
                 
                     mensajesalertify("Nombre del Parámetro ya Existe..!","E","bottom-right",5);
@@ -609,7 +609,7 @@ $(document).ready(function()
     });    
 
     function DeletePara(){    
-        alertify.confirm('El Registro sera eliminado', 'Esta seguro de eliminar el parametro..?', function(){ //alertify.success('Ok') 
+        alertify.confirm('El Registro sera eliminado..!!', 'Esta seguro de eliminar el parametro..?', function(){ //alertify.success('Ok') 
 
             $.ajax({
                 url: "../db/parametrocrud.php",

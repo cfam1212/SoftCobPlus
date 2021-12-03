@@ -203,7 +203,7 @@ $(document).ready(function(){
         //         });
         //     }            
         // });
-        alertify.confirm('El Registro será eliminado..!!', 'Esta seguro de eliminar'+ _username, function(){ //alertify.success('Ok') 
+        alertify.confirm('El Registro será eliminado..!!', 'Esta seguro de eliminar' + _username + '..?', function(){ //alertify.success('Ok') 
     
             $.ajax({
                 url: "../db/consultadatos.php",
@@ -245,37 +245,37 @@ $(document).ready(function(){
 
         if(_username == '')
         {          
-            mensajesalertify("Ingrese Nombre del Usuario..!","W","top-center",5);
+            mensajesalertify("Ingrese Nombre del Usuario..!!","W","top-center",5);
             return;
         }
 
         if(_lastname == '')
         {        
-            mensajesalertify("Ingrese Apellido del Usuario..!","W","top-center",5);
+            mensajesalertify("Ingrese Apellido del Usuario..!!","W","top-center",5);
             return;
         }
         
         if(_login == '')
         {           
-            mensajesalertify("Ingrese Login..!","W","top-center",5);
+            mensajesalertify("Ingrese Login..!!","W","top-center",5);
             return;    
         }
         
         if(_password == '')
         {            
-            mensajesalertify("Ingrese Password..!","W","top-center",5);
+            mensajesalertify("Ingrese Password..!!","W","top-center",5);
             return;    
         }
                
         if(_perfil == '0')
         {            
-            mensajesalertify("Seleccione Perfil..!","W","top-center",5);
+            mensajesalertify("Seleccione Perfil..!!","W","top-center",5);
             return;    
         }
 
         if(_depar == '0')
         {            
-            mensajesalertify("Seleccione Departamento..!","W","top-center",5);
+            mensajesalertify("Seleccione Departamento..!!","W","top-center",5);
             return;    
         }        
 
@@ -306,7 +306,7 @@ $(document).ready(function(){
     function FunGrabar(response){
         if(!response){
             
-            mensajesalertify("Login ya esta Registrado..!","E","bottom-right",5);	
+            mensajesalertify("Login ya esta Registrado..!!","E","bottom-right",5);	
         }else{
             _file = _imagen.files[0];
             form_data = new FormData();            
@@ -341,12 +341,12 @@ $(document).ready(function(){
                                 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div>'
                     if(_opcion == 0){
                         TableData.row.add([_userid, _usuario, _login, _perfil, _estado, _button]).draw();
-                        mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);				
+                        mensajesalertify("Grabado Correctamente..!!","S","bottom-center",5);				
 				
                     }
                     else{
                         TableData.row(_fila).data([_userid, _usuario, _login, _perfil, _estado, _button]).draw();
-                        mensajesalertify("Actualizado Correctamente..!","S","bottom-center",5);	
+                        mensajesalertify("Actualizado Correctamente..!!","S","bottom-center",5);	
                     }                     
                     $("#modalNewUser").modal("hide");
                 },

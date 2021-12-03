@@ -160,7 +160,7 @@ $(document).ready(function(){
 
     function DeleteDepar(){
        
-        alertify.confirm('El registro sera eliminado', 'Esta seguro de eliminar' + ' ' + _depa + '..?', function(){ //alertify.success('Ok')        
+        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar' + ' ' + _depa + '..?', function(){ //alertify.success('Ok')        
            $.ajax({
                url: "../db/depacrud.php",
                type: "POST",

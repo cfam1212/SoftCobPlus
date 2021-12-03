@@ -94,10 +94,10 @@ $(document).ready(function(){
     function FunValidar(respuesta){
         if(!respuesta){
             // alertify.warning('Perfil tiene Menú/Tareas Asociadas..!','mensaje', 2, function(){console.log('dismissed');}); 
-            mensajesalertify("Perfil tiene Menú/Tareas Asociadas..!","E","bottom-right",5);
+            mensajesalertify("Perfil tiene Menú/Tareas Asociadas..!!","E","bottom-right",5);
         }else{
      
-    alertify.confirm('El registro sera eliminado', 'Esta seguro de eliminar'+''+ _perfil +'..?', function(){ 
+    alertify.confirm('El Registro sera eliminado..!!', 'Esta seguro de eliminar'+''+ _perfil +'..?', function(){ 
 
 
         $.ajax({
@@ -130,7 +130,7 @@ $(document).ready(function(){
         if(_perfil == '')
         {       
 
-            mensajesalertify("Ingrese Nombre del Perfil..!","W","top-center",5);  
+            mensajesalertify("Ingrese Nombre del Perfil..!!","W","top-center",5);  
             return;
         }
 
@@ -146,7 +146,7 @@ $(document).ready(function(){
         if(i == 0)
         {
            
-            mensajesalertify("Seleccione al menos un opción Menu/Tareal..!","W","top-center",5);
+            mensajesalertify("Seleccione al menos un opción Menu/Tareal..!!","W","top-center",5);
             return;
         }
 
@@ -173,7 +173,7 @@ $(document).ready(function(){
     function FunGrabar(respuesta){
         if(!respuesta){
             // alertify.warning('Nombre del Perfil ya Existe..!','mensaje', 2, function(){console.log('dismissed');});
-            mensajesalertify("Nombre del Perfil ya Existe..!","E","bottom-right",5);
+            mensajesalertify("Nombre del Perfil ya Existe..!!","E","bottom-right",5);
         }else{
             $.ajax({
                 url: "../db/perfilcrud.php",
@@ -182,7 +182,7 @@ $(document).ready(function(){
                 data: {nombreperfil:_perfil, observacion:_observacion, result:_result, estado:_estado, crear:_crear, modificar:_modificar, 
                     eliminar:_eliminar, id:0, opcion:0},          
                 success: function(data){                                        
-                    $.redirect('perfil.php', {'mensaje': 'Guardado con Exito..!'});
+                    $.redirect('perfil.php', {'mensaje': 'Guardado con Exito..!!'});
                 },
                 error: function (error){
                     console.log(error);

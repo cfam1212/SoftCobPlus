@@ -81,7 +81,7 @@ $(document).ready(function(){
         if(_nombreperfil == '')
         {
            
-            mensajesalertify("Ingrese Nombre del Perfil..!","W","top-center",5);	    
+            mensajesalertify("Ingrese Nombre del Perfil..!!","W","top-center",5);	    
             return;
         }
 
@@ -113,7 +113,7 @@ $(document).ready(function(){
     function FunGrabar(response){
         if(!response){
             
-            mensajesalertify("Nombre del Perfil ya Existe..!","E","bottom-right",5);	      
+            mensajesalertify("Nombre del Perfil ya Existe..!!","E","bottom-right",5);	      
         }else{
 
             _rowcollection =  TableData.$('input[type="checkbox"]', {"page": "all"});
@@ -130,7 +130,7 @@ $(document).ready(function(){
                 data: {nombreperfil:_nombreperfil, observacion:_observacion, result:_result, estado:_estado, crear:_crear, modificar:_modificar, 
                     eliminar:_eliminar, id:_idperfil, opcion:1},            
                 success: function(data){ 
-                    $.redirect('perfil.php', {'mensaje': 'Actualizado con Exito..!'}); 
+                    $.redirect('perfil.php', {'mensaje': 'Actualizado con Exito..!!'}); 
                 },
                 error: function (error) {
                     console.log(error);

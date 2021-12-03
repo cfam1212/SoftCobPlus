@@ -40,7 +40,7 @@
 
     <script src="../vendors/sweetalert2/js/sweetalert2.all.min.js"></script>
 
-    <script src="../vendors/alertify/js/alertify.min.js"></script>
+    <script src="../vendors/alertify/js/alertify.js"></script>
 
     <script src="../vendors/fastclick/js/fastclick.js"></script>
     

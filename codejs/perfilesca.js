@@ -6,7 +6,11 @@ $(document).ready(function(){
 
     $("#modalPARAMETER").draggable({
         handle: ".modal-header"
-    });  
+    });
+    
+    $("#modalPERFIL").draggable({
+        handle: ".modal-header"
+    });    
 
     $('#cboPerfil').select2();
 
@@ -197,7 +201,7 @@ $(document).ready(function(){
         row_id = $(this).attr("id");
         _descripcion = $('#txtDescripcion' + row_id + '').val();
 
-        alertify.confirm('El registro sera eliminado', 'Esta seguro de eliminar' +' '+ _descripcion +'..?' , function(){ 
+        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar' +' '+ _descripcion +'..?' , function(){ 
 
             FunRemoveItemFromArr(_result, _descripcion);
             $('#row_' + row_id + '').remove();

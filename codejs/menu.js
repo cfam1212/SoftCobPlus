@@ -68,7 +68,7 @@ $(document).ready(function(){
     function DeleteMenu(){
         
 
-        alertify.confirm('El Registro sera eliminado', 'Esta seguro de eliminar el menu..?', function(){ 
+        alertify.confirm('El Registro sera eliminado..!!', 'Esta seguro de eliminar el menu..?', function(){ 
     
                      $.ajax({
                         url: "../db/menucrud.php",
@@ -116,7 +116,7 @@ $(document).ready(function(){
         if(_opcionmp == 2){
             if(_menupadre == ''){
                 
-                mensajesalertify("Ingrese Nombre del Menú Padre..!","W","top-center",5);              
+                mensajesalertify("Ingrese Nombre del Menú Padre..!!","W","top-center",5);              
                 return false;                
             }
         }
@@ -129,7 +129,7 @@ $(document).ready(function(){
         if(i == 0)
         {
          
-            mensajesalertify("Seleccione al menos una tarea..!","W","top-center",5);
+            mensajesalertify("Seleccione al menos una tarea..!!","W","top-center",5);
             return false;
         }
 
