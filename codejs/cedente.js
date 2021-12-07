@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
-    var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid,_cedente, _cbocargo, _ext,_celular,_resultcon = [], 
+    var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid, _cedente, _cbocargo, _ext,_celular,_resultcon = [], 
     _resultpro = [], _cargo,_resultcat =[], _resultage = [],_codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
     _descripcion, _newproducto, _codigocat, _catalogo, _estadocat, _produc, _email1, _email2, _countagen = 0, _codigoagen
-    ,_continuamod, _countproduc = 0;
+    ,_continuamod, _countproduc = 0, _estadopro;
 
 
     $("#modalCONTACTO").draggable({
@@ -299,12 +299,12 @@ $(document).ready(function(){
         $("#formProducto").trigger("reset"); 
         _idproduc = $(this).attr("id");
         _productoant = $('#txtProducto' + _idproduc + '').val();
-        _estadoantpro = $('#txtEsTado' + _idproduc + '').val();   
+        _estadopro = $('#txtEsTado' + _idproduc + '').val();   
         _tipoSave = 'edit';
     
         $('#txtProductoMo').val(_productoant);
 
-        if(_estadoantpro == "Activo"){
+        if(_estadopro == "Activo"){
             $("#chkEstadoPro").prop("checked", true);
             $("#lblEstadoPro").text("Activo");
         }else{
@@ -323,7 +323,8 @@ $(document).ready(function(){
 
     //cheked producto-modal
     $("#chkEstadoPro").click(function(){
-        _checkedPro = $("#chkEstadoPro").is(":checked");
+        let _checkedPro = $("#chkEstadoPro").is(":checked");
+
         if(_checkedPro){
             $("#lblEstadoPro").text("Activo");
             _estadopro = 'Activo';
@@ -337,13 +338,15 @@ $(document).ready(function(){
 
     $('#btnModProduc').click(function(){
 
-        _continuamod = false;
-        _productonew = $.trim($('#txtProductoMo').val());
+        let _continuamod = false;
+        let _productonew = $.trim($('#txtProductoMo').val());
 
         if(_productonew == ''){
             mensajesalertify("Ingrese Producto..!!","W","top-center",5);
             return;
         }
+
+        //debugger;
 
         if(_productoant.toUpperCase() != _productonew.toUpperCase()){
             $.each(_resultpro,function(i,item)
@@ -368,8 +371,10 @@ $(document).ready(function(){
             _objeto = {
                 arrycodigo : parseInt(_idproduc),
                 arryproducto : _productonew,
-                arryestado : _estado,
+                arryestado : _estadopro,
             }
+
+            _resultpro.push(_objeto);
 
             $("#modalPRODUCTO").modal("hide"); 
             $("tbody").children().remove();
