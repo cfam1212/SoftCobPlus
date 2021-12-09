@@ -388,7 +388,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 <div class="modal fade" id="modalCONTACTO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModal">
-            <div class="modal-header" id="header">
+            <div class="modal-header" id="headercon">
                 <h5 class="modal-title" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -513,7 +513,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAddAgencia" class="btn btn-success ml-3">Modificar</button>
+                    <button type="button" id="btnEditAgencia" class="btn btn-success ml-3">Modificar</button>
                 </div>
             </form>
         </div>
@@ -560,15 +560,15 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="produc" class="control-label col-md-4">Cod.Catalogo</label>
-                        <input type="text" required class="form-control" id="txtEditCodMo" name="producto" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
+                        <input type="text" required class="form-control" id="txtCodMo" name="producto" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
                     <div class="form-group">
                         <label for="produc" class="control-label col-md-4">Catalogo</label>
-                        <input type="text" required class="form-control" id="txtEditCat" name="producto" maxlength="250" onKeyUp="this.value=this.value.toUpperCase();">
+                        <input type="text" required class="form-control" id="txtCatMo" name="producto" maxlength="250" onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
                     <div class="form-check" id="divcheck">
-                        <input type="checkbox" id="chkEstado" class="form-check-input">
-                        <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
+                        <input type="checkbox" id="chkEstadoCat" class="form-check-input">
+                        <label for="estadolabel" class="form-check-label" id="lblEstadoCat">Activo</label>
                     </div>
                 </div>
                 <div class="modal-footer">

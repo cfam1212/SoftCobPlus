@@ -4,7 +4,10 @@ $(document).ready(function(){
 
     $("#modalNewUser").draggable({
         handle: ".modal-header"
-    });     
+    });   
+    
+    $('#cboPerfil').select2();
+    $('#cboDepa').select2();
 
     $("#btnNuevo").click(function(){
         $("#frmUserNew").trigger("reset");
@@ -174,35 +177,7 @@ $(document).ready(function(){
         _data = $('#tabledata').dataTable().fnGetData(_row);
         _id = _data[0];
         _username = _row.find('td:eq(0)').text();
-        // Swal.fire({
-        //     title: 'Está Seguro de Borrar '+ _username ,
-        //     text: 'El registro será eliminado..',
-        //     type: 'warning',
-        //     showCancelButton: true,
-        //     confirmButtonColor: '#3085d6',
-        //     cancelButtonColor: '#d33',
-        //     confirmButtonText: 'Eliminar',
-        //     showLoaderOnConfirm: true,
-        //     preConfirm: function() {
-        //         return new Promise(function(resolve) {
-        //             $.ajax({
-        //                 url: "../bd/consultadatos.php",
-        //                 type: "POST",
-        //                 dataType: "json",
-        //                 data: {tipo:22, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_id, auxi2:0, auxi3:0, auxi4:0, auxi5:0, 
-        //                 auxi6:0, opcion:2},
-        //                 success: function(data){
-        //                     Swal.close();
-        //                     TableData.row(_fila.parents('tr')).remove().draw();
-        //                     alertify.error('Registro Eliminado..!');
-        //                 },
-        //                 error: function (error) {
-        //                     console.log(error);
-        //                 }                  
-        //             });
-        //         });
-        //     }            
-        // });
+        
         alertify.confirm('El Registro será eliminado..!!', 'Esta seguro de eliminar' + _username + '..?', function(){ //alertify.success('Ok') 
     
             $.ajax({

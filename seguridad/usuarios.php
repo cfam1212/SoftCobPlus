@@ -118,27 +118,27 @@ $cbodepa = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                     <div class="form-group row">
                         <label for="perfil" class="control-label col-md-2">Perfil:</label>
-                        <select class="form-control col-md-4" id="cboPerfil" name="cboperfil">
+                        <select class="form-control col-md-4" id="cboPerfil" name="cboperfil" style="width: 33%;">
                             <?php foreach ($cboperfil as $fila) : ?>
                                 <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                             <?php endforeach ?>
                         </select>
-                        <label for="estado" class="control-label col-md-2">Estado:</label>
-                        <div class="checkbox col-md-4">
+                        
+                        <label for="estado" class="control-label col-md-1">Estado:</label>
+                        <label for="espacio" class="control-label col-md-1"></label>
+                        <div class="checkbox col-md-2">
                             <input type="checkbox" id="chkEstado">
                             <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="perfil" class="control-label col-md-2">Departamento:</label>
-                        <select class="form-control col-md-4" id="cboDepa" name="cbodepa">
+                        <select class="form-control col-md-4" id="cboDepa" name="cbodepa"style="width: 33%;">
                             <?php foreach ($cbodepa as $fila) : ?>
                                 <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                             <?php endforeach ?>
                         </select>
-
                     </div>
-
                     <div class="form-group row">
                         <label for="caduca" class="control-label col-md-2">Password Caduca:</label>
                         <div class="checkbox col-md-4">

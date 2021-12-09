@@ -3,7 +3,7 @@ $(document).ready(function(){
     var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid, _cedente, _cbocargo, _ext,_celular,_resultcon = [], 
     _resultpro = [], _cargo,_resultcat =[], _resultage = [],_codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
     _descripcion, _newproducto, _codigocat, _catalogo, _estadocat, _produc, _email1, _email2, _countagen = 0, _codigoagen
-    ,_continuamod, _countproduc = 0, _estadopro;
+    ,_continuamod, _countproduc = 0, _estadopro, _contactoold,_codcargoold,_celularold,_extold,_email1old,_estadoagen,_estadocat;
 
 
     $("#modalCONTACTO").draggable({
@@ -108,6 +108,27 @@ $(document).ready(function(){
           }
       });
 
+    //   $.each(_resultcon,function(i,item)
+    //   {
+    //       if(item.arrycelular == _celular)
+    //       {                        
+    //           mensajesalertify("Celular ya Existe..!","E","bottom-center",5); 
+    //           _continuar = false;
+    //           return;
+    //       }
+    //   });
+
+    //   $.each(_resultcon,function(i,item)
+    //   {
+    //       if(item.arryemail1.toUpperCase() == _email1.toUpperCase())
+    //       {                        
+    //           mensajesalertify("Email ya Existe..!","E","bottom-center",5); 
+    //           _continuar = false;
+    //           return;
+    //       }
+    //   });
+
+
       if(_email1 != '')
       {
         var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
@@ -166,12 +187,12 @@ $(document).ready(function(){
 
     $(document).on("click",".btnEditCon",function(){
       $("#formContacto").trigger("reset"); 
-      row_id = $(this).attr("id");
-      _contactoold = $('#txtContacto' + row_id + '').val();
-      _codcargoold = $('#cboCargo' + row_id + '').val();
-      _celularold = $('#txtCelular' + row_id + '').val();
-      _extold = $('#txtExt' + row_id + '').val();
-      _email1old = $('#txtEmail1' + row_id + '').val();   
+      _idcontacto = $(this).attr("id");
+      _contactoold = $('#txtContacto' + _idcontacto + '').val();
+      _codcargoold = $('#cboCargo' + _idcontacto + '').val();
+      _celularold = $('#txtCelular' + _idcontacto + '').val();
+      _extold = $('#txtExt' + _idcontacto + '').val();
+      _email1old = $('#txtEmail1' + _idcontacto + '').val();   
       _tipoSave = 'edit';
 
 
@@ -181,9 +202,9 @@ $(document).ready(function(){
       $('#txtExtMo').val(_extold);
       $('#txtEmail1Mo').val(_email1old);
 
-      $('#hidden_row_id').val(row_id);
-      $("#header").css("background-color","#183456");
-      $("#header").css("color","white");
+      $('#hidden_row_id').val(_idcontacto);
+      $("#headercon").css("background-color","#183456");
+      $("#headercon").css("color","white");
       $(".modal-title").text("Editar Contacto");       
       $("#btnAgregar").text("Modificar");
       $("#modalCONTACTO").modal("show");
@@ -192,13 +213,117 @@ $(document).ready(function(){
 
     //botton editar-contacto
 
-    $('btnEditCon').click(function(){
+  $('#btnEditarCon').click(function(){
+      debugger;
+    let _continuacon = false;
+    let _newcontacto = $.trim($('#txtContactoMo').val());
+    let _newcbocargo = $('#cboCargoMo').val();
+    let _newcargo = $("#cboCargoMo option:selected").text(); 
+    let _newext =  $.trim($('#txtExtMo').val());
+    let _newcel = $.trim($('#txtCelularMo').val());
+    let _newemail1 = $.trim($('#txtEmail1Mo').val());
+    let _newemail2 = $.trim($('#txtEmail1Mo').val());
 
+    if(_newcontacto == ''){
+        mensajesalertify("Ingrese Contacto..!!","W","top-center",5);
+        return;
+    }
 
+    if(_newcbocargo == '0')
+    {
+        mensajesalertify("Seleccione Cargo..!","W","top-center",5);
+        return;
+    }
 
+    if(_newemail1 != '')
+    {
+      var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+  
+      if (regex.test($('#txtEmail1Mo').val().trim())) {
+          console.log('correcto');                            
+      } else {
+          mensajesalertify("Email es invalido","E","bottom-right",5);
+          _continuar = false;   
+          return;
+      }        
+    }
 
+    if(_contactoold.toUpperCase() != _newcontacto.toUpperCase()){
+        $.each(_resultcon,function(i,item)
+        {
+            if(item.arrycontacto.toUpperCase() == _newcontacto.toUpperCase())
+            {
+                mensajesalertify("Contacto ya Existe..!","E","bottom-center",5); 
+                _continuacon = false;
+                return false;
+            }else
+            {
+                _continuacon = true;
+            }
 
-    });
+            // if(item.arrycelular == _newcel)
+            // {
+            //     mensajesalertify("Celular ya Existe..!","E","bottom-center",5); 
+            //     _continuacon = false;
+            //     return false;
+            // }else
+            // {
+            //     _continuacon = true;
+            // }
+            
+            // if(item.arryemail1 == _newemail1)
+            // {
+            //     mensajesalertify("Email ya Existe..!","E","bottom-center",5); 
+            //     _continuacon = false;
+            //     return false;
+            // }else
+            // {
+            //     _continuacon = true;
+            // }
+        });
+    }else  _continuacon = true;
+
+    if(_continuacon)
+    {
+        FunRemoveContacto(_resultcon, _contactoold);
+
+        _objeto = {
+            arrycodigo : parseInt(_idcontacto),
+            arrycontacto : _newcontacto,
+            arrcargo : _newcargo,
+            arrycbocargo : _newcbocargo,
+            arrycelular : _newcel,
+            arryext : _newext,
+            arryemail1 : _newemail1
+        }
+
+        _resultcon.push(_objeto);  
+        
+        $("#modalCONTACTO").modal("hide"); 
+        $("tbody").children().remove();
+
+        _resultcon.sort((a,b) => a.arrycodigo - b.arrycodigo)
+
+            $.each(_resultcon, function(i,item){
+                _output = '<tr id="row_' + item.arrycodigo + '">';
+                _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
+                _output += '<td>' + item.arrycontacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + item.arrycodigo + '" value="' + item.arrycontacto + '" /></td>';
+                _output += '<td class="text-center">' + item.arrcargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + item.arrycodigo + '" value="' + item.arrycbocargo  + '" /></td>';
+                _output += '<td style="display: none;" class="text-center">' + item.arrycbocargo + ' <input type="hidden" name="hidden_codigocargo[]" id="codCargo' + item.arrycodigo + '" value="' + item.arrycbocargo + '" /></td>';
+                _output += '<td class="text-center">' + item.arrycelular + ' <input type="hidden" name="hidden_celular[]" id="txtCelular' + item.arrycodigo + '" value="' + item.arrycelular  + '" /></td>';
+                _output += '<td class="text-center">' + item.arryext  + ' <input type="hidden" name="hidden_ext[]" id="txtExt' + item.arrycodigo + '" value="' + item.arryext  + '" /></td>';
+                _output += '<td class="text-center">' + item.arryemail1 + ' <input type="hidden" name="hidden_email1[]" id="txtEmail1' + item.arrycodigo + '" value="' + item.arryemail1 + '" /></td>';
+                _output += '<td><div class="text-center"><div class="btn-group">'
+                _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btnEditCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
+                _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                _output += '</tr>';
+                
+                $('#tblcontacto').append(_output);
+
+            });
+    } 
+
+  });
 
     //delete-contacto
 
@@ -215,6 +340,8 @@ $(document).ready(function(){
         }
         , function(){ });
     });
+
+    //Remove contacto
 
     function FunRemoveContacto(arr, deta)
     {
@@ -420,7 +547,7 @@ $(document).ready(function(){
         $.each(_resultcat,function(i,item){
             if(item.arryproductocat == _producto)
             {
-                mensajesalertify("Existen Catalagos Asociados al Producto..!","W","bottom-center",5); 
+                mensajesalertify("Existen Catalagos Asociados al Producto..!","E","bottom-right",5); 
                 _contdelcat = false;
                 return false;
             }
@@ -519,21 +646,21 @@ $(document).ready(function(){
     //editar-catalogo-modal
     $(document).on("click",".btnEditCat",function(){
         $("#formEditCatalogo").trigger("reset"); 
-        row_id = $(this).attr("id");
+        _idcatalogo = $(this).attr("id");
         
-        _codcatold = $('#txtCodigoCat' + row_id + '').val();
-        _catalogoold = $('#txtCatalogo' + row_id + '').val();
-        _estadoold = $('#txtEsTadoCat' + row_id + '').val(); 
+        _codcatold = $('#txtCodigoCat' + _idcatalogo + '').val();
+        _catalogoold = $('#txtCatalogo' + _idcatalogo + '').val();
+        _estadocat = $('#txtEsTadoCat' + _idcatalogo + '').val(); 
         
-        $('#txtEditCodMo').val(_codcatold);
-        $('#txtEditCat').val(_catalogoold);
+        $('#txtCodMo').val(_codcatold);
+        $('#txtCatMo').val(_catalogoold);
     
-        if(_estadoold == "Activo"){
-            $("#chkEstado").prop("checked", true);
-            $("#lblEstado").text("Activo");
+        if(_estadocat == "Activo"){
+            $("#chkEstadoCat").prop("checked", true);
+            $("#lblEstadoCat").text("Activo");
         }else{
-            $("#chkEstado").prop("checked", false);
-            $("#lblEstado").text("Inactivo");
+            $("#chkEstadoCat").prop("checked", false);
+            $("#lblEstadoCat").text("Inactivo");
         }
 
     
@@ -545,18 +672,91 @@ $(document).ready(function(){
 
     //checked modal-editar-catalogo
 
-    $("#chkEstado").click(function(){
-        _checked = $("#chkEstado").is(":checked");
+    $("#chkEstadoCat").click(function(){
+        _checked = $("#chkEstadoCat").is(":checked");
         if(_checked){
-            $("#lblEstado").text("Activo");
-            _estado = 'Activo';
+            $("#lblEstadoCat").text("Activo");
+            _estadocat = 'Activo';
         }else{
-            $("#lblEstado").text("Inactivo");
-            _estado = 'Inactivo';
+            $("#lblEstadoCat").text("Inactivo");
+            _estadocat = 'Inactivo';
         }
     });
 
     //botton-editar-catalogo
+     
+    $('#btnEditCat').click(function(){
+
+        let _continucat = false;
+        let _newcodcat = $.trim($('#txtCodMo').val());
+        let _newcatalogo = $.trim($('#txtCatMo').val());
+
+        if(_newcodcat == ''){
+            mensajesalertify("Ingrese Codigo..!!","W","top-center",5);
+            return;
+        }
+
+        if(_newcatalogo == ''){
+            mensajesalertify("Ingrese Catalogo..!!","W","top-center",5);
+            return;
+        }
+
+        if(_catalogoold.toUpperCase() != _newcodcat.toUpperCase()){
+            $.each(_resultcat,function(i,item)
+            {
+                if(item.arrycatalogo.toUpperCase() == _newcatalogo.toUpperCase())
+                {
+                    mensajesalertify("Catalogo ya Existe..!","E","bottom-center",5); 
+                    _continucat = false;
+                    return false;
+                }else
+                {
+                    _continucat = true;
+                }
+            });
+        }else  _continucat = true;
+
+        if(_continucat)
+        {
+            
+            FunRemoveItemCatalogo(_resultcat, _catalogoold);
+
+            _objeto = {
+                arrycodigo : parseInt(_idcatalogo),
+                arryproductocat : _produc,
+                arrycodigocat : _newcodcat,
+                arrycatalogo : _newcatalogo,
+                arryestado : _estadocat,
+            }
+
+            _resultcat.push(_objeto);
+
+            $("#modalEDITCATALOGO").modal("hide"); 
+            $("tbody").children().remove();
+
+            _resultcat.sort((a,b) => a.arrycodigo - b.arrycodigo)
+
+            $.each(_resultcat, function(i,item){
+                
+                _output = '<tr id="row_' + item.arrycodigo + '">';
+                _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
+                _output += '<td>' + item.arryproductocat + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproductocat + '" /></td>';
+                _output += '<td class="text-center">' + item.arrycodigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + item.arrycodigo + '" value="' + item.arrycodigocat + '" /></td>';
+                _output += '<td class="text-center">' + item.arrycatalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + item.arrycodigo + '" value="' + item.arrycatalogo + '" /></td>';
+                _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + item.arrycodigo + '" value="' + item.arryestado  + '" /></td>';
+                _output += '<td><div class="text-center"><div class="btn-group">'
+                _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
+                _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                _output += '</tr>';
+                
+                $('#tblcatalogo').append(_output);
+
+            });
+        }
+
+
+
+    });
 
 
     //delete catalogo
@@ -567,7 +767,7 @@ $(document).ready(function(){
 
         alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Catalogo' +' '+ _catalogo +'..?' , function(){ 
 
-            FunRemoveItemFromArr(_resultcat, _catalogo);
+            FunRemoveItemCatalogo(_resultcat, _catalogo);
             $('#row_' + row_id + '').remove();
             _count--;
 
@@ -575,7 +775,7 @@ $(document).ready(function(){
         , function(){ });
     });
 
-    function FunRemoveItemFromArr(arr, deta)
+    function FunRemoveItemCatalogo(arr, deta)
     {
         $.each(arr,function(i,item){
             if(item.arrycatalogo == deta)
@@ -673,15 +873,13 @@ $(document).ready(function(){
 
     $(document).on("click",".btnEditAgencia",function(){
         $("#formAgencia").trigger("reset"); 
-        row_id = $(this).attr("id");
-        _agenciaold = $('#txtAgencia' + row_id + '').val();
-        _codigoldagen = $('#txtCodigoAgen' + row_id + '').val();
-        _sucursalold = $('#codigoSucursal' + row_id + '').val();
-        _zonaold = $('#codigoZona' + row_id + '').val();
-        _estadooldag = $('#txtEstadoAg' + row_id + '').val();
+        _idagencia = $(this).attr("id");
+        _agenciaold = $('#txtAgencia' + _idagencia + '').val();
+        _codigoldagen = $('#txtCodigoAgen' + _idagencia + '').val();
+        _sucursalold = $('#codigoSucursal' + _idagencia + '').val();
+        _zonaold = $('#codigoZona' + _idagencia + '').val();
+        _estadoagen = $('#txtEstadoAg' + _idagencia + '').val();
         _tipoSave = 'edit';
-
-        // alert(_agenciaold+' '+_codigoldagen+' '+_sucursalold+' '+_zonaold);
 
 
         $('#txtAgenciaMo').val(_agenciaold);
@@ -689,7 +887,7 @@ $(document).ready(function(){
         $('#cboSucursalMo').val(_sucursalold).change();
         $('#cboZonaMo').val(_zonaold).change();
 
-        if(_estadooldag == "Activo"){
+        if(_estadoagen == "Activo"){
             $("#chkEstadoAg").prop("checked", true);
             $("#lblEstadoAg").text("Activo");
         }else{
@@ -706,6 +904,102 @@ $(document).ready(function(){
 
     });
 
+    //cheked agencia-modal
+    $("#chkEstadoAg").click(function(){
+        let _checkedAge = $("#chkEstadoAg").is(":checked");
+
+        if(_checkedAge){
+            $("#lblEstadoAg").text("Activo");
+            _estadoagen = 'Activo';
+        }else{
+            $("#lblEstadoAg").text("Inactivo");
+            _estadoagen = 'Inactivo';
+        }
+    });
+
+    //button modificar agencia
+
+    $('#btnEditAgencia').click(function(){
+
+        let _continuage = false;
+        let _newagencia = $.trim($('#txtAgenciaMo').val());
+        let _newcodigo = $.trim($('#txtCodigoAgeMo').val());
+        let _newcbosucursal = $('#cboSucursalMo').val();
+        let _newsucursal = $("#cboSucursalMo option:selected").text();
+        let _newcbozona = $('#cboZonaMo').val();
+        let _newzona = $("#cboZonaMo option:selected").text();  
+        
+        
+        if(_newagencia == ''){
+            mensajesalertify("Ingrese Agencia..!!","W","top-center",5);
+            return;
+        }
+        
+        if(_agenciaold.toUpperCase() != _newagencia.toUpperCase()){
+            $.each(_resultage,function(i,item)
+            {
+                if(item.arryagencia.toUpperCase() == _newagencia.toUpperCase())
+                {
+                    mensajesalertify("Agencia ya Existe..!","E","bottom-center",5); 
+                    _continuage = false;
+                    return false;
+                }else
+                {
+                    _continuage = true;
+                }
+
+            });
+        }else  _continuage = true;
+
+        if(_continuage)
+        {
+
+            FunRemoveItemAgencia(_resultage, _agenciaold);
+
+            _objeto = {
+                arrycodigo : parseInt(_idagencia),
+                arryagencia : _newagencia,
+                arrycodigoagen : _newcodigo,
+                arrsucur : _newsucursal,
+                arrysucursal : _newcbosucursal,
+                arrzo : _newzona,
+                arryzona : _newcbozona,
+                arryestado : _estadoagen,
+            }
+  
+            _resultage.push(_objeto);
+            
+            $("#modalAGENCIA").modal("hide"); 
+            $("tbody").children().remove();
+
+            _resultage.sort((a,b) => a.arrycodigo - b.arrycodigo)
+
+            $.each(_resultage, function(i,item){
+               
+                _output = '<tr id="row_' + item.arrycodigo + '">';
+                _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigoagen' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
+                _output += '<td>' + item.arryagencia + ' <input type="hidden" name="hidden_agencia[]" id="txtAgencia' + item.arrycodigo + '" value="' + item.arryagencia + '" /></td>';
+                _output += '<td class="text-center">' + item.arrycodigoagen + ' <input type="hidden" name="hidden_codigo[]" id="txtCodigoAgen' + item.arrycodigo + '" value="' + item.arrycodigoagen + '" /></td>';
+                _output += '<td style="display: none;" class="text-center">' + item.arrysucursal + ' <input type="hidden" name="hidden_codigosucursal[]" id="codigoSucursal' + item.arrycodigo + '" value="' + item.arrysucursal + '" /></td>';
+                _output += '<td class="text-center">' + item.arrsucur + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + item.arrycodigo + '" value="' + item.arrsucur + '" /></td>';
+                _output += '<td style="display: none;" class="text-center">' + item.arryzona + ' <input type="hidden" name="hidden_codigozona[]" id="codigoZona' + item.arrycodigo + '" value="' + item.arryzona + '" /></td>';
+                _output += '<td class="text-center">' + item.arrzo + ' <input type="hidden" name="hidden_zona[]" id="cboZona' + item.arrycodigo + '" value="' + item.arrzo + '" /></td>';
+                _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_email1[]" id="txtEstadoAg' + item.arrycodigo + '" value="' + item.arryestado + '" /></td>';
+                _output += '<td><div class="text-center"><div class="btn-group">'
+                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
+                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                _output += '</tr>';
+                
+                $('#tblagencia').append(_output);
+
+
+
+            });
+        }
+
+
+    });
+
 
     //eliminar -agencia-modal
 
@@ -716,7 +1010,7 @@ $(document).ready(function(){
         
         alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Agencia' +' '+ _agencia +'..?' , function(){ 
 
-            FunRemoveItemFromArr(_resultage, _agencia);
+            FunRemoveItemAgencia(_resultage, _agencia);
             $('#row_' + row_id + '').remove();
             _count--;
 
@@ -724,10 +1018,11 @@ $(document).ready(function(){
         , function(){ });
     });
 
-    function FunRemoveItemFromArr(arr, deta)
+    //Remove Agencia
+    function FunRemoveItemAgencia(arr, deta)
     {
         $.each(arr,function(i,item){
-            if(item.arrydescripcion == deta)
+            if(item.arryagencia == deta)
             {
                 arr.splice(i, 1);
                 return false;
@@ -737,16 +1032,7 @@ $(document).ready(function(){
         });        
     };     
 
-    $("#chkEstadoAg").click(function(){
-        _checked = $("#lblEstadoAg").is(":checked");
-        if(_checked){
-            $("#lblEstado").text("Activo");
-            _estado = 'Activo';
-        }else{
-            $("#lblEstado").text("Inactivo");
-            _estado = 'Inactivo';
-        }
-    });	
+ 
 
     //GRABAR CEDENTE
 
