@@ -1,9 +1,10 @@
 $(document).ready(function(){
 
     var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid, _cedente, _cbocargo, _ext,_celular,_resultcon = [], 
-    _resultpro = [], _cargo,_resultcat =[], _resultage = [],_codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
+    _resultpro = [], _cargo, _resultcat =[], _resultage = [],_codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
     _descripcion, _newproducto, _codigocat, _catalogo, _estadocat, _produc, _email1, _email2, _countagen = 0, _codigoagen
-    ,_continuamod, _countproduc = 0, _estadopro, _contactoold,_codcargoold,_celularold,_extold,_email1old,_estadoagen,_estadocat;
+    ,_continuamod, _countproduc = 0, _estadopro, _contactoold,_codcargoold,_celularold,_extold,_email1old,_estadoagen,_estadocat,
+    _resultcattem =[];
 
 
     $("#modalCONTACTO").draggable({
@@ -504,10 +505,20 @@ $(document).ready(function(){
             _resultpro.push(_objeto);
 
             $("#modalPRODUCTO").modal("hide"); 
-            $("tbody").children().remove();
+
+            //$("tbody").children().remove();
+            $("#tblproducto").empty();
+
+            _output = '<thead class="text-center"';
+            _output += '<tr><th style="display: none;">Id</th>';
+            _output += '<th>Producto</th><th>Estado</th><th>Acciones</th></tr></thead>'
+            $('#tblproducto').append(_output);  
+            
+            _output  = '<tbody>';
+            $('#tblproducto').append(_output); 
 
             _resultpro.sort((a,b) => a.arrycodigo - b.arrycodigo)
-            
+
             $.each(_resultpro, function(i,item){
                 _output = '<tr id="row_' + item.arrycodigo + '">';
                 _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
@@ -521,6 +532,8 @@ $(document).ready(function(){
                 
                 $('#tblproducto').append(_output);  
             });
+            _output  = '</tbody>';
+            $('#tblproducto').append(_output);             
         }
 
     });
@@ -569,10 +582,13 @@ $(document).ready(function(){
     //Catalogo-Producto-Modal
 
     $(document).on("click",".btnCatPro",function(){
+
         $("#formCatalogo").trigger("reset"); 
         row_id = $(this).attr("id");
         _produc = $('#txtProducto' + row_id + '').val();
         _tipoSave = 'save';
+
+        FunBuscarDatos(_produc);
 
         $('#hidden_row_id').val(row_id);
         $("#headercat").css("background-color","#183456");
@@ -582,6 +598,45 @@ $(document).ready(function(){
         $("#modalCATALOGO").modal("show");
 
     });
+
+    function FunBuscarDatos(codproduc){
+        $("#tblcatalogo").empty();
+     
+        _output = '<thead class="text-center"';
+        _output += '<tr><th style="display: none;">Id</th>';
+        _output += '<th>Producto</th><th>Cod.Catalogo</th><th>Catalogo</th><th>Estado</th><th>Acciones</th>'
+        $('#tblcatalogo').append(_output);  
+        
+        _output  = '<tbody>';
+        $('#tblcatalogo').append(_output);   
+                
+       if(_resultcat.length > 0)
+       {
+        $.each(_resultcat, function(i,item){
+            
+            if(item.arryproductocat == codproduc)
+            {
+                _output = '<tr id="row_' + item.arrycodigo + '">';
+                _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
+                _output += '<td>' + item.arryproductocat + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproductocat + '" /></td>';
+                _output += '<td class="text-center">' + item.arrycodigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + item.arrycodigo + '" value="' + item.arrycodigocat + '" /></td>';
+                _output += '<td class="text-center">' + item.arrycatalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + item.arrycodigo + '" value="' + item.arrycatalogo + '" /></td>';
+                _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + item.arrycodigo + '" value="' + item.arryestado  + '" /></td>';
+                _output += '<td><div class="text-center"><div class="btn-group">'
+                _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
+                _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                _output += '</tr>';
+                
+                $('#tblcatalogo').append(_output);
+            }
+
+        });
+
+        _output  = '</tbody>';
+        $('#tblcatalogo').append(_output);                  
+       }
+    }
+
 
     //botton-agregar -catalogo-modal
     $('#btnAddCatalogo').click(function(){
@@ -662,7 +717,6 @@ $(document).ready(function(){
             $("#chkEstadoCat").prop("checked", false);
             $("#lblEstadoCat").text("Inactivo");
         }
-
     
         $("#headercatalog").css("background-color","#183456");
         $("#headercatalog").css("color","white");
@@ -701,7 +755,7 @@ $(document).ready(function(){
             return;
         }
 
-        if(_catalogoold.toUpperCase() != _newcodcat.toUpperCase()){
+        if(_catalogoold.toUpperCase() != _newcatalogo.toUpperCase()){
             $.each(_resultcat,function(i,item)
             {
                 if(item.arrycatalogo.toUpperCase() == _newcatalogo.toUpperCase())
@@ -732,7 +786,15 @@ $(document).ready(function(){
             _resultcat.push(_objeto);
 
             $("#modalEDITCATALOGO").modal("hide"); 
-            $("tbody").children().remove();
+            $("#tblcatalogo").empty();
+            
+            _output = '<thead class="text-center"';
+            _output += '<tr><th style="display: none;">Id</th>';
+            _output += '<th>Producto</th><th>Cod.Catalogo</th><th>Catalogo</th><th>Estado</th><th>Acciones</th>'
+            $('#tblcatalogo').append(_output);  
+            
+            _output  = '<tbody>';
+            $('#tblcatalogo').append(_output);             
 
             _resultcat.sort((a,b) => a.arrycodigo - b.arrycodigo)
 
@@ -752,6 +814,9 @@ $(document).ready(function(){
                 $('#tblcatalogo').append(_output);
 
             });
+
+            _output  = '</tbody>';
+            $('#tblcatalogo').append(_output);              
         }
 
 
