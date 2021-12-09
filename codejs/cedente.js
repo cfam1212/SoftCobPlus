@@ -818,9 +818,6 @@ $(document).ready(function(){
             _output  = '</tbody>';
             $('#tblcatalogo').append(_output);              
         }
-
-
-
     });
 
 
@@ -852,8 +849,6 @@ $(document).ready(function(){
             }
         });        
     };   
-
-
 
      //Agencias
     $('#btnAgencia').click(function(){
