@@ -79,7 +79,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 </div>
 <div class="modal fade" id="modalTAREA" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" id="myModal">
+        <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
                 <h5 class="modal-title" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

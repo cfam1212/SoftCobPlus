@@ -206,7 +206,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblcontacto" class="table table-striped table-border table-condensed table-info" style="width: 100%;">
+                                                <table id="tblcontacto" class="table table-condensed table-dark" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -255,7 +255,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblproducto" class="table table-striped table-border table-condensed table-info" style="width: 100%;">
+                                                <table id="tblproducto" class="table table-striped table-border table-condensed table-dark" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -279,7 +279,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblcatalogo" class="table table-striped table-border table-condensed table-info" style="width: 100%;">
+                                                <table id="tblcatalogo" class="table table-striped table-border table-condensed table-dark" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -346,7 +346,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblagencia" class="table table-striped table-border table-condensed table-info" style="width: 100%;">
+                                                <table id="tblagencia" class="table table-striped table-border table-condensed table-dark" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -387,7 +387,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="modal fade" id="modalCONTACTO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
-        <div class="modal-content" id="myModal">
+        <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="headercon">
                 <h5 class="modal-title" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -434,7 +434,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="modal fade" id="modalCATALOGO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
-        <div class="modal-content" id="myModal">
+        <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="headercat">
                 <h5 class="modal-title" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -471,7 +471,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="modal fade" id="modalAGENCIA" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
-        <div class="modal-content" id="myModal">
+        <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="headeragencia">
                 <h5 class="modal-title" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -521,7 +521,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 </div>
 <div class="modal fade" id="modalPRODUCTO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
-        <div class="modal-content" id="myModal">
+        <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="headerpro">
                 <h5 class="modal-title" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -549,7 +549,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 </div>
 <div class="modal fade" id="modalEDITCATALOGO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
-        <div class="modal-content" id="myModal">
+        <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="headercatalog">
                 <h5 class="modal-title" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

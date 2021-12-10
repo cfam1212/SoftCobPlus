@@ -109,25 +109,15 @@ $(document).ready(function(){
           }
       });
 
-    //   $.each(_resultcon,function(i,item)
-    //   {
-    //       if(item.arrycelular == _celular)
-    //       {                        
-    //           mensajesalertify("Celular ya Existe..!","E","bottom-center",5); 
-    //           _continuar = false;
-    //           return;
-    //       }
-    //   });
-
-    //   $.each(_resultcon,function(i,item)
-    //   {
-    //       if(item.arryemail1.toUpperCase() == _email1.toUpperCase())
-    //       {                        
-    //           mensajesalertify("Email ya Existe..!","E","bottom-center",5); 
-    //           _continuar = false;
-    //           return;
-    //       }
-    //   });
+      $.each(_resultcon,function(i,item)
+      {
+          if(item.arrycelular == _celular)
+          {                        
+              mensajesalertify("Celular ya Existe..!","E","bottom-center",5); 
+              _continuar = false;
+              return;
+          }
+      });
 
 
       if(_email1 != '')
@@ -300,10 +290,17 @@ $(document).ready(function(){
 
         _resultcon.push(_objeto);  
         
-        $("#modalCONTACTO").modal("hide"); 
-        $("tbody").children().remove();
+           $("#modalCONTACTO").modal("hide"); 
+        // $("tbody").children().remove();
+            $("#tblcontacto").empty();
+            _output = '<thead class="text-center"';
+            _output += '<tr><th style="display: none;">Id</th>';
+            _output += '<th>Contacto</th><th>Cargo</th><th style="display: none;">CodigoCargo</th><th>Celular</th><th>Ext</th><th>Email</th><th>Acciones</th></tr></thead>'
+            $('#tblcontacto').append(_output); 
+            _output  = '<tbody>';
+            $('#tblcontacto').append(_output); 
 
-        _resultcon.sort((a,b) => a.arrycodigo - b.arrycodigo)
+            _resultcon.sort((a,b) => a.arrycodigo - b.arrycodigo)
 
             $.each(_resultcon, function(i,item){
                 _output = '<tr id="row_' + item.arrycodigo + '">';
@@ -320,8 +317,9 @@ $(document).ready(function(){
                 _output += '</tr>';
                 
                 $('#tblcontacto').append(_output);
-
             });
+            _output  = '</tbody>';
+            $('#tblcontacto').append(_output);  
     } 
 
   });
@@ -599,7 +597,7 @@ $(document).ready(function(){
 
     });
 
-    function FunBuscarDatos(codproduc){
+        function FunBuscarDatos(codproduc){
         $("#tblcatalogo").empty();
      
         _output = '<thead class="text-center"';
@@ -1030,7 +1028,16 @@ $(document).ready(function(){
             _resultage.push(_objeto);
             
             $("#modalAGENCIA").modal("hide"); 
-            $("tbody").children().remove();
+            // $("tbody").children().remove();
+            $("#tblagencia").empty();
+
+            _output = '<thead class="text-center"';
+            _output += '<tr><th style="display: none;">Id</th>';
+            _output += '<th>Agencia</th><th>Codigo</th><th>Sucursal</th><th>Zona</th><th>Estado</th><th>Acciones</th></tr></thead>'
+            $('#tblagencia').append(_output); 
+
+            _output  = '<tbody>';
+            $('#tblagencia').append(_output); 
 
             _resultage.sort((a,b) => a.arrycodigo - b.arrycodigo)
 
@@ -1051,12 +1058,11 @@ $(document).ready(function(){
                 _output += '</tr>';
                 
                 $('#tblagencia').append(_output);
-
-
-
             });
-        }
 
+            _output  = '</tbody>';
+            $('#tblagencia').append(_output);  
+        }
 
     });
 
@@ -1064,14 +1070,14 @@ $(document).ready(function(){
     //eliminar -agencia-modal
 
     $(document).on("click",".btnDeleteAgencia",function(){
-        row_id = $(this).attr("id");
+        _idagen = $(this).attr("id");
 
-        _agencia = $('#txtAgencia' + row_id + '').val();
+        _agencia = $('#txtAgencia' + _idagen + '').val();
         
         alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Agencia' +' '+ _agencia +'..?' , function(){ 
 
             FunRemoveItemAgencia(_resultage, _agencia);
-            $('#row_' + row_id + '').remove();
+            $('#row_' + _idagen + '').remove();
             _count--;
 
          }
