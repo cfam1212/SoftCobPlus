@@ -4,7 +4,7 @@ $(document).ready(function(){
     _resultpro = [], _cargo, _resultcat =[], _resultage = [],_codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
     _descripcion, _newproducto, _codigocat, _catalogo, _estadocat, _produc, _email1, _email2, _countagen = 0, _codigoagen
     ,_continuamod, _countproduc = 0, _estadopro, _contactoold,_codcargoold,_celularold,_extold,_email1old,_estadoagen,_estadocat,
-    _resultcattem =[];
+    _resultcattem = [], _countcontacto = 0;
 
 
     $("#modalCONTACTO").draggable({
@@ -78,14 +78,14 @@ $(document).ready(function(){
      //Contactos
     $('#btnContacto').click(function(){
 
-        _contacto = $('#txtContacto').val();
-        _cbocargo = $('#cboCargo').val();
-        _cargo =$("#cboCargo option:selected").text();      
-        _ext = $('#txtExt').val();
-        _celular = $('#txtCelular').val();
-        _email1 = $.trim($('#txtEmail1').val());
-        _email2 = $.trim($('#txtEmail2').val());
-        _continuar = true;
+        let _contacto = $('#txtContacto').val();
+        let _cbocargo = $('#cboCargo').val();
+        let _cargo =$("#cboCargo option:selected").text();      
+        let _ext = $('#txtExt').val();
+        let _celular = $('#txtCelular').val();
+        let _email1 = $.trim($('#txtEmail1').val());
+        let _email2 = $.trim($('#txtEmail2').val());
+        let _continuarcon = true;
 
       if(_contacto == '')
       {
@@ -104,7 +104,7 @@ $(document).ready(function(){
           if(item.arrycontacto.toUpperCase() == _contacto.toUpperCase())
           {                        
               mensajesalertify("Contacto ya Existe..!","E","bottom-center",5); 
-              _continuar = false;
+              _continuarcon = false;
               return;
           }
       });
@@ -128,26 +128,26 @@ $(document).ready(function(){
             console.log('correcto');                            
         } else {
             mensajesalertify("Email es invalido","E","bottom-right",5);
-            _continuar = false;   
+            _continuarcon = false;   
             return;
         }        
       }
       
 
-      if(_continuar)
+      if(_continuarcon)
       {
-          _count++;
-          _output = '<tr id="row_' + _count + '">';
-          _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _count + '" /></td>';                
-          _output += '<td>' + _contacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + _count + '" value="' + _contacto + '" /></td>';
-          _output += '<td class="text-center">' + _cargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + _count + '" value="' + _cbocargo + '" /></td>';
+        _countcontacto++;
+          _output = '<tr id="row_' + _countcontacto + '">';
+          _output += '<td style="display: none;">' + _countcontacto + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countcontacto + '" value="' + _countcontacto + '" /></td>';                
+          _output += '<td>' + _contacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + _countcontacto + '" value="' + _contacto + '" /></td>';
+          _output += '<td class="text-center">' + _cargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + _countcontacto + '" value="' + _cbocargo + '" /></td>';
           _output += '<td style="display: none;" class="text-center">' + _cbocargo + ' <input type="hidden" name="hidden_codigocargo[]" id="codCargo' + _count + '" value="' + _cbocargo + '" /></td>';
-          _output += '<td class="text-center">' + _celular + ' <input type="hidden" name="hidden_celular[]" id="txtCelular' + _count + '" value="' + _celular + '" /></td>';
-          _output += '<td class="text-center">' + _ext + ' <input type="hidden" name="hidden_ext[]" id="txtExt' + _count + '" value="' + _ext + '" /></td>';
-          _output += '<td class="text-center">' + _email1 + ' <input type="hidden" name="hidden_email1[]" id="txtEmail1' + _count + '" value="' + _email1 + '" /></td>';
+          _output += '<td class="text-center">' + _celular + ' <input type="hidden" name="hidden_celular[]" id="txtCelular' + _countcontacto + '" value="' + _celular + '" /></td>';
+          _output += '<td class="text-center">' + _ext + ' <input type="hidden" name="hidden_ext[]" id="txtExt' + _countcontacto + '" value="' + _ext + '" /></td>';
+          _output += '<td class="text-center">' + _email1 + ' <input type="hidden" name="hidden_email1[]" id="txtEmail1' + _countcontacto + '" value="' + _email1 + '" /></td>';
           _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btnEditCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btnEditCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countcontacto + '"><i class="fa fa-pencil-square-o"></i></button>';
+          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcontacto + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
           _output += '</tr>';
 
        
@@ -155,7 +155,7 @@ $(document).ready(function(){
           $('#tblcontacto').append(_output);
 
           _objeto = {
-              arrycodigo : parseInt(_count),
+              arrycodigo : parseInt(_countcontacto),
               arrycontacto : _contacto,
               arrycbocargo : _cbocargo,
               arrycelular : _celular,
@@ -234,7 +234,7 @@ $(document).ready(function(){
           console.log('correcto');                            
       } else {
           mensajesalertify("Email es invalido","E","bottom-right",5);
-          _continuar = false;   
+          _continuacon = false;   
           return;
       }        
     }
@@ -327,14 +327,14 @@ $(document).ready(function(){
     //delete-contacto
 
     $(document).on("click",".btnDeleteCon",function(){
-        row_id = $(this).attr("id");
-        _contacto = $('#txtContacto' + row_id + '').val();
+        _idcontacto = $(this).attr("id");
+        _contacto = $('#txtContacto' + _idcontacto + '').val();
 
         alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Contacto' +' '+ _contacto +'..?' , function(){ 
 
             FunRemoveContacto(_resultcon, _contacto);
-            $('#row_' + row_id + '').remove();
-            _count--;
+            $('#row_' + _idcontacto + '').remove();
+            _countcontacto--;
 
         }
         , function(){ });
