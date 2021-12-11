@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
     var _count = 0,_objeto, _cbociudad, _cboid,_resultcon = [],_codcargoold,_idproduc,_countcatalogo = 0, 
-    _resultpro = [], _resultcat =[], _resultage = [],_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
+    _resultpro = [], _resultcat =[], _resultage = [], _agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
     _codigocat, _catalogo, _estadocat, _produc, _countagen = 0, _codigoagen,_countproduc = 0, _estadopro,_idcontacto, 
-    _contactoold,_codcargoold,_celularold,_extold,_email1old,_estadoagen,_estadocat,_countcontacto = 0, _contactoold;
+    _contactoold, _codcargoold, _celularold, _extold, _email1old, _estadoagen, _estadocat, _countcontacto = 0, _contactoold;
 
 
     $("#modalCONTACTO").draggable({
@@ -139,8 +139,8 @@ $(document).ready(function(){
           _output = '<tr id="row_' + _countcontacto + '">';
           _output += '<td style="display: none;">' + _countcontacto + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countcontacto + '" value="' + _countcontacto + '" /></td>';                
           _output += '<td>' + _contacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + _countcontacto + '" value="' + _contacto + '" /></td>';
-          _output += '<td class="text-center">' + _cargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + _countcontacto + '" value="' + _cbocargo + '" /></td>';
-          _output += '<td style="display: none;" class="text-center">' + _cbocargo + ' <input type="hidden" name="hidden_codigocargo[]" id="codCargo' + _count + '" value="' + _cbocargo + '" /></td>';
+          _output += '<td class="text-center">' + _cargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + _countcontacto + '" value="' + _cargo + '" /></td>';
+          _output += '<td style="display: none;" class="text-center">' + _cbocargo + ' <input type="hidden" name="hidden_codigocargo[]" id="codCargo' + _countcontacto + '" value="' + _cbocargo + '" /></td>';
           _output += '<td class="text-center">' + _celular + ' <input type="hidden" name="hidden_celular[]" id="txtCelular' + _countcontacto + '" value="' + _celular + '" /></td>';
           _output += '<td class="text-center">' + _ext + ' <input type="hidden" name="hidden_ext[]" id="txtExt' + _countcontacto + '" value="' + _ext + '" /></td>';
           _output += '<td class="text-center">' + _email1 + ' <input type="hidden" name="hidden_email1[]" id="txtEmail1' + _countcontacto + '" value="' + _email1 + '" /></td>';
@@ -149,8 +149,6 @@ $(document).ready(function(){
           _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcontacto + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
           _output += '</tr>';
 
-       
-          
           $('#tblcontacto').append(_output);
 
           _objeto = {
@@ -163,13 +161,14 @@ $(document).ready(function(){
               arryemail2 : _email2
           }
 
-          _resultcon.push(_objeto);   
-
+          _resultcon.push(_objeto);
+          
           $('#txtContacto').val('');
           $('#cboCargo').val('0').change();
           $('#txtExt').val('');
           $('#txtCelular').val('');
-          $('#txtEmail1').val('');                                
+          $('#txtEmail1').val('');
+          $('#txtEmail2').val('');      
       }       
     });
 
@@ -179,12 +178,11 @@ $(document).ready(function(){
       $("#formContacto").trigger("reset"); 
        _idcontacto = $(this).attr("id");
        _contactoold = $('#txtContacto' + _idcontacto + '').val();
-       _codcargoold = $('#cboCargo' + _idcontacto + '').val();
+       _codcargoold = $('#codCargo' + _idcontacto + '').val();
        _celularold = $('#txtCelular' + _idcontacto + '').val();
        _extold = $('#txtExt' + _idcontacto + '').val();
        _email1old = $('#txtEmail1' + _idcontacto + '').val();   
        _tipoSave = 'edit';
-
 
       $('#txtContactoMo').val(_contactoold);
       $('#cboCargoMo').val(_codcargoold).change();
@@ -227,19 +225,17 @@ $(document).ready(function(){
 
             if(_newemail1 != '')
             {
-            var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-        
-            if (regex.test($('#txtEmail1Mo').val().trim())) {
-                console.log('correcto');                            
-            } else {
-                mensajesalertify("Email es invalido","E","bottom-right",5);
-                _continuacon = false;   
-                return;
-            }        
+                var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+            
+                if (regex.test($('#txtEmail1Mo').val().trim())) {
+                    console.log('correcto');                            
+                } else {
+                    mensajesalertify("Email es invalido","E","bottom-right",5);
+                    _continuacon = false;   
+                    return;
+                }        
             }
 
-        
-            
             if(_contactoold.toUpperCase() != _newcontacto.toUpperCase()){
                 $.each(_resultcon,function(i,item)
                 {
@@ -263,17 +259,18 @@ $(document).ready(function(){
         _objeto = {
             arrycodigo : parseInt(_idcontacto),
             arrycontacto : _newcontacto,
-            arrcargo : _newcargo,
+            arrycargo : _newcargo,
             arrycbocargo : _newcbocargo,
             arrycelular : _newcel,
             arryext : _newext,
-            arryemail1 : _newemail1
+            arryemail1 : _newemail1,
+            arryemail2 : _newemail2
         }
 
         _resultcon.push(_objeto);  
         
            $("#modalCONTACTO").modal("hide"); 
-        // $("tbody").children().remove();
+        
             $("#tblcontacto").empty();
             _output = '<thead class="text-center"';
             _output += '<tr><th style="display: none;">Id</th>';
@@ -282,13 +279,13 @@ $(document).ready(function(){
             _output  = '<tbody>';
             $('#tblcontacto').append(_output); 
 
-            _resultcon.sort((a,b) => a.arrycodigo - b.arrycodigo)
+            _resultcon.sort((a,b) => a.arrycodigo - b.arrycodigo);
 
             $.each(_resultcon, function(i,item){
                 _output = '<tr id="row_' + item.arrycodigo + '">';
                 _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
                 _output += '<td>' + item.arrycontacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + item.arrycodigo + '" value="' + item.arrycontacto + '" /></td>';
-                _output += '<td class="text-center">' + item.arrcargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + item.arrycodigo + '" value="' + item.arrycbocargo  + '" /></td>';
+                _output += '<td class="text-center">' + item.arrycargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + item.arrycodigo + '" value="' + item.arrycargo  + '" /></td>';
                 _output += '<td style="display: none;" class="text-center">' + item.arrycbocargo + ' <input type="hidden" name="hidden_codigocargo[]" id="codCargo' + item.arrycodigo + '" value="' + item.arrycbocargo + '" /></td>';
                 _output += '<td class="text-center">' + item.arrycelular + ' <input type="hidden" name="hidden_celular[]" id="txtCelular' + item.arrycodigo + '" value="' + item.arrycelular  + '" /></td>';
                 _output += '<td class="text-center">' + item.arryext  + ' <input type="hidden" name="hidden_ext[]" id="txtExt' + item.arrycodigo + '" value="' + item.arryext  + '" /></td>';
@@ -1116,9 +1113,7 @@ $(document).ready(function(){
           mensajesalertify("Ingrese Cendente..!","W","top-center",5);
           return;
       } 
-      
 
     });
-
 
 });
