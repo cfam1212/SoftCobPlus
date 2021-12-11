@@ -1,10 +1,9 @@
 $(document).ready(function(){
 
-    var _count = 0,_objeto, _continuar,_opcaccion, _cbociudad, _cboid, _cedente, _cbocargo, _ext,_celular,_resultcon = [], 
-    _resultpro = [], _cargo, _resultcat =[], _resultage = [],_codigo,_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
-    _descripcion, _newproducto, _codigocat, _catalogo, _estadocat, _produc, _email1, _email2, _countagen = 0, _codigoagen
-    ,_continuamod, _countproduc = 0, _estadopro, _contactoold,_codcargoold,_celularold,_extold,_email1old,_estadoagen,_estadocat,
-    _resultcattem = [], _countcontacto = 0;
+    var _count = 0,_objeto, _cbociudad, _cboid,_resultcon = [],_codcargoold,_idproduc,_countcatalogo = 0, 
+    _resultpro = [], _resultcat =[], _resultage = [],_agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
+    _codigocat, _catalogo, _estadocat, _produc, _countagen = 0, _codigoagen,_countproduc = 0, _estadopro,_idcontacto, 
+    _contactoold,_codcargoold,_celularold,_extold,_email1old,_estadoagen,_estadocat,_countcontacto = 0, _contactoold;
 
 
     $("#modalCONTACTO").draggable({
@@ -87,51 +86,51 @@ $(document).ready(function(){
         let _email2 = $.trim($('#txtEmail2').val());
         let _continuarcon = true;
 
-      if(_contacto == '')
-      {
-          mensajesalertify("Ingrese Contacto..!","W","top-center",5);
-          return;
-      }  
+                if(_contacto == '')
+                {
+                    mensajesalertify("Ingrese Contacto..!","W","top-center",5);
+                    return;
+                }  
 
-      if(_cbocargo == '0')
-      {
-          mensajesalertify("Seleccione Cargo..!","W","top-center",5);
-          return;
-      }
-      
-      $.each(_resultcon,function(i,item)
-      {
-          if(item.arrycontacto.toUpperCase() == _contacto.toUpperCase())
-          {                        
-              mensajesalertify("Contacto ya Existe..!","E","bottom-center",5); 
-              _continuarcon = false;
-              return;
-          }
-      });
+                if(_cbocargo == '0')
+                {
+                    mensajesalertify("Seleccione Cargo..!","W","top-center",5);
+                    return;
+                }
+                
+                $.each(_resultcon,function(i,item)
+                {
+                    if(item.arrycontacto.toUpperCase() == _contacto.toUpperCase())
+                    {                        
+                        mensajesalertify("Contacto ya Existe..!","E","bottom-center",5); 
+                        _continuarcon = false;
+                        return;
+                    }
+                });
+                     
+                $.each(_resultcon,function(i,item)
+                {
+                    if(item.arrycelular == _celular)
+                    {                        
+                        mensajesalertify("Celular ya Existe..!","E","bottom-center",5); 
+                        _continuarcon = false;
+                        return;
+                    }
+                });
 
-      $.each(_resultcon,function(i,item)
-      {
-          if(item.arrycelular == _celular)
-          {                        
-              mensajesalertify("Celular ya Existe..!","E","bottom-center",5); 
-              _continuar = false;
-              return;
-          }
-      });
 
-
-      if(_email1 != '')
-      {
-        var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-    
-        if (regex.test($('#txtEmail1').val().trim())) {
-            console.log('correcto');                            
-        } else {
-            mensajesalertify("Email es invalido","E","bottom-right",5);
-            _continuarcon = false;   
-            return;
-        }        
-      }
+                if(_email1 != '')
+                {
+                    var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+                
+                    if (regex.test($('#txtEmail1').val().trim())) {
+                        console.log('correcto');                            
+                    } else {
+                        mensajesalertify("Email es invalido","E","bottom-right",5);
+                        _continuarcon = false;   
+                        return;
+                    }        
+                }
       
 
       if(_continuarcon)
@@ -178,13 +177,13 @@ $(document).ready(function(){
 
     $(document).on("click",".btnEditCon",function(){
       $("#formContacto").trigger("reset"); 
-      _idcontacto = $(this).attr("id");
-      _contactoold = $('#txtContacto' + _idcontacto + '').val();
-      _codcargoold = $('#cboCargo' + _idcontacto + '').val();
-      _celularold = $('#txtCelular' + _idcontacto + '').val();
-      _extold = $('#txtExt' + _idcontacto + '').val();
-      _email1old = $('#txtEmail1' + _idcontacto + '').val();   
-      _tipoSave = 'edit';
+       _idcontacto = $(this).attr("id");
+       _contactoold = $('#txtContacto' + _idcontacto + '').val();
+       _codcargoold = $('#cboCargo' + _idcontacto + '').val();
+       _celularold = $('#txtCelular' + _idcontacto + '').val();
+       _extold = $('#txtExt' + _idcontacto + '').val();
+       _email1old = $('#txtEmail1' + _idcontacto + '').val();   
+       _tipoSave = 'edit';
 
 
       $('#txtContactoMo').val(_contactoold);
@@ -205,7 +204,7 @@ $(document).ready(function(){
     //botton editar-contacto
 
   $('#btnEditarCon').click(function(){
-      debugger;
+    
     let _continuacon = false;
     let _newcontacto = $.trim($('#txtContactoMo').val());
     let _newcbocargo = $('#cboCargoMo').val();
@@ -215,64 +214,47 @@ $(document).ready(function(){
     let _newemail1 = $.trim($('#txtEmail1Mo').val());
     let _newemail2 = $.trim($('#txtEmail1Mo').val());
 
-    if(_newcontacto == ''){
-        mensajesalertify("Ingrese Contacto..!!","W","top-center",5);
-        return;
-    }
-
-    if(_newcbocargo == '0')
-    {
-        mensajesalertify("Seleccione Cargo..!","W","top-center",5);
-        return;
-    }
-
-    if(_newemail1 != '')
-    {
-      var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-  
-      if (regex.test($('#txtEmail1Mo').val().trim())) {
-          console.log('correcto');                            
-      } else {
-          mensajesalertify("Email es invalido","E","bottom-right",5);
-          _continuacon = false;   
-          return;
-      }        
-    }
-
-    if(_contactoold.toUpperCase() != _newcontacto.toUpperCase()){
-        $.each(_resultcon,function(i,item)
-        {
-            if(item.arrycontacto.toUpperCase() == _newcontacto.toUpperCase())
-            {
-                mensajesalertify("Contacto ya Existe..!","E","bottom-center",5); 
-                _continuacon = false;
-                return false;
-            }else
-            {
-                _continuacon = true;
+            if(_newcontacto == ''){
+                mensajesalertify("Ingrese Contacto..!!","W","top-center",5);
+                return;
             }
 
-            // if(item.arrycelular == _newcel)
-            // {
-            //     mensajesalertify("Celular ya Existe..!","E","bottom-center",5); 
-            //     _continuacon = false;
-            //     return false;
-            // }else
-            // {
-            //     _continuacon = true;
-            // }
+            if(_newcbocargo == '0')
+            {
+                mensajesalertify("Seleccione Cargo..!","W","top-center",5);
+                return;
+            }
+
+            if(_newemail1 != '')
+            {
+            var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+        
+            if (regex.test($('#txtEmail1Mo').val().trim())) {
+                console.log('correcto');                            
+            } else {
+                mensajesalertify("Email es invalido","E","bottom-right",5);
+                _continuacon = false;   
+                return;
+            }        
+            }
+
+        
             
-            // if(item.arryemail1 == _newemail1)
-            // {
-            //     mensajesalertify("Email ya Existe..!","E","bottom-center",5); 
-            //     _continuacon = false;
-            //     return false;
-            // }else
-            // {
-            //     _continuacon = true;
-            // }
-        });
-    }else  _continuacon = true;
+            if(_contactoold.toUpperCase() != _newcontacto.toUpperCase()){
+                $.each(_resultcon,function(i,item)
+                {
+                    if(item.arrycontacto.toUpperCase() == _newcontacto.toUpperCase())
+                    {
+                        mensajesalertify("Contacto ya Existe..!","E","bottom-center",5); 
+                        _continuacon = false;
+                        return false;
+                    }else
+                    {
+                        _continuacon = true;
+                    }  
+                        
+                });
+            }else  _continuacon = true;
 
     if(_continuacon)
     {
@@ -359,11 +341,11 @@ $(document).ready(function(){
 
     $('#btnProducto').click(function(){
 
-        _producto = $('#txtProducto').val();
-        _descripcion = $('#txtDescripcion').val();
-        _estado = 'Activo';
-        _continuarproduc = true;
-        _tipoSave = 'add';
+        let _producto = $('#txtProducto').val();
+        let _descripcion = $('#txtDescripcion').val();
+        let _estado = 'Activo';
+        let _continuarproduc = true;
+        let _tipoSave = 'add';
         
 
         let tableHeaderRowCount = 1;
@@ -643,7 +625,7 @@ $(document).ready(function(){
     _codigocat = $('#txtCodigoMo').val();
     _catalogo = $('#txtCatalogoMo').val();
     _estadocat = 'Activo';
-    _continuar = true;
+    _continuarcat = true;
 
     if(_codigocat == '')
         {
@@ -662,29 +644,29 @@ $(document).ready(function(){
             if(item.arryproductocat.toUpperCase() == _produc.toUpperCase() && item.arrycodigocat.toUpperCase() == _codigocat.toUpperCase())
             {                        
                 mensajesalertify("Catalogo ya Existe..!","E","bottom-center",5); 
-                _continuar = false;
+                _continuarcat = false;
                 return;
             }
         });
 
-        if(_continuar)
+        if(_continuarcat)
         {
-            _count++;
-            _output = '<tr id="row_' + _count + '">';
-            _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _count + '" /></td>';                
-            _output += '<td>' + _produc + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _count + '" value="' + _produc + '" /></td>';
-            _output += '<td class="text-center">' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _count + '" value="' + _codigocat + '" /></td>';
-            _output += '<td class="text-center">' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _count + '" value="' + _catalogo + '" /></td>';
-            _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + _count + '" value="' + _estadocat + '" /></td>';
+            _countcatalogo++;
+            _output = '<tr id="row_' + _countcatalogo + '">';
+            _output += '<td style="display: none;">' + _countcatalogo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countcatalogo + '" value="' + _countcatalogo + '" /></td>';                
+            _output += '<td>' + _produc + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countcatalogo + '" value="' + _produc + '" /></td>';
+            _output += '<td class="text-center">' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _countcatalogo + '" value="' + _codigocat + '" /></td>';
+            _output += '<td class="text-center">' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _countcatalogo + '" value="' + _catalogo + '" /></td>';
+            _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + _countcatalogo + '" value="' + _estadocat + '" /></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
-            _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-            _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+            _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countcatalogo + '"><i class="fa fa-pencil-square-o"></i></button>';
+            _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcatalogo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
             _output += '</tr>';
             
             $('#tblcatalogo').append(_output);
 
             _objeto = {
-                arrycodigo : parseInt(_count),
+                arrycodigo : parseInt(_countcatalogo),
                 arryproductocat : _produc,
                 arrycodigocat : _codigocat,
                 arrycatalogo : _catalogo,
@@ -829,7 +811,7 @@ $(document).ready(function(){
 
             FunRemoveItemCatalogo(_resultcat, _catalogo);
             $('#row_' + row_id + '').remove();
-            _count--;
+            _countcatalogo--;
 
         }
         , function(){ });
@@ -1078,7 +1060,7 @@ $(document).ready(function(){
 
             FunRemoveItemAgencia(_resultage, _agencia);
             $('#row_' + _idagen + '').remove();
-            _count--;
+            _countagen--;
 
          }
         , function(){ });
