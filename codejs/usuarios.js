@@ -178,7 +178,7 @@ $(document).ready(function(){
         _id = _data[0];
         _username = _row.find('td:eq(0)').text();
         
-        alertify.confirm('El Registro será eliminado..!!', 'Esta seguro de eliminar' + _username + '..?', function(){ //alertify.success('Ok') 
+        alertify.confirm('El Registro será eliminado..!!', 'Esta seguro de eliminar' + ' ' + _username + '..?', function(){ //alertify.success('Ok') 
     
             $.ajax({
                 url: "../db/consultadatos.php",
@@ -197,7 +197,7 @@ $(document).ready(function(){
             });	
     
        }
-           , function(){ alertify.error('Cancelado')});
+           , function(){ });
     });
 
     $('#btnSave').click(function(e){

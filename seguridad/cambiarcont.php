@@ -33,7 +33,7 @@ require_once '../dashmenu/panel_menu.php';
                         <div class="col-md-10 col-sm-10">
                             <form method="post" id="user_form">
                                 <div class="table-responsive">
-                                    <table id="tblagencia" class="table table-border table-condensed table-info" style="width: 100%;">
+                                    <table id="tblagencia" class="table table-striped table-condensed table-dark table-borderless" style="width: 100%;">
                                         <thead class="text-center">
                                             <tr>
                                                 <th>

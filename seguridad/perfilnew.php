@@ -79,7 +79,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <table id="tabledata" class="table table-striped jambo_table bulk_action table-info" style="width: 100%;">
+                        <table id="tabledata" class="table table-striped jambo_table bulk_action table-dark table-borderless" style="width: 100%;">
                             <thead class="text-center">
                                 <tr>
                                     <th>Id</th>

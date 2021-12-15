@@ -206,7 +206,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblcontacto" class="table table-condensed table-dark" style="width: 100%;">
+                                                <table id="tblcontacto" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -255,7 +255,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblproducto" class="table table-striped table-border table-condensed table-dark" style="width: 100%;">
+                                                <table id="tblproducto" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -279,7 +279,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblcatalogo" class="table table-striped table-border table-condensed table-dark" style="width: 100%;">
+                                                <table id="tblcatalogo" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -346,7 +346,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblagencia" class="table table-striped table-border table-condensed table-dark" style="width: 100%;">
+                                                <table id="tblagencia" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>

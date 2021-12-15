@@ -107,16 +107,27 @@ $(document).ready(function(){
                         return;
                     }
                 });
-                     
-                $.each(_resultcon,function(i,item)
+
+                if(_celular != '')
                 {
-                    if(item.arrycelular == _celular)
-                    {                        
-                        mensajesalertify("Celular ya Existe..!","E","bottom-center",5); 
-                        _continuarcon = false;
-                        return;
-                    }
-                });
+                    $.each(_resultcon,function(i,item)
+                    {
+                        if(item.arrycelular == _celular)
+                        {                        
+                            mensajesalertify("Celular ya Existe..!","E","bottom-center",5); 
+                            _continuarcon = false;
+                            return;
+                        }
+                    });
+
+                        valor = document.getElementById("txtCelular").value;
+                        if( !(/^\d{10}$/.test(valor)) ) {
+                            mensajesalertify("Celular incorrecto..!","E","bottom-center",5); 
+                            _continuarcon = false;
+                            return;
+                        }
+
+                }
 
 
                 if(_email1 != '')
@@ -136,7 +147,7 @@ $(document).ready(function(){
       if(_continuarcon)
       {
         _countcontacto++;
-          _output = '<tr id="row_' + _countcontacto + '">';
+          _output = '<tr id="rowcon_' + _countcontacto + '">';
           _output += '<td style="display: none;">' + _countcontacto + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countcontacto + '" value="' + _countcontacto + '" /></td>';                
           _output += '<td>' + _contacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + _countcontacto + '" value="' + _contacto + '" /></td>';
           _output += '<td class="text-center">' + _cargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + _countcontacto + '" value="' + _cargo + '" /></td>';
@@ -176,6 +187,7 @@ $(document).ready(function(){
 
     $(document).on("click",".btnEditCon",function(){
       $("#formContacto").trigger("reset"); 
+      debugger;
        _idcontacto = $(this).attr("id");
        _contactoold = $('#txtContacto' + _idcontacto + '').val();
        _codcargoold = $('#codCargo' + _idcontacto + '').val();
@@ -202,8 +214,8 @@ $(document).ready(function(){
     //botton editar-contacto
 
   $('#btnEditarCon').click(function(){
-    
-    let _continuacon = false;
+    debugger;
+    let _continuaconedit = false;
     let _newcontacto = $.trim($('#txtContactoMo').val());
     let _newcbocargo = $('#cboCargoMo').val();
     let _newcargo = $("#cboCargoMo option:selected").text(); 
@@ -231,10 +243,32 @@ $(document).ready(function(){
                     console.log('correcto');                            
                 } else {
                     mensajesalertify("Email es invalido","E","bottom-right",5);
-                    _continuacon = false;   
+                    _continuaconedit = false;   
                     return;
                 }        
             }
+
+
+            if(_newcel != '')
+                {
+                    $.each(_resultcon,function(i,item)
+                    {
+                        if(item.arrycelular == _newcel)
+                        {                        
+                            mensajesalertify("Celular ya Existe..!","E","bottom-center",5); 
+                            _continuaconedit = false;
+                            return;
+                        }
+                    });
+
+                        valoredit = document.getElementById("txtCelularMo").value;
+                        if( !(/^\d{10}$/.test(valoredit)) ) {
+                            mensajesalertify("Celular incorrecto..!","E","bottom-center",5); 
+                            _continuaconedit = false;
+                            return;
+                        }
+
+                }
 
             if(_contactoold.toUpperCase() != _newcontacto.toUpperCase()){
                 $.each(_resultcon,function(i,item)
@@ -242,17 +276,17 @@ $(document).ready(function(){
                     if(item.arrycontacto.toUpperCase() == _newcontacto.toUpperCase())
                     {
                         mensajesalertify("Contacto ya Existe..!","E","bottom-center",5); 
-                        _continuacon = false;
+                        _continuaconedit = false;
                         return false;
                     }else
                     {
-                        _continuacon = true;
+                        _continuaconedit = true;
                     }  
                         
                 });
-            }else  _continuacon = true;
+            }else  _continuaconedit = true;
 
-    if(_continuacon)
+    if(_continuaconedit)
     {
         FunRemoveContacto(_resultcon, _contactoold);
 
@@ -282,7 +316,7 @@ $(document).ready(function(){
             _resultcon.sort((a,b) => a.arrycodigo - b.arrycodigo);
 
             $.each(_resultcon, function(i,item){
-                _output = '<tr id="row_' + item.arrycodigo + '">';
+                _output = '<tr id="rowcon_' + item.arrycodigo + '">';
                 _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
                 _output += '<td>' + item.arrycontacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + item.arrycodigo + '" value="' + item.arrycontacto + '" /></td>';
                 _output += '<td class="text-center">' + item.arrycargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + item.arrycodigo + '" value="' + item.arrycargo  + '" /></td>';
@@ -307,12 +341,12 @@ $(document).ready(function(){
 
     $(document).on("click",".btnDeleteCon",function(){
         _idcontacto = $(this).attr("id");
-        _contacto = $('#txtContacto' + _idcontacto + '').val();
+        _contactodelete = $('#txtContacto' + _idcontacto + '').val();
 
-        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Contacto' +' '+ _contacto +'..?' , function(){ 
+        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Contacto' +' '+ _contactodelete +'..?' , function(){ 
 
-            FunRemoveContacto(_resultcon, _contacto);
-            $('#row_' + _idcontacto + '').remove();
+            FunRemoveContacto(_resultcon, _contactodelete);
+            $('#rowcon_' + _idcontacto + '').remove();
             _countcontacto--;
 
         }
@@ -321,12 +355,12 @@ $(document).ready(function(){
 
     //Remove contacto
 
-    function FunRemoveContacto(arr, deta)
+    function FunRemoveContacto(arrycon, detacon)
     {
-        $.each(arr,function(i,item){
-            if(item.arrycontacto == deta)
+        $.each(arrycon,function(i,item){
+            if(item.arrycontacto == detacon)
             {
-                arr.splice(i, 1);
+                arrycon.splice(i, 1);
                 return false;
             }else{
                 continuar = true;
@@ -374,7 +408,7 @@ $(document).ready(function(){
         if(_continuarproduc)
         {
             _countproduc++;
-            _output = '<tr id="row_' + _countproduc + '">';
+            _output = '<tr id="rowpro_' + _countproduc + '">';
             _output += '<td style="display: none;">' + _countproduc + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countproduc + '" value="' + _countproduc + '" /></td>';                
             _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countproduc + '" value="' + _producto + '" /></td>';
             _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _countproduc + '" value="' + _estado + '" /></td>';
@@ -497,7 +531,7 @@ $(document).ready(function(){
             _resultpro.sort((a,b) => a.arrycodigo - b.arrycodigo)
 
             $.each(_resultpro, function(i,item){
-                _output = '<tr id="row_' + item.arrycodigo + '">';
+                _output = '<tr id="rowpro_' + item.arrycodigo + '">';
                 _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
                 _output += '<td>' + item.arryproducto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproducto + '" /></td>';
                 _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + item.arrycodigo + '" value="' + item.arryestado + '" /></td>';
@@ -516,12 +550,12 @@ $(document).ready(function(){
     });
 
     //Remove Producto
-    function FunRemoveProduc(arr, deta)
+    function FunRemoveProduc(arrypro, detapro)
     {
-        $.each(arr,function(i,item){
-            if(item.arryproducto == deta)
+        $.each(arrypro,function(i,item){
+            if(item.arryproducto == detapro)
             {
-                arr.splice(i, 1);
+                arrypro.splice(i, 1);
                 return false;
             }
         });        
@@ -531,11 +565,11 @@ $(document).ready(function(){
 
     $(document).on("click",".btnDeletePro",function(){
         _idproduc = $(this).attr("id");
-        _producto = $('#txtProducto' + _idproduc + '').val();
+        _productodelete = $('#txtProducto' + _idproduc + '').val();
         let _contdelcat = true;
 
         $.each(_resultcat,function(i,item){
-            if(item.arryproductocat == _producto)
+            if(item.arryproductocat == _productodelete)
             {
                 mensajesalertify("Existen Catalagos Asociados al Producto..!","E","bottom-right",5); 
                 _contdelcat = false;
@@ -545,10 +579,10 @@ $(document).ready(function(){
 
         if(_contdelcat)
         {
-            alertify.confirm('El registro sera eliminado..!', 'Esta seguro de eliminar Producto' +' '+ _producto +'..?' , function(){ 
+            alertify.confirm('El registro sera eliminado..!', 'Esta seguro de eliminar Producto' +' '+ _productodelete +'..?' , function(){ 
 
-                FunRemoveProduc(_resultpro, _producto);
-                $('#row_' + _idproduc + '').remove();
+                FunRemoveProduc(_resultpro, _productodelete);
+                $('#rowpro_' + _idproduc + '').remove();
                 _countproduc--;
 
             }
@@ -593,7 +627,7 @@ $(document).ready(function(){
             
             if(item.arryproductocat == codproduc)
             {
-                _output = '<tr id="row_' + item.arrycodigo + '">';
+                _output = '<tr id="rowcat_' + item.arrycodigo + '">';
                 _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
                 _output += '<td>' + item.arryproductocat + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproductocat + '" /></td>';
                 _output += '<td class="text-center">' + item.arrycodigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + item.arrycodigo + '" value="' + item.arrycodigocat + '" /></td>';
@@ -649,7 +683,7 @@ $(document).ready(function(){
         if(_continuarcat)
         {
             _countcatalogo++;
-            _output = '<tr id="row_' + _countcatalogo + '">';
+            _output = '<tr id="rowcat_' + _countcatalogo + '">';
             _output += '<td style="display: none;">' + _countcatalogo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countcatalogo + '" value="' + _countcatalogo + '" /></td>';                
             _output += '<td>' + _produc + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countcatalogo + '" value="' + _produc + '" /></td>';
             _output += '<td class="text-center">' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _countcatalogo + '" value="' + _codigocat + '" /></td>';
@@ -777,7 +811,7 @@ $(document).ready(function(){
 
             $.each(_resultcat, function(i,item){
                 
-                _output = '<tr id="row_' + item.arrycodigo + '">';
+                _output = '<tr id="rowcat_' + item.arrycodigo + '">';
                 _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
                 _output += '<td>' + item.arryproductocat + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproductocat + '" /></td>';
                 _output += '<td class="text-center">' + item.arrycodigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + item.arrycodigo + '" value="' + item.arrycodigocat + '" /></td>';
@@ -802,24 +836,24 @@ $(document).ready(function(){
 
     $(document).on("click",".btnDeleteCat",function(){
         row_id = $(this).attr("id");
-        _catalogo = $('#txtCatalogo' + row_id + '').val();
+        _catalogodelete = $('#txtCatalogo' + row_id + '').val();
 
-        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Catalogo' +' '+ _catalogo +'..?' , function(){ 
+        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Catalogo' +' '+ _catalogodelete +'..?' , function(){ 
 
-            FunRemoveItemCatalogo(_resultcat, _catalogo);
-            $('#row_' + row_id + '').remove();
+            FunRemoveItemCatalogo(_resultcat, _catalogodelete);
+            $('#rowcat_' + row_id + '').remove();
             _countcatalogo--;
 
         }
         , function(){ });
     });
 
-    function FunRemoveItemCatalogo(arr, deta)
+    function FunRemoveItemCatalogo(arrycat, detacat)
     {
-        $.each(arr,function(i,item){
-            if(item.arrycatalogo == deta)
+        $.each(arrycat,function(i,item){
+            if(item.arrycatalogo == detacat)
             {
-                arr.splice(i, 1);
+                arrycat.splice(i, 1);
                 return false;
             }else{
                 continuar = true;
@@ -872,7 +906,7 @@ $(document).ready(function(){
       if(_continuaragen)
       {
           _countagen++;
-          _output = '<tr id="row_' + _countagen + '">';
+          _output = '<tr id="rowage_' + _countagen + '">';
           _output += '<td style="display: none;">' + _countagen + ' <input type="hidden" name="hidden_codigo[]" id="codigoagen' + _countagen + '" value="' + _countagen + '" /></td>';                
           _output += '<td>' + _agencia + ' <input type="hidden" name="hidden_agencia[]" id="txtAgencia' + _countagen + '" value="' + _agencia + '" /></td>';
           _output += '<td class="text-center">' + _codigoagen + ' <input type="hidden" name="hidden_codigo[]" id="txtCodigoAgen' + _countagen + '" value="' + _codigoagen + '" /></td>';
@@ -958,6 +992,8 @@ $(document).ready(function(){
 
     $('#btnEditAgencia').click(function(){
 
+        debugger;
+
         let _continuage = false;
         let _newagencia = $.trim($('#txtAgenciaMo').val());
         let _newcodigo = $.trim($('#txtCodigoAgeMo').val());
@@ -997,9 +1033,9 @@ $(document).ready(function(){
                 arrycodigo : parseInt(_idagencia),
                 arryagencia : _newagencia,
                 arrycodigoagen : _newcodigo,
-                arrsucur : _newsucursal,
+                arrysucur : _newsucursal,
                 arrysucursal : _newcbosucursal,
-                arrzo : _newzona,
+                arryzo : _newzona,
                 arryzona : _newcbozona,
                 arryestado : _estadoagen,
             }
@@ -1022,14 +1058,14 @@ $(document).ready(function(){
 
             $.each(_resultage, function(i,item){
                
-                _output = '<tr id="row_' + item.arrycodigo + '">';
+                _output = '<tr id="rowage_' + item.arrycodigo + '">';
                 _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigoagen' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
                 _output += '<td>' + item.arryagencia + ' <input type="hidden" name="hidden_agencia[]" id="txtAgencia' + item.arrycodigo + '" value="' + item.arryagencia + '" /></td>';
                 _output += '<td class="text-center">' + item.arrycodigoagen + ' <input type="hidden" name="hidden_codigo[]" id="txtCodigoAgen' + item.arrycodigo + '" value="' + item.arrycodigoagen + '" /></td>';
                 _output += '<td style="display: none;" class="text-center">' + item.arrysucursal + ' <input type="hidden" name="hidden_codigosucursal[]" id="codigoSucursal' + item.arrycodigo + '" value="' + item.arrysucursal + '" /></td>';
-                _output += '<td class="text-center">' + item.arrsucur + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + item.arrycodigo + '" value="' + item.arrsucur + '" /></td>';
+                _output += '<td class="text-center">' + item.arrysucur + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + item.arrycodigo + '" value="' + item.arrysucur + '" /></td>';
                 _output += '<td style="display: none;" class="text-center">' + item.arryzona + ' <input type="hidden" name="hidden_codigozona[]" id="codigoZona' + item.arrycodigo + '" value="' + item.arryzona + '" /></td>';
-                _output += '<td class="text-center">' + item.arrzo + ' <input type="hidden" name="hidden_zona[]" id="cboZona' + item.arrycodigo + '" value="' + item.arrzo + '" /></td>';
+                _output += '<td class="text-center">' + item.arryzo + ' <input type="hidden" name="hidden_zona[]" id="cboZona' + item.arrycodigo + '" value="' + item.arryzo + '" /></td>';
                 _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_email1[]" id="txtEstadoAg' + item.arrycodigo + '" value="' + item.arryestado + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
@@ -1049,14 +1085,15 @@ $(document).ready(function(){
     //eliminar -agencia-modal
 
     $(document).on("click",".btnDeleteAgencia",function(){
+        debugger;
         _idagen = $(this).attr("id");
 
-        _agencia = $('#txtAgencia' + _idagen + '').val();
+        _agenciadelete = $('#txtAgencia' + _idagen + '').val();
         
-        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Agencia' +' '+ _agencia +'..?' , function(){ 
+        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar Agencia' +' '+ _agenciadelete +'..?' , function(){ 
 
-            FunRemoveItemAgencia(_resultage, _agencia);
-            $('#row_' + _idagen + '').remove();
+            FunRemoveItemAgencia(_resultage, _agenciadelete);
+            $('#rowage_' + _idagen + '').remove();
             _countagen--;
 
          }
@@ -1064,12 +1101,13 @@ $(document).ready(function(){
     });
 
     //Remove Agencia
-    function FunRemoveItemAgencia(arr, deta)
+    function FunRemoveItemAgencia(arryage, detage)
     {
-        $.each(arr,function(i,item){
-            if(item.arryagencia == deta)
+        debugger;
+        $.each(arryage,function(i,item){
+            if(item.arryagencia == detage)
             {
-                arr.splice(i, 1);
+                arryage.splice(i, 1);
                 return false;
             }else{
                 continuar = true;
