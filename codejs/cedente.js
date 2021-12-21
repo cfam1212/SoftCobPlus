@@ -165,6 +165,7 @@ $(document).ready(function(){
           _objeto = {
               arrycodigo : parseInt(_countcontacto),
               arrycontacto : _contacto,
+              arrycargo : _cargo,
               arrycbocargo : _cbocargo,
               arrycelular : _celular,
               arryext : _ext,
@@ -620,7 +621,7 @@ $(document).ready(function(){
         
         _output  = '<tbody>';
         $('#tblcatalogo').append(_output);   
-                
+               
        if(_resultcat.length > 0)
        {
         $.each(_resultcat, function(i,item){
@@ -656,7 +657,7 @@ $(document).ready(function(){
     _codigocat = $('#txtCodigoMo').val();
     _catalogo = $('#txtCatalogoMo').val();
     _estadocat = 'Activo';
-    _continuarcat = true;
+    _continuarcat = true;    
 
     if(_codigocat == '')
         {
@@ -716,8 +717,8 @@ $(document).ready(function(){
         
         _codcatold = $('#txtCodigoCat' + _idcatalogo + '').val();
         _catalogoold = $('#txtCatalogo' + _idcatalogo + '').val();
-        _estadocat = $('#txtEsTadoCat' + _idcatalogo + '').val(); 
-        
+        _estadocat = $('#txtEsTadoCat' + _idcatalogo + '').val();         
+
         $('#txtCodMo').val(_codcatold);
         $('#txtCatMo').val(_catalogoold);
     
@@ -810,19 +811,23 @@ $(document).ready(function(){
             _resultcat.sort((a,b) => a.arrycodigo - b.arrycodigo)
 
             $.each(_resultcat, function(i,item){
+
+                if(item.arryproductocat == _produc)
+                {
                 
-                _output = '<tr id="rowcat_' + item.arrycodigo + '">';
-                _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
-                _output += '<td>' + item.arryproductocat + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproductocat + '" /></td>';
-                _output += '<td class="text-center">' + item.arrycodigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + item.arrycodigo + '" value="' + item.arrycodigocat + '" /></td>';
-                _output += '<td class="text-center">' + item.arrycatalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + item.arrycodigo + '" value="' + item.arrycatalogo + '" /></td>';
-                _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + item.arrycodigo + '" value="' + item.arryestado  + '" /></td>';
-                _output += '<td><div class="text-center"><div class="btn-group">'
-                _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
-                _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-                _output += '</tr>';
-                
-                $('#tblcatalogo').append(_output);
+                    _output = '<tr id="rowcat_' + item.arrycodigo + '">';
+                    _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
+                    _output += '<td>' + item.arryproductocat + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproductocat + '" /></td>';
+                    _output += '<td class="text-center">' + item.arrycodigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + item.arrycodigo + '" value="' + item.arrycodigocat + '" /></td>';
+                    _output += '<td class="text-center">' + item.arrycatalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + item.arrycodigo + '" value="' + item.arrycatalogo + '" /></td>';
+                    _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + item.arrycodigo + '" value="' + item.arryestado  + '" /></td>';
+                    _output += '<td><div class="text-center"><div class="btn-group">'
+                    _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
+                    _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                    _output += '</tr>';
+                    
+                    $('#tblcatalogo').append(_output);
+                }
 
             });
 
