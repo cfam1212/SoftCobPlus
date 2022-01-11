@@ -9,8 +9,8 @@ $dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(36, $_SESSION["i_emprid"], 'NIVEL ARBOL', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
-$datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+$resultado->execute(array(36, $_SESSION["i_emprid"], 'NIVEL ARBOL', '', '', '', '', '', 1, 0, 0, 0, 0, 0));
+$nivelarbol = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
@@ -137,7 +137,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="form-group col-md-3">
                                                 <select class="form-control" id="cboArbol" name="cboarbol" style="width: 100%;">
                                                     <option value="0">--Seleccione Nivel--</option>
-                                                    <?php foreach ($datos as $fila) : ?>
+                                                    <?php foreach ($nivelarbol as $fila) : ?>
                                                         <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
                                                         </option>
                                                     <?php endforeach ?>

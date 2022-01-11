@@ -1,9 +1,10 @@
 $(document).ready(function(){
 
-    var _count = 0,_objeto, _cbociudad, _cboid,_resultcon = [],_codcargoold,_idproduc,_countcatalogo = 0, 
-    _resultpro = [], _resultcat =[], _resultage = [], _agencia,_cbosucursal,_sucursal,_zona,_estado, _producto,
+    var _count = 0,_objeto, _cbociudad, _cboid, _resultcon = [],_codcargoold,_idproduc,_countcatalogo = 0, 
+    _resultpro = [], _resultcat =[], _resultage = [], _agencia,_cbosucursal,_sucursal,_zona, _estado, _producto,
     _codigocat, _catalogo, _estadocat, _produc, _countagen = 0, _codigoagen,_countproduc = 0, _estadopro,_idcontacto, 
-    _contactoold, _codcargoold, _celularold, _extold, _email1old, _estadoagen, _estadocat, _countcontacto = 0, _contactoold;
+    _contactoold, _codcargoold, _celularold, _extold, _email1old, _estadoagen, _estadocat, _countcontacto = 0, _contactoold,
+    _descripant;
 
 
     $("#modalCONTACTO").draggable({
@@ -424,6 +425,7 @@ $(document).ready(function(){
             _objeto = {
                 arrycodigo : parseInt(_countproduc),
                 arryproducto : _producto,
+                arrydescrip : _descripcion,
                 arryestado : _estado,
             }
 
@@ -439,6 +441,7 @@ $(document).ready(function(){
         $("#formProducto").trigger("reset"); 
         _idproduc = $(this).attr("id");
         _productoant = $('#txtProducto' + _idproduc + '').val();
+        _descripant = $('#txtDescripcion' + _idproduc + '').val();
         _estadopro = $('#txtEsTado' + _idproduc + '').val();   
         _tipoSave = 'edit';
     
@@ -511,6 +514,7 @@ $(document).ready(function(){
             _objeto = {
                 arrycodigo : parseInt(_idproduc),
                 arryproducto : _productonew,
+                arrydescrip : _descripant,
                 arryestado : _estadopro,
             }
 
@@ -1127,15 +1131,22 @@ $(document).ready(function(){
     $('#btnSave').click(function(){
 
       let _cedente = $('#txtCedente').val();
+      let _ruc = $('#txtRuc').val();
+      let _direccion = $('#txtDireccion').val();
+      let _fono1 = $('#txtTel1').val();
+      let _fono2 = $('#txtTel2').val();
+      let _fax = $('#txtFax').val();
+      let _url = $('#txtUrl').val();
 
+      debugger;
       let _cboprovincia = $('#cboProvincia').val();
-      let _provincia =$("#cboProvincia option:selected").text();  
+      /*let _provincia =$("#cboProvincia option:selected").text();  */
 
       let _cbocuidad = $('#cboCiudad').val();
-      let _cuidad =$("#cboCiudad option:selected").text();  
+      /*let _cuidad =$("#cboCiudad option:selected").text();  */
 
       let _cboarbol = $('#cboArbol').val();
-      let _arbol =$("#cboArbol option:selected").text(); 
+      /*let _arbol =$("#cboArbol option:selected").text(); */
 
 
       if(_cboprovincia == '0')
@@ -1155,7 +1166,35 @@ $(document).ready(function(){
       {
           mensajesalertify("Ingrese Cendente..!","W","top-center",5);
           return;
-      } 
+      }
+      
+      if(_cboarbol == '0')
+      {
+        mensajesalertify("Ingrese Nivel del Árbol..!","W","top-center",5);
+        return;
+      }
+      
+      
+      $.ajax({
+        url: "../db/cedentecrud.php",
+        type: "POST",
+        dataType: "json",
+        data: {cedeid: 0, provid: _cboprovincia, ciudid: _cbocuidad, cedente: _cedente, ruc: _ruc, direccion: _direccion, 
+            telefono1: _fono1, telefono2: _fono2, fax: _fax, url: _url, estado: 'A', nivel: _cboarbol,
+            resultcontacto: _resultcon, resultproducto: _resultpro, resultcatalogo: _resultcat, resultagencia: _resultage, opcion: 0},            
+        success: function(data){   
+            if(data == 'OK'){
+                
+                $.redirect('admincede.php',mensajesalertify("Guardado con exito..!","S","bottom-center",5));
+            }else{
+              
+                mensajesalertify("Nombre del Menú ya exixte..!","E","bottom-right",5);              
+            }
+        },
+        error: function (error) {
+            console.log(error);
+          }                            
+        });        
 
     });
 
