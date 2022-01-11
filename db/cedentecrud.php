@@ -63,8 +63,6 @@ switch($opcion){
                 }
             }
         }
-        
-
         $data = "OK";
     break;   
 
