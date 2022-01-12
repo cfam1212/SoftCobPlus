@@ -33,46 +33,65 @@ date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
 
 switch($opcion){
-    case 0: //NUEVO
+    case 0: //NUEVO PRODUCTO/CATALOGO
+
         $consulta = "CALL sp_New_Cedente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(0,$empreid,$cedeid,$provid,$ciudid,$cedente,$ruc,$direccion,$telefono1,$telefon2,$fax,$url,'A',
-        $nivel,'','','',0,0,0,$userid,$host));
-        //$id = $resultado->fetchAll(PDO::FETCH_ASSOC);
-        $cedeid = $resultado->fetchColumn();
-        foreach($resultcontacto as $drfila){
-            $consulta = "CALL sp_New_Contacto(?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado->execute(array(1,$empreid,0,0,0,$cedente,'','','','','','','','','','','',0,0,0,0,''));
+        //$contar = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        $contar = $resultado->fetchColumn();
+        if($contar == 0)
+        {
+            $consulta = "CALL sp_New_Cedente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array(0,$cedeid,$drfila['arrycodigo'],$drfila['arrycontacto'],$drfila['arrycbocargo'],
-            $drfila['arryext'],$drfila['arryemail1'],$drfila['arryemail2'],$drfila['arrycelular'],'','0'));
-        }
-        foreach($resultproducto as $drfila){
-            $consulta = "CALL sp_New_Producto(?,?,?,?,?,?,?,?,?)";
-            $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array(0,$cedeid,$drfila['arryproducto'],$drfila['arrydescrip'],$drfila['arryestado'],
-            '','','0','0'));
-            $prceid = $resultado->fetchColumn();
-            foreach($resultcatalogo as $drfilax){
-                if($drfilax['arryproductocat'] == $drfila['arryproducto'])
-                {
-                    $consulta = "CALL sp_New_Catalogo(?,?,?,?,?,?,?,?,?)";
+            $resultado->execute(array(0,$empreid,$cedeid,$provid,$ciudid,$cedente,$ruc,$direccion,$telefono1,$telefon2,$fax,$url,'A',
+            $nivel,'','','',0,0,0,$userid,$host));
+            //$id = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            $cedeid = $resultado->fetchColumn();
+
+            if($resultcontacto != '')
+            {
+                foreach($resultcontacto as $drfila){
+                    $consulta = "CALL sp_New_Contacto(?,?,?,?,?,?,?,?,?,?,?)";
                     $resultado = $conexion->prepare($consulta);
-                    $resultado->execute(array(0,$prceid,$drfilax['arrycodigocat'],$drfila['arrycatalogo'],'','',
-                    $drfila['arryestado'],'','','0','0'));
+                    $resultado->execute(array(0,$cedeid,$drfila['arrycodigo'],$drfila['arrycontacto'],$drfila['arrycbocargo'],
+                    $drfila['arryext'],$drfila['arryemail1'],$drfila['arryemail2'],$drfila['arrycelular'],'','0'));
                 }
             }
+
+            foreach($resultproducto as $drfila){
+                $consulta = "CALL sp_New_Producto(?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $estado = $drfila['arryestado'] == 'Activo' ? "A" : "I";
+                $resultado->execute(array(0,$cedeid,$drfila['arryproducto'],$drfila['arrydescrip'],$estado,
+                '','','0','0'));
+                $prceid = $resultado->fetchColumn();
+                foreach($resultcatalogo as $drfilax){
+                    if($drfilax['arryproductocat'] == $drfila['arryproducto'])
+                    {
+                        $consulta = "CALL sp_New_Catalogo(?,?,?,?,?,?,?,?,?)";
+                        $resultado = $conexion->prepare($consulta);
+                        $estado = $drfilax['arryestado'] == 'Activo' ? "A" : "I";
+                        $resultado->execute(array(0,$prceid,$drfilax['arrycodigocat'],$drfilax['arrycatalogo'],$estado,'',
+                        '','0','0'));
+                    }
+                }
+            }
+
+            if($resultagencia != '')
+            {
+                foreach($resultagencia as $drfila){
+                    $consulta = "CALL sp_New_Agencia(?,?,?,?,?,?,?,?,?,?,?)";
+                    $resultado = $conexion->prepare($consulta);
+                    $estado = $drfila['arryestado'] == 'Activo' ? "A" : "I";
+                    $resultado->execute(array(0,$cedeid,$drfila['arrycodigoagen'],$drfila['arryagencia'],$drfila['arrysucursal'],
+                    $drfila['arryzona'],$estado,'','','0','0'));
+                }
+            }
+
+             $data = "OK";
         }
-<<<<<<< HEAD
-        foreach($resultagencia as $drfila){
-            $consulta = "CALL sp_New_Agencia(?,?,?,?,?,?,?,?,?,?,?)";
-            $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array(0,$cedeid,$drfila['arrycodigoagen'],$drfila['arryagencia'],$drfila['arrysucursal'],
-            $drfila['arryzona'],$drfila['arryestado'],'','','0','0'));
-        }
-        
-=======
->>>>>>> 6dfd6d0e30583d2270a8fc5060e00d237780f476
-        $data = "OK";
+        else $data = 'NO';
     break;   
 
     case 1: //GRABAR EDITAR PERFIL

@@ -1132,7 +1132,7 @@ $(document).ready(function(){
       let _fax = $('#txtFax').val();
       let _url = $('#txtUrl').val();
 
-      debugger;
+      //debugger;
       let _cboprovincia = $('#cboProvincia').val();
       /*let _provincia =$("#cboProvincia option:selected").text();  */
 
@@ -1167,8 +1167,7 @@ $(document).ready(function(){
         mensajesalertify("Ingrese Nivel del Árbol..!","W","top-center",5);
         return;
       }
-      
-      
+            
       $.ajax({
         url: "../db/cedentecrud.php",
         type: "POST",
@@ -1177,12 +1176,11 @@ $(document).ready(function(){
             telefono1: _fono1, telefono2: _fono2, fax: _fax, url: _url, estado: 'A', nivel: _cboarbol,
             resultcontacto: _resultcon, resultproducto: _resultpro, resultcatalogo: _resultcat, resultagencia: _resultage, opcion: 0},            
         success: function(data){   
-            if(data == 'OK'){
-                
+            if(data == 'OK'){                
                 $.redirect('admincede.php',mensajesalertify("Guardado con exito..!","S","bottom-center",5));
             }else{
               
-                mensajesalertify("Nombre del Menú ya exixte..!","E","bottom-right",5);              
+                mensajesalertify("Nombre del Cedente ya exixte..!","E","bottom-right",5);              
             }
         },
         error: function (error) {

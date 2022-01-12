@@ -369,12 +369,14 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <br>
                                 <br>
                                 <br>
-                                <div class="container">
-                                    <div class='btn-group'>
-                                        <button class="btn btn-outline-primary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
-                                        <button class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
-                                    </div>
-                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class='btn-group'>
+                                <button class="btn btn-outline-primary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
+                                <button class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                             </div>
                         </div>
                     </div>
