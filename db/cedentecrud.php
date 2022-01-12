@@ -47,24 +47,28 @@ switch($opcion){
             $drfila['arryext'],$drfila['arryemail1'],$drfila['arryemail2'],$drfila['arrycelular'],'','0'));
         }
         foreach($resultproducto as $drfila){
-            $consulta = "CALL sp_New_Producto(?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Producto(?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedeid,$drfila['arryproducto'],$drfila['arrydescrip'],$drfila['arryestado'],
             '','','0','0'));
-            
             $prceid = $resultado->fetchColumn();
             foreach($resultcatalogo as $drfilax){
                 if($drfilax['arryproductocat'] == $drfila['arryproducto'])
                 {
-                    $consulta = "CALL sp_New_Catalogo(?,?,?,?,?,?,?,?,?,?,?)";
+                    $consulta = "CALL sp_New_Catalogo(?,?,?,?,?,?,?,?,?)";
                     $resultado = $conexion->prepare($consulta);
-                    $resultado->execute(array(0,$prceid,$drfilax['arrycodigocat'],$drfila['arrycatalogo'],'',
+                    $resultado->execute(array(0,$prceid,$drfilax['arrycodigocat'],$drfila['arrycatalogo'],'','',
                     $drfila['arryestado'],'','','0','0'));
                 }
             }
         }
+        foreach($resultagencia as $drfila){
+            $consulta = "CALL sp_New_Agencia(?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(0,$cedeid,$drfila['arrycodigoagen'],$drfila['arryagencia'],$drfila['arrysucursal'],
+            $drfila['arryzona'],$drfila['arryestado'],'','','0','0'));
+        }
         
-
         $data = "OK";
     break;   
 

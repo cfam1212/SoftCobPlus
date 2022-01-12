@@ -53,7 +53,6 @@ $super = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <label for="espacio" class="control-label col-md-1"></label>
                                                 <label for="cboprovincia" class="control-label col-md-1">Cedente</label>
                                                 <div class="form-group col-md-3">
-
                                                     <select class="form-control" id="cboCedente" name="cbocedente" style="width:100%;" >
                                                         <option value="0">--Seleccione Cedente--</option>
                                                         <?php foreach ($dataprov as $fila) : ?>
