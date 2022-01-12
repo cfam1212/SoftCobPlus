@@ -6,7 +6,6 @@ $(document).ready(function(){
     _contactoold, _codcargoold, _celularold, _extold, _email1old, _estadoagen, _estadocat, _countcontacto = 0, _contactoold,
     _descripant;
 
-
     $("#modalCONTACTO").draggable({
         handle: ".modal-header"
     }); 
@@ -26,8 +25,6 @@ $(document).ready(function(){
     $("#modalEDITCATALOGO").draggable({
         handle: ".modal-header"
     }); 
-
-    
 
     // nuevo-cedente
     $('#btnNuevo').click(function(){        
@@ -303,7 +300,7 @@ $(document).ready(function(){
             arryemail2 : _newemail2
         }
 
-        _resultcon.push(_objeto);  
+         _resultcon.push(_objeto);  
         
            $("#modalCONTACTO").modal("hide"); 
         
@@ -1090,7 +1087,6 @@ $(document).ready(function(){
 
     });
 
-
     //eliminar -agencia-modal
 
     $(document).on("click",".btnDeleteAgencia",function(){
@@ -1123,8 +1119,6 @@ $(document).ready(function(){
             }
         });        
     };     
-
- 
 
     //GRABAR CEDENTE
 

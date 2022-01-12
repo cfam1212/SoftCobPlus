@@ -62,6 +62,7 @@ switch($opcion){
                 }
             }
         }
+<<<<<<< HEAD
         foreach($resultagencia as $drfila){
             $consulta = "CALL sp_New_Agencia(?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -69,6 +70,8 @@ switch($opcion){
             $drfila['arryzona'],$drfila['arryestado'],'','','0','0'));
         }
         
+=======
+>>>>>>> 6dfd6d0e30583d2270a8fc5060e00d237780f476
         $data = "OK";
     break;   
 

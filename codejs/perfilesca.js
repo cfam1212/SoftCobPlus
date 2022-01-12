@@ -1,8 +1,6 @@
 $(document).ready(function(){
     var _codigo, _descripcion, _count = 0, _result = [], _objeto, _estado, _continuar, 
-    _estadoold,_descripcionold, _checked, tblperfil;
-
-
+    _estadoold,_descripcionold, _checked;
 
     $("#modalPARAMETER").draggable({
         handle: ".modal-header"
@@ -17,20 +15,6 @@ $(document).ready(function(){
     $('#btnRegresar').click(function(){        
         $.redirect("");
     });  
-
-    tblperfil = $('#tblperfil').DataTable({
-        "columnDefs": [{
-            "data": null
-        }     
-    ],
-        "language": {
-        "emptyTable": "datos"
-         }
-    });
-
-    
-
-    
 
     $('#btnAgregar').click(function(){        
         
@@ -257,8 +241,17 @@ $(document).ready(function(){
 
     $('#cboPerfil').change(function(){
         _cboid = $(this).val(); //obtener el id seleccionado
-        console.log(_cboid);
-        tblperfil.clear().draw();
+
+        $("#tblperfil").empty();
+
+        _output = '<thead class="text-center"';
+        _output += '<tr><th style="display: none;">Codigo</th>';
+        _output += '<th>Descripcion</th><th>Estado</th><th>Acciones</th></tr></thead>'
+        $('#tblperfil').append(_output);  
+        
+        _output  = '<tbody>';
+        $('#tblperfil').append(_output);          
+
          if(_cboid !== '0'){
             $.ajax({
                 url: "../db/perfilescacrud.php",
