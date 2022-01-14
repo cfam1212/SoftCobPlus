@@ -19,10 +19,10 @@ $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(2, $_SESSION["i_emprid"], 0, 0, 0, '', '', '', '', '', '', '', '', 0, '', '', '', 0, 0, 0, 0, ''));
 $cedente = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-$consulta = "CALL sp_New_Cedente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$consulta = "CALL sp_New_Supervisor(?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(2, $_SESSION["i_emprid"], 0, 0, 0, '', '', '', '', '', '', '', '', 0, '', '', '', 0, 0, 0, 0, ''));
-$cedente = $resultado->fetchAll(PDO::FETCH_ASSOC);
+$resultado->execute(array(0, 0, 0, '', '', '', 0, 0, 0, ''));
+$data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -49,10 +49,11 @@ $cedente = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <br />
             <br />
-            <table id="tabledata" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+            <table id="tabledatasup" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
               <thead>
                 <tr>
-                  <th style="display: none;">Id</th>
+                  <th>IdSupervisor</th>
+                  <th>IdCedente</th>
                   <th>Cedente</th>
                   <th>Supervisor</th>
                   <th>Estado</th>
@@ -64,7 +65,8 @@ $cedente = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($data as $datos) {
                 ?>
                   <tr>
-                    <td style="display: none;"><?php echo $datos['Id'] ?></td>
+                    <td><?php echo $datos['IdSupe'] ?></td>
+                    <td><?php echo $datos['IdCede'] ?></td>
                     <td><?php echo $datos['Cedente'] ?></td>
                     <td><?php echo $datos['Supervisor'] ?></td>
                     <td><?php echo $datos['Estado'] ?></td>
