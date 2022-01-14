@@ -16,8 +16,8 @@ $resultado->execute(array(33, $_SESSION["i_emprid"], '', '', '', '', '', '', $pa
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<input type="hidden" id="paraid" value="<?php echo $paraid ?>">
 <div class="right_col" role="main">
+    <input type="hidden" id="paraid" value="<?php echo $paraid ?>">
     <input type="hidden" id="mensaje" value="<?php echo $mensaje ?>">
     <div class="">
         <div class="clearfix"></div>

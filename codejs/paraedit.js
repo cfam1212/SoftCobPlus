@@ -130,7 +130,7 @@ $(document).ready(function()
             _valori = 0;
         }
         else _valori = $.trim($('#txtValori').val());
-
+        
         if(_tipoSave == 'add')
         {
             $.each(_result,function(i,item){
@@ -207,7 +207,7 @@ $(document).ready(function()
         }
         else
         {
-            _continuar = false, _seguir = false;
+            _continuar = true, _seguir = true;
             if(_detalleold.toUpperCase() != _detalle.toUpperCase())
             {
                 $.each(_result,function(i,item)
@@ -263,6 +263,23 @@ $(document).ready(function()
             if(_seguir)
             {
                 FunRemoveItemFromArr(_result, _detalleold);
+
+                alert('ParaID: ' + _id + ' DealleID: ' + _codigoold );
+
+                $.ajax({
+                    url: "../db/consultadatos.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: {tipo: 38, auxv1: _estadoold=='Activo' ? 'A' : 'I', auxi1: _id, auxi2: _codigoold, opcion: 0},            
+                    success: function(data){
+                        if(data == 'OK-Update'){
+                             
+                        }                
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }                          
+                });
 
                 _objeto = 
                 {
@@ -499,7 +516,6 @@ $(document).ready(function()
         _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" ' + _deshabilitae + ' id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
         $('#row_' + orden + '').html(_output);
 
-        console.log(_output);
     }
 
     function FunOrderLast(orden,detalle,valorv,valori,estado,codigo)
