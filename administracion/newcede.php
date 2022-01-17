@@ -92,7 +92,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Cedente</label>
                                             <div class="form-group col-md-3">
-                                                <input type="text" required class="form-control" id="txtCedente" name="menuname" maxlength="150">
+                                                <input type="text" required class="form-control" id="txtCedente" name="menuname" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="iconome" class="control-label col-md-1">Ruc</label>
@@ -104,7 +104,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Direccion</label>
                                             <div class="form-group col-md-10">
-                                                <textarea name="observa" id="txtDireccion" class="form-control col-md-8" maxlength="200" onkeydown="return (event.keyCode!=13);"></textarea>
+                                                <textarea name="observa" id="txtDireccion" class="form-control col-md-8" maxlength="200" onKeyUp="this.value=this.value.toUpperCase();" onkeydown="return (event.keyCode!=13);"></textarea>
                                             </div>
                                         </div>
                                         <div class="row">

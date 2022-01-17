@@ -73,14 +73,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <td>
                       <div class="text-center">
                         <div class="btn-group">
-                          <button class="btn btn-outline-info btn-sm ml-3" id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar">
-                            <i class="fa fa-pencil-square-o"></i></button>
-                          <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
-                            <i class="fa fa-pencil-square-o"></i>
-                          </button>
-                          <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
-                            <i class="fa fa-trash-o"></i>
-                          </button>
+                          <button class="btn btn-outline-success btn-sm ml-3" id="btnAddGe"><i class="fa fa-headphones"></i></button>
+                          <button class="btn btn-outline-info btn-sm ml-3" id="btnEditarSu"><i class="fa fa-pencil-square-o"></i></button>
+                          <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarSu"><i class="fa fa-trash-o"></i></button>
                         </div>
                       </div>
                     </td>
@@ -141,6 +136,71 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-success ml-3" id="btnSaveSu"><i class='fa fa-plus'></i> Agregar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--Modal Gestores-->
+<div class="modal fade" id="modalGestor" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" id="myModalBg">
+      <div class="modal-header" id="headercat">
+        <h5 class="modal-title" id="modalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="formGestor">
+        <div class="modal-body">
+          <fieldset>
+            <div class="row">
+              <label for="cedente" class="control-label col-md-1">Gestor</label>
+              <div class="form-group col-md-7">
+                <select class="form-control" id="cboGestor" name="cbocedente" style="width:100%;">
+                  <option value="0">--Seleccione Gestor--</option>
+                  <?php foreach ($gestor as $fila) : ?>
+                    <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
+                    </option>
+                  <?php endforeach ?>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <button class="btn btn-outline-success ml-3" id="btnGestor" data-toggle="tooltip" data-target="#exampleModal" data-placement="top" title="agregar"><i class='fa fa-plus'></i></button>
+              </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <div class="col-md-1 col-sm-1">
+                </div>
+                <div class="col-md-10 col-sm-10">
+                  <form method="post" id="user_form">
+                    <div class="table-responsive">
+                      <table id="tblagestor" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                        <thead class="text-center">
+                          <tr>
+                            <th style="display: none;">Id</th>
+                            <th>Gestor</th>
+                            <th>Estado<th>
+                            <th>Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-1 col-sm-1">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" name="row_id" id="hidden_row_id" />
+          <button type="button" id="btnAddGestor" class="btn btn-success ml-3"><i class='fa fa-plus'></i> Agregar</button>
         </div>
       </form>
     </div>

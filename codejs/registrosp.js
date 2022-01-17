@@ -1,10 +1,13 @@
 $(document).ready(function(){
 
-    var _estado, _opcion, _cbocedente,_cedente, _id;
+    var _estado, _opcion, _cbocedente,_cedente, _id, _gestor,_estadoges,_countgestor = 0,_resultges =[];
 
     $("#exampleModal").draggable({
         handle: ".modal-header"
-    });   
+    });
+    $("#modalGestor").draggable({
+        handle: ".modal-header"
+    });     
 
     $('#cboCedente').select2();
     $('#cboSupervisor').select2();
@@ -28,7 +31,7 @@ $(document).ready(function(){
        
     });
 
-    
+    //Grabar Supervisor directo Base de Datos
     $("#formSuper").submit(function(e){
         e.preventDefault();
         //debugger;
@@ -61,10 +64,10 @@ $(document).ready(function(){
                 _supe = data[0].Supervisor;
                 _estado = data[0].Estado;
                 
-                _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3"' +
-                         'id="btnEditar"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
-                         'id="btnEliminar"><i class="fa fa-trash-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
-                         'id="btnEliminar"><i class="fa fa-pencil-square-o"></i></button></div></div></td>'   
+                _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-success btn-sm ml-3"' +
+                         'id="btnAddGe"><i class="fa fa-headphones"></i></button><button class="btn btn-outline-info btn-sm ml-3"'+
+                         'id="btnEditarSu"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                         'id="btnEliminarSu"><i class="fa fa-pencil-trash-o"></i></button></div></div></td>'   
 
                 TableDataSup.row.add([_supeid, _cedid,  _cede, _supe,_estado, _boton]).draw();
               
@@ -81,6 +84,112 @@ $(document).ready(function(){
         });
        
     });
+    
+    //Eliminar Supervisor
+    $(document).on("click","#btnEliminarSu",function(e){
+        _fila = $(this);  
+        _row = $(this).closest('tr');
+        _data = $('#tabledatasup').dataTable().fnGetData(_row);
+        _id = _data[0];
+        _cede = $(this).closest("tr").find('td:eq(2)').text(); 
+        _opcion = 1;
+        DeleteSuper();        
+    });
 
+    function DeleteSuper(){
+       
+        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar' + ' ' + _cede + '..?', function(){ //alertify.success('Ok')        
+           $.ajax({
+               url: "../db/depacrud.php",
+               type: "POST",
+               dataType: "json",
+               data: {id:_id, nomdepa:_depa, estado:_estado, opcion:1, tipo:_tipo},                        
+               success: function(data){
+                   console.log(data);
+                   if(data[0].Valor == "Existe"){
+                       mensajesalertify("Departamento no se puede Eliminar, está asociada a un Usuario..!","E","bottom-right",5);  
+                   }       
+                   else {
+                       TableData.row(_fila.parents('tr')).remove().draw();
+                       mensajesalertify("Registro Eliminado","E","bottom-center",5);
+                   }                            
+               },
+               error: function (error) {
+                   console.log(error);
+               }                  
+           });              
+        },        
+            function(){ /*alertify.error('eliminar cancelado')*/});
+       }
+
+
+       //Modal Agregar-Gestor
+
+    $(document).on("click","#btnAddGe",function(){
+
+        $("#formGestor").trigger("reset"); 
+      
+        _estadoges = 'Activo'; 
+      
+
+       
+
+        // $('#hidden_row_id').val(row_id);
+        $("#headercat").css("background-color","#183456");
+        $("#headercat").css("color","white");
+        $(".modal-title").text("Agregar Gestor");       
+        $("#btnAddGestor").text("Guardar");
+        $("#modalGestor").modal("show");
+
+    });
+
+    //Agregar Gestores
+    // $('#btnGestor').click(function(){
+
+      
+
+    // });
+
+    $(document).on("click","#btnGestor", function(){
+        debugger;
+        _cbogestor = $('#cboGestor').val();
+        _gestor =$("#cboGestor option:selected").text(); 
+
+        if(_cbogestor == '0')
+        {
+            mensajesalertify("Seleccione Gestor..!","W","top-center",5);
+            return;
+        }
+
+
+        _countgestor++;
+        _output = '<tr id="rowge_' + _countgestor + '">';
+        _output += '<td style="display: none;">' + _countgestor + ' <input type="hidden" name="hidden_codigo[]" id="codigoagen' + _countgestor + '" value="' + _countgestor + '" /></td>';                
+        _output += '<td style="display: none;" class="text-center">' + _cbogestor + ' <input type="hidden" name="hidden_codigosucursal[]" id="codigoSucursal' + _countagen + '" value="' + _cbosucursal + '" /></td>';
+        _output += '<td class="text-center">' + _gestor + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + _countgestor + '" value="' + _sucursal + '" /></td>';
+        _output += '<td class="text-center">' + _estadoges + ' <input type="hidden" name="hidden_email1[]" id="txtEstadoAg' + _countgestor + '" value="' + _estadoges + '" /></td>';
+        _output += '<td><div class="text-center"><div class="btn-group">'
+        _output += '<button type="button" name="btnEditGe" class="btn btn-outline-info btn-sm ml-3 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countgestor + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button type="button" name="btnDeleteGe" class="btn btn-outline-danger btn-sm ml-3 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countgestor + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        _output += '</tr>';
+        
+        $('#tblagestor').append(_output);
+
+        _objeto = {
+            arrycodigo : parseInt(_countgestor),
+            arryagestor : _gestor,
+            arryestado : _estadoges,
+        }
+
+        _resultges.push(_objeto);  
+
+          
+        $('#_cbogestor').val('0').change();
+
+        $("#modalGestor").modal("hide"); 
+
+
+
+    });
 
 });

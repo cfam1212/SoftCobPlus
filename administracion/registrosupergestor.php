@@ -132,7 +132,7 @@ $super = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <button type="button" class="btn btn-outline-success" id="btnNuevoAgen" data-toggle="tooltip" data-placement="top" title="agregar gestor" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                                                    <button type="button" class="btn btn-outline-success" id="btnSaveGe" data-toggle="tooltip" data-placement="top" title="agregar gestor" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                                 </div>
                                             </div>
                                             <br />
