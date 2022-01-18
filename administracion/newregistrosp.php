@@ -6,7 +6,7 @@ $mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(37, $_SESSION["i_emprid"], 'Gestor', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
+$resultado->execute(array(37, $_SESSION["i_emprid"], 'GES', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
 $gestor = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -155,9 +155,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="modal-body">
           <fieldset>
             <div class="row">
-              <label for="cedente" class="control-label col-md-1">Gestor</label>
+              <label for="gestor" class="control-label col-md-1">Gestor</label>
               <div class="form-group col-md-7">
-                <select class="form-control" id="cboGestor" name="cbocedente" style="width:100%;">
+                <select class="form-control" id="cboGestor" name="cboGestor" style="width:100%;">
                   <option value="0">--Seleccione Gestor--</option>
                   <?php foreach ($gestor as $fila) : ?>
                     <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
@@ -166,7 +166,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </select>
               </div>
               <div class="form-group col-md-2">
-                <button class="btn btn-outline-success ml-3" id="btnGestor" data-toggle="tooltip" data-target="#exampleModal" data-placement="top" title="agregar"><i class='fa fa-plus'></i></button>
+                <button type="button" class="btn btn-outline-success ml-3" id="btnGestor" data-toggle="tooltip" title="agregar"><i class='fa fa-plus'></i></button>
               </div>
             </div>
             <br/>
@@ -176,21 +176,19 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-md-1 col-sm-1">
                 </div>
                 <div class="col-md-10 col-sm-10">
-                  <form method="post" id="user_form">
-                    <div class="table-responsive">
+                  <div class="table-responsive">
                       <table id="tblagestor" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
-                        <thead class="text-center">
+                        <thead>
                           <tr>
                             <th style="display: none;">Id</th>
                             <th>Gestor</th>
-                            <th>Estado<th>
-                            <th>Acciones</th>
+                            <th style="text-align: center;">Estado<th>
+                            <th style="text-align: center;">Acciones</th>
                           </tr>
                         </thead>
                         <tbody></tbody>
                       </table>
                     </div>
-                  </form>
                 </div>
                 <div class="col-md-1 col-sm-1">
                 </div>
@@ -198,9 +196,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
           </fieldset>
         </div>
-        <div class="modal-footer">
-          <input type="hidden" name="row_id" id="hidden_row_id" />
-          <button type="button" id="btnAddGestor" class="btn btn-success ml-3"><i class='fa fa-plus'></i> Agregar</button>
+        <div class="modal-footer">          
+          <button type="button" id="btnAddGestor" class="btn btn-success ml-3"><i class='fa fa-plus'></i> Guardar</button>
         </div>
       </form>
     </div>

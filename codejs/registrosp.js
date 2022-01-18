@@ -131,29 +131,19 @@ $(document).ready(function(){
       
         _estadoges = 'Activo'; 
       
-
-       
-
         // $('#hidden_row_id').val(row_id);
         $("#headercat").css("background-color","#183456");
         $("#headercat").css("color","white");
         $(".modal-title").text("Agregar Gestor");       
-        $("#btnAddGestor").text("Guardar");
+        //$("#btnAddGestor").text("Guardar");
         $("#modalGestor").modal("show");
 
     });
 
-    //Agregar Gestores
-    // $('#btnGestor').click(function(){
-
-      
-
-    // });
-
     $(document).on("click","#btnGestor", function(){
-        debugger;
+        //debugger;
         _cbogestor = $('#cboGestor').val();
-        _gestor =$("#cboGestor option:selected").text(); 
+        _gestor = $.trim($("#cboGestor option:selected").text()); 
 
         if(_cbogestor == '0')
         {
@@ -161,32 +151,47 @@ $(document).ready(function(){
             return;
         }
 
+        $("#tblagestor").empty();
+
+        _output = '<thead>';
+        _output += '<tr><th style="display: none;">Id</th>';
+        _output += '<th>Gestor</th><th style="text-align: center;">Estado</th><th style="text-align: center;">Acciones</th></tr></thead>'
+        $('#tblagestor').append(_output); 
+
+        _output  = '<tbody>';
+
+        $('#tblagestor').append(_output);         
 
         _countgestor++;
         _output = '<tr id="rowge_' + _countgestor + '">';
         _output += '<td style="display: none;">' + _countgestor + ' <input type="hidden" name="hidden_codigo[]" id="codigoagen' + _countgestor + '" value="' + _countgestor + '" /></td>';                
-        _output += '<td style="display: none;" class="text-center">' + _cbogestor + ' <input type="hidden" name="hidden_codigosucursal[]" id="codigoSucursal' + _countagen + '" value="' + _cbosucursal + '" /></td>';
-        _output += '<td class="text-center">' + _gestor + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + _countgestor + '" value="' + _sucursal + '" /></td>';
-        _output += '<td class="text-center">' + _estadoges + ' <input type="hidden" name="hidden_email1[]" id="txtEstadoAg' + _countgestor + '" value="' + _estadoges + '" /></td>';
+        _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + _countgestor + '" value="' + _gestor + '" /></td>';
+        _output += '<td class="text-center">' + ' <input type="checkbox" checked class="form-check-input" id="chkEstado' + _countgestor + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
-        _output += '<button type="button" name="btnEditGe" class="btn btn-outline-info btn-sm ml-3 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countgestor + '"><i class="fa fa-pencil-square-o"></i></button>';
         _output += '<button type="button" name="btnDeleteGe" class="btn btn-outline-danger btn-sm ml-3 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countgestor + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
         _output += '</tr>';
+
+        console.log(_output);
+        $('#tblagestor').append(_output);
         
+        _output  = '</tbody>';
+
         $('#tblagestor').append(_output);
 
-        _objeto = {
-            arrycodigo : parseInt(_countgestor),
-            arryagestor : _gestor,
-            arryestado : _estadoges,
-        }
+        
 
-        _resultges.push(_objeto);  
+        // _objeto = {
+        //     arrycodigo : parseInt(_countgestor),
+        //     arryagestor : _gestor,
+        //     arryestado : _estadoges,
+        // }
+
+        // _resultges.push(_objeto);  
 
           
-        $('#_cbogestor').val('0').change();
+        $('#cboGestor').val('0').change();
 
-        $("#modalGestor").modal("hide"); 
+        //$("#modalGestor").modal("hide"); 
 
 
 
