@@ -61,9 +61,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <br>
                                 <br>
                                 <div class='btn-group'>
-                                    <button class="btn btn-outline-primary" id="btnRegresar"><i class='fa fa-undo'></i>
+                                    <button class="btn btn-outline-secondary" id="btnRegresar"><i class='fa fa-undo'></i>
                                         Regresar</button>
-                                    <button class="btn btn-outline-success ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                                    <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                                 </div>
 
                             </div>
@@ -71,7 +71,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-11"></label>
-                                    <button type="button" class="btn btn-outline-success" id="btnAdd" data-toggle="tooltip" data-placement="top" title="agregar detalle" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                                    <button type="button" class="btn btn-outline-info" id="btnAdd" data-toggle="tooltip" data-placement="top" title="agregar detalle" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                 </div>
                                 <br>
                                 <br>

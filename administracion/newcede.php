@@ -170,7 +170,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <button type="button" class="btn btn-outline-success" id="btnContacto" data-toggle="tooltip" data-placement="top" title="agregar contacto" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-outline-info" id="btnContacto" data-toggle="tooltip" data-placement="top" title="agregar contacto" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -238,7 +238,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <input type="text" required class="form-control" id="txtProducto" name="producto" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <button type="button" class="btn btn-outline-success" id="btnProducto" data-toggle="tooltip" data-placement="top" title="agregar producto" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-outline-info" id="btnProducto" data-toggle="tooltip" data-placement="top" title="agregar producto" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -314,7 +314,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <input type="text" required class="form-control" id="txtAgencia" name="agencia" maxlength="250" onKeyUp="this.value=this.value.toUpperCase();">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <button type="button" class="btn btn-outline-success" id="btnAgencia" data-toggle="tooltip" data-placement="top" title="agregar agencia" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-outline-info" id="btnAgencia" data-toggle="tooltip" data-placement="top" title="agregar agencia" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -375,8 +375,8 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                         <div class="container">
                             <div class='btn-group'>
-                                <button class="btn btn-outline-primary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
-                                <button class="btn btn-outline-success ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                                <button class="btn btn-outline-secondary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
+                                <button class="btn btn-outline-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                             </div>
                         </div>
                     </div>

@@ -42,7 +42,7 @@ h1 {
   }
 
 
-
+/*Background Modales*/
 #myModalBg{
   background-color: #F1F1F2;
   color: black;
@@ -62,7 +62,7 @@ h1 {
 
 /* background tablas */
 
-#tabledata,#tablenoorder,#tblseguridad,#tblparameter,#tblperfil,#tblcontacto,#tblproducto,#tblagencia,#tabledatasup{
+#tabledata,#tablenoorder,#tblseguridad,#tblparameter,#tblperfil,#tblcontacto,#tblproducto,#tblagencia,#tabledatasup,#tableconorder{
 
   background-color: #F1F1F2;
   color: black;
@@ -74,12 +74,17 @@ h1 {
   color: black;
 }
 
-/*boton editar*/
+/*botones circulares*/
 
-/* #btnEditar,#btnEditarSu{
+.btn-circle.btn-sm {
+  width: 50px;
+  height: 50px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  font-size: 8px;
+  text-align: center;
+}
 
-  background-color: #A1D6E2;
-} */
 
 
 

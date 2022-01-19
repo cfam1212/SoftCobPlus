@@ -28,7 +28,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="clearfix"></div>
                     </div>
 
-                    <button type="button" class="btn btn-outline-success" id="btnNuevo" data-toggle="tooltip" data-placement="top" title="nuevo cedente" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                    <button type="button" class="btn btn-outline-info" id="btnNuevo" data-toggle="tooltip" data-placement="top" title="nuevo cedente" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
 
                     <div class="x_content">
                         <br />
@@ -58,7 +58,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-sm ml-3" id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar">
+                                                    <button class="btn btn-outline-info btn-sm ml-3" id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
                                                     <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
                                                         <i class="fa fa-trash-o"></i>

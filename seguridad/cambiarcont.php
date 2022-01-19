@@ -91,7 +91,7 @@ require_once '../dashmenu/panel_menu.php';
                         <div class="col-md-6 col-sm-6">
                             <div class='btn-group'>
                                 <!-- <button class="btn btn-outline-primary" id = "btnRegresar" ><i class='fa fa-undo'></i> Regresar</button> -->
-                    <button class="btn btn-outline-success ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                    <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                 </div>
             </div>
             </form> -->
