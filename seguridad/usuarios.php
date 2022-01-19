@@ -71,7 +71,7 @@ $cbodepa = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-outline-info btn-sm ml-3" id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar">
+                                                    <button class="btn btn-sm ml-3" id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
                                                     <button class="btn btn-outline-danger btn-sm ml-3" <?php echo $disabledel ?> id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
                                                         <i class="fa fa-trash-o"></i>
@@ -175,8 +175,7 @@ $cbodepa = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
-                    <!-- <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button>                 -->
+                    <button type="button" class="btn btn-outline-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                 </div>
             </form>
         </div>

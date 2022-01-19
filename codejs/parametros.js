@@ -37,8 +37,8 @@ $(document).ready(function(){
     $("#btnAdd").click(function(){        
         $("#formParam").trigger("reset");
         $("#divcheck").hide();
-        $("#header").css("background-color","#183456");
-        $("#header").css("color","white");
+        $("#header").css("background-color","#BCBABE");
+        $("#header").css("color","black");
         $(".modal-title").text("Nuevo Parametro");  
         $("#btnAgregar").text("Agregar");
         $("#modalPARAMETER").modal("show");
@@ -246,8 +246,8 @@ $(document).ready(function(){
         $('#txtValorv').val(_valorvold);
         $('#txtValori').val(_valoriold == 0 ? '': _valoriold);
         $('#hidden_row_id').val(row_id);
-        $("#header").css("background-color","#183456");
-        $("#header").css("color","white");
+        $("#header").css("background-color","#BCBABE");
+        $("#header").css("color","black");
         $(".modal-title").text("Editar Parametro");       
         $("#divcheck").show();
         $("#btnAgregar").text("Modificar");

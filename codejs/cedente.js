@@ -202,8 +202,8 @@ $(document).ready(function(){
       $('#txtEmail1Mo').val(_email1old);
 
       $('#hidden_row_id').val(_idcontacto);
-      $("#headercon").css("background-color","#183456");
-      $("#headercon").css("color","white");
+      $("#headercon").css("background-color","#BCBABE");
+      $("#headercon").css("color","black");
       $(".modal-title").text("Editar Contacto");       
       $("#btnAgregar").text("Modificar");
       $("#modalCONTACTO").modal("show");
@@ -453,8 +453,8 @@ $(document).ready(function(){
         }
 
         $('#hidden_row_id').val(_idproduc);
-        $("#headerpro").css("background-color","#183456");
-        $("#headerpro").css("color","white");
+        $("#headerpro").css("background-color","#BCBABE");
+        $("#headerpro").css("color","black");
         $(".modal-title").text("Editar Producto");       
         $("#btnModProduc").text("Modificar");
         $("#modalPRODUCTO").modal("show");
@@ -604,8 +604,8 @@ $(document).ready(function(){
         FunBuscarDatos(_produc);
 
         $('#hidden_row_id').val(row_id);
-        $("#headercat").css("background-color","#183456");
-        $("#headercat").css("color","white");
+        $("#headercat").css("background-color","#BCBABE");
+        $("#headercat").css("color","black");
         $(".modal-title").text("Agregar Catalogo");       
         $("#btnAgregar").text("Agregar");
         $("#modalCATALOGO").modal("show");
@@ -731,8 +731,8 @@ $(document).ready(function(){
             $("#lblEstadoCat").text("Inactivo");
         }
     
-        $("#headercatalog").css("background-color","#183456");
-        $("#headercatalog").css("color","white");
+        $("#headercatalog").css("background-color","#BCBABE");
+        $("#headercatalog").css("color","black");
         $(".modal-title").text("Editar Catalogo");       
         $("#modalEDITCATALOGO").modal("show");
     });
@@ -973,8 +973,8 @@ $(document).ready(function(){
         }
   
         // $('#hidden_row_id').val(row_id);
-        $("#headeragencia").css("background-color","#183456");
-        $("#headeragencia").css("color","white");
+        $("#headeragencia").css("background-color","#BCBABE");
+        $("#headeragencia").css("color","black");
         $(".modal-title").text("Editar Agencia");       
         $("#btnAgregar").text("Modificar");
         $("#modalAGENCIA").modal("show");

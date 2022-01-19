@@ -2,6 +2,8 @@ $(document).ready(function(){
     
     var _id, _opcion, _data, _estado, _fila, _nameoldtarea, _ruta, _icono, _checked, _row, _tarea
 
+   
+  
     $("#modalTAREA").draggable({
         handle: ".modal-header"
     }); 
@@ -9,8 +11,8 @@ $(document).ready(function(){
     $("#btnNuevo").click(function(){
         $("#formTarea").trigger("reset");
         $("#divcheck").hide();
-        $("#header").css("background-color","#183456");
-        $("#header").css("color","white");
+        $("#header").css("background-color","#BCBABE");
+        $("#header").css("color","black");
         $(".modal-title").text("Nueva Tarea");  
         $("#modalTAREA").modal("show");
         _id = 0;
@@ -43,8 +45,8 @@ $(document).ready(function(){
         }
 
         $("#divcheck").show();
-        $("#header").css("background-color","#183456");
-        $("#header").css("color","white");
+        $("#header").css("background-color","#BCBABE");
+        $("#header").css("color","black");
         $(".modal-title").text("Editar Tarea");
         $("#modalTAREA").modal("show");
     });

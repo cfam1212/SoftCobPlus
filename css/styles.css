@@ -44,26 +44,8 @@ h1 {
 
 
 #myModalBg{
-  background-color:  #005AA7;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: #F1F1F2;
   color: black;
-}
-
-#tblcontacto ,#tblgestor,#tblagestor,#tblproducto, #tblagencia, #tabledata, #tablenoorder, #tblparameter, #tblperfil, #tableconorder, #tabledatasup{
-  background: #00416A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #E4E5E6, #00416A);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #E4E5E6, #00416A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: black;
-}
-
-#tblcatalogo{
-
-  background: #283048;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #859398, #283048);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: white;
-
 }
 
 
@@ -78,16 +60,33 @@ h1 {
 
 }
 
+/* background tablas */
 
+#tabledata,#tablenoorder,#tblseguridad,#tblparameter,#tblperfil,#tblcontacto,#tblproducto,#tblagencia,#tabledatasup{
 
-#btnSaveSuper{
-  width: 50px;
-  height: 50px;
-  padding: 6px 0px;
-  border-radius: 30px;
-  text-align: center;
-  font-size: 12px;
-  line-height: 1.42857;
+  background-color: #F1F1F2;
+  color: black;
 }
+
+#tblcatalogo,#tblagestor{
+
+  background-color: #A1D6E2;
+  color: black;
+}
+
+/*boton editar*/
+
+#btnEditar,#btnEditarSu{
+
+  background-color: #A1D6E2;
+}
+
+
+
+
+
+
+
+
 
 

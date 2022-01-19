@@ -12,7 +12,7 @@ $(document).ready(function(){
     $("#btnNuevo").click(function(){
         $("#frmUserNew").trigger("reset");
         // $("#divcheck").hide();
-        $("#header").css("background-color","#183456");
+        $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
         $(".modal-title").text("Nuevo Usuario");  
         $("#modalNewUser").modal("show");
@@ -145,8 +145,8 @@ $(document).ready(function(){
 
         $("#frmUserNew").trigger("reset");
         $("#divcheck").show();
-        $("#header").css("background-color","#183456");
-        $("#header").css("color","white");
+        $("#header").css("background-color","#BCBABE");
+        $("#header").css("color","black");
         $(".modal-title").text("Editar Usuario");
         $("#modalNewUser").modal("show");
         

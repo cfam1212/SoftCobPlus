@@ -73,9 +73,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <td>
                       <div class="text-center">
                         <div class="btn-group">
-                          <button class="btn btn-outline-success btn-sm ml-3" id="btnAddGe"><i class="fa fa-headphones"></i></button>
-                          <button class="btn btn-outline-info btn-sm ml-3" id="btnEditarSu"><i class="fa fa-pencil-square-o"></i></button>
-                          <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarSu"><i class="fa fa-trash-o"></i></button>
+                          <button class="btn btn-outline-success btn-sm ml-3" id="btnAddGe" data-toggle="tooltip" data-placement="top" title="agregar gestor"><i class="fa fa-headphones"></i></button>
+                          <button class="btn btn-sm ml-3" id="btnEditarSu" data-toggle="tooltip" data-placement="top" title="editar"><i class="fa fa-pencil-square-o"></i></button>
+                          <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
                         </div>
                       </div>
                     </td>
@@ -135,7 +135,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success ml-3" id="btnSaveSu"><i class='fa fa-plus'></i> Agregar</button>
+          <button type="submit" class="btn btn-outline-info ml-3" id="btnSaveSu"><i class='fa fa-plus'></i> Agregar</button>
         </div>
       </form>
     </div>
@@ -196,9 +196,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
           </fieldset>
         </div>
-        <div class="modal-footer">          
+        <!-- <div class="modal-footer">          
           <button type="button" id="btnAddGestor" class="btn btn-success ml-3"><i class='fa fa-plus'></i> Guardar</button>
-        </div>
+        </div> -->
       </form>
     </div>
   </div>

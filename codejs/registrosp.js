@@ -24,8 +24,8 @@ $(document).ready(function(){
         _opcion = 0;
         _estado = 'Activo';
        
-        $("#header").css("background-color","#183456");
-        $("#header").css("color","white");
+        $("#header").css("background-color","#BCBABE");
+        $("#header").css("color","black");
         $(".modal-title").text("Nuevo Registro");  
         $("#superModal").modal("show");
        
@@ -132,8 +132,8 @@ $(document).ready(function(){
         _estadoges = 'Activo'; 
       
         // $('#hidden_row_id').val(row_id);
-        $("#headercat").css("background-color","#183456");
-        $("#headercat").css("color","white");
+        $("#headercat").css("background-color","#BCBABE");
+        $("#headercat").css("color","black");
         $(".modal-title").text("Agregar Gestor");       
         //$("#btnAddGestor").text("Guardar");
         $("#modalGestor").modal("show");

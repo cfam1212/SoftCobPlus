@@ -426,7 +426,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnEditarCon" class="btn btn-success ml-3">Modificar</button>
+                    <button type="button" id="btnEditarCon" class="btn btn-outline-info ml-3">Modificar</button>
                 </div>
             </form>
         </div>
@@ -463,7 +463,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAddCatalogo" class="btn btn-success ml-3"><i class='fa fa-plus'></i> Agregar</button>
+                    <button type="button" id="btnAddCatalogo" class="btn btn-outline-info ml-3"><i class='fa fa-plus'></i> Agregar</button>
                 </div>
             </form>
         </div>
@@ -514,7 +514,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnEditAgencia" class="btn btn-success ml-3">Modificar</button>
+                    <button type="button" id="btnEditAgencia" class="btn btn-outline-info ml-3">Modificar</button>
                 </div>
             </form>
         </div>
@@ -542,7 +542,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnModProduc" class="btn btn-success ml-3">Agregar</button>
+                    <button type="button" id="btnModProduc" class="btn btn-outline-info ml-3">Agregar</button>
                 </div>
             </form>
         </div>
@@ -574,7 +574,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnEditCat" class="btn btn-success ml-3">Modificar</button>
+                    <button type="button" id="btnEditCat" class="btn btn-outline-info ml-3">Modificar</button>
                 </div>
             </form>
         </div>
