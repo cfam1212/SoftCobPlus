@@ -122,15 +122,61 @@ $(document).ready(function(){
             function(){ /*alertify.error('eliminar cancelado')*/});
        }
 
-
        //Modal Agregar-Gestor
 
     $(document).on("click","#btnAddGe",function(){
 
         $("#formGestor").trigger("reset"); 
-      
-        _estadoges = 'Activo'; 
-      
+        _row = $(this).closest('tr');
+        _data = $('#tabledatasup').dataTable().fnGetData(_row);
+
+        let _usuaid = _data[0];
+        let _cedeid = _data[1];
+        
+        $("#tblagestor").empty();
+
+        _output = '<thead>';
+        _output += '<tr><th style="display: none;">Id</th>';
+        _output += '<th>Gestor</th><th style="text-align: center;">Estado</th><th style="text-align: center;">Acciones</th></tr></thead>'
+        $('#tblagestor').append(_output); 
+
+        _output  = '<tbody>';
+        $('#tblagestor').append(_output);         
+
+        $.ajax({
+            url: "../db/consultadatos.php",
+            type: "POST",
+            dataType: "json",
+            data: {tipo:39, auxv1: "", auxv2: "", auxv3: "", auxv4: "", auxv5: "", auxv6: "", auxi1: _cedeid, auxi2: _usuaid, auxi3:0, auxi4:0, 
+            auxi5:0, auxi6:0, opcion:0},
+            success: function(data){
+                $.each(data,function(i,item){                    
+                    _id = data[i].Id;
+                    _gestor = data[i].Gestor;
+                    _estado = data[i].Estado;
+
+                    _newestado = _estado=='A' ? 'checked' : '';
+
+                    _output = '<tr id="rowges_' + _id + '">';
+                    _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
+                    _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
+                    _output += '<td class="text-center">' + ' <input type="checkbox"' + _newestado + ' class="form-check-input chkEstado" id="chk' + _id + '" /></td>';
+                    _output += '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEliminar' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                    $('#tblagestor').append(_output); 
+
+                    console.log(_output);
+                    
+                });
+                            
+            },
+            error: function (error) {
+                console.log(error);
+            }                  
+        }); 
+
+        _output  = '</tbody>';
+        $('#tblagestor').append(_output);          
+           
         // $('#hidden_row_id').val(row_id);
         $("#headercat").css("background-color","#BCBABE");
         $("#headercat").css("color","black");
@@ -138,6 +184,19 @@ $(document).ready(function(){
         //$("#btnAddGestor").text("Guardar");
         $("#modalGestor").modal("show");
 
+    });
+
+    $(document).on("click",".chkEstado",function(){    
+        _rowid = $(this).attr("id");
+        _idgestor = $('#txtId' + _rowid.substring(3) + '').val();
+        _check = $("#chk"+_idgestor).is(":checked");
+
+        if(_check)
+        {
+            alert('Activo');
+        }else{
+            alert('Inactivo');
+        }        
     });
 
     $(document).on("click","#btnGestor", function(){
@@ -151,6 +210,10 @@ $(document).ready(function(){
             return;
         }
 
+        //INSERTAR EN LA TABLA EN UN AJAX
+
+
+
         $("#tblagestor").empty();
 
         _output = '<thead>';
@@ -159,41 +222,44 @@ $(document).ready(function(){
         $('#tblagestor').append(_output); 
 
         _output  = '<tbody>';
-
         $('#tblagestor').append(_output);         
 
-        _countgestor++;
-        _output = '<tr id="rowge_' + _countgestor + '">';
-        _output += '<td style="display: none;">' + _countgestor + ' <input type="hidden" name="hidden_codigo[]" id="codigoagen' + _countgestor + '" value="' + _countgestor + '" /></td>';                
-        _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + _countgestor + '" value="' + _gestor + '" /></td>';
-        _output += '<td class="text-center">' + ' <input type="checkbox" checked class="form-check-input" id="chkEstado' + _countgestor + '" /></td>';
-        _output += '<td><div class="text-center"><div class="btn-group">'
-        _output += '<button type="button" name="btnDeleteGe" class="btn btn-outline-danger btn-sm ml-3 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countgestor + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-        _output += '</tr>';
+        $.ajax({
+            url: "../db/consultadatos.php",
+            type: "POST",
+            dataType: "json",
+            data: {tipo:39, auxv1: "", auxv2: "", auxv3: "", auxv4: "", auxv5: "", auxv6: "", auxi1: _cedeid, auxi2: _usuaid, auxi3:0, auxi4:0, 
+            auxi5:0, auxi6:0, opcion:0},
+            success: function(data){
+                $.each(data,function(i,item){                    
+                    _id = data[i].Id;
+                    _gestor = data[i].Gestor;
+                    _estado = data[i].Estado;
 
-        console.log(_output);
-        $('#tblagestor').append(_output);
-        
+                    _newestado = _estado=='A' ? 'checked' : '';
+
+                    _output = '<tr id="rowges_' + _id + '">';
+                    _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
+                    _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
+                    _output += '<td class="text-center">' + ' <input type="checkbox"' + _newestado + ' class="form-check-input chkEstado" id="chk' + _id + '" /></td>';
+                    _output += '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEliminar' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                    $('#tblagestor').append(_output); 
+
+                    console.log(_output);
+                    
+                });
+                            
+            },
+            error: function (error) {
+                console.log(error);
+            }                  
+        }); 
+
         _output  = '</tbody>';
-
-        $('#tblagestor').append(_output);
-
-        
-
-        // _objeto = {
-        //     arrycodigo : parseInt(_countgestor),
-        //     arryagestor : _gestor,
-        //     arryestado : _estadoges,
-        // }
-
-        // _resultges.push(_objeto);  
+        $('#tblagestor').append(_output);          
 
           
         $('#cboGestor').val('0').change();
-
-        //$("#modalGestor").modal("hide"); 
-
-
 
     });
 
