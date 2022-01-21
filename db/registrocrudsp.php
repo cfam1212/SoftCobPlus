@@ -40,12 +40,12 @@ switch($opcion){
         $resultado->execute(array(1,$idsupervisor,$idgestor,$estado,'','',0,0));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
         break;   
-    case 3:
-        $consulta = "CALL sp_New_Supervisor(?,?,?,?,?,?,?,?,?,?)";
+    case 3://ELIMINAR GESTOR
+        $consulta = "CALL sp_New_Gestor(?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(2,$idcedente,$idsupervisor,$newestado,'','',0,0,$userid,$host));
-        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);                  
-        break; 
+        $resultado->execute(array(1,$idsupervisor,$idgestor,$estado,'','',0,0));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
+        break;  
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);

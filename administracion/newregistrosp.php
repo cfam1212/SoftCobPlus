@@ -11,7 +11,7 @@ $gestor = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(37, $_SESSION["i_emprid"], 'Supervisor', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
+$resultado->execute(array(37, $_SESSION["i_emprid"], 'SUP', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
 $super = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 $consulta = "CALL sp_New_Cedente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -74,7 +74,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                       <div class="text-center">
                         <div class="btn-group">
                           <button class="btn btn-outline-primary btn-sm ml-3" id="btnAddGe" data-toggle="tooltip" data-placement="top" title="agregar gestor"><i class="fa fa-headphones"></i></button>
-                          <button class="btn btn-outline-info btn-sm ml-3" id="btnEditarSu" data-toggle="tooltip" data-placement="top" title="editar"><i class="fa fa-pencil-square-o"></i></button>
+                          <!-- <button class="btn btn-outline-info btn-sm ml-3" id="btnEditarSu" data-toggle="tooltip" data-placement="top" title="editar"><i class="fa fa-pencil-square-o"></i></button> -->
                           <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
                         </div>
                       </div>

@@ -65,9 +65,8 @@ $(document).ready(function(){
                 _supe = data[0].Supervisor;
                 _estado = data[0].Estado;
                 
-                _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-success btn-sm ml-3"' +
-                         'id="btnAddGe"><i class="fa fa-headphones"></i></button><button class="btn btn-outline-info btn-sm ml-3"'+
-                         'id="btnEditarSu"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-primary btn-sm ml-3"' +
+                         'id="btnAddGe"><i class="fa fa-headphones"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
                          'id="btnEliminarSu"><i class="fa fa-pencil-trash-o"></i></button></div></div></td>'   
 
                 TableDataSup.row.add([_supeid, _cedid,  _cede, _supe,_estado, _boton]).draw();
@@ -119,7 +118,7 @@ $(document).ready(function(){
                }                  
            });              
         },        
-        function(){ /*alertify.error('eliminar cancelado')*/});
+        function(){});
     }
 
        //Modal Agregar-Gestor
@@ -161,7 +160,7 @@ $(document).ready(function(){
                     _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
                     _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
                     _output += '<td class="text-center">' + ' <input type="checkbox"' + _newestado + ' class="form-check-input chkEstado" id="chk' + _id + '" /></td>';
-                    _output += '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEliminar' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                    _output += '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-danger btn-sm ml-3 btnDel" data-toggle="tooltip" data-placement="top" title="eliminar" id="btnEliminar' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                     $('#tblagestor').append(_output); 
                 });
             },
@@ -208,23 +207,8 @@ $(document).ready(function(){
         });
     });
 
-    $(document).on("click",".btnDel",function(){    
-        let _rowid = $(this).attr("id");
-        let _idgestor = $('#txtId' + _rowid.substring(3) + '').val();
-        
-        $.ajax({
-            url: "../db/registrocrudsp.php",
-            type: "POST",
-            dataType: "json",
-            data: {opcion: 2, idgestor: _idgestor, estado: _estadochk},
-            success: function(data){
-               
-            },
-            error: function (error) {
-                console.log(error);
-            }                 
-        });
-    });    
+  
+   //INSERTAR GESTOR BASE DE DATOS
 
     $(document).on("click","#btnGestor", function(){
         //debugger;
@@ -236,8 +220,6 @@ $(document).ready(function(){
             mensajesalertify("Seleccione Gestor..!","W","top-center",5);
             return;
         }
-
-        //INSERTAR EN LA TABLA EN UN AJAX
 
         $.ajax({
             url: "../db/registrocrudsp.php",
@@ -284,5 +266,34 @@ $(document).ready(function(){
         $('#cboGestor').val('0').change();
 
     });
+
+
+    /*Eliminar Gestor */
+
+    $(document).on("click",".btnDel",function(){    
+        let _rowid = $(this).attr("id");
+        let _idgestor = $('#txtId' + _rowid.substring(3) + '').val();
+        let _gestor = $('#txtId' + _rowid.substring(1) + '').val();
+
+        alert(_idgestor);
+
+        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar gestor' + ' ' + _gestor + '..?', function(){ //alertify.success('Ok')        
+            
+            $.ajax({
+                url: "../db/registrocrudsp.php",
+                type: "POST",
+                dataType: "json",
+                data: {opcion: 2, idgestor: _idgestor, estado: _estadochk},
+                success: function(data){
+                   
+                },
+                error: function (error) {
+                    console.log(error);
+                }                 
+            });
+         },        
+         function(){}); 
+      
+    });    
 
 });

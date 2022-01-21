@@ -82,30 +82,24 @@
   margin-bottom: 0;
   padding: 16px 24px;
   color: brown;
-  /* background-color: rgb(210, 227, 230); */
-  background: #076585;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #fff, #076585);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #fff, #076585); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background-color: #F1F1F2;  
 
 }
 .alertify .ajs-body {
   min-height: 56px;
+  
 }
 .alertify .ajs-body .ajs-content {
   padding: 16px 24px 16px 16px;
-
+  
 }
 .alertify .ajs-footer {
   padding: 4px;
   margin-left: -24px;
   margin-right: -24px;
   min-height: 43px;
-  /* background-color: rgb(210, 227, 230); */
-  background: #076585;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #fff, #076585);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #fff, #076585); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background-color: #A1D6E2;
+  
 }
 .alertify .ajs-footer .ajs-buttons.ajs-primary {
   text-align: right;
