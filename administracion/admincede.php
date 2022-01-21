@@ -48,13 +48,15 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                 foreach ($data as $datos) {
                                 ?>
-
                                     <tr>
                                         <td><?php echo $datos['CedeId'] ?></td>
                                         <td><?php echo $datos['Ciudad'] ?></td>
                                         <td><?php echo $datos['Cedente'] ?></td>
                                         <td><?php echo $datos['Telefono'] ?></td>
-                                        <td><?php echo $datos['Estado'] ?></td>
+                                        <td style="text-align: center">
+                                            <input type="checkbox" class="form-check-input chkEstado" id="chk<?php echo $datos['CedeId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                                echo "checked";} ?> value="<?php echo $datos['CedeId']; ?>" />                                            
+                                        </td>                                           
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">

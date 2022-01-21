@@ -160,7 +160,7 @@ $(document).ready(function(){
                     _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
                     _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
                     _output += '<td class="text-center">' + ' <input type="checkbox"' + _newestado + ' class="form-check-input chkEstado" id="chk' + _id + '" /></td>';
-                    _output += '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-danger btn-sm ml-3 btnDel" data-toggle="tooltip" data-placement="top" title="eliminar" id="btnEliminar' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                    _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" data-toggle="tooltip" data-placement="top" title="eliminar" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                     $('#tblagestor').append(_output); 
                 });
             },
@@ -184,8 +184,9 @@ $(document).ready(function(){
     $(document).on("click",".chkEstado",function(){    
         let _rowid = $(this).attr("id");
         let _idgestor = $('#txtId' + _rowid.substring(3) + '').val();
-        let _check = $("#chk"+_idgestor).is(":checked");
+        let _check = $("#chk" + _idgestor).is(":checked");
         let _estadochk;
+
         if(_check)
         {
             _estadochk = 'A';
@@ -197,7 +198,7 @@ $(document).ready(function(){
             url: "../db/registrocrudsp.php",
             type: "POST",
             dataType: "json",
-            data: {opcion: 2, idgestor: _idgestor, estado: _estadochk},
+            data: {idgestor: _idgestor, estado: _estadochk, opcion: 2},
             success: function(data){
                
             },
@@ -225,7 +226,7 @@ $(document).ready(function(){
             url: "../db/registrocrudsp.php",
             type: "POST",
             dataType: "json",
-            data: {opcion: 1, idsupervisor: _usuaid, idgestor: _cbogestor, estado: 'A'},
+            data: {idsupervisor: _usuaid, idgestor: _cbogestor, estado: 'A', opcion: 1},
             success: function(data){
                 if(data[0].Existe == 'Existe'){
                     mensajesalertify("Gestor ya esta Agregado..!","W","bottom-center",5);  
@@ -250,9 +251,12 @@ $(document).ready(function(){
                         _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
                         _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
                         _output += '<td class="text-center">' + ' <input type="checkbox" checked class="form-check-input chkEstado" id="chk' + _id + '" /></td>';
-                        _output += '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEliminar' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                        _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                         $('#tblagestor').append(_output); 
-                    });                                    
+                    });
+                    
+                    _output  = '</tbody>';
+                    $('#tblagestor').append(_output);                     
                 }
             },
             error: function (error) {
@@ -260,9 +264,6 @@ $(document).ready(function(){
             }                  
         }); 
 
-        _output  = '</tbody>';
-        $('#tblagestor').append(_output);          
-          
         $('#cboGestor').val('0').change();
 
     });
@@ -272,10 +273,8 @@ $(document).ready(function(){
 
     $(document).on("click",".btnDel",function(){    
         let _rowid = $(this).attr("id");
-        let _idgestor = $('#txtId' + _rowid.substring(3) + '').val();
-        let _gestor = $('#txtId' + _rowid.substring(1) + '').val();
-
-        alert(_idgestor);
+        let _idgestor = $('#txtId' + _rowid.substring(6) + '').val();
+        let _gestor = $('#txtGestor' + _idgestor).val();
 
         alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar gestor' + ' ' + _gestor + '..?', function(){ //alertify.success('Ok')        
             
@@ -283,9 +282,34 @@ $(document).ready(function(){
                 url: "../db/registrocrudsp.php",
                 type: "POST",
                 dataType: "json",
-                data: {opcion: 2, idgestor: _idgestor, estado: _estadochk},
+                data: {idsupervisor: _usuaid, idgestor: _idgestor, opcion: 4},
                 success: function(data){
-                   
+                    
+                    $("#tblagestor").empty();
+
+                    _output = '<thead>';
+                    _output += '<tr><th style="display: none;">Id</th>';
+                    _output += '<th>Gestor</th><th style="text-align: center;">Estado</th><th style="text-align: center;">Acciones</th></tr></thead>'
+                    $('#tblagestor').append(_output); 
+            
+                    _output  = '<tbody>';
+                    $('#tblagestor').append(_output);  
+
+                    $.each(data,function(i,item){      
+                        _id = data[i].Id;
+                        _gestor = data[i].Gestor;
+                        _estado = data[i].Estado;
+                        
+                        _output = '<tr id="rowges_' + _id + '">';
+                        _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
+                        _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
+                        _output += '<td class="text-center">' + ' <input type="checkbox" checked class="form-check-input chkEstado" id="chk' + _id + '" /></td>';
+                        _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                        $('#tblagestor').append(_output); 
+                    });
+
+                    _output  = '</tbody>';
+                    $('#tblagestor').append(_output);                       
                 },
                 error: function (error) {
                     console.log(error);
@@ -293,7 +317,6 @@ $(document).ready(function(){
             });
          },        
          function(){}); 
-      
     });    
 
 });

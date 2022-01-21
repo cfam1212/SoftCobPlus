@@ -994,6 +994,16 @@ $(document).ready(function(){
         }
     });
 
+    $(document).on("click",".chkEstado",function(){ 
+        let _rowid = $(this).attr("id");
+        let _idchek = _rowid.substring(3);
+        let _check = $("#chk" + _idchek).is(":checked");
+
+        alert(_idchek);
+
+
+    });
+
     //button modificar agencia
 
     $('#btnEditAgencia').click(function(){

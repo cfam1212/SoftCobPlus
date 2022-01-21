@@ -39,11 +39,17 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(1,$idsupervisor,$idgestor,$estado,'','',0,0));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
-        break;   
-    case 3://ELIMINAR GESTOR
+        break;  
+    case 3: //ELIMNAR SUPERVISOR
+        $consulta = "CALL sp_New_Supervisor(?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(2,0,$idsupervisor,'','','',0,0,0,''));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);              
+        break;         
+    case 4://ELIMINAR GESTOR
         $consulta = "CALL sp_New_Gestor(?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(1,$idsupervisor,$idgestor,$estado,'','',0,0));
+        $resultado->execute(array(2,$idsupervisor,$idgestor,'','','',0,0));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
         break;  
 }
