@@ -53,7 +53,9 @@ $(document).ready(function(){
             _output = '<tr id="row_' + _count + '">';
             _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _codigo + '" /></td>';                
             _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _count + '" value="' + _descripcion + '" /></td>';
-            _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
+            // _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
+            _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _codigo +
+                       '" ' + _checked + ' value=' + _codigo + '/></div></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
             _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
             _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
@@ -267,15 +269,19 @@ $(document).ready(function(){
                         _id = parseInt(data[i].Codigo);
                         _desc = data[i].Descripcion;
                         _estado = data[i].Estado;
-                    //     _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit"' +
-                    //     'id=' + _id + '><i class="fa fa-pencil-square-o"></i></button><button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete "' +
-                    //    _desactivar + ' id=' + _id + '><i class="fa fa-trash-o"></i></button></div></div></td>'
+                   
+                        _checked = '';
 
-                    //     tblperfil.row.add([_id, _desc, _estado, _boton]).draw();
+                        if(_estado == 'Activo'){
+                            _checked = 'checked';
+                        } 
+
                         _output = '<tr id="row_' + _id + '">';
                         _output += '<td style="display: none;">' + _id  + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _id  + '" value="' + _id + '" /></td>';                
                         _output += '<td>' + _desc + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _id  + '" value="' + _desc + '" /></td>';
-                        _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' +_id  + '" value="' + _estado + '" /></td>';
+                        // _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' +_id  + '" value="' + _estado + '" /></td>';
+                        _output  += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPe" id="chk' + _id +
+                                    '" ' + _checked + ' value=' + _id + '/></div></td>';
                         _output += '<td><div class="text-center"><div class="btn-group">'
                         _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _id  + '"><i class="fa fa-pencil-square-o"></i></button>';
                         _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete " disabled id="' + _id  + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
@@ -302,5 +308,40 @@ $(document).ready(function(){
           }
       
   });
+
+
+  //update estado perfiles BDD
+
+  $(document).on("click",".chkEstadoPe",function(){ 
+    let _rowid = $(this).attr("id");
+    let _idperfil = _rowid.substring(3);
+    let _check = $("#chk" + _idperfil).is(":checked");
+    let _estadodepa;
+
+    alert(_idperfil);
+
+    if(_check){
+        _estadodepa = 'Activo';
+        $('#tdestado' + _iddepa).text('Activo');
+    }else 
+    {
+        _estadodepa = 'Inactivo';
+        $('#tdestado' + _iddepa).text('Inactivo');
+    }
+
+    $.ajax({
+        url: "../db/depacrud.php",
+        type: "POST",
+        dataType: "json",
+        data: {id: _iddepa, estado: _estadodepa, opcion: 4},
+        success: function(data){
+           
+        },
+        error: function (error) {
+            console.log(error);
+        }                 
+    });
+
+});
 
 });

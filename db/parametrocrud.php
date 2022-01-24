@@ -11,6 +11,7 @@ $userid = $_SESSION["i_usuaid"];
 $host = $_SESSION["s_namehost"];
 $emprid = $_SESSION["i_emprid"];
 
+$idparametro = (isset($_POST['idpa'])) ? $_POST['idpa'] : '';
 $nomparametro = (isset($_POST['nomparametro'])) ? $_POST['nomparametro'] : '';
 $descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
 $result = (isset($_POST['result'])) ? $_POST['result'] : '';
@@ -19,10 +20,10 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $valestado = $estado == "Activo" ? 'A' : 'I';
 
-//post update parametro
 
-$idpara = (isset($_POST['idpa'])) ? $_POST['idpa'] : '';
-$estadopa = (isset($_POST['estadopa'])) ? $_POST['estadopa'] : '';
+
+
+
 
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
@@ -75,7 +76,7 @@ switch($opcion){
         case "3": //UPDATE ESTADO PARAMETRO BDD
             $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array(3,$emprid,$idpara,'','',$estadopa,0,0,'','',0,'','','',0,0,0,0,''));
+            $resultado->execute(array(3,$emprid,$idparametro,'','',$estado,0,0,'','',0,'','','',0,0,0,0,''));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
 }

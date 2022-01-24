@@ -286,7 +286,7 @@ $(document).ready(function(){
             url: "../db/parametrocrud.php",
             type: "POST",
             dataType: "json",
-            data: {idpa: _idpa, estadopa: _estadopa, opcion: 3},
+            data: {idpa: _idpa, estado: _estadopa, opcion: 3},
             success: function(data){
                
             },

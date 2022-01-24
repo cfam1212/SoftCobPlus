@@ -65,13 +65,20 @@ $(document).ready(function(){
                 _supe = data[0].Supervisor;
                 _estado = data[0].Estado;
 
-                _check = '<td class="text-center">' + ' <input type="checkbox" checked class="form-check-input chkEstadoSu" id="chk' + _id + '" /></td>'
+                _checked = '';
+
+                if(_estado == 'Activo'){
+                    _checked = 'checked';
+                } 
+
+                _chekestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoSu" id="chk' + _supeid +
+                                '" ' + _checked + ' value=' + _supeid + '/></div></td>';
                 
                 _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-primary btn-sm ml-3"' +
                          'id="btnAddGe"><i class="fa fa-headphones"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
-                         'id="btnEliminarSu"><i class="fa fa-pencil-trash-o"></i></button></div></div></td>'   
+                         'id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
 
-                TableDataSup.row.add([_supeid, _cedid,  _cede, _supe,_check, _boton]).draw();
+                TableDataSup.row.add([_supeid, _cedid,  _cede, _supe, _chekestado, _boton]).draw();
               
                 mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);  
 
@@ -224,12 +231,11 @@ $(document).ready(function(){
         let _data = $('#tabledatasup').dataTable().fnGetData(_row);
         let _cedeid = _data[1];
 
-        //alert(_cedeid);
 
         if(_check){
-            _estadosuper = 'A'
+            _estadosuper = 'Activo';
         }else{
-            _estadosuper = 'I'
+            _estadosuper = 'Inactivo';
 
         }
 
@@ -237,7 +243,7 @@ $(document).ready(function(){
             url: "../db/registrocrudsp.php",
             type: "POST",
             dataType: "json",
-            data: {idsuper: _idsuper,idcede:_cedeid, estadosu: _estadosuper, opcion: 5},
+            data: {idsupervisor: _idsuper,idcedente:_cedeid, estado: _estadosuper, opcion: 5},
             success: function(data){
                
             },

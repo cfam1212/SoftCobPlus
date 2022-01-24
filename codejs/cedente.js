@@ -1003,9 +1003,9 @@ $(document).ready(function(){
         let _estadocede;
 
         if(_check){
-            _estadocede = 'A'
+            _estadocede = 'Activo'
         }else{
-            _estadocede = 'I'
+            _estadocede = 'Inactivo'
 
         }
 
@@ -1013,7 +1013,7 @@ $(document).ready(function(){
             url: "../db/cedentecrud.php",
             type: "POST",
             dataType: "json",
-            data: {idcedente: _idcedente, estado: _estadocede, opcion: 2},
+            data: {cedeid: _idcedente, estado: _estadocede, opcion: 2},
             success: function(data){
                
             },
@@ -1028,7 +1028,7 @@ $(document).ready(function(){
 
     $('#btnEditAgencia').click(function(){
 
-        debugger;
+        //debugger;
 
         let _continuage = false;
         let _newagencia = $.trim($('#txtAgenciaMo').val());
