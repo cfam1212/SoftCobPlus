@@ -93,10 +93,10 @@ $(document).ready(function()
     {        
         $("#formParam").trigger("reset");
         $("#divcheckedit").hide();
-        $("#header").css("background-color","#183456");
+        $("#header").css("background-color","#BCBABE");
         $("#header").css("color","white");
         $(".modal-title").text("Nuevo Parametro");  
-        $("#btnAgregar").text("Agregar");
+        $("#btnAgregar").text("Guardar");
         $("#modalPARAMETER").modal("show");
         _tipoSave = 'add';
         _estado = 'Activo';
@@ -327,11 +327,11 @@ $(document).ready(function()
         $('#txtValorv').val(_valorvold);
         $('#txtValori').val(_valoriold == 0 ? '': _valoriold);
         $('#hidden_row_id').val(row_id);
-        $("#header").css("background-color","#183456");
+        $("#header").css("background-color","#BCBABE");
         $("#header").css("color","white");
         $(".modal-title").text("Editar Parametro");       
         $("#divcheckedit").show();
-        $("#btnAgregar").text("Modificar");
+        $("#btnAgregar").text("Guardar");
         $("#modalPARAMETER").modal("show");
     });
 
@@ -345,6 +345,8 @@ $(document).ready(function()
             _estadoold = 'Inactivo';
         }
     });
+
+   
 
 
     $(document).on("click",".btnDelete",function(){

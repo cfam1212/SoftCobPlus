@@ -29,6 +29,10 @@ $resultcatalogo = (isset($_POST['resultcatalogo'])) ? $_POST['resultcatalogo'] :
 $resultagencia = (isset($_POST['resultagencia'])) ? $_POST['resultagencia'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '0';
 
+//actualizar estado POST
+$idcedente = (isset($_POST['idcedente'])) ? $_POST['idcedente'] : '';
+$estadochk = (isset($_POST['estado'])) ? $_POST['estado'] : '';
+
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
 
@@ -114,6 +118,13 @@ switch($opcion){
             $data = $e->getMessage();
         }
     break;
+    //ACTUALIZAR ESTADO CEDENTE BDD
+    case 2:
+        $consulta = "CALL sp_New_Cedente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(3,0,$idcedente,0,0,'','','','','','','',$estadochk,0,'','','',0,0,0,$userid,$host));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
+    break; 
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);

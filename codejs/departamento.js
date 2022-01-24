@@ -70,6 +70,37 @@ $(document).ready(function(){
       }
     });
 
+    //update estado departamento BDD
+
+    $(document).on("click",".chkEstadoDe",function(){ 
+        let _rowid = $(this).attr("id");
+        let _iddepa = _rowid.substring(3);
+        let _check = $("#chk" + _iddepa).is(":checked");
+        let _estadodepa;
+
+    
+        if(_check){
+            _estadodepa = 'A'
+        }else{
+            _estadodepa = 'I'
+
+        }
+
+        $.ajax({
+            url: "../db/depacrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {iddepa: _iddepa,estadode: _estadodepa,opcion: 1},
+            success: function(data){
+               
+            },
+            error: function (error) {
+                console.log(error);
+            }                 
+        });
+
+    });
+
     $("#formTarea").submit(function(e){
         e.preventDefault();
 

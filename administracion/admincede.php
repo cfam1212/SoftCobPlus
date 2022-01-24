@@ -55,7 +55,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td><?php echo $datos['Telefono'] ?></td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstado" id="chk<?php echo $datos['CedeId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                                echo "checked";} ?> value="<?php echo $datos['CedeId']; ?>" />                                            
+                                             echo "checked";} ?> value="<?php echo $datos['CedeId']; ?>" />                                            
                                         </td>                                           
                                         <td>
                                             <div class="text-center">

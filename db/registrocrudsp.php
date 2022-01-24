@@ -18,6 +18,14 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '0';
 
 $newestado = $estado == 'Activo' ? 'A' : 'I';
 
+//POST UPDATE ESTADO BDD
+
+$idcede = (isset($_POST['idcede'])) ? $_POST['idcede'] : '';
+$idsuper = (isset($_POST['idsuper'])) ? $_POST['idsuper'] : '';
+$estadochk = (isset($_POST['estadosu'])) ? $_POST['estadosu'] : '';
+
+
+
 //date_default_timezone_set("America/Guayaquil");
 //$currentdate = date('Y-m-d H:i:s');
 
@@ -51,7 +59,14 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(2,$idsupervisor,$idgestor,'','','',0,0));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
+        break;
+    case 5: //UPDATE ESTADO SUPERVISOR
+        $consulta = "CALL sp_New_Supervisor(?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(3,$idcede,$idsuper,$estadochk,'','',0,0,$userid,$host));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);              
         break;  
+          
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);

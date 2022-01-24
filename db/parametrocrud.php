@@ -19,6 +19,11 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $valestado = $estado == "Activo" ? 'A' : 'I';
 
+//post update parametro
+
+$idpara = (isset($_POST['idpa'])) ? $_POST['idpa'] : '';
+$estadopa = (isset($_POST['estadopa'])) ? $_POST['estadopa'] : '';
+
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
 
@@ -66,7 +71,13 @@ switch($opcion){
         }else{
             $data = "NO";
         }   
-    break;
+        break;
+        case "3": //UPDATE ESTADO PARAMETRO BDD
+            $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(3,$emprid,$idpara,'','',$estadopa,0,0,'','',0,'','','',0,0,0,0,''));
+            $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);

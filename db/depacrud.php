@@ -20,6 +20,11 @@ if($estado == 'Activo'){
     $estado = 'A';
 }else $estado = 'I';
 
+//POST UPDATE DEPARTAMENTO
+$iddepart = (isset($_POST['iddepa'])) ? $_POST['iddepa'] : '';
+$estadochk = (isset($_POST['estadode'])) ? $_POST['estadode'] : '';
+
+
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
 
@@ -34,6 +39,12 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(0,$empreid,'','','','','',0,0,0,'',0,''));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);              
+        break;
+    case 1: //UPDATE ESTO DEPARTAMENTO BDD
+        $consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(6,$empreid,'',$estadochk,'','','',$iddepart ,0,0,'',0,''));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);   
         break;  
 }
 

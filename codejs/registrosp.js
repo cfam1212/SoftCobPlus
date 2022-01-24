@@ -64,12 +64,14 @@ $(document).ready(function(){
                 _cede = data[0].Cedente;
                 _supe = data[0].Supervisor;
                 _estado = data[0].Estado;
+
+                _check = '<td class="text-center">' + ' <input type="checkbox" checked class="form-check-input chkEstadoSu" id="chk' + _id + '" /></td>'
                 
                 _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-primary btn-sm ml-3"' +
                          'id="btnAddGe"><i class="fa fa-headphones"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
                          'id="btnEliminarSu"><i class="fa fa-pencil-trash-o"></i></button></div></div></td>'   
 
-                TableDataSup.row.add([_supeid, _cedid,  _cede, _supe,_estado, _boton]).draw();
+                TableDataSup.row.add([_supeid, _cedid,  _cede, _supe,_check, _boton]).draw();
               
                 mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);  
 
@@ -181,6 +183,8 @@ $(document).ready(function(){
 
     });
 
+    //UPDATE ESTADO GESTOR MODAL
+
     $(document).on("click",".chkEstado",function(){    
         let _rowid = $(this).attr("id");
         let _idgestor = $('#txtId' + _rowid.substring(3) + '').val();
@@ -206,6 +210,42 @@ $(document).ready(function(){
                 console.log(error);
             }                 
         });
+    });
+
+     //UPDATE ESTADO SUPERVISOR TABLA
+
+     $(document).on("click",".chkEstadoSu",function(){ 
+        let _rowid = $(this).attr("id");
+        let _idsuper = _rowid.substring(3);
+        let _check = $("#chk" + _idsuper).is(":checked");
+        let _estadosuper;
+
+        let  _row = $(this).closest('tr');
+        let _data = $('#tabledatasup').dataTable().fnGetData(_row);
+        let _cedeid = _data[1];
+
+        //alert(_cedeid);
+
+        if(_check){
+            _estadosuper = 'A'
+        }else{
+            _estadosuper = 'I'
+
+        }
+
+        $.ajax({
+            url: "../db/registrocrudsp.php",
+            type: "POST",
+            dataType: "json",
+            data: {idsuper: _idsuper,idcede:_cedeid, estadosu: _estadosuper, opcion: 5},
+            success: function(data){
+               
+            },
+            error: function (error) {
+                console.log(error);
+            }                 
+        });
+
     });
 
   

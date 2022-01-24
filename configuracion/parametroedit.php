@@ -132,9 +132,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                     <?php echo $dat['ValorI']; ?>
                                                                     <input type="hidden" name="hidden_valori[]" id="txtValori<?php echo $dat['Orden']; ?>" value="<?php echo $dat['ValorI']; ?>" />
                                                                 </td>
-                                                                <td class="text-center">
-                                                                    <?php echo $dat['Estado']; ?>
-                                                                    <input type="hidden" name="hidden_estado[]" id="txtEstado<?php echo $dat['Orden']; ?>" value="<?php echo $dat['Estado']; ?>" />
+                                                                <td style="text-align: center">
+                                                                    <input type="checkbox" class="form-check-input chkEstadoDe" id="chk<?php echo $dat['Padeid']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
+                                                                    echo "checked"; } ?> value="<?php echo $dat['Padeid']; ?>" />                                                                                                                  
                                                                 </td>
                                                                 <td>
                                                                     <?php
@@ -201,9 +201,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAgregar" class="btn btn-success ml-3"><i class='fa fa-plus'></i> Agregar</button>
-                    <!-- <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button> -->
-
+                    <button type="button" id="btnAgregar" class="btn btn-outline-info ml-3"><i class="fa fa-save"></i> Guardar</button>
                 </div>
             </form>
         </div>

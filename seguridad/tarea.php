@@ -106,7 +106,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-outline-info ml-3" id="btnSave"><i class="fa fa-save"> GUARDAR</i></button>
+                    <button type="submit" class="btn btn-outline-info ml-3" id="btnSave"><i class="fa fa-save"></i> Guardar</button>
                 </div>
             </form>
         </div>

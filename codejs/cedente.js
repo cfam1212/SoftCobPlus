@@ -994,13 +994,33 @@ $(document).ready(function(){
         }
     });
 
+    //Cambiar estado cedente directo BDD
+
     $(document).on("click",".chkEstado",function(){ 
         let _rowid = $(this).attr("id");
-        let _idchek = _rowid.substring(3);
-        let _check = $("#chk" + _idchek).is(":checked");
+        let _idcedente = _rowid.substring(3);
+        let _check = $("#chk" + _idcedente).is(":checked");
+        let _estadocede;
 
-        alert(_idchek);
+        if(_check){
+            _estadocede = 'A'
+        }else{
+            _estadocede = 'I'
 
+        }
+
+        $.ajax({
+            url: "../db/cedentecrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {idcedente: _idcedente, estado: _estadocede, opcion: 2},
+            success: function(data){
+               
+            },
+            error: function (error) {
+                console.log(error);
+            }                 
+        });
 
     });
 

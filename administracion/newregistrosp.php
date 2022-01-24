@@ -69,12 +69,14 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $datos['IdCede'] ?></td>
                     <td><?php echo $datos['Cedente'] ?></td>
                     <td><?php echo $datos['Supervisor'] ?></td>
-                    <td><?php echo $datos['Estado'] ?></td>
+                    <td style="text-align: center">
+                      <input type="checkbox" class="form-check-input chkEstadoSu" id="chk<?php echo $datos['IdSupe']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                      echo "checked";} ?> value="<?php echo $datos['IdSupe']; ?>" />                                    
+                    </td>
                     <td>
                       <div class="text-center">
                         <div class="btn-group">
                           <button class="btn btn-outline-primary btn-sm ml-3" id="btnAddGe" data-toggle="tooltip" data-placement="top" title="agregar gestor"><i class="fa fa-headphones"></i></button>
-                          <!-- <button class="btn btn-outline-info btn-sm ml-3" id="btnEditarSu" data-toggle="tooltip" data-placement="top" title="editar"><i class="fa fa-pencil-square-o"></i></button> -->
                           <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
                         </div>
                       </div>
@@ -135,7 +137,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-outline-info ml-3" id="btnSaveSu"><i class='fa fa-plus'></i> Agregar</button>
+          <button type="submit" class="btn btn-outline-info ml-3" id="btnSaveSu"><i class='fa fa-save'></i> Guardar</button>
         </div>
       </form>
     </div>
@@ -169,26 +171,27 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <button type="button" class="btn btn-outline-info ml-3" id="btnGestor" data-toggle="tooltip" title="agregar"><i class='fa fa-plus'></i></button>
               </div>
             </div>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <div class="row">
               <div class="col-md-12 col-sm-12">
                 <div class="col-md-1 col-sm-1">
                 </div>
                 <div class="col-md-10 col-sm-10">
                   <div class="table-responsive">
-                      <table id="tblagestor" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
-                        <thead>
-                          <tr>
-                            <th style="display: none;">Id</th>
-                            <th>Gestor</th>
-                            <th style="text-align: center;">Estado<th>
-                            <th style="text-align: center;">Acciones</th>
-                          </tr>
-                        </thead>
-                        <tbody></tbody>
-                      </table>
-                    </div>
+                    <table id="tblagestor" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                      <thead>
+                        <tr>
+                          <th style="display: none;">Id</th>
+                          <th>Gestor</th>
+                          <th style="text-align: center;">Estado
+                          <th>
+                          <th style="text-align: center;">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
                 </div>
                 <div class="col-md-1 col-sm-1">
                 </div>

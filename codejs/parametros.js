@@ -264,6 +264,38 @@ $(document).ready(function(){
             _estado = 'Inactivo';
         }
     });
+
+    //Update Estado Parametro BDD
+
+    
+    $(document).on("click",".chkEstadoPa",function(){ 
+        let _rowid = $(this).attr("id");
+        let _idpa = _rowid.substring(3);
+        let _check = $("#chk" + _idpa).is(":checked");
+        let _estadopa;
+
+
+        if(_check){
+            _estadopa = 'A'
+        }else{
+            _estadopa = 'I'
+
+        }
+
+        $.ajax({
+            url: "../db/parametrocrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {idpa: _idpa, estadopa: _estadopa, opcion: 3},
+            success: function(data){
+               
+            },
+            error: function (error) {
+                console.log(error);
+            }                 
+        });
+
+    });
    
     $(document).on("click",".btnDelete",function(){
         row_id = $(this).attr("id");

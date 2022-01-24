@@ -90,7 +90,7 @@ $(document).ready(function(){
         }
 
         $('#txtDescripcionedit').val(_descripcionold);
-        $("#header").css("background-color","#183456");
+        $("#header").css("background-color","#BCBABE");
         $("#header").css("color","white");
         $(".modal-title").text("Editar Descripcion");       
         $("#modalPERFIL").modal("show");
