@@ -14,36 +14,39 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '0';
 $nombredepa = (isset($_POST['nomdepa'])) ? $_POST['nomdepa'] : '';
 $estado = (isset($_POST['estado'])) ? $_POST['estado'] : 'Activo';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '0';
-$tipo = (isset($_POST['tipo'])) ? $_POST['tipo'] : '0';
 
 if($estado == 'Activo'){
     $estado = 'A';
 }else $estado = 'I';
 
 //POST UPDATE DEPARTAMENTO
-$iddepart = (isset($_POST['iddepa'])) ? $_POST['iddepa'] : '';
-$estadochk = (isset($_POST['estadode'])) ? $_POST['estadode'] : '';
-
 
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
 
-$consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-$resultado = $conexion->prepare($consulta);
-$resultado->execute(array($tipo,$empreid,$nombredepa,$estado,'','','',$id,0,0,$currentdate,$userid,$host));
-$data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-
 switch($opcion){
-    case 0: 
+    case 0: // AGREGAR NUEVO DEPARTAMENTO
         $consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(0,$empreid,'','','','','',0,0,0,'',0,''));
-        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);              
+        $resultado->execute(array(1,$empreid,$nombredepa,$estado,'','','',$id,0,0,$currentdate,$userid,$host));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
-    case 1: //UPDATE ESTO DEPARTAMENTO BDD
+    case 1: //EDITAR DEPARTAMENTO
         $consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(6,$empreid,'',$estadochk,'','','',$iddepart ,0,0,'',0,''));
+        $resultado->execute(array(3,$empreid,$nombredepa,$estado,'','','',$id,0,0,$currentdate,$userid,$host));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;        
+    case 3: //ELIMINAR DEPARTAMENTO
+        $consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(4,$empreid,'','','','','',$id,0,0,'',0,''));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;           
+    case 4: //UPDATE ESTO DEPARTAMENTO BDD
+        $consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(6,$empreid,'',$estado,'','','',$id ,0,0,'',0,''));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);   
         break;  
 }

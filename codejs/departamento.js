@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var _id, _opcion, _data, _estado,_row, _fila, _checked, _depa, _namedepaold, _depa, _tipo;
+    var _id, _opcion, _data, _estado,_row, _fila, _checked, _depa, _namedepaold, _depa;
 
     $("#modalTAREA").draggable({
         handle: ".modal-header"
@@ -14,7 +14,7 @@ $(document).ready(function(){
         $("#modalTAREA").modal("show");
         _id = 0;
         _opcion = 0;
-        _tipo = 1;
+        //_tipo = 1;
         _data = null;
         _estado = 'Activo';
     });
@@ -35,13 +35,12 @@ $(document).ready(function(){
         _fila = $(this).closest("tr");
         _data = $('#tabledata').dataTable().fnGetData(_fila);
         _id = _data[0];
-        _namedepaold = $.trim(_fila.find('td:eq(0)').text());    
-        _estado = $.trim(_fila.find('td:eq(1)').text());
+        _namedepaold = _data[1];
+        _estado = _data[4];
 
         $("#txtDepa").val(_namedepaold);
       
         _opcion = 1;
-        _tipo = 3;
 
         if(_estado == "Activo"){
             $("#chkEstado").prop("checked", true);
@@ -78,19 +77,15 @@ $(document).ready(function(){
         let _check = $("#chk" + _iddepa).is(":checked");
         let _estadodepa;
 
-    
         if(_check){
-            _estadodepa = 'A'
-        }else{
-            _estadodepa = 'I'
-
-        }
+            _estadodepa = 'Activo';
+        }else _estadodepa = 'Inactivo';
 
         $.ajax({
             url: "../db/depacrud.php",
             type: "POST",
             dataType: "json",
-            data: {iddepa: _iddepa,estadode: _estadodepa,opcion: 1},
+            data: {id: _iddepa, estado: _estadodepa, opcion: 4},
             success: function(data){
                
             },
@@ -118,11 +113,11 @@ $(document).ready(function(){
                     url: "../db/depacrud.php",
                     type: "POST",
                     dataType: "json",
-                    data: {id:_id, nomdepa:_depa, estado:_estado, opcion:_opcion, tipo:_tipo},            
+                    data: {id: _id, nomdepa: _depa, estado: _estado, opcion: _opcion},            
                     success: function(data){
-                        if(data[0].contar == '1'){
+                        if(data[0].Valor == 'Existe'){
                            
-                            mensajesalertify("Departamento ya Existe!!.","E","bottom-right",5);                   
+                            mensajesalertify("Departamento ya Existe!!.","W","bottom-right",5);                   
                         }else{
                             FunGrabar(1);
                         }
@@ -146,30 +141,45 @@ $(document).ready(function(){
             url: "../db/depacrud.php",
             type: "POST",
             dataType: "json",
-            data: {id:_id, nomdepa:_depa, estado:_estado, opcion:opc, tipo:_tipo},
-            success: function(data){                                 
-                _depaid = data[0].Depaid;
-                _nomdepa = data[0].Departamento;
-                _estado = data[0].Estado;
-                
-                if(_depaid == 1){
-                    _desactivar = 'disabled="disabled"';
-                }else{
-                    _desactivar = '';
-                }
-
-                _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3"' +
-                         'id="btnEditar"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
-                        _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
-
-                if(_opcion == 0){
-                    TableData.row.add([_depaid, _nomdepa, _estado, _boton]).draw();
+            data: {id: _id, nomdepa: _depa, estado: _estado, opcion: opc},
+            success: function(data){
+                if(data[0].Valor == 'Existe'){
+                    mensajesalertify("Departamento ya Existe!!.","W","bottom-right",5);  
                 }
                 else{
-                    TableData.row(_fila).data([_depaid, _nomdepa, _estado, _boton]).draw();
-                }  
-              
-                mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);  
+                    _depaid = data[0].Depaid;
+                    _nomdepa = data[0].Departamento;
+                    _estado = data[0].Estado;
+                    
+                    _desactivar = '';
+                    _checked = '';
+
+                    if(_depaid == 1){
+                        _desactivar = 'disabled';
+                    }
+
+                    if(_estado == 'Activo'){
+                        _checked = 'checked';
+                    } 
+
+                    _newestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _depaid +
+                                '" ' + _checked + ' value=' + _depaid + '/></div></td>';
+
+                    _estadooculto = '<td style="display: none;">' + _estado + '</td>';
+
+                    _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3"' +
+                            'id="btnEditar"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                            _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
+
+                    if(_opcion == 0){
+                        TableData.row.add([_depaid, _nomdepa, _newestado, _boton, _estadooculto]).draw();
+                    }
+                    else{
+                        TableData.row(_fila).data([_depaid, _nomdepa, _newestado, _boton, _estadooculto]).draw();
+                    }  
+                
+                    mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);  
+                }
                 $("#modalTAREA").modal("hide");               
             },
             error: function (error) {
@@ -185,7 +195,7 @@ $(document).ready(function(){
         _data = $('#tabledata').dataTable().fnGetData(_row);
         _id = _data[0];
         _depa = $(this).closest("tr").find('td:eq(0)').text(); 
-        _tipo = 4;
+        //_tipo = 4;
         DeleteDepar();        
     });
 
@@ -196,11 +206,11 @@ $(document).ready(function(){
                url: "../db/depacrud.php",
                type: "POST",
                dataType: "json",
-               data: {id:_id, nomdepa:_depa, estado:_estado, opcion:1, tipo:_tipo},                        
+               data: {id: _id, opcion: 3},                        
                success: function(data){
                    console.log(data);
                    if(data[0].Valor == "Existe"){
-                       mensajesalertify("Departamento no se puede Eliminar, está asociada a un Usuario..!","E","bottom-right",5);  
+                       mensajesalertify("Departamento no se puede Eliminar, está asociada a un Usuario..!","W","bottom-right",5);  
                    }       
                    else {
                        TableData.row(_fila.parents('tr')).remove().draw();
