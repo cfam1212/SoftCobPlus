@@ -34,7 +34,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <th>Departamento</th>
                                     <th style="text-align: center;">Estado</th>
                                     <th style="text-align: center;">Opciones</th>
-                                    <th style="display: none;">EstadoOculto</th>
+                                    <th>EstadoOculto</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,7 +66,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 </div>
                                             </div>
                                         </td>
-                                        <td style="display: none;"><?php echo $datos['Estado'] ?></td>
+                                        <td id="tdestado<?php echo $datos['Depaid']; ?>"><?php echo $datos['Estado'] ?></td>
                                     </tr>
                                 <?php }
                                 ?>

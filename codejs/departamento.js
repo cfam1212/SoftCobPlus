@@ -36,10 +36,9 @@ $(document).ready(function(){
         _data = $('#tabledata').dataTable().fnGetData(_fila);
         _id = _data[0];
         _namedepaold = _data[1];
-        _estado = _data[4];
-
         $("#txtDepa").val(_namedepaold);
-      
+
+        _estado = $('#tdestado' + _id).text();
         _opcion = 1;
 
         if(_estado == "Activo"){
@@ -59,7 +58,7 @@ $(document).ready(function(){
 
     $(document).on("click","#chkEstado",function(){
         _checked = $("#chkEstado").is(":checked");
-      
+
         if(_checked){
           $("#lblEstado").text("Activo");
           _estado = 'Activo';
@@ -79,7 +78,12 @@ $(document).ready(function(){
 
         if(_check){
             _estadodepa = 'Activo';
-        }else _estadodepa = 'Inactivo';
+            $('#tdestado' + _iddepa).text('Activo');
+        }else 
+        {
+            _estadodepa = 'Inactivo';
+            $('#tdestado' + _iddepa).text('Inactivo');
+        }
 
         $.ajax({
             url: "../db/depacrud.php",
