@@ -267,7 +267,6 @@ $(document).ready(function(){
 
     //Update Estado Parametro BDD
 
-    
     $(document).on("click",".chkEstadoPa",function(){ 
         let _rowid = $(this).attr("id");
         let _idpa = _rowid.substring(3);
