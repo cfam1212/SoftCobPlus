@@ -42,10 +42,6 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <?php endforeach ?>
                                     </select>
                                 </div>
-                                <label for="espacio" class="control-label col-md-1"></label>
-                                <label for="espacio" class="control-label col-md-1"></label>
-                                <button type="button" class="btn btn-outline-info" id="btnAgregar" data-toggle="tooltip" data-placement="top" title="agregar" style="margin-bottom:10px">
-                                    <i class="fa fa-plus"></i></button>
                             </div>
                             <div class="row">
                                 <!-- <label for="espacio" class="control-label col-md-1"></label>-->
@@ -53,6 +49,8 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group col-md-7">
                                     <input type="text" required class="form-control" id="txtDescripcion" name="menuname" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                 </div>
+                                <button type="button" class="btn btn-outline-info" id="btnAgregar" data-toggle="tooltip" data-placement="top" title="agregar" style="margin-bottom:10px">
+                                    <i class="fa fa-plus"></i></button>                                 
                             </div>
                         </fieldset>
                     </form>
