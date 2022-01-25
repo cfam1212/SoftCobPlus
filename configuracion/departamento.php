@@ -66,7 +66,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 </div>
                                             </div>
                                         </td>
-                                        <td style="display: none;" id="tdestado<?php echo $datos['Depaid']; ?>"><?php echo $datos['Estado'] ?></td>
+                                        <td style="display: none;" id="tdestado<?php echo $datos['Depaid']; ?>">
+                                            <?php echo $datos['Estado'] ?>
+                                        </td>
                                     </tr>
                                 <?php }
                                 ?>

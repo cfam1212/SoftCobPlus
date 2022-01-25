@@ -73,7 +73,7 @@ switch($opcion){
             $data = "NO";
         }   
         break;
-        case "3": //UPDATE ESTADO PARAMETRO BDD
+    case "3": //UPDATE ESTADO PARAMETRO BDD
             $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(3,$emprid,$idparametro,'','',$estado,0,0,'','',0,'','','',0,0,0,0,''));

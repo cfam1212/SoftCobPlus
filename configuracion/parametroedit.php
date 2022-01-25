@@ -53,14 +53,14 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Parámetro:</label>
                                             <div class="form-group col-md-3">
-                                                <input type="text" required class="form-control" id="txtParametro" onKeyUp="this.value=this.value.toUpperCase();" maxlength="80" name="parametro" value="<?php echo $datapara[0]['parametro'] ?>">
+                                                <input type="text" required class="form-control" id="txtParametro" onKeyUp="this.value=this.value.toUpperCase();" maxlength="80" name="parametro" value="<?php echo $datapara[0]['Parametro'] ?>">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Descripción:</label>
                                             <div class="form-group col-md-10">
-                                                <textarea name="observa" id="txtDescripcion" class="form-control col-md-8"><?php echo $datapara[0]['descripcion'] ?></textarea>
+                                                <textarea name="observa" id="txtDescripcion" class="form-control col-md-8"><?php echo $datapara[0]['Descripcion'] ?></textarea>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -68,7 +68,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="estado" class="control-label col-md-1">Estado:</label>
                                             <div class="form-check" id="divcheck">
                                                 <input type="checkbox" class="form-check-input" id="chkEstadoCab">
-                                                <label for="estadolabel" class="form-check-label" id="lblEstadoCab"><?php echo $datapara[0]['estado'] ?></label>
+                                                <label for="estadolabel" class="form-check-label" id="lblEstadoCab"><?php echo $datapara[0]['Estado'] ?></label>
                                             </div>
                                         </div>
 
@@ -76,18 +76,12 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </form>
                                 <br>
                                 <br>
-                                <div class='btn-group'>
-                                    <button class="btn btn-outline-secondary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
-                                    <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
-                                </div>
-
                             </div>
                             <div class="tab-pane fade" id="detalle" role="tabpanel" aria-labelledby="detalle-tab">
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-11"></label>
                                     <button type="button" class="btn btn-outline-info" id="btnAdd" data-toggle="tooltip" data-placement="top" title="agregar detalle" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                 </div>
-
                                 <br>
                                 <br>
                                 <div class="col-md-12 col-sm-12">
@@ -104,6 +98,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                             <th>Valor Texto</th>
                                                             <th>Valor Entero</th>
                                                             <th>Estado</th>
+                                                            <th style="display: none;">Estadolabel</th>
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
@@ -112,10 +107,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                         foreach ($data as $dat) {
                                                         ?>
                                                             <tr id="row_<?php echo $dat['Orden']; ?>">
-                                                                <td style="display: none;">
-                                                                    <?php echo $dat['Padeid']; ?>
-                                                                    <input type="hidden" name="hidden_codigo[]" id="codigo<?php echo $dat['Orden']; ?>" value="<?php echo $dat['Padeid']; ?>" />
-                                                                </td>
                                                                 <td style="display: none;">
                                                                     <?php echo $dat['Orden']; ?>
                                                                     <input type="hidden" name="hidden_orden[]" id="orden<?php echo $dat['Orden']; ?>" value="<?php echo $dat['Orden']; ?>" />
@@ -133,8 +124,12 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                     <input type="hidden" name="hidden_valori[]" id="txtValori<?php echo $dat['Orden']; ?>" value="<?php echo $dat['ValorI']; ?>" />
                                                                 </td>
                                                                 <td style="text-align: center">
-                                                                    <input type="checkbox" class="form-check-input chkEstadoDe" id="chk<?php echo $dat['Padeid']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
+                                                                    <input type="checkbox" class="form-check-input chkEstadoDe" id="chk<?php echo $dat['Orden']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
                                                                     echo "checked"; } ?> value="<?php echo $dat['Padeid']; ?>" />                                                                                                                  
+                                                                </td>
+                                                                <td style="display: none;" id="tdestado<?php echo $dat['Padeid']; ?>">
+                                                                    <?php echo $dat['Estado'] ?>
+                                                                    <input type="hidden" name="hidden_estado[]" id="txtEstado<?php echo $dat['Orden']; ?>" value="<?php echo $dat['Estado']; ?>" />
                                                                 </td>
                                                                 <td>
                                                                     <?php
@@ -166,6 +161,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </div>
+                <div class='btn-group'>
+                    <button class="btn btn-outline-secondary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
+                    <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                </div>                       
             </div>
         </div>
     </div>
@@ -195,7 +194,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <input type="text" id="txtValori" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="5">
                     </div>
                     <div class="form-check" id="divcheckedit">
-                        <input type="checkbox" id="chkEstado" class="form-check-input">
                         <label for="estadolabel" class="form-check-label" id="lblEstado"></label>
                     </div>
                 </div>
