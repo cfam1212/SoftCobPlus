@@ -93,6 +93,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <table id="tblparameter" class="table table-striped jambo_table table-dark table-borderless" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
+                                                            <th style="display: none;">Id</th>
                                                             <th style="display: none;">NOrden</th>
                                                             <th>Detalle</th>
                                                             <th>Valor Texto</th>
@@ -107,6 +108,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                         foreach ($data as $dat) {
                                                         ?>
                                                             <tr id="row_<?php echo $dat['Orden']; ?>">
+                                                                <td style="display: none;">
+                                                                    <?php echo $dat['Padeid']; ?>
+                                                                    <input type="hidden" name="hidden_padeid[]" id="padeid<?php echo $dat['Orden']; ?>" value="<?php echo $dat['Padeid']; ?>" />
+                                                                </td>                                                            
                                                                 <td style="display: none;">
                                                                     <?php echo $dat['Orden']; ?>
                                                                     <input type="hidden" name="hidden_orden[]" id="orden<?php echo $dat['Orden']; ?>" value="<?php echo $dat['Orden']; ?>" />
@@ -143,7 +148,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                         <div class="btn-group">
                                                                             <button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" data-toggle="tooltip" data-placement="top" title="subir" id="btnUp<?php echo $dat['Orden']; ?>" <?php echo $desactivar; ?>><i class="fa fa-arrow-up"></i></button>
                                                                             <button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id=<?php echo $dat['Orden']; ?>><i class="fa fa-pencil-square-o"></i></button>
-                                                                            <button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3" id="<?php echo $dat['Orden']; ?>" disabled><i class="fa fa-trash-o"></i></button>
+                                                                            <button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3" id="<?php echo $dat['Orden']; ?>" disabled ><i class="fa fa-trash-o"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -183,11 +188,11 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="detalle" class="col-form-label">Detalle</label>
-                        <input type="text" id="txtDetalle" required class="form-control" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
+                        <input type="text" id="txtDetalle" required class="form-control" maxlength="80">
                     </div>
                     <div class="form-group">
                         <label for="valorv" class="col-form-label">Valor Text</label>
-                        <input type="text" id="txtValorv" class="form-control" maxlength="255" onKeyUp="this.value=this.value.toUpperCase();">
+                        <input type="text" id="txtValorv" class="form-control" maxlength="255">
                     </div>
                     <div class="form-group">
                         <label for="valori" class="col-form-label">Valor Entero</label>
@@ -199,7 +204,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAgregar" class="btn btn-outline-info ml-3"><i class="fa fa-save"></i> Guardar</button>
+                    <button type="button" id="btnBoton" class="btn btn-outline-info ml-3"><i class="fa fa-save"></i></button>
                 </div>
             </form>
         </div>
