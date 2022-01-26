@@ -53,14 +53,14 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Parámetro:</label>
                                             <div class="form-group col-md-3">
-                                                <input type="text" required class="form-control" id="txtParametro" onKeyUp="this.value=this.value.toUpperCase();" maxlength="80" name="parametro" value="<?php echo $datapara[0]['Parametro'] ?>">
+                                                <input type="text" required class="form-control" id="txtParametro" onKeyUp="this.value=this.value.toUpperCase();" maxlength="80" name="parametro" value="<?php echo $datapara[0]['Parametro']; ?>">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Descripción:</label>
                                             <div class="form-group col-md-10">
-                                                <textarea name="observa" id="txtDescripcion" class="form-control col-md-8"><?php echo $datapara[0]['Descripcion'] ?></textarea>
+                                                <textarea name="observa" id="txtDescripcion" class="form-control col-md-8"><?php echo $datapara[0]['Descripcion']; ?></textarea>
                                             </div>
                                         </div>
                                         <div class="row">
