@@ -23,6 +23,12 @@ $(document).ready(function(){
         _estado = 'Activo';
         _continuar = true;
 
+        _checked = '';
+
+        if(_estado == 'Activo'){
+            _checked = 'checked';
+        } 
+
         if(_codigo == '0')
         {
             mensajesalertify("Seleccione Tipo Perfil..!","W","top-center",5);
@@ -54,8 +60,8 @@ $(document).ready(function(){
             _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _codigo + '" /></td>';                
             _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _count + '" value="' + _descripcion + '" /></td>';
             // _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
-            _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _codigo +
-                       '" ' + _checked + ' value=' + _codigo + '/></div></td>';
+            _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _count +
+                       '" ' + _checked + ' value=' + _count + '/></div></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
             _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
             _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
@@ -133,7 +139,12 @@ $(document).ready(function(){
                 arrycodigo : parseInt(row_id),
                 arrydescripcion : _descripcion,
                 arryestado : _estado,
-            }            
+            } 
+            _checked = '';  
+            
+            if(arryestado == 'Activo'){
+                _checked = 'checked';
+            } 
 
             _result.push(_objeto);
             
@@ -147,7 +158,8 @@ $(document).ready(function(){
                 _output = '<tr id="row_' + item.arrycodigo + '">';
                 _output += '<td style="display: none;">' + item.arrycodigo  + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo  + '" value="' + item.arrycodigo  + '" /></td>';                
                 _output += '<td>' + item.arrydescripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + item.arrycodigo  + '" value="' + item.arrydescripcion + '" /></td>';
-                _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + item.arrycodigo  + '" value="' + item.arryestado + '" /></td>';
+                _output  += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPe" id="chk' + item.arrycodigo +
+                            '" ' + _checked + ' value=' + item.arrycodigo + '/></div></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo  + '"><i class="fa fa-pencil-square-o"></i></button>';
                 _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo  + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
@@ -212,7 +224,9 @@ $(document).ready(function(){
 
     $('#btnSave').click(function(){
 
-        _codigo = $('#cboperfil').val();
+
+        _codigo = $('#cboPerfil').val();
+       
 
         if(_count == 0)
         {         
@@ -279,7 +293,6 @@ $(document).ready(function(){
                         _output = '<tr id="row_' + _id + '">';
                         _output += '<td style="display: none;">' + _id  + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _id  + '" value="' + _id + '" /></td>';                
                         _output += '<td>' + _desc + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _id  + '" value="' + _desc + '" /></td>';
-                        // _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' +_id  + '" value="' + _estado + '" /></td>';
                         _output  += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPe" id="chk' + _id +
                                     '" ' + _checked + ' value=' + _id + '/></div></td>';
                         _output += '<td><div class="text-center"><div class="btn-group">'
@@ -316,24 +329,27 @@ $(document).ready(function(){
     let _rowid = $(this).attr("id");
     let _idperfil = _rowid.substring(3);
     let _check = $("#chk" + _idperfil).is(":checked");
-    let _estadodepa;
 
-    alert(_idperfil);
+    _codigo = $('#cboPerfil').val();
+       
+    let _estadope;
+
+    //alert(_codigo);
 
     if(_check){
-        _estadodepa = 'Activo';
-        $('#tdestado' + _iddepa).text('Activo');
+        _estadope = 'A';
+       
     }else 
     {
-        _estadodepa = 'Inactivo';
-        $('#tdestado' + _iddepa).text('Inactivo');
+        _estadope = 'I';
+       
     }
 
     $.ajax({
-        url: "../db/depacrud.php",
+        url: "../db/perfilescacrud.php",
         type: "POST",
         dataType: "json",
-        data: {id: _iddepa, estado: _estadodepa, opcion: 4},
+        data: {id: _idperfil, estado: _estadope, codigo: _codigo, opcion: 3},
         success: function(data){
            
         },

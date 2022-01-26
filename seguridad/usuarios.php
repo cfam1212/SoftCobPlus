@@ -67,7 +67,10 @@ $cbodepa = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td><?php echo $dat['Usuario'] ?></td>
                                         <td><?php echo $dat['Namelogin'] ?></td>
                                         <td><?php echo $dat['Perfil'] ?></td>
-                                        <td><?php echo $dat['Estado'] ?></td>
+                                        <td style="text-align: center">
+                                            <input type="checkbox" class="form-check-input chkEstadoUs" id="chk<?php echo $dat['UserId']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
+                                             echo "checked";} else {'';} ?> value="<?php echo $dat['UserId']; ?>" />                                            
+                                        </td>    
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">

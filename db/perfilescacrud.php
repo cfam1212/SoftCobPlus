@@ -15,6 +15,7 @@ $codigo= (isset($_POST['codigo'])) ? $_POST['codigo'] : '';
 $result = (isset($_POST['result'])) ? $_POST['result'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $cboid = (isset($_POST['id'])) ? $_POST['id'] : '';
+$estado= (isset($_POST['estado'])) ? $_POST['estado'] : '';
 
 date_default_timezone_set("America/Guayaquil");
 
@@ -45,6 +46,14 @@ switch($opcion){
 
         break;
     case "2": // ELIMINNAR 
+        break;
+
+    case "3": //EDITAR ESTADO PERFILES DE CALIFICACION
+        $consulta = "CALL sp_New_Perfiles(?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(3,'',$codigo,$estado,$cboid,0,0,0,''));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;    
       
 }
 

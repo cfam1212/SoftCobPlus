@@ -169,7 +169,44 @@ $(document).ready(function(){
             $("#lblEstado").text("Inactivo");
             _estado = 'Inactivo';
         }
-    });    
+    });  
+    
+    //UODATE ESTADO USUARIO BDD
+
+    $(document).on("click",".chkEstadoUs",function(){ 
+        let _rowid = $(this).attr("id");
+        let _idusuario = _rowid.substring(3);
+        let _check = $("#chk" + _idusuario).is(":checked");
+        let _estadousuario;
+
+        _perfil = $('#cboPerfil').val();
+        _depar = $('#cboDepa').val();
+
+        alert(_depar);
+
+
+        if(_check){
+            _estadousuario = 'Activo';
+        }else 
+        {
+            _estadousuario = 'Inactivo';
+           
+        }
+
+        $.ajax({
+            url: "../db/depacrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {id: _idusuario, estado: _estadousuario, opcion: 3},
+            success: function(data){
+               
+            },
+            error: function (error) {
+                console.log(error);
+            }                 
+        });
+
+    });
     
     $(document).on("click","#btnEliminar",function(e){   
         _fila = $(this);  

@@ -127,7 +127,15 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);  
-    break;
+        break;
+
+    case 3: //UPDATE ESTADO USUARIO BDD
+        $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array($opc,$id,$perfil,$empreid,$username,$lastname,'',$login,$password,$estado,$caduca,$fechacaduca,$cambiar,
+                $nombreArchivo,$userid,$host,$depar,'','','',0,0,0));  
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);

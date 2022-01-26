@@ -108,7 +108,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <input type="text" id="txtDescripcionedit" required class="form-control" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
                     <div class="form-check" id="divcheck">
-                        <input type="checkbox" id="chkEstado" class="form-check-input">
+                        <!-- <input type="checkbox" id="chkEstado" class="form-check-input"> -->
                         <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
                     </div>
                 </div>
