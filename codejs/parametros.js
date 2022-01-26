@@ -273,7 +273,7 @@ $(document).ready(function(){
         let _check = $("#chk" + _idpa).is(":checked");
         let _estadopa;
 
-
+        
         if(_check){
             _estadopa = 'A'
         }else{
