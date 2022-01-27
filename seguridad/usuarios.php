@@ -19,6 +19,11 @@ $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(5, $_SESSION["i_emprid"], '', '', '', '', '', 0, 0, 0, '', 0, ''));
 $cbodepa = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(36, 0, 'TIPO USUARIOS', '--Seleccione Tipo Usuario--', '', '', '', '', 0, 0, 0, 0, 0, 0));
+$cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <div class="right_col" role="main">
     <div class="">
@@ -49,6 +54,7 @@ $cbodepa = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <th>Perfil</th>
                                     <th>Estado</th>
                                     <th style="text-align: center;">Opciones</th>
+                                    <!-- <th>EstadoLabel</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,7 +87,7 @@ $cbodepa = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     </button>
                                                 </div>
                                             </div>
-                                        </td>
+                                        </td>                                      
                                     </tr>
                                 <?php }
                                 ?>
@@ -126,13 +132,13 @@ $cbodepa = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                             <?php endforeach ?>
                         </select>
-                        
-                        <label for="estado" class="control-label col-md-1">Estado:</label>
-                        <label for="espacio" class="control-label col-md-1"></label>
-                        <div class="checkbox col-md-2">
-                            <input type="checkbox" id="chkEstado">
-                            <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
-                        </div>
+
+                        <label for="perfil" class="control-label col-md-2">Tipo Usuario:</label>
+                        <select class="form-control col-md-4" id="cboTipoUser" name="cbotipouser"style="width: 33%;">
+                            <?php foreach ($cbotipouser as $fila) : ?>
+                                <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
+                            <?php endforeach ?>
+                        </select>                          
                     </div>
                     <div class="form-group row">
                         <label for="perfil" class="control-label col-md-2">Departamento:</label>

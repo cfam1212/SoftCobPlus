@@ -8,6 +8,7 @@ $(document).ready(function(){
     
     $('#cboPerfil').select2();
     $('#cboDepa').select2();
+    $('#cboTipoUser').select2();
 
     $("#btnNuevo").click(function(){
         $("#frmUserNew").trigger("reset");
@@ -97,7 +98,7 @@ $(document).ready(function(){
         _data = $('#tabledata').dataTable().fnGetData(_fila);
         _id = _data[0];
         _loginold = _data[2];
-        _estado = _data[4];
+        //_estado = $.trim($('#tdestado' + _id).text());
         _opcion = 1;
         $.ajax({
             url: "../db/consultadatos.php",
@@ -115,8 +116,9 @@ $(document).ready(function(){
                 $("#txtLastname").val(data[0].Apellidos);
                 $("#txtLogin").val(data[0].Login);
                 $("#txtPassword").val(data[0].Pass);
-                $("#cboPerfil").val(data[0].CodigoPerf);
-                $("#cboDepa").val(data[0].CodigoDepa);
+                $("#cboPerfil").val(data[0].CodigoPerf).change();
+                $("#cboDepa").val(data[0].CodigoDepa).change();
+                $("#cboTipoUser").val(data[0].CodigoTipoUser).change();
 
                 if(_caduca == 'SI'){
                     $("#chkcaduca").prop("checked", true);
@@ -152,24 +154,24 @@ $(document).ready(function(){
         
         $("#login").val(_loginold);
 
-        if(_estado == "Activo"){
-            $("#chkEstado").prop("checked", true);
-            $("#lblEstado").text("Activo");            
-        }else{
-            $("#chkEstado").prop("checked", false);
-            $("#lblEstado").text("Inactivo");
-        }
+        // if(_estado == "Activo"){
+        //     $("#chkEstado").prop("checked", true);
+        //     $("#lblEstado").text("Activo");            
+        // }else{
+        //     $("#chkEstado").prop("checked", false);
+        //     $("#lblEstado").text("Inactivo");
+        // }
     });
 
-    $(document).on("click","#chkEstado",function(){
-        if($("#chkEstado").is(":checked")){
-            $("#lblEstado").text("Activo");
-            _estado = 'Activo';
-        }else{
-            $("#lblEstado").text("Inactivo");
-            _estado = 'Inactivo';
-        }
-    });  
+    // $(document).on("click","#chkEstado",function(){
+    //     if($("#chkEstado").is(":checked")){
+    //         $("#lblEstado").text("Activo");
+    //         _estado = 'Activo';
+    //     }else{
+    //         $("#lblEstado").text("Inactivo");
+    //         _estado = 'Inactivo';
+    //     }
+    // });  
     
     //UODATE ESTADO USUARIO BDD
 
@@ -182,7 +184,7 @@ $(document).ready(function(){
         _perfil = $('#cboPerfil').val();
         _depar = $('#cboDepa').val();
 
-        alert(_depar);
+        alert(_check);
 
 
         if(_check){
@@ -246,6 +248,7 @@ $(document).ready(function(){
         _fechacaduca = $.trim($("#txtFechacaduca").val());
         _perfil = $('#cboPerfil').val();
         _depar = $('#cboDepa').val();
+        _tipouser = $('#cboTipoUser').val();
 
         _imagen = document.getElementById("txtImagen");
 
@@ -289,7 +292,13 @@ $(document).ready(function(){
         {            
             mensajesalertify("Seleccione Departamento..!!","W","top-center",5);
             return;    
-        }        
+        }      
+        
+        if(_tipouser == '0')
+        {            
+            mensajesalertify("Seleccione Tipo Usuario..!!","W","top-center",5);
+            return;    
+        }          
 
         if(_loginold != _login){
             $.ajax({
@@ -324,17 +333,19 @@ $(document).ready(function(){
             form_data = new FormData();            
             form_data.append('perfil', _perfil);
             form_data.append('depar', _depar);
+            form_data.append('tipouser', _tipouser);
             form_data.append('username', _username);
             form_data.append('lastname', _lastname);
             form_data.append('login', _login);
             form_data.append('password', _password);
-            form_data.append('estado', _estado);
+            //form_data.append('estado', _estado);
             form_data.append('caduca', _caduca);
             form_data.append('fechacaduca', _fechacaduca);
             form_data.append('cambiar', _cambiar);
             form_data.append('imagen', _file);
             form_data.append('opcion', _opcion);
             form_data.append('id', _id);
+            
             $.ajax({
                 url: "../db/usuariocrud.php",
                 type: "POST",                
@@ -348,16 +359,28 @@ $(document).ready(function(){
                     _login = datos[0].Namelogin;
                     _perfil = datos[0].Perfil;
                     _estado = datos[0].Estado;
-                    _button = '<div class="text-center"><button id="btnEditar" class="btn btn-outline-info btn-sm ml-3">'+
+
+                    checked = '';
+
+                    if(_estado == 'Activo'){
+                        _checked = 'checked';
+                    }                     
+                    _newestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoUs" id="chk' + _userid +
+                                '" ' + _checked + ' value=' + _userid + '/></div></td>';
+                    
+                    _estadooculto = '<td style="display: none;">' + _estado + '</td>';
+
+                    _button = '<div class="text-center"><div class="btn-group"><button id="btnEditar" class="btn btn-outline-info btn-sm ml-3">'+
                                 '<i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
-                                'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div>'
+                                'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div>';
+
                     if(_opcion == 0){
-                        TableData.row.add([_userid, _usuario, _login, _perfil, _estado, _button]).draw();
+                        TableData.row.add([_userid, _usuario, _login, _perfil, _newestado, _button]).draw();
                         mensajesalertify("Grabado Correctamente..!!","S","bottom-center",5);				
 				
                     }
                     else{
-                        TableData.row(_fila).data([_userid, _usuario, _login, _perfil, _estado, _button]).draw();
+                        TableData.row(_fila).data([_userid, _usuario, _login, _perfil, _newestado, _button]).draw();
                         mensajesalertify("Actualizado Correctamente..!!","S","bottom-center",5);	
                     }                     
                     $("#modalNewUser").modal("hide");

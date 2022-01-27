@@ -13,6 +13,7 @@ $empreid = $_SESSION["i_emprid"];
 
 $perfil = (isset($_POST['perfil'])) ? $_POST['perfil'] : '0';
 $depar = (isset($_POST['depar'])) ? $_POST['depar'] : '0';
+$tipouser = (isset($_POST['tipouser'])) ? $_POST['tipouser'] : '0';
 $username = (isset($_POST['username'])) ? $_POST['username'] : '';
 $lastname = (isset($_POST['lastname'])) ? $_POST['lastname'] : '';
 $login = (isset($_POST['login'])) ? $_POST['login'] : '';
@@ -57,8 +58,8 @@ switch($opcion){
             }
             $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array(0,0,$perfil,$empreid,$username,$lastname,'',$login,$password,$estado,$caduca,$fechacaduca,
-            $cambiar,$nombreArchivo,$userid,$host,$depar,'','','',0,0,0));
+            $resultado->execute(array(0,0,$perfil,$empreid,$username,$lastname,'',$login,$password,'A',$caduca,$fechacaduca,
+            $cambiar,$nombreArchivo,$userid,$host,$depar,$tipouser,'','',0,0,0));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC); 
         }        
     break;
@@ -84,8 +85,8 @@ switch($opcion){
         }
         $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array($opc,$id,$perfil,$empreid,$username,$lastname,'',$login,'',$estado,$caduca,$fechacaduca,$cambiar,$nombreArchivo,
-                $userid,$host,$depar,'','','',0,0,0));
+        $resultado->execute(array($opc,$id,$perfil,$empreid,$username,$lastname,'',$login,'','',$caduca,$fechacaduca,$cambiar,$nombreArchivo,
+                $userid,$host,$depar,$tipouser,'','',0,0,0));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         $consulta = "SELECT u.usua_id AS UserId, CONCAT_WS(' ',u.usua_nombres,u.usua_apellidos) AS Usuario, u.usua_login AS Namelogin, 
@@ -117,8 +118,8 @@ switch($opcion){
         }        
         $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array($opc,$id,$perfil,$empreid,$username,$lastname,'',$login,$password,$estado,$caduca,$fechacaduca,$cambiar,
-                $nombreArchivo,$userid,$host,$depar,'','','',0,0,0));  
+        $resultado->execute(array($opc,$id,$perfil,$empreid,$username,$lastname,'',$login,$password,'',$caduca,$fechacaduca,$cambiar,
+                $nombreArchivo,$userid,$host,$depar,$tipouser,'','',0,0,0));  
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         $consulta = "SELECT u.usua_id AS UserId, CONCAT_WS(' ',u.usua_nombres,u.usua_apellidos) AS Usuario, u.usua_login AS Namelogin, 
@@ -133,7 +134,7 @@ switch($opcion){
         $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array($opc,$id,$perfil,$empreid,$username,$lastname,'',$login,$password,$estado,$caduca,$fechacaduca,$cambiar,
-                $nombreArchivo,$userid,$host,$depar,'','','',0,0,0));  
+                $nombreArchivo,$userid,$host,$depar,$tipouser,'','',0,0,0));  
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
 }
