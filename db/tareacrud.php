@@ -51,7 +51,7 @@ switch($opcion){
             }            
         }else{
             $consulta = "UPDATE seguridad_tarea SET tare_descripcion='$tarea', tare_programa='$ruta', tare_icono='$icono', 
-            tare_estado='$nuevoestado',tare_fum='$currentdate',tare_uum='$userid',tare_tum='$host' WHERE TARE_ID='$id'";
+            tare_fum='$currentdate',tare_uum='$userid',tare_tum='$host' WHERE TARE_ID='$id'";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();     
             
