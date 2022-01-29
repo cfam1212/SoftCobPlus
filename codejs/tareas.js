@@ -64,6 +64,38 @@ $(document).ready(function(){
       }
     });
 
+    //EDITAR ESTADO USUARIO
+
+    $(document).on("click",".chkEstadoTa",function(){ 
+        let _rowid = $(this).attr("id");
+        let _idtare = _rowid.substring(3);
+        let _check = $("#chk" + _idtare).is(":checked");
+        let _estadotarea;
+
+
+        if(_check){
+            _estadotarea = 'Activo';
+         
+        }else 
+        {
+            _estadotarea = 'Inactivo';
+        }
+
+        $.ajax({
+            url: "../db/tareacrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {id: _idtare, estado: _estadotarea, opcion: 3},
+            success: function(data){
+               
+            },
+            error: function (error) {
+                console.log(error);
+            }                 
+        });
+
+    });
+
     $(document).on("click","#btnEliminar",function(e){
         _fila = $(this);  
         _row = $(this).closest('tr');

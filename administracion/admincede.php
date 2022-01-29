@@ -39,8 +39,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <th>Cuidad</th>
                                     <th>Cedente</th>
                                     <th>Telefono</th>
-                                    <th>Estado</th>
-                                    <th>Opciones</th>
+                                    <th style="text-align: center;">Estado</th>
+                                    <th style="text-align: center;">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>

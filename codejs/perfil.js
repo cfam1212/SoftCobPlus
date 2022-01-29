@@ -57,7 +57,39 @@ $(document).ready(function(){
         _perfil = _fila.find('td:eq(0)').text();
         //location.href='menuedit.php?id='+id; //POR METODO GET
         $.redirect('perfiledit.php', {'idperfil': _id}); //POR METODO POST
-    });      
+    });   
+
+    //UPDATE ESTADO PERFIL BDD
+    $(document).on("click",".chkEstadoPe",function(){ 
+        let _rowid = $(this).attr("id");
+        let _idperfil = _rowid.substring(3);
+        let _check = $("#chk" + _idperfil).is(":checked");
+        let _estaperfil;
+
+        
+
+        if(_check){
+            _estaperfil = 'Activo';
+        }else 
+        {
+            _estaperfil = 'Inactivo';
+           
+        }
+
+        $.ajax({
+            url: "../db/perfilcrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {id: _idperfil, estado: _estaperfil, opcion: 2},
+            success: function(data){
+               
+            },
+            error: function (error) {
+                console.log(error);
+            }                 
+        });
+
+    });
 
     $(document).on("click","#btnEliminar",function(e){
         _fila = $(this);  

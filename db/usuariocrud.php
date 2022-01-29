@@ -133,8 +133,8 @@ switch($opcion){
     case 3: //UPDATE ESTADO USUARIO BDD
         $consulta = "CALL sp_New_Usuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array($opc,$id,$perfil,$empreid,$username,$lastname,'',$login,$password,$estado,$caduca,$fechacaduca,$cambiar,
-                $nombreArchivo,$userid,$host,$depar,$tipouser,'','',0,0,0));  
+        $resultado->execute(array(5,$id,0,0,'','','','','',$estado,'','','',
+        '',0,'',0,'','','',0,0,0));  
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
 }

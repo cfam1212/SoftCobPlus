@@ -38,7 +38,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <th>Id</th>
                                     <th>Menu</th>
                                     <th>Icono</th>
-                                    <th>Estado</th>
+                                    <th style="text-align: center;">Estado</th>
                                     <th style="text-align: center;">Opciones</th>
                                 </tr>
                             </thead>
@@ -63,7 +63,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td><?php echo $datos['MenuId'] ?></td>
                                         <td><?php echo $datos['Menu'] ?></td>
                                         <td><?php echo $datos['Icono'] ?></td>
-                                        <td><?php echo $datos['Estado'] ?></td>
+                                        <td style="text-align: center">
+                                            <input type="checkbox" class="form-check-input chkEstadoMe" id="chk<?php echo $datos['MenuId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                             echo "checked";} else {'';} ?> value="<?php echo $datos['MenuId']; ?>" />                                            
+                                        </td>  
                                         <td></td>
                                     </tr>
                                 <?php }

@@ -107,11 +107,6 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <label for="detalle" class="col-form-label">Descripcion</label>
                         <input type="text" id="txtDescripcionedit" required class="form-control" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
-                    <div class="form-check" id="divcheck">
-                        <!-- <input type="checkbox" id="chkEstado" class="form-check-input"> -->
-                        <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
-                    </div>
-                </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
                     <button type="button" id="btnModificar" class="btn btn-outline-info ml-3"><i class="fa fa-save"></i> Guardar</button>

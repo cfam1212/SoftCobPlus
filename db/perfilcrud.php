@@ -52,14 +52,21 @@ switch($opcion){
                 foreach($result as $drfila){
                     $consulta = "CALL sp_New_Perfil(?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     $resultado = $conexion->prepare($consulta);
-                    $resultado->execute(array(1,$empreid,$id,$drfila,'','','','','','',$currentdate,$userid,$host));
+                    $resultado->execute(array(3,$empreid,$id,$drfila,'','','','','','',$currentdate,$userid,$host));
                 }
             }
         }catch(Exception $e)
         {
             $data = $e->getMessage();
         }
-    break;
+         break;
+    case 2: //UPDATE ESTADO PERFIL BDD
+        $consulta = "CALL sp_New_Perfil(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(3,0,$id,0,'','',$valestado,'','','',
+        '',0,''));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;     
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);

@@ -96,14 +96,13 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <input type="text" required class="form-control" id="txtDepa" maxlength="80">
                     </div>
 
-                    <div class="form-check" id="divcheck">
+                    <!-- <div class="form-check" id="divcheck">
                         <input type="checkbox" class="form-check-input" id="chkEstado">
                         <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-outline-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
-                    <!-- <button class="btn btn-outline-danger" data-dismiss="modal"><i class='fa fa-close'></i></button>                   -->
                 </div>
             </form>
         </div>

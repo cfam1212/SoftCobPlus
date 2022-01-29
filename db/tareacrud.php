@@ -88,6 +88,13 @@ switch($opcion){
         $resultado->execute(array($tarea));
         $data = $resultado->fetchColumn();        
         break;
+    case "3": //UPDATE ESTADO TAREA BDD
+        $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(40,0,$nuevoestado,'','','','','',$id,0,0,0,0,0));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);        
+        break;
+           
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);

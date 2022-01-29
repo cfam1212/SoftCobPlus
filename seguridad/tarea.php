@@ -54,7 +54,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <td><?php echo $datos['Tarea'] ?></td>
                                             <td><?php echo $datos['Ruta'] ?></td>
                                             <td><?php echo $datos['Icono'] ?></td>
-                                            <td><?php echo $datos['Estado'] ?></td>
+                                            <td style="text-align: center">
+                                            <input type="checkbox" class="form-check-input chkEstadoTa" id="chk<?php echo $datos['TareaId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                             echo "checked";} else {'';} ?> value="<?php echo $datos['TareaId']; ?>" />                                            
+                                            </td>    
                                             <td>
                                                 <div class="text-center">
                                                     <div class="btn-group">
@@ -100,10 +103,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <label for="icono" class="col-form-label">Icono:</label>
                         <input type="text" class="form-control" id="txtIcono" placeholder="ej: fa fa-user">
                     </div>                    
-                    <div class="form-check" id="divcheck">
-                        <input type="checkbox" class="form-check-input" id="chkEstado">
-                        <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-outline-info ml-3" id="btnSave"><i class="fa fa-save"></i> Guardar</button>

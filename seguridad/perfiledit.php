@@ -55,12 +55,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="checkbox col-md-4">
                                         <input type="checkbox" id="chkEliminar"></input>
                                         <label class="form-check-label" id="lblEliminar"><?php echo $datos[0]['Eliminar'] ?></label>
-                                    </div>
-                                    <label for="chkestado" class="control-label col-md-2">Estado:</label>
-                                    <div class="checkbox col-md-4">
-                                        <input type="checkbox" id="chkEstado" checked></input>
-                                        <label class="form-check-label" id="lblEstado"><?php echo $datos[0]['Estado'] ?></label>
-                                    </div>
+                                    </div>  
                                     <div class="form-group col-md-2" style="display:none">
                                         <input id="idPerfil" name="perfid" type="text" class="form-control" value="<?php echo $idperfil ?>">
                                     </div>                                       

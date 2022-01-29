@@ -19,17 +19,17 @@ $(document).ready(function(){
         _estado = 'Activo';
     });
 
-    $(document).on("click","#chkEstado",function(){
-        _checked = $("#chkEstado").is(":checked");
+    // $(document).on("click","#chkEstado",function(){
+    //     _checked = $("#chkEstado").is(":checked");
       
-        if(_checked){
-          $("#lblEstado").text("Activo");
-          _estado = 'Activo';
-      }else{
-          $("#lblEstado").text("Inactivo");
-          _estado = 'Inactivo';
-      }
-    });
+    //     if(_checked){
+    //       $("#lblEstado").text("Activo");
+    //       _estado = 'Activo';
+    //   }else{
+    //       $("#lblEstado").text("Inactivo");
+    //       _estado = 'Inactivo';
+    //   }
+    // });
 
     $(document).on("click","#btnEditar",function(e){      
         _fila = $(this).closest("tr");
@@ -56,17 +56,17 @@ $(document).ready(function(){
         $("#modalTAREA").modal("show");
     });
 
-    $(document).on("click","#chkEstado",function(){
-        _checked = $("#chkEstado").is(":checked");
+    // $(document).on("click","#chkEstado",function(){
+    //     _checked = $("#chkEstado").is(":checked");
 
-        if(_checked){
-          $("#lblEstado").text("Activo");
-          _estado = 'Activo';
-      }else{
-          $("#lblEstado").text("Inactivo");
-          _estado = 'Inactivo';
-      }
-    });
+    //     if(_checked){
+    //       $("#lblEstado").text("Activo");
+    //       _estado = 'Activo';
+    //   }else{
+    //       $("#lblEstado").text("Inactivo");
+    //       _estado = 'Inactivo';
+    //   }
+    // });
 
     //update estado departamento BDD
 

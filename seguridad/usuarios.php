@@ -54,7 +54,6 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <th>Perfil</th>
                                     <th>Estado</th>
                                     <th style="text-align: center;">Opciones</th>
-                                    <!-- <th>EstadoLabel</th> -->
                                 </tr>
                             </thead>
                             <tbody>

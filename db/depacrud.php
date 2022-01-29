@@ -19,7 +19,7 @@ if($estado == 'Activo'){
     $estado = 'A';
 }else $estado = 'I';
 
-//POST UPDATE DEPARTAMENTO
+
 
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
@@ -34,7 +34,7 @@ switch($opcion){
     case 1: //EDITAR DEPARTAMENTO
         $consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(3,$empreid,$nombredepa,$estado,'','','',$id,0,0,$currentdate,$userid,$host));
+        $resultado->execute(array(3,$empreid,$nombredepa,'','','','',$id,0,0,$currentdate,$userid,$host));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;        
     case 3: //ELIMINAR DEPARTAMENTO

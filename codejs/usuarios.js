@@ -181,11 +181,7 @@ $(document).ready(function(){
         let _check = $("#chk" + _idusuario).is(":checked");
         let _estadousuario;
 
-        _perfil = $('#cboPerfil').val();
-        _depar = $('#cboDepa').val();
-
-        alert(_check);
-
+    
 
         if(_check){
             _estadousuario = 'Activo';
@@ -196,7 +192,7 @@ $(document).ready(function(){
         }
 
         $.ajax({
-            url: "../db/depacrud.php",
+            url: "../db/usuariocrud.php",
             type: "POST",
             dataType: "json",
             data: {id: _idusuario, estado: _estadousuario, opcion: 3},
