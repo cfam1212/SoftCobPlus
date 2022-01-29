@@ -12,7 +12,7 @@ $(document).ready(function(){
     _eliminar = $("#lblEliminar").text();
     _estado = $("#lblEstado").text();
 
-    if(_estado == "Activo"){
+    /*if(_estado == "Activo"){
         $("#chkEstado").prop("checked", true);
     }
 
@@ -26,23 +26,23 @@ $(document).ready(function(){
 
     if(_eliminar == "SI"){
         $("#chkEliminar").prop("checked", true);
-    }
+    }*/
 
     $('#btnRegresar').click(function(){
         $.redirect("perfil.php");
     });
     
-    $(document).on("click","#chkEstado",function(){
-        _checked = $("#chkEstado").is(":checked");
+    // $(document).on("click","#chkEstado",function(){
+    //     _checked = $("#chkEstado").is(":checked");
         
-        if(_checked){
-            $("#lblEstado").text("Activo");
-            _estado = 'Activo';
-        }else{
-            $("#lblEstado").text("Inactivo");
-            _estado = 'Inactivo';
-        }
-    });  
+    //     if(_checked){
+    //         $("#lblEstado").text("Activo");
+    //         _estado = 'Activo';
+    //     }else{
+    //         $("#lblEstado").text("Inactivo");
+    //         _estado = 'Inactivo';
+    //     }
+    // });  
 
     $(document).on("click","#chkCrear",function(){
         if($("#chkCrear").is(":checked")){

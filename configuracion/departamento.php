@@ -43,24 +43,28 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 ?>
                                     <?php
                                     if ($datos['Depaid'] == '1') {
-                                        $disabledel = 'disabled="disabled"';
+                                        $disabledel = 'disabled';
+                                        $disableedit = 'disabled';
+                                        $chkestado = 'disabled';
                                     } else {
                                         $disabledel = '';
+                                        $disableedit = '';
+                                        $chkestado = '';
                                     }
                                     ?>
                                     <tr>
                                         <td><?php echo $datos['Depaid'] ?></td>
                                         <td><?php echo $datos['Departamento'] ?></td>
                                         <td style="text-align: center">
-                                            <input type="checkbox" class="form-check-input chkEstadoDe" id="chk<?php echo $datos['Depaid']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                            <input type="checkbox" class="form-check-input chkEstadoDe" <?php echo $chkestado; ?> id="chk<?php echo $datos['Depaid']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
                                              echo "checked";} else {'';} ?> value="<?php echo $datos['Depaid']; ?>" />                                            
                                         </td>    
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-outline-info btn-sm ml-3" id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar">
+                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disableedit; ?> id="btnEditar<?php echo $datos['Depaid']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
-                                                    <button class="btn btn-outline-danger btn-sm ml-3" <?php echo $disabledel ?> id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
+                                                    <button class="btn btn-outline-danger btn-sm ml-3" <?php echo $disabledel; ?> id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
                                                         <i class="fa fa-trash-o"></i>
                                                     </button>
                                                 </div>
@@ -80,7 +84,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalTAREA" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal fade" id="modalDEPARTAMENTO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
@@ -89,10 +93,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="formTarea">
+            <form id="formDepartamento">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="tarea" class="col-form-label">Departamento:</label>
+                        <label for="departamento" class="col-form-label">Departamento:</label>
                         <input type="text" required class="form-control" id="txtDepa" maxlength="80">
                     </div>
 

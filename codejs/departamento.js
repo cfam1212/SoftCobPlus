@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var _id, _opcion, _data, _estado,_row, _fila, _checked, _depa, _namedepaold, _depa;
 
-    $("#modalTAREA").draggable({
+    $("#modalDEPARTAMENTO").draggable({
         handle: ".modal-header"
     }); 
 
@@ -11,7 +11,7 @@ $(document).ready(function(){
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
         $(".modal-title").text("Nuevo Departamento");  
-        $("#modalTAREA").modal("show");
+        $("#modalDEPARTAMENTO").modal("show");
         _id = 0;
         _opcion = 0;
         //_tipo = 1;
@@ -31,7 +31,7 @@ $(document).ready(function(){
     //   }
     // });
 
-    $(document).on("click","#btnEditar",function(e){      
+    /*$(document).on("click","#btnEditar",function(e){      
         _fila = $(this).closest("tr");
         _data = $('#tabledata').dataTable().fnGetData(_fila);
         _id = _data[0];
@@ -53,8 +53,33 @@ $(document).ready(function(){
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
         $(".modal-title").text("Editar Departamento");
-        $("#modalTAREA").modal("show");
-    });
+        $("#modalDEPARTAMENTO").modal("show");
+    });*/
+
+    $(document).on("click",".btnEditar",function(e){    
+        _fila = $(this).closest("tr");
+        _data = $('#tabledata').dataTable().fnGetData(_fila);
+        _id = _data[0];
+        _namedepaold = _data[1];
+        $("#txtDepa").val(_namedepaold);
+
+        _estado = $('#tdestado' + _id).text();
+        _opcion = 1;
+
+        if(_estado == "Activo"){
+            $("#chkEstado").prop("checked", true);
+            $("#lblEstado").text("Activo");            
+        }else{
+            $("#chkEstado").prop("checked", false);
+            $("#lblEstado").text("Inactivo");
+        }
+
+        $("#divcheck").show();
+        $("#header").css("background-color","#BCBABE");
+        $("#header").css("color","black");
+        $(".modal-title").text("Editar Departamento");
+        $("#modalDEPARTAMENTO").modal("show");
+    });    
 
     // $(document).on("click","#chkEstado",function(){
     //     _checked = $("#chkEstado").is(":checked");
@@ -74,15 +99,19 @@ $(document).ready(function(){
         let _rowid = $(this).attr("id");
         let _iddepa = _rowid.substring(3);
         let _check = $("#chk" + _iddepa).is(":checked");
+        $("#btnEditar" + _iddepa).prop("disabled", "disabled");
         let _estadodepa;
+        //alert(_btneditar);
 
         if(_check){
             _estadodepa = 'Activo';
             $('#tdestado' + _iddepa).text('Activo');
+            $("#btnEditar" + _iddepa).prop("disabled", "");
         }else 
         {
             _estadodepa = 'Inactivo';
             $('#tdestado' + _iddepa).text('Inactivo');
+            $("#btnEditar" + _iddepa).prop("disabled", "disabled");
         }
 
         $.ajax({
@@ -100,7 +129,7 @@ $(document).ready(function(){
 
     });
 
-    $("#formTarea").submit(function(e){
+    $("#formDepartamento").submit(function(e){
         e.preventDefault();
 
         _depa = $.trim($("#txtDepa").val());  
@@ -117,11 +146,11 @@ $(document).ready(function(){
                     url: "../db/depacrud.php",
                     type: "POST",
                     dataType: "json",
-                    data: {id: _id, nomdepa: _depa, estado: _estado, opcion: _opcion},            
+                    data: {nomdepa: _depa, opcion: 2},            
                     success: function(data){
-                        if(data[0].Valor == 'Existe'){
-                           
-                            mensajesalertify("Departamento ya Existe!!.","W","bottom-right",5);                   
+                        if(data[0].Contar  != '0'){
+                            mensajesalertify("Departamento ya Existe!!.","W","bottom-right",5);
+                            return;
                         }else{
                             FunGrabar(1);
                         }
@@ -131,7 +160,7 @@ $(document).ready(function(){
                     }                            
                 });                
             }else{
-                FunGrabar(1);
+                $("#modalDEPARTAMENTO").modal("hide");
             }
         }else{
             FunGrabar(0);
@@ -184,7 +213,7 @@ $(document).ready(function(){
                 
                     mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);  
                 }
-                $("#modalTAREA").modal("hide");               
+                $("#modalDEPARTAMENTO").modal("hide");               
             },
             error: function (error) {
                 console.log(error);

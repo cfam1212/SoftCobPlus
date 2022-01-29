@@ -44,7 +44,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <?php
                                             if($datos['TareaId']=='100001' || $datos['TareaId'] == "100002" || $datos['TareaId'] == "100003" 
                                                 || $datos['TareaId'] == "100004"){
-                                                $disabledel = 'disabled="disabled"';
+                                                $disabledel = 'disabled';
                                             }else{
                                                 $disabledel = '';
                                             }

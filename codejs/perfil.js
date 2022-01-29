@@ -66,8 +66,6 @@ $(document).ready(function(){
         let _check = $("#chk" + _idperfil).is(":checked");
         let _estaperfil;
 
-        
-
         if(_check){
             _estaperfil = 'Activo';
         }else 

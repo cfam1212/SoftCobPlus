@@ -36,7 +36,13 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(3,$empreid,$nombredepa,'','','','',$id,0,0,$currentdate,$userid,$host));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-        break;        
+        break;    
+    case 2: //CONSULTA DEPARTAMENTO
+        $consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(2,$empreid,$nombredepa,'','','','',0,0,0,$currentdate,$userid,$host));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;            
     case 3: //ELIMINAR DEPARTAMENTO
         $consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
