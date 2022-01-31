@@ -93,7 +93,7 @@ $(document).ready(function(){
         };
     }
     
-    $(document).on("click","#btnEditar",function(){        
+    $(document).on("click",".btnEditar",function(){        
         _fila = $(this).closest("tr");
         _data = $('#tabledata').dataTable().fnGetData(_fila);
         _id = _data[0];
@@ -179,15 +179,18 @@ $(document).ready(function(){
         let _rowid = $(this).attr("id");
         let _idusuario = _rowid.substring(3);
         let _check = $("#chk" + _idusuario).is(":checked");
+        $("#btnEditar" + _idusuario).prop("disabled", "disabled");
         let _estadousuario;
 
     
 
         if(_check){
             _estadousuario = 'Activo';
+            $("#btnEditar" + _idusuario).prop("disabled", "disabled");
         }else 
         {
             _estadousuario = 'Inactivo';
+            $("#btnEditar" + _idusuario).prop("disabled", "disabled");
            
         }
 
@@ -366,8 +369,8 @@ $(document).ready(function(){
                     
                     _estadooculto = '<td style="display: none;">' + _estado + '</td>';
 
-                    _button = '<div class="text-center"><div class="btn-group"><button id="btnEditar" class="btn btn-outline-info btn-sm ml-3">'+
-                                '<i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                    _button = '<div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3"'+
+                                'id="btnEditar"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
                                 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div>';
 
                     if(_opcion == 0){

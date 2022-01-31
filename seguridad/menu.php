@@ -54,9 +54,11 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <?php
 
                                     if ($datos['MenuId'] == '200001') {
-                                        $disabledel = 'disabled="disabled"';
+                                        $disabledel = 'disabled';
+                                        $chkestado = 'disabled';
                                     } else {
                                         $disabledel = '';
+                                        $chkestado = '';
                                     }
                                     ?>
                                     <tr>
@@ -64,7 +66,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td><?php echo $datos['Menu'] ?></td>
                                         <td><?php echo $datos['Icono'] ?></td>
                                         <td style="text-align: center">
-                                            <input type="checkbox" class="form-check-input chkEstadoMe" id="chk<?php echo $datos['MenuId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                            <input type="checkbox" class="form-check-input chkEstadoMe" <?php echo $chkestado; ?> id="chk<?php echo $datos['MenuId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
                                              echo "checked";} else {'';} ?> value="<?php echo $datos['MenuId']; ?>" />                                            
                                         </td>  
                                         <td></td>

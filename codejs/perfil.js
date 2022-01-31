@@ -50,7 +50,7 @@ $(document).ready(function(){
         }
     });
     
-    $(document).on("click","#btnEditar",function(){        
+    $(document).on("click",".btnEditar",function(){        
         _fila = $(this).closest("tr");
         _data = $('#tabledata').dataTable().fnGetData(_fila);
         _id = _data[0];
@@ -64,13 +64,16 @@ $(document).ready(function(){
         let _rowid = $(this).attr("id");
         let _idperfil = _rowid.substring(3);
         let _check = $("#chk" + _idperfil).is(":checked");
+        $("#btnEditar" + _idperfil).prop("disabled", "disabled");
         let _estaperfil;
 
         if(_check){
             _estaperfil = 'Activo';
+            $("#btnEditar" + _idperfil).prop("disabled", "disabled");
         }else 
         {
             _estaperfil = 'Inactivo';
+            $("#btnEditar" + _idperfil).prop("disabled", "disabled");
            
         }
 

@@ -21,7 +21,7 @@ $(document).ready(function(){
         _estado = 'Activo';
     });
 
-    $(document).on("click","#btnEditar",function(e){      
+    $(document).on("click",".btnEditar",function(e){      
         _fila = $(this).closest("tr");
         _data = $('#tabledata').dataTable().fnGetData(_fila);
         _id = _data[0];
@@ -70,15 +70,18 @@ $(document).ready(function(){
         let _rowid = $(this).attr("id");
         let _idtare = _rowid.substring(3);
         let _check = $("#chk" + _idtare).is(":checked");
+        $("#btnEditar" + _idtare).prop("disabled", "disabled");
         let _estadotarea;
 
-
+        debugger;
         if(_check){
             _estadotarea = 'Activo';
+            $("#btnEditar" + _idtare).prop("disabled", "");
          
         }else 
         {
             _estadotarea = 'Inactivo';
+            $("#btnEditar" + _idtare).prop("disabled", "disabled");
         }
 
         $.ajax({

@@ -45,8 +45,12 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             if($datos['TareaId']=='100001' || $datos['TareaId'] == "100002" || $datos['TareaId'] == "100003" 
                                                 || $datos['TareaId'] == "100004"){
                                                 $disabledel = 'disabled';
+                                                $disabledit = 'disabled';
+                                                $chkestado = 'disabled';
                                             }else{
                                                 $disabledel = '';
+                                                $disabledit = '';
+                                                $chkestado = '';
                                             }
                                         ?>
                                         <tr>
@@ -55,13 +59,13 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <td><?php echo $datos['Ruta'] ?></td>
                                             <td><?php echo $datos['Icono'] ?></td>
                                             <td style="text-align: center">
-                                            <input type="checkbox" class="form-check-input chkEstadoTa" id="chk<?php echo $datos['TareaId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                            <input type="checkbox" class="form-check-input chkEstadoTa" <?php echo $chkestado; ?> id="chk<?php echo $datos['TareaId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
                                              echo "checked";} else {'';} ?> value="<?php echo $datos['TareaId']; ?>" />                                            
                                             </td>    
                                             <td>
                                                 <div class="text-center">
                                                     <div class="btn-group">
-                                                        <button class="btn btn-outline-info btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="editar" id="btnEditar">
+                                                        <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar" >
                                                         <i class="fa fa-pencil-square-o"></i></button>
                                                         <button class="btn btn-outline-danger btn-sm ml-3" <?php echo $disabledel ?> id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
                                                         <i class="fa fa-trash-o"></i>

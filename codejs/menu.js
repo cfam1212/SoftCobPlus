@@ -152,6 +152,39 @@ $(document).ready(function(){
                 console.log(error);
               }                            
         });        
-    });    
+    });  
+
+    //UPDATE ESTADO MENU BDD
+    
+    $(document).on("click",".chkEstadoMe",function(){ 
+        let _rowid = $(this).attr("id");
+        let _idmenu = _rowid.substring(3);
+        let _check = $("#chk" + _idmenu).is(":checked");
+        let _estadomenu;
+        //alert(_idmenu);
+
+        if(_check){
+            _estadomenu = 'Activo';
+        
+        }else 
+        {
+            _estadomenu = 'Inactivo';
+        
+        }
+
+        $.ajax({
+            url: "../db/menucrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {id: _idmenu, estado: _estadomenu, opcion: 4},
+            success: function(data){
+               
+            },
+            error: function (error) {
+                console.log(error);
+            }                 
+        });
+
+    });
 
 });

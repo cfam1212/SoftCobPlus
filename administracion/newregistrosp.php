@@ -56,7 +56,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                   <th>IdCedente</th>
                   <th>Cedente</th>
                   <th>Supervisor</th>
-                  <th>Estado</th>
+                  <th style="text-align: center;">Estado</th>
                   <th style="text-align: center;">Opciones</th>
                 </tr>
               </thead>
@@ -64,6 +64,15 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                 foreach ($data as $datos) {
                 ?>
+                  <?php
+                  if ($datos['Estado'] == 'Inactivo') {
+                    $disablege = 'disabled';
+                   
+                  } else {
+                    $disablege = '';
+                   
+                  }
+                  ?>
                   <tr>
                     <td><?php echo $datos['IdSupe'] ?></td>
                     <td><?php echo $datos['IdCede'] ?></td>
@@ -71,12 +80,12 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $datos['Supervisor'] ?></td>
                     <td style="text-align: center">
                       <input type="checkbox" class="form-check-input chkEstadoSu" id="chk<?php echo $datos['IdSupe']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                      echo "checked";} ?> value="<?php echo $datos['IdSupe']; ?>" />                                    
+                      echo "checked";  } ?> value="<?php echo $datos['IdSupe']; ?>" />                                                     
                     </td>
                     <td>
                       <div class="text-center">
                         <div class="btn-group">
-                          <button class="btn btn-outline-primary btn-sm ml-3" id="btnAddGe" data-toggle="tooltip" data-placement="top" title="agregar gestor"><i class="fa fa-headphones"></i></button>
+                          <button class="btn btn-outline-primary btn-sm ml-3 btnAddGe" <?php echo $disablege; ?> id="btnAddGe <?php echo $datos['IdSupe']; ?>" data-toggle="tooltip" data-placement="top" title="agregar gestor"><i class="fa fa-headphones"></i></button>
                           <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
                         </div>
                       </div>

@@ -132,7 +132,7 @@ $(document).ready(function(){
 
        //Modal Agregar-Gestor
 
-    $(document).on("click","#btnAddGe",function(){
+    $(document).on("click",".btnAddGe",function(){
 
         $("#formGestor").trigger("reset"); 
         _row = $(this).closest('tr');
@@ -225,6 +225,7 @@ $(document).ready(function(){
         let _rowid = $(this).attr("id");
         let _idsuper = _rowid.substring(3);
         let _check = $("#chk" + _idsuper).is(":checked");
+        $("#btnAddGe" + _idsuper).prop("disabled", "disabled");
         let _estadosuper;
 
         let  _row = $(this).closest('tr');
@@ -234,9 +235,11 @@ $(document).ready(function(){
 
         if(_check){
             _estadosuper = 'Activo';
+            $("#btnEditar" + _iddepa).prop("disabled", "");
+           
         }else{
             _estadosuper = 'Inactivo';
-
+            $("#btnAddGe" + _idsuper).prop("disabled", "disabled");
         }
 
         $.ajax({

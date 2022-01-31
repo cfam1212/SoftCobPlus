@@ -45,7 +45,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <tbody>
                                 <?php
                                 if (count($data) == 1) {
-                                    $disablesub = 'disabled="disabled"';
+                                    $disablesub = 'disabled';
                                 } else {
                                     $disablesub = '';
                                 }
@@ -54,9 +54,13 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <?php
 
                                     if ($datos['PerfilId'] == '1') {
-                                        $disabledel = 'disabled="disabled"';
+                                        $disabledel = 'disabled';
+                                        $disabledit = 'disabled';
+                                        $chkestado = 'disabled';
                                     } else {
                                         $disabledel = '';
+                                        $disabledit = '';
+                                        $chkestado = '';
                                     }
                                     ?>
                                     <tr>
@@ -64,13 +68,13 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td><?php echo $datos['Perfil'] ?></td>
                                         <td><?php echo $datos['Descripcion'] ?></td>
                                         <td style="text-align: center">
-                                            <input type="checkbox" class="form-check-input chkEstadoPe" id="chk<?php echo $datos['PerfilId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                            <input type="checkbox" class="form-check-input chkEstadoPe" <?php echo $chkestado; ?> id="chk<?php echo $datos['PerfilId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
                                              echo "checked";} else {'';} ?> value="<?php echo $datos['PerfilId']; ?>" />                                            
                                             </td>  
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-outline-info btn-sm ml-3" id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar">
+                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
                                                     <button class="btn btn-outline-danger btn-sm ml-3" <?php echo $disabledel ?> id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
                                                         <i class="fa fa-trash-o"></i>

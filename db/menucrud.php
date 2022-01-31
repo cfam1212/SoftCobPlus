@@ -136,6 +136,12 @@ switch($opcion){
             $data = $e->getMessage();
         }
     break;
+   case "4": //UPDATE ESTADO MENU BDD
+    $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $resultado = $conexion->prepare($consulta);
+    $resultado->execute(array(41,0,$valestado,'','','','','',$id,0,0,0,0,0));
+    $data = $resultado->fetchAll(PDO::FETCH_ASSOC); 
+    break; 
 
 }
 

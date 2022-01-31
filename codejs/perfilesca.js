@@ -276,8 +276,8 @@ $(document).ready(function(){
                 data: {opcion:1, id:_cboid},            
                 success: function(data){
                     
-                    _desactivar = 'disabled';
-                    console.log(_desactivar);
+                    //_desactivar = 'disabled';
+                    //console.log(_desactivar);
                     //tblperfil.clear().draw();
                     $.each(data,function(i,item){                    
                         _id = parseInt(data[i].Codigo);
@@ -288,7 +288,11 @@ $(document).ready(function(){
 
                         if(_estado == 'Activo'){
                             _checked = 'checked';
-                        } 
+                            
+                        }else if(_estado == 'Inactivo'){
+                            _desactivar = 'disabled';
+                        }
+                            
 
                         _output = '<tr id="row_' + _id + '">';
                         _output += '<td style="display: none;">' + _id  + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _id  + '" value="' + _id + '" /></td>';                
@@ -296,7 +300,7 @@ $(document).ready(function(){
                         _output  += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPe" id="chk' + _id +
                                     '" ' + _checked + ' value=' + _id + '/></div></td>';
                         _output += '<td><div class="text-center"><div class="btn-group">'
-                        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _id  + '"><i class="fa fa-pencil-square-o"></i></button>';
+                        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit"  data-toggle="tooltip" data-placement="top" title="editar" id="' + _id  + '" disabled id="' + _id  + '"><i class="fa fa-pencil-square-o"></i></button>';
                         _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete " disabled id="' + _id  + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                         _output += '</tr>';
                         

@@ -92,7 +92,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <th>Seleccionar</th>
                                     <th>Tarea</th>
                                     <th>Ruta</th>
-                                    <th>Estado</th>
+                                    <th style="display: none;">Estado</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
@@ -105,8 +105,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td><?php echo $dat['Ckeck']; ?></td>
                                         <td style="text-align: center">
                                             <input type="checkbox" id="chkTarea" name="check[]" <?php if ($dat['Ckeck'] == 'SI') {
-                                                                                                    echo "checked='checked'";
-                                                                                                } ?> value="<?php echo $dat['TareaId']; ?>" />
+                                             echo "checked='checked'"; } ?> value="<?php echo $dat['TareaId']; ?>" />                                                
                                         </td>
                                         <td><?php echo $dat['Tarea']; ?></td>
                                         <td><?php echo $dat['Ruta']; ?></td>
