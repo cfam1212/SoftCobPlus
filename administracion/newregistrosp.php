@@ -85,7 +85,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <td>
                       <div class="text-center">
                         <div class="btn-group">
-                          <button class="btn btn-outline-primary btn-sm ml-3 btnAddGe" <?php echo $disablege; ?> id="btnAddGe <?php echo $datos['IdSupe']; ?>" data-toggle="tooltip" data-placement="top" title="agregar gestor"><i class="fa fa-headphones"></i></button>
+                          <button class="btn btn-outline-primary btn-sm ml-3 btnAddGe" <?php echo $disablege; ?> id="btnAddGe<?php echo $datos['IdSupe']; ?>" data-toggle="tooltip" data-placement="top" title="agregar gestor"><i class="fa fa-headphones"></i></button>
                           <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
                         </div>
                       </div>

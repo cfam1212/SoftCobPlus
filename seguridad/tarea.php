@@ -65,7 +65,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <td>
                                                 <div class="text-center">
                                                     <div class="btn-group">
-                                                        <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar" >
+                                                        <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar<?php echo $datos['TareaId']; ?>" data-toggle="tooltip" data-placement="top" title="editar" >
                                                         <i class="fa fa-pencil-square-o"></i></button>
                                                         <button class="btn btn-outline-danger btn-sm ml-3" <?php echo $disabledel ?> id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
                                                         <i class="fa fa-trash-o"></i>

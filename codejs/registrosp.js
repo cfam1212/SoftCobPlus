@@ -225,7 +225,6 @@ $(document).ready(function(){
         let _rowid = $(this).attr("id");
         let _idsuper = _rowid.substring(3);
         let _check = $("#chk" + _idsuper).is(":checked");
-        $("#btnAddGe" + _idsuper).prop("disabled", "disabled");
         let _estadosuper;
 
         let  _row = $(this).closest('tr');
@@ -235,7 +234,7 @@ $(document).ready(function(){
 
         if(_check){
             _estadosuper = 'Activo';
-            $("#btnEditar" + _iddepa).prop("disabled", "");
+            $("#btnAddGe" + _idsuper).prop("disabled", "");
            
         }else{
             _estadosuper = 'Inactivo';

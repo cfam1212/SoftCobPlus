@@ -109,7 +109,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </td>
                                         <td><?php echo $dat['Tarea']; ?></td>
                                         <td><?php echo $dat['Ruta']; ?></td>
-                                        <td><?php echo $dat['Estado']; ?></td>
+                                        <td style="display: none;"><?php echo $dat['Estado']; ?></td>
                                         <td></td>
                                     </tr>
                                 <?php } ?>

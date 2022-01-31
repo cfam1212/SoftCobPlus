@@ -70,10 +70,8 @@ $(document).ready(function(){
         let _rowid = $(this).attr("id");
         let _idtare = _rowid.substring(3);
         let _check = $("#chk" + _idtare).is(":checked");
-        $("#btnEditar" + _idtare).prop("disabled", "disabled");
         let _estadotarea;
-
-        debugger;
+        
         if(_check){
             _estadotarea = 'Activo';
             $("#btnEditar" + _idtare).prop("disabled", "");
