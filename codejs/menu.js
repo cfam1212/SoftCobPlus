@@ -161,15 +161,15 @@ $(document).ready(function(){
         let _idmenu = _rowid.substring(3);
         let _check = $("#chk" + _idmenu).is(":checked");
         let _estadomenu;
-        //alert(_idmenu);
+       
 
         if(_check){
             _estadomenu = 'Activo';
-        
+            $("#btnEditar" + _iddepa).prop("disabled", "");
         }else 
         {
             _estadomenu = 'Inactivo';
-        
+            $("#btnEditar" + _iddepa).prop("disabled", "disabled");
         }
 
         $.ajax({

@@ -179,7 +179,6 @@ $(document).ready(function(){
         let _rowid = $(this).attr("id");
         let _idusuario = _rowid.substring(3);
         let _check = $("#chk" + _idusuario).is(":checked");
-        $("#btnEditar" + _idusuario).prop("disabled", "disabled");
         let _estadousuario;
 
     

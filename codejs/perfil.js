@@ -64,7 +64,6 @@ $(document).ready(function(){
         let _rowid = $(this).attr("id");
         let _idperfil = _rowid.substring(3);
         let _check = $("#chk" + _idperfil).is(":checked");
-        $("#btnEditar" + _idperfil).prop("disabled", "disabled");
         let _estaperfil;
 
         if(_check){
