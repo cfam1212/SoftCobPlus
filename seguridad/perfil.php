@@ -53,16 +53,20 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 ?>
                                     <?php
 
-                                    if ($datos['PerfilId'] == '1') {
-                                        $disabledel = 'disabled';
-                                        $disabledit = 'disabled';
-                                        $chkestado = 'disabled';
-                                    } else {
                                         $disabledel = '';
                                         $disabledit = '';
                                         $chkestado = '';
-                                    }
-                                
+
+                                        if ($datos['PerfilId'] == '1') {
+                                            $disabledel = 'disabled';
+                                            $disabledit = 'disabled';
+                                            $chkestado = 'disabled';
+                                        }
+
+                                        if ($datos['PerfilId'] != '1' && $datos['Estado'] == 'Inactivo') {
+                                            $disabledit = 'disabled';
+                                        }
+
                                     ?>
                                     <tr>
                                         <td><?php echo $datos['PerfilId'] ?></td>

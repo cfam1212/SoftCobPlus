@@ -31,7 +31,7 @@ $(document).ready(function(){
             "render": function(data, type, row, meta)
             {
                 let deshabilitaSub = '', deshabilEliminar = '';
-                //alert(row[0]);
+                alert(row[1]);
                 if(row[0] == "200001")
                 {
                     deshabilEliminar  = 'disabled="disabled"';

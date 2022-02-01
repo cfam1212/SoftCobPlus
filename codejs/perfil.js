@@ -68,7 +68,7 @@ $(document).ready(function(){
 
         if(_check){
             _estaperfil = 'Activo';
-            $("#btnEditar" + _idperfil).prop("disabled", "disabled");
+            $("#btnEditar" + _idperfil).prop("disabled", "");
         }else 
         {
             _estaperfil = 'Inactivo';
