@@ -52,8 +52,8 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <th>Usuario</th>
                                     <th>Login</th>
                                     <th>Perfil</th>
-                                    <th style="text-align: center;">Estado</th>
-                                    <th style="text-align: center;">Opciones</th>
+                                    <th style="width:13% ; text-align: center">Opciones</th>
+                                    <th style="width:10% ; text-align: center">Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,36 +61,43 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 foreach ($data as $dat) {
                                 ?>
                                     <?php
+
+                                        $disabledel = '';
+                                        $disabledit = '';
+                                        $chkestado = '';
+
                                     if ($dat['UserId'] == '1') {
                                         $disabledel = 'disabled';
                                         $disabledit = 'disabled';
                                         $chkestado = 'disabled';
-                                    } else {
-                                        $disabledel = '';
-                                        $disabledit = '';
-                                        $chkestado = '';
                                     }
+
+                                    if ($dat['UserId'] != '1' && $dat['Estado'] == 'Inactivo') {
+                                     
+                                        $disabledit = 'disabled';
+                                    }
+
                                     ?>
                                     <tr>
                                         <td><?php echo $dat['UserId'] ?></td>
                                         <td><?php echo $dat['Usuario'] ?></td>
                                         <td><?php echo $dat['Namelogin'] ?></td>
                                         <td><?php echo $dat['Perfil'] ?></td>
-                                        <td style="text-align: center">
-                                            <input type="checkbox" class="form-check-input chkEstadoUs" <?php echo $chkestado; ?> id="chk<?php echo $dat['UserId']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
-                                             echo "checked";} else {'';} ?> value="<?php echo $dat['UserId']; ?>" />                                            
-                                        </td>    
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledel ?> id="btnEditar<?php echo $dat['UserId']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
+                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar<?php echo $dat['UserId']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
                                                     <button class="btn btn-outline-danger btn-sm ml-3" <?php echo $disabledel ?> id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
                                                         <i class="fa fa-trash-o"></i>
                                                     </button>
                                                 </div>
                                             </div>
-                                        </td>                                      
+                                        </td>
+                                        <td style="text-align: center">
+                                            <input type="checkbox" class="form-check-input chkEstadoUs" <?php echo $chkestado; ?> id="chk<?php echo $dat['UserId']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
+                                             echo "checked";} else {'';} ?> value="<?php echo $dat['UserId']; ?>" />                                            
+                                        </td>                                        
                                     </tr>
                                 <?php }
                                 ?>

@@ -36,11 +36,11 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Cuidad</th>
-                                    <th>Cedente</th>
-                                    <th>Telefono</th>
-                                    <th style="text-align: center;">Estado</th>
-                                    <th style="text-align: center;">Opciones</th>
+                                    <th style="width:40%">Cedente</th>
+                                    <th style="width:20%">Cuidad</th>
+                                    <th style="width:12% ; text-align: center">Telefono</th>
+                                    <th style="width:13% ; text-align: center">Opciones</th>
+                                    <th style="width:10% ; text-align: center">Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,19 +48,24 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                 foreach ($data as $datos) {
                                 ?>
+                                    <?php
+                                    if ($datos['Estado'] == 'Inactivo') {
+                                        $disabledit = 'disabled';
+                                    
+                                    } else {
+                                        $disabledit = '';
+                                    
+                                    }
+                                    ?>
                                     <tr>
                                         <td><?php echo $datos['CedeId'] ?></td>
-                                        <td><?php echo $datos['Ciudad'] ?></td>
                                         <td><?php echo $datos['Cedente'] ?></td>
-                                        <td><?php echo $datos['Telefono'] ?></td>
-                                        <td style="text-align: center">
-                                            <input type="checkbox" class="form-check-input chkEstado" id="chk<?php echo $datos['CedeId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                             echo "checked";} ?> value="<?php echo $datos['CedeId']; ?>" />                                            
-                                        </td>                                           
+                                        <td><?php echo $datos['Ciudad'] ?></td>
+                                        <td><?php echo $datos['Telefono'] ?></td>                                 
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-outline-info btn-sm ml-3" id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar">
+                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit; ?> id="btnEditar<?php echo $datos['CedeId']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
                                                     <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
                                                         <i class="fa fa-trash-o"></i>
@@ -68,6 +73,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 </div>
                                             </div>
                                         </td>
+                                        <td style="text-align: center">
+                                            <input type="checkbox" class="form-check-input chkEstado" id="chk<?php echo $datos['CedeId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                             echo "checked";} ?> value="<?php echo $datos['CedeId']; ?>" />                                            
+                                        </td>   
                                     </tr>
                                 <?php }
                                 ?>

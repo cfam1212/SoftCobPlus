@@ -35,8 +35,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <th>Id</th>
                                     <th>Parámetro</th>
                                     <th>Descipción</th>
-                                    <th>Estado</th>
                                     <th style="text-align: center;">Opciones</th>
+                                    <th style="text-align: center;">Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,11 +46,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <tr>
                                         <td><?php echo $datos['ParaId'] ?></td>
                                         <td><?php echo $datos['Parametro'] ?></td>
-                                        <td><?php echo $datos['Descripcion'] ?></td>
-                                        <td style="text-align: center">
-                                            <input type="checkbox" class="form-check-input chkEstadoPa" id="chk<?php echo $datos['ParaId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                             echo "checked";} ?> value="<?php echo $datos['ParaId']; ?>" />                                            
-                                        </td>    
+                                        <td><?php echo $datos['Descripcion'] ?></td>  
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
@@ -62,6 +58,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 </div>
                                             </div>
                                         </td>
+                                        <td style="text-align: center">
+                                            <input type="checkbox" class="form-check-input chkEstadoPa" id="chk<?php echo $datos['ParaId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                             echo "checked";} ?> value="<?php echo $datos['ParaId']; ?>" />                                            
+                                        </td>  
                                     </tr>
                                 <?php }
                                 ?>

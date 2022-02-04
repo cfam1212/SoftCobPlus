@@ -33,8 +33,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <th>Tarea</th>
                                         <th>Acción</th>
                                         <th>Icono</th>
-                                        <th>Estado</th>
-                                        <th style="text-align: center;">Opciones</th>
+                                        <th style="width:13% ; text-align: center">Opciones</th>
+                                        <th style="width:10% ; text-align: center">Estado</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,26 +42,29 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     foreach($data as $datos){
                                     ?>  
                                         <?php
+                                             $disabledel = '';
+                                             $disabledit = '';
+                                             $chkestado = '';
+
                                             if($datos['TareaId']=='100001' || $datos['TareaId'] == "100002" || $datos['TareaId'] == "100003" 
-                                                || $datos['TareaId'] == "100004" && $datos['Estado'] == "Inactivo"){
+                                                || $datos['TareaId'] == "100004"){
                                                 $disabledel = 'disabled';
                                                 $disabledit = 'disabled';
                                                 $chkestado = 'disabled';
-                                            }else{
-                                                $disabledel = '';
-                                                $disabledit = '';
-                                                $chkestado = '';
                                             }
+                                            if($datos['TareaId']!='100001' || $datos['TareaId'] != "100002" || $datos['TareaId'] != "100003" 
+                                            || $datos['TareaId'] != "100004" && $datos['Estado'] == "Inactivo"){
+                                                $disabledit = 'disabled';
+                                           
+                                        }
+                                              
+                                            
                                         ?>
                                         <tr>
                                             <td><?php echo $datos['TareaId'] ?></td>
                                             <td><?php echo $datos['Tarea'] ?></td>
                                             <td><?php echo $datos['Ruta'] ?></td>
                                             <td><?php echo $datos['Icono'] ?></td>
-                                            <td style="text-align: center">
-                                            <input type="checkbox" class="form-check-input chkEstadoTa" <?php echo $chkestado; ?> id="chk<?php echo $datos['TareaId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                             echo "checked";} else {'';} ?> value="<?php echo $datos['TareaId']; ?>" />                                            
-                                            </td>    
                                             <td>
                                                 <div class="text-center">
                                                     <div class="btn-group">
@@ -73,6 +76,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     </div>
                                                 </div> 
                                             </td>
+                                            <td style="text-align: center">
+                                            <input type="checkbox" class="form-check-input chkEstadoTa" <?php echo $chkestado; ?> id="chk<?php echo $datos['TareaId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                             echo "checked";} else {'';} ?> value="<?php echo $datos['TareaId']; ?>" />                                            
+                                            </td>   
                                         </tr>
                                     <?php }
                                     ?>                          

@@ -32,8 +32,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <tr>
                                     <th>Id</th>
                                     <th>Departamento</th>
-                                    <th style="text-align: center;">Estado</th>
-                                    <th style="text-align: center;">Opciones</th>
+                                    <th style="width:13% ; text-align: center">Opciones</th>
+                                    <th style="width:10% ; text-align: center">Estado</th>
                                     <th style="display: none;">EstadoOculto</th>
                                 </tr>
                             </thead>
@@ -42,23 +42,25 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 foreach ($data as $datos) {
                                 ?>
                                     <?php
+                                         $disabledel = '';
+                                         $disableedit = '';
+                                         $chkestado = '';
+
                                     if ($datos['Depaid'] == '1') {
                                         $disabledel = 'disabled';
                                         $disableedit = 'disabled';
                                         $chkestado = 'disabled';
-                                    } else {
-                                        $disabledel = '';
-                                        $disableedit = '';
-                                        $chkestado = '';
+                                    }
+
+                                    if ($datos['Depaid'] != '1'&& $datos['Estado'] == 'Inactivo') {
+                                      
+                                        $disableedit = 'disabled';
+                                       
                                     }
                                     ?>
                                     <tr>
                                         <td><?php echo $datos['Depaid'] ?></td>
                                         <td><?php echo $datos['Departamento'] ?></td>
-                                        <td style="text-align: center">
-                                            <input type="checkbox" class="form-check-input chkEstadoDe" <?php echo $chkestado; ?> id="chk<?php echo $datos['Depaid']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                             echo "checked";} else {'';} ?> value="<?php echo $datos['Depaid']; ?>" />                                            
-                                        </td>    
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
@@ -70,6 +72,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 </div>
                                             </div>
                                         </td>
+                                        <td style="text-align: center">
+                                            <input type="checkbox" class="form-check-input chkEstadoDe" <?php echo $chkestado; ?> id="chk<?php echo $datos['Depaid']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                             echo "checked";} else {'';} ?> value="<?php echo $datos['Depaid']; ?>" />                                            
+                                        </td>   
                                         <td style="display: none;" id="tdestado<?php echo $datos['Depaid']; ?>">
                                             <?php echo $datos['Estado'] ?>
                                         </td>

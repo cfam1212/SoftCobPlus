@@ -54,10 +54,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                   <th>IdSupervisor</th>
                   <th>IdCedente</th>
-                  <th>Cedente</th>
-                  <th>Supervisor</th>
-                  <th style="text-align: center;">Estado</th>
-                  <th style="text-align: center;">Opciones</th>
+                  <th style="width:40%">Cedente</th>
+                  <th style="width:30%">Supervisor</th>
+                  <th style="width:13% ; text-align: center">Opciones</th>
+                  <th style="width:10% ; text-align: center">Estado</th>
                 </tr>
               </thead>
               <tbody>
@@ -78,10 +78,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $datos['IdCede'] ?></td>
                     <td><?php echo $datos['Cedente'] ?></td>
                     <td><?php echo $datos['Supervisor'] ?></td>
-                    <td style="text-align: center">
-                      <input type="checkbox" class="form-check-input chkEstadoSu" id="chk<?php echo $datos['IdSupe']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                      echo "checked";  } ?> value="<?php echo $datos['IdSupe']; ?>" />                                                     
-                    </td>
                     <td>
                       <div class="text-center">
                         <div class="btn-group">
@@ -89,6 +85,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                           <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
                         </div>
                       </div>
+                    </td>
+                    <td style="text-align: center">
+                      <input type="checkbox" class="form-check-input chkEstadoSu" id="chk<?php echo $datos['IdSupe']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                      echo "checked";  } ?> value="<?php echo $datos['IdSupe']; ?>" />                                                     
                     </td>
                   </tr>
                 <?php }

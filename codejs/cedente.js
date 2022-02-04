@@ -1004,9 +1004,10 @@ $(document).ready(function(){
 
         if(_check){
             _estadocede = 'Activo'
+            $("#btnEditar" + _idcedente).prop("disabled", "");
         }else{
             _estadocede = 'Inactivo'
-
+            $("#btnEditar" + _idcedente).prop("disabled", "disabled");
         }
 
         $.ajax({
@@ -1164,13 +1165,13 @@ $(document).ready(function(){
 
       //debugger;
       let _cboprovincia = $('#cboProvincia').val();
-      /*let _provincia =$("#cboProvincia option:selected").text();  */
+     
 
       let _cbocuidad = $('#cboCiudad').val();
-      /*let _cuidad =$("#cboCiudad option:selected").text();  */
+    
 
       let _cboarbol = $('#cboArbol').val();
-      /*let _arbol =$("#cboArbol option:selected").text(); */
+      
 
 
       if(_cboprovincia == '0')
