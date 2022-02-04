@@ -52,12 +52,13 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 $disabledit = 'disabled';
                                                 $chkestado = 'disabled';
                                             }
-                                            if($datos['TareaId']!='100001' || $datos['TareaId'] != "100002" || $datos['TareaId'] != "100003" 
-                                            || $datos['TareaId'] != "100004" && $datos['Estado'] == "Inactivo"){
-                                                $disabledit = 'disabled';
-                                           
+
+                                            if($datos['TareaId'] !='100001' || $datos['TareaId'] != "100002" || $datos['TareaId'] != "100003" 
+                                                || $datos['TareaId'] != "100004"){
+                                                if($datos['TareaId'] == 'Inactivo'){
+                                                    $disabledit = 'disabled';
+                                                }
                                         }
-                                              
                                             
                                         ?>
                                         <tr>
