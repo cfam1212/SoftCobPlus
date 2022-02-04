@@ -53,13 +53,24 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 ?>
                                     <?php
 
-                                    if ($datos['MenuId'] == '200001') {
-                                        $disabledel = 'disabled';
-                                        $chkestado = 'disabled';
-                                    } else {
                                         $disabledel = '';
+                                        $disabledit = '';
+                                        $deshabilitaSub = '';
                                         $chkestado = '';
-                                    }
+
+                                        if ($datos['MenuId'] == '200001') {
+                                            $disabledel = 'disabled';
+                                            $disabledit = 'disabled';
+                                            $deshabilitaSub = 'disabled';
+                                            $chkestado = 'disabled';
+                                        }
+
+                                        if ($datos['MenuId'] != '200001') {
+                                            if($datos['Estado'] == 'Inactivo'){
+                                                $disabledit = 'disabled';
+                                            }
+                                        }
+
                                     ?>
                                     <tr>
                                         <td><?php echo $datos['MenuId'] ?></td>
@@ -70,7 +81,16 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                              echo "checked";} else {'';} ?> value="<?php echo $datos['MenuId']; ?>" />                                            
                                         </td>  
                                         <td>
-                                            
+                                            <div class="text-center">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-outline-primary btn-sm" <?php echo $deshabilitaSub ?> id="btnSubirNivel"><i class="fa fa-arrow-up"></i></button>                                                        
+                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar<?php echo $datos['MenuId']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
+                                                    <i class="fa fa-pencil-square-o"></i></button>
+                                                    <button class="btn btn-outline-danger btn-sm ml-3" <?php echo $disabledel ?> id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
+                                                    <i class="fa fa-trash-o"></i>
+                                                    </button>
+                                                </div>
+                                            </div>                                             
                                         </td>
                                     </tr>
                                 <?php }

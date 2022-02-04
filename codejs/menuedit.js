@@ -104,7 +104,7 @@ $(document).ready(function(){
                     _check = data[i].Ckeck;
                     _tarea = data[i].Tarea;
                     _estado = data[i].Estado;
-                    _checked = check == "SI" ? " checked='checked'" : "";                
+                    _checked = check == "SI" ? " checked='checked'" : "";
                     _btnchek = '<td><div class="text-center"><input type="checkbox" id="chktarea" name="check[]"' + _checked+ " value='"+
                                 _tareaid+"'/></div></td>"; 
                     TableConOrder.row.add([_tareaid, _check, _btnchek, _tarea, _estado]).draw();                

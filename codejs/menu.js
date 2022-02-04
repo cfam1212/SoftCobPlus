@@ -21,16 +21,12 @@ $(document).ready(function(){
         _data = $('#tablenoorder').dataTable().fnGetData(_fila);
         // row_index = $(this).closest("tr").index();
         _id = _data[0];
-        //nombremenu = "", iconome = "", opcionmp = "", menupadre = "", iconomp = "", estado = "";
-        //result = [];
-        _opcion = 2;
-
 
         $.ajax({
             url: "../db/menucrud.php",
             type: "POST",
             dataType: "json",
-            data: {id : _id, opcion : _opcion},            
+            data: {id : _id, opcion : 2},            
             success: function(data){
                 TableNoOrder.clear().draw();
                 $.each(data,function(i,item){                    
@@ -38,20 +34,49 @@ $(document).ready(function(){
                     _menu = data[i].Menu;
                     _icono = data[i].Icono;
                     _estado = data[i].Estado;
-                    TableNoOrder.row.add([_menuid, _menu, _icono, _estado]).draw();                
+
+                    _checked = _estado == "Activo" ? 'checked' : " "; 
+
+                    _disabledel = '';
+                    _disabledit = '';
+                    _deshabilitaSub = '';
+                    _chkdisable = '';
+
+                    if(_menuid == '200001'){
+                        _disabledel = 'disabled';
+                        _disabledit = 'disabled';
+                        _deshabilitaSub = 'disabled';
+                        _chkdisable = 'disabled';
+                    }
+
+                    _chekestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoMe" id="chk' + _menuid +
+                    '" ' + _checked + ' ' + _chkdisable + ' value=' + _menuid + '/></div></td>'; 
+                    
+                    _boton = '<td><div class="text-center">' +
+                                '<div class="btn-group">' +
+                                    '<button class="btn btn-outline-primary btn-sm" ' + _deshabilitaSub + ' id="btnSubirNivel" data-toggle="tooltip" data-placement="top" title="subir nivel">' +
+                                    '<i class="fa fa-arrow-up"></i></button>'+
+                                    '<button class="btn btn-outline-primary btn-sm ml-3" ' + _disabledit + ' id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar">' +
+                                    '<i class="fa fa-pencil-square-o"></i></button>' +
+                                    '<button class="btn btn-outline-danger btn-sm ml-3" ' + _disabledel + ' id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">' +
+                                    '<i class="fa fa-trash-o"></i></button>' +
+                                '</div></div>' +
+                            '</td>'   
+                    
+                            
+                    TableNoOrder.row.add([_menuid, _menu, _icono, _chekestado, _boton]).draw();                
                 });                
             },
             error: function (error) {
                 console.log(error);
               }
-        }); 
+        });
     }); 
 
-    $(document).on("click","#btnEditar",function(){        
+    $(document).on("click",".btnEditar",function(){        
         _fila = $(this).closest("tr");
         _data = $('#tablenoorder').dataTable().fnGetData(_fila);
         _id = _data[0];
-        _menu = _fila.find('td:eq(0)').text();
         $.redirect('menuedit.php', {'id': _id}); //POR METODO POST
     });   
     
@@ -60,25 +85,20 @@ $(document).ready(function(){
         _row = $(this).closest('tr');  
         _data = $('#tablenoorder').dataTable().fnGetData(_row);
         _id = _data[0];
-        _opcion = 1;
         _menu = _data[1];
         DeleteMenu();
     });     
 
     function DeleteMenu(){
-        
-
-        alertify.confirm('El Registro sera eliminado..!!', 'Esta seguro de eliminar el menu..?', function(){ 
+        alertify.confirm('El Registro sera eliminado..!!', 'Esta seguro de eliminar el menu..? ' + _menu, function(){ 
     
                      $.ajax({
                         url: "../db/menucrud.php",
                         type: "POST",
                         dataType: "json",
-                        data: {id : _id, opcion : _opcion},
+                        data: {id : _id, opcion : 1},
                         success: function(data){
                             if(data == 'NO'){
-                             
-                               
                                 mensajesalertify("Menu no se puede Eliminar, Tiene Tareas Asociadas..!","E","bottom-right",5);
                             }       
                             else {
@@ -165,11 +185,11 @@ $(document).ready(function(){
 
         if(_check){
             _estadomenu = 'Activo';
-            $("#btnEditar" + _iddepa).prop("disabled", "");
+            $("#btnEditar" + _idmenu).prop("disabled", "");
         }else 
         {
             _estadomenu = 'Inactivo';
-            $("#btnEditar" + _iddepa).prop("disabled", "disabled");
+            $("#btnEditar" + _idmenu).prop("disabled", "disabled");
         }
 
         $.ajax({
