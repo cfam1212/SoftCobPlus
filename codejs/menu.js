@@ -5,7 +5,7 @@ $(document).ready(function(){
     _mensaje = $('input#mensaje').val();
 
     if(_mensaje != ''){
-        mensajesalertify(_mensaje,"S","top-right",5);
+        mensajesalertify(_mensaje,"S","top-center",5);
     }
 
     $('#btnNuevo').click(function(){
@@ -19,7 +19,6 @@ $(document).ready(function(){
     $(document).on("click","#btnSubirNivel",function(e){     
         _fila = $(this).closest('tr');
         _data = $('#tablenoorder').dataTable().fnGetData(_fila);
-        // row_index = $(this).closest("tr").index();
         _id = _data[0];
 
         $.ajax({
@@ -90,7 +89,7 @@ $(document).ready(function(){
     });     
 
     function DeleteMenu(){
-        alertify.confirm('El Registro sera eliminado..!!', 'Esta seguro de eliminar el menu..? ' + _menu, function(){ 
+        alertify.confirm('El Menu sera eliminado..!!', 'Esta seguro de eliminar ' + _menu + '..? ', function(){ 
     
                      $.ajax({
                         url: "../db/menucrud.php",
@@ -99,12 +98,12 @@ $(document).ready(function(){
                         data: {id : _id, opcion : 1},
                         success: function(data){
                             if(data == 'NO'){
-                                mensajesalertify("Menu no se puede Eliminar, Tiene Tareas Asociadas..!","E","bottom-right",5);
+                                mensajesalertify("Menu no se puede Eliminar, Tiene Tareas Asociadas..!","W","top-right",5);
                             }       
                             else {
                             
                                 TableNoOrder.row(_fila.parents('tr')).remove().draw();
-                                mensajesalertify("Registro Eliminado..!","E","bottom-center",5);
+                                mensajesalertify("Menu Eliminado..!","E","bottom-center",5);
                             }
                         },
                         error: function (error) {
@@ -129,14 +128,14 @@ $(document).ready(function(){
         if(_nombremenu == '')
         {
               
-            mensajesalertify("Ingrese Nombre del Menú..!","W","top-center",5); 
+            mensajesalertify("Ingrese Nombre del Menú..!","W","top-right",5); 
             return false;
         }
 
         if(_opcionmp == 2){
             if(_menupadre == ''){
                 
-                mensajesalertify("Ingrese Nombre del Menú Padre..!!","W","top-center",5);              
+                mensajesalertify("Ingrese Nombre del Menú Padre..!!","W","top-right",5);              
                 return false;                
             }
         }
@@ -149,7 +148,7 @@ $(document).ready(function(){
         if(i == 0)
         {
          
-            mensajesalertify("Seleccione al menos una tarea..!!","W","top-center",5);
+            mensajesalertify("Seleccione al menos una tarea..!!","W","top-right",5);
             return false;
         }
 
@@ -162,10 +161,10 @@ $(document).ready(function(){
             success: function(data){   
                 if(data == '0'){
                     $.redirect('menu.php', {'mensaje': 'Guardado con Exito..!'});
-                    //$.redirect('menu.php',mensajesalertify("Guardado con exito..!","S","bottom-center",5));
+                    //$.redirect('menu.php',mensajesalertify("Guardado con exito..!","S","top-center",5));
                 }else{
                   
-                    mensajesalertify("Nombre del Menú ya exixte..!","E","bottom-right",5);              
+                    mensajesalertify("Nombre del Menú ya exixte..!","W","top-right",5);              
                 }
             },
             error: function (error) {

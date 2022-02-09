@@ -215,7 +215,7 @@ $(document).ready(function(){
         _id = _data[0];
         _username = _row.find('td:eq(0)').text();
         
-        alertify.confirm('El Registro será eliminado..!!', 'Esta seguro de eliminar' + ' ' + _username + '..?', function(){ //alertify.success('Ok') 
+        alertify.confirm('El Usuario será eliminado..!!', 'Esta seguro de eliminar' + ' ' + _username + '..?', function(){  
     
             $.ajax({
                 url: "../db/consultadatos.php",
@@ -226,7 +226,7 @@ $(document).ready(function(){
                 success: function(data){
                     Swal.close();
                     TableData.row(_fila.parents('tr')).remove().draw();
-                    mensajesalertify("Registro Eliminado","S","bottom-center",5);		
+                    mensajesalertify("Usuario Eliminado","E","bottom-center",5);		
                 },
                 error: function (error) {
                     console.log(error);
@@ -258,43 +258,43 @@ $(document).ready(function(){
 
         if(_username == '')
         {          
-            mensajesalertify("Ingrese Nombre del Usuario..!!","W","top-center",5);
+            mensajesalertify("Ingrese Nombre del Usuario..!!","W","top-right",5);
             return;
         }
 
         if(_lastname == '')
         {        
-            mensajesalertify("Ingrese Apellido del Usuario..!!","W","top-center",5);
+            mensajesalertify("Ingrese Apellido del Usuario..!!","W","top-right",5);
             return;
         }
         
         if(_login == '')
         {           
-            mensajesalertify("Ingrese Login..!!","W","top-center",5);
+            mensajesalertify("Ingrese Login..!!","W","top-right",5);
             return;    
         }
         
         if(_password == '')
         {            
-            mensajesalertify("Ingrese Password..!!","W","top-center",5);
+            mensajesalertify("Ingrese Password..!!","W","top-right",5);
             return;    
         }
                
         if(_perfil == '0')
         {            
-            mensajesalertify("Seleccione Perfil..!!","W","top-center",5);
+            mensajesalertify("Seleccione Perfil..!!","W","top-right",5);
             return;    
         }
 
         if(_depar == '0')
         {            
-            mensajesalertify("Seleccione Departamento..!!","W","top-center",5);
+            mensajesalertify("Seleccione Departamento..!!","W","top-right",5);
             return;    
         }      
         
         if(_tipouser == '0')
         {            
-            mensajesalertify("Seleccione Tipo Usuario..!!","W","top-center",5);
+            mensajesalertify("Seleccione Tipo Usuario..!!","W","top-right",5);
             return;    
         }          
 
@@ -325,7 +325,7 @@ $(document).ready(function(){
     function FunGrabar(response){
         if(!response){
             
-            mensajesalertify("Login ya esta Registrado..!!","E","bottom-right",5);	
+            mensajesalertify("Login ya esta Registrado..!!","W","top-right",5);	
         }else{
             _file = _imagen.files[0];
             form_data = new FormData();            
@@ -373,13 +373,13 @@ $(document).ready(function(){
                                 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div>';
 
                     if(_opcion == 0){
-                        TableData.row.add([_userid, _usuario, _login, _perfil, _newestado, _button]).draw();
-                        mensajesalertify("Grabado Correctamente..!!","S","bottom-center",5);				
+                        TableData.row.add([_userid, _usuario, _login, _perfil, _button, _newestado]).draw();
+                        mensajesalertify("Grabado Correctamente..!!","S","top-center",5);				
 				
                     }
                     else{
-                        TableData.row(_fila).data([_userid, _usuario, _login, _perfil, _newestado, _button]).draw();
-                        mensajesalertify("Actualizado Correctamente..!!","S","bottom-center",5);	
+                        TableData.row(_fila).data([_userid, _usuario, _login, _perfil, _button, _newestado]).draw();
+                        mensajesalertify("Actualizado Correctamente..!!","S","top-center",5);	
                     }                     
                     $("#modalNewUser").modal("hide");
                 },

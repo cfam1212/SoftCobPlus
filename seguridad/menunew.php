@@ -95,7 +95,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <th>Seleccionar</th>
                                         <th>Tarea</th>
                                         <th>Ruta</th>
-                                        <th>Estado</th>
+                                        <th style="display: none;">Estado</th>
                                     </tr>
                                 </thead>                        
                                 <tbody>
@@ -108,8 +108,8 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <input type="checkbox" id="recs" name="check[]" value="<?php echo $dat['TareaId'];?>"/>
                                         </td>                              
                                         <td><?php echo $dat['Tarea']; ?></td>
-                                        <td style="text-align: center;"><?php echo $dat['Ruta']; ?></td>
-                                        <td style="text-align: center;"><?php echo $dat['Estado']; ?></td>
+                                        <td><?php echo $dat['Ruta']; ?></td>
+                                        <td style="display: none;"><?php echo $dat['Estado']; ?></td>
                                     </tr>
                                     <?php } ?>          
                                 </tbody>
@@ -122,8 +122,8 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="container">
             <div class='btn-group'>
-                <button class="btn btn-outline-secondary" id = "btnRegresar"><i class='fa fa-undo'> Regresar</i></button>
-                <button class="btn btn-outline-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                <button class="btn btn-secondary" id = "btnRegresar"><i class='fa fa-undo'> Regresar</i></button>
+                <button class="btn btn-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
             </div>
         </div>
     </div>

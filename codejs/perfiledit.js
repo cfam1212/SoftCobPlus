@@ -4,13 +4,14 @@ $(document).ready(function(){
     _observacion, _rowcollection;
 
     
-
+     debugger;
     _nameoldperfil = $.trim($("#txtPerfil").val());
     _idperfil = $.trim($("#idPerfil").val());
     _crear = $("#lblCrear").text();
     _modificar = $("#lblModificar").text();
     _eliminar = $("#lblEliminar").text();
-    _estado = $("#lblEstado").text();
+    // _estado = $("#lblEstado").text();
+    _estado = 'Activo';
 
     /*if(_estado == "Activo"){
         $("#chkEstado").prop("checked", true);
@@ -81,7 +82,7 @@ $(document).ready(function(){
         if(_nombreperfil == '')
         {
            
-            mensajesalertify("Ingrese Nombre del Perfil..!!","W","top-center",5);	    
+            mensajesalertify("Ingrese Nombre del Perfil..!!","W","top-right",5);	    
             return;
         }
 
@@ -113,7 +114,7 @@ $(document).ready(function(){
     function FunGrabar(response){
         if(!response){
             
-            mensajesalertify("Nombre del Perfil ya Existe..!!","E","bottom-right",5);	      
+            mensajesalertify("Nombre del Perfil ya Existe..!!","W","top-right",5);	      
         }else{
 
             _rowcollection =  TableData.$('input[type="checkbox"]', {"page": "all"});
@@ -127,7 +128,7 @@ $(document).ready(function(){
                 url: "../db/perfilcrud.php",
                 type: "POST",
                 dataType: "json",
-                data: {nombreperfil:_nombreperfil, observacion:_observacion, result:_result, estado:_estado, crear:_crear, modificar:_modificar, 
+                data: {nombreperfil:_nombreperfil, observacion:_observacion, result:_result, crear:_crear, modificar:_modificar, 
                     eliminar:_eliminar, id:_idperfil, opcion:1},            
                 success: function(data){ 
                     $.redirect('perfil.php', {'mensaje': 'Actualizado con Exito..!!'}); 

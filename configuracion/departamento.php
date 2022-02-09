@@ -27,7 +27,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                     <div class="x_content">
                         <br />
-                        <table id="tabledata" class="table table-striped jambo_table bulk_action table-dark table-borderless" style="width: 100%;">
+                        <table id="tabledatadepa" class="table table-striped jambo_table bulk_action table-dark table-borderless" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -75,10 +75,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstadoDe" <?php echo $chkestado; ?> id="chk<?php echo $datos['Depaid']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
                                              echo "checked";} else {'';} ?> value="<?php echo $datos['Depaid']; ?>" />                                            
-                                        </td>   
-                                        <td style="display: none;" id="tdestado<?php echo $datos['Depaid']; ?>">
-                                            <?php echo $datos['Estado'] ?>
                                         </td>
+                                        <td style="display: none;" id="tdestado<?php echo $datos['Depaid']; ?>">
+		                                     <?php echo $datos['Estado'] ?>
+	                                    </td>   
                                     </tr>
                                 <?php }
                                 ?>
@@ -105,11 +105,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <label for="departamento" class="col-form-label">Departamento:</label>
                         <input type="text" required class="form-control" id="txtDepa" maxlength="80">
                     </div>
-
-                    <!-- <div class="form-check" id="divcheck">
-                        <input type="checkbox" class="form-check-input" id="chkEstado">
-                        <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
-                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-outline-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>

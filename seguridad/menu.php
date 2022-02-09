@@ -38,8 +38,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <th>Id</th>
                                     <th>Menu</th>
                                     <th>Icono</th>
-                                    <th style="text-align: center;">Estado</th>
-                                    <th style="text-align: center;">Opciones</th>
+                                    <th style="width:13% ; text-align: center">Opciones</th>
+                                    <th style="width:10% ; text-align: center">Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,10 +76,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td><?php echo $datos['MenuId'] ?></td>
                                         <td><?php echo $datos['Menu'] ?></td>
                                         <td><?php echo $datos['Icono'] ?></td>
-                                        <td style="text-align: center">
-                                            <input type="checkbox" class="form-check-input chkEstadoMe" <?php echo $chkestado; ?> id="chk<?php echo $datos['MenuId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                             echo "checked";} else {'';} ?> value="<?php echo $datos['MenuId']; ?>" />                                            
-                                        </td>  
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
@@ -92,6 +88,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 </div>
                                             </div>                                             
                                         </td>
+                                        <td style="text-align: center">
+                                            <input type="checkbox" class="form-check-input chkEstadoMe" <?php echo $chkestado; ?> id="chk<?php echo $datos['MenuId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
+                                             echo "checked";} else {'';} ?> value="<?php echo $datos['MenuId']; ?>" />                                            
+                                        </td>  
                                     </tr>
                                 <?php }
                                 ?>

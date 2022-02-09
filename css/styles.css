@@ -62,7 +62,8 @@ h1 {
 
 /* background tablas */
 
-#tabledata,#tablenoorder,#tblseguridad,#tblparameter,#tblperfil,#tblcontacto,#tblproducto,#tblagencia,#tabledatasup,#tableconorder{
+#tabledata,#tablenoorder,#tblseguridad,#tblparameter,#tblperfil,#tblcontacto,#tblproducto,#tblagencia,#tabledatasup,
+#tabledatadepa,#tableconorder{
 
   background-color: #F1F1F2;
   color: black;

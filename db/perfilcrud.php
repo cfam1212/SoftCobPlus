@@ -45,7 +45,7 @@ switch($opcion){
         {
             $consulta = "CALL sp_New_Perfil(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array(2,$empreid,$id,0,$nombreperfil,$observacion,$valestado,$crear,$modificar,$eliminar,
+            $resultado->execute(array(2,$empreid,$id,0,$nombreperfil,$observacion,'',$crear,$modificar,$eliminar,
             $currentdate,$userid,$host));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             if($result != '0'){

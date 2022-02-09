@@ -109,7 +109,7 @@ $(document).ready(function(){
     
     function DeleteTarea(){
        
-     alertify.confirm('El Registro sera eliminado..!!', 'Esta seguro de eliminar' + ' ' + _tarea + '..?', function(){ 
+     alertify.confirm('Tarea sera eliminada..!!', 'Esta seguro de eliminar' + ' ' + _tarea + '..?', function(){ 
     
         $.ajax({
             url: "../db/tareacrud.php",
@@ -119,12 +119,12 @@ $(document).ready(function(){
             success: function(data){
                 if(data == "NO"){
                     swal.close();
-                    mensajesalertify("Tarea no se puede Eliminar, está asociada a un Menú..!!","E","bottom-right",5);  
+                    mensajesalertify("Tarea no se puede Eliminar, está asociada a un Menú..!!","W","top-right",5);  
                 }       
                 else {
                     Swal.close();
                     TableData.row(_fila.parents('tr')).remove().draw();
-                    mensajesalertify("Registro Eliminado","S","bottom-center",5);
+                    mensajesalertify("Tarea Eliminada","E","bottom-center",5);
                 }                            
             },
             error: function (error) {
@@ -143,11 +143,11 @@ $(document).ready(function(){
         _ruta = $.trim($("#txtRuta").val());
         _icono = $.trim($("#txtIcono").val());
         if(_tarea == ''){
-            mensajesalertify("Ingrese Tarea!!.","W","top-center",5); 
+            mensajesalertify("Ingrese Tarea!!.","W","top-right",5); 
             return;   
         }
         if(_ruta == ''){
-            mensajesalertify("Ingrese una Ruta!!.","W","top-center",5); 
+            mensajesalertify("Ingrese una Ruta!!.","W","top-right",5); 
             return;   
         }
         if(_opcion == 2){            
@@ -160,7 +160,7 @@ $(document).ready(function(){
                     success: function(data){
                         if(data == '1'){
                            
-                            mensajesalertify("Tarea ya Existe..!!","E","bottom-right",5);                   
+                            mensajesalertify("Tarea ya Existe..!!","W","top-right",5);                   
                         }else{
                             FunGrabar();
                         }
@@ -185,7 +185,7 @@ $(document).ready(function(){
             data: {opcion:0, id:_id, tarea:_tarea, ruta:_ruta, icono:_icono, estado:_estado},            
             success: function(data){
                 if(data == 'SI'){
-                    mensajesalertify("Tarea ya Existe..!!","E","bottom-right",5);                   
+                    mensajesalertify("Tarea ya Existe..!!","W","top-right",5);                   
                 }else{
                     _tareaid = data[0].TareaId;
                     _tarea = data[0].Tarea;
@@ -207,7 +207,7 @@ $(document).ready(function(){
                         TableData.row(_fila).data([_tareaid, _tarea, _ruta, _icono, _estado, _boton]).draw();
                     }  
                   
-                    mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);  
+                    mensajesalertify("Grabado Correctamente..!","S","top-center",5);  
                     $("#modalTAREA").modal("hide");
                 }
             },

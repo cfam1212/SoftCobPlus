@@ -68,8 +68,8 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <tr>
                                                 <th style="display: none;">Codigo</th>
                                                 <th>Descripcion</th>
-                                                <th>Estado</th>
-                                                <th>Acciones</th>
+                                                <th style="width:12% ; text-align: center">Opciones</th>
+                                                <th style="width:10% ; text-align: center">Estado</th>
                                             </tr>
                                         </thead>
                                         <tbody>

@@ -43,13 +43,13 @@ $(document).ready(function(){
 
         if(_cbocedente == '0')
         {                   
-            mensajesalertify("Seleccione Cedente..!","W","top-center",5);  
+            mensajesalertify("Seleccione Cedente..!","W","top-right",5);  
             return;
         }
 
         if(_cbosuper == '0')
         {                   
-            mensajesalertify("Seleccione Supervisor..!","W","top-center",5);  
+            mensajesalertify("Seleccione Supervisor..!","W","top-right",5);  
             return;
         }        
 
@@ -80,7 +80,7 @@ $(document).ready(function(){
 
                 TableDataSup.row.add([_supeid, _cedid,  _cede, _supe, _chekestado, _boton]).draw();
               
-                mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);  
+                mensajesalertify("Grabado Correctamente..!","S","top-center",5);  
 
                 $("#cboCedente").val('0');
                 $("#cboSupervisor").val('0');
@@ -107,7 +107,7 @@ $(document).ready(function(){
 
     function DeleteSuper(){
        
-        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar' + ' ' + _supervisor + '..?', function(){ //alertify.success('Ok')        
+        alertify.confirm('El Supervisor sera eliminado..!!', 'Esta seguro de eliminar' + ' ' + _supervisor + '..?', function(){        
            $.ajax({
                url: "../db/registrocrudsp.php",
                type: "POST",
@@ -119,7 +119,7 @@ $(document).ready(function(){
                    }       
                    else {
                     TableDataSup.row(_fila.parents('tr')).remove().draw();
-                    mensajesalertify("Registro Eliminado","E","bottom-center",5);
+                    mensajesalertify("Supervisor Eliminado","E","bottom-center",5);
                    }                            
                },
                error: function (error) {
@@ -266,7 +266,7 @@ $(document).ready(function(){
 
         if(_cbogestor == '0')
         {
-            mensajesalertify("Seleccione Gestor..!","W","top-center",5);
+            mensajesalertify("Seleccione Gestor..!","W","top-right",5);
             return;
         }
 
@@ -277,7 +277,7 @@ $(document).ready(function(){
             data: {idsupervisor: _usuaid, idgestor: _cbogestor, estado: 'A', opcion: 1},
             success: function(data){
                 if(data[0].Existe == 'Existe'){
-                    mensajesalertify("Gestor ya esta Agregado..!","W","bottom-center",5);  
+                    mensajesalertify("Gestor ya esta Agregado..!","W","top-right",5);  
                 }
                 else{
                     $("#tblagestor").empty();
@@ -324,7 +324,7 @@ $(document).ready(function(){
         let _idgestor = $('#txtId' + _rowid.substring(6) + '').val();
         let _gestor = $('#txtGestor' + _idgestor).val();
 
-        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar gestor' + ' ' + _gestor + '..?', function(){ //alertify.success('Ok')        
+        alertify.confirm('El Gestor sera eliminado..!!', 'Esta seguro de eliminar' + ' ' + _gestor + '..?', function(){       
             
             $.ajax({
                 url: "../db/registrocrudsp.php",

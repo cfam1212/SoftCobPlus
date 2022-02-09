@@ -8,6 +8,7 @@ $(document).ready(function(){
     $("#btnNuevo").click(function(){
         $("#formTarea").trigger("reset");
         $("#divcheck").hide();
+        $("#txtDepa").val('');
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
         $(".modal-title").text("Nuevo Departamento");  
@@ -58,7 +59,7 @@ $(document).ready(function(){
 
     $(document).on("click",".btnEditar",function(e){    
         _fila = $(this).closest("tr");
-        _data = $('#tabledata').dataTable().fnGetData(_fila);
+        _data = $('#tabledatadepa').dataTable().fnGetData(_fila);
         _id = _data[0];
         _namedepaold = _data[1];
         $("#txtDepa").val(_namedepaold);
@@ -136,7 +137,7 @@ $(document).ready(function(){
 
         if(_depa == '')
         {                   
-            mensajesalertify("Ingrese Nombre del Departamento..!","W","top-center",5);  
+            mensajesalertify("Ingrese Nombre del Departamento..!","W","top-right",5);  
             return;
         }
   
@@ -148,8 +149,8 @@ $(document).ready(function(){
                     dataType: "json",
                     data: {nomdepa: _depa, opcion: 2},            
                     success: function(data){
-                        if(data[0].Contar  != '0'){
-                            mensajesalertify("Departamento ya Existe!!.","W","bottom-right",5);
+                        if(data[0].Contar  == '1'){
+                            mensajesalertify("Departamento ya Existe!!.","W","top-right",5);
                             return;
                         }else{
                             FunGrabar(1);
@@ -177,7 +178,7 @@ $(document).ready(function(){
             data: {id: _id, nomdepa: _depa, estado: _estado, opcion: opc},
             success: function(data){
                 if(data[0].Valor == 'Existe'){
-                    mensajesalertify("Departamento ya Existe!!.","W","bottom-right",5);  
+                    mensajesalertify("Departamento ya Existe!!.","W","top-right",5);  
                 }
                 else{
                     _depaid = data[0].Depaid;
@@ -198,20 +199,21 @@ $(document).ready(function(){
                     _newestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _depaid +
                                 '" ' + _checked + ' value=' + _depaid + '/></div></td>';
 
-                    _estadooculto = '<td style="display: none;">' + _estado + '</td>';
+                    _estadooculto = '<td style="display: none;" id="tdestado'+_depaid +'">' + _estado + '</td>';
+                    console.log(_estadooculto);
 
                     _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3"' +
                             'id="btnEditar"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
                             _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
 
                     if(_opcion == 0){
-                        TableData.row.add([_depaid, _nomdepa, _newestado, _boton, _estadooculto]).draw();
+                        TableDataDepa.row.add([_depaid, _nomdepa, _boton, _newestado, _estadooculto]).draw();
                     }
                     else{
-                        TableData.row(_fila).data([_depaid, _nomdepa, _newestado, _boton, _estadooculto]).draw();
+                        TableDataDepa.row(_fila).data([_depaid, _nomdepa, _boton, _newestado, _estadooculto]).draw();
                     }  
                 
-                    mensajesalertify("Grabado Correctamente..!","S","bottom-center",5);  
+                    mensajesalertify("Grabado Correctamente..!","S","top-center",5);  
                 }
                 $("#modalDEPARTAMENTO").modal("hide");               
             },
@@ -225,7 +227,7 @@ $(document).ready(function(){
     $(document).on("click","#btnEliminar",function(e){
         _fila = $(this);  
         _row = $(this).closest('tr');
-        _data = $('#tabledata').dataTable().fnGetData(_row);
+        _data = $('#tabledatadepa').dataTable().fnGetData(_row);
         _id = _data[0];
         _depa = $(this).closest("tr").find('td:eq(0)').text(); 
         //_tipo = 4;
@@ -234,7 +236,7 @@ $(document).ready(function(){
 
     function DeleteDepar(){
        
-        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar' + ' ' + _depa + '..?', function(){ //alertify.success('Ok')        
+        alertify.confirm('El Departamento sera eliminado..!!', 'Esta seguro de eliminar' + ' ' + _depa + '..?', function(){        
            $.ajax({
                url: "../db/depacrud.php",
                type: "POST",
@@ -243,11 +245,11 @@ $(document).ready(function(){
                success: function(data){
                    console.log(data);
                    if(data[0].Valor == "Existe"){
-                       mensajesalertify("Departamento no se puede Eliminar, está asociada a un Usuario..!","W","bottom-right",5);  
+                       mensajesalertify("Departamento no se puede Eliminar, está asociada a un Usuario..!","W","top-right",5);  
                    }       
                    else {
-                       TableData.row(_fila.parents('tr')).remove().draw();
-                       mensajesalertify("Registro Eliminado","E","bottom-center",5);
+                    TableDataDepa.row(_fila.parents('tr')).remove().draw();
+                       mensajesalertify("Departamento Eliminado","E","bottom-center",5);
                    }                            
                },
                error: function (error) {
@@ -255,7 +257,7 @@ $(document).ready(function(){
                }                  
            });              
         },        
-            function(){ /*alertify.error('eliminar cancelado')*/});
+            function(){});
        }
 
 });

@@ -5,7 +5,7 @@ $(document).ready(function(){
     
     if(_mensaje != ''){
         // alertify.success(_mensaje,'mensaje', 2, function(){console.log('dismissed');});
-        mensajesalertify(_mensaje,"S","bottom-center",2);
+        mensajesalertify(_mensaje,"S","top-center",5);
     }
 
     _continuar = true;
@@ -100,7 +100,7 @@ $(document).ready(function(){
         
         if(_id == 1){
             // alertify.warning('Perfil de Administrador no se puede Eliminar..!','mensaje', 2, function(){console.log('dismissed');});
-            mensajesalertify("Perfil de Administrador no se puede Eliminar..!","E","bottom-right",5); 
+            mensajesalertify("Perfil  Administrador no se puede Eliminar..!","W","top-right",5); 
         }else{
             $.ajax({
                 url: "../db/consultadatos.php",
@@ -126,10 +126,10 @@ $(document).ready(function(){
     function FunValidar(respuesta){
         if(!respuesta){
             // alertify.warning('Perfil tiene Menú/Tareas Asociadas..!','mensaje', 2, function(){console.log('dismissed');}); 
-            mensajesalertify("Perfil tiene Menú/Tareas Asociadas..!!","E","bottom-right",5);
+            mensajesalertify("Perfil tiene Menú/Tareas Asociadas..!!","W","top-right",5);
         }else{
      
-    alertify.confirm('El Registro sera eliminado..!!', 'Esta seguro de eliminar'+''+ _perfil +'..?', function(){ 
+    alertify.confirm('El Perfil sera eliminado..!!', 'Esta seguro de eliminar'+''+ _perfil +'..?', function(){ 
 
 
         $.ajax({
@@ -140,9 +140,9 @@ $(document).ready(function(){
              auxi5:0, auxi6:0, opcion:0},
              success: function(data){
                     Swal.close();
-                    tableData.row(fila.parents('tr')).remove().draw();
+                    TableData.row(fila.parents('tr')).remove().draw();
                    
-                    mensajesalertify("Regisro Eliminado..!","S","bottom-center",5);
+                    mensajesalertify("Perfil Eliminado..!","E","bottom-center",5);
                             },
                             error: function (error) {
                                 console.log(error);
@@ -162,7 +162,7 @@ $(document).ready(function(){
         if(_perfil == '')
         {       
 
-            mensajesalertify("Ingrese Nombre del Perfil..!!","W","top-center",5);  
+            mensajesalertify("Ingrese Nombre del Perfil..!!","W","top-right",5);  
             return;
         }
 
@@ -178,7 +178,7 @@ $(document).ready(function(){
         if(i == 0)
         {
            
-            mensajesalertify("Seleccione al menos un opción Menu/Tareal..!!","W","top-center",5);
+            mensajesalertify("Seleccione al menos un opción Menu/Tareal..!!","W","top-right",5);
             return;
         }
 
@@ -205,7 +205,7 @@ $(document).ready(function(){
     function FunGrabar(respuesta){
         if(!respuesta){
             // alertify.warning('Nombre del Perfil ya Existe..!','mensaje', 2, function(){console.log('dismissed');});
-            mensajesalertify("Nombre del Perfil ya Existe..!!","E","bottom-right",5);
+            mensajesalertify("Nombre del Perfil ya Existe..!!","W","top-right",5);
         }else{
             $.ajax({
                 url: "../db/perfilcrud.php",
@@ -215,6 +215,7 @@ $(document).ready(function(){
                     eliminar:_eliminar, id:0, opcion:0},          
                 success: function(data){                                        
                     $.redirect('perfil.php', {'mensaje': 'Guardado con Exito..!!'});
+                   // $.redirect('perfil.php', mensajesalertify("Guardado con Exito..!!","W","top-right",5));
                 },
                 error: function (error){
                     console.log(error);

@@ -31,13 +31,13 @@ $(document).ready(function(){
 
         if(_codigo == '0')
         {
-            mensajesalertify("Seleccione Tipo Perfil..!","W","top-center",5);
+            mensajesalertify("Seleccione Tipo Perfil..!","W","top-right",5);
             return;
         }
 
         if(_descripcion == '')
         {
-            mensajesalertify("Ingrese Descripción..!","W","top-center",5);
+            mensajesalertify("Ingrese Descripción..!","W","top-right",5);
             return;
         }        
 
@@ -45,7 +45,7 @@ $(document).ready(function(){
         {
             if(item.arrydescripcion.toUpperCase() == _descripcion.toUpperCase())
             {                        
-                mensajesalertify("Nombre ya Existe..!","E","bottom-center",5); 
+                mensajesalertify("Nombre ya Existe..!","W","top-right",5); 
                 _continuar = false;
                 return false;
             }else{
@@ -60,11 +60,11 @@ $(document).ready(function(){
             _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _codigo + '" /></td>';                
             _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _count + '" value="' + _descripcion + '" /></td>';
             // _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
-            _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _count +
-                       '" ' + _checked + ' value=' + _count + '/></div></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
             _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
             _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+            _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _count +
+                       '" ' + _checked + ' value=' + _count + '/></div></td>';
             _output += '</tr>';
             
             $('#tblperfil').append(_output);
@@ -112,7 +112,7 @@ $(document).ready(function(){
 
         if(_descripcion == '')
         {
-            mensajesalertify("Ingrese Descripción..!","W","top-center",5);
+            mensajesalertify("Ingrese Descripción..!","W","top-right",5);
             return;
         }        
         
@@ -122,7 +122,7 @@ $(document).ready(function(){
             {
                 if(item.arrydescripcion.toUpperCase() == _descripcion.toUpperCase())
                 {                        
-                    mensajesalertify("Descripción ya Existe..!","E","bottom-center",5); 
+                    mensajesalertify("Descripción ya Existe..!","W","top-right",5); 
                     _continuar = false;
                     return false;
                 }else{
@@ -158,11 +158,11 @@ $(document).ready(function(){
                 _output = '<tr id="row_' + item.arrycodigo + '">';
                 _output += '<td style="display: none;">' + item.arrycodigo  + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo  + '" value="' + item.arrycodigo  + '" /></td>';                
                 _output += '<td>' + item.arrydescripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + item.arrycodigo  + '" value="' + item.arrydescripcion + '" /></td>';
-                _output  += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPe" id="chk' + item.arrycodigo +
-                            '" ' + _checked + ' value=' + item.arrycodigo + '/></div></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo  + '"><i class="fa fa-pencil-square-o"></i></button>';
                 _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo  + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                _output  += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPe" id="chk' + item.arrycodigo +
+                            '" ' + _checked + ' value=' + item.arrycodigo + '/></div></td>';
                 _output += '</tr>';
                 
                 $('#tblperfil').append(_output);       
@@ -199,11 +199,12 @@ $(document).ready(function(){
         row_id = $(this).attr("id");
         _descripcion = $('#txtDescripcion' + row_id + '').val();
 
-        alertify.confirm('El registro sera eliminado..!!', 'Esta seguro de eliminar' +' '+ _descripcion +'..?' , function(){ 
+        alertify.confirm('El Perfil sera eliminado..!!', 'Esta seguro de eliminar' +' '+ _descripcion +'..?' , function(){ 
 
             FunRemoveItemFromArr(_result, _descripcion);
             $('#row_' + row_id + '').remove();
             _count--;
+            mensajesalertify("Perfil Eliminado","E","bottom-center",5);
 
          }
         , function(){ });
@@ -230,7 +231,7 @@ $(document).ready(function(){
 
         if(_count == 0)
         {         
-            mensajesalertify("Ingrese al menos una Descripción.!","W","top-center",5);
+            mensajesalertify("Ingrese al menos una Descripción.!","W","top-right",5);
             return false;
         }
         
@@ -297,11 +298,11 @@ $(document).ready(function(){
                         _output = '<tr id="row_' + _id + '">';
                         _output += '<td style="display: none;">' + _id  + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _id  + '" value="' + _id + '" /></td>';                
                         _output += '<td>' + _desc + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _id  + '" value="' + _desc + '" /></td>';
-                        _output  += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPe" id="chk' + _id +
-                                    '" ' + _checked + ' value=' + _id + '/></div></td>';
                         _output += '<td><div class="text-center"><div class="btn-group">'
                         _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit"  data-toggle="tooltip" data-placement="top" title="editar" id="' + _id  + '" disabled id="' + _id  + '"><i class="fa fa-pencil-square-o"></i></button>';
                         _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete " disabled id="' + _id  + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                        _output  += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPe" id="chk' + _id +
+                                    '" ' + _checked + ' value=' + _id + '/></div></td>';
                         _output += '</tr>';
                         
                         $('#tblperfil').append(_output);  
@@ -338,7 +339,6 @@ $(document).ready(function(){
        
     let _estadope;
 
-    //alert(_codigo);
 
     if(_check){
         _estadope = 'A';
