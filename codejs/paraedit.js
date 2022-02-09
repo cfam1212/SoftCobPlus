@@ -9,8 +9,6 @@ $(document).ready(function()
 
     _estadocab = $("#lblEstadoCab").text();   
     _id = $("#paraid").val();
-    // alert(_id);
-    // console.log(_id);
     
     $('#btnRegresar').click(function()
     {        

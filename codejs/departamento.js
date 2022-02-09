@@ -200,9 +200,8 @@ $(document).ready(function(){
                                 '" ' + _checked + ' value=' + _depaid + '/></div></td>';
 
                     _estadooculto = '<td style="display: none;" id="tdestado'+_depaid +'">' + _estado + '</td>';
-                    console.log(_estadooculto);
 
-                    _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3"' +
+                    _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3 btnEditar"' +
                             'id="btnEditar"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
                             _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
 

@@ -20,11 +20,6 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $valestado = $estado == "Activo" ? 'A' : 'I';
 
-
-
-
-
-
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
 
@@ -38,7 +33,7 @@ switch($opcion){
             $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $valestado = $drfila['arryestado'] == "Activo" ? 'A' : 'I';
-            $resultado->execute(array(1,0,$idPara,'','',$valestado,0,$drfila['arry_id'],$drfila['arrydetalle'],
+            $resultado->execute(array(1,0,$idPara,'','',$valestado,0,$drfila['arryid'],$drfila['arrydetalle'],
             $drfila['arryvalorv'],$drfila['arryvalori'],'','','',0,0,0,0,''));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -53,7 +48,7 @@ switch($opcion){
             $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $valestado = $drfila['arryestado'] == "Activo" ? 'A' : 'I';
-            $resultado->execute(array(1,0,$id,'','',$valestado,0,$drfila['arry_id'],$drfila['arrydetalle'],
+            $resultado->execute(array(1,0,$id,'','',$valestado,0,$drfila['arryid'],$drfila['arrydetalle'],
             $drfila['arryvalorv'],$drfila['arryvalori'],'','','',0,0,0,0,''));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         }

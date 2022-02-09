@@ -52,7 +52,7 @@ switch($opcion){
                 foreach($result as $drfila){
                     $consulta = "CALL sp_New_Perfil(?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     $resultado = $conexion->prepare($consulta);
-                    $resultado->execute(array(3,$empreid,$id,$drfila,'','','','','','',$currentdate,$userid,$host));
+                    $resultado->execute(array(1,$empreid,$id,$drfila,'','','','','','',$currentdate,$userid,$host));
                 }
             }
         }catch(Exception $e)

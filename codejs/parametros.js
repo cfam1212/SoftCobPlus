@@ -132,7 +132,7 @@ $(document).ready(function(){
                 $('#tblparameter').append(_output);
 
                 _objeto = {
-                    arry_id : _count,
+                    arryid : _count,
                     arrydetalle : _detalle,
                     arryvalorv : _valorv,
                     arryvalori : _valori,
@@ -203,7 +203,7 @@ $(document).ready(function(){
                 FunRemoveItemFromArr(_result, _detalleold);
 
                 _objeto = {
-                    arry_id : parseInt(_norden),
+                    arryid : parseInt(_norden),
                     arrydetalle : _detalle,
                     arryvalorv : _valorv,
                     arryvalori : _valori,
@@ -217,7 +217,7 @@ $(document).ready(function(){
                 
                 $("tbody").children().remove();
 
-                FunReorganizarEdit(_result.sort((a,b) => a.arry_id - b.arry_id));            
+                FunReorganizarEdit(_result.sort((a,b) => a.arryid - b.arryid));            
                 
             }
         }
@@ -327,8 +327,8 @@ $(document).ready(function(){
         otroval = 0;
         $.each(arr,function(i,item){
             otroval = otroval + 1; 
-            FunOrderDelete(otroval,item.arry_id,item.arrydetalle,item.arryvalorv,item.arryvalori,item.arryestado);
-            item['arry_id'] = parseInt(otroval);
+            FunOrderDelete(otroval,item.arryid,item.arrydetalle,item.arryvalorv,item.arryvalori,item.arryestado);
+            item['arryid'] = parseInt(otroval);
         });
         
         FunCambiar_id();
@@ -347,7 +347,7 @@ $(document).ready(function(){
     function FunReorganizarEdit(arr)
     {        
         $.each(arr,function(i,item){            
-            FunOrderEdit(item.arry_id,item.arrydetalle,item.arryvalorv,item.arryvalori,item.arryestado);
+            FunOrderEdit(item.arryid,item.arrydetalle,item.arryvalorv,item.arryvalori,item.arryestado);
         });
 
     }    
@@ -385,7 +385,7 @@ $(document).ready(function(){
         }
 
         _resultado = _result.find(d => d.arrydetalle == detalle);
-        _resultado['arry_id'] = parseInt(orden);
+        _resultado['arryid'] = parseInt(orden);
 
         _output = '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + orden + '" value="'+ orden + '" /></td>';
         _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + orden + '" value="' + detalle + '" /></td>';
@@ -406,7 +406,7 @@ $(document).ready(function(){
         }
 
         _resultado = _result.find(d => d.arrydetalle == detalle);
-        _resultado['arry_id'] = parseInt(orden);
+        _resultado['arryid'] = parseInt(orden);
 
         _output = '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + orden + '" value="'+ orden + '" /></td>';
         _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + orden + '" value="' + detalle + '" /></td>';
