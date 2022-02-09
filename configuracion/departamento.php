@@ -103,7 +103,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="departamento" class="col-form-label">Departamento:</label>
-                        <input type="text" required class="form-control" id="txtDepa" maxlength="80">
+                        <input type="text" required class="form-control" id="txtDepa" maxlength="80" autocomplete="off">
                     </div>
                 </div>
                 <div class="modal-footer">
