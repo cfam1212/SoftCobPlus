@@ -212,7 +212,7 @@ $(document).ready(function(){
                         TableDataDepa.row(_fila).data([_depaid, _nomdepa, _boton, _newestado, _estadooculto]).draw();
                     }  
                 
-                    mensajesalertify("Grabado Correctamente..!","S","top-center",5);  
+                    // mensajesalertify("Grabado Correctamente..!","S","top-center",5);  
                 }
                 $("#modalDEPARTAMENTO").modal("hide");               
             },
@@ -248,7 +248,7 @@ $(document).ready(function(){
                    }       
                    else {
                     TableDataDepa.row(_fila.parents('tr')).remove().draw();
-                       mensajesalertify("Departamento Eliminado","E","bottom-center",5);
+                       mensajesalertify("Departamento Eliminado","E","top-center",5);
                    }                            
                },
                error: function (error) {

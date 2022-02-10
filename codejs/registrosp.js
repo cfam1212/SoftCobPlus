@@ -78,9 +78,9 @@ $(document).ready(function(){
                          'id="btnAddGe"><i class="fa fa-headphones"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
                          'id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
 
-                TableDataSup.row.add([_supeid, _cedid,  _cede, _supe, _chekestado, _boton]).draw();
+                TableDataSup.row.add([_supeid, _cedid,  _cede, _supe,_boton, _chekestado]).draw();
               
-                mensajesalertify("Grabado Correctamente..!","S","top-center",5);  
+                // mensajesalertify("Grabado Correctamente..!","S","top-center",5);  
 
                 $("#cboCedente").val('0');
                 $("#cboSupervisor").val('0');
@@ -119,7 +119,7 @@ $(document).ready(function(){
                    }       
                    else {
                     TableDataSup.row(_fila.parents('tr')).remove().draw();
-                    mensajesalertify("Supervisor Eliminado","E","bottom-center",5);
+                    mensajesalertify("Supervisor Eliminado","E","top-center",5);
                    }                            
                },
                error: function (error) {
@@ -357,7 +357,8 @@ $(document).ready(function(){
                     });
 
                     _output  = '</tbody>';
-                    $('#tblagestor').append(_output);                       
+                    $('#tblagestor').append(_output); 
+                    mensajesalertify("Gestor Eliminado","E","top-center",5);	                      
                 },
                 error: function (error) {
                     console.log(error);

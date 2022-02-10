@@ -204,7 +204,7 @@ $(document).ready(function(){
             FunRemoveItemFromArr(_result, _descripcion);
             $('#row_' + row_id + '').remove();
             _count--;
-            mensajesalertify("Perfil Eliminado","E","bottom-center",5);
+            mensajesalertify("Perfil Eliminado","E","top-center",5);
 
          }
         , function(){ });

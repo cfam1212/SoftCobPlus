@@ -226,7 +226,7 @@ $(document).ready(function(){
                 success: function(data){
                     Swal.close();
                     TableData.row(_fila.parents('tr')).remove().draw();
-                    mensajesalertify("Usuario Eliminado","E","bottom-center",5);		
+                    mensajesalertify("Usuario Eliminado","E","top-center",5);		
                 },
                 error: function (error) {
                     console.log(error);
@@ -374,12 +374,12 @@ $(document).ready(function(){
 
                     if(_opcion == 0){
                         TableData.row.add([_userid, _usuario, _login, _perfil, _button, _newestado]).draw();
-                        mensajesalertify("Grabado Correctamente..!!","S","top-center",5);				
+                        // mensajesalertify("Grabado Correctamente..!!","S","top-center",5);				
 				
                     }
                     else{
                         TableData.row(_fila).data([_userid, _usuario, _login, _perfil, _button, _newestado]).draw();
-                        mensajesalertify("Actualizado Correctamente..!!","S","top-center",5);	
+                        // mensajesalertify("Actualizado Correctamente..!!","S","top-center",5);	
                     }                     
                     $("#modalNewUser").modal("hide");
                 },

@@ -71,6 +71,8 @@ $(document).ready(function(){
         let _idtare = _rowid.substring(3);
         let _check = $("#chk" + _idtare).is(":checked");
         let _estadotarea;
+
+        
         
         if(_check){
             _estadotarea = 'Activo';
@@ -124,7 +126,7 @@ $(document).ready(function(){
                 else {
                     Swal.close();
                     TableData.row(_fila.parents('tr')).remove().draw();
-                    mensajesalertify("Tarea Eliminada","E","bottom-center",5);
+                    mensajesalertify("Tarea Eliminada","E","top-center",5);
                 }                            
             },
             error: function (error) {
@@ -197,17 +199,27 @@ $(document).ready(function(){
                     }else{
                         _desactivar = '';
                     }
-                    _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3"' +
-                             'id="btnEditar"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
-                            _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
+                    _checked = '';
+
+                    if(_estado == 'Activo'){
+                        _checked = 'checked';
+                    }    
+                    
+                    _newestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _tareaid +
+                                 '" ' + _checked + ' value=' + _tareaid + '/></div></td>';
+
+                    _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3 btnEditar"' +
+                             ' id="btnEditar'+ _tareaid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                            _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'
+                              
                     if(_opcion == 1){
-                        TableData.row.add([_tareaid, _tarea, _ruta, _icono, _estado, _boton]).draw();
+                        TableData.row.add([_tareaid, _tarea, _ruta, _icono,_boton, _newestado]).draw();
                     }
                     else{
-                        TableData.row(_fila).data([_tareaid, _tarea, _ruta, _icono, _estado, _boton]).draw();
+                        TableData.row(_fila).data([_tareaid, _tarea, _ruta, _icono,_boton, _newestado]).draw();
                     }  
                   
-                    mensajesalertify("Grabado Correctamente..!","S","top-center",5);  
+                    // mensajesalertify("Grabado Correctamente..!","S","top-center",5);  
                     $("#modalTAREA").modal("hide");
                 }
             },

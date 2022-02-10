@@ -5,7 +5,7 @@ $(document).ready(function(){
     _mensaje = $('input#mensaje').val();
 
     if(_mensaje != ''){
-        mensajesalertify(_mensaje,"S","top-center",5);
+        // mensajesalertify(_mensaje,"S","top-center",5);
     }
 
     $('#btnNuevo').click(function(){
@@ -103,7 +103,7 @@ $(document).ready(function(){
                             else {
                             
                                 TableNoOrder.row(_fila.parents('tr')).remove().draw();
-                                mensajesalertify("Menu Eliminado..!","E","bottom-center",5);
+                                mensajesalertify("Menu Eliminado..!","E","top-center",5);
                             }
                         },
                         error: function (error) {

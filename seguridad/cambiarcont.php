@@ -39,7 +39,7 @@ require_once '../dashmenu/panel_menu.php';
                                                 <th>
                                                     <label for="detalle" class="col-form-label col-md-2">Contraseña Actual:</label>
                                                     <div class="col-md-6 col-sm-6 ">
-                                                        <input type="password" id="txtcontactual" required="required" class="form-control" maxlength="50">
+                                                        <input type="password" id="txtcontactual" required="required" class="form-control" maxlength="50" autocomplete="off">
                                                     </div>
                                                 </th>
                                             </tr>
@@ -47,7 +47,7 @@ require_once '../dashmenu/panel_menu.php';
                                                 <th>
                                                     <label for="detalle" class="col-form-label col-md-2">Nueva Contraseña:</label>
                                                     <div class="col-md-6 col-sm-6 ">
-                                                        <input type="password" id="txtcontnueva" name="last-name" required="required" class="form-control" maxlength="50">
+                                                        <input type="password" id="txtcontnueva" name="last-name" required="required" class="form-control" maxlength="50" autocomplete="off">
                                                     </div>
                                                 </th>
                                             </tr>
@@ -55,7 +55,7 @@ require_once '../dashmenu/panel_menu.php';
                                                 <th>
                                                     <label for="detalle" class="col-form-label col-md-2 ">Confirmarcion:</label>
                                                     <div class="col-md-6 col-sm-6 ">
-                                                        <input id="txtconfcont" class="form-control" type="password" name="middle-name" maxlength="50">
+                                                        <input id="txtconfcont" class="form-control" type="password" name="middle-name" maxlength="50" autocomplete="off">
                                                     </div>
                                                 </th>
                                             </tr>
@@ -94,7 +94,7 @@ require_once '../dashmenu/panel_menu.php';
                     <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                 </div>
             </div>
-            </form> -->
+            </form>
         </div>
     </div>
 </div>

@@ -55,7 +55,7 @@ $(document).ready(function(){
                         data: {tipo:25, auxv1:_contnueva, auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_usuaid, auxi2:0, auxi3:0, auxi4:0, auxi5:0, 
                         auxi6:0, opcion:0},
                         success: function(data){                    
-                            mensajesalertify("Actualizado con exito..!!","S","top-center",5);                       
+                            // mensajesalertify("Actualizado con exito..!!","S","top-center",5);                       
                             $.trim($("#txtcontactual").val(''));
                             $.trim($("#txtcontnueva").val(''));
                             $.trim($("#txtconfcont").val(''));

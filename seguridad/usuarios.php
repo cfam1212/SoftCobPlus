@@ -122,17 +122,17 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-body">
                     <div class="form-group row">
                         <label for="username" class="control-label col-md-2">Nombres:</label>
-                        <input type="text" required class="form-control col-md-4" id="txtUsername" name="username" maxlength="80" placeholder="Nombre del Usuario">
+                        <input type="text" required class="form-control col-md-4" id="txtUsername" name="username" maxlength="80" placeholder="Nombre del Usuario" autocomplete="off">
                         <label for="lastname" class="control-label col-md-2">Apellidos:</label>
-                        <input type="text" required class="form-control col-md-4" id="txtLastname" name="lastname" maxlength="80" placeholder="Apellido del Usuario">
+                        <input type="text" required class="form-control col-md-4" id="txtLastname" name="lastname" maxlength="80" placeholder="Apellido del Usuario" autocomplete="off">
                     </div>
 
                     <div class="form-group row">
                         <label for="login" class="control-label col-md-2">Login:</label>
-                        <input type="text" required class="form-control col-md-4" id="txtLogin" name="login" maxlength="16" placeholder="Login" onKeyUp="this.value=this.value.toLowerCase();">
+                        <input type="text" required class="form-control col-md-4" id="txtLogin" name="login" maxlength="16" placeholder="Login" onKeyUp="this.value=this.value.toLowerCase();" autocomplete="off">
 
                         <label for="password" class="control-label col-md-2">Password:</label>
-                        <input type="password" required class="form-control col-md-4" id="txtPassword" name="password" maxlength="50" placeholder="Password">
+                        <input type="password" required class="form-control col-md-4" id="txtPassword" name="password" maxlength="50" placeholder="Password" autocomplete="off">
                     </div>
 
                     <div class="form-group row">

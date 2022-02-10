@@ -5,7 +5,7 @@ $(document).ready(function(){
     
     if(_mensaje != ''){
         // alertify.success(_mensaje,'mensaje', 2, function(){console.log('dismissed');});
-        mensajesalertify(_mensaje,"S","top-center",5);
+        // mensajesalertify(_mensaje,"S","top-center",5);
     }
 
     _continuar = true;
@@ -140,9 +140,9 @@ $(document).ready(function(){
              auxi5:0, auxi6:0, opcion:0},
              success: function(data){
                     Swal.close();
-                    TableData.row(fila.parents('tr')).remove().draw();
+                    TableData.row(_fila.parents('tr')).remove().draw();
                    
-                    mensajesalertify("Perfil Eliminado..!","E","bottom-center",5);
+                    mensajesalertify("Perfil Eliminado..!","E","top-center",5);
                             },
                             error: function (error) {
                                 console.log(error);
