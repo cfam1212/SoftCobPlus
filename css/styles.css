@@ -86,6 +86,32 @@ h1 {
   text-align: center;
 }
 
+/*checkbox*/
+
+
+
+/* .table tr td > input[type=checkbox] {
+  cursor: pointer;
+} */
+
+input[type=checkbox] {
+  cursor: pointer;
+  
+}
+
+
+
+/*estilos cambiar contrasena*/
+.header {
+  color: #36A0FF;
+  font-size: 27px;
+  padding: 10px;
+}
+
+.bigicon {
+  font-size: 30px;
+  color: #36A0FF;
+}
 
 
 

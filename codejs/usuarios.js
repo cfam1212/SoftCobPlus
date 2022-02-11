@@ -185,7 +185,7 @@ $(document).ready(function(){
 
         if(_check){
             _estadousuario = 'Activo';
-            $("#btnEditar" + _idusuario).prop("disabled", "disabled");
+            $("#btnEditar" + _idusuario).prop("disabled", "");
         }else 
         {
             _estadousuario = 'Inactivo';
@@ -368,8 +368,8 @@ $(document).ready(function(){
                     
                     _estadooculto = '<td style="display: none;">' + _estado + '</td>';
 
-                    _button = '<div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3"'+
-                                'id="btnEditar"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                    _button = '<div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3 btnEditar"'+
+                                'id="btnEditar'+ _userid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
                                 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div>';
 
                     if(_opcion == 0){

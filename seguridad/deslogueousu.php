@@ -59,7 +59,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             </td>
                                             <td>
                                                 <div class="text-center">
-                                                    <button class="btn btn-outline-info btn-sm ml-3" id="btnReset">
+                                                    <button class="btn btn-outline-primary btn-sm ml-3" id="btnReset">
                                                      <i class="fa fa-street-view"></i></button>                            
                                                 </div> 
                                             </td>

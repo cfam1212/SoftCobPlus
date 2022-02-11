@@ -3,10 +3,7 @@ $(document).ready(function(){
 
     _usuaid = $.trim($("#txtusuaid").val());
 
-    $('#btnRegresar').click(function(){
-        $.redirect('../dashmenu/panel_content.php');
-    });
-
+  
     $('#btnSave').click(function(e){
         e.preventDefault();
         _contactual = $.trim($("#txtcontactual").val());

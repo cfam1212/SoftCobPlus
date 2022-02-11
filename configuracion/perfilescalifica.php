@@ -32,7 +32,6 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <form class="form-horizontal" role="form">
                         <fieldset>
                             <div class="row">
-                                <!-- <label for="espacio" class="control-label col-md-1"></label>-->
                                 <label for="cboperfil" class="control-label col-md-1">Perfil</label>
                                 <div class="form-group col-md-7">
                                     <select class="form-control" id="cboPerfil" name="cboperfil">
@@ -44,13 +43,13 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                             <div class="row">
-                                <!-- <label for="espacio" class="control-label col-md-1"></label>-->
                                 <label for="menuname" class="control-label col-md-1">Descripcion</label>
                                 <div class="form-group col-md-7">
                                     <input type="text" required class="form-control" id="txtDescripcion" name="menuname" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                 </div>
                                 <button type="button" class="btn btn-outline-info" id="btnAgregar" data-toggle="tooltip" data-placement="top" title="agregar" style="margin-bottom:10px">
-                                    <i class="fa fa-plus"></i></button>                                 
+                                    <i class="fa fa-plus"></i>
+                                </button>                                 
                             </div>
                         </fieldset>
                     </form>

@@ -32,30 +32,6 @@ $(document).ready(function(){
     //   }
     // });
 
-    /*$(document).on("click","#btnEditar",function(e){      
-        _fila = $(this).closest("tr");
-        _data = $('#tabledata').dataTable().fnGetData(_fila);
-        _id = _data[0];
-        _namedepaold = _data[1];
-        $("#txtDepa").val(_namedepaold);
-
-        _estado = $('#tdestado' + _id).text();
-        _opcion = 1;
-
-        if(_estado == "Activo"){
-            $("#chkEstado").prop("checked", true);
-            $("#lblEstado").text("Activo");            
-        }else{
-            $("#chkEstado").prop("checked", false);
-            $("#lblEstado").text("Inactivo");
-        }
-
-        $("#divcheck").show();
-        $("#header").css("background-color","#BCBABE");
-        $("#header").css("color","black");
-        $(".modal-title").text("Editar Departamento");
-        $("#modalDEPARTAMENTO").modal("show");
-    });*/
 
     $(document).on("click",".btnEditar",function(e){    
         _fila = $(this).closest("tr");
@@ -82,17 +58,6 @@ $(document).ready(function(){
         $("#modalDEPARTAMENTO").modal("show");
     });    
 
-    // $(document).on("click","#chkEstado",function(){
-    //     _checked = $("#chkEstado").is(":checked");
-
-    //     if(_checked){
-    //       $("#lblEstado").text("Activo");
-    //       _estado = 'Activo';
-    //   }else{
-    //       $("#lblEstado").text("Inactivo");
-    //       _estado = 'Inactivo';
-    //   }
-    // });
 
     //update estado departamento BDD
 
@@ -202,7 +167,7 @@ $(document).ready(function(){
                     _estadooculto = '<td style="display: none;" id="tdestado'+_depaid +'">' + _estado + '</td>';
 
                     _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3 btnEditar"' +
-                            'id="btnEditar"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                            ' id="btnEditar'+ _depaid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
                             _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
 
                     if(_opcion == 0){

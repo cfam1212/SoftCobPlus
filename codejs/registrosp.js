@@ -100,7 +100,6 @@ $(document).ready(function(){
         _row = $(this).closest('tr');
         _data = $('#tabledatasup').dataTable().fnGetData(_row);
         _idsuper = _data[0];
-        //_supervisor = $(this).closest("tr").find('td:eq(2)').text(); 
         _supervisor = _data[3]; 
         DeleteSuper(); 
     });

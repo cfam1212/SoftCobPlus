@@ -85,6 +85,7 @@ $(document).ready(function(){
     $(document).on("click",".btnEdit",function(){
         $("#formPerfil").trigger("reset"); 
         row_id = $(this).attr("id");
+
         
         _descripcionold = $('#txtDescripcion' + row_id + '').val();
         _estadoold = $('#txtEstado' + row_id + '').val();         
@@ -98,6 +99,7 @@ $(document).ready(function(){
         }
 
         $('#txtDescripcionedit').val(_descripcionold);
+        
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","white");
         $(".modal-title").text("Editar Descripcion");       
@@ -184,16 +186,16 @@ $(document).ready(function(){
         });        
     };    
 
-    $("#chkEstado").click(function(){
-        _checked = $("#chkEstado").is(":checked");
-        if(_checked){
-            $("#lblEstado").text("Activo");
-            _estado = 'Activo';
-        }else{
-            $("#lblEstado").text("Inactivo");
-            _estado = 'Inactivo';
-        }
-    });
+    // $("#chkEstado").click(function(){
+    //     _checked = $("#chkEstado").is(":checked");
+    //     if(_checked){
+    //         $("#lblEstado").text("Activo");
+    //         _estado = 'Activo';
+    //     }else{
+    //         $("#lblEstado").text("Inactivo");
+    //         _estado = 'Inactivo';
+    //     }
+    // });
 
     $(document).on("click",".btnDelete",function(){
         row_id = $(this).attr("id");
@@ -244,7 +246,7 @@ $(document).ready(function(){
               
                 if(data == '0'){
 
-                     $.redirect('perfilescalifica.php', {'mensaje': 'Grabado con Exito..!'}); 
+                     $.redirect('perfilescalifica.php', {}); 
                     // mensajesalertify("Grabado con exito..!","S","bottom-center",5);
                 }    
                             
@@ -277,9 +279,7 @@ $(document).ready(function(){
                 data: {opcion:1, id:_cboid},            
                 success: function(data){
                     
-                    //_desactivar = 'disabled';
-                    //console.log(_desactivar);
-                    //tblperfil.clear().draw();
+                   
                     $.each(data,function(i,item){                    
                         _id = parseInt(data[i].Codigo);
                         _desc = data[i].Descripcion;
@@ -290,16 +290,17 @@ $(document).ready(function(){
                         if(_estado == 'Activo'){
                             _checked = 'checked';
                             
-                        }else if(_estado == 'Inactivo'){
-                            _desactivar = 'disabled';
+                        }else{
+                            _disabledit = 'disabled';
                         }
+                        
                             
 
                         _output = '<tr id="row_' + _id + '">';
                         _output += '<td style="display: none;">' + _id  + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _id  + '" value="' + _id + '" /></td>';                
                         _output += '<td>' + _desc + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _id  + '" value="' + _desc + '" /></td>';
                         _output += '<td><div class="text-center"><div class="btn-group">'
-                        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit"  data-toggle="tooltip" data-placement="top" title="editar" id="' + _id  + '" disabled id="' + _id  + '"><i class="fa fa-pencil-square-o"></i></button>';
+                        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit"  data-toggle="tooltip" data-placement="top" title="editar" id="btnEditar' + _id  + '"><i class="fa fa-pencil-square-o"></i></button>';
                         _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete " disabled id="' + _id  + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                         _output  += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPe" id="chk' + _id +
                                     '" ' + _checked + ' value=' + _id + '/></div></td>';
@@ -342,11 +343,12 @@ $(document).ready(function(){
 
     if(_check){
         _estadope = 'A';
+        $("#btnEditar" + _idperfil).prop("disabled", "");
        
     }else 
     {
         _estadope = 'I';
-       
+        $("#btnEditar" + _idperfil).prop("disabled", "disabled");
     }
 
     $.ajax({
