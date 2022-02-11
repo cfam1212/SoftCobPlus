@@ -66,6 +66,8 @@
 
     <script src="../vendors/select2/js/select2.min.js"></script>
 
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+
     <!-- <script src="../vendors/bootstrap/js/collapse.js"></script> -->
 
     <script src="../codejs/funciones.js"></script>

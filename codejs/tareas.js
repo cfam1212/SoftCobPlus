@@ -71,8 +71,6 @@ $(document).ready(function(){
         let _idtare = _rowid.substring(3);
         let _check = $("#chk" + _idtare).is(":checked");
         let _estadotarea;
-
-        
         
         if(_check){
             _estadotarea = 'Activo';

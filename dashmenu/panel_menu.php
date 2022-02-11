@@ -43,6 +43,8 @@ $padremenu = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
     <link href="../vendors/nprogress/css/nprogress.css" rel="stylesheet" />
 
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" />
 
     <link href="../vendors/datatable/css/dataTables.bootstrap.min.css" rel="stylesheet" />

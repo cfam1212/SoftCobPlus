@@ -24,7 +24,10 @@ $(document).ready(function(){
         _id = 0;
         _opcion = 0;
         _estado = 'Activo';
-       
+
+
+        $('#cboCedente').val('0').change();
+        $('#cboSupervisor').val('0').change();
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
         $(".modal-title").text("Nuevo Registro");  
@@ -74,16 +77,16 @@ $(document).ready(function(){
                 _chekestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoSu" id="chk' + _supeid +
                                 '" ' + _checked + ' value=' + _supeid + '/></div></td>';
                 
-                _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-primary btn-sm ml-3"' +
-                         'id="btnAddGe"><i class="fa fa-headphones"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-primary btn-sm ml-3 btnAddGe"' +
+                         'id="btnAddGe' + _supeid + '"><i class="fa fa-headphones"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
                          'id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
 
-                TableDataSup.row.add([_supeid, _cedid,  _cede, _supe,_boton, _chekestado]).draw();
+                TableDataSup.row.add([_supeid, _cedid,  _cede, _supe, _boton, _chekestado]).draw();
               
                 // mensajesalertify("Grabado Correctamente..!","S","top-center",5);  
 
-                $("#cboCedente").val('0');
-                $("#cboSupervisor").val('0');
+                /*$("#cboCedente").val('0');
+                $("#cboSupervisor").val('0');*/
 
                 $("#superModal").modal("hide");               
             },
@@ -135,16 +138,17 @@ $(document).ready(function(){
 
         $("#formGestor").trigger("reset"); 
         _row = $(this).closest('tr');
+        
         _data = $('#tabledatasup').dataTable().fnGetData(_row);
 
         _usuaid = _data[0];
         _cedeid = _data[1];
-    
+
         $("#tblagestor").empty();
 
         _output = '<thead>';
         _output += '<tr><th style="display: none;">Id</th>';
-        _output += '<th>Gestor</th><th style="text-align: center;">Estado</th><th style="text-align: center;">Acciones</th></tr></thead>'
+        _output += '<th>Gestor</th><th style="text-align: center;">Estado</th><th style="text-align: center;">Opciones</th></tr></thead>'
         $('#tblagestor').append(_output); 
 
         _output  = '<tbody>';

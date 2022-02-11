@@ -166,8 +166,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="modal-body">
           <fieldset>
             <div class="row">
+              
               <label for="gestor" class="control-label col-md-1">Gestor</label>
-              <div class="form-group col-md-7">
+              <div class="form-group col-md-6">
                 <select class="form-control" id="cboGestor" name="cboGestor" style="width:100%;">
                   <option value="0">--Seleccione Gestor--</option>
                   <?php foreach ($gestor as $fila) : ?>

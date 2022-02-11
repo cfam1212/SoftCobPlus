@@ -1,7 +1,5 @@
 <?php
 
-
-
 require_once '../dashmenu/panel_menu.php';
 
 ?>
@@ -29,28 +27,29 @@ require_once '../dashmenu/panel_menu.php';
                     <br>
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
                                 <div class="well well-sm">
-                                    <form class="form-horizontal" method="post">
+                                    <form class="form-horizontal">
                                         <fieldset>
                                             <legend class="text-center header">Actualizar Contraseña</legend>
                                             <div class="form-group">
-                                                <i class="fa fa-user bigicon"></i>
-                                                <div class="col-md-8">
+                                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                                                <div class="col-md-6">
                                                     <input type="password" id="txtcontactual" placeholder="Contraseña Actual" class="form-control" autocomplete="off">
                                                 </div>
                                             </div>
                                             <br />
                                             <div class="form-group">
-                                                <i class="fa fa-pencil-square-o bigicon"></i>
-                                                <div class="col-md-8">
+                                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                                                <div class="col-md-6">
                                                     <input type="password" id="txtcontnueva" placeholder="Nueva Contraseña" class="form-control" autocomplete="off">
                                                 </div>
                                             </div>
                                             <br />
                                             <div class="form-group">
                                                 <i class="fa fa-user bigicon"></i>
-                                                <div class="col-md-8">
+                                                <div class="col-md-6">
                                                     <input type="password" id="txtconfcont" placeholder="Confirme Contraseña" class="form-control" autocomplete="off">
                                                 </div>
                                             </div>
@@ -58,11 +57,12 @@ require_once '../dashmenu/panel_menu.php';
                                     </form>
                                 </div>
                             </div>
+                            <div class="col-md-3"></div>
                         </div>
                     </div>
                     <div class="container">
                         <div class='btn-group'>
-                            <button class="btn btn-outline-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                            <button type="button" class="btn btn-outline-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                         </div>
                     </div>
                 </div>
