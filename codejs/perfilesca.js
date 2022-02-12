@@ -265,27 +265,26 @@ $(document).ready(function(){
 
         _output = '<thead class="text-center"';
         _output += '<tr><th style="display: none;">Codigo</th>';
-        _output += '<th>Descripcion</th><th>Estado</th><th>Acciones</th></tr></thead>'
+        _output += '<th>Descripcion</th><th>Opciones</th><th>Estado</th></tr></thead>'
         $('#tblperfil').append(_output);  
         
         _output  = '<tbody>';
-        $('#tblperfil').append(_output);          
-
-         if(_cboid !== '0'){
+        $('#tblperfil').append(_output);     
+        
+         if(_cboid != '0'){
             $.ajax({
                 url: "../db/perfilescacrud.php",
                 type: "POST",
                 dataType: "json",
                 data: {opcion:1, id:_cboid},            
                 success: function(data){
-                    
-                   
                     $.each(data,function(i,item){                    
                         _id = parseInt(data[i].Codigo);
                         _desc = data[i].Descripcion;
                         _estado = data[i].Estado;
                    
                         _checked = '';
+                        _disabledit = '';
 
                         if(_estado == 'Activo'){
                             _checked = 'checked';
@@ -294,18 +293,16 @@ $(document).ready(function(){
                             _disabledit = 'disabled';
                         }
                         
-                            
-
                         _output = '<tr id="row_' + _id + '">';
                         _output += '<td style="display: none;">' + _id  + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _id  + '" value="' + _id + '" /></td>';                
                         _output += '<td>' + _desc + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _id  + '" value="' + _desc + '" /></td>';
                         _output += '<td><div class="text-center"><div class="btn-group">'
-                        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit"  data-toggle="tooltip" data-placement="top" title="editar" id="btnEditar' + _id  + '"><i class="fa fa-pencil-square-o"></i></button>';
+                        _output += '<button type="button" name="btnEdit" ' + _disabledit  + ' class="btn btn-outline-info btn-sm ml-3 btnEdit"  data-toggle="tooltip" data-placement="top" title="editar" id="btnEditar' + _id  + '"><i class="fa fa-pencil-square-o"></i></button>';
                         _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete " disabled id="' + _id  + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                         _output  += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPe" id="chk' + _id +
                                     '" ' + _checked + ' value=' + _id + '/></div></td>';
                         _output += '</tr>';
-                        
+
                         $('#tblperfil').append(_output);  
                         
                         _objeto = {
