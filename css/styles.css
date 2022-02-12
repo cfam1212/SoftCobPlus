@@ -69,11 +69,26 @@ h1 {
   color: black;
 }
 
+/*estilo formulario cambiar contrasena*/
+.x_content ,.x_title {
+  background-color: #F1F1F2;
+  color: black;
+}
+
+ /*centrar un div class*/
+.x_title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+} 
+
 #tblcatalogo,#tblagestor{
 
   background-color: #BCBABE;
   color: black;
 }
+
 
 /*botones circulares*/
 
@@ -112,6 +127,8 @@ input[type=checkbox] {
   font-size: 30px;
   color: #36A0FF;
 }
+
+
 
 
 

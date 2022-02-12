@@ -26,14 +26,30 @@ $(document).ready(function(){
         handle: ".modal-header"
     }); 
 
-    // nuevo-cedente
-    $('#btnNuevo').click(function(){        
-        $.redirect('newcede.php', {'mensaje': ''});
-    });
-
-    $('#btnRegresar').click(function(){        
-      $.redirect("admincede.php");
+    $("#modalNewCedente").draggable({
+        handle: ".modal-header"
     });  
+
+    // nuevo-cedente
+    // $('#btnNuevo').click(function(){        
+    //     $.redirect('newcede.php', {'mensaje': ''});
+    // });
+
+    // $('#btnRegresar').click(function(){        
+    //   $.redirect("admincede.php");
+    // });  
+
+ // MODAL PARA NUEVO CEDENTE
+
+    $("#btnNuevo").click(function(){
+        $("#frmCedente").trigger("reset");
+        
+        $("#header").css("background-color","#BCBABE");
+        $("#header").css("color","black");
+        $(".modal-title").text("Nuevo Cedente");  
+        $("#modalNewCedente").modal("show");
+    
+    });
 
       $('#cboProvincia').select2();
       $('#cboCiudad').select2();

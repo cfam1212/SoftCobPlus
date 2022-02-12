@@ -11,60 +11,48 @@ require_once '../dashmenu/panel_menu.php';
     <div class="">
         <div class="clearfix"></div>
     </div>
-
     <div class="row">
-        <div class="col-md-12 col-sm-12 ">
+        <div class="col-md-3 col-sm-6">
+        </div>
+        <div class="col-md-6 col-sm-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Cambio de Contraseña</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                    </ul>
+                    <h2 class="titulo">Ingrese Credenciales</h2>
                     <div class="clearfix"></div>
                 </div>
+                
                 <div class="x_content">
-                    <br>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
-                                <div class="well well-sm">
-                                    <form class="form-horizontal">
-                                        <fieldset>
-                                            <legend class="text-center header">Actualizar Contraseña</legend>
-                                            <div class="form-group">
-                                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                                                <div class="col-md-6">
-                                                    <input type="password" id="txtcontactual" placeholder="Contraseña Actual" class="form-control" autocomplete="off">
-                                                </div>
-                                            </div>
-                                            <br />
-                                            <div class="form-group">
-                                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                                                <div class="col-md-6">
-                                                    <input type="password" id="txtcontnueva" placeholder="Nueva Contraseña" class="form-control" autocomplete="off">
-                                                </div>
-                                            </div>
-                                            <br />
-                                            <div class="form-group">
-                                                <i class="fa fa-user bigicon"></i>
-                                                <div class="col-md-6">
-                                                    <input type="password" id="txtconfcont" placeholder="Confirme Contraseña" class="form-control" autocomplete="off">
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </form>
-                                </div>
+                    <br />
+                    <form class="form-horizontal form-label-left">
+                        <div class="form-group row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Contraseña Actual:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-9">
+                                <input type="password" id="txtcontactual" class="form-control" autocomplete="off" maxlength="50">
+                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                             </div>
-                            <div class="col-md-3"></div>
                         </div>
-                    </div>
-                    <div class="container">
-                        <div class='btn-group'>
-                            <button type="button" class="btn btn-outline-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Nueva Contraseña:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-9">
+                                <input type="password" id="txtcontnueva" class="form-control" autocomplete="off" maxlength="50">
+                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Confirmar:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-9">
+                                <input type="password" id="txtconfcont" class="form-control" autocomplete="off" maxlength="50">
+                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+
+                        <div class="form-group row">
+                            <div class="col-md-9 offset-md-3">
+                                <button type="button" id="btnSave" class="btn btn-outline-info">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
