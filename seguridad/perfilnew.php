@@ -25,13 +25,25 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
+                    <br/>
                     <form class="form-horizontal" role="form">
                         <fieldset>
-                            <div class="form-group row">
+                            <!-- <div class="form-group row">
                                 <label for="perfilname" class="control-label col-md-2">Perfi:</label>
                                 <input type="text" required class="form-control col-md-4" id="txtPerfil" name="perfilname" maxlength="80" placeholder="Nombre del Perfil">
                                 <label for="descrip" class="control-label col-md-2">Descripción:</label>
                                 <textarea name="descrip" id="txtDescripcion" class="form-control col-md-4" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
+                            </div> -->
+                            <div class="form-group row">
+                                <label for="menuname" class="control-label col-md-1">Perfil:</label>
+                                <div class="col-md-4 col-sm-4  form-group has-feedback">
+                                    <input type="tel" class="form-control has-feedback-left" id="txtPerfil" maxlength="80" placeholder="Nombre del Perfil">
+                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                                <label for="menuname" class="control-label col-md-1">Descripcion:</label>
+                                <div class="col-md-5 col-sm-5 form-group">
+                                <textarea name="descrip" id="txtDescripcion" class="form-control" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
+                                </div>
                             </div>
 
                             <div class="form-group row">
@@ -53,11 +65,11 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <input type="checkbox" id="chkEliminar"></input>
                                     <label class="form-check-label" id="lblEliminar">NO</label>
                                 </div>
-                                <label for="chkestado" class="control-label col-md-2">Estado:</label>
+                                <!-- <label for="chkestado" class="control-label col-md-2">Estado:</label>
                                 <div class="checkbox col-md-4">
                                     <input type="checkbox" id="chkEstado" checked disabled></input>
                                     <label class="form-check-label" id="lblEstado">Activo</label>
-                                </div>
+                                </div> -->
                             </div>
                         </fieldset>
                     </form>
@@ -79,6 +91,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
+                    <br/>
                         <table id="tabledata" class="table table-striped jambo_table bulk_action table-dark table-borderless" style="width: 100%;">
                             <thead class="text-center">
                                 <tr>

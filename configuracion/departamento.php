@@ -42,9 +42,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 foreach ($data as $datos) {
                                 ?>
                                     <?php
-                                         $disabledel = '';
-                                         $disableedit = '';
-                                         $chkestado = '';
+                                    $disabledel = '';
+                                    $disableedit = '';
+                                    $chkestado = '';
 
                                     if ($datos['Depaid'] == '1') {
                                         $disabledel = 'disabled';
@@ -52,10 +52,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         $chkestado = 'disabled';
                                     }
 
-                                    if ($datos['Depaid'] != '1'&& $datos['Estado'] == 'Inactivo') {
-                                      
+                                    if ($datos['Depaid'] != '1' && $datos['Estado'] == 'Inactivo') {
+
                                         $disableedit = 'disabled';
-                                       
                                     }
                                     ?>
                                     <tr>
@@ -74,11 +73,14 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstadoDe" <?php echo $chkestado; ?> id="chk<?php echo $datos['Depaid']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                             echo "checked";} else {'';} ?> value="<?php echo $datos['Depaid']; ?>" />                                            
+                                                                                                                                                                                                echo "checked";
+                                                                                                                                                                                            } else {
+                                                                                                                                                                                                '';
+                                                                                                                                                                                            } ?> value="<?php echo $datos['Depaid']; ?>" />
                                         </td>
                                         <td style="display: none;" id="tdestado<?php echo $datos['Depaid']; ?>">
-		                                     <?php echo $datos['Estado'] ?>
-	                                    </td>   
+                                            <?php echo $datos['Estado'] ?>
+                                        </td>
                                     </tr>
                                 <?php }
                                 ?>
@@ -101,11 +103,19 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formDepartamento">
                 <div class="modal-body">
-                    <div class="form-group">
+                    <!-- <div class="form-group row">
                         <label for="departamento" class="col-form-label">Departamento:</label>
                         <input type="text" required class="form-control" id="txtDepa" maxlength="80" autocomplete="off">
+                    </div> -->
+                    <label for="menuname" class="control-label">Departamento:</label>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12  form-group has-feedback">
+                            <input type="tel" class="form-control has-feedback-left" id="txtDepa" maxlength="80" autocomplete="off">
+                            <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
+                        </div>
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-outline-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                 </div>

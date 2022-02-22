@@ -36,27 +36,36 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
+                    <br />
                     <form class="form-horizontal" role="form">
                         <fieldset>
-                            <div class="form-group row">
+                             <!-- <div class="form-group row">
                                 <label for="menuname" class="control-label col-md-2">Menu:</label>
-                                <input type="text" name="menuname" id="txtMenuname" required class="form-control col-md-4" placeholder="Nombre del Menu" value="<?php echo $datamenu[0]['Menu'] ?>">
+                                <input type="text" name="menuname" id="txtMenuname" required class="form-control col-md-4"  value="<?php echo $datamenu[0]['Menu'] ?>">
                                 <label for="iconome" class="control-label col-md-2">Icono Menú:</label>
                                 <input type="text" name="iconome" id="txtIconome" class="form-control col-md-4" placeholder="ej:. fas fa-user" value="<?php echo $datamenu[0]['Icono'] ?>">
+                            </div>  -->
+                            <div class="form-group row">
+                                <label for="menuname" class="control-label col-md-1">Menu:</label>
+                                <div class="col-md-4 col-sm-4  form-group has-feedback">
+                                    <input type="tel" class="form-control has-feedback-left" id="txtMenuname" value="<?php echo $datamenu[0]['Menu'] ?>">
+                                    <span class="fa fa-bars form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                                <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="menuname" class="control-label col-md-1">Icono Menu:</label>
+                                <div class="col-md-4 col-sm-4  form-group has-feedback">
+                                    <input type="tel" class="form-control has-feedback-left" id="txtIconome" value="<?php echo $datamenu[0]['Icono'] ?>">
+                                    <span class="fa fa-smile-o form-control-feedback left" aria-hidden="true"></span>
+                                </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="cbomenupadre" class="control-label col-md-2">Menu Padre:</label>
+                                <label for="cbomenupadre" class="control-label col-md-1">Menu Padre:</label>
                                 <select name="cbomenupadre" id="cboMenupadre" class="form-control col-md-4">
                                     <?php foreach ($menump as $fila) : ?>
                                         <option <?php if ($datamenu[0]['CodMenuPadre'] == $fila['Codigo']) { ?> selected="<?php echo $fila['Codigo']; ?>" <?php } ?> value="<?= $fila['Codigo'] ?>"><?= $fila['MenuPadre'] ?></option>
                                     <?php endforeach ?>
                                 </select>
-                                <label for="estado" class="control-label col-md-2">Estado:</label>
-                                <div class="form-check col-md-4" id="divcheck">
-                                    <input type="checkbox" class="form-check-input" id="chkEstado">
-                                    <label for="estadolabel" class="form-check-label" id="lblEstado"><?php echo $datamenu[0]['Estado'] ?></label>
-                                </div>
                             </div>
 
                             <div id="divmp" class="form-group row" style="display:none">
@@ -84,6 +93,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
+                        <br />
                         <table id="tableconorder" class="table table-striped jambo_table bulk_action table-dark table-borderless" style="width: 100%;">
                             <thead class="text-center">
                                 <tr>
@@ -105,7 +115,8 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td><?php echo $dat['Ckeck']; ?></td>
                                         <td style="text-align: center">
                                             <input type="checkbox" id="chkTarea" name="check[]" <?php if ($dat['Ckeck'] == 'SI') {
-                                             echo "checked='checked'"; } ?> value="<?php echo $dat['TareaId']; ?>" />                                                
+                                                                                                    echo "checked='checked'";
+                                                                                                } ?> value="<?php echo $dat['TareaId']; ?>" />
                                         </td>
                                         <td><?php echo $dat['Tarea']; ?></td>
                                         <td><?php echo $dat['Ruta']; ?></td>

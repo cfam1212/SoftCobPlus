@@ -33,7 +33,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <fieldset>
                             <div class="row">
                                 <label for="espacio" class="control-label col-md-2"></label>
-                                <label for="cboperfil" class="control-label col-md-1">Perfil</label>
+                                <label for="cboperfil" class="control-label col-md-1">Perfil:</label>
                                 <div class="form-group col-md-5">
                                     <select class="form-control" id="cboPerfil" name="cboperfil" style="width:100%">
                                         <option value="0">--Seleccione Tipo--</option>
@@ -43,7 +43,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </select>
                                 </div>
                             </div>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <label for="espacio" class="control-label col-md-2"></label>
                                 <label for="menuname" class="control-label col-md-1">Descripcion</label>
                                 <div class="form-group col-md-5">
@@ -51,7 +51,18 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                                 <button type="button" class="btn btn-outline-info" id="btnAgregar" data-toggle="tooltip" data-placement="top" title="agregar" style="margin-bottom:10px">
                                     <i class="fa fa-plus"></i>
-                                </button>                                 
+                                </button>
+                            </div> -->
+                            <div class="row">
+                                <label for="espacio" class="control-label col-md-2"></label>
+                                <label for="menuname" class="control-label col-md-1">Descripcion:</label>
+                                <div class="col-md-5 col-sm-5  form-group has-feedback">
+                                    <input type="tel" class="form-control has-feedback-left" id="txtDescripcion" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                                    <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                                <button type="button" class="btn btn-outline-info" id="btnAgregar" data-toggle="tooltip" data-placement="top" title="agregar" style="margin-bottom:10px">
+                                    <i class="fa fa-plus"></i>
+                                </button>
                             </div>
                         </fieldset>
                     </form>
@@ -108,10 +119,10 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <label for="detalle" class="col-form-label">Descripcion</label>
                         <input type="text" id="txtDescripcionedit" required class="form-control" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
                     </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnModificar" class="btn btn-outline-info ml-3"><i class="fa fa-save"></i> Guardar</button>
-                </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="row_id" id="hidden_row_id" />
+                        <button type="button" id="btnModificar" class="btn btn-outline-info ml-3"><i class="fa fa-save"></i> Guardar</button>
+                    </div>
             </form>
         </div>
     </div>
