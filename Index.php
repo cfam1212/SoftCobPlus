@@ -8,6 +8,7 @@
     <link href="./vendors_login/css/sytle.css" rel="stylesheet">
     <link href="./vendors/alertify/css/alertify.min.css" rel="stylesheet">
     <title>Login</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/logo.png">
 </head>
 <body>
     <div id="login-button">
