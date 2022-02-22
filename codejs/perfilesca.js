@@ -59,7 +59,6 @@ $(document).ready(function(){
             _output = '<tr id="row_' + _count + '">';
             _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _count + '" value="' + _codigo + '" /></td>';                
             _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _count + '" value="' + _descripcion + '" /></td>';
-            // _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
             _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
             _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
@@ -326,7 +325,7 @@ $(document).ready(function(){
   });
 
 
-  //update estado perfiles BDD
+  `x`
 
   $(document).on("click",".chkEstadoPe",function(){ 
     let _rowid = $(this).attr("id");
@@ -361,6 +360,6 @@ $(document).ready(function(){
         }                 
     });
 
-});
+  });
 
 });

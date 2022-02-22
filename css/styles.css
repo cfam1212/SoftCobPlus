@@ -3,35 +3,35 @@ h1 {
     font-weight: normal;
     font-size: 40px;
     font-family: Arial;
-    text-transform: uppercase;
+  
   }
   h2 {
     color: #19181a;
     font-weight: normal;
     font-size: 35px;
-    font-family: Cambria;
-    text-transform: uppercase;
+    font-family: Arial;
+    text-align: center;
   }
   h3 {
     color: #c7c5cc;
     font-weight: normal;
     font-size: 30px;
-    font-family: Georgia;
-    text-transform: lowercase;
+    font-family: Arial;
+  
   }
   h4 {
     color: #4f4866;
     font-weight: normal;
     font-size: 25px;
     font-family: Arial;
-    text-transform: lowercase;
+   
   }
   h5 {
     color: #656172;
     font-weight: normal;
     font-size: 20px;
     font-family: Arial;
-    text-transform: lowercase;
+   
   }
   h6 {
     color: #747377;
@@ -69,19 +69,14 @@ h1 {
   color: black;
 }
 
-/*estilo formulario cambiar contrasena*/
+/*estilo formulario*/
 .x_content ,.x_title {
   background-color: #F1F1F2;
   color: black;
 }
 
  /*centrar un div class*/
-.x_title{
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-} 
 
 #tblcatalogo,#tblagestor{
 
@@ -101,13 +96,7 @@ h1 {
   text-align: center;
 }
 
-/*checkbox*/
 
-
-
-/* .table tr td > input[type=checkbox] {
-  cursor: pointer;
-} */
 
 input[type=checkbox] {
   cursor: pointer;

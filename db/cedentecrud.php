@@ -27,6 +27,7 @@ $resultcontacto = (isset($_POST['resultcontacto'])) ? $_POST['resultcontacto'] :
 $resultproducto = (isset($_POST['resultproducto'])) ? $_POST['resultproducto'] : '';
 $resultcatalogo = (isset($_POST['resultcatalogo'])) ? $_POST['resultcatalogo'] : '';
 $resultagencia = (isset($_POST['resultagencia'])) ? $_POST['resultagencia'] : '';
+$idproducto = (isset($_POST['id'])) ? $_POST['id'] : '0';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '0';
 
 
@@ -123,7 +124,21 @@ switch($opcion){
         $estadochek = $estado == 'Activo' ? "A" : "I";
         $resultado->execute(array(3,0,$cedeid,0,0,'','','','','','','',$estadochek,0,'','','',0,0,0,$userid,$host));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
-    break; 
+    break;
+    case 3: //UPDATE ESTADO PRODUCTO BDD
+        $consulta = "CALL sp_New_Producto(?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(1,0,$idproducto,'',$estado,'','',0,0));
+        $data = $resultado->fetchColumn();
+        break;
+        
+    case 4: //ELIMINAR CEDENTE
+        $consulta = "CALL sp_New_Cedente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(4,0,$cedeid,0,0,'','','','','','','','',0,'','','',0,0,0,$userid,$host));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);    
+        break;
+
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);

@@ -17,7 +17,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Registro de parámetros</h2>
+                        <h2>Registro de Parámetros</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>

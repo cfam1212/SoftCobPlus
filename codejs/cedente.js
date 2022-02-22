@@ -400,7 +400,12 @@ $(document).ready(function(){
 
         for (var i = tableHeaderRowCount; i < rowCount; i++) {
             table.deleteRow(tableHeaderRowCount);
-        }    
+        }  
+        
+        if(_estado == 'Activo'){
+            _checked = 'checked';
+        }
+
 
         if(_producto == '')
         {
@@ -426,11 +431,13 @@ $(document).ready(function(){
             _output = '<tr id="rowpro_' + _countproduc + '">';
             _output += '<td style="display: none;">' + _countproduc + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countproduc + '" value="' + _countproduc + '" /></td>';                
             _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countproduc + '" value="' + _producto + '" /></td>';
-            _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _countproduc + '" value="' + _estado + '" /></td>';
+            // _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _countproduc + '" value="' + _estado + '" /></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
             _output += '<button type="button" name="btnEditCon" class="btn btn-outline-primary btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _countproduc + '"><i class="fa fa-upload"></i></button>';
             _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countproduc + '"><i class="fa fa-pencil-square-o"></i></button>';
             _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countproduc + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+            _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPro" id="chk' + _countproduc +
+                        '" ' + _checked + ' value=' + _countproduc + '/></div></td>';
             _output += '</tr>';
             
             $('#tblproducto').append(_output);
@@ -477,18 +484,54 @@ $(document).ready(function(){
 
     });
 
-    //cheked producto-modal
-    $("#chkEstadoPro").click(function(){
-        let _checkedPro = $("#chkEstadoPro").is(":checked");
+    //UPDATE ESTADO PRODUCTO BDD
 
-        if(_checkedPro){
-            $("#lblEstadoPro").text("Activo");
-            _estadopro = 'Activo';
-        }else{
-            $("#lblEstadoPro").text("Inactivo");
-            _estadopro = 'Inactivo';
+    $(document).on("click",".chkEstadoPro",function(){ 
+        let _rowid = $(this).attr("id");
+        let _idproducto = _rowid.substring(3);
+        let _check = $("#chk" + _idproducto).is(":checked");
+    
+           
+        let _estadopro;
+    
+    
+        if(_check){
+            _estadopro = 'A';
+            $("#btnEditar" + _idperfil).prop("disabled", "");
+           
+        }else 
+        {
+            _estadopro = 'I';
+            $("#btnEditar" + _idperfil).prop("disabled", "disabled");
         }
-    });
+    
+        $.ajax({
+            url: "../db/cedentecrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {id: _idproducto, estado: _estadopro, opcion: 3},
+            success: function(data){
+               
+            },
+            error: function (error) {
+                console.log(error);
+            }                 
+        });
+    
+      });
+
+    //cheked producto-modal
+    // $("#chkEstadoPro").click(function(){
+    //     let _checkedPro = $("#chkEstadoPro").is(":checked");
+
+    //     if(_checkedPro){
+    //         $("#lblEstadoPro").text("Activo");
+    //         _estadopro = 'Activo';
+    //     }else{
+    //         $("#lblEstadoPro").text("Inactivo");
+    //         _estadopro = 'Inactivo';
+    //     }
+    // });
 
     //button-editar-producto
 
@@ -1224,7 +1267,7 @@ $(document).ready(function(){
             resultcontacto: _resultcon, resultproducto: _resultpro, resultcatalogo: _resultcat, resultagencia: _resultage, opcion: 0},            
         success: function(data){   
             if(data == 'OK'){                
-                $.redirect('admincede.php',mensajesalertify("Guardado con exito..!","S","bottom-center",5));
+                $.redirect('admincede.php',mensajesalertify("Guardado con exito..!","S","top-center",5));
             }else{
               
                 mensajesalertify("Nombre del Cedente ya exixte..!","W","top-right",5);              
@@ -1235,6 +1278,35 @@ $(document).ready(function(){
           }                            
         });        
 
+    });
+
+   //ELIMINAR CEDENTE 
+    $(document).on("click","#btnEliminar",function(e){   
+        _fila = $(this);  
+        _row = $(this).closest('tr');     
+        _data = $('#tabledata').dataTable().fnGetData(_row);
+        _id = _data[0];
+        _cedentename = _row.find('td:eq(0)').text();
+        
+        alertify.confirm('El Cedente será eliminado..!!', 'Esta seguro de eliminar' + ' ' + _cedentename + '..?', function(){  
+    
+            $.ajax({
+                url: "../db/cedentecrud.php",
+                type: "POST",
+                dataType: "json",
+                data: {opcion:4, cedeid:_id},
+                success: function(data){
+                    Swal.close();
+                    TableData.row(_fila.parents('tr')).remove().draw();
+                    mensajesalertify("Usuario Eliminado","E","top-center",5);		
+                },
+                error: function (error) {
+                    console.log(error);
+                }                  
+            });	
+    
+       }
+           , function(){ });
     });
 
 });

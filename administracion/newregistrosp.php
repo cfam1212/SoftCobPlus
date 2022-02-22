@@ -35,7 +35,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
       <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
           <div class="x_title">
-            <h2>REGISTRO SUPERVISORES Y GESTORES</h2>
+            <h2>Registro de Supervisores y Gestores</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -120,7 +120,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="row">
               <label for="cedente" class="control-label col-md-1">Cedente</label>
               <label for="espacio" class="control-label col-md-1"></label>
-              <div class="form-group col-md-7">
+              <div class="form-group col-md-8">
                 <select class="form-control" id="cboCedente" name="cbocedente" style="width:100%;">
                   <option value="0">--Seleccione Cedente--</option>
                   <?php foreach ($cedente as $fila) : ?>
@@ -133,7 +133,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="row">
               <label for="supervisor" class="control-label col-md-1">Supervisor</label>
               <label for="espacio" class="control-label col-md-1"></label>
-              <div class="form-group col-md-7">
+              <div class="form-group col-md-8">
                 <select class="form-control" id="cboSupervisor" name="cbosupervisor" style="width:100%;">
                   <option value="0">--Seleccione Supervisor--</option>
                   <?php foreach ($super as $fila) : ?>
