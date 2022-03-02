@@ -15,12 +15,12 @@ require_once '../dashmenu/panel_menu.php';
         <div class="col-md-3 col-sm-6">
         </div>
         <div class="col-md-6 col-sm-12">
+            <br/>
             <div class="x_panel">
                 <div class="x_title">
                     <h2 class="titulo">Ingrese Credenciales</h2>
                     <div class="clearfix"></div>
                 </div>
-                
                 <div class="x_content">
                     <br />
                     <form class="form-horizontal form-label-left">
@@ -28,21 +28,21 @@ require_once '../dashmenu/panel_menu.php';
                             <label class="control-label col-md-3 col-sm-3 col-xs-3">Contraseña Actual:</label>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <input type="password" id="txtcontactual" class="form-control" autocomplete="off" maxlength="50">
-                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                <span class="fa fa-key form-control-feedback right" aria-hidden="true"></span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="control-label col-md-3 col-sm-3 col-xs-3">Nueva Contraseña:</label>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <input type="password" id="txtcontnueva" class="form-control" autocomplete="off" maxlength="50">
-                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                <span class="fa fa-key form-control-feedback right" aria-hidden="true"></span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="control-label col-md-3 col-sm-3 col-xs-3">Confirmar:</label>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <input type="password" id="txtconfcont" class="form-control" autocomplete="off" maxlength="50">
-                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                <span class="fa fa-check-square-o form-control-feedback right" aria-hidden="true"></span>
                             </div>
                         </div>
                         <div class="ln_solid"></div>

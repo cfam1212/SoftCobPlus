@@ -154,13 +154,7 @@ $(document).ready(function(){
         
         $("#login").val(_loginold);
 
-        // if(_estado == "Activo"){
-        //     $("#chkEstado").prop("checked", true);
-        //     $("#lblEstado").text("Activo");            
-        // }else{
-        //     $("#chkEstado").prop("checked", false);
-        //     $("#lblEstado").text("Inactivo");
-        // }
+        
     });
 
     // $(document).on("click","#chkEstado",function(){

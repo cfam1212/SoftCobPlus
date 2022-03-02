@@ -96,10 +96,7 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstadoUs" <?php echo $chkestado; ?> id="chk<?php echo $dat['UserId']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
-                                                                                                                                                                                            echo "checked";
-                                                                                                                                                                                        } else {
-                                                                                                                                                                                            '';
-                                                                                                                                                                                        } ?> value="<?php echo $dat['UserId']; ?>" />
+                                              echo "checked"; } else { ''; } ?> value="<?php echo $dat['UserId']; ?>" />                                                                                                                                                                                                                                                                                                                                                                                            
                                         </td>
                                     </tr>
                                 <?php }

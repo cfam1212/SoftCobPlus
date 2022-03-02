@@ -76,7 +76,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <form method="post" id="user_form">
                                 <div class="table-responsive">
                                     <table id="tblperfil" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
-                                        <thead class="text-center">
+                                        <thead>
                                             <tr>
                                                 <th style="display: none;">Codigo</th>
                                                 <th>Descripcion</th>
@@ -95,15 +95,14 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </div>
-                <br>
-                <div class='btn-group'>
-                    <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
-                </div>
             </div>
         </div>
     </div>
+    <br/>
+    <div class='btn-group'>
+        <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+    </div>
 </div>
-
 <div class="modal fade" id="modalPERFIL" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModalBg">

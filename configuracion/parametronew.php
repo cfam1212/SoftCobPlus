@@ -68,7 +68,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                             </div>
                             <div class="tab-pane fade" id="detalle" role="tabpanel" aria-labelledby="detalle-tab">
-
+                                <br/>
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-11"></label>
                                     <button type="button" class="btn btn-outline-info" id="btnAdd" data-toggle="tooltip" data-placement="top" title="agregar detalle" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>

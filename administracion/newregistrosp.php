@@ -194,9 +194,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                           <th style="display: none;">Id</th>
                           <th>Gestor</th>
-                          <th style="text-align: center;">Estado
-                          <th>
-                          <th style="text-align: center;">Acciones</th>
+                          <th style="width:12% ; text-align: center">Opciones</th>
+                          <th style="width:10% ; text-align: center">Estado</th>
                         </tr>
                       </thead>
                       <tbody></tbody>
@@ -209,9 +208,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
           </fieldset>
         </div>
-        <!-- <div class="modal-footer">          
-          <button type="button" id="btnAddGestor" class="btn btn-success ml-3"><i class='fa fa-plus'></i> Guardar</button>
-        </div> -->
       </form>
     </div>
   </div>

@@ -321,9 +321,9 @@ $(document).ready(function(){
            $("#modalCONTACTO").modal("hide"); 
         
             $("#tblcontacto").empty();
-            _output = '<thead class="text-center"';
+            _output = '<thead>';
             _output += '<tr><th style="display: none;">Id</th>';
-            _output += '<th>Contacto</th><th>Cargo</th><th style="display: none;">CodigoCargo</th><th>Celular</th><th>Ext</th><th>Email</th><th>Acciones</th></tr></thead>'
+            _output += '<th>Contacto</th><th style="text-align: center;">Cargo</th><th style="display: none;">CodigoCargo</th><th style="text-align: center;">Celular</th><th style="text-align: center;">Ext</th><th style="text-align: center;">Email</th><th style="text-align: center;">Opciones</th></tr></thead>'
             $('#tblcontacto').append(_output); 
             _output  = '<tbody>';
             $('#tblcontacto').append(_output); 
@@ -402,9 +402,9 @@ $(document).ready(function(){
             table.deleteRow(tableHeaderRowCount);
         }  
         
-        if(_estado == 'Activo'){
-            _checked = 'checked';
-        }
+        // if(_estado == 'Activo'){
+        //     _checked = 'checked';
+        // }
 
 
         if(_producto == '')
@@ -431,13 +431,12 @@ $(document).ready(function(){
             _output = '<tr id="rowpro_' + _countproduc + '">';
             _output += '<td style="display: none;">' + _countproduc + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countproduc + '" value="' + _countproduc + '" /></td>';                
             _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countproduc + '" value="' + _producto + '" /></td>';
-            // _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + _countproduc + '" value="' + _estado + '" /></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
             _output += '<button type="button" name="btnEditCon" class="btn btn-outline-primary btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _countproduc + '"><i class="fa fa-upload"></i></button>';
             _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countproduc + '"><i class="fa fa-pencil-square-o"></i></button>';
             _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countproduc + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-            _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPro" id="chk' + _countproduc +
-                        '" ' + _checked + ' value=' + _countproduc + '/></div></td>';
+            // _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPro" id="chk' + _countproduc +
+            //             '" ' + _checked + ' value=' + _countproduc + '/></div></td>';
             _output += '</tr>';
             
             $('#tblproducto').append(_output);
@@ -595,7 +594,6 @@ $(document).ready(function(){
                 _output = '<tr id="rowpro_' + item.arrycodigo + '">';
                 _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
                 _output += '<td>' + item.arryproducto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproducto + '" /></td>';
-                _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTado' + item.arrycodigo + '" value="' + item.arryestado + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + item.arrycodigo + '"><i class="fa fa-upload"></i></button>';
                 _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
@@ -674,10 +672,12 @@ $(document).ready(function(){
         function FunBuscarDatos(codproduc){
         $("#tblcatalogo").empty();
      
-        _output = '<thead class="text-center"';
+        _output = '<thead>';
         _output += '<tr><th style="display: none;">Id</th>';
-        _output += '<th>Producto</th><th>Cod.Catalogo</th><th>Catalogo</th><th>Estado</th><th>Acciones</th>'
-        $('#tblcatalogo').append(_output);  
+        _output += '<th>Producto</th><th>Cod.Catalogo</th><th>Catalogo</th><th style="text-align: center;">Opciones</th></tr></thead>'
+        $('#tblcatalogo').append(_output);
+        
+        console.log(_output);
         
         _output  = '<tbody>';
         $('#tblcatalogo').append(_output);   
@@ -691,9 +691,9 @@ $(document).ready(function(){
                 _output = '<tr id="rowcat_' + item.arrycodigo + '">';
                 _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
                 _output += '<td>' + item.arryproductocat + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproductocat + '" /></td>';
-                _output += '<td class="text-center">' + item.arrycodigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + item.arrycodigo + '" value="' + item.arrycodigocat + '" /></td>';
-                _output += '<td class="text-center">' + item.arrycatalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + item.arrycodigo + '" value="' + item.arrycatalogo + '" /></td>';
-                _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + item.arrycodigo + '" value="' + item.arryestado  + '" /></td>';
+                _output += '<td>' + item.arrycodigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + item.arrycodigo + '" value="' + item.arrycodigocat + '" /></td>';
+                _output += '<td>' + item.arrycatalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + item.arrycodigo + '" value="' + item.arrycatalogo + '" /></td>';
+                // _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + item.arrycodigo + '" value="' + item.arryestado  + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
                 _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
@@ -747,9 +747,9 @@ $(document).ready(function(){
             _output = '<tr id="rowcat_' + _countcatalogo + '">';
             _output += '<td style="display: none;">' + _countcatalogo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countcatalogo + '" value="' + _countcatalogo + '" /></td>';                
             _output += '<td>' + _produc + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countcatalogo + '" value="' + _produc + '" /></td>';
-            _output += '<td class="text-center">' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _countcatalogo + '" value="' + _codigocat + '" /></td>';
-            _output += '<td class="text-center">' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _countcatalogo + '" value="' + _catalogo + '" /></td>';
-            _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + _countcatalogo + '" value="' + _estadocat + '" /></td>';
+            _output += '<td>' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _countcatalogo + '" value="' + _codigocat + '" /></td>';
+            _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _countcatalogo + '" value="' + _catalogo + '" /></td>';
+            // _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + _countcatalogo + '" value="' + _estadocat + '" /></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
             _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countcatalogo + '"><i class="fa fa-pencil-square-o"></i></button>';
             _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcatalogo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';

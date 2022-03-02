@@ -11,20 +11,36 @@ $(document).ready(function(){
         handle: ".modal-header"
     });  
 
+    $("#modalNewParametro").draggable({
+        handle: ".modal-header"
+    });  
+
     if(_mensaje != ''){
 
         mensajesalertify(_mensaje,"S","top-center",5);
     }
 
-    $('#btnNuevo').click(function(){        
-        //$.redirect('parametronew.php', {'mensaje': ''});
-        $.redirect('parametronew.php');
+    // $('#btnNuevo').click(function(){        
+    //     //$.redirect('parametronew.php', {'mensaje': ''});
+    //     $.redirect('parametronew.php');
         
-    });
+    // });
 
-    $('#btnRegresar').click(function(){        
-        $.redirect("parametroadmin.php");
-    });  
+    // $('#btnRegresar').click(function(){        
+    //     $.redirect("parametroadmin.php");
+    // });  
+
+    //NUEVO MONDAL
+
+    $("#btnNuevo").click(function(){
+        $("#formParam").trigger("reset");
+        
+        $("#header").css("background-color","#BCBABE");
+        $("#header").css("color","black");
+        $(".modal-title").text("Nuevo Parametro");  
+        $("#modalNewParametro").modal("show");
+    
+    });
 
     $(document).on("click","#btnEliminar",function(){        
         _fila = $(this).closest("tr");
@@ -36,10 +52,10 @@ $(document).ready(function(){
     //modal
     $("#btnAdd").click(function(){        
         $("#formParam").trigger("reset");
-        $("#divcheck").hide();
+        // $("#divcheck").hide();
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
-        $(".modal-title").text("Nuevo Parametro");  
+        $(".modal-title").text("Nuevo Detalle");  
         $("#btnAgregar").text("Agregar");
         $("#modalPARAMETER").modal("show");
         _tipoSave = 'add';
@@ -122,7 +138,7 @@ $(document).ready(function(){
                 _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + _count + '" value="' + _detalle + '" /></td>';
                 _output += '<td class="text-center">' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' +_count + '" value="' + _valorv + '" /></td>';
                 _output += '<td class="text-center">' + _valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + _count + '" value="' + _valori + '" /></td>';
-                _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
+                // _output += '<td class="text-center">' + _estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="subirnivel" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + _count + '"><i class="fa fa-arrow-up"></i></button>';
                 _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit"data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
@@ -276,9 +292,10 @@ $(document).ready(function(){
         
         if(_check){
             _estadopa = 'A'
+            $("#btnEditar" + _idpa).prop("disabled", "");
         }else{
             _estadopa = 'I'
-
+            $("#btnEditar" + _idpa).prop("disabled", "disabled");
         }
 
         $.ajax({
@@ -391,7 +408,7 @@ $(document).ready(function(){
         _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + orden + '" value="' + detalle + '" /></td>';
         _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + orden + '" value="'+ valorv + '" /></td>';
         _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + orden + '" value="'+ valori + '" /></td>';
-        _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
+        // _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
         _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
@@ -399,7 +416,7 @@ $(document).ready(function(){
         $('#row_' + orden + '').html(_output);
     }
 
-    function FunOrderLast(orden,detalle,valorv,valori,estado)
+    function FunOrderLast(orden,detalle,valorv,valori)
     {        
         if(orden != 'disabled'){
             _deshabilitar = ''
@@ -412,7 +429,7 @@ $(document).ready(function(){
         _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + orden + '" value="' + detalle + '" /></td>';
         _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + orden + '" value="'+ valorv + '" /></td>';
         _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + orden + '" value="'+ valori + '" /></td>';
-        _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
+        // _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
         _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
@@ -420,7 +437,7 @@ $(document).ready(function(){
         $('#row_' + orden + '').html(_output);
     }
 
-    function FunOrderDelete(ordenx,rowmod,detalle,valorv,valori,estado)
+    function FunOrderDelete(ordenx,rowmod,detalle,valorv,valori)
     {        
         if(ordenx == 1){
             _deshabilitar  = 'disabled';
@@ -432,7 +449,7 @@ $(document).ready(function(){
         _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + ordenx + '" value="' + detalle + '" /></td>';
         _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + ordenx + '" value="'+ valorv + '" /></td>';
         _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + ordenx + '" value="'+ valori + '" /></td>';
-        _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + ordenx + '" value="'+ estado + '" /></td>';
+        // _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + ordenx + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + ordenx + '"><i class="fa fa-arrow-up"></i></button>';
         _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + ordenx + '"><i class="fa fa-pencil-square-o"></i></button>';
@@ -440,7 +457,7 @@ $(document).ready(function(){
         $('#row_' + rowmod + '').html(_output);
     }
 
-    function FunOrderEdit(norden,detalle,valorv,valori,estado)
+    function FunOrderEdit(norden,detalle,valorv,valori)
     {
         if(norden == '1'){
             _deshabilitar  = 'disabled';
@@ -454,7 +471,7 @@ $(document).ready(function(){
         _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + norden + '" value="' + detalle + '" /></td>';
         _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + norden + '" value="' + valorv + '" /></td>';
         _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + norden + '" value="' + valori + '" /></td>';
-        _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + norden + '" value="' + estado + '" /></td>';
+        // _output += '<td class="text-center">' + estado + ' <input type="hidden" name="hidden_estado[]" id="txtEstado' + norden + '" value="' + estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="subirnivel" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + norden + '"><i class="fa fa-arrow-up"></i></button>';
         _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + norden + '"><i class="fa fa-pencil-square-o"></i></button>';
@@ -507,7 +524,7 @@ $(document).ready(function(){
 
     //EDITAR PARAMETROS
 
-    $(document).on("click","#btnEditar",function(){        
+    $(document).on("click",".btnEditar",function(){        
         _fila = $(this).closest("tr");
         _data = $('#tabledata').dataTable().fnGetData(_fila);
         _id = _data[0];

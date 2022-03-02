@@ -148,7 +148,7 @@ $(document).ready(function(){
 
         _output = '<thead>';
         _output += '<tr><th style="display: none;">Id</th>';
-        _output += '<th>Gestor</th><th style="text-align: center;">Estado</th><th style="text-align: center;">Opciones</th></tr></thead>'
+        _output += '<th>Gestor</th><th style="width:12% ; text-align: center">Opciones</th><th style="width:10% ; text-align: center">Estado</th></tr></thead>'
         $('#tblagestor').append(_output); 
 
         _output  = '<tbody>';
@@ -171,8 +171,8 @@ $(document).ready(function(){
                     _output = '<tr id="rowges_' + _id + '">';
                     _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
                     _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
-                    _output += '<td class="text-center">' + ' <input type="checkbox"' + _newestado + ' class="form-check-input chkEstado" id="chk' + _id + '" /></td>';
                     _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" data-toggle="tooltip" data-placement="top" title="eliminar" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                    _output += '<td class="text-center">' + ' <input type="checkbox"' + _newestado + ' class="form-check-input chkEstado" id="chk' + _id + '" /></td>';
                     $('#tblagestor').append(_output); 
                 });
             },
@@ -287,7 +287,7 @@ $(document).ready(function(){
 
                     _output = '<thead>';
                     _output += '<tr><th style="display: none;">Id</th>';
-                    _output += '<th>Gestor</th><th style="text-align: center;">Estado</th><th style="text-align: center;">Acciones</th></tr></thead>'
+                    _output += '<th>Gestor</th><th  style="width:12% ; text-align: center">Opciones</th><th style="width:10% ; text-align: center">Estado</th></tr></thead>'
                     $('#tblagestor').append(_output); 
             
                     _output  = '<tbody>';
@@ -301,8 +301,8 @@ $(document).ready(function(){
                         _output = '<tr id="rowges_' + _id + '">';
                         _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
                         _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
-                        _output += '<td class="text-center">' + ' <input type="checkbox" checked class="form-check-input chkEstado" id="chk' + _id + '" /></td>';
                         _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                        _output += '<td class="text-center">' + ' <input type="checkbox" checked class="form-check-input chkEstado" id="chk' + _id + '" /></td>';
                         $('#tblagestor').append(_output); 
                     });
                     

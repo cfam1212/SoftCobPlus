@@ -262,9 +262,9 @@ $(document).ready(function(){
 
         $("#tblperfil").empty();
 
-        _output = '<thead class="text-center"';
+        _output = '<thead>';
         _output += '<tr><th style="display: none;">Codigo</th>';
-        _output += '<th>Descripcion</th><th>Opciones</th><th>Estado</th></tr></thead>'
+        _output += '<th>Descripcion</th><th style="width:12% ; text-align: center">Opciones</th><th style="width:10% ; text-align: center">Estado</th></tr></thead>'
         $('#tblperfil').append(_output);  
         
         _output  = '<tbody>';

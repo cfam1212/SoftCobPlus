@@ -211,7 +211,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                     <div class="row">
                                         <label for="espacio" class="control-label col-md-1"></label>
-                                        <label for="menuname" class="control-label col-md-1">Fax:</label>
+                                        <label for="fax" class="control-label col-md-1">Fax:</label>
                                         <!-- <div class="form-group col-md-3">
                                             <input type="text" required class="form-control" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="txtFax" name="fax" maxlength="10">
                                         </div> -->
@@ -248,7 +248,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <div class="row">
                                 <label for="espacio" class="control-label col-md-1"></label>
-                                <label for="menuname" class="control-label col-md-1">Contacto:</label>
+                                <label for="contacto" class="control-label col-md-1">Contacto:</label>
                                 <!-- <div class="form-group col-md-3">
                                     <input type="text" required class="form-control" id="txtContacto" name="contacto" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                 </div> -->
@@ -319,16 +319,16 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
                                             <table id="tblcontacto" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
-                                                <thead class="text-center">
+                                                <thead>
                                                     <tr>
                                                         <th style="display: none;">Id</th>
                                                         <th>Contacto</th>
-                                                        <th>Cargo</th>
+                                                        <th style="text-align: center;">Cargo</th>
                                                         <th style="display: none;">CodigoCargo</th>
-                                                        <th>Celular</th>
+                                                        <th style="text-align: center;">Celular</th>
                                                         <th>Ext</th>
-                                                        <th>Email</th>
-                                                        <th>Acciones</th>
+                                                        <th style="text-align: center;">Email</th>
+                                                        <th style="text-align: center;">Opciones</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody></tbody>
@@ -375,7 +375,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                         <th style="display: none;">Id</th>
                                                         <th>Producto</th>
                                                         <th style="width:13% ; text-align: center">Opciones</th>
-                                                        <th style="width:10% ; text-align: center">Estado</th>
+                                                        <!-- <th style="width:10% ; text-align: center">Estado</th> -->
                                                     </tr>
                                                 </thead>
                                                 <tbody></tbody>
@@ -394,14 +394,14 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
                                             <table id="tblcatalogo" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
-                                                <thead class="text-center">
+                                                <thead>
                                                     <tr>
                                                         <th style="display: none;">Id</th>
                                                         <th>Producto</th>
                                                         <th>Cod.Catalogo</th>
                                                         <th>Catalogo</th>
-                                                        <th>Estado</th>
-                                                        <th>Acciones</th>
+                                                        <!-- <th>Estado</th> -->
+                                                        <th style="text-align: center;">Opciones</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody></tbody>

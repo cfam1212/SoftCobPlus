@@ -64,7 +64,7 @@ $(document).ready(function(){
       }
     });
 
-    //EDITAR ESTADO USUARIO
+    //EDITAR ESTADO TAREA
 
     $(document).on("click",".chkEstadoTa",function(){ 
         let _rowid = $(this).attr("id");
