@@ -41,16 +41,16 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </thead>
                             <tbody>
                                 <?php
-                               
+
 
                                 foreach ($data as $datos) {
                                 ?>
-                                        <?php
-                                        $disabledit = '';
-                                        if ($datos['Estado'] == 'Inactivo') {
-                                            $disabledit = 'disabled';
-                                        }
-                                        ?>
+                                    <?php
+                                    $disabledit = '';
+                                    if ($datos['Estado'] == 'Inactivo') {
+                                        $disabledit = 'disabled';
+                                    }
+                                    ?>
                                     <tr>
                                         <td><?php echo $datos['ParaId'] ?></td>
                                         <td><?php echo $datos['Parametro'] ?></td>
@@ -58,7 +58,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar<?php echo $datos['ParaId']; ?>"  data-toggle="tooltip" data-placement="top" title="editar">
+                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar<?php echo $datos['ParaId']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
                                                     <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarEdit" data-toggle="tooltip" data-placement="top" title="eliminar">
                                                         <i class="fa fa-trash-o"></i>
@@ -68,7 +68,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstadoPa" id="chk<?php echo $datos['ParaId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                              echo "checked"; } ?> value="<?php echo $datos['ParaId']; ?>" />                                                                                                                             
+                                                                                                                                                                    echo "checked";
+                                                                                                                                                                } ?> value="<?php echo $datos['ParaId']; ?>" />
                                         </td>
                                     </tr>
                                 <?php }
@@ -93,83 +94,66 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="modal-body">
                 <div class="x_content">
                     <br />
-                    <div class="row">
-                        <div class="col-1">
-                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Parametro</a>
-                                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Detalle</a>
-                            </div>
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Parametro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Detalle</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <form class="form-horizontal" role="form">
+                                <fieldset>
+                                    <div class="row">
+                                        <label for="espacio" class="control-label col-md-2"></label>
+                                        <label for="parametro" class="control-label col-md-1">Parametro:</label>
+                                        <div class="col-md-5 col-sm-5  form-group has-feedback">
+                                            <input autofocus type="text" class="form-control has-feedback-left" id="txtParametro" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
+                                            <span class="fa fa-bookmark form-control-feedback left" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label for="espacio" class="control-label col-md-2"></label>
+                                        <label for="descripcion" class="control-label col-md-1">Descripcion:</label>
+                                        <div class="col-md-9 col-sm-9  form-group has-feedback">
+                                            <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" onKeyUp="this.value=this.value.toUpperCase();" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
                         </div>
-                        <div class="col-11">
-                            <div class="tab-content" id="v-pills-tabContent">
-                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                    <br>
-                                    <form class="form-horizontal" role="form">
-                                        <fieldset>
-                                            <!-- <div class="row">
-                                                <label for="espacio" class="control-label col-md-1"></label>
-                                                <label for="menuname" class="control-label col-md-1">Parámetro:</label>
-                                                <div class="form-group col-md-3">
-                                                    <input type="text" required class="form-control" id="txtParametro" name="parametro" placeholder="" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
-                                                </div>
-                                            </div> -->
-                                            <div class="row">
-                                                <label for="espacio" class="control-label col-md-1"></label>
-                                                <label for="parametro" class="control-label col-md-1">Parametro</label>
-                                                <div class="col-md-5 col-sm-5  form-group has-feedback">
-                                                    <input type="text" class="form-control has-feedback-left" id="txtParametro" placeholder="" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
-                                                    <span class="fa fa-bookmark form-control-feedback left" aria-hidden="true"></span>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="row">
-                                                <label for="espacio" class="control-label col-md-1"></label>
-                                                <label for="menuname" class="control-label col-md-1">Descripción</label>
-                                                <div class="form-group col-md-10">
-                                                    <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" onKeyUp="this.value=this.value.toUpperCase();" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
-                                                </div>
-                                            </div> -->
-                                            <div class="row">
-                                                <label for="espacio" class="control-label col-md-1"></label>
-                                                <label for="descripcion" class="control-label col-md-1">Descripcion</label>
-                                                <div class="col-md-9 col-sm-9  form-group has-feedback">
-                                                    <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" onKeyUp="this.value=this.value.toUpperCase();" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
-                                                </div>
-                                            </div>
-                                        </fieldset>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <br />
+                            <div class="row">
+                                <label for="espacio" class="control-label col-md-1"></label>
+                                <button type="button" class="btn btn-outline-info" id="btnAdd" data-toggle="tooltip" data-placement="top" title="agregar detalle" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-md-12 col-sm-12">
+                                <div class="col-md-1 col-sm-1">
+                                </div>
+                                <div class="col-md-10 col-sm-10">
+                                    <form method="post" id="user_form">
+                                        <div class="table-responsive">
+                                            <table id="tblparameter" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                                <thead class="text-center">
+                                                    <tr>
+                                                        <th style="display: none;">NOrden</th>
+                                                        <th>Detalle</th>
+                                                        <th>Valor Texto</th>
+                                                        <th>Valor Entero</th>
+                                                        <th>Opciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
                                     </form>
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                    <br />
-                                    <div class="row">
-                                        <label for="espacio" class="control-label col-md-11"></label>
-                                        <button type="button" class="btn btn-outline-info" id="btnAdd" data-toggle="tooltip" data-placement="top" title="agregar detalle" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="col-md-1 col-sm-1">
-                                        </div>
-                                        <div class="col-md-10 col-sm-10">
-                                            <form method="post" id="user_form">
-                                                <div class="table-responsive">
-                                                    <table id="tblparameter" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
-                                                        <thead class="text-center">
-                                                            <tr>
-                                                                <th style="display: none;">NOrden</th>
-                                                                <th>Detalle</th>
-                                                                <th>Valor Texto</th>
-                                                                <th>Valor Entero</th>
-                                                                <th>Opciones</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody></tbody>
-                                                    </table>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-md-1 col-sm-1">
-                                        </div>
-                                    </div>
+                                <div class="col-md-1 col-sm-1">
                                 </div>
                             </div>
                         </div>

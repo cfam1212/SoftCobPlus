@@ -30,14 +30,7 @@ $(document).ready(function(){
         handle: ".modal-header"
     });  
 
-    // nuevo-cedente
-    // $('#btnNuevo').click(function(){        
-    //     $.redirect('newcede.php', {'mensaje': ''});
-    // });
-
-    // $('#btnRegresar').click(function(){        
-    //   $.redirect("admincede.php");
-    // });  
+   
 
  // MODAL PARA NUEVO CEDENTE
 
@@ -50,6 +43,17 @@ $(document).ready(function(){
         $("#modalNewCedente").modal("show");
     
     });
+
+
+    //EDITAR CEDENTE
+    $(document).on("click",".btnEditar",function(){        
+        _fila = $(this).closest("tr");
+        _data = $('#tabledata').dataTable().fnGetData(_fila);
+        _id = _data[0];
+       
+        $.redirect('editcede.php', {'id': _id}); //POR METODO POST
+
+    });  
 
       $('#cboProvincia').select2();
       $('#cboCiudad').select2();

@@ -33,20 +33,18 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </ul>
                         <div class="clearfix"></div>
                     </div>
-
                     <div class="x_content">
-                        <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                        <br />
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="parametro-tab" data-toggle="tab" href="#parametro" role="tab" aria-controls="parametro" aria-selected="true">Datos Parámetro</a>
+                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Parametro</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="detalle-tab" data-toggle="tab" href="#detalle" role="tab" aria-controls="detalle" aria-selected="false">Detalles</a>
+                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Detalle</a>
                             </li>
-
                         </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="parametro" role="tabpanel" aria-labelledby="parametro-tab">
-                                <br>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                 <form class="form-horizontal" role="form">
                                     <fieldset>
                                         <div class="row">
@@ -63,27 +61,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <textarea name="observa" id="txtDescripcion" class="form-control col-md-8"><?php echo $datapara[0]['Descripcion']; ?></textarea>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <label for="espacio" class="control-label col-md-1"></label>
-                                            <label for="estado" class="control-label col-md-1">Estado:</label>
-                                            <div class="form-check" id="divcheck">
-                                                <input type="checkbox" class="form-check-input" id="chkEstadoCab">
-                                                <label for="estadolabel" class="form-check-label" id="lblEstadoCab"><?php echo $datapara[0]['Estado'] ?></label>
-                                            </div>
-                                        </div>
-
                                     </fieldset>
                                 </form>
-                                <br>
-                                <br>
                             </div>
-                            <div class="tab-pane fade" id="detalle" role="tabpanel" aria-labelledby="detalle-tab">
-                                <div class="row">
-                                    <label for="espacio" class="control-label col-md-11"></label>
-                                    <button type="button" class="btn btn-outline-info" id="btnAdd" data-toggle="tooltip" data-placement="top" title="agregar detalle" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
-                                </div>
-                                <br>
-                                <br>
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="col-md-1 col-sm-1">
                                     </div>
@@ -111,7 +92,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                 <td style="display: none;">
                                                                     <?php echo $dat['Padeid']; ?>
                                                                     <input type="hidden" name="hidden_padeid[]" id="padeid<?php echo $dat['Orden']; ?>" value="<?php echo $dat['Padeid']; ?>" />
-                                                                </td>                                                            
+                                                                </td>
                                                                 <td style="display: none;">
                                                                     <?php echo $dat['Orden']; ?>
                                                                     <input type="hidden" name="hidden_orden[]" id="orden<?php echo $dat['Orden']; ?>" value="<?php echo $dat['Orden']; ?>" />
@@ -130,7 +111,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                 </td>
                                                                 <td style="text-align: center">
                                                                     <input type="checkbox" class="form-check-input chkEstadoDe" id="chk<?php echo $dat['Orden']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
-                                                                    echo "checked"; } ?> value="<?php echo $dat['Padeid']; ?>" />                                                                                                                  
+                                                                           echo "checked"; } ?> value="<?php echo $dat['Padeid']; ?>" />
+                                                                                                                                                                                   
                                                                 </td>
                                                                 <td style="display: none;" id="tdestado<?php echo $dat['Padeid']; ?>">
                                                                     <?php echo $dat['Estado'] ?>
@@ -148,7 +130,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                         <div class="btn-group">
                                                                             <button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" data-toggle="tooltip" data-placement="top" title="subir" id="btnUp<?php echo $dat['Orden']; ?>" <?php echo $desactivar; ?>><i class="fa fa-arrow-up"></i></button>
                                                                             <button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id=<?php echo $dat['Orden']; ?>><i class="fa fa-pencil-square-o"></i></button>
-                                                                            <button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3" id="<?php echo $dat['Orden']; ?>" disabled ><i class="fa fa-trash-o"></i></button>
+                                                                            <button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3" id="<?php echo $dat['Orden']; ?>" disabled><i class="fa fa-trash-o"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -169,7 +151,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class='btn-group'>
                     <button class="btn btn-outline-secondary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
                     <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
-                </div>                       
+                </div>
             </div>
         </div>
     </div>

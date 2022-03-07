@@ -169,7 +169,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <input type="text" required class="form-control" id="txtCedente" name="menuname" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                         </div> -->
                                         <div class="col-md-3 col-sm-3 form-group">
-                                            <input type="text" class="form-control has-feedback-left" id="txtCedente" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                                            <input autofocus type="text" class="form-control has-feedback-left" id="txtCedente" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                             <span class="fa fa-pie-chart form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                         <label for="espacio" class="control-label col-md-1"></label>
