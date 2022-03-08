@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     var _count = 0,_objeto, _cbociudad, _cboid, _resultcon = [],_codcargoold,_idproduc,_countcatalogo = 0, 
-    _resultpro = [], _resultcat =[], _resultage = [], _agencia,_cbosucursal,_sucursal,_zona, _estado, _producto,
+    _resultpro = [], _resultcat = [], _resultage = [], _agencia,_cbosucursal,_sucursal,_zona, _estado, _producto,
     _codigocat, _catalogo, _estadocat, _produc, _countagen = 0, _codigoagen,_countproduc = 0, _estadopro,_idcontacto, 
     _contactoold, _codcargoold, _celularold, _extold, _email1old, _estadoagen, _estadocat, _countcontacto = 0, _contactoold,
     _descripant;

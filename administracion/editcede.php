@@ -7,18 +7,41 @@ $cedeid = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
-$resultado->execute(array(42, $_SESSION["i_emprid"], '', '', '', '', '', '', $cedeid, 0, 0, 0, 0, 0));
-$datacede = $resultado->fetchAll(PDO::FETCH_ASSOC);
+$resultado->execute(array(29, 0, '', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
+$dataprov = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(36, $_SESSION["i_emprid"], 'NIVEL ARBOL', '', '', '', '', '', 1, 0, 0, 0, 0, 0));
+$nivelarbol = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(43, $_SESSION["i_emprid"], '', '', '', '', '', '', $cedeid, 0, 0, 0, 0, 0));
+$datacede = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(30, 0, '', '', '', '', '', '', $datacede[0]['CodigoPro'], 0, 0, 0, 0, 0));
+$dataciudad = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(44, $_SESSION["i_emprid"], '', '', '', '', '', '', $cedeid, 0, 0, 0, 0, 0));
 $cedecon = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(36, $_SESSION["i_emprid"], 'CARGOS', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
+$cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="right_col" role="main">
     <input type="hidden" id="paraid" value="<?php echo $cedeid ?>">
     <input type="hidden" id="mensaje" value="<?php echo $mensaje ?>">
+    <input type="hidden" id="provid" value="<?php echo $datacede[0]['CodigoPro']; ?> ">
+    <input type="hidden" id="ciudid" value="<?php echo $datacede[0]['CodigoCiu']; ?> ">
+    <input type="hidden" id="nivelid" value="<?php echo $datacede[0]['Nivel']; ?> ">
     <div class="">
         <div class="clearfix"></div>
         <div class="row">
@@ -55,8 +78,12 @@ $cedecon = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="cboprovincia" class="control-label col-md-1">Provincia:</label>
                                             <div class="form-group col-md-3">
-                                                <select class="form-control" id="cboProvincia" name="cboprovincia" style="width: 100%;">
+                                                <select class="form-control" id="cboProvincia" name="cboprovincia">
                                                     <option value="0">--Seleccione Provincia--</option>
+                                                    <?php foreach ($dataprov as $fila) : ?>
+                                                        <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
+                                                        </option>
+                                                    <?php endforeach ?>
                                                 </select>
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
@@ -64,7 +91,11 @@ $cedecon = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="form-group col-md-3">
                                                 <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;">
                                                     <option value="0">--Seleccione Ciudad--</option>
-                                                </select>
+                                                    <?php foreach ($dataciudad as $fila) : ?>
+                                                        <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
+                                                        </option>
+                                                    <?php endforeach ?>
+                                                </select>                                                    
                                             </div>
                                         </div>
 
@@ -234,6 +265,7 @@ $cedecon = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                             <th style="text-align: center;">Celular</th>
                                                             <th>Ext</th>
                                                             <th style="text-align: center;">Email</th>
+                                                            <th style="display: none;">Email2</th>
                                                             <th style="text-align: center;">Opciones</th>
                                                         </tr>
                                                     </thead>
@@ -250,18 +282,13 @@ $cedecon = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                     <?php echo $dat['Contacto']; ?>
                                                                     <input type="hidden" name="hidden_contacto[]" id="txtContacto" value="<?php echo $dat['Contacto']; ?>" />
                                                                 </td>
+                                                                <td>
+                                                                    <?php echo $dat['Cargo']; ?>
+                                                                    <input type="hidden" name="hidden_cargo[]" id="cargo" value="<?php echo $dat['Cargo']; ?>" />
+                                                                </td>
                                                                 <td style="display: none;">
                                                                     <?php echo $dat['CodCargo']; ?>
-                                                                    <input type="hidden" name="hidden_conid[]" id="conid" value="<?php echo $dat['Id']; ?>" />
-                                                                </td>
-                                                                <td style="text-align: center;">
-                                                                    <!-- <input type="hidden" name="hidden_cargo[]" id="txtValorv" value="" /> -->
-                                                                    <select class="form-control" id="cboCargo" name="cbocargo" style="width: 60%;">
-                                                                        <option value="0">--Seleccione Cargo--</option>
-                                                                        <?php foreach ($cedecon as $fila) : ?>
-                                                                            <option value="<?= $fila['CodCargo'] ?>"><?= $fila['Descripcion'] ?></option>
-                                                                        <?php endforeach ?>
-                                                                    </select>
+                                                                    <input type="hidden" name="hidden_cargo[]" id="txtValorv" value="" /> 
                                                                 </td>
                                                                 <td>
                                                                     <?php echo $dat['Celular']; ?>
@@ -275,6 +302,10 @@ $cedecon = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                     <?php echo $dat['Email1']; ?>
                                                                     <input type="hidden" name="hidden_email[]" id="txtEmail1" value="<?php echo $dat['Email1']; ?>" />
                                                                 </td>
+                                                                <td style="display: none;">
+                                                                    <?php echo $dat['Email2']; ?>
+                                                                    <input type="hidden" name="hidden_email2[]" id="txtEmail2" value="<?php echo $dat['Email2']; ?>" />
+                                                                </td>                                                                
                                                                 <td>
                                                                     <div class="text-center">
                                                                         <div class="btn-group">

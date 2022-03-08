@@ -216,7 +216,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                             <th>Celular</th>
                                                             <th>Ext</th>
                                                             <th>Email</th>
-                                                            <th>Acciones</th>
+                                                            <th>Opciones</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody></tbody>
