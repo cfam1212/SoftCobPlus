@@ -6,6 +6,10 @@ $(document).ready(function(){
         $.redirect("admincede.php");
     });  
 
+    $("#modalEDITCONTACTO").draggable({
+        handle: ".modal-header"
+    }); 
+
     _provid = $.trim($("#provid").val());
     _ciudid = $.trim($("#ciudid").val());
     _nivelid = $.trim($("#nivelid").val());
@@ -103,6 +107,34 @@ $(document).ready(function(){
 
 
 
-    });    
+    });   
+    
+    //EDITAR CONTACTO VENTANA MODAL
+    $(document).on("click",".btnEditConMo",function(){
+        $("#formEditContacto").trigger("reset"); 
+        debugger;
+         _idcontacto = $(this).attr("id");
+         alert(_idcontacto);
+         _contactoold = $('#txtContactoMo' + _idcontacto + '').val();
+         _codcargoold = $('#codCargo' + _idcontacto + '').val();
+         _celularold = $('#txtCelularMo' + _idcontacto + '').val();
+         _extold = $('#txtExtMo' + _idcontacto + '').val();
+         _email1old = $('#txtEmail1Mo' + _idcontacto + '').val();   
+         _tipoSave = 'edit';
+  
+        $('#txtContactoMo').val(_contactoold);
+        $('#cboCargoMo').val(_codcargoold).change();
+        $('#txtCelularMo').val(_celularold);
+        $('#txtExtMo').val(_extold);
+        $('#txtEmail1Mo').val(_email1old);
+  
+        $('#hidden_row_id').val(_idcontacto);
+        $("#headercon").css("background-color","#BCBABE");
+        $("#headercon").css("color","black");
+        $(".modal-title").text("Editar Contacto");       
+        $("#btnAgregar").text("Modificar");
+        $("#modalEDITCONTACTO").modal("show");
+  
+    });
 
 });

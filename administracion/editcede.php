@@ -34,6 +34,11 @@ $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(36, $_SESSION["i_emprid"], 'CARGOS', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
 $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+$consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute(array(45, $_SESSION["i_emprid"], '', '', '', '', '', '', $cedeid, 0, 0, 0, 0, 0));
+$producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="right_col" role="main">
@@ -95,7 +100,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                         <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
                                                         </option>
                                                     <?php endforeach ?>
-                                                </select>                                                    
+                                                </select>
                                             </div>
                                         </div>
 
@@ -288,29 +293,29 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                 </td>
                                                                 <td style="display: none;">
                                                                     <?php echo $dat['CodCargo']; ?>
-                                                                    <input type="hidden" name="hidden_cargo[]" id="txtValorv" value="" /> 
+                                                                    <input type="hidden" name="hidden_cargo[]" id="txtValorv" value="" />
                                                                 </td>
-                                                                <td>
+                                                                <td style="text-align: center;">
                                                                     <?php echo $dat['Celular']; ?>
                                                                     <input type="hidden" name="hidden_celular[]" id="txtCelular" value="<?php echo $dat['Celular']; ?>" />
                                                                 </td>
                                                                 <td>
-                                                                    <?php echo $dat['Extension']; ?> 
+                                                                    <?php echo $dat['Extension']; ?>
                                                                     <input type="hidden" name="hidden_extension[]" id="txtExt" value="<?php echo $dat['Extension']; ?>" />
                                                                 </td>
-                                                                <td>
+                                                                <td style="text-align: center;">
                                                                     <?php echo $dat['Email1']; ?>
                                                                     <input type="hidden" name="hidden_email[]" id="txtEmail1" value="<?php echo $dat['Email1']; ?>" />
                                                                 </td>
                                                                 <td style="display: none;">
                                                                     <?php echo $dat['Email2']; ?>
                                                                     <input type="hidden" name="hidden_email2[]" id="txtEmail2" value="<?php echo $dat['Email2']; ?>" />
-                                                                </td>                                                                
+                                                                </td>
                                                                 <td>
                                                                     <div class="text-center">
                                                                         <div class="btn-group">
-                                                                            <button type="button" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit"><i class="fa fa-pencil-square-o"></i></button>
-                                                                            <button type="button" class="btn btn-outline-danger btn-sm ml-3" id="btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" ><i class="fa fa-trash-o"></i></button>
+                                                                            <button type="button" class="btn btn-outline-info btn-sm ml-3 btnEditConMo" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit<?php echo $dat['Id']; ?>"><i class="fa fa-pencil-square-o"></i></button>
+                                                                            <button type="button" class="btn btn-outline-danger btn-sm ml-3" id="btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -333,7 +338,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <input type="text" required class="form-control" id="txtProducto" name="producto" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                 </div> -->
                                     <div class="col-md-6 col-sm-6 form-group">
-                                        <input type="text" class="form-control has-feedback-left" id="txtProducto" placeholder="" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                                        <input type="text" class="form-control has-feedback-left" id="txtProducto" placeholder="" maxlength="150">
                                         <span class="fa fa-briefcase form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                     <div class="form-group col-md-2">
@@ -359,11 +364,40 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                         <tr>
                                                             <th style="display: none;">Id</th>
                                                             <th>Producto</th>
+                                                            <th>Descripcion</th>
                                                             <th style="width:13% ; text-align: center">Opciones</th>
                                                             <!-- <th style="width:10% ; text-align: center">Estado</th> -->
                                                         </tr>
                                                     </thead>
-                                                    <tbody></tbody>
+                                                    <tbody>
+                                                        <?php
+                                                        foreach ($producto as $dat) {
+                                                        ?>
+                                                            <tr>
+                                                                <td style="display: none;">
+                                                                    <?php echo $dat['IdPro']; ?>
+                                                                    <input type="hidden" name="hidden_idpro[]" id="idpro" value="<?php echo $dat['IdPro']; ?>" />
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $dat['Producto']; ?>
+                                                                    <input type="hidden" name="hidden_producto[]" id="txtProducto" value="<?php echo $dat['Producto']; ?>" />
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $dat['Descripcion']; ?>
+                                                                    <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion" value="<?php echo $dat['Descripcion']; ?>" />
+                                                                </td>
+                                                                <td>
+                                                                    <div class="text-center">
+                                                                        <div class="btn-group">
+                                                                            <button type="button" class="btn btn-outline-primary btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnEditCat"><i class="fa fa-upload"></i></button>
+                                                                            <button type="button" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit"><i class="fa fa-pencil-square-o"></i></button>
+                                                                            <button type="button" class="btn btn-outline-danger btn-sm ml-3" id="btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    </tbody>
                                                 </table>
                                             </div>
                                         </form>
@@ -440,6 +474,68 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
                     <button type="button" id="btnBoton" class="btn btn-outline-info ml-3"><i class="fa fa-save"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalEDITCONTACTO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 35%" role="document">
+        <div class="modal-content" id="myModalBg">
+            <div class="modal-header" id="headercon">
+                <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formEditContacto">
+                <div class="modal-body">
+                    <br />
+                    <div class="row">
+                        <label for="cbocargo" class="control-label col-md-2">Cargo </label>
+                        <select class="form-control" id="cboCargoMo" name="cboCargo1" style="width: 75%;">
+                            <option value="0">--Seleccione Cargo--</option>
+                            <?php foreach ($cargo as $fila) : ?>
+                                <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <label for="menuname" class="control-label col-md-2">Contacto</label>
+                        <div class="col-md-9 col-sm-9  form-group has-feedback">
+                            <input type="tel" class="form-control has-feedback-left" id="txtContactoMo" placeholder="" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <label for="menuname" class="control-label col-md-2">Celular</label>
+                        <div class="col-md-9 col-sm-9  form-group has-feedback">
+                            <input type="tel" class="form-control has-feedback-left" id="txtCelularMo" placeholder="" maxlength="10" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                            <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <label for="menuname" class="control-label col-md-2">Ext</label>
+                        <div class="col-md-9 col-sm-9  form-group has-feedback">
+                            <input type="tel" class="form-control has-feedback-left" id="txtExtMo" placeholder="" maxlength="10" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                            <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <label for="menuname" class="control-label col-md-2">Email</label>
+                        <div class="col-md-9 col-sm-9  form-group has-feedback">
+                            <input type="text" class="form-control has-feedback-left" id="txtEmail1Mo" placeholder="" maxlength="80">
+                            <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="row_id" id="hidden_row_id" />
+                    <button type="button" id="btnEditarCon" class="btn btn-outline-info ml-3">Modificar</button>
                 </div>
             </form>
         </div>

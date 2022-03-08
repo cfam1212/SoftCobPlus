@@ -348,7 +348,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <input type="text" required class="form-control" id="txtProducto" name="producto" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                 </div> -->
                                 <div class="col-md-6 col-sm-6 form-group">
-                                    <input type="text" class="form-control has-feedback-left" id="txtProducto" placeholder="" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                                    <input type="text" class="form-control has-feedback-left" id="txtProducto" placeholder="" maxlength="150">
                                     <span class="fa fa-briefcase form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                                 <div class="form-group col-md-2">
@@ -374,6 +374,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     <tr>
                                                         <th style="display: none;">Id</th>
                                                         <th>Producto</th>
+                                                        <th>Descripcion</th>
                                                         <th style="width:13% ; text-align: center">Opciones</th>
                                                         <!-- <th style="width:10% ; text-align: center">Estado</th> -->
                                                     </tr>
@@ -433,11 +434,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formContacto">
                 <div class="modal-body">
-                    <!-- <div class="form-group">
-                        <label for="contacto" class="col-form-label">Contacto</label>
-                        <input type="text" id="txtContactoMo" required class="form-control" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
-                    </div> -->
-                 
                     <br />
                     <div class="row">
                         <label for="cbocargo" class="control-label col-md-2">Cargo </label>
@@ -456,10 +452,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="valorv" class="col-form-label">Celular</label>
-                        <input type="text" id="txtCelularMo" class="form-control" maxlength="10" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
-                    </div> -->
                     <br />
                     <div class="row">
                         <label for="menuname" class="control-label col-md-2">Celular</label>
@@ -468,10 +460,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="valori" class="col-form-label">Ext</label>
-                        <input type="text" id="txtExtMo" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="10">
-                    </div> -->
                     <br />
                     <div class="row">
                         <label for="menuname" class="control-label col-md-2">Ext</label>
@@ -480,11 +468,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-
-                    <!-- <div class="form-group">
-                        <label for="email" class="col-form-label">Email</label>
-                        <input type="text" id="txtEmail1Mo" required class="form-control" maxlength="80">
-                    </div> -->
                     <br />
                     <div class="row">
                         <label for="menuname" class="control-label col-md-2">Email</label>
@@ -514,10 +497,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <form id="formProducto">
                 <div class="modal-body">
                     <br/>
-                    <!-- <div class="form-group">
-                        <label for="produc" class="control-label col-md-4">Producto</label>
-                        <input type="text" required class="form-control" id="txtProductoMo" name="producto" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
-                    </div> -->
                     <div class="row">
                         <label for="menuname" class="control-label col-md-2">Producto</label>
                         <div class="col-md-10 col-sm-10  form-group has-feedback">
@@ -525,10 +504,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-briefcase form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <!-- <div class="form-check" id="divcheck">
-                        <input type="checkbox" id="chkEstadoPro" class="form-check-input">
-                        <label for="estadolabel" class="form-check-label" id="lblEstadoPro">Activo</label>
-                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
@@ -549,25 +524,17 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formCatalogo">
                 <div class="modal-body">
-                    <!-- <div class="form-group">
-                        <label for="menuname" class="control-label col-md-4">Codigo Catalogo</label>
-                        <input type="text" required class="form-control" id="txtCodigoMo" name="catalogo" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
-                    </div> -->
                     <div class="row">
                         <label for="menuname" class="control-label col-md-2">Codigo</label>
                         <div class="col-md-8 col-sm-8  form-group has-feedback">
-                            <input type="tel" class="form-control has-feedback-left" id="txtCodigoMo" placeholder="" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
+                            <input type="tel" class="form-control has-feedback-left" id="txtCodigoMo" placeholder="" maxlength="10">
                             <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="catalogo" class="control-label col-md-2">Catalogo</label>
-                        <input id="txtCatalogoMo" name="txtcatalogo" type="text" class="form-control" maxlength="250" onKeyUp="this.value=this.value.toUpperCase();">
-                    </div> -->
                     <div class="row">
                         <label for="menuname" class="control-label col-md-2">Catalogo</label>
                         <div class="col-md-8 col-sm-8  form-group has-feedback">
-                            <input type="text" class="form-control has-feedback-left" id="txtCatalogoMo" placeholder="" maxlength="250" onKeyUp="this.value=this.value.toUpperCase();">
+                            <input type="text" class="form-control has-feedback-left" id="txtCatalogoMo" placeholder="" maxlength="250">
                             <span class="fa fa-file-text form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
@@ -591,10 +558,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formEditCatalogo">
                 <div class="modal-body">
-                    <!-- <div class="form-group">
-                        <label for="produc" class="control-label col-md-4">Cod.Catalogo</label>
-                        <input type="text" required class="form-control" id="txtCodMo" name="producto" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
-                    </div> -->
                     <div class="row">
                         <label for="menuname" class="control-label col-md-2">Codigo</label>
                         <div class="col-md-8 col-sm-8  form-group has-feedback">
@@ -602,10 +565,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="produc" class="control-label col-md-4">Catalogo</label>
-                        <input type="text" required class="form-control" id="txtCatMo" name="producto" maxlength="250" onKeyUp="this.value=this.value.toUpperCase();">
-                    </div> -->
                     <div class="row">
                         <label for="menuname" class="control-label col-md-2">Catalogo</label>
                         <div class="col-md-8 col-sm-8  form-group has-feedback">
@@ -613,10 +572,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-file-text form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <!-- <div class="form-check" id="divcheck">
-                        <input type="checkbox" id="chkEstadoCat" class="form-check-input">
-                        <label for="estadolabel" class="form-check-label" id="lblEstadoCat">Activo</label>
-                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
