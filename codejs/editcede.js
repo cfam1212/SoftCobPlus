@@ -228,7 +228,7 @@ $(document).ready(function(){
                                  ' id="btnEditar'+ _tareaid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
                                 _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'
                         
-                        TableData.row.add([_tareaid, _tarea, _ruta, _icono,_boton, _newestado]).draw();
+                        TableDataContacto.row.add([_tareaid, _tarea, _ruta, _icono,_boton, _newestado]).draw();
 
                         _objeto = {
                             arrycodigo : parseInt(_contactoid),
