@@ -1229,15 +1229,9 @@ $(document).ready(function(){
 
       //debugger;
       let _cboprovincia = $('#cboProvincia').val();
-     
-
       let _cbocuidad = $('#cboCiudad').val();
-    
-
       let _cboarbol = $('#cboArbol').val();
       
-
-
       if(_cboprovincia == '0')
       {
           mensajesalertify("Seleccione Provincia..!","W","top-right",5);

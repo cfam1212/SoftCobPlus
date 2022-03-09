@@ -2,7 +2,7 @@ $(document).ready(function(){
     
     var _id, _opcion, _data, _estado, _fila, _nameoldtarea, _ruta, _icono, _checked, _row, _tarea
 
-   
+    
   
     $("#modalTAREA").draggable({
         handle: ".modal-header"
@@ -25,10 +25,11 @@ $(document).ready(function(){
         _fila = $(this).closest("tr");
         _data = $('#tabledata').dataTable().fnGetData(_fila);
         _id = _data[0];
-        _nameoldtarea = $.trim(_fila.find('td:eq(0)').text());
-        _ruta = $.trim(_fila.find('td:eq(1)').text());
-        _icono = $.trim(_fila.find('td:eq(2)').text());
-        _estado = $.trim(_fila.find('td:eq(3)').text());
+        _nameoldtarea = _data[1];
+        _ruta = _data[2];
+        _icono = _data[3]
+        //_estado = $.trim(_fila.find('td:eq(3)').text());
+        //_nameoldtarea = $.trim(_fila.find('td:eq(0)').text());
 
         $("#txtTarea").val(_nameoldtarea);
         $("#txtRuta").val(_ruta);
@@ -44,7 +45,7 @@ $(document).ready(function(){
             $("#lblEstado").text("Inactivos");
         }
 
-        $("#divcheck").show();
+        //$("#divcheck").show();
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
         $(".modal-title").text("Editar Tarea");
@@ -82,9 +83,8 @@ $(document).ready(function(){
             $("#btnEditar" + _idtare).prop("disabled", "disabled");
         }
 
-        $.ajax({
+        $.post({
             url: "../db/tareacrud.php",
-            type: "POST",
             dataType: "json",
             data: {id: _idtare, estado: _estadotarea, opcion: 3},
             success: function(data){
@@ -159,7 +159,6 @@ $(document).ready(function(){
                     data: {opcion:2, id: _id, tarea: _tarea, ruta:_ruta, icono:_icono, estado:_estado},            
                     success: function(data){
                         if(data == '1'){
-                           
                             mensajesalertify("Tarea ya Existe..!!","W","top-right",5);                   
                         }else{
                             FunGrabar();
@@ -223,7 +222,7 @@ $(document).ready(function(){
             },
             error: function (error) {
                 console.log(error);
-              }                            
+            }                            
         }); 
     }    
 

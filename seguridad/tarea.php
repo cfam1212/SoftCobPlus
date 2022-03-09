@@ -73,7 +73,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar<?php echo $datos['TareaId']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
+                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
                                                     <button class="btn btn-outline-danger btn-sm ml-3" <?php echo $disabledel ?> id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
                                                         <i class="fa fa-trash-o"></i>
@@ -110,10 +110,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formTarea">
                 <div class="modal-body">
-                    <!-- <div class="form-group">
-                        <label for="tarea" class="col-form-label">Tarea:</label>
-                        <input type="text" required class="form-control" id="txtTarea">
-                    </div> -->
                     <label for="tarea" class="col-form-label">Tarea:</label>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
@@ -121,10 +117,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="ruta" class="col-form-label">Ruta:</label>
-                        <input type="text" required class="form-control" id="txtRuta" placeholder="ej: ../seguridad/usuario.php">
-                    </div> -->
                     <label for="tarea" class="col-form-label">Ruta:</label>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
@@ -132,10 +124,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-sign-out form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="icono" class="col-form-label">Icono:</label>
-                        <input type="text" class="form-control" id="txtIcono" placeholder="ej: fa fa-user">
-                    </div> -->
                     <label for="tarea" class="col-form-label">Icono:</label>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
