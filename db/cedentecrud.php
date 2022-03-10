@@ -54,7 +54,7 @@ switch($opcion){
 
             if($resultcontacto != '')
             {
-                foreach($resultcontacto as $drfila){
+                    foreach($resultcontacto as $drfila){
                     $consulta = "CALL sp_New_Contacto(?,?,?,?,?,?,?,?,?,?,?)";
                     $resultado = $conexion->prepare($consulta);
                     $resultado->execute(array(0,$cedeid,$drfila['arrycodigo'],$drfila['arrycontacto'],$drfila['arrycbocargo'],

@@ -174,7 +174,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="contacto" class="control-label col-md-1">Contacto:</label>
                                     <div class="col-md-3 col-sm-3 form-group">
-                                        <input type="tel" class="form-control has-feedback-left" id="txtContacto" class="form-control" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                                        <input type="tel" class="form-control has-feedback-left" id="txtContacto" class="form-control" maxlength="150" autofocus onKeyUp="this.value=this.value.toUpperCase();">
                                         <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                     <label for="espacio" class="control-label col-md-1"></label>

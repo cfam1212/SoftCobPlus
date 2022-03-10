@@ -1,6 +1,7 @@
 $(document).ready(function(){
     
     var _provid, _ciudid, _nivelid, _resultcon = [];
+   
 
     $('#btnRegresar').click(function(){        
         $.redirect("admincede.php");
@@ -142,6 +143,8 @@ $(document).ready(function(){
   
     });
 
+    //AGREGAR NUEVO CONTACTO EN EDITAR
+
     $("#btnContacto").click(function(){
         let _id = $('#cedeid').val();
         let _contacto = $('#txtContacto').val();
@@ -168,7 +171,7 @@ $(document).ready(function(){
         {
             var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
         
-            if (regex.test($('#txtEmail1Mo').val().trim())) {
+            if (regex.test($('#txtEmail1').val().trim())) {
             } else {
                 mensajesalertify("Email es invalido","E","top-right",5);
                 _continuaconedit = false;   
@@ -180,7 +183,7 @@ $(document).ready(function(){
         {
             var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
         
-            if (regex.test($('#txtEmail1Mo').val().trim())) {
+            if (regex.test($('#txtEmail2').val().trim())) {
             } else {
                 mensajesalertify("Email es invalido","E","top-right",5);
                 _continuaconedit = false;   
@@ -200,7 +203,7 @@ $(document).ready(function(){
                 }
             });
 
-            valoredit = document.getElementById("_celular").value;
+            valoredit = document.getElementById("txtCelular").value;
             if( !(/^\d{10}$/.test(valoredit)) ) {
                 mensajesalertify("Celular incorrecto..!","E","top-right",5); 
                 _continuaconedit = false;
@@ -210,25 +213,28 @@ $(document).ready(function(){
 
         if(_continuaconedit)
         {
-            $.post({
+            $.ajax({
                 url: "../db/contactocrud.php",
+                type: "POST",
                 dataType: "json",
-                data: {opcion:0, id:_id, tarea:_tarea, ruta:_ruta, icono:_icono, estado:_estado},            
+                data: {opcion:0, id:_id, contacto:_contacto, cargo:_cargo, ext:_ext, celular:_celular, email1: _email1, email2:_email2},            
                 success: function(data){
                     if(data == 'SI'){
                         mensajesalertify("Tarea ya Existe..!!","W","top-right",5);                   
                     }else{
                         _contactoid = data[0].Id;
-                        _tarea = data[0].Tarea;
-                        _ruta = data[0].Ruta;
-                        _icono = data[0].Icono
-                        _estado = data[0].Estado;
+                        _contacto = data[0].Contacto;
+                        _cargo = data[0].Cargo;
+                        _celular = data[0].Celular;
+                        _extension = data[0].Extension;
+                        _email1 = data[0].Email1;
+                        _email2 = data[0].Email2;
  
-                        _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3 btnEditar"' +
-                                 ' id="btnEditar'+ _tareaid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
-                                _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'
+                        _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3 btnEditConMo"  data-toggle="tooltip" data-placement="top" title="editar"' +
+                                 ' id="btnEdit'+ _contactoid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar"'
+                                 'id="btnDelete"><i class="fa fa-trash-o"></i></button></div></div></td>'
                         
-                        TableDataContacto.row.add([_tareaid, _tarea, _ruta, _icono,_boton, _newestado]).draw();
+                        TableDataContacto.row.add([_contactoid, _contacto, _cargo, _celular,_extension, _email1,_boton]).draw();
 
                         _objeto = {
                             arrycodigo : parseInt(_contactoid),
@@ -303,6 +309,36 @@ $(document).ready(function(){
         }else{
             FunGrabar();
         }        
-    });    
+    });  
+    
+    //ELIMINAR CONTACTO 
+    $(document).on("click","#btnDelete",function(e){   
+        _fila = $(this);  
+        _row = $(this).closest('tr');     
+        _data = $('#tblcontacto').dataTable().fnGetData(_row);
+        _idcon = _data[0];
+        _contacto = _data[1];
+        
+        
+        alertify.confirm('El Contacto será eliminado..!!', 'Esta seguro de eliminar' + ' ' + _contacto + '..?', function(){  
+    
+            $.ajax({
+                url: "../db/contactocrud.php",
+                type: "POST",
+                dataType: "json",
+                data: {opcion:1, idcon: _idcon},
+                success: function(data){
+                    Swal.close();
+                    TableData.row(_fila.parents('tr')).remove().draw();
+                    mensajesalertify("Contacto Eliminado","E","top-center",3);		
+                },
+                error: function (error) {
+                    console.log(error);
+                }                  
+            });	
+    
+       }
+           , function(){ });
+    });
 
 });
