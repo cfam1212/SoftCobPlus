@@ -27,7 +27,7 @@ $(document).ready(function(){
         "columnDefs": [{
             "data": null
         },
-        { visible: false, targets: [0] }
+        { visible: false, targets: [0,3,7] }
     ],
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros",

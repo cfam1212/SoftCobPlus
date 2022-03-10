@@ -42,7 +42,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="right_col" role="main">
-    <input type="text" id="cedeid" value="<?php echo $cedeid ?>">
+    <input type="hidden" id="cedeid" value="<?php echo $cedeid ?>">
     <input type="hidden" id="mensaje" value="<?php echo $mensaje ?>">
     <input type="hidden" id="provid" value="<?php echo $datacede[0]['CodigoPro']; ?> ">
     <input type="hidden" id="ciudid" value="<?php echo $datacede[0]['CodigoCiu']; ?> ">
@@ -230,7 +230,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <table id="tblcontacto" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
                                                     <thead>
                                                         <tr>
-                                                            <th style="display: none;">Id</th>
+                                                            <th>Id</th>
                                                             <th>Contacto</th>
                                                             <th style="text-align: center;">Cargo</th>
                                                             <th style="display: none;">CodigoCargo</th>
@@ -246,7 +246,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                             foreach ($cedecon as $dat) {
                                                         ?>
                                                             <tr>
-                                                                <td style="display: none;">
+                                                                <td>
                                                                     <?php echo $dat['Id']; ?>
                                                                 </td>
                                                                 <td>
@@ -264,10 +264,10 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                 <td>
                                                                     <?php echo $dat['Extension']; ?>
                                                                 </td>
-                                                                <td style="text-align: center;">
+                                                                <td>
                                                                     <?php echo $dat['Email1']; ?>
                                                                 </td>
-                                                                <td style="display: none;">
+                                                                <td>
                                                                     <?php echo $dat['Email2']; ?>
                                                                 </td>
                                                                 <td>
@@ -348,9 +348,9 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                 <td>
                                                                     <div class="text-center">
                                                                         <div class="btn-group">
-                                                                            <button type="button" class="btn btn-outline-primary btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnEditCat"><i class="fa fa-upload"></i></button>
+                                                                            <button type="button" class="btn btn-outline-primary btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnEditCat"><i class="fa fa-upload"></i></button>
                                                                             <button type="button" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit"><i class="fa fa-pencil-square-o"></i></button>
-                                                                            <button type="button" class="btn btn-outline-danger btn-sm ml-3" id="btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
+                                                                            <button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -393,10 +393,11 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                         </div>
                     </div>
+                    <button type="button" class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                 </div>
                 <div class='btn-group'>
-                    <button class="btn btn-outline-secondary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
-                    <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                    <button type="button" class="btn btn-outline-secondary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
+                    
                 </div>
             </div>
         </div>
@@ -501,8 +502,8 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>                    
                 </div>
                 <div class="modal-footer">
-                    <input type="text" name="id" id="id">
-                    <button type="submit" id="btnEditarCon" class="btn btn-outline-info ml-3">Modificar</button>
+                    <input type="hidden" name="conid" id="conid">
+                    <button type="button" id="btnEditarCon" class="btn btn-outline-info ml-3">Modificar</button>
                 </div>
             </form>
         </div>

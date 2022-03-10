@@ -206,7 +206,7 @@ $(document).ready(function(){
 
     $(document).on("click",".btnEditCon",function(){
       $("#formContacto").trigger("reset"); 
-      debugger;
+      //debugger;
        _idcontacto = $(this).attr("id");
        _contactoold = $('#txtContacto' + _idcontacto + '').val();
        _codcargoold = $('#codCargo' + _idcontacto + '').val();
@@ -682,7 +682,7 @@ $(document).ready(function(){
         _output += '<th>Producto</th><th>Cod.Catalogo</th><th>Catalogo</th><th style="text-align: center;">Opciones</th></tr></thead>'
         $('#tblcatalogo').append(_output);
         
-        console.log(_output);
+        //console.log(_output);
         
         _output  = '<tbody>';
         $('#tblcatalogo').append(_output);   

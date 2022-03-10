@@ -14,6 +14,7 @@ $(document).ready(function(){
     _provid = $.trim($("#provid").val());
     _ciudid = $.trim($("#ciudid").val());
     _nivelid = $.trim($("#nivelid").val());
+    _cedeid = $.trim($("#cedeid").val());
 
     $('#cboProvincia').select2();
     $('#cboCiudad').select2();
@@ -56,7 +57,47 @@ $(document).ready(function(){
         }    
     });    
 
-    $("#tblcontacto tbody tr").each(function (items) 
+    //alert(_cedeid);
+
+    $.ajax({
+        url: "../db/contactocrud.php",
+        type: "POST",
+        dataType: "json",
+        data: {opcion:2, cedeid: _cedeid},            
+        success: function(data){
+            $.each(data,function(i,item){
+
+                _contactoid = data[i].Id;
+                _contacto = data[i].Contacto;
+                _cargo = data[i].Cargo;
+                _codcargo = data[i].CodCargo;
+                _celular = data[i].Celular;
+                _extension = data[i].Extension;
+                _email1 = data[i].Email1;
+                _email2 = data[i].Email2;
+
+                _objeto = {
+                    arrycodigo : parseInt(_contactoid),
+                    arrycontacto : _contacto,
+                    arrycargo : _cargo,
+                    arrycbocargo : _codcargo,
+                    arrycelular : _celular,
+                    arryext : _extension,
+                    arryemail1 : _email1,
+                    arryemail2 : _email2
+                }
+        
+                _resultcon.push(_objeto);                          
+            });
+        },
+        error: function (error) {
+            console.log(error);
+        }                            
+    });    
+
+    //console.log(_resultcon);
+
+    /*$("#tblcontacto tbody tr").each(function (items) 
     {
         let _codigo, _contacto, _cargo, _cbocargo, _celular, _ext, _email1, _email2;
         
@@ -103,12 +144,10 @@ $(document).ready(function(){
 
         _resultcon.push(_objeto);
 
-        console.log(_resultcon);
+
+    });   */
 
 
-
-
-    });   
     
     //EDITAR CONTACTO VENTANA MODAL
     $(document).on("click",".btnEditConMo",function(){
@@ -134,7 +173,7 @@ $(document).ready(function(){
         $('#txtEmail1Mo').val(_email1old);
         $('#txtEmail2Mo').val(_email2old);
   
-        $('#id').val(_id);
+        $('#conid').val(_id);
         $("#headercon").css("background-color","#BCBABE");
         $("#headercon").css("color","black");
         $(".modal-title").text("Editar Contacto");       
@@ -153,7 +192,7 @@ $(document).ready(function(){
         let _celular = $('#txtCelular').val();
         let _email1 = $('#txtEmail1').val();
         let _email2 = $('#txtEmail2').val();
-        _continuaconedit = true;
+        _continuaconadd = true;
   
         if(_cargo == '0')
         {
@@ -174,7 +213,7 @@ $(document).ready(function(){
             if (regex.test($('#txtEmail1').val().trim())) {
             } else {
                 mensajesalertify("Email es invalido","E","top-right",5);
-                _continuaconedit = false;   
+                _continuaconadd = false;   
                 return;
             }        
         }
@@ -186,7 +225,7 @@ $(document).ready(function(){
             if (regex.test($('#txtEmail2').val().trim())) {
             } else {
                 mensajesalertify("Email es invalido","E","top-right",5);
-                _continuaconedit = false;   
+                _continuaconadd = false;   
                 return;
             }        
         }        
@@ -198,12 +237,127 @@ $(document).ready(function(){
                 if(item.arrycelular == _celular)
                 {                        
                     mensajesalertify("Celular ya Existe..!","W","top-right",5); 
-                    _continuaconedit = false;
+                    _continuaconadd = false;
                     return false;
                 }
             });
 
             valoredit = document.getElementById("txtCelular").value;
+            if( !(/^\d{10}$/.test(valoredit)) ) {
+                mensajesalertify("Celular incorrecto..!","E","top-right",5); 
+                _continuaconadd = false;
+                return false;
+            }
+        }
+
+        if(_continuaconadd)
+        {
+            $.ajax({
+                url: "../db/contactocrud.php",
+                type: "POST",
+                dataType: "json",
+                data: {opcion:0, cedeid:_id, contacto:_contacto, cargo:_cargo, ext:_ext, celular:_celular, email1: _email1, email2:_email2},            
+                success: function(data){
+                    _contactoid = data[0].Id;
+                    _contacto = data[0].Contacto;
+                    _cargo = data[0].Cargo;
+                    _codcargo = data[0].CodCargo;
+                    _celular = data[0].Celular;
+                    _extension = data[0].Extension;
+                    _email1 = data[0].Email1;
+                    _email2 = data[0].Email2;
+
+                    _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-3 btnEditConMo"  data-toggle="tooltip" data-placement="top" title="editar"' +
+                                ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar"' +
+                                'id="btnDelete"><i class="fa fa-trash-o"></i></button></div></div></td>'
+                    
+                    //console.log(_boton);
+
+                    TableDataContacto.row.add([_contactoid, _contacto, _cargo, _codcargo, _celular, _extension, _email1, _email2, _boton]).draw();
+
+                    _objeto = {
+                        arrycodigo : parseInt(_contactoid),
+                        arrycontacto : _contacto,
+                        arrycargo : _cargo,
+                        arrycbocargo : _codcargo,
+                        arrycelular : _celular,
+                        arryext : _extension,
+                        arryemail1 : _email1,
+                        arryemail2 : _email2
+                    }
+            
+                    _resultcon.push(_objeto);                          
+                    
+                },
+                error: function (error) {
+                    console.log(error);
+                }                            
+            }); 
+        } 
+    });
+
+    $("#btnEditarCon").click(function(){
+        let _conid = $('#conid').val();
+        let _contacto = $('#txtContactoMo').val();
+        let _cargo = $('#cboCargoMo').val();
+        let _ext = $('#txtExtMo').val();
+        let _celular = $('#txtCelularMo').val();
+        let _email1 = $('#txtEmail1Mo').val();
+        let _email2 = $('#txtEmail2Mo').val();
+        _continuaconedit = true;
+
+        if(_cargo == '0')
+        {
+            mensajesalertify("Seleccione Cargo..!","W","top-right",5);
+            return;
+        }	 
+
+        if(_contacto == '')
+        {
+            mensajesalertify("Ingrese Nombre del Contacto..!","W","top-right",5);
+            return;
+        }        
+        
+        if(_email1 != '')
+        {
+            var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+        
+            if (regex.test($('#txtEmail1Mo').val().trim())) {
+            } else {
+                mensajesalertify("Email es invalido","E","top-right",5);
+                _continuaconedit = false;   
+                return;
+            }        
+        }
+
+        if(_email2 != '')
+        {
+            var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+        
+            if (regex.test($('#txtEmail2Mo').val().trim())) {
+            } else {
+                mensajesalertify("Email es invalido","E","top-right",5);
+                _continuaconedit = false;   
+                return;
+            }        
+        }        
+
+        if(_celular != '' )
+        {
+            if(_celularold != _celular)
+            {
+                $.each(_resultcon,function(i,item)
+                {
+                    if(item.arrycelular == _celular)
+                    {                        
+                        mensajesalertify("Celular ya Existe..!","W","top-right",5); 
+                        _continuaconedit = false;
+                        return false;
+                    }
+                });
+            }
+
+            valoredit = document.getElementById("txtCelularMo").value;
             if( !(/^\d{10}$/.test(valoredit)) ) {
                 mensajesalertify("Celular incorrecto..!","E","top-right",5); 
                 _continuaconedit = false;
@@ -217,58 +371,56 @@ $(document).ready(function(){
                 url: "../db/contactocrud.php",
                 type: "POST",
                 dataType: "json",
-                data: {opcion:0, id:_id, contacto:_contacto, cargo:_cargo, ext:_ext, celular:_celular, email1: _email1, email2:_email2},            
+                data: {opcion:3, conid: _conid, contacto: _contacto, cargo:_cargo, ext:_ext, celular: _celular, email1: _email1, email2:_email2},            
                 success: function(data){
-                    if(data == 'SI'){
-                        mensajesalertify("Tarea ya Existe..!!","W","top-right",5);                   
-                    }else{
-                        _contactoid = data[0].Id;
-                        _contacto = data[0].Contacto;
-                        _cargo = data[0].Cargo;
-                        _celular = data[0].Celular;
-                        _extension = data[0].Extension;
-                        _email1 = data[0].Email1;
-                        _email2 = data[0].Email2;
- 
-                        _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3 btnEditConMo"  data-toggle="tooltip" data-placement="top" title="editar"' +
-                                 ' id="btnEdit'+ _contactoid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar"'
-                                 'id="btnDelete"><i class="fa fa-trash-o"></i></button></div></div></td>'
-                        
-                        TableDataContacto.row.add([_contactoid, _contacto, _cargo, _celular,_extension, _email1,_boton]).draw();
+                    console.log(data);       
 
-                        _objeto = {
-                            arrycodigo : parseInt(_contactoid),
-                            arrycontacto : _newcontacto,
-                            arrycargo : _newcargo,
-                            arrycbocargo : _newcbocargo,
-                            arrycelular : _newcel,
-                            arryext : _newext,
-                            arryemail1 : _newemail1,
-                            arryemail2 : _newemail2
+                    _contactoid = data[0].Id;
+                    _contacto = data[0].Contacto;
+                    _cargo = data[0].Cargo;
+                    _codcargo = data[0].CodCargo;
+                    _celular = data[0].Celular;
+                    _extension = data[0].Extension;
+                    _email1 = data[0].Email1;
+                    _email2 = data[0].Email2;
+
+                    _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-3 btnEditConMo" data-toggle="tooltip" data-placement="top" title="editar"' +
+                                ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar"' +
+                                'id="btnDelete"><i class="fa fa-trash-o"></i></button></div></div></td>'
+                    
+                    TableDataContacto.row(_fila).data([_contactoid, _contacto, _cargo, _codcargo, _celular, _extension, _email1, _email2, _boton]).draw();
+
+                    $.each(_resultcon,function(i,item){
+                        if(item.arrycodigo == _contactoid)
+                        {
+                            _resultcon.splice(i, 1);
+                            return false;
                         }
-                
-                        _resultcon.push(_objeto);                          
+                    });        
+
+                    _objeto = {
+                        arrycodigo : parseInt(_contactoid),
+                        arrycontacto : _contacto,
+                        arrycargo : _cargo,
+                        arrycbocargo : _codcargo,
+                        arrycelular : _celular,
+                        arryext : _extension,
+                        arryemail1 : _email1,
+                        arryemail2 : _email2
                     }
+                    
+                    $("#modalEDITCONTACTO").modal("hide");
+            
+                    _resultcon.push(_objeto);
+                    console.log(_resultcon);
+                    
                 },
                 error: function (error) {
                     console.log(error);
                 }                            
-            }); 
+            });             
         } 
-    });
-
-    function FunRemoveContacto(arrycon, detacon)
-    {
-        $.each(arrycon,function(i,item){
-            if(item.arrycelular == detacon)
-            {
-                arrycon.splice(i, 1);
-                return false;
-            }else{
-                continuar = true;
-            }
-        });        
-    };     
+    });    
 
     $("#formEditContacto").submit(function(e){
         e.preventDefault();
@@ -319,17 +471,16 @@ $(document).ready(function(){
         _idcon = _data[0];
         _contacto = _data[1];
         
-        
         alertify.confirm('El Contacto será eliminado..!!', 'Esta seguro de eliminar' + ' ' + _contacto + '..?', function(){  
     
             $.ajax({
                 url: "../db/contactocrud.php",
                 type: "POST",
                 dataType: "json",
-                data: {opcion:1, idcon: _idcon},
+                data: {opcion:1, conid: _idcon},
                 success: function(data){
                     Swal.close();
-                    TableData.row(_fila.parents('tr')).remove().draw();
+                    TableDataContacto.row(_fila.parents('tr')).remove().draw();
                     mensajesalertify("Contacto Eliminado","E","top-center",3);		
                 },
                 error: function (error) {
