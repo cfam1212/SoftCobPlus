@@ -18,7 +18,7 @@ require_once '../dashmenu/panel_menu.php';
             <br/>
             <div class="x_panel">
                 <div class="x_title">
-                    <h2 class="titulo">Ingrese Credenciales</h2>
+                    <h2 style="text-align: center;">Ingrese Credenciales</h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">

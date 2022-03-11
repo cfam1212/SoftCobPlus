@@ -10,40 +10,13 @@ $(document).ready(function(){
     _crear = $("#lblCrear").text();
     _modificar = $("#lblModificar").text();
     _eliminar = $("#lblEliminar").text();
-    // _estado = $("#lblEstado").text();
     _estado = 'Activo';
 
-    /*if(_estado == "Activo"){
-        $("#chkEstado").prop("checked", true);
-    }
-
-    if(_crear == "SI"){
-        $("#chkCrear").prop("checked", true);
-    }
-
-    if(_modificar == "SI"){
-        $("#chkModificar").prop("checked", true);
-    }
-
-    if(_eliminar == "SI"){
-        $("#chkEliminar").prop("checked", true);
-    }*/
 
     $('#btnRegresar').click(function(){
         $.redirect("perfil.php");
     });
     
-    // $(document).on("click","#chkEstado",function(){
-    //     _checked = $("#chkEstado").is(":checked");
-        
-    //     if(_checked){
-    //         $("#lblEstado").text("Activo");
-    //         _estado = 'Activo';
-    //     }else{
-    //         $("#lblEstado").text("Inactivo");
-    //         _estado = 'Inactivo';
-    //     }
-    // });  
 
     $(document).on("click","#chkCrear",function(){
         if($("#chkCrear").is(":checked")){
@@ -82,7 +55,7 @@ $(document).ready(function(){
         if(_nombreperfil == '')
         {
            
-            mensajesalertify("Ingrese Nombre del Perfil..!!","W","top-right",5);	    
+            mensajesalertify("Ingrese Nombre del Perfil..!!","W","top-right",3);	    
             return;
         }
 
@@ -114,7 +87,7 @@ $(document).ready(function(){
     function FunGrabar(response){
         if(!response){
             
-            mensajesalertify("Nombre del Perfil ya Existe..!!","W","top-right",5);	      
+            mensajesalertify("Nombre del Perfil ya Existe..!!","W","top-right",3);	      
         }else{
 
             _rowcollection =  TableData.$('input[type="checkbox"]', {"page": "all"});

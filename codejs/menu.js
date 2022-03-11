@@ -98,12 +98,12 @@ $(document).ready(function(){
                         data: {id : _id, opcion : 1},
                         success: function(data){
                             if(data == 'NO'){
-                                mensajesalertify("Menu no se puede Eliminar, Tiene Tareas Asociadas..!","W","top-right",5);
+                                mensajesalertify("Menu no se puede Eliminar, Tiene Tareas Asociadas..!","W","top-right",3);
                             }       
                             else {
                             
                                 TableNoOrder.row(_fila.parents('tr')).remove().draw();
-                                mensajesalertify("Menu Eliminado..!","E","top-center",5);
+                                mensajesalertify("Menu Eliminado..!","E","top-center",2);
                             }
                         },
                         error: function (error) {
@@ -128,14 +128,14 @@ $(document).ready(function(){
         if(_nombremenu == '')
         {
               
-            mensajesalertify("Ingrese Nombre del Menú..!","W","top-right",5); 
+            mensajesalertify("Ingrese Nombre del Menú..!","W","top-right",3); 
             return false;
         }
 
         if(_opcionmp == 2){
             if(_menupadre == ''){
                 
-                mensajesalertify("Ingrese Nombre del Menú Padre..!!","W","top-right",5);              
+                mensajesalertify("Ingrese Nombre del Menú Padre..!!","W","top-right",3);              
                 return false;                
             }
         }
@@ -148,7 +148,7 @@ $(document).ready(function(){
         if(i == 0)
         {
          
-            mensajesalertify("Seleccione al menos una tarea..!!","W","top-right",5);
+            mensajesalertify("Seleccione al menos una tarea..!!","W","top-right",3);
             return false;
         }
 
@@ -164,7 +164,7 @@ $(document).ready(function(){
                     //$.redirect('menu.php',mensajesalertify("Guardado con exito..!","S","top-center",5));
                 }else{
                   
-                    mensajesalertify("Nombre del Menú ya exixte..!","W","top-right",5);              
+                    mensajesalertify("Nombre del Menú ya exixte..!","W","top-right",3);              
                 }
             },
             error: function (error) {

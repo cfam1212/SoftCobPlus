@@ -168,6 +168,9 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </fieldset>
                                 </form>
+                                <div class="float-right">
+                                   <button type="button" class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                 <div class="row">
@@ -393,11 +396,9 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
                 </div>
                 <div class='btn-group'>
                     <button type="button" class="btn btn-outline-secondary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
-                    
                 </div>
             </div>
         </div>

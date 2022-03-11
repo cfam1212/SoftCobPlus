@@ -119,12 +119,12 @@ $(document).ready(function(){
             success: function(data){
                 if(data == "NO"){
                     swal.close();
-                    mensajesalertify("Tarea no se puede Eliminar, está asociada a un Menú..!!","W","top-right",5);  
+                    mensajesalertify("Tarea no se puede Eliminar, está asociada a un Menú..!!","W","top-right",3);  
                 }       
                 else {
                     Swal.close();
                     TableData.row(_fila.parents('tr')).remove().draw();
-                    mensajesalertify("Tarea Eliminada","E","top-center",5);
+                    mensajesalertify("Tarea Eliminada","E","top-center",2);
                 }                            
             },
             error: function (error) {
@@ -134,7 +134,7 @@ $(document).ready(function(){
     
     
               }
-                , function(){});
+                , function(){alertify.error('Cancelado');});
     }
     
     $("#formTarea").submit(function(e){
@@ -143,11 +143,11 @@ $(document).ready(function(){
         _ruta = $.trim($("#txtRuta").val());
         _icono = $.trim($("#txtIcono").val());
         if(_tarea == ''){
-            mensajesalertify("Ingrese Tarea!!.","W","top-right",5); 
+            mensajesalertify("Ingrese Tarea!!.","W","top-right",3); 
             return;   
         }
         if(_ruta == ''){
-            mensajesalertify("Ingrese una Ruta!!.","W","top-right",5); 
+            mensajesalertify("Ingrese una Ruta!!.","W","top-right",3); 
             return;   
         }
         if(_opcion == 2){            
@@ -159,7 +159,7 @@ $(document).ready(function(){
                     data: {opcion:2, id: _id, tarea: _tarea, ruta:_ruta, icono:_icono, estado:_estado},            
                     success: function(data){
                         if(data == '1'){
-                            mensajesalertify("Tarea ya Existe..!!","W","top-right",5);                   
+                            mensajesalertify("Tarea ya Existe..!!","W","top-right",3);                   
                         }else{
                             FunGrabar();
                         }
@@ -184,7 +184,7 @@ $(document).ready(function(){
             data: {opcion:0, id:_id, tarea:_tarea, ruta:_ruta, icono:_icono, estado:_estado},            
             success: function(data){
                 if(data == 'SI'){
-                    mensajesalertify("Tarea ya Existe..!!","W","top-right",5);                   
+                    mensajesalertify("Tarea ya Existe..!!","W","top-right",3);                   
                 }else{
                     _tareaid = data[0].TareaId;
                     _tarea = data[0].Tarea;

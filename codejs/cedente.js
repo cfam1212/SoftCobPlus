@@ -106,13 +106,13 @@ $(document).ready(function(){
 
                 if(_contacto == '')
                 {
-                    mensajesalertify("Ingrese Contacto..!","W","top-right",5);
+                    mensajesalertify("Ingrese Contacto..!","W","top-right",3);
                     return;
                 }  
 
                 if(_cbocargo == '0')
                 {
-                    mensajesalertify("Seleccione Cargo..!","W","top-right",5);
+                    mensajesalertify("Seleccione Cargo..!","W","top-right",3);
                     return;
                 }
                 
@@ -120,7 +120,7 @@ $(document).ready(function(){
                 {
                     if(item.arrycontacto.toUpperCase() == _contacto.toUpperCase())
                     {                        
-                        mensajesalertify("Contacto ya Existe..!","W","top-right",5); 
+                        mensajesalertify("Contacto ya Existe..!","W","top-right",3); 
                         _continuarcon = false;
                         return;
                     }
@@ -132,7 +132,7 @@ $(document).ready(function(){
                     {
                         if(item.arrycelular == _celular)
                         {                        
-                            mensajesalertify("Celular ya Existe..!","W","top-right",5); 
+                            mensajesalertify("Celular ya Existe..!","W","top-right",3); 
                             _continuarcon = false;
                             return;
                         }
@@ -140,7 +140,7 @@ $(document).ready(function(){
 
                         valor = document.getElementById("txtCelular").value;
                         if( !(/^\d{10}$/.test(valor)) ) {
-                            mensajesalertify("Celular incorrecto..!","E","top-right",5); 
+                            mensajesalertify("Celular incorrecto..!","E","top-right",3); 
                             _continuarcon = false;
                             return;
                         }
@@ -155,7 +155,7 @@ $(document).ready(function(){
                     if (regex.test($('#txtEmail1').val().trim())) {
                         console.log('correcto');                            
                     } else {
-                        mensajesalertify("Email es invalido","E","top-right",5);
+                        mensajesalertify("Email es invalido","E","top-right",3);
                         _continuarcon = false;   
                         return;
                     }        
@@ -250,7 +250,7 @@ $(document).ready(function(){
 
             if(_newcbocargo == '0')
             {
-                mensajesalertify("Seleccione Cargo..!","W","top-right",5);
+                mensajesalertify("Seleccione Cargo..!","W","top-right",3);
                 return;
             }
 
@@ -261,7 +261,7 @@ $(document).ready(function(){
                 if (regex.test($('#txtEmail1Mo').val().trim())) {
                     console.log('correcto');                            
                 } else {
-                    mensajesalertify("Email es invalido","E","top-right",5);
+                    mensajesalertify("Email es invalido","E","top-right",3);
                     _continuaconedit = false;   
                     return;
                 }        
@@ -282,7 +282,7 @@ $(document).ready(function(){
 
                         valoredit = document.getElementById("txtCelularMo").value;
                         if( !(/^\d{10}$/.test(valoredit)) ) {
-                            mensajesalertify("Celular incorrecto..!","E","top-right",5); 
+                            mensajesalertify("Celular incorrecto..!","E","top-right",3); 
                             _continuaconedit = false;
                             return;
                         }
@@ -294,7 +294,7 @@ $(document).ready(function(){
                 {
                     if(item.arrycontacto.toUpperCase() == _newcontacto.toUpperCase())
                     {
-                        mensajesalertify("Contacto ya Existe..!","W","top-right",5); 
+                        mensajesalertify("Contacto ya Existe..!","W","top-right",3); 
                         _continuaconedit = false;
                         return false;
                     }else
@@ -367,7 +367,7 @@ $(document).ready(function(){
             FunRemoveContacto(_resultcon, _contactodelete);
             $('#rowcon_' + _idcontacto + '').remove();
             _countcontacto--;
-            mensajesalertify("Contacto Eliminado","E","top-center",5);
+            mensajesalertify("Contacto Eliminado","E","top-center",2);
         }
         , function(){ });
     });
@@ -413,7 +413,7 @@ $(document).ready(function(){
 
         if(_producto == '')
         {
-            mensajesalertify("Ingrese Producto..!","W","top-right",5);
+            mensajesalertify("Ingrese Producto..!","W","top-right",3);
             return;
         } 
         
@@ -421,7 +421,7 @@ $(document).ready(function(){
         {
             if(item.arryproducto.toUpperCase() == _producto.toUpperCase())
             {                        
-                mensajesalertify("Producto ya Existe..!","W","top-right",5); 
+                mensajesalertify("Producto ya Existe..!","W","top-right",3); 
                 _continuarproduc = false;
                 return false;
             }else{
@@ -524,18 +524,7 @@ $(document).ready(function(){
     
       });
 
-    //cheked producto-modal
-    // $("#chkEstadoPro").click(function(){
-    //     let _checkedPro = $("#chkEstadoPro").is(":checked");
-
-    //     if(_checkedPro){
-    //         $("#lblEstadoPro").text("Activo");
-    //         _estadopro = 'Activo';
-    //     }else{
-    //         $("#lblEstadoPro").text("Inactivo");
-    //         _estadopro = 'Inactivo';
-    //     }
-    // });
+ 
 
     //button-editar-producto
 
@@ -545,7 +534,7 @@ $(document).ready(function(){
         let _productonew = $.trim($('#txtProductoMo').val());
 
         if(_productonew == ''){
-            mensajesalertify("Ingrese Producto..!!","W","top-right",5);
+            mensajesalertify("Ingrese Producto..!!","W","top-right",3);
             return;
         }
 
@@ -556,7 +545,7 @@ $(document).ready(function(){
             {
                 if(item.arryproducto.toUpperCase() == _productonew.toUpperCase())
                 {
-                    mensajesalertify("Producto ya Existe..!","W","top-right",5); 
+                    mensajesalertify("Producto ya Existe..!","W","top-right",3); 
                     _continuamod = false;
                     return false;
                 }else
@@ -635,7 +624,7 @@ $(document).ready(function(){
         $.each(_resultcat,function(i,item){
             if(item.arryproductocat == _productodelete)
             {
-                mensajesalertify("Existen Catalagos Asociados al Producto..!","W","top-right",5); 
+                mensajesalertify("Existen Catalagos Asociados al Producto..!","W","top-right",3); 
                 _contdelcat = false;
                 return false;
             }
@@ -648,7 +637,7 @@ $(document).ready(function(){
                 FunRemoveProduc(_resultpro, _productodelete);
                 $('#rowpro_' + _idproduc + '').remove();
                 _countproduc--;
-                mensajesalertify("Producto Eliminado","E","top-center",5);
+                mensajesalertify("Producto Eliminado","E","top-center",2);
             }
             , function(){ });
         }
@@ -726,13 +715,13 @@ $(document).ready(function(){
 
     if(_codigocat == '')
         {
-            mensajesalertify("Ingrese Codigo..!","W","top-right",5);
+            mensajesalertify("Ingrese Codigo..!","W","top-right",3);
             return;
         } 
 
         if(_catalogo == '')
         {
-            mensajesalertify("Ingrese Catalogo..!","W","top-right",5);
+            mensajesalertify("Ingrese Catalogo..!","W","top-right",3);
             return;
         } 
         
@@ -740,7 +729,7 @@ $(document).ready(function(){
         {
             if(item.arryproductocat.toUpperCase() == _produc.toUpperCase() && item.arrycodigocat.toUpperCase() == _codigocat.toUpperCase())
             {                        
-                mensajesalertify("Catalogo ya Existe..!","W","top-right",5); 
+                mensajesalertify("Catalogo ya Existe..!","W","top-right",3); 
                 _continuarcat = false;
                 return;
             }
@@ -823,12 +812,12 @@ $(document).ready(function(){
         let _newcatalogo = $.trim($('#txtCatMo').val());
 
         if(_newcodcat == ''){
-            mensajesalertify("Ingrese Codigo..!!","W","top-right",5);
+            mensajesalertify("Ingrese Codigo..!!","W","top-right",3);
             return;
         }
 
         if(_newcatalogo == ''){
-            mensajesalertify("Ingrese Catalogo..!!","W","top-right",5);
+            mensajesalertify("Ingrese Catalogo..!!","W","top-right",3);
             return;
         }
 
@@ -837,7 +826,7 @@ $(document).ready(function(){
             {
                 if(item.arrycatalogo.toUpperCase() == _newcatalogo.toUpperCase())
                 {
-                    mensajesalertify("Catalogo ya Existe..!","W","top-right",5); 
+                    mensajesalertify("Catalogo ya Existe..!","W","top-right",3); 
                     _continucat = false;
                     return false;
                 }else
@@ -913,7 +902,7 @@ $(document).ready(function(){
             FunRemoveItemCatalogo(_resultcat, _catalogodelete);
             $('#rowcat_' + row_id + '').remove();
             _countcatalogo--;
-            mensajesalertify("Catalogo Eliminado","E","top-center",5);
+            mensajesalertify("Catalogo Eliminado","E","top-center",2);
         }
         , function(){ });
     });
@@ -945,19 +934,19 @@ $(document).ready(function(){
 
       if(_codigoagen == '')
       {
-          mensajesalertify("Ingrese Codigo..!","W","top-right",5);
+          mensajesalertify("Ingrese Codigo..!","W","top-right",3);
           return;
       } 
       
       if(_agencia == '')
       {
-          mensajesalertify("Ingrese Agencia..!","W","top-right",5);
+          mensajesalertify("Ingrese Agencia..!","W","top-right",3);
           return;
       } 
 
       if(_cbosucursal == '0')
       {
-          mensajesalertify("Seleccione Sucursal..!","W","top-right",5);
+          mensajesalertify("Seleccione Sucursal..!","W","top-right",3);
           return;
       }
       
@@ -965,7 +954,7 @@ $(document).ready(function(){
       {
           if(item.arryagencia.toUpperCase() == _agencia.toUpperCase())
           {                        
-              mensajesalertify("Agencia ya Existe..!","W","top-right",5); 
+              mensajesalertify("Agencia ya Existe..!","W","top-right",3); 
               _continuaragen = false;
               return false;
           }else{
@@ -1114,7 +1103,7 @@ $(document).ready(function(){
             {
                 if(item.arryagencia.toUpperCase() == _newagencia.toUpperCase())
                 {
-                    mensajesalertify("Agencia ya Existe..!","W","top-right",5); 
+                    mensajesalertify("Agencia ya Existe..!","W","top-right",3); 
                     _continuage = false;
                     return false;
                 }else
@@ -1195,7 +1184,7 @@ $(document).ready(function(){
             FunRemoveItemAgencia(_resultage, _agenciadelete);
             $('#rowage_' + _idagen + '').remove();
             _countagen--;
-            mensajesalertify("Agencia Eliminada","E","top-center",5);
+            mensajesalertify("Agencia Eliminada","E","top-center",2);
          }
         , function(){ });
     });
@@ -1234,26 +1223,26 @@ $(document).ready(function(){
       
       if(_cboprovincia == '0')
       {
-          mensajesalertify("Seleccione Provincia..!","W","top-right",5);
+          mensajesalertify("Seleccione Provincia..!","W","top-right",3);
           return;
       }	 
       
       if(_cbocuidad == '0')
       {
-          mensajesalertify("Seleccione Cuidad..!","W","top-right",5);
+          mensajesalertify("Seleccione Cuidad..!","W","top-right",3);
           return;
       }	 
 
 
       if(_cedente == '')
       {
-          mensajesalertify("Ingrese Cendente..!","W","top-right",5);
+          mensajesalertify("Ingrese Cendente..!","W","top-right",3);
           return;
       }
       
       if(_cboarbol == '0')
       {
-        mensajesalertify("Ingrese Nivel del Árbol..!","W","top-right",5);
+        mensajesalertify("Ingrese Nivel del Árbol..!","W","top-right",3);
         return;
       }
             
@@ -1266,10 +1255,10 @@ $(document).ready(function(){
             resultcontacto: _resultcon, resultproducto: _resultpro, resultcatalogo: _resultcat, resultagencia: _resultage, opcion: 0},            
         success: function(data){   
             if(data == 'OK'){                
-                $.redirect('admincede.php',mensajesalertify("Guardado con exito..!","S","top-center",5));
+                // $.redirect('admincede.php',mensajesalertify("Guardado con exito..!","S","top-center",2));
             }else{
               
-                mensajesalertify("Nombre del Cedente ya exixte..!","W","top-right",5);              
+                mensajesalertify("Nombre del Cedente ya exixte..!","W","top-right",3);              
             }
         },
         error: function (error) {
@@ -1297,7 +1286,7 @@ $(document).ready(function(){
                 success: function(data){
                     Swal.close();
                     TableData.row(_fila.parents('tr')).remove().draw();
-                    mensajesalertify("Usuario Eliminado","E","top-center",5);		
+                    mensajesalertify("Cedente Eliminado","E","top-center",2);		
                 },
                 error: function (error) {
                     console.log(error);

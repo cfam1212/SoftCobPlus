@@ -63,9 +63,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disableedit; ?> id="btnEditar<?php echo $datos['Depaid']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
+                                                    <button class="btn btn-outline-info btn-sm ml-2 btnEditar" <?php echo $disableedit; ?> id="btnEditar<?php echo $datos['Depaid']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
-                                                    <button class="btn btn-outline-danger btn-sm ml-3" <?php echo $disabledel; ?> id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
+                                                    <button class="btn btn-outline-danger btn-sm ml-2" <?php echo $disabledel; ?> id="btnEliminar">
                                                         <i class="fa fa-trash-o"></i>
                                                     </button>
                                                 </div>
@@ -73,10 +73,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstadoDe" <?php echo $chkestado; ?> id="chk<?php echo $datos['Depaid']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                                                                                                                                                                                echo "checked";
-                                                                                                                                                                                            } else {
-                                                                                                                                                                                                '';
-                                                                                                                                                                                            } ?> value="<?php echo $datos['Depaid']; ?>" />
+                                               echo "checked";  } else {''; } ?> value="<?php echo $datos['Depaid']; ?>" />                                                                                                                                                                                                                                                                                                                                                                                                                                               
                                         </td>
                                         <td style="display: none;" id="tdestado<?php echo $datos['Depaid']; ?>">
                                             <?php echo $datos['Estado'] ?>
@@ -103,10 +100,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formDepartamento">
                 <div class="modal-body">
-                    <!-- <div class="form-group row">
-                        <label for="departamento" class="col-form-label">Departamento:</label>
-                        <input type="text" required class="form-control" id="txtDepa" maxlength="80" autocomplete="off">
-                    </div> -->
                     <label for="menuname" class="control-label">Departamento:</label>
                     <div class="row">
                         <div class="col-md-12 col-sm-12  form-group has-feedback">

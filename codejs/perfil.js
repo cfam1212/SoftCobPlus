@@ -100,7 +100,7 @@ $(document).ready(function(){
         
         if(_id == 1){
             // alertify.warning('Perfil de Administrador no se puede Eliminar..!','mensaje', 2, function(){console.log('dismissed');});
-            mensajesalertify("Perfil  Administrador no se puede Eliminar..!","W","top-right",5); 
+            mensajesalertify("Perfil  Administrador no se puede Eliminar..!","W","top-right",3); 
         }else{
             $.ajax({
                 url: "../db/consultadatos.php",
@@ -125,8 +125,8 @@ $(document).ready(function(){
 
     function FunValidar(respuesta){
         if(!respuesta){
-            // alertify.warning('Perfil tiene Menú/Tareas Asociadas..!','mensaje', 2, function(){console.log('dismissed');}); 
-            mensajesalertify("Perfil tiene Menú/Tareas Asociadas..!!","W","top-right",5);
+
+            mensajesalertify("Perfil tiene Menú/Tareas Asociadas..!!","W","top-right",3);
         }else{
      
     alertify.confirm('El Perfil sera eliminado..!!', 'Esta seguro de eliminar'+''+ _perfil +'..?', function(){ 
@@ -142,7 +142,7 @@ $(document).ready(function(){
                     Swal.close();
                     TableData.row(_fila.parents('tr')).remove().draw();
                    
-                    mensajesalertify("Perfil Eliminado..!","E","top-center",5);
+                    mensajesalertify("Perfil Eliminado..!","E","top-center",2);
                             },
                             error: function (error) {
                                 console.log(error);
@@ -162,7 +162,7 @@ $(document).ready(function(){
         if(_perfil == '')
         {       
 
-            mensajesalertify("Ingrese Nombre del Perfil..!!","W","top-right",5);  
+            mensajesalertify("Ingrese Nombre del Perfil..!!","W","top-right",3);  
             return;
         }
 
@@ -178,7 +178,7 @@ $(document).ready(function(){
         if(i == 0)
         {
            
-            mensajesalertify("Seleccione al menos un opción Menu/Tareal..!!","W","top-right",5);
+            mensajesalertify("Seleccione al menos un opción Menu/Tareal..!!","W","top-right",3);
             return;
         }
 
@@ -205,7 +205,7 @@ $(document).ready(function(){
     function FunGrabar(respuesta){
         if(!respuesta){
             // alertify.warning('Nombre del Perfil ya Existe..!','mensaje', 2, function(){console.log('dismissed');});
-            mensajesalertify("Nombre del Perfil ya Existe..!!","W","top-right",5);
+            mensajesalertify("Nombre del Perfil ya Existe..!!","W","top-right",3);
         }else{
             $.ajax({
                 url: "../db/perfilcrud.php",

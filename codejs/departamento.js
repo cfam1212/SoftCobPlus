@@ -20,17 +20,6 @@ $(document).ready(function(){
         _estado = 'Activo';
     });
 
-    // $(document).on("click","#chkEstado",function(){
-    //     _checked = $("#chkEstado").is(":checked");
-      
-    //     if(_checked){
-    //       $("#lblEstado").text("Activo");
-    //       _estado = 'Activo';
-    //   }else{
-    //       $("#lblEstado").text("Inactivo");
-    //       _estado = 'Inactivo';
-    //   }
-    // });
 
 
     $(document).on("click",".btnEditar",function(e){    
@@ -102,7 +91,7 @@ $(document).ready(function(){
 
         if(_depa == '')
         {                   
-            mensajesalertify("Ingrese Nombre del Departamento..!","W","top-right",5);  
+            mensajesalertify("Ingrese Nombre del Departamento..!","W","top-right",3);  
             return;
         }
   
@@ -115,7 +104,7 @@ $(document).ready(function(){
                     data: {nomdepa: _depa, opcion: 2},            
                     success: function(data){
                         if(data[0].Contar  == '1'){
-                            mensajesalertify("Departamento ya Existe!!.","W","top-right",5);
+                            mensajesalertify("Departamento ya Existe!!.","W","top-right",3);
                             return;
                         }else{
                             FunGrabar(1);
@@ -143,7 +132,7 @@ $(document).ready(function(){
             data: {id: _id, nomdepa: _depa, estado: _estado, opcion: opc},
             success: function(data){
                 if(data[0].Valor == 'Existe'){
-                    mensajesalertify("Departamento ya Existe!!.","W","top-right",5);  
+                    mensajesalertify("Departamento ya Existe!!.","W","top-right",3);  
                 }
                 else{
                     _depaid = data[0].Depaid;
@@ -209,11 +198,11 @@ $(document).ready(function(){
                success: function(data){
                    console.log(data);
                    if(data[0].Valor == "Existe"){
-                       mensajesalertify("Departamento no se puede Eliminar, está asociada a un Usuario..!","W","top-right",5);  
+                       mensajesalertify("Departamento no se puede Eliminar, está asociada a un Usuario..!","W","top-right",3);  
                    }       
                    else {
                     TableDataDepa.row(_fila.parents('tr')).remove().draw();
-                       mensajesalertify("Departamento Eliminado","E","top-center",5);
+                       mensajesalertify("Departamento Eliminado","E","top-center",2);
                    }                            
                },
                error: function (error) {

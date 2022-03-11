@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  
-    <!-- <meta charset="UTF-8"> -->
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <link href="./vendors_login/css/sytle.css" rel="stylesheet">
-    <link href="./vendors/alertify/css/alertify.min.css" rel="stylesheet">
-    <title>Login</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/logo.png">
+  <title>Material Login Form a Responsive Widget Template :: w3layouts</title>
+  <!-- meta tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="./vendors_login/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="./vendors_login/css/fontawesome-all.css" rel="stylesheet" />
+  <link href="./vendors/alertify/css/alertify.min.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
 </head>
+
+
 <body>
-    <div id="login-button">
-        <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">
-        </img>
+  <h1></h1>
+  <div class=" w3l-login-form">
+    <h2>SoftCob Plus</h2>
+    <form id="formLogin" method="POST">
+      <div class=" w3l-form-group">
+        <label>Username:</label>
+        <div class="group">
+          <i class="fas fa-user"></i>
+          <input type="text" class="form-control" id="username" placeholder="Username" required="required" />
+        </div>
       </div>
-      <div id="container">
-        <h1>Login</h1>
-        <span class="close-btn">
-          <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
-        </span>
-      
-        <form id="formLogin" method="post">
-          <input type="text" id="username" name="username" placeholder="usuario">
-          <input type="password" id="password" name="password" placeholder="password">
-       
-          <input type="submit" name="submit" value="Iniciar Sesion" class="button"/>
-         
-      </form>
+      <div class=" w3l-form-group">
+        <label>Password:</label>
+        <div class="group">
+          <i class="fas fa-unlock"></i>
+          <input type="password" class="form-control" id="password" placeholder="Password" required="required" />
+        </div>
       </div>
-    
-    </div>
-     
+      <br />
+      <br />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  <footer>
+    <p class="copyright-agileinfo"> &copy; 2018 Material Login Form. All Rights Reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+  </footer>
+
 </body>
+
 </html>
-      <script src="./vendors_login/jquery/jquery-3.6.0.min.js"></script>
-      <script src="./vendors_login/js/login.js"></script>
-      <script src="./login.js"></script>
-      <script src="./vendors/alertify/js/alertify.min.js"></script>
-      <script src="./codejs/funciones.js"></script>
+<script src="./vendors_login/jquery/jquery-3.6.0.min.js"></script>
+<script src="./login.js"></script>
+<script src="./vendors/alertify/js/alertify.min.js"></script>
+<script src="./codejs/funciones.js"></script>

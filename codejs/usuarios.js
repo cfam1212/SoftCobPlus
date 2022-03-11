@@ -157,15 +157,7 @@ $(document).ready(function(){
         
     });
 
-    // $(document).on("click","#chkEstado",function(){
-    //     if($("#chkEstado").is(":checked")){
-    //         $("#lblEstado").text("Activo");
-    //         _estado = 'Activo';
-    //     }else{
-    //         $("#lblEstado").text("Inactivo");
-    //         _estado = 'Inactivo';
-    //     }
-    // });  
+ 
     
     //UODATE ESTADO USUARIO BDD
 
@@ -220,7 +212,7 @@ $(document).ready(function(){
                 success: function(data){
                     Swal.close();
                     TableData.row(_fila.parents('tr')).remove().draw();
-                    mensajesalertify("Usuario Eliminado","E","top-center",5);		
+                    mensajesalertify("Usuario Eliminado","E","top-center",2);		
                 },
                 error: function (error) {
                     console.log(error);
@@ -252,43 +244,43 @@ $(document).ready(function(){
 
         if(_username == '')
         {          
-            mensajesalertify("Ingrese Nombre del Usuario..!!","W","top-right",5);
+            mensajesalertify("Ingrese Nombre del Usuario..!!","W","top-right",3);
             return;
         }
 
         if(_lastname == '')
         {        
-            mensajesalertify("Ingrese Apellido del Usuario..!!","W","top-right",5);
+            mensajesalertify("Ingrese Apellido del Usuario..!!","W","top-right",3);
             return;
         }
         
         if(_login == '')
         {           
-            mensajesalertify("Ingrese Login..!!","W","top-right",5);
+            mensajesalertify("Ingrese Login..!!","W","top-right",3);
             return;    
         }
         
         if(_password == '')
         {            
-            mensajesalertify("Ingrese Password..!!","W","top-right",5);
+            mensajesalertify("Ingrese Password..!!","W","top-right",3);
             return;    
         }
                
         if(_perfil == '0')
         {            
-            mensajesalertify("Seleccione Perfil..!!","W","top-right",5);
+            mensajesalertify("Seleccione Perfil..!!","W","top-right",3);
             return;    
         }
 
         if(_depar == '0')
         {            
-            mensajesalertify("Seleccione Departamento..!!","W","top-right",5);
+            mensajesalertify("Seleccione Departamento..!!","W","top-right",3);
             return;    
         }      
         
         if(_tipouser == '0')
         {            
-            mensajesalertify("Seleccione Tipo Usuario..!!","W","top-right",5);
+            mensajesalertify("Seleccione Tipo Usuario..!!","W","top-right",3);
             return;    
         }          
 
@@ -319,7 +311,7 @@ $(document).ready(function(){
     function FunGrabar(response){
         if(!response){
             
-            mensajesalertify("Login ya esta Registrado..!!","W","top-right",5);	
+            mensajesalertify("Login ya esta Registrado..!!","W","top-right",3);	
         }else{
             _file = _imagen.files[0];
             form_data = new FormData();            

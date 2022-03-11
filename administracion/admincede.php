@@ -88,9 +88,9 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td>
                                             <div class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit; ?> id="btnEditar<?php echo $datos['CedeId']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
+                                                    <button class="btn btn-outline-info btn-sm ml-2 btnEditar" <?php echo $disabledit; ?> id="btnEditar<?php echo $datos['CedeId']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
-                                                    <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminar" data-toggle="tooltip" data-placement="top" title="eliminar">
+                                                    <button class="btn btn-outline-danger btn-sm ml-2" id="btnEliminar">
                                                         <i class="fa fa-trash-o"></i>
                                                     </button>
                                                 </div>
@@ -98,8 +98,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstado" id="chk<?php echo $datos['CedeId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                                                                                                                                                    echo "checked";
-                                                                                                                                                                } ?> value="<?php echo $datos['CedeId']; ?>" />
+                                                echo "checked";  } ?> value="<?php echo $datos['CedeId']; ?>" />                                                                                                                 
                                         </td>
                                     </tr>
                                 <?php }

@@ -48,7 +48,7 @@ $(document).ready(function(){
         if(_row_index == 0)
         {
             // alertify.notify('No se puede Subir de Nivel..!', 'warning', 5, function () { console.log('dismissed'); });
-            mensajesalertify("No se puede Subir de Nivel..!!","W","top-right",5);
+            mensajesalertify("No se puede Subir de Nivel..!!","W","top-right",3);
             return;
         }
 
@@ -87,7 +87,7 @@ $(document).ready(function(){
         if(_row_index == _contar-1)
         {
             // alertify.notify('No se puede Bajar de Nivel..!', 'warning', 2, function () { console.log('dismissed'); });
-            mensajesalertify("No se puede Bajar de Nivel..!","W","top-right",5);
+            mensajesalertify("No se puede Bajar de Nivel..!","W","top-right",3);
             return;
         }
 
@@ -130,7 +130,7 @@ $(document).ready(function(){
         if(_nombremenu == '')
         {
             // alertify.notify('Ingrese Nombre del Menú..!', 'warning', 2, function () { console.log('dismissed'); });
-            mensajesalertify("Ingrese Nombre del Menú..!!","W","top-right",5);    
+            mensajesalertify("Ingrese Nombre del Menú..!!","W","top-right",3);    
             return;
         }
 
@@ -162,12 +162,12 @@ $(document).ready(function(){
     function FunValidar(response){
         if(!response){
             // alertify.notify('Nombre del Menú ya Existe..!', 'warning', 5, function () { console.log('dismissed'); });
-            mensajesalertify("Nombre del Menú ya Existe..!!","W","top-right",5);
+            mensajesalertify("Nombre del Menú ya Existe..!!","W","top-right",3);
         }else{
             if(_opcionmp == 2){
                 if(_menupadre == ''){
                     // alertify.notify('Ingrese Nombre del Menú Padre..!', 'warning', 5, function () { console.log('dismissed'); });
-                    mensajesalertify("Ingrese Nombre del Menú Padre..!!","W","top-right",5);
+                    mensajesalertify("Ingrese Nombre del Menú Padre..!!","W","top-right",3);
                 }else{
                     $.ajax({
                         url: "../db/consultadatos.php",
@@ -197,7 +197,7 @@ $(document).ready(function(){
     function FunGrabar(response){
         if(!response){
             // alertify.notify('Nombre del Menú Padre ya Existe..!', 'warning', 5, function () { console.log('dismissed'); });
-            mensajesalertify("Nombre del Menú Padre ya Existe..!!","W","top-right",5);    
+            mensajesalertify("Nombre del Menú Padre ya Existe..!!","W","top-right",3);    
         }else{
 
             _rowcollection =  TableConOrder.$('input[type="checkbox"]', {"page": "all"});

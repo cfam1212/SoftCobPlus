@@ -12,24 +12,24 @@ $(document).ready(function(){
 
         if(_contactual == '')
         {          
-            mensajesalertify("Ingrese Contraseña Actual..!!","W","top-right",5);
+            mensajesalertify("Ingrese Contraseña Actual..!!","W","top-right",3);
             return;
         }
 
         if(_contnueva == '')
         {        
-            mensajesalertify("Ingrese Nueva Contraseña..!!","W","top-right",5);
+            mensajesalertify("Ingrese Nueva Contraseña..!!","W","top-right",3);
             return;
         }
         
         if(_contconfi == '')
         {           
-            mensajesalertify("Confirme la Contraseña..!!","W","top-right",5);
+            mensajesalertify("Confirme la Contraseña..!!","W","top-right",3);
             return;    
         }
 
         if(_contnueva != _contconfi ){
-            mensajesalertify("Las contraseñas no son iguales..!!","E","top-right",5);
+            mensajesalertify("Las contraseñas no son iguales..!!","E","top-right",3);
             return;    
         }
 
@@ -42,7 +42,7 @@ $(document).ready(function(){
             success: function(data){       
                 console.log(data);                           
                 if(data[0].Codigo == '0'){
-                    mensajesalertify("La contraseña actual es incorrecta..!!","E","top-right",5);
+                    mensajesalertify("La contraseña actual es incorrecta..!!","E","top-right",3);
                     return;
                 }else{ 
                     $.ajax({
@@ -52,7 +52,7 @@ $(document).ready(function(){
                         data: {tipo:25, auxv1:_contnueva, auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_usuaid, auxi2:0, auxi3:0, auxi4:0, auxi5:0, 
                         auxi6:0, opcion:0},
                         success: function(data){                    
-                            mensajesalertify("Actualizado con exito..!!","S","top-center",5);                       
+                            mensajesalertify("Actualizado con exito..!!","S","top-center",3);                       
                             $.trim($("#txtcontactual").val(''));
                             $.trim($("#txtcontnueva").val(''));
                             $.trim($("#txtconfcont").val(''));
@@ -84,7 +84,7 @@ $(document).ready(function(){
             data: {tipo:27, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_id, auxi2:0, auxi3:0, auxi4:0, auxi5:0, auxi6:0, 
             opcion:0},
             success: function(data){
-                mensajesalertify("Password reseteado exitosamente..!!","S","top-center",5);   
+                mensajesalertify("Password reseteado exitosamente..!!","S","top-center",3);   
             },
             error: function (error) {
                 console.log(error);
