@@ -108,7 +108,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Cedente:</label>
                                             <div class="col-md-3 col-sm-3 form-group">
-                                                <input autofocus type="text" class="form-control has-feedback-left" id="txtCedente" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();" value="<?php echo $datacede[0]['Cedente']; ?>">
+                                                <input autofocus type="text" class="form-control has-feedback-left" id="txtCedente" maxlength="150" value="<?php echo $datacede[0]['Cedente']; ?>">
                                                 <span class="fa fa-pie-chart form-control-feedback left" aria-hidden="true"></span>
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
@@ -465,7 +465,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="row">
                         <label for="menuname" class="control-label col-md-2">Contacto</label>
                         <div class="col-md-9 col-sm-9  form-group has-feedback">
-                            <input type="tel" class="form-control has-feedback-left" id="txtContactoMo" placeholder="" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                            <input type="tel" class="form-control has-feedback-left" id="txtContactoMo" placeholder="" maxlength="150">
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>

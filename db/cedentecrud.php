@@ -62,24 +62,28 @@ switch($opcion){
                 }
             }
 
-            foreach($resultproducto as $drfila){
-                $consulta = "CALL sp_New_Producto(?,?,?,?,?,?,?,?,?)";
-                $resultado = $conexion->prepare($consulta);
-                $estado = $drfila['arryestado'] == 'Activo' ? "A" : "I";
-                $resultado->execute(array(0,$cedeid,$drfila['arryproducto'],$drfila['arrydescrip'],$estado,
-                '','','0','0'));
-                $prceid = $resultado->fetchColumn();
-                foreach($resultcatalogo as $drfilax){
-                    if($drfilax['arryproductocat'] == $drfila['arryproducto'])
-                    {
-                        $consulta = "CALL sp_New_Catalogo(?,?,?,?,?,?,?,?,?)";
-                        $resultado = $conexion->prepare($consulta);
-                        $estado = $drfilax['arryestado'] == 'Activo' ? "A" : "I";
-                        $resultado->execute(array(0,$prceid,$drfilax['arrycodigocat'],$drfilax['arrycatalogo'],$estado,'',
-                        '','0','0'));
+            if($resultproducto != '')
+            {
+                foreach($resultproducto as $drfila){
+                    $consulta = "CALL sp_New_Producto(?,?,?,?,?,?,?,?,?)";
+                    $resultado = $conexion->prepare($consulta);
+                    $estado = $drfila['arryestado'] == 'Activo' ? "A" : "I";
+                    $resultado->execute(array(0,$cedeid,$drfila['arryproducto'],$drfila['arrydescrip'],$estado,
+                    '','','0','0'));
+                    $prceid = $resultado->fetchColumn();
+                    foreach($resultcatalogo as $drfilax){
+                        if($drfilax['arryproductocat'] == $drfila['arryproducto'])
+                        {
+                            $consulta = "CALL sp_New_Catalogo(?,?,?,?,?,?,?,?,?)";
+                            $resultado = $conexion->prepare($consulta);
+                            $estado = $drfilax['arryestado'] == 'Activo' ? "A" : "I";
+                            $resultado->execute(array(0,$prceid,$drfilax['arrycodigocat'],$drfilax['arrycatalogo'],$estado,'',
+                            '','0','0'));
+                        }
                     }
                 }
             }
+            
 
             if($resultagencia != '')
             {
@@ -92,9 +96,11 @@ switch($opcion){
                 }
             }
 
+            //AQUI
+
              $data = "OK";
         }
-        else $data = 'NO';
+        else $data = 'Existe';
     break;   
 
     case 1: //GRABAR EDITAR PERFIL

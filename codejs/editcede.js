@@ -373,8 +373,6 @@ $(document).ready(function(){
                 dataType: "json",
                 data: {opcion:3, conid: _conid, contacto: _contacto, cargo:_cargo, ext:_ext, celular: _celular, email1: _email1, email2:_email2},            
                 success: function(data){
-                    console.log(data);       
-
                     _contactoid = data[0].Id;
                     _contacto = data[0].Contacto;
                     _cargo = data[0].Cargo;

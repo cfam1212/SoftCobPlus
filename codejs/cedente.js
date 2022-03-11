@@ -1254,11 +1254,24 @@ $(document).ready(function(){
             telefono1: _fono1, telefono2: _fono2, fax: _fax, url: _url, estado: 'A', nivel: _cboarbol,
             resultcontacto: _resultcon, resultproducto: _resultpro, resultcatalogo: _resultcat, resultagencia: _resultage, opcion: 0},            
         success: function(data){   
-            if(data == 'OK'){                
-                // $.redirect('admincede.php',mensajesalertify("Guardado con exito..!","S","top-center",2));
+            if(data == 'Existe'){     
+                mensajesalertify("Nombre del Cedente ya existe..!","W","top-right",3);  
             }else{
-              
-                mensajesalertify("Nombre del Cedente ya exixte..!","W","top-right",3);              
+                _contactoid = data[0].Id;
+                _contacto = data[0].Contacto;
+                _cargo = data[0].Cargo;
+                _codcargo = data[0].CodCargo;
+                _celular = data[0].Celular;
+                _extension = data[0].Extension;
+                _email1 = data[0].Email1;
+                _email2 = data[0].Email2;
+
+                _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-3 btnEditConMo" data-toggle="tooltip" data-placement="top" title="editar"' +
+                            ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar"' +
+                            'id="btnDelete"><i class="fa fa-trash-o"></i></button></div></div></td>'
+                
+                TableDataContacto.row(_fila).data([_contactoid, _contacto, _cargo, _codcargo, _celular, _extension, _email1, _email2, _boton]).draw();              
+                            
             }
         },
         error: function (error) {

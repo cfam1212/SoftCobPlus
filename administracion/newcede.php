@@ -90,9 +90,9 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
-                                            <label for="menuname" class="control-label col-md-1">Cedente</label>
+                                            <label for="cedente" class="control-label col-md-1">Cedente</label>
                                             <div class="form-group col-md-3">
-                                                <input type="text" required class="form-control" id="txtCedente" name="menuname" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                                                <input type="text" required class="form-control" id="txtCedente" name="txtCedente" maxlength="150" >
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="iconome" class="control-label col-md-1">Ruc</label>
@@ -157,7 +157,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="menuname" class="control-label col-md-1">Contacto</label>
                                     <div class="form-group col-md-3">
-                                        <input type="text" required class="form-control" id="txtContacto" name="contacto" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                                        <input type="text" required class="form-control" id="txtContacto" name="contacto" maxlength="150">
                                     </div>
                                     <label for="espacio" class="control-label col-md-1"></label>
                                     <label for="cbomenupadre" class="control-label col-md-1">Cargo</label>
@@ -399,7 +399,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="contacto" class="col-form-label">Contacto</label>
-                        <input type="text" id="txtContactoMo" required class="form-control" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                        <input type="text" id="txtContactoMo" required class="form-control" maxlength="150">
                     </div>
                     <div class="form-group">
                         <label for="cbocargo" class="control-label">Cargo</label>
