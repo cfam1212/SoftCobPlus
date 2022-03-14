@@ -24,14 +24,14 @@
         <label>Username:</label>
         <div class="group">
           <i class="fas fa-user"></i>
-          <input type="text" class="form-control" id="username" placeholder="Username" required="required" />
+          <input type="text" class="form-control" id="username" placeholder="Username" required="required" autocomplete="off" />
         </div>
       </div>
       <div class=" w3l-form-group">
         <label>Password:</label>
         <div class="group">
           <i class="fas fa-unlock"></i>
-          <input type="password" class="form-control" id="password" placeholder="Password" required="required" />
+          <input type="password" class="form-control" id="password" placeholder="Password" required="required" autocomplete="off" />
         </div>
       </div>
       <br />

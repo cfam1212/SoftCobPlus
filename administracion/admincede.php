@@ -62,6 +62,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <tr>
                                     <th>Id</th>
                                     <th style="width:40%">Cedente</th>
+                                    <th style="width:20%">Provincia</th>
                                     <th style="width:20%">Cuidad</th>
                                     <th style="width:12% ; text-align: center">Telefono</th>
                                     <th style="width:13% ; text-align: center">Opciones</th>
@@ -83,6 +84,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <tr>
                                         <td><?php echo $datos['CedeId'] ?></td>
                                         <td><?php echo $datos['Cedente'] ?></td>
+                                        <td><?php echo $datos['Provincia'] ?></td>
                                         <td><?php echo $datos['Ciudad'] ?></td>
                                         <td><?php echo $datos['Telefono'] ?></td>
                                         <td>
