@@ -55,7 +55,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div> -->
                             <div class="row">
                                 <label for="espacio" class="control-label col-md-2"></label>
-                                <label for="menuname" class="control-label col-md-1">Descripcion:</label>
+                                <label for="descripcion" class="control-label col-md-1">Descripcion:</label>
                                 <div class="col-md-5 col-sm-5  form-group has-feedback">
                                     <input type="tel" class="form-control has-feedback-left" id="txtDescripcion" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
                                     <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
@@ -75,13 +75,13 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="col-md-10 col-sm-10">
                             <form method="post" id="user_form">
                                 <div class="table-responsive">
-                                    <table id="tblperfil" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                    <table id="tblperfilcalifica" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
                                         <thead>
                                             <tr>
-                                                <th style="display: none;">Codigo</th>
-                                                <th>Descripcion</th>
-                                                <th style="width:12% ; text-align: center">Opciones</th>
-                                                <th style="width:10% ; text-align: center">Estado</th>
+                                                <th>Codigo</th>
+                                                <th style="text-align: center">Descripcion</th>
+                                                <th style="text-align: center">Opciones</th>
+                                                <th style="text-align: center">Estado</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -122,6 +122,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <input type="hidden" name="row_id" id="hidden_row_id" />
                         <button type="button" id="btnModificar" class="btn btn-outline-info ml-3"><i class="fa fa-save"></i> Guardar</button>
                     </div>
+                </div>
             </form>
         </div>
     </div>

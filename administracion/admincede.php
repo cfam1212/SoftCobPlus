@@ -62,10 +62,10 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <tr>
                                     <th>Id</th>
                                     <th style="width:40%">Cedente</th>
-                                    <th style="width:20%">Provincia</th>
-                                    <th style="width:20%">Cuidad</th>
-                                    <th style="width:12% ; text-align: center">Telefono</th>
-                                    <th style="width:13% ; text-align: center">Opciones</th>
+                                    <th style="width:15%">Provincia</th>
+                                    <th style="width:15%">Cuidad</th>
+                                    <th style="width:10% ; text-align: center">Telefono</th>
+                                    <th style="width:10% ; text-align: center">Opciones</th>
                                     <th style="width:10% ; text-align: center">Estado</th>
                                 </tr>
                             </thead>
@@ -273,7 +273,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="row">
                                 <label for="espacio" class="control-label col-md-1"></label>
-                                <label for="ext" class="control-label col-md-1">Ext:</label>
+                                <label for="ext" class="control-label col-md-1">Teléfono:</label>
                                 <!-- <div class="form-group col-md-3">
                                     <input type="text" required class="form-control" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="txtExt" name="ext" maxlength="10">
                                 </div> -->
@@ -319,16 +319,17 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="col-md-10 col-sm-10">
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
-                                            <table id="tblcontacto" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                            <table id="tblcontactonew" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
                                                 <thead>
                                                     <tr>
                                                         <th style="display: none;">Id</th>
-                                                        <th>Contacto</th>
+                                                        <th style="text-align: center;">Contacto</th>
                                                         <th style="text-align: center;">Cargo</th>
                                                         <th style="display: none;">CodigoCargo</th>
+                                                        <th style="text-align: center;">Teléfono</th>
                                                         <th style="text-align: center;">Celular</th>
-                                                        <th>Ext</th>
                                                         <th style="text-align: center;">Email</th>
+                                                        <th style="display: none;">Email2</th>
                                                         <th style="text-align: center;">Opciones</th>
                                                     </tr>
                                                 </thead>

@@ -11,28 +11,27 @@ $userid = $_SESSION["i_usuaid"];
 $host = $_SESSION["s_namehost"];
 $emprid = $_SESSION["i_emprid"];
 
-$codigo= (isset($_POST['codigo'])) ? $_POST['codigo'] : '';
-$result = (isset($_POST['result'])) ? $_POST['result'] : '';
-$opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
-$cboid = (isset($_POST['id'])) ? $_POST['id'] : '';
-$estado= (isset($_POST['estado'])) ? $_POST['estado'] : '';
+$cboid = (isset($_POST['cboid'])) ? $_POST['cboid'] : '';
+$descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
+$codigo= (isset($_POST['codigo'])) ? $_POST['codigo'] : '0';
+$opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '0';
 
-date_default_timezone_set("America/Guayaquil");
+//date_default_timezone_set("America/Guayaquil");
 
 switch($opcion){
     case "0": //NUEVO  
         $consulta = "CALL sp_New_Perfiles(?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(2,'','',$cboid,0,0,0,0,''));
+        $resultado->execute(array(0,$descripcion,'',$cboid,0,0,0,0,''));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);        
-        foreach($result as $drfila){
+        /*foreach($result as $drfila){
             $consulta = "CALL sp_New_Perfiles(?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $valestado = $drfila['arryestado'] == "Activo" ? 'A' : 'I';
             $resultado->execute(array(0,$drfila['arrydescripcion'],$valestado,$codigo,0,0,0,$userid,$host));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         }
-        $data = '0';
+        $data = '0';*/
         break;    
     case "1": //CONSULTAR
         try {

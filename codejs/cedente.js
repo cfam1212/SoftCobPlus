@@ -3,7 +3,7 @@ $(document).ready(function(){
     var _count = 0,_objeto, _cbociudad, _cboid, _resultcon = [],_codcargoold,_idproduc,_countcatalogo = 0, 
     _resultpro = [], _resultcat = [], _resultage = [], _agencia,_cbosucursal,_sucursal,_zona, _estado, _producto,
     _codigocat, _catalogo, _estadocat, _produc, _countagen = 0, _codigoagen,_countproduc = 0, _estadopro,_idcontacto, 
-    _contactoold, _codcargoold, _celularold, _extold, _email1old, _estadoagen, _estadocat, _countcontacto = 0, _contactoold,
+    _contactoold, _codcargoold, _celularold, _email1old, _estadoagen, _estadocat, _countcontacto = 0, _contactoold, _telefono,
     _descripant;
 
     $("#modalCONTACTO").draggable({
@@ -98,7 +98,7 @@ $(document).ready(function(){
         let _contacto = $('#txtContacto').val();
         let _cbocargo = $('#cboCargo').val();
         let _cargo =$("#cboCargo option:selected").text();      
-        let _ext = $('#txtExt').val();
+        let _telefono = $('#txtExt').val();
         let _celular = $('#txtCelular').val();
         let _email1 = $.trim($('#txtEmail1').val());
         let _email2 = $.trim($('#txtEmail2').val());
@@ -165,20 +165,33 @@ $(document).ready(function(){
       if(_continuarcon)
       {
         _countcontacto++;
-          _output = '<tr id="rowcon_' + _countcontacto + '">';
-          _output += '<td style="display: none;">' + _countcontacto + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countcontacto + '" value="' + _countcontacto + '" /></td>';                
-          _output += '<td>' + _contacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + _countcontacto + '" value="' + _contacto + '" /></td>';
-          _output += '<td class="text-center">' + _cargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + _countcontacto + '" value="' + _cargo + '" /></td>';
-          _output += '<td style="display: none;" class="text-center">' + _cbocargo + ' <input type="hidden" name="hidden_codigocargo[]" id="codCargo' + _countcontacto + '" value="' + _cbocargo + '" /></td>';
-          _output += '<td class="text-center">' + _celular + ' <input type="hidden" name="hidden_celular[]" id="txtCelular' + _countcontacto + '" value="' + _celular + '" /></td>';
-          _output += '<td class="text-center">' + _ext + ' <input type="hidden" name="hidden_ext[]" id="txtExt' + _countcontacto + '" value="' + _ext + '" /></td>';
-          _output += '<td class="text-center">' + _email1 + ' <input type="hidden" name="hidden_email1[]" id="txtEmail1' + _countcontacto + '" value="' + _email1 + '" /></td>';
-          _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btnEditCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countcontacto + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcontacto + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-          _output += '</tr>';
+        /*_output = '<tr id="rowcon_' + _countcontacto + '">';
+        _output += '<td style="display: none;">' + _countcontacto + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countcontacto + '" value="' + _countcontacto + '" /></td>';                
+        _output += '<td>' + _contacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + _countcontacto + '" value="' + _contacto + '" /></td>';
+        _output += '<td class="text-center">' + _cargo + ' <input type="hidden" name="hidden_cargo[]" id="cboCargo' + _countcontacto + '" value="' + _cargo + '" /></td>';
+        _output += '<td style="display: none;" class="text-center">' + _cbocargo + ' <input type="hidden" name="hidden_codigocargo[]" id="codCargo' + _countcontacto + '" value="' + _cbocargo + '" /></td>';
+        _output += '<td class="text-center">' + _celular + ' <input type="hidden" name="hidden_celular[]" id="txtCelular' + _countcontacto + '" value="' + _celular + '" /></td>';
+        _output += '<td class="text-center">' + _ext + ' <input type="hidden" name="hidden_ext[]" id="txtExt' + _countcontacto + '" value="' + _ext + '" /></td>';
+        _output += '<td class="text-center">' + _email1 + ' <input type="hidden" name="hidden_email1[]" id="txtEmail1' + _countcontacto + '" value="' + _email1 + '" /></td>';
+        _output += '<td><div class="text-center"><div class="btn-group">'
+        _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btnEditCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countcontacto + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button t1ype="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcontacto + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        _output += '</tr>';*/
 
-          $('#tblcontacto').append(_output);
+        _output = '<tr id="rowcon_' + _countcontacto + '">';
+        _output += '<td style="display: none;">' + _countcontacto + '</td>';
+        _output += '<td>' + _contacto + ' <input type="hidden" name="hidden_contacto[]" id="txtContacto' + _countcontacto + '" value="' + _contacto + '" /></td>';
+        _output += '<td>' + _cargo + '</td>';
+        _output += '<td style="display: none;" class="text-center">' + _cbocargo + '</td>';
+        _output += '<td class="text-center">' + _telefono + '</td>';
+        _output += '<td class="text-center">' + _celular + '</td>';
+        _output += '<td class="text-center">' + _email1 + '</td>';
+        _output += '<td style="display: none;">' + _email2 + '</td>';
+        _output += '<td><div class="text-center"><div class="btn-group">'
+        _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcontacto + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        _output += '</tr>';
+
+          $('#tblcontactonew').append(_output);
 
           _objeto = {
               arrycodigo : parseInt(_countcontacto),
@@ -186,7 +199,7 @@ $(document).ready(function(){
               arrycargo : _cargo,
               arrycbocargo : _cbocargo,
               arrycelular : _celular,
-              arryext : _ext,
+              arryext : _telefono,
               arryemail1 : _email1,
               arryemail2 : _email2
           }
@@ -204,7 +217,7 @@ $(document).ready(function(){
 
     //Contacto-Editar-Modal
 
-    $(document).on("click",".btnEditCon",function(){
+    /*$(document).on("click",".btnEditCon",function(){
       $("#formContacto").trigger("reset"); 
       //debugger;
        _idcontacto = $(this).attr("id");
@@ -228,11 +241,11 @@ $(document).ready(function(){
       $("#btnAgregar").text("Modificar");
       $("#modalCONTACTO").modal("show");
 
-  });
+  });*/
 
     //botton editar-contacto
 
-  $('#btnEditarCon').click(function(){
+  /*$('#btnEditarCon').click(function(){
     debugger;
     let _continuaconedit = false;
     let _newcontacto = $.trim($('#txtContactoMo').val());
@@ -354,7 +367,7 @@ $(document).ready(function(){
             $('#tblcontacto').append(_output);  
     } 
 
-  });
+  });*/
 
     //delete-contacto
 
