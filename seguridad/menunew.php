@@ -36,37 +36,36 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <form class="form-horizontal" role="form">
                         <fieldset>
                             <div class="form-group row">
-                                <!-- <div class="form-group col-md-6">
-                                    <label for="menuname" class="control-label">Menu</label>
-                                    <input type="text" required class="form-control" id="txtmenuname" name="menuname" placeholder="Nombre del Menu">
-                                </div> -->
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="menuname" class="control-label col-md-1">Menu:</label>
+                                <label for="espacio" class="control-label col-md-5"></label>
+                                <label for="menuname" class="control-label col-md-1">Icono Menu:</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="col-md-4 col-sm-4 form-group has-feedback">
-                                    <input type="text" class="form-control has-feedback-left" id="txtmenuname" placeholder="Nombre del Menu">
+                                    <input type="text" class="form-control has-feedback-left" id="txtmenuname" placeholder="Nombre del Menu" autofocus>
                                     <span class="fa fa-bars form-control-feedback left" aria-hidden="true"></span>
                                 </div>
-
-                                <!-- <div class="form-group col-md-6">
-                                    <label for="iconome" class="control-label">Icono Menú</label>
-                                    <input id="txticonome" name="iconome" type="text" placeholder="ej:. fa fa-user" class="form-control">
-                                </div> -->
-                                <label for="espacio" class="control-label col-md-1"></label>
-                                <label for="menuname" class="control-label col-md-1">Icono Menu:</label>
+                                <label for="espacio" class="control-label col-md-2"></label>
                                 <div class="col-md-4 col-sm-4 form-group has-feedback">
                                     <input type="text" class="form-control has-feedback-left" id="txticonome" placeholder="Icono Menu">
                                     <span class="fa fa-smile-o form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
-
                             <div class="form-group row">
-                                <label for="cbomenupadre" class="control-label col-md-1">Menu Padre</label>
+                                <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="cbomenupadre" class="control-label col-md-1">Menu Padre:</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <select id="cbomenupadre" class="form-control col-md-4">
                                     <?php foreach ($menump as $fila) : ?>
                                         <option value="<?= $fila['Codigo'] ?>"><?= $fila['MenuPadre'] ?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
-
+                            <br/>
                             <div class="row">
                                 <div class="form-group col-md-6" id="divmp" style="display:none">
                                     <label for="menump" class="control-label">Nombre Menú Padre:</label>

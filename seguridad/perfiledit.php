@@ -33,37 +33,48 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <br/>
                     <form class="form-horizontal" role="form">
                         <fieldset>
-                            <!-- <div class="form-group row">
-                                <label for="perfilname" class="control-label col-md-2">Perfi:</label>
-                                <input type="text" required class="form-control col-md-4" id="txtPerfil" name="perfilname" maxlength="80" placeholder="Nombre del Perfil" value="<?php echo $datos[0]['Perfil'] ?>">
-                                <label for="descrip" class="control-label col-md-2">Descripción:</label>
-                                <textarea name="descrip" id="txtDescripcion" class="form-control col-md-4" maxlength="255" onkeydown="return (event.keyCode!=13);"><?php echo $datos[0]['Observacion'] ?></textarea>
-                            </div> -->
                             <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="menuname" class="control-label col-md-1">Perfil:</label>
+                                <label for="espacio" class="control-label col-md-4"></label>
+                                <label for="menuname" class="control-label col-md-1">Descripcion:</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="col-md-4 col-sm-4  form-group has-feedback">
                                     <input type="tel" class="form-control has-feedback-left" id="txtPerfil" maxlength="80" placeholder="Nombre del Perfil" value="<?php echo $datos[0]['Perfil'] ?>">
                                     <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                                 </div>
-                                <label for="menuname" class="control-label col-md-1">Descripcion:</label>
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="col-md-5 col-sm-5 form-group">
                                     <textarea name="descrip" id="txtDescripcion" class="form-control" maxlength="255" onkeydown="return (event.keyCode!=13);"><?php echo $datos[0]['Observacion'] ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="chkcrear" class="control-label col-md-2">Crear Parámetro:</label>
+                                <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="menuname" class="control-label col-md-2">Crear Parámetro:</label>
+                                <label for="espacio" class="control-label col-md-3"></label>
+                                <label for="menuname" class="control-label col-md-2">Modificar Parámetro:</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="checkbox col-md-4">
                                     <input type="checkbox" id="chkCrear"></input>
                                     <label class="form-check-label" id="lblCrear"><?php echo $datos[0]['Crear'] ?></label>
                                 </div>
-                                <label for="chkmodificar" class="control-label col-md-2">Modificar Parámetro:</label>
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="checkbox col-md-4">
                                     <input type="checkbox" id="chkModificar"></input>
                                     <label class="form-check-label" id="lblModificar"><?php echo $datos[0]['Modificar'] ?></label>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="chkeliminar" class="control-label col-md-2">Eliminar Parámetro:</label>
+                                <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="menuname" class="control-label col-md-2">Eliminar Parámetro:</label>
+                                <label for="espacio" class="control-label col-md-3"></label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="checkbox col-md-4">
                                     <input type="checkbox" id="chkEliminar"></input>
                                     <label class="form-check-label" id="lblEliminar"><?php echo $datos[0]['Eliminar'] ?></label>
@@ -74,6 +85,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                         </fieldset>
                     </form>
+                    <br/>
                 </div>
             </div>
         </div>

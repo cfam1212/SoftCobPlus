@@ -6,21 +6,18 @@ h1 {
   
   }
   h2 {
-    color: #19181a;
     font-weight: normal;
     font-size: 35px;
     font-family: Arial;
     text-align: center;
   }
   h3 {
-    color: #c7c5cc;
     font-weight: normal;
     font-size: 30px;
     font-family: Arial;
   
   }
   h4 {
-    color: #4f4866;
     font-weight: normal;
     font-size: 25px;
     font-family: Arial;
@@ -63,7 +60,7 @@ h1 {
 /* background tablas */
 
 #tabledata,#tablenoorder,#tblseguridad,#tblparameter,#tblperfil,#tblcontacto,#tblproducto,#tblagencia,#tabledatasup,
-#tabledatadepa,#tableconorder{
+#tabledatadepa,#tableconorder,#tblperfilcalifica{
 
   background-color: #F1F1F2;
   color: black;
@@ -87,7 +84,7 @@ h1 {
 
 /*botones circulares*/
 
-.btn-circle.btn-sm {
+.btn-circle.btn-xl {
   width: 50px;
   height: 50px;
   padding: 6px 0px;

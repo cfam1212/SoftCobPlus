@@ -47,22 +47,25 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                 <form class="form-horizontal" role="form">
                                     <fieldset>
-                                        <div class="row">
+                                        <div class="form-group row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Parámetro:</label>
-                                            <div class="form-group col-md-3">
-                                                <input type="text" required class="form-control" id="txtParametro" maxlength="80" name="parametro" value="<?php echo $datapara[0]['Parametro']; ?>">
-                                            </div>
+                                            <label for="espacio" class="control-label col-md-3"></label>
+                                            <label for="menuname" class="control-label col-md-1">Descripción:</label>
                                         </div>
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
-                                            <label for="menuname" class="control-label col-md-1">Descripción:</label>
-                                            <div class="form-group col-md-10">
+                                            <div class="form-group col-md-3">
+                                                <input type="text" required class="form-control" id="txtParametro" maxlength="80" name="parametro" value="<?php echo $datapara[0]['Parametro']; ?>">
+                                            </div>
+                                            <label for="espacio" class="control-label col-md-1"></label>
+                                            <div class="form-group col-md-7">
                                                 <textarea name="observa" id="txtDescripcion" class="form-control col-md-8"><?php echo $datapara[0]['Descripcion']; ?></textarea>
                                             </div>
                                         </div>
                                     </fieldset>
                                 </form>
+                                <br/>
                             </div>
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                 <div class="col-md-12 col-sm-12">
@@ -111,8 +114,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                 </td>
                                                                 <td style="text-align: center">
                                                                     <input type="checkbox" class="form-check-input chkEstadoDe" id="chk<?php echo $dat['Orden']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
-                                                                           echo "checked"; } ?> value="<?php echo $dat['Padeid']; ?>" />
-                                                                                                                                                                                   
+                                                                                                                                                                                        echo "checked";
+                                                                                                                                                                                    } ?> value="<?php echo $dat['Padeid']; ?>" />
+
                                                                 </td>
                                                                 <td style="display: none;" id="tdestado<?php echo $dat['Padeid']; ?>">
                                                                     <?php echo $dat['Estado'] ?>

@@ -96,7 +96,10 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstadoUs" <?php echo $chkestado; ?> id="chk<?php echo $dat['UserId']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
-                                              echo "checked"; } else { ''; } ?> value="<?php echo $dat['UserId']; ?>" />                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                            echo "checked";
+                                                                                                                                                                                        } else {
+                                                                                                                                                                                            '';
+                                                                                                                                                                                        } ?> value="<?php echo $dat['UserId']; ?>" />
                                         </td>
                                     </tr>
                                 <?php }
@@ -110,7 +113,7 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 <div class="modal fade" id="modalNewUser" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 65%" role="document">
+    <div class="modal-dialog" style="max-width: 55%" role="document">
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
                 <h5 class="modal-title" id="modalLabel"></h5>
@@ -119,81 +122,111 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </button>
             </div>
             <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id="frmUserNew">
-                <br/>
+                <br />
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="menuname" class="control-label col-md-2">Nombres:</label>
+                        <label for="espacio" class="control-label col-md-1"></label>
+                        <label for="menuname" class="control-label col-md-1">Nombres:</label>
+                        <label for="espacio" class="control-label col-md-5"></label>
+                        <label for="menuname" class="control-label col-md-1">Apellidos:</label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="espacio" class="control-label col-md-1"></label>
                         <div class="col-md-4 col-sm-4  form-group has-feedback">
-                            <input type="text" class="form-control has-feedback-left" id="txtUsername" placeholder="" maxlength="80">
+                            <input type="text" class="form-control has-feedback-left" id="txtUsername" maxlength="80" autofocus>
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
-                        <label for="espacio" class="control-label col-md-1"></label>
-                        <label for="menuname" class="control-label col-md-1">Apellidos</label>
+                        <label for="espacio" class="control-label col-md-2"></label>
                         <div class="col-md-4 col-sm-4  form-group has-feedback">
-                            <input type="text" class="form-control has-feedback-left" id="txtLastname" placeholder="" maxlength="80">
+                            <input type="text" class="form-control has-feedback-left" id="txtLastname" maxlength="80">
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="menuname" class="control-label col-md-2">Login:</label>
+                        <label for="espacio" class="control-label col-md-1"></label>
+                        <label for="menuname" class="control-label col-md-1">Login:</label>
+                        <label for="espacio" class="control-label col-md-5"></label>
+                        <label for="menuname" class="control-label col-md-1">Password:</label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="espacio" class="control-label col-md-1"></label>
                         <div class="col-md-4 col-sm-4  form-group has-feedback">
-                            <input type="text" class="form-control has-feedback-left" id="txtLogin" placeholder="" maxlength="16" onKeyUp="this.value=this.value.toLowerCase();" autocomplete="off">
+                            <input type="text" class="form-control has-feedback-left" id="txtLogin" maxlength="16" onKeyUp="this.value=this.value.toLowerCase();" autocomplete="off">
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
-                        <label for="espacio" class="control-label col-md-1"></label>
-                        <label for="menuname" class="control-label col-md-1">Password:</label>
+                        <label for="espacio" class="control-label col-md-2"></label>
                         <div class="col-md-4 col-sm-4  form-group has-feedback">
                             <input type="password" class="form-control has-feedback-left" id="txtPassword" placeholder="" maxlength="50" autocomplete="off">
                             <span class="fa fa-eye-slash form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-
                     <div class="form-group row">
-                        <label for="perfil" class="control-label col-md-2">Perfil:</label>
+                        <label for="espacio" class="control-label col-md-1"></label>
+                        <label for="menuname" class="control-label col-md-1">Perfil:</label>
+                        <label for="espacio" class="control-label col-md-5"></label>
+                        <label for="menuname" class="control-label col-md-1">Tipo:</label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="espacio" class="control-label col-md-1"></label>
                         <select class="form-control col-md-4" id="cboPerfil" name="cboperfil" style="width: 33%;">
                             <?php foreach ($cboperfil as $fila) : ?>
                                 <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                             <?php endforeach ?>
                         </select>
-                        <label for="espacio" class="control-label col-md-1"></label>
-                        <label for="perfil" class="control-label col-md-1">Tipo:</label>
+                        <label for="espacio" class="control-label col-md-2"></label>
                         <select class="form-control col-md-4" id="cboTipoUser" name="cbotipouser" style="width: 33%;">
                             <?php foreach ($cbotipouser as $fila) : ?>
                                 <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
-                    <br/>
                     <div class="form-group row">
-                        <label for="perfil" class="control-label col-md-2">Departamento:</label>
+                        <label for="espacio" class="control-label col-md-1"></label>
+                        <label for="menuname" class="control-label col-md-1">Departamento:</label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="espacio" class="control-label col-md-1"></label>
                         <select class="form-control col-md-4" id="cboDepa" name="cbodepa" style="width: 33%;">
                             <?php foreach ($cbodepa as $fila) : ?>
                                 <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                     <div class="form-group row">
-                        <label for="caduca" class="control-label col-md-2">Password Caduca:</label>
+                        <label for="espacio" class="control-label col-md-1"></label>
+                        <label for="menuname" class="control-label col-md-3">Password Caduca:</label>
+                        <label for="espacio" class="control-label col-md-2"></label>
+                        <label for="menuname" class="control-label col-md-2">Fecha Caduca:</label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="espacio" class="control-label col-md-1"></label>
                         <div class="checkbox col-md-4">
                             <input type="checkbox" id="chkCaduca">
                             <label class="form-check-label" id="lblCaduca">NO</label>
                         </div>
-                        <label for="fechacaduca" class="control-label col-md-2">Fecha Caduca:</label>
+                        <label for="espacio" class="control-label col-md-1"></label>
                         <input type="text" class="form-control col-md-4" id="txtFechacaduca" maxlength="50" disabled placeholder="MM/dd/yyyy ">
                     </div>
-
                     <div class="form-group row">
-                        <label for="cambiar" class="control-label col-md-2">Cambiar Password:</label>
+                        <label for="espacio" class="control-label col-md-1"></label>
+                        <label for="menuname" class="control-label col-md-3">Cambiar Password:</label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="espacio" class="control-label col-md-1"></label>
                         <div class="checkbox col-md-4">
                             <input type="checkbox" id="chkCambiar">
                             <label class="form-check-label" id="lblCambiar">NO</label>
                         </div>
                     </div>
-                    <br/>
+                    <br />
                     <div class="form-group row">
-                        <label for="foto" class="control-label col-md-2">Imagen:</label>
+                        <label for="espacio" class="control-label col-md-1"></label>
+                        <label for="menuname" class="control-label col-md-2">Imagen:</label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="espacio" class="control-label col-md-1"></label>
                         <input type="file" accept="image/*" id="txtImagen" name="imagen">
                         <div class="col-md-4">
                             <div class="card shadow">

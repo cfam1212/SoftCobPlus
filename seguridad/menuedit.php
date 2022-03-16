@@ -39,35 +39,37 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <br />
                     <form class="form-horizontal" role="form">
                         <fieldset>
-                             <!-- <div class="form-group row">
-                                <label for="menuname" class="control-label col-md-2">Menu:</label>
-                                <input type="text" name="menuname" id="txtMenuname" required class="form-control col-md-4"  value="<?php echo $datamenu[0]['Menu'] ?>">
-                                <label for="iconome" class="control-label col-md-2">Icono Menú:</label>
-                                <input type="text" name="iconome" id="txtIconome" class="form-control col-md-4" placeholder="ej:. fas fa-user" value="<?php echo $datamenu[0]['Icono'] ?>">
-                            </div>  -->
                             <div class="form-group row">
-                                <label for="menuname" class="control-label col-md-1">Menu:</label>
+                                    <label for="espacio" class="control-label col-md-1"></label>
+                                    <label for="menuname" class="control-label col-md-1">Menu:</label>
+                                    <label for="espacio" class="control-label col-md-5"></label>
+                                    <label for="menuname" class="control-label col-md-1">Icono Menu:</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="col-md-4 col-sm-4  form-group has-feedback">
                                     <input type="tel" class="form-control has-feedback-left" id="txtMenuname" value="<?php echo $datamenu[0]['Menu'] ?>">
                                     <span class="fa fa-bars form-control-feedback left" aria-hidden="true"></span>
                                 </div>
-                                <label for="espacio" class="control-label col-md-1"></label>
-                                <label for="menuname" class="control-label col-md-1">Icono Menu:</label>
+                                <label for="espacio" class="control-label col-md-2"></label>
                                 <div class="col-md-4 col-sm-4  form-group has-feedback">
                                     <input type="tel" class="form-control has-feedback-left" id="txtIconome" value="<?php echo $datamenu[0]['Icono'] ?>">
                                     <span class="fa fa-smile-o form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
-
                             <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="cbomenupadre" class="control-label col-md-1">Menu Padre:</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <select name="cbomenupadre" id="cboMenupadre" class="form-control col-md-4">
                                     <?php foreach ($menump as $fila) : ?>
                                         <option <?php if ($datamenu[0]['CodMenuPadre'] == $fila['Codigo']) { ?> selected="<?php echo $fila['Codigo']; ?>" <?php } ?> value="<?= $fila['Codigo'] ?>"><?= $fila['MenuPadre'] ?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
-
+                            <br/>
                             <div id="divmp" class="form-group row" style="display:none">
                                 <label for="menump" class="control-label col-md-2">Nombre Menú Padre:</label>
                                 <input type="text" name="menump" id="txtMenump" class="form-control col-md-4" placeholder="Menú Padre">

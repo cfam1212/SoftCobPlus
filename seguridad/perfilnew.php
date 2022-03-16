@@ -28,56 +28,60 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <br/>
                     <form class="form-horizontal" role="form">
                         <fieldset>
-                            <!-- <div class="form-group row">
-                                <label for="perfilname" class="control-label col-md-2">Perfi:</label>
-                                <input type="text" required class="form-control col-md-4" id="txtPerfil" name="perfilname" maxlength="80" placeholder="Nombre del Perfil">
-                                <label for="descrip" class="control-label col-md-2">Descripción:</label>
-                                <textarea name="descrip" id="txtDescripcion" class="form-control col-md-4" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
-                            </div> -->
-                            <div class="form-group row">
+                           <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="menuname" class="control-label col-md-1">Perfil:</label>
+                                <label for="espacio" class="control-label col-md-4"></label>
+                                <label for="menuname" class="control-label col-md-1">Descripcion:</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="col-md-4 col-sm-4  form-group has-feedback">
-                                    <input type="tel" class="form-control has-feedback-left" id="txtPerfil" maxlength="80" placeholder="Nombre del Perfil">
+                                    <input type="tel" class="form-control has-feedback-left" id="txtPerfil" maxlength="80" placeholder="Nombre del Perfil" autofocus>
                                     <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                                 </div>
-                                <label for="menuname" class="control-label col-md-1">Descripcion:</label>
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="col-md-5 col-sm-5 form-group">
                                 <textarea name="descrip" id="txtDescripcion" class="form-control" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
                                 </div>
                             </div>
-
                             <div class="form-group row">
-                                <label for="chkcrear" class="control-label col-md-2">Crear Parámetro:</label>
+                                <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="menuname" class="control-label col-md-2">Crear Parámetro:</label>
+                                <label for="espacio" class="control-label col-md-3"></label>
+                                <label for="menuname" class="control-label col-md-2">Modificar Parámetro:</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="checkbox col-md-4">
                                     <input type="checkbox" id="chkCrear"></input>
                                     <label class="form-check-label" id="lblCrear">NO</label>
                                 </div>
-                                <label for="chkmodificar" class="control-label col-md-2">Modificar Parámetro:</label>
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="checkbox col-md-4">
                                     <input type="checkbox" id="chkModificar"></input>
                                     <label class="form-check-label" id="lblModificar">NO</label>
                                 </div>
                             </div>
-
                             <div class="form-group row">
-                                <label for="chkeliminar" class="control-label col-md-2">Eliminar Parámetro:</label>
+                                <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="menuname" class="control-label col-md-2">Eliminar Parámetro:</label>
+                                <label for="espacio" class="control-label col-md-3"></label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="checkbox col-md-4">
                                     <input type="checkbox" id="chkEliminar"></input>
                                     <label class="form-check-label" id="lblEliminar">NO</label>
                                 </div>
-                                <!-- <label for="chkestado" class="control-label col-md-2">Estado:</label>
-                                <div class="checkbox col-md-4">
-                                    <input type="checkbox" id="chkEstado" checked disabled></input>
-                                    <label class="form-check-label" id="lblEstado">Activo</label>
-                                </div> -->
                             </div>
                         </fieldset>
                     </form>
+                    <br/>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 ">
