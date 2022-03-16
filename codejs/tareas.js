@@ -108,33 +108,29 @@ $(document).ready(function(){
     });
     
     function DeleteTarea(){
-       
-     alertify.confirm('Tarea sera eliminada..!!', 'Esta seguro de eliminar' + ' ' + _tarea + '..?', function(){ 
-    
-        $.ajax({
-            url: "../db/tareacrud.php",
-            type: "POST",
-            dataType: "json",
-            data: {opcion: 1, id: _id},                        
-            success: function(data){
-                if(data == "NO"){
-                    swal.close();
-                    mensajesalertify("Tarea no se puede Eliminar, está asociada a un Menú..!!","W","top-right",3);  
-                }       
-                else {
-                    Swal.close();
-                    TableData.row(_fila.parents('tr')).remove().draw();
-                    mensajesalertify("Tarea Eliminada","E","top-center",2);
-                }                            
-            },
-            error: function (error) {
-                console.log(error);
-            }                  
-        });
-    
-    
-              }
-                , function(){alertify.error('Cancelado');});
+        alertify.confirm('Tarea sera eliminada..!!', 'Esta seguro de eliminar' + ' ' + _tarea + '..?', function(){ 
+            $.ajax({
+                url: "../db/tareacrud.php",
+                type: "POST",
+                dataType: "json",
+                data: {opcion: 1, id: _id},                        
+                success: function(data){
+                    if(data == "NO"){
+                        swal.close();
+                        mensajesalertify("Tarea no se puede Eliminar, está asociada a un Menú..!!","W","top-right",3);  
+                    }       
+                    else {
+                        Swal.close();
+                        TableData.row(_fila.parents('tr')).remove().draw();
+                        mensajesalertify("Tarea Eliminada","E","top-center",2);
+                    }                            
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+        , function(){alertify.error('Cancelado');});
     }
     
     $("#formTarea").submit(function(e){
@@ -184,7 +180,7 @@ $(document).ready(function(){
             data: {opcion:0, id:_id, tarea:_tarea, ruta:_ruta, icono:_icono, estado:_estado},            
             success: function(data){
                 if(data == 'SI'){
-                    mensajesalertify("Tarea ya Existe..!!","W","top-right",3);                   
+                    mensajesalertify("Tarea ya Existe..!!","W","top-right",3); 
                 }else{
                     _tareaid = data[0].TareaId;
                     _tarea = data[0].Tarea;

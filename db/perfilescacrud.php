@@ -12,8 +12,9 @@ $host = $_SESSION["s_namehost"];
 $emprid = $_SESSION["i_emprid"];
 
 $cboid = (isset($_POST['cboid'])) ? $_POST['cboid'] : '';
+$idperfil = (isset($_POST['id'])) ? $_POST['id'] : '0';
 $descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
-$codigo= (isset($_POST['codigo'])) ? $_POST['codigo'] : '0';
+$estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '0';
 
 //date_default_timezone_set("America/Guayaquil");
@@ -47,12 +48,19 @@ switch($opcion){
     case "2": // ELIMINNAR 
         break;
 
-    case "3": //EDITAR ESTADO PERFILES DE CALIFICACION
+    case "3": //EDITAR PERFIL DE CALIFICACION
         $consulta = "CALL sp_New_Perfiles(?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(3,'',$codigo,$estado,$cboid,0,0,0,''));
+        $resultado->execute(array(3,'',$cboid,$estado,$idperfil,0,0,0,''));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;    
+
+    case "4": //EDITAR PERFIL DE CALIFICACION
+        $consulta = "CALL sp_New_Perfiles(?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(4,'',$cboid,$descripcion,$idperfil,0,0,0,''));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;           
       
 }
 

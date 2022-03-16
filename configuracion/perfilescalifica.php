@@ -53,7 +53,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="row">
                                 <label for="espacio" class="control-label col-md-3"></label>
                                 <div class="col-md-5 col-sm-5  form-group has-feedback">
-                                    <input type="tel" class="form-control has-feedback-left" id="txtDescripcion" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
+                                    <input type="tel" class="form-control has-feedback-left" id="txtDescripcion" maxlength="150">
                                     <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                                 <button type="button" class="btn btn-outline-info" id="btnAgregar" data-toggle="tooltip" data-placement="top" title="agregar" style="margin-bottom:10px">
@@ -94,11 +94,8 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-    <br/>
-    <div class='btn-group'>
-        <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
-    </div>
 </div>
+
 <div class="modal fade" id="modalPERFIL" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModalBg">
@@ -112,7 +109,7 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="detalle" class="col-form-label">Descripcion</label>
-                        <input type="text" id="txtDescripcionedit" required class="form-control" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
+                        <input type="text" id="txtDescripcionedit" required class="form-control" maxlength="80">
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="row_id" id="hidden_row_id" />
