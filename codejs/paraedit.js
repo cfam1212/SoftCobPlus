@@ -322,11 +322,15 @@ $(document).ready(function()
         } 
     });
 
+    //CAMBIAR ESTADO PARAMETRO DETALLE BDD
+
     $(document).on("click",".chkEstadoDe",function(){ 
         let _rowid = $(this).attr("id");
         let _idpade = _rowid.substring(3);
         let _check = $("#chk" + _idpade).is(":checked");
         let _estadopade;
+
+        alert(_check);
 
         if(_check){
             _estadopade = 'Activo';
@@ -339,8 +343,8 @@ $(document).ready(function()
             $('#tdestado' + _idpade).text('Inactivo');
         }
 
-        /*$.ajax({
-            url: "../db/depacrud.php",
+         $.ajax({
+            url: "../db/parametrocrud.php",
             type: "POST",
             dataType: "json",
             data: {id: _iddepa, estado: _estadodepa, opcion: 4},
@@ -350,7 +354,7 @@ $(document).ready(function()
             error: function (error) {
                 console.log(error);
             }                 
-        });*/
+        });
 
     });    
 

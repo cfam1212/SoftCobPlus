@@ -114,7 +114,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 <div class="modal fade" id="modalNewCedente" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
                 <h5 class="modal-title" id="modalLabel"></h5>

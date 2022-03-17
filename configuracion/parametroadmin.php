@@ -83,7 +83,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 <div class="modal fade" id="modalNewParametro" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 60%" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
                 <h5 class="modal-title" id="modalLabel"></h5>
@@ -106,18 +106,18 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <form class="form-horizontal" role="form">
                                 <fieldset>
-                                    <div class="row">
-                                        <label for="espacio" class="control-label col-md-2"></label>
-                                        <label for="parametro" class="control-label col-md-1">Parametro:</label>
-                                        <div class="col-md-5 col-sm-5  form-group has-feedback">
+                                    <div class="form-group row">
+                                        <label for="menuname" class="control-label col-md-1">Parametro:</label>
+                                        <label for="espacio" class="control-label col-md-4"></label>
+                                        <label for="menuname" class="control-label col-md-1">Descripcion:</label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-4 col-sm-4  form-group has-feedback">
                                             <input autofocus type="text" class="form-control has-feedback-left" id="txtParametro" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
                                             <span class="fa fa-bookmark form-control-feedback left" aria-hidden="true"></span>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <label for="espacio" class="control-label col-md-2"></label>
-                                        <label for="descripcion" class="control-label col-md-1">Descripcion:</label>
-                                        <div class="col-md-9 col-sm-9  form-group has-feedback">
+                                        <label for="espacio" class="control-label col-md-1"></label>
+                                        <div class="col-md-7 col-sm-7  form-group has-feedback">
                                             <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" onKeyUp="this.value=this.value.toUpperCase();" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
                                         </div>
                                     </div>

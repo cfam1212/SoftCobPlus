@@ -74,6 +74,12 @@ switch($opcion){
             $resultado->execute(array(3,$emprid,$idparametro,'','',$estado,0,0,'','',0,'','','',0,0,0,0,''));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
+    case "4": //UPDATE ESTADO PARAMETRO DETALLE BDD
+            $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(3,$emprid,$idparametro,'','',$estado,0,0,'','',0,'','','',0,0,0,0,''));
+            $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;        
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);

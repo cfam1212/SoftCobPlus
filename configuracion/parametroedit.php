@@ -66,6 +66,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </fieldset>
                                 </form>
                                 <br/>
+                                <div class="float-right">
+                                  <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                                </div>
+                                <br/>
                             </div>
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                 <div class="col-md-12 col-sm-12">
@@ -82,9 +86,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                             <th>Detalle</th>
                                                             <th>Valor Texto</th>
                                                             <th>Valor Entero</th>
-                                                            <th>Estado</th>
                                                             <th style="display: none;">Estadolabel</th>
-                                                            <th>Acciones</th>
+                                                            <th>Opciones</th>
+                                                            <th>Estado</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -112,12 +116,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                     <?php echo $dat['ValorI']; ?>
                                                                     <input type="hidden" name="hidden_valori[]" id="txtValori<?php echo $dat['Orden']; ?>" value="<?php echo $dat['ValorI']; ?>" />
                                                                 </td>
-                                                                <td style="text-align: center">
-                                                                    <input type="checkbox" class="form-check-input chkEstadoDe" id="chk<?php echo $dat['Orden']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
-                                                                                                                                                                                        echo "checked";
-                                                                                                                                                                                    } ?> value="<?php echo $dat['Padeid']; ?>" />
-
-                                                                </td>
                                                                 <td style="display: none;" id="tdestado<?php echo $dat['Padeid']; ?>">
                                                                     <?php echo $dat['Estado'] ?>
                                                                     <input type="hidden" name="hidden_estado[]" id="txtEstado<?php echo $dat['Orden']; ?>" value="<?php echo $dat['Estado']; ?>" />
@@ -134,9 +132,12 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                         <div class="btn-group">
                                                                             <button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" data-toggle="tooltip" data-placement="top" title="subir" id="btnUp<?php echo $dat['Orden']; ?>" <?php echo $desactivar; ?>><i class="fa fa-arrow-up"></i></button>
                                                                             <button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id=<?php echo $dat['Orden']; ?>><i class="fa fa-pencil-square-o"></i></button>
-                                                                            <button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3" id="<?php echo $dat['Orden']; ?>" disabled><i class="fa fa-trash-o"></i></button>
                                                                         </div>
                                                                     </div>
+                                                                </td>
+                                                                <td style="text-align: center">
+                                                                    <input type="checkbox" class="form-check-input chkEstadoDe" id="chk<?php echo $dat['Orden']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
+                                                                        echo "checked";  } ?> value="<?php echo $dat['Padeid']; ?>" />                                                                                                                
                                                                 </td>
                                                             </tr>
                                                         <?php } ?>
@@ -154,7 +155,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class='btn-group'>
                     <button class="btn btn-outline-secondary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
-                    <button class="btn btn-outline-info ml-3 float-end" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                  
                 </div>
             </div>
         </div>
