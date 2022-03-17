@@ -171,13 +171,12 @@ $(document).ready(function()
                 _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + _count + '" value="' + _detalle + '" /></td>';
                 _output += '<td class="text-center">' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' +_count + '" value="' + _valorv + '" /></td>';
                 _output += '<td class="text-center">' + _valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + _count + '" value="' + _valori + '" /></td>';
-                _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _count +
-                            '" checked disabled' + ' value=' + _count + '/></div></td>'
                 _output += '<td style="display: none;">' + _estado + ' <input type="text" name="hidden_estado[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="subirnivel" class="btn btn-outline-primary btn-sm btnUp"' + ' id="btnUp' + _count + '"><i class="fa fa-arrow-up"></i></button>';
                 _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _count +
+                            '" checked disabled' + ' value=' + _count + '/></div></td>'
                 _output += '</tr>';
                 
                 $('#tblparameter').append(_output);
@@ -298,14 +297,13 @@ $(document).ready(function()
                 _output += '<td style="display: none;">' + _norden + ' <input type="hidden" name="hidden_orden[]" id="orden' + _norden + '" value="'+ _norden + '" /></td>';
                 _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + _norden + '" value="' + _detalle + '" /></td>';
                 _output += '<td class="text-center">' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + _norden + '" value="'+ _valorv + '" /></td>';
-                _output += '<td class="text-center">' + _valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + _norden + '" value="'+ _valori + '" /></td>';
-                _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _norden +
-                        '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + _norden + '/></div></td>'        
+                _output += '<td class="text-center">' + _valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + _norden + '" value="'+ _valori + '" /></td>';      
                 _output += '<td style="display: none;">' + _estadoold + ' <input type="text" name="hidden_estado[]" id="txtEstado' + _norden + '" value="'+ _estadoold + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + _norden + '"><i class="fa fa-arrow-up"></i></button>';
                 _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _norden + '"><i class="fa fa-pencil-square-o"></i></button>';
-                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" ' + _deshabilitae + ' id="'+ _norden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';                
+                _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _norden +
+                           '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + _norden + '/></div></td>'                  
 
                 $('#row_' + row_id + '').html(_output);
 
@@ -328,26 +326,28 @@ $(document).ready(function()
         let _rowid = $(this).attr("id");
         let _idpade = _rowid.substring(3);
         let _check = $("#chk" + _idpade).is(":checked");
+        let _padeid = $("#chk" + _idpade).val();
         let _estadopade;
 
-        alert(_check);
+        alert(_padeid);
+     
 
         if(_check){
             _estadopade = 'Activo';
-            $("#txtEstado" + _idpade).val('Activo');
-            $('#tdestado' + _idpade).text('Activo');
+            // $("#txtEstado" + _idpade).val('Activo');
+            // $('#tdestado' + _idpade).text('Activo');
         }else 
         {
             _estadopade = 'Inactivo';
-            $("#txtEstado" + _idpade).val('Inactivo');
-            $('#tdestado' + _idpade).text('Inactivo');
+            // $("#txtEstado" + _idpade).val('Inactivo');
+            // $('#tdestado' + _idpade).text('Inactivo');
         }
 
          $.ajax({
             url: "../db/parametrocrud.php",
             type: "POST",
             dataType: "json",
-            data: {id: _iddepa, estado: _estadodepa, opcion: 4},
+            data: {id: _padeid, estado: _estadopade, opcion: 4},
             success: function(data){
                
             },
@@ -554,14 +554,13 @@ $(document).ready(function()
         _output += '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + orden + '" value="'+ orden + '" /></td>';
         _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + orden + '" value="' + detalle + '" /></td>';
         _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + orden + '" value="'+ valorv + '" /></td>';
-        _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + orden + '" value="'+ valori + '" /></td>';
-        _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + orden +
-                '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + orden + '/></div></td>'        
+        _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + orden + '" value="'+ valori + '" /></td>';      
         _output += '<td style="display: none;">' + estado + ' <input type="text" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
         _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
-        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" ' + _deshabilitae + ' id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + orden +
+                   '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + orden + '/></div></td>'  
         $('#row_' + orden + '').html(_output);
 
     }
@@ -592,14 +591,13 @@ $(document).ready(function()
         _output += '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + orden + '" value="'+ orden + '" /></td>';
         _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + orden + '" value="' + detalle + '" /></td>';
         _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + orden + '" value="'+ valorv + '" /></td>';
-        _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + orden + '" value="'+ valori + '" /></td>';
-        _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + orden +
-                '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + orden + '/></div></td>'        
+        _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + orden + '" value="'+ valori + '" /></td>';     
         _output += '<td style="display: none;">' + estado + ' <input type="text" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
         _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
-        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" ' + _deshabilitae + ' id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + orden +
+                   '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + orden + '/></div></td>'   
         $('#row_' + orden + '').html(_output);
 
     }
@@ -631,14 +629,13 @@ $(document).ready(function()
         _output += '<td style="display: none;">' + orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + orden + '" value="'+ orden + '" /></td>';
         _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + orden + '" value="' + detalle + '" /></td>';
         _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + orden + '" value="'+ valorv + '" /></td>';
-        _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + orden + '" value="'+ valori + '" /></td>';
-        _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + orden +
-                '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + orden + '/></div></td>'        
+        _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + orden + '" value="'+ valori + '" /></td>';      
         _output += '<td style="display: none;">' + estado + ' <input type="text" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
         _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
-        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" ' + _deshabilitae + ' id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + orden +
+                   '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + orden + '/></div></td>'  
         $('#row_' + rowmod + '').html(_output);
     }
 
@@ -662,12 +659,13 @@ $(document).ready(function()
             url: "../db/parametrocrud.php",
             type: "POST",
             dataType: "json",
-            data: {nomparametro:_nomparametro, descripcion:_descripcion, result:_result, estado:_estadocab, id:_id, opcion:1},            
+            data: {nomparametro:_nomparametro, descripcion:_descripcion, id:_id, opcion:1},            
             success: function(data){
             
-                if(data == '0'){
+            
+                 if(data[0].OK == 'OK-Update'){
 
-                    $.redirect('parametroadmin.php', {'mensaje': 'Grabado con Exito..!!'}); 
+                    $.redirect('parametroadmin.php', {}); 
                 }else{
                 
                     mensajesalertify("Nombre del Parámetro ya Existe..!","W","top-center",5);

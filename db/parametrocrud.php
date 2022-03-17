@@ -42,17 +42,18 @@ switch($opcion){
     case "1": //MODIFICAR
         $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(2,$emprid,$id,$nomparametro,$descripcion,$valestado,0,0,'','',0,'','','',0,0,0,$userid,$host));
+        $resultado->execute(array(2,$emprid,$id,$nomparametro,$descripcion,'',0,0,'','',0,'','','',0,0,0,$userid,$host));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        
               
-        foreach($result as $drfila){
-            $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            $resultado = $conexion->prepare($consulta);
-            $valestado = $drfila['arryestado'] == "Activo" ? 'A' : 'I';
-            $resultado->execute(array(1,0,$id,'','',$valestado,0,$drfila['arryid'],$drfila['arrydetalle'],
-            $drfila['arryvalorv'],$drfila['arryvalori'],'','','',0,0,0,0,''));
-            $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-        }
-        $data = '0';        
+        // foreach($result as $drfila){
+        //     $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        //     $resultado = $conexion->prepare($consulta);
+        //     $valestado = $drfila['arryestado'] == "Activo" ? 'A' : 'I';
+        //     $resultado->execute(array(1,0,$id,'','',$valestado,0,$drfila['arryid'],$drfila['arrydetalle'],
+        //     $drfila['arryvalorv'],$drfila['arryvalori'],'','','',0,0,0,0,''));
+        //     $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        // }       
         break;
     case "2": // ELIMINNAR PARAMETRO-DETALLE
         $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -77,7 +78,7 @@ switch($opcion){
     case "4": //UPDATE ESTADO PARAMETRO DETALLE BDD
             $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array(3,$emprid,$idparametro,'','',$estado,0,0,'','',0,'','','',0,0,0,0,''));
+            $resultado->execute(array(4,0,0,'','',$valestado,$id,0,'','',0,'','','',0,0,0,0,''));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;        
 }
