@@ -230,7 +230,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblcontacto" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                                <table id="tblcontacto" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
                                                     <thead>
                                                         <tr>
                                                             <th>Id</th>
@@ -296,9 +296,6 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="row">
                                     <label for="espacio" class="control-label col-md-2"></label>
                                     <label for="producto" class="control-label col-md-1">Producto</label>
-                                    <!-- <div class="form-group col-md-7">
-                                    <input type="text" required class="form-control" id="txtProducto" name="producto" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
-                                </div> -->
                                     <div class="col-md-6 col-sm-6 form-group">
                                         <input type="text" class="form-control has-feedback-left" id="txtProducto" placeholder="" maxlength="150">
                                         <span class="fa fa-briefcase form-control-feedback left" aria-hidden="true"></span>
@@ -321,7 +318,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblproducto" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                                <table id="tblproducto" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
                                                     <thead>
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -351,9 +348,9 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                 <td>
                                                                     <div class="text-center">
                                                                         <div class="btn-group">
-                                                                            <button type="button" class="btn btn-outline-primary btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnEditCat"><i class="fa fa-upload"></i></button>
-                                                                            <button type="button" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit"><i class="fa fa-pencil-square-o"></i></button>
-                                                                            <button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
+                                                                            <button type="button" class="btn btn-outline-primary btn-sm ml-2 btnEditCat" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnEditCat"><i class="fa fa-upload"></i></button>
+                                                                            <button type="button" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit"><i class="fa fa-pencil-square-o"></i></button>
+                                                                            <!-- <button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDelete" id="btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button> -->
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -374,7 +371,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblcatalogo" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                                <table id="tblcatalogo" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
                                                     <thead>
                                                         <tr>
                                                             <th style="display: none;">Id</th>

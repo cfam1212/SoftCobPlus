@@ -29,7 +29,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                     <div class="x_content">
                         <br />
-                        <table id="tabledata" class="table table-striped jambo_table bulk_action table-dark" style="width: 100%;">
+                        <table id="tabledata" class="table table-striped jambo_table bulk_action" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -60,16 +60,12 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <div class="btn-group">
                                                     <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar<?php echo $datos['ParaId']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
-                                                    <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarEdit" data-toggle="tooltip" data-placement="top" title="eliminar">
-                                                        <i class="fa fa-trash-o"></i>
-                                                    </button>
                                                 </div>
                                             </div>
                                         </td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstadoPa" id="chk<?php echo $datos['ParaId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                                                                                                                                                    echo "checked";
-                                                                                                                                                                } ?> value="<?php echo $datos['ParaId']; ?>" />
+                                                  echo "checked";    } ?> value="<?php echo $datos['ParaId']; ?>" />                                                                                                                
                                         </td>
                                     </tr>
                                 <?php }
@@ -107,38 +103,39 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <form class="form-horizontal" role="form">
                                 <fieldset>
                                     <div class="form-group row">
+                                        <label for="espacio" class="control-label col-md-1"></label>
                                         <label for="menuname" class="control-label col-md-1">Parametro:</label>
-                                        <label for="espacio" class="control-label col-md-4"></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="espacio" class="control-label col-md-1"></label>
+                                        <div class="col-md-7 col-sm-4  form-group has-feedback">
+                                            <input autofocus type="text" class="form-control has-feedback-left" id="txtParametro" maxlength="80">
+                                            <span class="fa fa-bookmark form-control-feedback left" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="espacio" class="control-label col-md-1"></label>
                                         <label for="menuname" class="control-label col-md-1">Descripcion:</label>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-md-4 col-sm-4  form-group has-feedback">
-                                            <input autofocus type="text" class="form-control has-feedback-left" id="txtParametro" maxlength="80" onKeyUp="this.value=this.value.toUpperCase();">
-                                            <span class="fa fa-bookmark form-control-feedback left" aria-hidden="true"></span>
-                                        </div>
                                         <label for="espacio" class="control-label col-md-1"></label>
-                                        <div class="col-md-7 col-sm-7  form-group has-feedback">
-                                            <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" onKeyUp="this.value=this.value.toUpperCase();" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
+                                        <div class="col-md-11 col-sm-7  form-group has-feedback">
+                                            <textarea name="observa" id="txtDescripcion" class="form-control col-md-8" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
                                         </div>
                                     </div>
                                 </fieldset>
                             </form>
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                            <br />
-                            <div class="row">
-                                <label for="espacio" class="control-label col-md-1"></label>
-                                <button type="button" class="btn btn-outline-info" id="btnAdd" data-toggle="tooltip" data-placement="top" title="agregar detalle" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
-                            </div>
-                            <br>
-                            <br>
+                            <br/>
                             <div class="col-md-12 col-sm-12">
                                 <div class="col-md-1 col-sm-1">
                                 </div>
                                 <div class="col-md-10 col-sm-10">
+                                    <button type="button" class="btn btn-outline-info float-right" id="btnAdd" data-toggle="tooltip" data-placement="top" title="agregar detalle" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
-                                            <table id="tblparameter" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                            <table id="tblparameter" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
                                                 <thead class="text-center">
                                                     <tr>
                                                         <th style="display: none;">NOrden</th>
@@ -178,10 +175,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <form id="formParam">
                 <div class="modal-body">
                     <br />
-                    <!-- <div class="form-group">
-                        <label for="detalle" class="col-form-label">Detalle</label>
-                        <input type="text" id="txtDetalle" required class="form-control" maxlength="80">
-                    </div> -->
                     <label for="tarea" class="col-form-label">Detalle:</label>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
@@ -189,10 +182,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="valorv" class="col-form-label">Valor Text</label>
-                        <input type="text" id="txtValorv" class="form-control" maxlength="255">
-                    </div> -->
                     <label for="tarea" class="col-form-label">Valor Texto:</label>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
@@ -200,10 +189,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="valori" class="col-form-label">Valor Entero</label>
-                        <input type="text" id="txtValori" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="5">
-                    </div> -->
                     <label for="tarea" class="col-form-label">Valor Entero:</label>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
@@ -211,15 +196,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <!-- <div class="form-check" id="divcheck">
-                        <input type="checkbox" id="chkEstado" class="form-check-input">
-                        <label for="estadolabel" class="form-check-label" id="lblEstado">Activo</label>
-                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAgregar" class="btn btn-outline-info ml-3"><i class='fa fa-plus'></i>
-                        Agregar</button>
+                    <button type="button" id="btnAgregar" class="btn btn-outline-info ml-3"><i class='fa fa-plus'></i>Agregar</button>
                 </div>
             </form>
         </div>

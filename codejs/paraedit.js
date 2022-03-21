@@ -100,19 +100,19 @@ $(document).ready(function()
    {
         if($.trim($('#txtDetalle').val()).length == 0)
         {           
-            mensajesalertify("Ingrese Detalle del Parámetro..!!","W","top-center",5);
+            mensajesalertify("Ingrese Detalle del Parámetro..!!","W","top-right",3);
             return false;
         }
 
         if($.trim($('#txtValorv').val()).length == 0 && $.trim($('#txtValori').val()).length == 0 )
         {            
-            mensajesalertify("Ingrese Valor Texto o Valor Entero..!!","W","top-center",5);
+            mensajesalertify("Ingrese Valor Texto o Valor Entero..!!","W","top-right",3);
             return false;
         }
 
         if($.trim($('#txtValorv').val()).length > 0 && $.trim($('#txtValori').val()).length > 0 )
         {          
-            mensajesalertify("Ingrese Solo Valor Texto o Valor Entero..!!","E","bottom-center",5);
+            mensajesalertify("Ingrese Solo Valor Texto o Valor Entero..!!","E","top-center",5);
             return false;
         }
 
@@ -130,7 +130,7 @@ $(document).ready(function()
             $.each(_result,function(i,item){
                 if(item.arrydetalle.toUpperCase() == _detalle.toUpperCase())
                 {                  
-                    mensajesalertify("Nombre del Parámetro ya Existe..!!","E","bottom-center",5);                    
+                    mensajesalertify("Nombre del Parámetro ya Existe..!!","W","top-right",3);                    
                     _continuar = false;
                     return false;
                 }
@@ -142,7 +142,7 @@ $(document).ready(function()
                         {
                             if(item.arryvalorv.toUpperCase() == _valorv.toUpperCase())
                             {                               
-                                mensajesalertify("Valor Texto de Parámetro ya Existe..!!","E","bottom-center",5);    
+                                mensajesalertify("Valor Texto de Parámetro ya Existe..!!","W","top-right",3);    
                                 _continuar = false;
                                 return false;
                             }
@@ -152,7 +152,7 @@ $(document).ready(function()
                         {
                             if(item.arryvalori == _valori)
                             {                               
-                                mensajesalertify("Valor Entero de Parámetro ya Existe..!!","E","bottom-center",5); 
+                                mensajesalertify("Valor Entero de Parámetro ya Existe..!!","W","top-right",3); 
                                 _continuar = false;
                                 return false;
                             }
@@ -205,7 +205,7 @@ $(document).ready(function()
                 {
                     if(item.arrydetalle.toUpperCase() == _detalle.toUpperCase())
                     {                        
-                        mensajesalertify("Nombre del Parámetro ya Existe..!!","W","bottom-center",5); 
+                        mensajesalertify("Nombre del Parámetro ya Existe..!!","W","top-right",3); 
                         _continuar = false;
                         return false;
                     }
@@ -224,7 +224,7 @@ $(document).ready(function()
                         {
                             if(item.arryvalori == _valori)
                             {                             
-                                mensajesalertify("Valor Entero de Parámetro ya Existe..!!","W","bottom-center",5);                     
+                                mensajesalertify("Valor Entero de Parámetro ya Existe..!!","W","top-right",3);                     
                                 _seguir = false;
                                 return false;
                             }
@@ -240,7 +240,7 @@ $(document).ready(function()
                         {
                             if(item.arryvalorv.toUpperCase() == _valorv.toUpperCase())
                             {                              
-                                mensajesalertify("Valor Texto de Parámetro ya Existe..!!","W","bottom-center",5);                     
+                                mensajesalertify("Valor Texto de Parámetro ya Existe..!!","W","top-right",3);                     
                                 _seguir = false;
                                 return false;
                             }
@@ -329,8 +329,6 @@ $(document).ready(function()
         let _padeid = $("#chk" + _idpade).val();
         let _estadopade;
 
-        alert(_padeid);
-     
 
         if(_check){
             _estadopade = 'Activo';
@@ -677,6 +675,8 @@ $(document).ready(function()
         }); 
 
     });
+
+  
 
 });
 

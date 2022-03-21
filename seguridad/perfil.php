@@ -32,7 +32,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                     <div class="x_content">
                         <br />
-                        <table id="tabledata" class="table table-striped jambo_table bulk_action table-dark table-borderless" style="width: 100%;">
+                        <table id="tabledata" class="table table-striped jambo_table bulk_action table-borderless" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -77,9 +77,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <div class="btn-group">
                                                     <button class="btn btn-outline-info btn-sm ml-3 btnEditar" <?php echo $disabledit ?> id="btnEditar<?php echo $datos['PerfilId']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
-                                                    <button class="btn btn-outline-danger btn-sm ml-2" <?php echo $disabledel ?> id="btnEliminar">
-                                                        <i class="fa fa-trash-o"></i>
-                                                    </button>
                                                 </div>
                                             </div>
                                         </td>

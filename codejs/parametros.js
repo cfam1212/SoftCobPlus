@@ -17,18 +17,9 @@ $(document).ready(function(){
 
     if(_mensaje != ''){
 
-        mensajesalertify(_mensaje,"S","top-center",5);
+        mensajesalertify(_mensaje,"S","top-center",3);
     }
 
-    // $('#btnNuevo').click(function(){        
-    //     //$.redirect('parametronew.php', {'mensaje': ''});
-    //     $.redirect('parametronew.php');
-        
-    // });
-
-    // $('#btnRegresar').click(function(){        
-    //     $.redirect("parametroadmin.php");
-    // });  
 
     //NUEVO MONDAL
 
@@ -65,19 +56,19 @@ $(document).ready(function(){
     $('#btnAgregar').click(function(){
         if($.trim($('#txtDetalle').val()).length == 0)
         {           
-            mensajesalertify("Ingrese Detalle del Parámetro..!","W","top-right",5);
+            mensajesalertify("Ingrese Detalle del Parámetro..!","W","top-right",3);
             return false;
         }
 
         if($.trim($('#txtValorv').val()).length == 0 && $.trim($('#txtValori').val()).length == 0 )
         {            
-            mensajesalertify("Ingrese Valor Texto o Valor Entero..!","W","top-right",5);
+            mensajesalertify("Ingrese Valor Texto o Valor Entero..!","W","top-right",3);
             return false;
         }
 
         if($.trim($('#txtValorv').val()).length > 0 && $.trim($('#txtValori').val()).length > 0 )
         {          
-            mensajesalertify("Ingrese Solo Valor Texto o Valor Entero..!","W","top-right",5);
+            mensajesalertify("Ingrese Solo Valor Texto o Valor Entero..!","W","top-right",3);
             return false;
         }
 
@@ -95,7 +86,7 @@ $(document).ready(function(){
             $.each(_result,function(i,item){
                 if(item.arrydetalle.toUpperCase() == _detalle.toUpperCase())
                 {                  
-                    mensajesalertify("Nombre del Parámetro ya Existe..!","W","top-right",5);                    
+                    mensajesalertify("Nombre del Parámetro ya Existe..!","W","top-right",3);                    
                     _continuar = false;
                     return false;
                 }else{
@@ -104,7 +95,7 @@ $(document).ready(function(){
                         {
                             if(item.arryvalorv.toUpperCase() == _valorv.toUpperCase())
                             {                               
-                                mensajesalertify("Valor Texto de Parámetro ya Existe..!","W","top-right",5);    
+                                mensajesalertify("Valor Texto de Parámetro ya Existe..!","W","top-right",3);    
                                 _continuar = false;
                                 return false;
                             }else{
@@ -114,7 +105,7 @@ $(document).ready(function(){
                         {
                             if(item.arryvalori == _valori)
                             {                               
-                                mensajesalertify("Valor Entero de Parámetro ya Existe..!","W","top-right",5); 
+                                mensajesalertify("Valor Entero de Parámetro ya Existe..!","W","top-right",3); 
                                 _continuar = false;
                                 return false;
                             }else{
@@ -142,7 +133,7 @@ $(document).ready(function(){
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="subirnivel" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + _count + '"><i class="fa fa-arrow-up"></i></button>';
                 _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit"data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
-                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                 _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _count + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                 _output += '</tr>';
                 
                 $('#tblparameter').append(_output);
@@ -169,7 +160,7 @@ $(document).ready(function(){
                 {
                     if(item.arrydetalle.toUpperCase() == _detalle.toUpperCase())
                     {                        
-                        mensajesalertify("Nombre del Parámetro ya Existe..!","W","top-right",5); 
+                        mensajesalertify("Nombre del Parámetro ya Existe..!","W","top-right",3); 
                         _continuar = false;
                         return false;
                     }else{
@@ -188,7 +179,7 @@ $(document).ready(function(){
                         {
                             if(item.arryvalori == _valori)
                             {                             
-                                mensajesalertify("Valor Entero de Parámetro ya Existe..!","W","top-right",5);                     
+                                mensajesalertify("Valor Entero de Parámetro ya Existe..!","W","top-right",3);                     
                                 _seguir = false;
                                 return false;
                             }else{
@@ -203,7 +194,7 @@ $(document).ready(function(){
                         {
                             if(item.arryvalorv.toUpperCase() == _valorv.toUpperCase())
                             {                              
-                                mensajesalertify("Valor Texto de Parámetro ya Existe..!","W","top-right",5);                     
+                                mensajesalertify("Valor Texto de Parámetro ya Existe..!","W","top-right",3);                     
                                 _seguir = false;
                                 return false;
                             }else{
@@ -487,13 +478,13 @@ $(document).ready(function(){
 
         if(_nomparametro == ''){
           
-            mensajesalertify("Ingrese Nombre del  Parámetro..!","W","top-right",5);
+            mensajesalertify("Ingrese Nombre del  Parámetro..!","W","top-right",3);
             return false; 
         }
 
         if(_count == 0)
         {         
-            mensajesalertify("Ingrese al menos un Detalle..!","W","top-right",5);
+            mensajesalertify("Ingrese al menos un Detalle..!","W","top-right",3);
             return false;
         }
         
@@ -507,10 +498,10 @@ $(document).ready(function(){
               
                 if(data == '0'){
 
-                    $.redirect('parametroadmin.php', {'mensaje': 'Grabado con Exito..!'}); 
+                    $.redirect('parametroadmin.php', {}); 
                 }else{
                   
-                    mensajesalertify("Nombre del Parámetro ya Existe..!","W","top-right",5);
+                    mensajesalertify("Nombre del Parámetro ya Existe..!","W","top-right",3);
                 }                
             },
             error: function (error) {
@@ -563,7 +554,7 @@ $(document).ready(function(){
                             else {
                             
                                 TableNoOrder.row(_fila.parents('tr')).remove().draw();
-                                mensajesalertify("Parametro Eliminado..!","E","bottom-center",5);
+                                mensajesalertify("Parametro Eliminado..!","E","bottom-center",2);
                             }
                         },
                         error: function (error) {

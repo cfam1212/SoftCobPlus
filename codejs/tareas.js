@@ -130,7 +130,7 @@ $(document).ready(function(){
                 }
             });
         }
-        , function(){alertify.error('Cancelado');});
+        , function(){});
     }
     
     $("#formTarea").submit(function(e){

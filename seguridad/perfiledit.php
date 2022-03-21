@@ -105,7 +105,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="x_content">
                         <br/>
-                        <table id="tabledata" class="table table-striped jambo_table bulk_action table-dark table-borderless" style="width: 100%;">
+                        <table id="tabledata" class="table table-striped jambo_table bulk_action table-borderless" style="width: 100%;">
                             <thead class="text-center">
                                 <tr>
                                     <th>Id</th>
@@ -123,8 +123,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <td><?php echo $dat['MentId']; ?></td>
                                         <td style="text-align: center">
                                             <input type="checkbox" id="recs" name="check[]" <?php if ($dat['Ckeck'] == 'SI') {
-                                                                                                echo "checked='checked'";
-                                                                                            } ?> value="<?php echo $dat['MentId']; ?>" />
+                                                echo "checked='checked'";   } ?> value="<?php echo $dat['MentId']; ?>" />                                              
                                         </td>
                                         <td><?php echo $dat['Menu']; ?></td>
                                         <td><?php echo $dat['Tarea']; ?></td>

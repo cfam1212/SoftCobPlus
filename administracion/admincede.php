@@ -57,7 +57,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                     <div class="x_content">
                         <br />
-                        <table id="tabledata" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                        <table id="tabledata" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -166,18 +166,12 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="row">
                                         <label for="espacio" class="control-label col-md-1"></label>
                                         <label for="menuname" class="control-label col-md-1">Cedente:</label>
-                                        <!-- <div class="form-group col-md-3">
-                                            <input type="text" required class="form-control" id="txtCedente" name="menuname" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
-                                        </div> -->
                                         <div class="col-md-3 col-sm-3 form-group">
                                             <input autofocus type="text" class="form-control has-feedback-left" id="txtCedente" maxlength="150">
                                             <span class="fa fa-pie-chart form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                         <label for="espacio" class="control-label col-md-1"></label>
                                         <label for="iconome" class="control-label col-md-1">Ruc:</label>
-                                        <!-- <div class="form-group col-md-3">
-                                            <input id="txtRuc" name="iconome" type="text" class="form-control" maxlength="13" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
-                                        </div> -->
                                         <div class="col-md-3 col-sm-3 form-group">
                                             <input type="text" class="form-control has-feedback-left" id="txtRuc" maxlength="13" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                             <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
@@ -193,38 +187,26 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="row">
                                         <label for="espacio" class="control-label col-md-1"></label>
                                         <label for="menuname" class="control-label col-md-1">Telefono 1:</label>
-                                        <!-- <div class="form-group col-md-3">
-                                            <input type="text" required class="form-control" id="txtTel1" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="telefono1" maxlength="15">
-                                        </div> -->
                                         <div class="col-md-3 col-sm-3  form-group has-feedback">
-                                            <input type="text" class="form-control has-feedback-left" id="txtTel1" placeholder="ej: 022630922" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="telefono1" maxlength="15">
+                                            <input type="text" class="form-control has-feedback-left" id="txtTel1" placeholder="ej: 022222222" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="telefono1" maxlength="15">
                                             <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                         <label for="espacio" class="control-label col-md-1"></label>
                                         <label for="iconome" class="control-label col-md-1">Telefono 2:</label>
-                                        <!-- <div class="form-group col-md-3">
-                                            <input id="txtTel2" name="iconome" type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="15">
-                                        </div> -->
                                         <div class="col-md-3 col-sm-3  form-group has-feedback">
-                                            <input type="text" class="form-control has-feedback-left" id="txtTel2" placeholder="ej: 022630922" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="telefono1" maxlength="15">
+                                            <input type="text" class="form-control has-feedback-left" id="txtTel2" placeholder="ej: 022222222" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="telefono1" maxlength="15">
                                             <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <label for="espacio" class="control-label col-md-1"></label>
                                         <label for="fax" class="control-label col-md-1">Fax:</label>
-                                        <!-- <div class="form-group col-md-3">
-                                            <input type="text" required class="form-control" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="txtFax" name="fax" maxlength="10">
-                                        </div> -->
                                         <div class="col-md-3 col-sm-3  form-group has-feedback">
                                             <input type="text" class="form-control has-feedback-left" id="txtFax" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="fax" maxlength="10">
                                             <span class="fa fa-fax form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                         <label for="espacio" class="control-label col-md-1"></label>
                                         <label for="iconome" class="control-label col-md-1">Url:</label>
-                                        <!-- <div class="form-group col-md-3">
-                                            <input id="txtUrl" name="iconome" type="text" class="form-control" maxlength="80">
-                                        </div> -->
                                         <div class="col-md-3 col-sm-3  form-group has-feedback">
                                             <input type="text" class="form-control has-feedback-left" id="txtUrl" maxlength="80">
                                             <span class="fa fa-link form-control-feedback left" aria-hidden="true"></span>
@@ -250,9 +232,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="row">
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="contacto" class="control-label col-md-1">Contacto:</label>
-                                <!-- <div class="form-group col-md-3">
-                                    <input type="text" required class="form-control" id="txtContacto" name="contacto" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
-                                </div> -->
                                 <div class="col-md-3 col-sm-3 form-group">
                                     <input type="tel" class="form-control has-feedback-left" id="txtContacto" class="form-control" maxlength="150">
                                     <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
@@ -274,18 +253,12 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="row">
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="ext" class="control-label col-md-1">Teléfono:</label>
-                                <!-- <div class="form-group col-md-3">
-                                    <input type="text" required class="form-control" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="txtExt" name="ext" maxlength="10">
-                                </div> -->
                                 <div class="col-md-3 col-sm-3 form-group">
                                     <input type="tel" class="form-control has-feedback-left" id="txtExt" placeholder="" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="ext" maxlength="10">
                                     <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="celular" class="control-label col-md-1">Celular:</label>
-                                <!-- <div class="form-group col-md-3">
-                                    <input id="txtCelular" name="iconome" type="tel" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="10">
-                                </div> -->
                                 <div class="col-md-3 col-sm-3 form-group">
                                     <input type="tel" class="form-control has-feedback-left" id="txtCelular" placeholder="099999999" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="10">
                                     <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
@@ -294,18 +267,12 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="row">
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="email" class="control-label col-md-1">Email 1:</label>
-                                <!-- <div class="form-group col-md-3">
-                                    <input type="text" required class="form-control" id="txtEmail1" maxlength="80" onKeyUp="this.value=this.value.toLowerCase();">
-                                </div> -->
                                 <div class="col-md-3 col-sm-3 form-group">
                                     <input type="email" class="form-control has-feedback-left" id="txtEmail1" placeholder="example@gmail.com" maxlength="80" onKeyUp="this.value=this.value.toLowerCase();">
                                     <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="email" class="control-label col-md-1">Email 2:</label>
-                                <!-- <div class="form-group col-md-3">
-                                    <input id="txtEmail2" name="email" type="text" class="form-control" maxlength="80" onKeyUp="this.value=this.value.toLowerCase();">
-                                </div>  -->
                                 <div class="col-md-3 col-sm-3 form-group">
                                     <input type="email" class="form-control has-feedback-left" id="txtEmail2" placeholder="example@gmail.com" maxlength="80" onKeyUp="this.value=this.value.toLowerCase();">
                                     <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
@@ -319,7 +286,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="col-md-10 col-sm-10">
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
-                                            <table id="tblcontactonew" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                            <table id="tblcontactonew" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
                                                 <thead>
                                                     <tr>
                                                         <th style="display: none;">Id</th>
@@ -346,9 +313,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="row">
                                 <label for="espacio" class="control-label col-md-2"></label>
                                 <label for="producto" class="control-label col-md-1">Producto</label>
-                                <!-- <div class="form-group col-md-7">
-                                    <input type="text" required class="form-control" id="txtProducto" name="producto" maxlength="150" onKeyUp="this.value=this.value.toUpperCase();">
-                                </div> -->
                                 <div class="col-md-6 col-sm-6 form-group">
                                     <input type="text" class="form-control has-feedback-left" id="txtProducto" placeholder="" maxlength="150">
                                     <span class="fa fa-briefcase form-control-feedback left" aria-hidden="true"></span>
@@ -371,7 +335,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="col-md-10 col-sm-10">
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
-                                            <table id="tblproducto" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                            <table id="tblproducto" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
                                                 <thead>
                                                     <tr>
                                                         <th style="display: none;">Id</th>
@@ -396,7 +360,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="col-md-10 col-sm-10">
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
-                                            <table id="tblcatalogo" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                            <table id="tblcatalogo" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
                                                 <thead>
                                                     <tr>
                                                         <th style="display: none;">Id</th>

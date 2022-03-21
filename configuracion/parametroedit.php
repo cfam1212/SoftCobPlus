@@ -50,16 +50,21 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <div class="form-group row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Parámetro:</label>
-                                            <label for="espacio" class="control-label col-md-3"></label>
+                                        </div>
+                                        <div class="row">
+                                            <label for="espacio" class="control-label col-md-1"></label>
+                                            <div class="col-md-7 col-sm-4  form-group has-feedback">
+                                            <input autofocus type="text" class="form-control has-feedback-left" id="txtParametro" maxlength="80" value="<?php echo $datapara[0]['Parametro']; ?>" >
+                                            <span class="fa fa-bookmark form-control-feedback left" aria-hidden="true"></span>
+                                        </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Descripción:</label>
                                         </div>
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
-                                            <div class="form-group col-md-3">
-                                                <input type="text" required class="form-control" id="txtParametro" maxlength="80" name="parametro" value="<?php echo $datapara[0]['Parametro']; ?>">
-                                            </div>
-                                            <label for="espacio" class="control-label col-md-1"></label>
-                                            <div class="form-group col-md-7">
+                                            <div class="form-group col-md-10">
                                                 <textarea name="observa" id="txtDescripcion" class="form-control col-md-8"><?php echo $datapara[0]['Descripcion']; ?></textarea>
                                             </div>
                                         </div>
@@ -76,9 +81,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-1 col-sm-1">
                                     </div>
                                     <div class="col-md-10 col-sm-10">
+                                    <button type="button" class="btn btn-outline-info float-right" id="btnAdd" data-toggle="tooltip" data-placement="top" title="nuevo detalle" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblparameter" class="table table-striped jambo_table table-dark table-borderless" style="width: 100%;">
+                                                <table id="tblparameter" class="table table-striped table-condensed jambo_table bulk_action table-borderless" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>
@@ -155,7 +161,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class='btn-group'>
                     <button class="btn btn-outline-secondary" id="btnRegresar"><i class='fa fa-undo'></i> Regresar</button>
-                  
                 </div>
             </div>
         </div>
@@ -184,9 +189,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="form-group">
                         <label for="valori" class="col-form-label">Valor Entero</label>
                         <input type="text" id="txtValori" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="5">
-                    </div>
-                    <div class="form-check" id="divcheckedit">
-                        <label for="estadolabel" class="form-check-label" id="lblEstado"></label>
                     </div>
                 </div>
                 <div class="modal-footer">

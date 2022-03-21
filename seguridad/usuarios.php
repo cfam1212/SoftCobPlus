@@ -44,7 +44,7 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                     <div class="x_content">
                         <br />
-                        <table id="tabledata" class="table table-striped jambo_table bulk_action table-dark table-borderless" style="width: 100%;">
+                        <table id="tabledata" class="table table-striped jambo_table bulk_action table-borderless" style="width: 100%;">
 
                             <thead>
                                 <tr>
@@ -88,18 +88,12 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <div class="btn-group">
                                                     <button class="btn btn-outline-info btn-sm ml-2 btnEditar" <?php echo $disabledit ?> id="btnEditar<?php echo $dat['UserId']; ?>" data-toggle="tooltip" data-placement="top" title="editar">
                                                         <i class="fa fa-pencil-square-o"></i></button>
-                                                    <button class="btn btn-outline-danger btn-sm ml-2" <?php echo $disabledel ?> id="btnEliminar">
-                                                        <i class="fa fa-trash-o"></i>
-                                                    </button>
                                                 </div>
                                             </div>
                                         </td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstadoUs" <?php echo $chkestado; ?> id="chk<?php echo $dat['UserId']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
-                                                                                                                                                                                            echo "checked";
-                                                                                                                                                                                        } else {
-                                                                                                                                                                                            '';
-                                                                                                                                                                                        } ?> value="<?php echo $dat['UserId']; ?>" />
+                                                    echo "checked";  } else { '';   } ?> value="<?php echo $dat['UserId']; ?>" />                                                                                                                                                                                                                                                                                                                                                                                                                                 
                                         </td>
                                     </tr>
                                 <?php }
@@ -150,7 +144,7 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <label for="espacio" class="control-label col-md-3"></label>
                         <label for="menuname" class="control-label col-md-1">Perfil:</label>
                         <label for="espacio" class="control-label col-md-3"></label>
-                        <label for="menuname" class="control-label col-md-1">Tipo:</label>
+                        <label for="menuname" class="control-label col-md-2">Tipo Usuario:</label>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-4 col-sm-4  form-group has-feedback">

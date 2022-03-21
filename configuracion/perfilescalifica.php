@@ -71,13 +71,13 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="col-md-10 col-sm-10">
                             <form method="post" id="user_form">
                                 <div class="table-responsive">
-                                    <table id="tblperfilcalifica" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                    <table id="tblperfilcalifica" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
                                         <thead>
                                             <tr>
                                                 <th>Codigo</th>
-                                                <th style="text-align: center">Descripcion</th>
-                                                <th style="text-align: center">Opciones</th>
-                                                <th style="text-align: center">Estado</th>
+                                                <th>Descripcion</th>
+                                                <th style="width:13% ; text-align: center">Opciones</th>
+                                                <th style="width:10% ; text-align: center">Estado</th>
                                             </tr>
                                         </thead>
                                         <tbody>

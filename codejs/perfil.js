@@ -214,7 +214,7 @@ $(document).ready(function(){
                 data: {nombreperfil:_perfil, observacion:_observacion, result:_result, estado:_estado, crear:_crear, modificar:_modificar, 
                     eliminar:_eliminar, id:0, opcion:0},          
                 success: function(data){                                        
-                    $.redirect('perfil.php', {'mensaje': 'Guardado con Exito..!!'});
+                    $.redirect('perfil.php', {});
                    // $.redirect('perfil.php', mensajesalertify("Guardado con Exito..!!","W","top-right",5));
                 },
                 error: function (error){

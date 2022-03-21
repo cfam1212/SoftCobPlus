@@ -355,8 +355,7 @@ $(document).ready(function(){
                     _estadooculto = '<td style="display: none;">' + _estado + '</td>';
 
                     _button = '<div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-2 btnEditar"'+
-                                'id="btnEditar'+ _userid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-2"'+
-                                'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div>';
+                                'id="btnEditar'+ _userid +'"><i class="fa fa-pencil-square-o"></i></button>';
 
                     if(_opcion == 0){
                         TableData.row.add([_userid, _usuario, _login, _perfil, _button, _newestado]).draw();

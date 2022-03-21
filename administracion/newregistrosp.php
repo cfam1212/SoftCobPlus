@@ -49,7 +49,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <br />
             <br />
-            <table id="tabledatasup" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+            <table id="tabledatasup" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
               <thead>
                 <tr>
                   <th>IdSupervisor</th>
@@ -81,8 +81,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <td>
                       <div class="text-center">
                         <div class="btn-group">
-                          <button class="btn btn-outline-primary btn-sm ml-3 btnAddGe" <?php echo $disablege; ?> id="btnAddGe<?php echo $datos['IdSupe']; ?>" data-toggle="tooltip" data-placement="top" title="agregar gestor"><i class="fa fa-headphones"></i></button>
-                          <button class="btn btn-outline-danger btn-sm ml-3" id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
+                          <button class="btn btn-outline-primary btn-sm ml-2 btnAddGe" <?php echo $disablege; ?> id="btnAddGe<?php echo $datos['IdSupe']; ?>" data-toggle="tooltip" data-placement="top" title="agregar gestor"><i class="fa fa-headphones"></i></button>
+                          <button class="btn btn-outline-danger btn-sm ml-2" id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
                         </div>
                       </div>
                     </td>
@@ -116,13 +116,14 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
       </div>
       <form id="formSuper">
         <div class="modal-body">
+          <br/>
           <fieldset>
             <div class="row">
-              <label for="cedente" class="control-label col-md-1">Cedente</label>
-              <label for="espacio" class="control-label col-md-1"></label>
+              <!-- <label for="cedente" class="control-label col-md-1">Cedente</label> -->
+              <label for="espacio" class="control-label col-md-2"></label>
               <div class="form-group col-md-8">
                 <select class="form-control" id="cboCedente" name="cbocedente" style="width:100%;">
-                  <option value="0">--Seleccione Cedente--</option>
+                  <option value="0">---Seleccione Cedente---</option>
                   <?php foreach ($cedente as $fila) : ?>
                     <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
                     </option>
@@ -131,11 +132,11 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
               </div>
             </div>
             <div class="row">
-              <label for="supervisor" class="control-label col-md-1">Supervisor</label>
-              <label for="espacio" class="control-label col-md-1"></label>
+              <!-- <label for="supervisor" class="control-label col-md-1">Supervisor</label> -->
+              <label for="espacio" class="control-label col-md-2"></label>
               <div class="form-group col-md-8">
                 <select class="form-control" id="cboSupervisor" name="cbosupervisor" style="width:100%;">
-                  <option value="0">--Seleccione Supervisor--</option>
+                  <option value="0">---Seleccione Supervisor---</option>
                   <?php foreach ($super as $fila) : ?>
                     <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
                     </option>
@@ -164,10 +165,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
       </div>
       <form id="formGestor">
         <div class="modal-body">
+          <br/>
           <fieldset>
             <div class="row">
-              
-              <label for="gestor" class="control-label col-md-1">Gestor</label>
+              <label for="gestor" class="control-label col-md-2"></label>
               <div class="form-group col-md-6">
                 <select class="form-control" id="cboGestor" name="cboGestor" style="width:100%;">
                   <option value="0">--Seleccione Gestor--</option>
@@ -189,7 +190,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="col-md-10 col-sm-10">
                   <div class="table-responsive">
-                    <table id="tblagestor" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                    <table id="tblagestor" class="table table-striped table-condensed jambo_table bulk_action table-borderless" style="width: 100%;">
                       <thead>
                         <tr>
                           <th style="display: none;">Id</th>
