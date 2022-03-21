@@ -174,7 +174,7 @@ $(document).ready(function()
                 _output += '<td style="display: none;">' + _estado + ' <input type="text" name="hidden_estado[]" id="txtEstado' + _count + '" value="' + _estado + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="subirnivel" class="btn btn-outline-primary btn-sm btnUp"' + ' id="btnUp' + _count + '"><i class="fa fa-arrow-up"></i></button>';
-                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
+                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _count + '"><i class="fa fa-pencil-square-o"></i></button>';
                 _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _count +
                             '" checked disabled' + ' value=' + _count + '/></div></td>'
                 _output += '</tr>';
@@ -301,7 +301,7 @@ $(document).ready(function()
                 _output += '<td style="display: none;">' + _estadoold + ' <input type="text" name="hidden_estado[]" id="txtEstado' + _norden + '" value="'+ _estadoold + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + _norden + '"><i class="fa fa-arrow-up"></i></button>';
-                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _norden + '"><i class="fa fa-pencil-square-o"></i></button>';
+                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + _norden + '"><i class="fa fa-pencil-square-o"></i></button>';
                 _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _norden +
                            '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + _norden + '/></div></td>'                  
 
@@ -556,7 +556,7 @@ $(document).ready(function()
         _output += '<td style="display: none;">' + estado + ' <input type="text" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
-        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
         _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + orden +
                    '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + orden + '/></div></td>'  
         $('#row_' + orden + '').html(_output);
@@ -593,7 +593,7 @@ $(document).ready(function()
         _output += '<td style="display: none;">' + estado + ' <input type="text" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
-        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
         _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + orden +
                    '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + orden + '/></div></td>'   
         $('#row_' + orden + '').html(_output);
@@ -631,7 +631,7 @@ $(document).ready(function()
         _output += '<td style="display: none;">' + estado + ' <input type="text" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
-        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
+        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
         _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + orden +
                    '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + orden + '/></div></td>'  
         $('#row_' + rowmod + '').html(_output);
