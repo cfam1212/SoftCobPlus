@@ -163,9 +163,22 @@ $(document).ready(function()
             });
 
             if(_continuar){
-                _count++;
 
-                _output = '<tr id="row_' + _count + '">';
+                ///GRABAR EN LA BASE
+                $.post({
+                    url: "../db/consultadatos.php",
+                    dataType: "json",
+                    data: {tipo: 38, auxv1: _estadoold=='Activo' ? 'A' : 'I', auxi1: _id, auxi2: _codigoold, opcion: 0},            
+                    success: function(data){
+                        _id = data[0].Padeid;
+                        _detalle  = data[0].Padeid;
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    } 
+                });
+
+                _output = '<tr id="row_' + _id + '">';
                 _output += '<td style="display: none;">' + 0 + ' <input type="hidden" name="hidden_padeid[]" id="padeid' + _count + '" value="' + 0 + '" /></td>';
                 _output += '<td style="display: none;">' + _count + ' <input type="hidden" name="hidden_orden[]" id="orden' + _count + '" value="' + _count + '" /></td>';
                 _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + _count + '" value="' + _detalle + '" /></td>';

@@ -14,6 +14,7 @@ $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(33, $_SESSION["i_emprid"], '', '', '', '', '', '', $paraid, 0, 0, 0, 0, 0));
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <div class="right_col" role="main">
