@@ -61,9 +61,9 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th style="width:40%">Cedente</th>
+                                    <th style="width:30%">Cedente</th>
                                     <th style="width:15%">Provincia</th>
-                                    <th style="width:15%">Cuidad</th>
+                                    <th style="width:20%">Cuidad</th>
                                     <th style="width:10% ; text-align: center">Telefono</th>
                                     <th style="width:10% ; text-align: center">Opciones</th>
                                     <th style="width:10% ; text-align: center">Estado</th>
@@ -360,7 +360,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="col-md-10 col-sm-10">
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
-                                            <table id="tblcatalogo" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
+                                            <table id="tblcatalogo" class="table table-striped jambo_table table-condensed bulk_action   table-borderless" style="width: 100%;">
                                                 <thead>
                                                     <tr>
                                                         <th style="display: none;">Id</th>

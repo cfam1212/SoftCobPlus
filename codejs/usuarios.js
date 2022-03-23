@@ -111,6 +111,7 @@ $(document).ready(function(){
                 _caduca = data[0].Caduca;
                 _cambiar = data[0].Cambiar;
 
+
                 $("#txtFechacaduca").val(data[0].FechaCaduca);
                 $("#txtUsername").val(data[0].Nombres);
                 $("#txtLastname").val(data[0].Apellidos);

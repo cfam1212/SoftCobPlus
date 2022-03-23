@@ -17,8 +17,12 @@ $descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
 $result = (isset($_POST['result'])) ? $_POST['result'] : '';
 $estado = (isset($_POST['estado'])) ? $_POST['estado'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
-$opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
+$detalle = (isset($_POST['detalle'])) ? $_POST['detalle'] : '';
+$valorv = (isset($_POST['valorv'])) ? $_POST['valorv'] : '';
+$valori = (isset($_POST['valori'])) ? $_POST['valori'] : '';
+$orden = (isset($_POST['orden'])) ? $_POST['orden'] : '';
 $valestado = $estado == "Activo" ? 'A' : 'I';
+$opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 
 date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
@@ -80,7 +84,13 @@ switch($opcion){
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(4,0,0,'','',$valestado,$id,0,'','',0,'','','',0,0,0,0,''));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            break;        
+            break;
+    case "5": //NUEVO PARAMETRO DETALLE
+            $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(5,0,$id,'','',$valestado,0,$orden,$detalle,$valorv,$valori,'','','',0,0,0,0,''));
+            $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;                    
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);

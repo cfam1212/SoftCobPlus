@@ -182,7 +182,7 @@ $(document).ready(function(){
   
     });
 
-    //AGREGAR NUEVO CONTACTO EN EDITAR
+    //AGREGAR NUEVO CONTACTO EN EDITAR DIRECTO A LA BASE DE DATOS
 
     $("#btnContacto").click(function(){
         let _id = $('#cedeid').val();
@@ -267,8 +267,8 @@ $(document).ready(function(){
                     _email1 = data[0].Email1;
                     _email2 = data[0].Email2;
 
-                    _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-3 btnEditConMo"  data-toggle="tooltip" data-placement="top" title="editar"' +
-                                ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar"' +
+                    _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditConMo"  data-toggle="tooltip" data-placement="top" title="editar"' +
+                                ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-2"' +
                                 'id="btnDelete"><i class="fa fa-trash-o"></i></button></div></div></td>'
                     
                     //console.log(_boton);
@@ -295,6 +295,8 @@ $(document).ready(function(){
             }); 
         } 
     });
+
+    //EDITAR CONTANTO-CEDENTE DEL MODAL DIRECTO A LA BASE DE DATOS
 
     $("#btnEditarCon").click(function(){
         let _conid = $('#conid').val();
@@ -382,8 +384,8 @@ $(document).ready(function(){
                     _email1 = data[0].Email1;
                     _email2 = data[0].Email2;
 
-                    _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-3 btnEditConMo" data-toggle="tooltip" data-placement="top" title="editar"' +
-                                ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar"' +
+                    _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditConMo" data-toggle="tooltip" data-placement="top" title="editar"' +
+                                ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-2"' +
                                 'id="btnDelete"><i class="fa fa-trash-o"></i></button></div></div></td>'
                     
                     TableDataContacto.row(_fila).data([_contactoid, _contacto, _cargo, _codcargo, _celular, _extension, _email1, _email2, _boton]).draw();
@@ -410,7 +412,7 @@ $(document).ready(function(){
                     $("#modalEDITCONTACTO").modal("hide");
             
                     _resultcon.push(_objeto);
-                    console.log(_resultcon);
+                    // console.log(_resultcon);
                     
                 },
                 error: function (error) {

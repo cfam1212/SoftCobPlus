@@ -5,6 +5,7 @@ require_once '../dashmenu/panel_menu.php';
 $mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
 $cedeid = (isset($_POST['id'])) ? $_POST['id'] : '';
 
+
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(29, 0, '', '', '', '', '', '', 0, 0, 0, 0, 0, 0));
@@ -233,15 +234,15 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <table id="tblcontacto" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
                                                     <thead>
                                                         <tr>
-                                                            <th>Id</th>
-                                                            <th>Contacto</th>
-                                                            <th style="text-align: center;">Cargo</th>
-                                                            <th style="display: none;">CodigoCargo</th>
-                                                            <th style="text-align: center;">Celular</th>
-                                                            <th>Ext</th>
-                                                            <th style="text-align: center;">Email</th>
-                                                            <th style="display: none;">Email2</th>
-                                                            <th style="text-align: center;">Opciones</th>
+                                                            <th style="width:10%;">Id</th>
+                                                            <th style="width:10%; text-align: center">Contacto</th>
+                                                            <th style="width:10%;">Cargo</th>
+                                                            <th style="width:10%; display: none;">CodigoCargo</th>
+                                                            <th style="width:10%; text-align: center">Celular</th>
+                                                            <th style="width:10%;">Ext</th>
+                                                            <th style="width:10%; text-align: center;">Email</th>
+                                                            <th style="width:10%; display: none;">Email2</th>
+                                                            <th style="width:10%; text-align: center">Opciones</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -261,7 +262,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                 <td style="display: none;">
                                                                     <?php echo $dat['CodCargo']; ?>
                                                                 </td>
-                                                                <td style="text-align: center;">
+                                                                <td>
                                                                     <?php echo $dat['Celular']; ?>
                                                                 </td>
                                                                 <td>
@@ -276,8 +277,8 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                 <td>
                                                                     <div class="text-center">
                                                                         <div class="btn-group">
-                                                                            <button type="button" class="btn btn-outline-info btn-sm ml-3 btnEditConMo" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit"><i class="fa fa-pencil-square-o"></i></button>
-                                                                            <button type="button" class="btn btn-outline-danger btn-sm ml-3" id="btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
+                                                                            <button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditConMo" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit"><i class="fa fa-pencil-square-o"></i></button>
+                                                                            <button type="button" class="btn btn-outline-danger btn-sm ml-2" id="btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </td>
