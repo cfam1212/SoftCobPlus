@@ -50,7 +50,6 @@ $(document).ready(function(){
                 dataType: "json",
                 data: {cboid: _codigo, descripcion: _descripcion, opcion: 0,},            
                 success: function(data){
-                    debugger;
                     if(data[0].Existe == 'Existe'){
                          mensajesalertify("Descripción ya Existe..!","S","bottom-center",5);
                     }else{

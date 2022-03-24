@@ -93,7 +93,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                             <th>Detalle</th>
                                                             <th>Valor Texto</th>
                                                             <th>Valor Entero</th>
-                                                            <th style="display: none;">Estadolabel</th>
                                                             <th style="width:13% ; text-align: center">Opciones</th>
                                                             <th style="width:10% ; text-align: center">Estado</th>
                                                         </tr>
@@ -123,10 +122,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                     <?php echo $dat['ValorI']; ?>
                                                                     <input type="hidden" name="hidden_valori[]" id="txtValori<?php echo $dat['Orden']; ?>" value="<?php echo $dat['ValorI']; ?>" />
                                                                 </td>
-                                                                <td style="display: none;" id="tdestado<?php echo $dat['Padeid']; ?>">
-                                                                    <?php echo $dat['Estado'] ?>
-                                                                    <input type="hidden" name="hidden_estado[]" id="txtEstado<?php echo $dat['Orden']; ?>" value="<?php echo $dat['Estado']; ?>" />
-                                                                </td>
                                                                 <td>
                                                                     <?php
                                                                     if ($dat['Orden'] == '1') {
@@ -138,7 +133,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                     <div class="text-center">
                                                                         <div class="btn-group">
                                                                             <button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" data-toggle="tooltip" data-placement="top" title="subir" id="btnUp<?php echo $dat['Orden']; ?>" <?php echo $desactivar; ?>><i class="fa fa-arrow-up"></i></button>
-                                                                            <button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id=<?php echo $dat['Orden']; ?>><i class="fa fa-pencil-square-o"></i></button>
+                                                                            <button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit<?php echo $dat['Orden']; ?>"><i class="fa fa-pencil-square-o"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </td>

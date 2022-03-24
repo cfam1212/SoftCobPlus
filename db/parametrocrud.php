@@ -90,7 +90,13 @@ switch($opcion){
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(5,0,$id,'','',$valestado,0,$orden,$detalle,$valorv,$valori,'','','',0,0,0,0,''));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            break;                    
+            break;    
+    case "6": //NUEVO PARAMETRO DETALLE
+        $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(6,0,$idparametro,'','','',$id,0,'','',0,'','','',0,0,0,0,''));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;                            
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);
