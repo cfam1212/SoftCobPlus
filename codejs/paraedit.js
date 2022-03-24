@@ -99,6 +99,8 @@ $(document).ready(function()
     
    $('#btnBoton').click(function() 
    {
+       _continuar = true;
+
         if($.trim($('#txtDetalle').val()).length == 0)
         {           
             mensajesalertify("Ingrese Detalle del Parámetro..!!","W","top-right",3);
@@ -185,8 +187,8 @@ $(document).ready(function()
                         _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_padeid[]" id="padeid' + _orden + '" value="' + _id + '" /></td>';
                         _output += '<td style="display: none;">' + _orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + _orden + '" value="' + _id + '" /></td>';
                         _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + _orden + '" value="' + _detalle + '" /></td>';
-                        _output += '<td class="text-center">' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' +_orden + '" value="' + _valorv + '" /></td>';
-                        _output += '<td class="text-center">' + _valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + _orden + '" value="' + _valori + '" /></td>';
+                        _output += '<td>' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' +_orden + '" value="' + _valorv + '" /></td>';
+                        _output += '<td>' + _valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + _orden + '" value="' + _valori + '" /></td>';
                         _output += '<td><div class="text-center"><div class="btn-group">'
                         _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp"' + ' id="btnUp' + _orden + '"><i class="fa fa-arrow-up"></i></button>';
                         _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit' + _orden + '"><i class="fa fa-pencil-square-o"></i></button>';
@@ -278,61 +280,67 @@ $(document).ready(function()
             {
                 //FunRemoveItemFromArr(_result, _detalleold);
 
-                /*alert('ParaID: ' + _id + ' DealleID: ' + _codigoold );
+                //alert('ParaID: ' + _id + ' DealleID: ' + _codigoold );
+
                 $.ajax({
-                    url: "../db/consultadatos.php",
+                    url: "../db/parametrocrud.php",
                     type: "POST",
                     dataType: "json",
-                    data: {tipo: 38, auxv1: _estadoold=='Activo' ? 'A' : 'I', auxi1: _id, auxi2: _codigoold, opcion: 0},            
+                    data: {id:_padeid, detalle: _detalle, valorv:_valorv,valori:_valori, opcion: 7},            
                     success: function(data){
-                        if(data == 'OK-Update'){
-                             
-                        }                
+                        _padeid = data[0].Padeid;
+                        _orden  = data[0].Orden;
+                        _detalle  = data[0].Detalle;
+                        _valorv  = data[0].ValorV;
+                        _valori  = data[0].ValorI;
+                        _estado  = data[0].Estado;
+
+                        if(_orden == '1'){
+                            _deshabilitar  = 'disabled';
+                        }
+                        else{
+                            _deshabilitar = ''
+                        }
+                        
+                        if(_estado == 'Activo'){
+                            _checknew = 'checked';
+                        }else{
+                            _checknew = ' ';
+                        }
+                
+                        // if(_padeid != 0){
+                        //     _deshabilitae = 'disabled';
+                        //     _deshabilitachk = '';
+                        // }else{
+                        //     _deshabilitae = '';
+                        //     _deshabilitachk = 'disabled';
+                        // }                
+        
+                        row_id = $('#hidden_row_id').val();
+                        _output = '<td style="display: none;">' + _padeid + ' <input type="hidden" name="hidden_padeid[]" id="padeid' + _orden + '" value="' + _padeid + '" /></td>';
+                        _output += '<td style="display: none;">' + _orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + _orden + '" value="'+ _orden + '" /></td>';
+                        _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + _orden + '" value="' + _detalle + '" /></td>';
+                        _output += '<td class="text-center">' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + _orden + '" value="'+ _valorv + '" /></td>';
+                        _output += '<td class="text-center">' + _valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + _orden + '" value="'+ _valori + '" /></td>';      
+                        _output += '<td><div class="text-center"><div class="btn-group">'
+                        _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp"' + ' id="btnUp' + _orden + '"><i class="fa fa-arrow-up"></i></button>';
+                        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit' + _orden + '"><i class="fa fa-pencil-square-o"></i></button>';
+                        _output += '</div></div></td><td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _orden +
+                                    '" checked value=' + _padeid + '/></div></td></tr>';
+        
+                        $('#row_' + row_id + '').html(_output);
+        
+                        _objIndex = _result.findIndex(obj => obj.arryorden == _orden);
+                        _result[_objIndex].arrydetalle = _detalle;
+                        _result[_objIndex].arryvalorv = _valorv;
+                        _result[_objIndex].arryvalori = _valori;
+
+                                    
                     },
                     error: function (error) {
                         console.log(error);
                     }                          
-                });*/
-
-                if(_norden == '1'){
-                    _deshabilitar  = 'disabled';
-                }
-                else{
-                    _deshabilitar = ''
-                }
-                
-                if(_estadoold == 'Activo'){
-                    _checknew = 'checked';
-                }else{
-                    _checknew = ' ';
-                }
-        
-                if(_padeid != 0){
-                    _deshabilitae = 'disabled';
-                    _deshabilitachk = '';
-                }else{
-                    _deshabilitae = '';
-                    _deshabilitachk = 'disabled';
-                }                
-
-                row_id = $('#hidden_row_id').val();
-                _output = '<td style="display: none;">' + _padeid + ' <input type="hidden" name="hidden_padeid[]" id="padeid' + _norden + '" value="' + _padeid + '" /></td>';
-                _output += '<td style="display: none;">' + _norden + ' <input type="hidden" name="hidden_orden[]" id="orden' + _norden + '" value="'+ _norden + '" /></td>';
-                _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + _norden + '" value="' + _detalle + '" /></td>';
-                _output += '<td class="text-center">' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + _norden + '" value="'+ _valorv + '" /></td>';
-                _output += '<td class="text-center">' + _valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + _norden + '" value="'+ _valori + '" /></td>';      
-                _output += '<td><div class="text-center"><div class="btn-group">'
-                _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + _norden + '"><i class="fa fa-arrow-up"></i></button>';
-                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit' + _norden + '"><i class="fa fa-pencil-square-o"></i></button>';
-                _output += '</div></div></td><td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + _norden +
-                           '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + _norden + '/></div></td>'
-
-                $('#row_' + row_id + '').html(_output);
-
-                _objIndex = _result.findIndex(obj => obj.arryorden == _norden);
-                _result[_objIndex].arrydetalle = _detalle;
-                _result[_objIndex].arryvalorv = _valorv;
-                _result[_objIndex].arryvalori = _valori;
+                });
 
                 $("#modalPARAMETER").modal("hide");
                 
@@ -347,7 +355,6 @@ $(document).ready(function()
     $(document).on("click",".chkEstadoDe",function(){ 
         let _rowid = $(this).attr("id");
         let _idpade = _rowid.substring(3);
-        alert(_idpade);
         let _check = $("#chk" + _idpade).is(":checked");
         let _padeid = $("#chk" + _idpade).val();
         let _estadopade;
@@ -384,9 +391,9 @@ $(document).ready(function()
         _padeid = $('#padeid' + _row_id + '').val();
         _norden = $('#orden' + _row_id + '').val();
         _detalleold = $('#txtDetalle' + _row_id).val();
-        _valorvold = $('#txtValorv' + _row_id + '').val();
-        _valoriold = $('#txtValori' + _row_id + '').val();
-        _estadoold = $('#txtEstado' + _row_id + '').val();
+        _valorvold = $('#txtValorv' + _row_id).val();
+        _valoriold = $('#txtValori' + _row_id ).val();
+        _estadoold = $('#txtEstado' + _row_id ).val();
         //_deshabilitar = $('#btnUp' + row_id + '').attr('disabled');        
         _tipoSave = 'edit';
 
@@ -529,7 +536,6 @@ $(document).ready(function()
                 _output = '<tbody>';
                 $('#tblparameter').append(_output); 
 
-                debugger;
                 $.each(data,function(i,item){  
                     _padeid = data[i].Padeid;
                     _orden  = data[i].Orden;

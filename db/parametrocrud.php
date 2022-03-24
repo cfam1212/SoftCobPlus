@@ -91,12 +91,18 @@ switch($opcion){
             $resultado->execute(array(5,0,$id,'','',$valestado,0,$orden,$detalle,$valorv,$valori,'','','',0,0,0,0,''));
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;    
-    case "6": //NUEVO PARAMETRO DETALLE
-        $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(6,0,$idparametro,'','','',$id,0,'','',0,'','','',0,0,0,0,''));
-        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-        break;                            
+    case "6": //
+            $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(6,0,$idparametro,'','','',$id,0,'','',0,'','','',0,0,0,0,''));
+            $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+    case "7": //UPDATE PARAMETRO DETALLA DIRECTO BDD
+            $consulta = "CALL sp_New_Parametro(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(7,0,0,'','','',$id,0,$detalle,$valorv,$valori,'','','',0,0,0,0,''));
+            $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;                                 
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE);
