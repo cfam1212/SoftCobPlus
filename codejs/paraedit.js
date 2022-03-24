@@ -502,14 +502,8 @@ $(document).ready(function()
     $(document).on("click",".btnUp",function(){
         
         let row_id = $(this).attr("id");
-        
         let id_now = $('#orden' + row_id.substr(5)).val();
-
-        alert(id_now);
         let _padeidnow = $('#padeid' + id_now).val();
-
-        alert(_padeidnow);
-
 
         $.ajax({
             url: "../db/parametrocrud.php",
@@ -535,8 +529,9 @@ $(document).ready(function()
                 _output = '<tbody>';
                 $('#tblparameter').append(_output); 
 
+                debugger;
                 $.each(data,function(i,item){  
-                    _id = data[i].Padeid;
+                    _padeid = data[i].Padeid;
                     _orden  = data[i].Orden;
                     _detalle  = data[i].Detalle;
                     _valorv  = data[i].ValorV;
@@ -558,7 +553,7 @@ $(document).ready(function()
                     }
             
                     _output = '<tr id="row_' + _orden + '">';
-                    _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_padeid[]" id="padeid' + _orden + '" value=' + _id + ' /></td>';
+                    _output += '<td style="display: none;">' + _padeid + ' <input type="hidden" name="hidden_padeid[]" id="padeid' + _orden + '" value=' + _padeid + ' /></td>';
                     _output += '<td style="display: none;">' + _orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + _orden + '" value=' + _orden + ' /></td>';
                     _output += '<td>' + _detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + _orden + '" value="' + _detalle + '" /></td>';
                     _output += '<td class="text-center">' + _valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' +_orden + '" value="' + _valorv + '" /></td>';
