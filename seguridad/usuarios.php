@@ -151,19 +151,21 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <input type="password" class="form-control has-feedback-left" id="txtPassword" placeholder="" maxlength="50" autocomplete="off">
                             <span class="fa fa-eye-slash form-control-feedback left" aria-hidden="true"></span>
                         </div>
-                        <div class="col-md-3 col-sm-3">
-                            <select class="form-control col-md-3" id="cboPerfil" name="cboperfil" style="width: 135%;">
-                                <?php foreach ($cboperfil as $fila) : ?>
-                                    <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
-                                <?php endforeach ?>
+                        <div class="col-md-4 col-sm-4">
+                            <select class="form-control col-md-4" id="cboPerfil" name="cboperfil" style="width: 100%;">
+                                <?php 
+                                    foreach ($cboperfil as $fila){
+                                        echo '<option value="' . $fila['Codigo'] .'">' . $fila['Descripcion'] . '</option>';
+                                    }
+                                ?>
                             </select>
                         </div>
-                        <label for="espacio" class="control-label col-md-1"></label> 
-                        <div class="col-md-3 col-sm-3">
-                            <select class="form-control col-md-3" id="cboTipoUser" name="cbotipouser" style="width: 135%;">
-                                <?php foreach ($cbotipouser as $fila) : ?>
+                        
+                        <div class="col-md-4 col-sm-4">
+                            <select class="form-control col-md-4" id="cboTipoUser" name="cbotipouser" style="width: 100%;">
+                                <?php foreach ($cbotipouser as $fila) { ?>
                                     <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
-                                <?php endforeach ?>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -175,18 +177,19 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <label for="menuname" class="control-label col-md-2">Fecha Caduca:</label>
                     </div>
                     <div class="form-group row">
-                       <div class="col-md-3 col-sm-3">
-                            <select class="form-control col-md-4" id="cboDepa" name="cbodepa" style="width: 135%;">
+                       <div class="col-md-4 col-sm-4">
+                            <select class="form-control col-md-4" id="cboDepa" name="cbodepa" style="width: 100%;">
                                 <?php foreach ($cbodepa as $fila) : ?>
                                     <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
-                        <label for="espacio" class="control-label col-md-1"></label>
+                        
                         <div class="checkbox col-md-2">
                             <input type="checkbox" id="chkCambiar">
                             <label class="form-check-label" id="lblCambiar">NO</label>
                         </div> 
+
                         <div class="checkbox col-md-2">
                             <input type="checkbox" id="chkCaduca">
                             <label class="form-check-label" id="lblCaduca">NO</label>
@@ -218,6 +221,7 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
+
 <?php require_once '../dashmenu/panel_footer.php'; ?>
 <script src="../codejs/usuarios.js" type="text/javascript"></script>
 

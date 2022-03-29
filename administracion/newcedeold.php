@@ -206,7 +206,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-10 col-sm-10">
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
-                                                <table id="tblcontacto" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
+                                                <table id="tblcontactonuevo" class="table table-striped jambo_table table-condensed table-dark table-borderless" style="width: 100%;">
                                                     <thead class="text-center">
                                                         <tr>
                                                             <th style="display: none;">Id</th>

@@ -231,29 +231,8 @@ $(document).ready(function(){
             data: {cedeid: _cedeid, provid: _cboprovincia, ciudid: _cbocuidad, cedente: _cedente, ruc: _ruc, direccion: _direccion, 
                    telefono1: _fono1, telefono2: _fono2, fax: _fax, url: _url, nivel: _cboarbol, opcion: 5},            
             success: function(data){    
-                
-                    _idcedente = data[0].CedeId;
-                    _cedente = data[0].Cedente;
-                    _provincia = data[0].Provincia;
-                    _cuidad = data[0].Ciudad;
-                    _telefono = data[0].Telefono;
-                    _estado  = data[0].Estado;
-    
-                    _checked = '';
-    
-                    if(_estado == 'Activo'){
-                        _checked = 'checked';
-                    }    
-    
-                    _btnestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idcedente +
-                                 '" ' + _checked + ' value=' + _idcedente + '/></div></td>';
-    
-                    _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditar" data-toggle="tooltip" data-placement="top" title="editar"' +
-                                ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-2"' +
-                                'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'
-                    
-                    TableData.row(_fila).data([_idcedente, _cedente, _provincia, _cuidad, _telefono, _boton, _btnestado]).draw();              
-                                
+                //$.redirect("admincede.php");                
+                mensajesalertify("Actualizado con Exito.!","E","top-right",3); 
                 
             },
             error: function (error) {

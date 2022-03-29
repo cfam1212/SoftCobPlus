@@ -6,9 +6,21 @@ $(document).ready(function(){
         handle: ".modal-header"
     });   
     
-    $('#cboPerfil').select2();
-    $('#cboDepa').select2();
-    $('#cboTipoUser').select2();
+     $("#cboPerfil").select2({
+        dropdownParent: $("#modalNewUser")
+    });     
+
+    $("#cboDepa").select2({
+        dropdownParent: $("#modalNewUser")
+    }); 
+    
+    $("#cboTipoUser").select2({
+        dropdownParent: $("#modalNewUser")
+    });     
+
+    //$('#cboPerfil').select2();
+    // $('#cboDepa').select2();
+    // $('#cboTipoUser').select2();
 
     $("#btnNuevo").click(function(){
         $("#frmUserNew").trigger("reset");

@@ -98,11 +98,10 @@ switch($opcion){
 
             //AQUI
 
-    
-                $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                $resultado = $conexion->prepare($consulta);
-                $resultado->execute(array(46, $_SESSION["i_emprid"], '', '', '', '', '', '', $cedeid, 0, 0, 0, 0, 0));
-                $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(46, $_SESSION["i_emprid"], '', '', '', '', '', '', $cedeid, 0, 0, 0, 0, 0));
+            $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         }
         else $data = 'Existe';
     break;   
