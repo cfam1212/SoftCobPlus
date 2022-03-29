@@ -83,7 +83,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="cboprovincia" class="control-label col-md-1">Provincia:</label>
-                                            <div class="form-group col-md-3">
+                                            <div class="col-md-3 col-sm-6 form-group">
                                                 <select class="form-control" id="cboProvincia" name="cboprovincia">
                                                     <option value="0">--Seleccione Provincia--</option>
                                                     <?php foreach ($dataprov as $fila) : ?>
@@ -94,7 +94,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="cbocuidad" class="control-label col-md-1">Cuidad:</label>
-                                            <div class="form-group col-md-3">
+                                            <div class="col-md-3 col-sm-6 form-group">
                                                 <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;">
                                                     <option value="0">--Seleccione Ciudad--</option>
                                                     <?php foreach ($dataciudad as $fila) : ?>
@@ -108,13 +108,13 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Cedente:</label>
-                                            <div class="col-md-3 col-sm-3 form-group">
+                                            <div class="col-md-3 col-sm-6 form-group">
                                                 <input autofocus type="text" class="form-control has-feedback-left" id="txtCedente" maxlength="150" value="<?php echo $datacede[0]['Cedente']; ?>">
                                                 <span class="fa fa-pie-chart form-control-feedback left" aria-hidden="true"></span>
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="iconome" class="control-label col-md-1">Ruc:</label>
-                                            <div class="col-md-3 col-sm-3 form-group">
+                                            <div class="col-md-3 col-sm-6 form-group">
                                                 <input type="text" class="form-control has-feedback-left" id="txtRuc" maxlength="13" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" value="<?php echo $datacede[0]['Ruc']; ?>">
                                                 <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                                             </div>
@@ -122,20 +122,20 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Direccion:</label>
-                                            <div class="form-group col-md-10">
-                                                <textarea name="observa" id="txtDireccion"  maxlength="200" onKeyUp="this.value=this.value.toUpperCase();" onkeydown="return (event.keyCode!=13);" value="<?php echo $datacede[0]['Direccion']; ?>"></textarea>
+                                            <div class="form-group col-md-10 col-sm-10">
+                                                <textarea name="observa" id="txtDireccion" class="form-control col-md-9 col-sm-10"  maxlength="200" onKeyUp="this.value=this.value.toUpperCase();" onkeydown="return (event.keyCode!=13);" value="<?php echo $datacede[0]['Direccion']; ?>"></textarea>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Telefono 1:</label>
-                                            <div class="col-md-3 col-sm-3  form-group has-feedback">
+                                            <div class="col-md-3 col-sm-6  form-group has-feedback">
                                                 <input type="text" class="form-control has-feedback-left" id="txtTel1" maxlength="9" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="15" value="<?php echo $datacede[0]['Telefono1']; ?>">
                                                 <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="iconome" class="control-label col-md-1">Telefono 2:</label>
-                                            <div class="col-md-3 col-sm-3  form-group has-feedback">
+                                            <div class="col-md-3 col-sm-6  form-group has-feedback">
                                                 <input type="text" class="form-control has-feedback-left" id="txtTel2" maxlength="9" placeholder="ej: 022630922" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="15" value="<?php echo $datacede[0]['Telefono2']; ?>">
                                                 <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                             </div>
@@ -143,13 +143,13 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="fax" class="control-label col-md-1">Fax:</label>
-                                            <div class="col-md-3 col-sm-3  form-group has-feedback">
+                                            <div class="col-md-3 col-sm-6  form-group has-feedback">
                                                 <input type="text" class="form-control has-feedback-left" id="txtFax" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="fax" maxlength="10" value="<?php echo $datacede[0]['Fax']; ?>">
                                                 <span class="fa fa-fax form-control-feedback left" aria-hidden="true"></span>
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="iconome" class="control-label col-md-1">Url:</label>
-                                            <div class="col-md-3 col-sm-3  form-group has-feedback">
+                                            <div class="col-md-3 col-sm-6  form-group has-feedback">
                                                 <input type="text" class="form-control has-feedback-left" id="txtUrl" maxlength="80" value="<?php echo $datacede[0]['Link']; ?>">
                                                 <span class="fa fa-link form-control-feedback left" aria-hidden="true"></span>
                                             </div>
@@ -157,7 +157,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="cboArbol" class="control-label col-md-1">Nivel Arbol:</label>
-                                            <div class="form-group col-md-3">
+                                            <div class="col-md-3 col-sm-6 form-group">
                                                 <select class="form-control" id="cboArbol" name="cboarbol" style="width: 100%;">
                                                     <option value="0">--Seleccione Nivel--</option>
                                                     <?php foreach ($nivelarbol as $fila) : ?>
@@ -278,7 +278,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                     <div class="text-center">
                                                                         <div class="btn-group">
                                                                             <button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditConMo" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit"><i class="fa fa-pencil-square-o"></i></button>
-                                                                            <button type="button" class="btn btn-outline-danger btn-sm ml-2" id="btnDelete" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button>
+                                                                            <button type="button" class="btn btn-outline-danger btn-sm ml-2" id="btnDelete"><i class="fa fa-trash-o"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </td>

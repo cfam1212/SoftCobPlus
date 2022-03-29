@@ -46,7 +46,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                <form class="form-horizontal" role="form">
+                                <form class="form-horizontal col-md-11 offset-md-1" role="form">
                                     <fieldset>
                                         <div class="form-group row">
                                             <label for="espacio" class="control-label col-md-1"></label>
@@ -54,7 +54,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
-                                            <div class="col-md-7 col-sm-4  form-group has-feedback">
+                                            <div class="col-md-8 col-sm-4  form-group has-feedback">
                                             <input autofocus type="text" class="form-control has-feedback-left" id="txtParametro" maxlength="80" value="<?php echo $datapara[0]['Parametro']; ?>" >
                                             <span class="fa fa-bookmark form-control-feedback left" aria-hidden="true"></span>
                                         </div>
@@ -66,7 +66,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <div class="form-group col-md-10">
-                                                <textarea name="observa" id="txtDescripcion" class="form-control col-md-8"><?php echo $datapara[0]['Descripcion']; ?></textarea>
+                                                <textarea name="observa" id="txtDescripcion" class="form-control col-md-10"><?php echo $datapara[0]['Descripcion']; ?></textarea>
                                             </div>
                                         </div>
                                     </fieldset>
