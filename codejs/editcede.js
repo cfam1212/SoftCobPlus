@@ -146,14 +146,129 @@ $(document).ready(function(){
 
 
     });   */
+   
+    // GRABAR EDITAR CEDENTE DIRECTO BDD
+
+    $("#btnSave").click(function(){
+
+        let _cedente = $('#txtCedente').val();
+        let _ruc = $('#txtRuc').val();
+        let _direccion = $('#txtDireccion').val();
+        let _fono1 = $('#txtTel1').val();
+        let _fono2 = $('#txtTel2').val();
+        let _fax = $('#txtFax').val();
+        let _url = $('#txtUrl').val();
+  
+        
+        let _cboprovincia = $('#cboProvincia').val();
+        let _cbocuidad = $('#cboCiudad').val();
+        let _cboarbol = $('#cboArbol').val();
+
+
+        if(_cboprovincia == '0')
+        {
+            mensajesalertify("Seleccione Provincia..!","W","top-right",3);
+            return;
+        }
+        
+        if(_cbocuidad == '0')
+        {
+            mensajesalertify("Seleccione Cuidad..!","W","top-right",3);
+            return;
+        }	 
+  
+  
+        if(_cedente == '')
+        {
+            mensajesalertify("Ingrese Cendente..!","W","top-right",3);
+            return;
+        }
+        
+        if(_cboarbol == '0')
+        {
+          mensajesalertify("Ingrese Nivel del Árbol..!","W","top-right",3);
+          return;
+        }
+
+        if(_fono1 != '')
+        {
+
+            valor = document.getElementById("txtTel1").value;
+            if( !(/^\d{9}$/.test(valor)) ) {
+                mensajesalertify("Telefono 1 incorrecto..!","E","top-right",3); 
+                _continuarcon = false;
+                return;
+            }
+        }
+
+        if(_fono2 != '')
+        {
+
+            valor = document.getElementById("txtTel2").value;
+            if( !(/^\d{9}$/.test(valor)) ) {
+                mensajesalertify("Telefono 2 incorrecto..!","E","top-right",3); 
+                _continuarcon = false;
+                return;
+            }
+        }
+
+        
+      if(_ruc != '')
+      {
+
+          valor = document.getElementById("txtTel2").value;
+          if( !(/^\d{13}$/.test(valor)) ) {
+              mensajesalertify("Telefono 2 incorrecto..!","E","top-right",3); 
+              _continuarcon = false;
+              return;
+          }
+      }
+
+        $.ajax({
+            url: "../db/cedentecrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {cedeid: _cedeid, provid: _cboprovincia, ciudid: _cbocuidad, cedente: _cedente, ruc: _ruc, direccion: _direccion, 
+                   telefono1: _fono1, telefono2: _fono2, fax: _fax, url: _url, nivel: _cboarbol, opcion: 5},            
+            success: function(data){    
+                
+                    _idcedente = data[0].CedeId;
+                    _cedente = data[0].Cedente;
+                    _provincia = data[0].Provincia;
+                    _cuidad = data[0].Ciudad;
+                    _telefono = data[0].Telefono;
+                    _estado  = data[0].Estado;
+    
+                    _checked = '';
+    
+                    if(_estado == 'Activo'){
+                        _checked = 'checked';
+                    }    
+    
+                    _btnestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idcedente +
+                                 '" ' + _checked + ' value=' + _idcedente + '/></div></td>';
+    
+                    _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditar" data-toggle="tooltip" data-placement="top" title="editar"' +
+                                ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-2"' +
+                                'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'
+                    
+                    TableData.row(_fila).data([_idcedente, _cedente, _provincia, _cuidad, _telefono, _boton, _btnestado]).draw();              
+                                
+                
+            },
+            error: function (error) {
+                console.log(error);
+              }                            
+            });    
+
+
+    });
 
 
     
     //EDITAR CONTACTO VENTANA MODAL
     $(document).on("click",".btnEditConMo",function(){
         
-        //$("#modalEDITCONTACTO").trigger("reset"); 
-        //debugger;
 
         _fila = $(this).closest("tr");
         _data = $('#tblcontacto').dataTable().fnGetData(_fila);

@@ -4,7 +4,7 @@ $(document).ready(function(){
     _resultpro = [], _resultcat = [], _resultage = [], _agencia,_cbosucursal,_sucursal,_zona, _estado, _producto,
     _codigocat, _catalogo, _estadocat, _produc, _countagen = 0, _codigoagen,_countproduc = 0, _estadopro,_idcontacto, 
     _contactoold, _codcargoold, _celularold, _email1old, _estadoagen, _estadocat, _countcontacto = 0, _contactoold, _telefono,
-    _descripant;
+    _descripant, _fila;
 
     $("#modalCONTACTO").draggable({
         handle: ".modal-header"
@@ -1187,7 +1187,7 @@ $(document).ready(function(){
     //eliminar -agencia-modal
 
     $(document).on("click",".btnDeleteAgencia",function(){
-        debugger;
+        
         _idagen = $(this).attr("id");
 
         _agenciadelete = $('#txtAgencia' + _idagen + '').val();
@@ -1258,6 +1258,39 @@ $(document).ready(function(){
         mensajesalertify("Ingrese Nivel del Árbol..!","W","top-right",3);
         return;
       }
+
+      if(_fono1 != '')
+      {
+
+          valor = document.getElementById("txtTel1").value;
+          if( !(/^\d{9}$/.test(valor)) ) {
+              mensajesalertify("Telefono 1 incorrecto..!","E","top-right",3); 
+              _continuarcon = false;
+              return;
+          }
+      }
+
+      if(_fono2 != '')
+      {
+
+          valor = document.getElementById("txtTel2").value;
+          if( !(/^\d{9}$/.test(valor)) ) {
+              mensajesalertify("Telefono 2 incorrecto..!","E","top-right",3); 
+              _continuarcon = false;
+              return;
+          }
+      }
+
+      if(_ruc != '')
+      {
+
+          valor = document.getElementById("txtTel2").value;
+          if( !(/^\d{13}$/.test(valor)) ) {
+              mensajesalertify("Telefono 2 incorrecto..!","E","top-right",3); 
+              _continuarcon = false;
+              return;
+          }
+      }
             
       $.ajax({
         url: "../db/cedentecrud.php",
@@ -1270,22 +1303,30 @@ $(document).ready(function(){
             if(data == 'Existe'){     
                 mensajesalertify("Nombre del Cedente ya existe..!","W","top-right",3);  
             }else{
-                _contactoid = data[0].Id;
-                _contacto = data[0].Contacto;
-                _cargo = data[0].Cargo;
-                _codcargo = data[0].CodCargo;
-                _celular = data[0].Celular;
-                _extension = data[0].Extension;
-                _email1 = data[0].Email1;
-                _email2 = data[0].Email2;
+                _idcedente = data[0].CedeId;
+                _cedente = data[0].Cedente;
+                _provincia = data[0].Provincia;
+                _cuidad = data[0].Ciudad;
+                _telefono = data[0].Telefono;
+                _estado  = data[0].Estado;
 
-                _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-3 btnEditConMo" data-toggle="tooltip" data-placement="top" title="editar"' +
-                            ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar"' +
-                            'id="btnDelete"><i class="fa fa-trash-o"></i></button></div></div></td>'
+                _checked = '';
+
+                if(_estado == 'Activo'){
+                    _checked = 'checked';
+                }    
+
+                _btnestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idcedente +
+                             '" ' + _checked + ' value=' + _idcedente + '/></div></td>';
+
+                _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditar" data-toggle="tooltip" data-placement="top" title="editar"' +
+                            ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-2"' +
+                            'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'
                 
-                TableDataContacto.row(_fila).data([_contactoid, _contacto, _cargo, _codcargo, _celular, _extension, _email1, _email2, _boton]).draw();              
+                TableData.row.add([_idcedente, _cedente, _provincia, _cuidad, _telefono, _boton, _btnestado]).draw();              
                             
             }
+            $("#modalNewCedente").modal("hide");
         },
         error: function (error) {
             console.log(error);

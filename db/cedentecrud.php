@@ -36,7 +36,7 @@ date_default_timezone_set("America/Guayaquil");
 $currentdate = date('Y-m-d H:i:s');
 
 switch($opcion){
-    case 0: //NUEVO PRODUCTO/CATALOGO
+    case 0: //NUEVO CEDENTE
 
         $consulta = "CALL sp_New_Cedente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
@@ -85,20 +85,24 @@ switch($opcion){
             }
             
 
-            if($resultagencia != '')
-            {
-                foreach($resultagencia as $drfila){
-                    $consulta = "CALL sp_New_Agencia(?,?,?,?,?,?,?,?,?,?,?)";
-                    $resultado = $conexion->prepare($consulta);
-                    $estado = $drfila['arryestado'] == 'Activo' ? "A" : "I";
-                    $resultado->execute(array(0,$cedeid,$drfila['arrycodigoagen'],$drfila['arryagencia'],$drfila['arrysucursal'],
-                    $drfila['arryzona'],$estado,'','','0','0'));
-                }
-            }
+            // if($resultagencia != '')
+            // {
+            //     foreach($resultagencia as $drfila){
+            //         $consulta = "CALL sp_New_Agencia(?,?,?,?,?,?,?,?,?,?,?)";
+            //         $resultado = $conexion->prepare($consulta);
+            //         $estado = $drfila['arryestado'] == 'Activo' ? "A" : "I";
+            //         $resultado->execute(array(0,$cedeid,$drfila['arrycodigoagen'],$drfila['arryagencia'],$drfila['arrysucursal'],
+            //         $drfila['arryzona'],$estado,'','','0','0'));
+            //     }
+            // }
 
             //AQUI
 
-             $data = "OK";
+    
+                $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(46, $_SESSION["i_emprid"], '', '', '', '', '', '', $cedeid, 0, 0, 0, 0, 0));
+                $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         }
         else $data = 'Existe';
     break;   
@@ -144,6 +148,14 @@ switch($opcion){
         $resultado->execute(array(4,0,$cedeid,0,0,'','','','','','','','',0,'','','',0,0,0,$userid,$host));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);    
         break;
+
+    case 5: //EDITAR CEDENTE
+        $consulta = "CALL sp_New_Cedente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(5,0,$cedeid,$provid,$ciudid,$cedente,$ruc,$direccion,$telefono1,$telefon2,$fax,$url,'',
+        $nivel,'','','',0,0,0,$userid,$host));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);    
+        break;    
 
 }
 

@@ -123,20 +123,20 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Direccion:</label>
                                             <div class="form-group col-md-10">
-                                                <textarea name="observa" id="txtDireccion" class="form-control col-md-8" maxlength="200" onKeyUp="this.value=this.value.toUpperCase();" onkeydown="return (event.keyCode!=13);" value="<?php echo $datacede[0]['Direccion']; ?>"></textarea>
+                                                <textarea name="observa" id="txtDireccion"  maxlength="200" onKeyUp="this.value=this.value.toUpperCase();" onkeydown="return (event.keyCode!=13);" value="<?php echo $datacede[0]['Direccion']; ?>"></textarea>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="menuname" class="control-label col-md-1">Telefono 1:</label>
                                             <div class="col-md-3 col-sm-3  form-group has-feedback">
-                                                <input type="text" class="form-control has-feedback-left" id="txtTel1" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="15" value="<?php echo $datacede[0]['Telefono1']; ?>">
+                                                <input type="text" class="form-control has-feedback-left" id="txtTel1" maxlength="9" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="15" value="<?php echo $datacede[0]['Telefono1']; ?>">
                                                 <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                             </div>
                                             <label for="espacio" class="control-label col-md-1"></label>
                                             <label for="iconome" class="control-label col-md-1">Telefono 2:</label>
                                             <div class="col-md-3 col-sm-3  form-group has-feedback">
-                                                <input type="text" class="form-control has-feedback-left" id="txtTel2" placeholder="ej: 022630922" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="15" value="<?php echo $datacede[0]['Telefono2']; ?>">
+                                                <input type="text" class="form-control has-feedback-left" id="txtTel2" maxlength="9" placeholder="ej: 022630922" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="15" value="<?php echo $datacede[0]['Telefono2']; ?>">
                                                 <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                             </div>
                                         </div>

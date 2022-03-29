@@ -107,7 +107,7 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 <div class="modal fade" id="modalNewUser" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
                 <h5 class="modal-title" id="modalLabel"></h5>
