@@ -57,10 +57,31 @@ $(document).ready(function(){
  // MODAL PARA NUEVO CEDENTE
 
     $("#btnNuevo").click(function(){
-        $("#frmCedente").trigger("reset");
+        $("#modalNewCedente").trigger("reset");
         
+        _resultpro = [];
         $('#txtCedente').val('');
-        $("#cboprovincia").val('0').change();
+        $('#txtRuc').val('');
+        $("#cboProvincia").val('0').change();
+
+        // $("#tblproducto").empty();
+        // _output = '<thead>';
+        // _output += '<tr><th style="display: none;">Id</th>';
+        // _output += '<th>Producto</th>';
+        // _output += '<th>Descripcion</th>';
+        // _output += '<th style="width:13% ; text-align: center">Opciones</th>';
+        // _output += '</tr></thead>';
+
+        // $('#tblproducto').append(_output);         
+
+
+        let tblrow = 1;
+        let tblproducto = document.getElementById('tblproducto');
+        let rowCount = tblproducto.rows.length;
+
+        for (var i = tblrow; i < rowCount; i++) {
+            tblproducto.deleteRow(tblrow);
+        }
 
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
@@ -207,7 +228,7 @@ $(document).ready(function(){
         _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcontacto + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
         _output += '</tr>';
 
-          $('#tblcontactonew').append(_output);
+        $('#tblcontactonew').append(_output);
 
           _objeto = {
               arrycodigo : parseInt(_countcontacto),
@@ -424,7 +445,7 @@ $(document).ready(function(){
         let _descripcion = $('#txtDescripcion').val();
         let _estado = 'Activo';
         let _continuarproduc = true;
-        let _tipoSave = 'add';
+        //let _tipoSave = 'add';
         
 
         let tableHeaderRowCount = 1;
