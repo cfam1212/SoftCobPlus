@@ -126,15 +126,15 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <label for="menuname" class="control-label col-md-1">Login:</label>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-4 col-sm-4  form-group has-feedback">
+                        <div class="col-md-4 col-sm-4 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtUsername" maxlength="80" autofocus>
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
-                        <div class="col-md-4 col-sm-4  form-group has-feedback">
+                        <div class="col-md-4 col-sm-4 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtLastname" maxlength="80">
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
-                        <div class="col-md-4 col-sm-4  form-group has-feedback">
+                        <div class="col-md-4 col-sm-4 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtLogin" maxlength="16" onKeyUp="this.value=this.value.toLowerCase();" autocomplete="off">
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
@@ -147,7 +147,7 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <label for="menuname" class="control-label col-md-2">Tipo Usuario:</label>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-4 col-sm-4  form-group has-feedback">
+                        <div class="col-md-4 col-sm-4 form-group has-feedback">
                             <input type="password" class="form-control has-feedback-left" id="txtPassword" placeholder="" maxlength="50" autocomplete="off">
                             <span class="fa fa-eye-slash form-control-feedback left" aria-hidden="true"></span>
                         </div>

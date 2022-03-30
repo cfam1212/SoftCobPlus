@@ -322,10 +322,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                             <br/>
-                            <!-- <div class="col-md-12 col-sm-12">
-                                <div class="col-md-1 col-sm-1">
-                                </div> -->
-                                <div class="col-md-11 col-sm-12">
+                                <div class="col-md-10 offset-md-1">
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
                                             <table id="tblproducto" class="table table-striped jambo_table table-condensed bulk_action table-borderless" style="width: 100%;">
@@ -335,7 +332,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                         <th>Producto</th>
                                                         <th>Descripcion</th>
                                                         <th style="width:13% ; text-align: center">Opciones</th>
-                                                        <!-- <th style="width:10% ; text-align: center">Estado</th> -->
                                                     </tr>
                                                 </thead>
                                                 <tbody></tbody>
@@ -343,14 +339,8 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </form>
                                 </div>
-                                <!-- <div class="col-md-1 col-sm-1">
-                                </div>
-                            </div> -->
                             <br/>
-                            <!-- <div class="col-md-12 col-sm-12">
-                                <div class="col-md-1 col-sm-1">
-                                </div> -->
-                                <div class="col-md-11 col-sm-12">
+                                <div class="col-md-10 offset-md-1">
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
                                             <table id="tblcatalogo" class="table table-striped jambo_table table-condensed bulk_action   table-borderless" style="width: 100%;">
@@ -369,9 +359,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </form>
                                 </div>
-                                <!-- <div class="col-md-1 col-sm-1">
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>

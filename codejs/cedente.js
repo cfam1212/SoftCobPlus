@@ -28,7 +28,29 @@ $(document).ready(function(){
 
     $("#modalNewCedente").draggable({
         handle: ".modal-header"
+    }); 
+    
+    //SELECT 2 MODAL CEDENTE
+    $("#cboProvincia").select2({
+        dropdownParent: $("#modalNewCedente")
+    });     
+
+    $("#cboCiudad").select2({
+        dropdownParent: $("#modalNewCedente")
+    }); 
+    
+    $("#cboArbol").select2({
+        dropdownParent: $("#modalNewCedente")
+    }); 
+
+    
+    $("#cboCargo").select2({
+        dropdownParent: $("#modalNewCedente")
     });  
+    
+    $("#cboCargoMo").select2({
+        dropdownParent: $("#modalCONTACTO")
+    });     
 
    
 
@@ -58,15 +80,6 @@ $(document).ready(function(){
 
     });  
 
-      $('#cboProvincia').select2();
-      $('#cboCiudad').select2();
-      $('#cboArbol').select2();
-      $('#cboSucursal').select2();
-      $('#cboZona').select2();
-      $('#cboCargo').select2();
-      $('#cboCargoMo').select2();
-      $('#cboSucursalMo').select2();
-      $('#cboZonaMo').select2();
 
     
     _opcaccion = $.trim($("#cboProvincia").val());

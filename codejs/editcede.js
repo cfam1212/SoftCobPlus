@@ -16,6 +16,7 @@ $(document).ready(function(){
     _nivelid = $.trim($("#nivelid").val());
     _cedeid = $.trim($("#cedeid").val());
 
+
     $('#cboProvincia').select2();
     $('#cboCiudad').select2();
     $('#cboArbol').select2();
@@ -287,18 +288,19 @@ $(document).ready(function(){
         let _email1 = $('#txtEmail1').val();
         let _email2 = $('#txtEmail2').val();
         _continuaconadd = true;
-  
-        if(_cargo == '0')
-        {
-            mensajesalertify("Seleccione Cargo..!","W","top-right",5);
-            return;
-        }	 
 
         if(_contacto == '')
         {
-            mensajesalertify("Ingrese Nombre del Contacto..!","W","top-right",5);
+            mensajesalertify("Ingrese Nombre del Contacto..!","W","top-right",3);
             return;
-        }        
+        }     
+  
+        if(_cargo == '0')
+        {
+            mensajesalertify("Seleccione Cargo..!","W","top-right",3);
+            return;
+        }	 
+   
         
         if(_email1 != '')
         {
@@ -306,7 +308,7 @@ $(document).ready(function(){
         
             if (regex.test($('#txtEmail1').val().trim())) {
             } else {
-                mensajesalertify("Email es invalido","E","top-right",5);
+                mensajesalertify("Email 1 es invalido","E","top-right",3);
                 _continuaconadd = false;   
                 return;
             }        
@@ -318,7 +320,7 @@ $(document).ready(function(){
         
             if (regex.test($('#txtEmail2').val().trim())) {
             } else {
-                mensajesalertify("Email es invalido","E","top-right",5);
+                mensajesalertify("Email 2 es invalido","E","top-right",3);
                 _continuaconadd = false;   
                 return;
             }        
@@ -330,19 +332,31 @@ $(document).ready(function(){
             {
                 if(item.arrycelular == _celular)
                 {                        
-                    mensajesalertify("Celular ya Existe..!","W","top-right",5); 
+                    mensajesalertify("Celular ya Existe..!","W","top-right",3); 
                     _continuaconadd = false;
                     return false;
                 }
             });
-
-            valoredit = document.getElementById("txtCelular").value;
-            if( !(/^\d{10}$/.test(valoredit)) ) {
-                mensajesalertify("Celular incorrecto..!","E","top-right",5); 
-                _continuaconadd = false;
-                return false;
-            }
         }
+            if(_ext != '')
+            {
+                valoredit = document.getElementById("txtExt").value;
+                if( !(/^\d{9}$/.test(valoredit)) ) {
+                    mensajesalertify("Telefono incorrecto..!","E","top-right",3); 
+                    _continuaconadd = false;
+                    return false;
+                }
+            }
+
+            if(_celular != '')
+            {
+                valoredit = document.getElementById("txtCelular").value;
+                if( !(/^\d{10}$/.test(valoredit)) ) {
+                    mensajesalertify("Celular incorrecto..!","E","top-right",3); 
+                    _continuaconadd = false;
+                    return false;
+                }
+           }
 
         if(_continuaconadd)
         {
@@ -404,13 +418,13 @@ $(document).ready(function(){
 
         if(_cargo == '0')
         {
-            mensajesalertify("Seleccione Cargo..!","W","top-right",5);
+            mensajesalertify("Seleccione Cargo..!","W","top-right",3);
             return;
         }	 
 
         if(_contacto == '')
         {
-            mensajesalertify("Ingrese Nombre del Contacto..!","W","top-right",5);
+            mensajesalertify("Ingrese Nombre del Contacto..!","W","top-right",3);
             return;
         }        
         
@@ -420,7 +434,7 @@ $(document).ready(function(){
         
             if (regex.test($('#txtEmail1Mo').val().trim())) {
             } else {
-                mensajesalertify("Email es invalido","E","top-right",5);
+                mensajesalertify("Email es invalido","E","top-right",3);
                 _continuaconedit = false;   
                 return;
             }        
@@ -432,7 +446,7 @@ $(document).ready(function(){
         
             if (regex.test($('#txtEmail2Mo').val().trim())) {
             } else {
-                mensajesalertify("Email es invalido","E","top-right",5);
+                mensajesalertify("Email es invalido","E","top-right",3);
                 _continuaconedit = false;   
                 return;
             }        
@@ -446,7 +460,7 @@ $(document).ready(function(){
                 {
                     if(item.arrycelular == _celular)
                     {                        
-                        mensajesalertify("Celular ya Existe..!","W","top-right",5); 
+                        mensajesalertify("Celular ya Existe..!","W","top-right",3); 
                         _continuaconedit = false;
                         return false;
                     }
@@ -455,7 +469,7 @@ $(document).ready(function(){
 
             valoredit = document.getElementById("txtCelularMo").value;
             if( !(/^\d{10}$/.test(valoredit)) ) {
-                mensajesalertify("Celular incorrecto..!","E","top-right",5); 
+                mensajesalertify("Celular incorrecto..!","E","top-right",3); 
                 _continuaconedit = false;
                 return false;
             }
@@ -523,11 +537,11 @@ $(document).ready(function(){
         _icono = $.trim($("#txtIcono").val());
 
         if(_tarea == ''){
-            mensajesalertify("Ingrese Tarea!!.","W","top-right",5); 
+            mensajesalertify("Ingrese Tarea!!.","W","top-right",3); 
             return;   
         }
         if(_ruta == ''){
-            mensajesalertify("Ingrese una Ruta!!.","W","top-right",5); 
+            mensajesalertify("Ingrese una Ruta!!.","W","top-right",3); 
             return;   
         }
 
@@ -540,7 +554,7 @@ $(document).ready(function(){
                     data: {opcion:2, id: _id, tarea: _tarea, ruta:_ruta, icono:_icono, estado:_estado},            
                     success: function(data){
                         if(data == '1'){
-                            mensajesalertify("Tarea ya Existe..!!","W","top-right",5);                   
+                            mensajesalertify("Tarea ya Existe..!!","W","top-right",3);                   
                         }else{
                             FunGrabar();
                         }
@@ -584,6 +598,71 @@ $(document).ready(function(){
     
        }
            , function(){ });
+    });
+
+    //AGREGAR PRODUCTO 
+    $("#btnProducto").click(function(){
+     let _idcede = $('#cedeid').val();
+     let _producto = $('#txtProducto').val();
+     let _descripcion = $('#txtDescripcion').val();
+     let _estado = 'Activo';
+     let _continuarproduc = true;
+
+     
+
+     if(_producto == '')
+     {
+         mensajesalertify("Ingrese Nombre del Producto..!","W","top-right",3);
+         return;
+         _continuarproduc = false;
+     }  
+     
+     
+     if(_continuarproduc)
+        {
+            $.ajax({
+                url: "../db/contactocrud.php",
+                type: "POST",
+                dataType: "json",
+                data: {opcion:3, conid: _conid, contacto: _contacto, cargo:_cargo, ext:_ext, celular: _celular, email1: _email1, email2:_email2},            
+                success: function(data){
+
+                    _contactoid = data[0].Id;
+
+
+
+
+                    _output = '<tr id="rowpro_' + _countproduc + '">';
+                    _output += '<td style="display: none;">' + _countproduc + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countproduc + '" value="' + _countproduc + '" /></td>';                
+                    _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countproduc + '" value="' + _producto + '" /></td>';
+                    _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _countproduc + '" value="' + _descripcion + '" /></td>';
+                    _output += '<td><div class="text-center"><div class="btn-group">'
+                    _output += '<button type="button" name="btnEditCon" class="btn btn-outline-primary btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _countproduc + '"><i class="fa fa-upload"></i></button>';
+                    _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countproduc + '"><i class="fa fa-pencil-square-o"></i></button>';
+                    _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countproduc + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                
+                    _objeto = {
+                        arrycodigo : parseInt(_contactoid),
+                        arrycontacto : _contacto,
+                        arrycargo : _cargo,
+                        arrycbocargo : _codcargo,
+                        arrycelular : _celular,
+                        arryext : _extension,
+                        arryemail1 : _email1,
+                        arryemail2 : _email2
+                    }
+                 
+            
+                    _resultcon.push(_objeto);
+                    
+                },
+                error: function (error) {
+                    console.log(error);
+                }                            
+            });             
+        } 
+
+
     });
 
 });
