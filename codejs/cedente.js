@@ -487,11 +487,9 @@ $(document).ready(function(){
             _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countproduc + '" value="' + _producto + '" /></td>';
             _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _countproduc + '" value="' + _descripcion + '" /></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
-            _output += '<button type="button" name="btnEditCon" class="btn btn-outline-primary btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _countproduc + '"><i class="fa fa-upload"></i></button>';
-            _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countproduc + '"><i class="fa fa-pencil-square-o"></i></button>';
+            _output += '<button type="button" name="btnCatPro" class="btn btn-outline-primary btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _countproduc + '"><i class="fa fa-upload"></i></button>';
+            // _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countproduc + '"><i class="fa fa-pencil-square-o"></i></button>';
             _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countproduc + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-            // _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoPro" id="chk' + _countproduc +
-            //             '" ' + _checked + ' value=' + _countproduc + '/></div></td>';
             _output += '</tr>';
             
             $('#tblproducto').append(_output);
@@ -511,32 +509,32 @@ $(document).ready(function(){
     });
 
     //editar producto
-    $(document).on("click",".btnEditPro",function(){
-        $("#formProducto").trigger("reset"); 
-        _idproduc = $(this).attr("id");
-        _productoant = $('#txtProducto' + _idproduc + '').val();
-        _descripant = $('#txtDescripcion' + _idproduc + '').val();
-        _estadopro = $('#txtEsTado' + _idproduc + '').val();   
-        _tipoSave = 'edit';
+    // $(document).on("click",".btnEditPro",function(){
+    //     $("#formProducto").trigger("reset"); 
+    //     _idproduc = $(this).attr("id");
+    //     _productoant = $('#txtProducto' + _idproduc + '').val();
+    //     _descripant = $('#txtDescripcion' + _idproduc + '').val();
+    //     _estadopro = $('#txtEsTado' + _idproduc + '').val();   
+    //     _tipoSave = 'edit';
     
-        $('#txtProductoMo').val(_productoant);
+    //     $('#txtProductoMo').val(_productoant);
 
-        if(_estadopro == "Activo"){
-            $("#chkEstadoPro").prop("checked", true);
-            $("#lblEstadoPro").text("Activo");
-        }else{
-            $("#chkEstadoPro").prop("checked", false);
-            $("#lblEstadoPro").text("Inactivo");
-        }
+    //     if(_estadopro == "Activo"){
+    //         $("#chkEstadoPro").prop("checked", true);
+    //         $("#lblEstadoPro").text("Activo");
+    //     }else{
+    //         $("#chkEstadoPro").prop("checked", false);
+    //         $("#lblEstadoPro").text("Inactivo");
+    //     }
 
-        $('#hidden_row_id').val(_idproduc);
-        $("#headerpro").css("background-color","#BCBABE");
-        $("#headerpro").css("color","black");
-        $(".modal-title").text("Editar Producto");       
-        $("#btnModProduc").text("Modificar");
-        $("#modalPRODUCTO").modal("show");
+    //     $('#hidden_row_id').val(_idproduc);
+    //     $("#headerpro").css("background-color","#BCBABE");
+    //     $("#headerpro").css("color","black");
+    //     $(".modal-title").text("Editar Producto");       
+    //     $("#btnModProduc").text("Modificar");
+    //     $("#modalPRODUCTO").modal("show");
 
-    });
+    // });
 
     //UPDATE ESTADO PRODUCTO BDD
 
@@ -578,79 +576,79 @@ $(document).ready(function(){
 
     //button-editar-producto
 
-    $('#btnModProduc').click(function(){
+    // $('#btnModProduc').click(function(){
 
-        let _continuamod = false;
-        let _productonew = $.trim($('#txtProductoMo').val());
+    //     let _continuamod = false;
+    //     let _productonew = $.trim($('#txtProductoMo').val());
 
-        if(_productonew == ''){
-            mensajesalertify("Ingrese Producto..!!","W","top-right",3);
-            return;
-        }
+    //     if(_productonew == ''){
+    //         mensajesalertify("Ingrese Producto..!!","W","top-right",3);
+    //         return;
+    //     }
 
-        //debugger;
+    //     //debugger;
 
-        if(_productoant.toUpperCase() != _productonew.toUpperCase()){
-            $.each(_resultpro,function(i,item)
-            {
-                if(item.arryproducto.toUpperCase() == _productonew.toUpperCase())
-                {
-                    mensajesalertify("Producto ya Existe..!","W","top-right",3); 
-                    _continuamod = false;
-                    return false;
-                }else
-                {
-                    _continuamod = true;
-                }
-            });
-        }else  _continuamod = true;
+    //     if(_productoant.toUpperCase() != _productonew.toUpperCase()){
+    //         $.each(_resultpro,function(i,item)
+    //         {
+    //             if(item.arryproducto.toUpperCase() == _productonew.toUpperCase())
+    //             {
+    //                 mensajesalertify("Producto ya Existe..!","W","top-right",3); 
+    //                 _continuamod = false;
+    //                 return false;
+    //             }else
+    //             {
+    //                 _continuamod = true;
+    //             }
+    //         });
+    //     }else  _continuamod = true;
 
 
-        if(_continuamod)
-        {
-            FunRemoveProduc(_resultpro, _productoant);
+    //     if(_continuamod)
+    //     {
+    //         FunRemoveProduc(_resultpro, _productoant);
 
-            _objeto = {
-                arrycodigo : parseInt(_idproduc),
-                arryproducto : _productonew,
-                arrydescrip : _descripant,
-                arryestado : _estadopro,
-            }
+    //         _objeto = {
+    //             arrycodigo : parseInt(_idproduc),
+    //             arryproducto : _productonew,
+    //             arrydescrip : _descripant,
+    //             arryestado : _estadopro,
+    //         }
 
-            _resultpro.push(_objeto);
+    //         _resultpro.push(_objeto);
 
-            $("#modalPRODUCTO").modal("hide"); 
+    //         $("#modalPRODUCTO").modal("hide"); 
 
-            //$("tbody").children().remove();
-            $("#tblproducto").empty();
+    //         //$("tbody").children().remove();
+    //         $("#tblproducto").empty();
 
-            _output = '<thead class="text-center"';
-            _output += '<tr><th style="display: none;">Id</th>';
-            _output += '<th>Producto</th><th>Estado</th><th>Acciones</th></tr></thead>'
-            $('#tblproducto').append(_output);  
+    //         _output = '<thead class="text-center"';
+    //         _output += '<tr><th style="display: none;">Id</th>';
+    //         _output += '<th>Producto</th><th>Estado</th><th>Acciones</th></tr></thead>'
+    //         $('#tblproducto').append(_output);  
             
-            _output  = '<tbody>';
-            $('#tblproducto').append(_output); 
+    //         _output  = '<tbody>';
+    //         $('#tblproducto').append(_output); 
 
-            _resultpro.sort((a,b) => a.arrycodigo - b.arrycodigo)
+    //         _resultpro.sort((a,b) => a.arrycodigo - b.arrycodigo)
 
-            $.each(_resultpro, function(i,item){
-                _output = '<tr id="rowpro_' + item.arrycodigo + '">';
-                _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
-                _output += '<td>' + item.arryproducto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproducto + '" /></td>';
-                _output += '<td><div class="text-center"><div class="btn-group">'
-                _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + item.arrycodigo + '"><i class="fa fa-upload"></i></button>';
-                _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
-                _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-                _output += '</tr>';
+    //         $.each(_resultpro, function(i,item){
+    //             _output = '<tr id="rowpro_' + item.arrycodigo + '">';
+    //             _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
+    //             _output += '<td>' + item.arryproducto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproducto + '" /></td>';
+    //             _output += '<td><div class="text-center"><div class="btn-group">'
+    //             _output += '<button type="button" name="btnEditCon" class="btn btn-outline-success btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + item.arrycodigo + '"><i class="fa fa-upload"></i></button>';
+    //             _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
+    //             _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+    //             _output += '</tr>';
                 
-                $('#tblproducto').append(_output);  
-            });
-            _output  = '</tbody>';
-            $('#tblproducto').append(_output);             
-        }
+    //             $('#tblproducto').append(_output);  
+    //         });
+    //         _output  = '</tbody>';
+    //         $('#tblproducto').append(_output);             
+    //     }
 
-    });
+    // });
 
     //Remove Producto
     function FunRemoveProduc(arrypro, detapro)
@@ -739,7 +737,7 @@ $(document).ready(function(){
                 _output += '<td>' + item.arrycatalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + item.arrycodigo + '" value="' + item.arrycatalogo + '" /></td>';
                 // _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + item.arrycodigo + '" value="' + item.arryestado  + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
-                _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
+                // _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
                 _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                 _output += '</tr>';
                 
@@ -760,7 +758,6 @@ $(document).ready(function(){
     //_newproducto = $('#txtProductoMo').val(_produc);
     _codigocat = $('#txtCodigoMo').val();
     _catalogo = $('#txtCatalogoMo').val();
-    _estadocat = 'Activo';
     _continuarcat = true;    
 
     if(_codigocat == '')
@@ -795,7 +792,7 @@ $(document).ready(function(){
             _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _countcatalogo + '" value="' + _catalogo + '" /></td>';
             // _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + _countcatalogo + '" value="' + _estadocat + '" /></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
-            _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countcatalogo + '"><i class="fa fa-pencil-square-o"></i></button>';
+            // _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countcatalogo + '"><i class="fa fa-pencil-square-o"></i></button>';
             _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcatalogo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
             _output += '</tr>';
             
@@ -815,30 +812,31 @@ $(document).ready(function(){
     });
 
     //editar-catalogo-modal
-    $(document).on("click",".btnEditCat",function(){
-        $("#formEditCatalogo").trigger("reset"); 
-        _idcatalogo = $(this).attr("id");
-        
-        _codcatold = $('#txtCodigoCat' + _idcatalogo + '').val();
-        _catalogoold = $('#txtCatalogo' + _idcatalogo + '').val();
-        _estadocat = $('#txtEsTadoCat' + _idcatalogo + '').val();         
 
-        $('#txtCodMo').val(_codcatold);
-        $('#txtCatMo').val(_catalogoold);
+    // $(document).on("click",".btnEditCat",function(){
+    //     $("#formEditCatalogo").trigger("reset"); 
+    //     _idcatalogo = $(this).attr("id");
+        
+    //     _codcatold = $('#txtCodigoCat' + _idcatalogo + '').val();
+    //     _catalogoold = $('#txtCatalogo' + _idcatalogo + '').val();
+    //     _estadocat = $('#txtEsTadoCat' + _idcatalogo + '').val();         
+
+    //     $('#txtCodMo').val(_codcatold);
+    //     $('#txtCatMo').val(_catalogoold);
     
-        if(_estadocat == "Activo"){
-            $("#chkEstadoCat").prop("checked", true);
-            $("#lblEstadoCat").text("Activo");
-        }else{
-            $("#chkEstadoCat").prop("checked", false);
-            $("#lblEstadoCat").text("Inactivo");
-        }
+    //     if(_estadocat == "Activo"){
+    //         $("#chkEstadoCat").prop("checked", true);
+    //         $("#lblEstadoCat").text("Activo");
+    //     }else{
+    //         $("#chkEstadoCat").prop("checked", false);
+    //         $("#lblEstadoCat").text("Inactivo");
+    //     }
     
-        $("#headercatalog").css("background-color","#BCBABE");
-        $("#headercatalog").css("color","black");
-        $(".modal-title").text("Editar Catalogo");       
-        $("#modalEDITCATALOGO").modal("show");
-    });
+    //     $("#headercatalog").css("background-color","#BCBABE");
+    //     $("#headercatalog").css("color","black");
+    //     $(".modal-title").text("Editar Catalogo");       
+    //     $("#modalEDITCATALOGO").modal("show");
+    // });
 
     //checked modal-editar-catalogo
 
@@ -855,90 +853,90 @@ $(document).ready(function(){
 
     //botton-editar-catalogo
      
-    $('#btnEditCat').click(function(){
+    // $('#btnEditCat').click(function(){
 
-        let _continucat = false;
-        let _newcodcat = $.trim($('#txtCodMo').val());
-        let _newcatalogo = $.trim($('#txtCatMo').val());
+    //     let _continucat = false;
+    //     let _newcodcat = $.trim($('#txtCodMo').val());
+    //     let _newcatalogo = $.trim($('#txtCatMo').val());
 
-        if(_newcodcat == ''){
-            mensajesalertify("Ingrese Codigo..!!","W","top-right",3);
-            return;
-        }
+    //     if(_newcodcat == ''){
+    //         mensajesalertify("Ingrese Codigo..!!","W","top-right",3);
+    //         return;
+    //     }
 
-        if(_newcatalogo == ''){
-            mensajesalertify("Ingrese Catalogo..!!","W","top-right",3);
-            return;
-        }
+    //     if(_newcatalogo == ''){
+    //         mensajesalertify("Ingrese Catalogo..!!","W","top-right",3);
+    //         return;
+    //     }
 
-        if(_catalogoold.toUpperCase() != _newcatalogo.toUpperCase()){
-            $.each(_resultcat,function(i,item)
-            {
-                if(item.arrycatalogo.toUpperCase() == _newcatalogo.toUpperCase())
-                {
-                    mensajesalertify("Catalogo ya Existe..!","W","top-right",3); 
-                    _continucat = false;
-                    return false;
-                }else
-                {
-                    _continucat = true;
-                }
-            });
-        }else  _continucat = true;
+    //     if(_catalogoold.toUpperCase() != _newcatalogo.toUpperCase()){
+    //         $.each(_resultcat,function(i,item)
+    //         {
+    //             if(item.arrycatalogo.toUpperCase() == _newcatalogo.toUpperCase())
+    //             {
+    //                 mensajesalertify("Catalogo ya Existe..!","W","top-right",3); 
+    //                 _continucat = false;
+    //                 return false;
+    //             }else
+    //             {
+    //                 _continucat = true;
+    //             }
+    //         });
+    //     }else  _continucat = true;
 
-        if(_continucat)
-        {
+    //     if(_continucat)
+    //     {
             
-            FunRemoveItemCatalogo(_resultcat, _catalogoold);
+    //         FunRemoveItemCatalogo(_resultcat, _catalogoold);
 
-            _objeto = {
-                arrycodigo : parseInt(_idcatalogo),
-                arryproductocat : _produc,
-                arrycodigocat : _newcodcat,
-                arrycatalogo : _newcatalogo,
-                arryestado : _estadocat,
-            }
+    //         _objeto = {
+    //             arrycodigo : parseInt(_idcatalogo),
+    //             arryproductocat : _produc,
+    //             arrycodigocat : _newcodcat,
+    //             arrycatalogo : _newcatalogo,
+    //             arryestado : _estadocat,
+    //         }
 
-            _resultcat.push(_objeto);
+    //         _resultcat.push(_objeto);
 
-            $("#modalEDITCATALOGO").modal("hide"); 
-            $("#tblcatalogo").empty();
+    //         $("#modalEDITCATALOGO").modal("hide"); 
+    //         $("#tblcatalogo").empty();
             
-            _output = '<thead class="text-center"';
-            _output += '<tr><th style="display: none;">Id</th>';
-            _output += '<th>Producto</th><th>Cod.Catalogo</th><th>Catalogo</th><th>Estado</th><th>Acciones</th>'
-            $('#tblcatalogo').append(_output);  
+    //         _output = '<thead class="text-center"';
+    //         _output += '<tr><th style="display: none;">Id</th>';
+    //         _output += '<th>Producto</th><th>Cod.Catalogo</th><th>Catalogo</th><th>Estado</th><th>Acciones</th>'
+    //         $('#tblcatalogo').append(_output);  
             
-            _output  = '<tbody>';
-            $('#tblcatalogo').append(_output);             
+    //         _output  = '<tbody>';
+    //         $('#tblcatalogo').append(_output);             
 
-            _resultcat.sort((a,b) => a.arrycodigo - b.arrycodigo)
+    //         _resultcat.sort((a,b) => a.arrycodigo - b.arrycodigo)
 
-            $.each(_resultcat, function(i,item){
+    //         $.each(_resultcat, function(i,item){
 
-                if(item.arryproductocat == _produc)
-                {
+    //             if(item.arryproductocat == _produc)
+    //             {
                 
-                    _output = '<tr id="rowcat_' + item.arrycodigo + '">';
-                    _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
-                    _output += '<td>' + item.arryproductocat + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproductocat + '" /></td>';
-                    _output += '<td class="text-center">' + item.arrycodigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + item.arrycodigo + '" value="' + item.arrycodigocat + '" /></td>';
-                    _output += '<td class="text-center">' + item.arrycatalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + item.arrycodigo + '" value="' + item.arrycatalogo + '" /></td>';
-                    _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + item.arrycodigo + '" value="' + item.arryestado  + '" /></td>';
-                    _output += '<td><div class="text-center"><div class="btn-group">'
-                    _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
-                    _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-                    _output += '</tr>';
+    //                 _output = '<tr id="rowcat_' + item.arrycodigo + '">';
+    //                 _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
+    //                 _output += '<td>' + item.arryproductocat + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproductocat + '" /></td>';
+    //                 _output += '<td class="text-center">' + item.arrycodigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + item.arrycodigo + '" value="' + item.arrycodigocat + '" /></td>';
+    //                 _output += '<td class="text-center">' + item.arrycatalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + item.arrycodigo + '" value="' + item.arrycatalogo + '" /></td>';
+    //                 _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + item.arrycodigo + '" value="' + item.arryestado  + '" /></td>';
+    //                 _output += '<td><div class="text-center"><div class="btn-group">'
+    //                 _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
+    //                 _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+    //                 _output += '</tr>';
                     
-                    $('#tblcatalogo').append(_output);
-                }
+    //                 $('#tblcatalogo').append(_output);
+    //             }
 
-            });
+    //         });
 
-            _output  = '</tbody>';
-            $('#tblcatalogo').append(_output);              
-        }
-    });
+    //         _output  = '</tbody>';
+    //         $('#tblcatalogo').append(_output);              
+    //     }
+    // });
 
 
     //delete catalogo

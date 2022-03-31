@@ -331,12 +331,25 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                         <th>Producto</th>
                                                         <th>Descripcion</th>
                                                         <th style="width:13% ; text-align: center">Opciones</th>
+                                                        <th style="width:10% ; text-align: center">Estado</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
                                                     foreach ($producto as $dat) {
                                                     ?>
+                                                        <?php
+                                                        
+                                                           $disabledit = '';
+                                                         
+                                                           if ($dat['Estado'] == 'Inactivo') {
+                                                            $disabledit = 'disabled';
+                                                            } else {
+                                                              $disabledit = '';
+                                                              }
+                                                        
+                                                        
+                                                        ?>
                                                         <tr>
                                                             <td style="display: none;">
                                                                 <?php echo $dat['IdPro']; ?>
@@ -353,10 +366,14 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                             <td>
                                                                 <div class="text-center">
                                                                     <div class="btn-group">
-                                                                        <button type="button" class="btn btn-outline-primary btn-sm ml-2 btnEditCat" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnEditCat"><i class="fa fa-upload"></i></button>
-                                                                        <button type="button" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit"><i class="fa fa-pencil-square-o"></i></button>
+                                                                        <button type="button" class="btn btn-outline-primary btn-sm ml-2 btnProCat" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnProCat"><i class="fa fa-upload"></i></button>
+                                                                        <button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditPro" <?php echo $disabledit; ?> data-toggle="tooltip" data-placement="top" title="editar" id="btnEditPro"><i class="fa fa-pencil-square-o"></i></button>
                                                                     </div>
                                                                 </div>
+                                                            </td>
+                                                            <td style="text-align: center">
+                                                                <input type="checkbox" class="form-check-input chkEstadoPro" id="chk<?php echo $dat['IdPro']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
+                                                                        echo "checked";  } else { '';   } ?> value="<?php echo $dat['IdPro']; ?>" />                                                                                                                                                                                                                                                                                                                                                                                                                                 
                                                             </td>
                                                         </tr>
                                                     <?php } ?>

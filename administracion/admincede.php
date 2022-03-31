@@ -273,9 +273,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <br />
                             <br />
-                            <!-- <div class="col-md-12 col-sm-12">
-                                <div class="col-md-1 col-sm-1">
-                                </div> -->
                                 <div class="col-md-12 col-sm-12">
                                     <form method="post" id="user_form">
                                         <div class="table-responsive">
@@ -298,9 +295,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </form>
                                 </div>
-                                <!-- <div class="col-md-1 col-sm-1">
-                                </div>
-                            </div> -->
                         </div>
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                             <div class="row">
@@ -350,7 +344,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                         <th>Producto</th>
                                                         <th>Cod.Catalogo</th>
                                                         <th>Catalogo</th>
-                                                        <!-- <th>Estado</th> -->
                                                         <th style="text-align: center;">Opciones</th>
                                                     </tr>
                                                 </thead>

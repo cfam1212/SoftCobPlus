@@ -605,7 +605,7 @@ $(document).ready(function(){
      let _idcede = $('#cedeid').val();
      let _producto = $('#txtProducto').val();
      let _descripcion = $('#txtDescripcion').val();
-     let _estado = 'Activo';
+     let _estado = 'A';
      let _continuarproduc = true;
 
      
@@ -621,38 +621,46 @@ $(document).ready(function(){
      if(_continuarproduc)
         {
             $.ajax({
-                url: "../db/contactocrud.php",
+                url: "../db/cedentecrud.php",
                 type: "POST",
                 dataType: "json",
-                data: {opcion:3, conid: _conid, contacto: _contacto, cargo:_cargo, ext:_ext, celular: _celular, email1: _email1, email2:_email2},            
+                data: {opcion:6, cedeid: _idcede, producto: _producto, descripcion:_descripcion, estado:_estado},            
                 success: function(data){
+                    debugger;
+                    
+                    if(data[0].Existe == 'Existe'){
+                        mensajesalertify("Producto ya Existe..!!","W","top-right",3); 
+                    }else{
 
-                    _contactoid = data[0].Id;
+                     
 
-                    _output = '<tr id="rowpro_' + _countproduc + '">';
-                    _output += '<td style="display: none;">' + _countproduc + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _countproduc + '" value="' + _countproduc + '" /></td>';                
-                    _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countproduc + '" value="' + _producto + '" /></td>';
-                    _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _countproduc + '" value="' + _descripcion + '" /></td>';
-                    _output += '<td><div class="text-center"><div class="btn-group">'
-                    _output += '<button type="button" name="btnEditCon" class="btn btn-outline-primary btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _countproduc + '"><i class="fa fa-upload"></i></button>';
-                    _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countproduc + '"><i class="fa fa-pencil-square-o"></i></button>';
-                    _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countproduc + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                        _idpro = data[0].Idpro;
+                        _producto = data[0].Producto;
+                        _descripcion = data[0].Descripcion;
+                        _estado = data[0].Estado;
 
-                    $('#tblproducto').append(_output);
-                
-                    // _objeto = {
-                    //     arrycodigo : parseInt(_contactoid),
-                    //     arrycontacto : _contacto,
-                    //     arrycargo : _cargo,
-                    //     arrycbocargo : _codcargo,
-                    //     arrycelular : _celular,
-                    //     arryext : _extension,
-                    //     arryemail1 : _email1,
-                    //     arryemail2 : _email2
-                    // }
-                 
-            
-                    // _resultcon.push(_objeto);
+
+                        _checked = '';
+
+                        if(_estado == 'A'){
+                            _checked = 'checked';
+                        }  
+
+                        _output = '<tr id="rowpro_' + _idpro + '">';
+                        _output += '<td style="display: none;">' + _idpro + ' <input type="hidden" name="hidden_codigo[]" id="idpro' + _idpro + '" value="' + _idpro + '" /></td>';                
+                        _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _idpro + '" value="' + _producto + '" /></td>';
+                        _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _idpro + '" value="' + _descripcion + '" /></td>';
+                        _output += '<td><div class="text-center"><div class="btn-group">'
+                        _output += '<button type="button" name="btnProCat" class="btn btn-outline-primary btn-sm ml-2 btnCatPro" data-toggle="tooltip" data-placement="top" title="catalogos" id="' + _idpro + '"><i class="fa fa-upload"></i></button>';
+                        _output += '<button type="button" name="btnEditPro" class="btn btn-outline-info btn-sm ml-2 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _idpro + '"><i class="fa fa-pencil-square-o"></i></button>';
+                        _output +=  '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idpro +
+                                '" ' + _checked + ' value=' + _idpro + '/></div></td>';
+
+
+                        $('#tblproducto').append(_output);
+
+                        console.log(_output);
+                    }
                     
                 },
                 error: function (error) {

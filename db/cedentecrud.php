@@ -28,6 +28,8 @@ $resultproducto = (isset($_POST['resultproducto'])) ? $_POST['resultproducto'] :
 $resultcatalogo = (isset($_POST['resultcatalogo'])) ? $_POST['resultcatalogo'] : '';
 $resultagencia = (isset($_POST['resultagencia'])) ? $_POST['resultagencia'] : '';
 $idproducto = (isset($_POST['id'])) ? $_POST['id'] : '0';
+$producto = (isset($_POST['producto'])) ? $_POST['producto'] : '';
+$descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '0';
 
 
@@ -154,7 +156,13 @@ switch($opcion){
         $resultado->execute(array(5,0,$cedeid,$provid,$ciudid,$cedente,$ruc,$direccion,$telefono1,$telefon2,$fax,$url,'',
         $nivel,'','','',0,0,0,$userid,$host));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);    
-        break;    
+        break;
+    case 6: //AGREGAR NUEVO PRODUCTO DESDE EDITAR CEDENTE
+        $consulta = "CALL sp_New_Producto(?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(2,$cedeid,$producto,$descripcion,$estado,'','',0,0));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);    
+        break;        
 
 }
 
