@@ -3,8 +3,6 @@ $(document).ready(function(){
     var _continuar = true, _result = [], i = 0, _nameoldperfil, _idperfil, _crear, _modificar, _eliminar, _estado, _checked, _nombreperfil,
     _observacion, _rowcollection;
 
-    
-     debugger;
     _nameoldperfil = $.trim($("#txtPerfil").val());
     _idperfil = $.trim($("#idPerfil").val());
     _crear = $("#lblCrear").text();
@@ -12,11 +10,9 @@ $(document).ready(function(){
     _eliminar = $("#lblEliminar").text();
     _estado = 'Activo';
 
-
     $('#btnRegresar').click(function(){
         $.redirect("perfil.php");
     });
-    
 
     $(document).on("click","#chkCrear",function(){
         if($("#chkCrear").is(":checked")){
@@ -54,7 +50,6 @@ $(document).ready(function(){
 
         if(_nombreperfil == '')
         {
-           
             mensajesalertify("Ingrese Nombre del Perfil..!!","W","top-right",3);	    
             return;
         }

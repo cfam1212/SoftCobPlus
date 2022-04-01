@@ -83,6 +83,22 @@ $(document).ready(function(){
             tblproducto.deleteRow(tblrow);
         }
 
+        tblrow = 1;
+        let tblcontacto = document.getElementById('tblcontactonew');
+        rowCount = tblcontacto.rows.length;
+
+        for (var i = tblrow; i < rowCount; i++) {
+            tblcontacto.deleteRow(tblrow);
+        }        
+
+        tblrow = 1;
+        let tblcatalogo = document.getElementById('tblcatalogo');
+        rowCount = tblcatalogo.rows.length;
+
+        for (var i = tblrow; i < rowCount; i++) {
+            tblcatalogo.deleteRow(tblrow);
+        }          
+
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
         $(".modal-title").text("Nuevo Cedente");  

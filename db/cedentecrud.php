@@ -162,7 +162,19 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(2,$cedeid,$producto,$descripcion,$estado,'','',0,0));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);    
+        break;
+    case 7:
+        $consulta = "CALL sp_New_Producto(?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(3,$cedeid,$producto,'','','','',0,0));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
         break;        
+    case 8:
+        $consulta = "CALL sp_New_Producto(?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(4,0,$producto,$descripcion,'','','',$idproducto,0));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
+        break;            
 
 }
 

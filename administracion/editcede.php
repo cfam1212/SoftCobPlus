@@ -346,28 +346,26 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                             $disabledit = 'disabled';
                                                             } else {
                                                               $disabledit = '';
-                                                              }
-                                                        
-                                                        
+                                                            }
                                                         ?>
-                                                        <tr>
+                                                        <tr id="rowpro_<?php echo $dat['IdPro']; ?>">
                                                             <td style="display: none;">
                                                                 <?php echo $dat['IdPro']; ?>
                                                                 <input type="hidden" name="hidden_idpro[]" id="idpro" value="<?php echo $dat['IdPro']; ?>" />
                                                             </td>
                                                             <td>
                                                                 <?php echo $dat['Producto']; ?>
-                                                                <input type="hidden" name="hidden_producto[]" id="txtProducto" value="<?php echo $dat['Producto']; ?>" />
+                                                                <input type="hidden" name="hidden_producto[]" id="txtProducto<?php echo $dat['IdPro'];?>" value="<?php echo $dat['Producto']; ?>" />
                                                             </td>
                                                             <td>
                                                                 <?php echo $dat['Descripcion']; ?>
-                                                                <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion" value="<?php echo $dat['Descripcion']; ?>" />
+                                                                <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion<?php echo $dat['IdPro'];?>" value="<?php echo $dat['Descripcion']; ?>" />
                                                             </td>
                                                             <td>
                                                                 <div class="text-center">
                                                                     <div class="btn-group">
-                                                                        <button type="button" class="btn btn-outline-primary btn-sm ml-2 btnProCat" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnProCat"><i class="fa fa-upload"></i></button>
-                                                                        <button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditPro" <?php echo $disabledit; ?> data-toggle="tooltip" data-placement="top" title="editar" id="btnEditPro"><i class="fa fa-pencil-square-o"></i></button>
+                                                                        <button type="button" class="btn btn-outline-primary btn-sm ml-2 btnProCat" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnProCat<?php echo $dat['IdPro'];?>"><i class="fa fa-upload"></i></button>
+                                                                        <button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditPro" <?php echo $disabledit; ?> data-toggle="tooltip" data-placement="top" title="editar" id="btnEditPro<?php echo $dat['IdPro'];?>"><i class="fa fa-pencil-square-o"></i></button>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -413,7 +411,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 
-<div class="modal fade" id="modalPARAMETER" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEDITPRODUCTO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
@@ -422,32 +420,26 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="formParam">
+            <form id="formProducto">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="detalle" class="col-form-label">Detalle</label>
-                        <input type="text" id="txtDetalle" required class="form-control" maxlength="80">
+                        <label for="productoedit" class="col-form-label">Producto</label>
+                        <input type="text" id="txtProductoEdit" required class="form-control" maxlength="80">
                     </div>
                     <div class="form-group">
-                        <label for="valorv" class="col-form-label">Valor Text</label>
-                        <input type="text" id="txtValorv" class="form-control" maxlength="255">
-                    </div>
-                    <div class="form-group">
-                        <label for="valori" class="col-form-label">Valor Entero</label>
-                        <input type="text" id="txtValori" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="5">
-                    </div>
-                    <div class="form-check" id="divcheckedit">
-                        <label for="estadolabel" class="form-check-label" id="lblEstado"></label>
+                        <label for="detalleedit" class="col-form-label">Descripción</label>
+                        <input type="text" id="txtDescripcionEdit" class="form-control" maxlength="255">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnBoton" class="btn btn-outline-info ml-3"><i class="fa fa-save"></i></button>
+                    <input type="text" name="row_id" id="hidden_row_id" />
+                    <button type="button" id="btnprodedit" class="btn btn-outline-info ml-3"><i class="fa fa-save"> Modificar</i></button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="modalEDITCONTACTO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModalBg">
@@ -523,7 +515,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </form>
             <div class="modal-footer">
                 <input type="hidden" name="conid" id="conid">
-                <button type="button" id="btnEditarCon" class="btn btn-outline-info ml-3">Modificar</button>
+                <button type="button" id="btnEditarCon" class="btn btn-outline-info ml-3"> Modificar</button>
             </div>
         </div>
     </div>

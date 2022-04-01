@@ -383,8 +383,8 @@ $(document).ready(function()
 
         let _row_id = $(this).attr("id");
         _row_id = _row_id.substring(7);
-        _padeid = $('#padeid' + _row_id + '').val();
-        _norden = $('#orden' + _row_id + '').val();
+        _padeid = $('#padeid' + _row_id).val();
+        _norden = $('#orden' + _row_id).val();
         _detalleold = $('#txtDetalle' + _row_id).val();
         _valorvold = $('#txtValorv' + _row_id).val();
         _valoriold = $('#txtValori' + _row_id ).val();

@@ -528,47 +528,100 @@ $(document).ready(function(){
                 }                            
             });             
         } 
-    });    
+    });   
+     
+    $(document).on("click",".btnEditPro",function(){
+        
+        let _row_id = $(this).attr("id");
+        _row_id = _row_id.substring(10);
+        _productoold = $('#txtProducto' + _row_id).val();
+        _dscripcionold = $('#txtDescripcion' + _row_id).val();
 
-    $("#formEditContacto").submit(function(e){
+        $('#txtProductoEdit').val(_productoold); 
+        $('#txtDescripcionEdit').val(_dscripcionold);
+  
+        $('#hidden_row_id').val(_row_id);
+        $("#headercon").css("background-color","#BCBABE");
+        $("#headercon").css("color","black");
+        $(".modal-title").text("Editar Producto");       
+        //$("#btnAgregar").text("Modificar");
+        $("#modalEDITPRODUCTO").modal("show");
+  
+    });
+
+
+    //***EDITAR PRODUCTO-CEDENTE */
+    $("#btnprodedit").click(function(e){
         e.preventDefault();
-        _tarea = $.trim($("#txtTarea").val());
-        _ruta = $.trim($("#txtRuta").val());
-        _icono = $.trim($("#txtIcono").val());
+        _idcede = $.trim($("#cedeid").val()); 
+        _idprod = $.trim($("#hidden_row_id").val());
+        _producto = $.trim($("#txtProductoEdit").val());
+        _descripcion = $.trim($("#txtDescripcionEdit").val());
+        let _continuar = true;
 
-        if(_tarea == ''){
-            mensajesalertify("Ingrese Tarea!!.","W","top-right",3); 
-            return;   
-        }
-        if(_ruta == ''){
-            mensajesalertify("Ingrese una Ruta!!.","W","top-right",3); 
-            return;   
+        if(_producto == ''){
+            mensajesalertify("Ingrese Producto!.","W","top-right",3); 
+            return false;   
         }
 
-        if(_opcion == 2){            
-            if(_nameoldtarea != _tarea){
-                $.ajax({
-                    url: "../db/tareacrud.php",
-                    type: "POST",
-                    dataType: "json",
-                    data: {opcion:2, id: _id, tarea: _tarea, ruta:_ruta, icono:_icono, estado:_estado},            
-                    success: function(data){
-                        if(data == '1'){
-                            mensajesalertify("Tarea ya Existe..!!","W","top-right",3);                   
-                        }else{
-                            FunGrabar();
-                        }
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }                            
-                });                
-            }else{
-                FunGrabar();
-            }
-        }else{
-            FunGrabar();
-        }        
+        if(_productoold != _producto){
+            $.post({
+                url: "../db/cedentecrud.php",
+                dataType: "json",
+                data: {opcion:7, cedeid: _idcede, producto: _producto},            
+                success: function(data){
+                    if(data[0].Existe == 'Existe'){
+                        mensajesalertify("Producto ya Existe!.","W","top-right",3);
+                        _continuar = false; 
+                        return false;
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                }                            
+            }); 
+        }
+
+        if(_continuar){
+            $.post({
+                url: "../db/cedentecrud.php",
+                dataType: "json",
+                data: {opcion:8, id: _idprod, producto: _producto, descripcion: _descripcion},            
+                success: function(data){
+                    //debugger;
+                    _idpro = data[0].Idpro;
+                    _producto = data[0].Producto;
+                    _descripcion = data[0].Descripcion;
+                    _estado = data[0].Estado;          
+                    
+                    _checked = '';
+
+                    if(_estado == 'A'){
+                        _checked = 'checked';
+                    }                      
+
+                    //row_id = $('#hidden_row_id').val();
+                    _output = '<td style="display: none;">' + _idpro + ' <input type="hidden" name="hidden_idpro[]" id="idpro' + _idpro + '" value="' + _idpro + '" /></td>';                
+                    _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _idpro + '" value="' + _producto + '" /></td>';
+                    _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _idpro + '" value="' + _descripcion + '" /></td>';
+                    _output += '<td><div class="text-center"><div class="btn-group">'
+                    _output += '<button type="button" name="btnProCat" class="btn btn-outline-primary btn-sm ml-2 btnCatPro" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnProCat' + _idpro + '"><i class="fa fa-upload"></i></button>';
+                    _output += '<button type="button" name="btnEditPro" class="btn btn-outline-info btn-sm ml-2 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="btnEditPro' + _idpro + '"><i class="fa fa-pencil-square-o"></i></button>';
+                    _output +=  '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idpro +
+                            '" ' + _checked + ' value=' + _idpro + '/></div></td>';
+
+
+                    console.log(_output);
+                    $('#rowpro_' + _idpro + '').html(_output);        
+                    
+                    $("#modalEDITPRODUCTO").modal("hide");
+
+                },
+                error: function (error) {
+                    console.log(error);
+                }                            
+            }); 
+        }
     });  
     
     //ELIMINAR CONTACTO 
@@ -617,7 +670,6 @@ $(document).ready(function(){
          return false;
      }  
      
-     
      if(_continuarproduc)
         {
             $.ajax({
@@ -626,19 +678,13 @@ $(document).ready(function(){
                 dataType: "json",
                 data: {opcion:6, cedeid: _idcede, producto: _producto, descripcion:_descripcion, estado:_estado},            
                 success: function(data){
-                    debugger;
-                    
                     if(data[0].Existe == 'Existe'){
                         mensajesalertify("Producto ya Existe..!!","W","top-right",3); 
                     }else{
-
-                     
-
                         _idpro = data[0].Idpro;
                         _producto = data[0].Producto;
                         _descripcion = data[0].Descripcion;
                         _estado = data[0].Estado;
-
 
                         _checked = '';
 
@@ -647,19 +693,16 @@ $(document).ready(function(){
                         }  
 
                         _output = '<tr id="rowpro_' + _idpro + '">';
-                        _output += '<td style="display: none;">' + _idpro + ' <input type="hidden" name="hidden_codigo[]" id="idpro' + _idpro + '" value="' + _idpro + '" /></td>';                
+                        _output += '<td style="display: none;">' + _idpro + ' <input type="hidden" name="hidden_idpro[]" id="idpro' + _idpro + '" value="' + _idpro + '" /></td>';                
                         _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _idpro + '" value="' + _producto + '" /></td>';
                         _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _idpro + '" value="' + _descripcion + '" /></td>';
                         _output += '<td><div class="text-center"><div class="btn-group">'
-                        _output += '<button type="button" name="btnProCat" class="btn btn-outline-primary btn-sm ml-2 btnCatPro" data-toggle="tooltip" data-placement="top" title="catalogos" id="' + _idpro + '"><i class="fa fa-upload"></i></button>';
-                        _output += '<button type="button" name="btnEditPro" class="btn btn-outline-info btn-sm ml-2 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _idpro + '"><i class="fa fa-pencil-square-o"></i></button>';
+                        _output += '<button type="button" name="btnProCat" class="btn btn-outline-primary btn-sm ml-2 btnCatPro" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnProCat' + _idpro + '"><i class="fa fa-upload"></i></button>';
+                        _output += '<button type="button" name="btnEditPro" class="btn btn-outline-info btn-sm ml-2 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="btnEditPro' + _idpro + '"><i class="fa fa-pencil-square-o"></i></button>';
                         _output +=  '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idpro +
                                 '" ' + _checked + ' value=' + _idpro + '/></div></td>';
 
-
                         $('#tblproducto').append(_output);
-
-                        console.log(_output);
                     }
                     
                 },
@@ -668,8 +711,5 @@ $(document).ready(function(){
                 }                            
             });             
         } 
-
-
     });
-
 });
