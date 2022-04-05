@@ -712,4 +712,40 @@ $(document).ready(function(){
             });             
         } 
     });
+
+    //UPDATE ESTADO PRODUCTO BDD
+
+    $(document).on("click",".chkEstadoPro",function(){ 
+        let _rowid = $(this).attr("id");
+        let _idproducto = _rowid.substring(3);
+        let _check = $("#chk" + _idproducto).is(":checked");
+       
+           
+        let _estadopro;
+    
+    
+        if(_check){
+            _estadopro = 'A';
+            $("#btnEditPro" + _idproducto).prop("disabled", "");
+           
+        }else 
+        {
+            _estadopro = 'I';
+            $("#btnEditPro" + _idproducto).prop("disabled", "disabled");
+        }
+    
+        $.ajax({
+            url: "../db/cedentecrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {id: _idproducto, estado: _estadopro, opcion: 3},
+            success: function(data){
+               
+            },
+            error: function (error) {
+                console.log(error);
+            }                 
+        });
+    
+      });
 });

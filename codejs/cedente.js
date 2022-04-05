@@ -241,7 +241,7 @@ $(document).ready(function(){
         _output += '<td class="text-center">' + _email1 + '</td>';
         _output += '<td style="display: none;">' + _email2 + '</td>';
         _output += '<td><div class="text-center"><div class="btn-group">'
-        _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-3" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcontacto + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btnDeleteCon btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcontacto + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
         _output += '</tr>';
 
         $('#tblcontactonew').append(_output);
@@ -503,9 +503,9 @@ $(document).ready(function(){
             _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countproduc + '" value="' + _producto + '" /></td>';
             _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _countproduc + '" value="' + _descripcion + '" /></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
-            _output += '<button type="button" name="btnCatPro" class="btn btn-outline-primary btn-sm ml-3 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _countproduc + '"><i class="fa fa-upload"></i></button>';
+            _output += '<button type="button" name="btnCatPro" class="btn btn-outline-primary btn-sm ml-2 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="' + _countproduc + '"><i class="fa fa-upload"></i></button>';
             // _output += '<button type="button" name="btnEditCon" class="btn btn-outline-info btn-sm ml-3 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countproduc + '"><i class="fa fa-pencil-square-o"></i></button>';
-            _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-3 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countproduc + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+            _output += '<button type="button" name="btnDeleteCon" class="btn btn-outline-danger btn-sm ml-2 btnDeletePro" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countproduc + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
             _output += '</tr>';
             
             $('#tblproducto').append(_output);
@@ -554,39 +554,7 @@ $(document).ready(function(){
 
     //UPDATE ESTADO PRODUCTO BDD
 
-    $(document).on("click",".chkEstadoPro",function(){ 
-        let _rowid = $(this).attr("id");
-        let _idproducto = _rowid.substring(3);
-        let _check = $("#chk" + _idproducto).is(":checked");
-    
-           
-        let _estadopro;
-    
-    
-        if(_check){
-            _estadopro = 'A';
-            $("#btnEditar" + _idperfil).prop("disabled", "");
-           
-        }else 
-        {
-            _estadopro = 'I';
-            $("#btnEditar" + _idperfil).prop("disabled", "disabled");
-        }
-    
-        $.ajax({
-            url: "../db/cedentecrud.php",
-            type: "POST",
-            dataType: "json",
-            data: {id: _idproducto, estado: _estadopro, opcion: 3},
-            success: function(data){
-               
-            },
-            error: function (error) {
-                console.log(error);
-            }                 
-        });
-    
-      });
+
 
  
 
@@ -754,7 +722,7 @@ $(document).ready(function(){
                 // _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + item.arrycodigo + '" value="' + item.arryestado  + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 // _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
-                _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-2 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                 _output += '</tr>';
                 
                 $('#tblcatalogo').append(_output);
@@ -809,7 +777,7 @@ $(document).ready(function(){
             // _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + _countcatalogo + '" value="' + _estadocat + '" /></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
             // _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countcatalogo + '"><i class="fa fa-pencil-square-o"></i></button>';
-            _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-3 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcatalogo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+            _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-2 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcatalogo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
             _output += '</tr>';
             
             $('#tblcatalogo').append(_output);
@@ -1039,8 +1007,8 @@ $(document).ready(function(){
           _output += '<td class="text-center">' + _zona + ' <input type="hidden" name="hidden_zona[]" id="cboZona' + _countagen + '" value="' + _zona + '" /></td>';
           _output += '<td class="text-center">' + _estadoagen + ' <input type="hidden" name="hidden_email1[]" id="txtEstadoAg' + _countagen + '" value="' + _estadoagen + '" /></td>';
           _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countagen + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countagen + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countagen + '"><i class="fa fa-pencil-square-o"></i></button>';
+          _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-2 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countagen + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
           _output += '</tr>';
           
           $('#tblagencia').append(_output);

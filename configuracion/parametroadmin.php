@@ -100,27 +100,20 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            <form class="form-horizontal col-md-11 offset-md-1" role="form">
+                            <form class="form-horizontal col-md-10 offset-md-2" role="form">
                                 <fieldset>
-                                    <div class="form-group row">
-                                        <label for="espacio" class="control-label col-md-1"></label>
-                                        <label for="menuname" class="control-label col-md-1">Parametro:</label>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="espacio" class="control-label col-md-1"></label>
-                                        <div class="col-md-8 col-sm-4  form-group has-feedback">
-                                            <input autofocus type="text" class="form-control has-feedback-left" id="txtParametro" maxlength="80">
+                                    <!-- <label for="menuname" class="col-form-label">Parametro:</label> -->
+                                    <div class="row">
+                                        <div class="col-md-10 col-sm-6  form-group has-feedback">
+                                            <input autofocus type="text" class="form-control has-feedback-left" id="txtParametro" placeholder="nombre del parametro" maxlength="80">
                                             <span class="fa fa-bookmark form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="espacio" class="control-label col-md-1"></label>
-                                        <label for="menuname" class="control-label col-md-1">Descripcion:</label>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="espacio" class="control-label col-md-1"></label>
-                                        <div class="col-md-10 col-sm-10  form-group has-feedback">
-                                            <textarea name="observa" id="txtDescripcion" class="form-control col-md-10" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
+                                    <br/>
+                                    <!-- <label for="menuname" class="col-form-label">Descripcion:</label> -->
+                                    <div class="row">
+                                        <div class="col-md-10 col-sm-6 form-group has-feedback">
+                                            <textarea name="observa" id="txtDescripcion" class="form-control" placeholder="descripcion" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -158,7 +151,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                <button type="button" class="btn btn-outline-primary btn-lg btn-block" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
             </div>
         </div>
     </div>
@@ -175,31 +168,33 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <form id="formParam">
                 <div class="modal-body">
                     <br />
-                    <label for="tarea" class="col-form-label">Detalle:</label>
+                    <!-- <label for="tarea" class="col-form-label">Detalle:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
-                            <input type="text" class="form-control has-feedback-left" id="txtDetalle" placeholder="" maxlength="80">
+                            <input type="text" class="form-control has-feedback-left" id="txtDetalle" placeholder="nombre del detalle" maxlength="80">
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <label for="tarea" class="col-form-label">Valor Texto:</label>
+                    <br/>
+                    <!-- <label for="tarea" class="col-form-label">Valor Texto:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
-                            <input type="text" class="form-control has-feedback-left" id="txtValorv" maxlength="255">
+                            <input type="text" class="form-control has-feedback-left" id="txtValorv" placeholder="valor texto" maxlength="255">
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <label for="tarea" class="col-form-label">Valor Entero:</label>
+                    <br/>
+                    <!-- <label for="tarea" class="col-form-label">Valor Entero:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
-                            <input type="text" id="txtValori" class="form-control has-feedback-left" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="5">
+                            <input type="text" id="txtValori" class="form-control has-feedback-left" placeholder="valor entero" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="5">
                             <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAgregar" class="btn btn-outline-info ml-3"><i class='fa fa-plus'></i>Agregar</button>
+                    <button type="button" id="btnAgregar" class="btn btn-info btn-lg btn-block"><i class='fa fa-plus'></i>Agregar</button>
                 </div>
             </form>
         </div>

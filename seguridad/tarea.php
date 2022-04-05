@@ -107,21 +107,24 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formTarea">
                 <div class="modal-body">
-                    <label for="tarea" class="col-form-label">Tarea:</label>
+                    <br/>
+                    <!-- <label for="tarea" class="col-form-label">Tarea:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
-                            <input type="text" class="form-control has-feedback-left" id="txtTarea" placeholder="" maxlength="80">
+                            <input type="text" class="form-control has-feedback-left" id="txtTarea" placeholder="nombre de la tarea" maxlength="80">
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <label for="tarea" class="col-form-label">Ruta:</label>
+                    <br/>
+                    <!-- <label for="tarea" class="col-form-label">Ruta:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtRuta" placeholder="ej: ../seguridad/usuario.php" maxlength="">
                             <span class="fa fa-sign-out form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <label for="tarea" class="col-form-label">Icono:</label>
+                    <br/>
+                    <!-- <label for="tarea" class="col-form-label">Icono:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtIcono" placeholder="ej: fa fa-user" maxlength="">
@@ -130,7 +133,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-outline-info ml-3" id="btnSave"><i class="fa fa-save"></i> Guardar</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnSave"><i class="fa fa-save"></i> Guardar</button>
                 </div>
             </form>
         </div>

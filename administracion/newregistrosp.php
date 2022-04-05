@@ -147,7 +147,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-outline-info ml-3" id="btnSaveSu"><i class='fa fa-save'></i> Guardar</button>
+          <button type="submit" class="btn btn-info btn-lg btn-block" id="btnSaveSu"><i class='fa fa-save'></i> Guardar</button>
         </div>
       </form>
     </div>
