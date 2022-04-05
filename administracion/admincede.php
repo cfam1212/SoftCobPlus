@@ -369,7 +369,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-lg btn-block" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                <button type="button" class="btn btn-info btn-lg btn-block" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
             </div>
         </div>
     </div>

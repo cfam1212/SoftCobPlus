@@ -309,8 +309,8 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <input type="text" class="form-control has-feedback-left" id="txtProducto" placeholder="nombre del producto" maxlength="150">
                                             <span class="fa fa-briefcase form-control-feedback left" aria-hidden="true"></span>
                                         </div>
-                                     
                                     </div>
+                                    <br/>
                                     <div class="row">
                                         <div class="form-group col-md-10 col-sm-6">
                                             <textarea name="observa" id="txtDescripcion" class="form-control" maxlength="250" placeholder="descripcion" onkeydown="return (event.keyCode!=13);"></textarea>
@@ -440,7 +440,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnprodedit" class="btn btn-outline-info ml-3"><i class="fa fa-save"> Modificar</i></button>
+                    <button type="button" id="btnprodedit" class="btn btn-info btn-lg btn-block"><i class="fa fa-save"> Modificar</i></button>
                 </div>
             </form>
         </div>
