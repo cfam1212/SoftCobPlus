@@ -77,7 +77,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                <form class="form-horizontal" role="form">
+                                <form class="form-horizontal col-md-10 offset-md-1" role="form">
                                     <fieldset>
                                         <br>
                                         <div class="form-group row">
@@ -88,7 +88,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="menuname" class="control-label col-md-1">Cedente:</label>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-md-3 col-sm-6 form-group">
+                                            <div class="col-md-4 col-sm-6 form-group">
                                                 <select class="form-control" id="cboProvincia" name="cboprovincia">
                                                     <option value="0">--Seleccione Provincia--</option>
                                                     <?php foreach ($dataprov as $fila) : ?>
@@ -97,8 +97,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     <?php endforeach ?>
                                                 </select>
                                             </div>
-                                            <label for="espacio" class="control-label col-md-1"></label>
-                                            <div class="col-md-3 col-sm-6 form-group">
+                                            <div class="col-md-4 col-sm-6 form-group">
                                                 <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;">
                                                     <option value="0">--Seleccione Ciudad--</option>
                                                     <?php foreach ($dataciudad as $fila) : ?>
@@ -107,8 +106,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     <?php endforeach ?>
                                                 </select>
                                             </div>
-                                            <label for="espacio" class="control-label col-md-1"></label>
-                                            <div class="col-md-3 col-sm-6 form-group">
+                                            <div class="col-md-4 col-sm-6 form-group">
                                                 <input autofocus type="text" class="form-control has-feedback-left" id="txtCedente" maxlength="150" value="<?php echo $datacede[0]['Cedente']; ?>">
                                                 <span class="fa fa-pie-chart form-control-feedback left" aria-hidden="true"></span>
                                             </div>
@@ -119,34 +117,31 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="menuname" class="control-label col-md-1">Direccion:</label>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-md-3 col-sm-6 form-group">
+                                            <div class="col-md-4 col-sm-6 form-group">
                                                 <input type="text" class="form-control has-feedback-left" id="txtRuc" maxlength="13" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" value="<?php echo $datacede[0]['Ruc']; ?>">
                                                 <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                                             </div>
-                                            <label for="espacio" class="control-label col-md-1"></label>
-                                            <div class="form-group col-md-7 col-sm-6">
+                                            <div class="form-group col-md-8 col-sm-6">
                                                 <textarea name="direccion" id="txtDireccion" class="form-control" maxlength="200" onkeydown="return (event.keyCode!=13);" value="<?php echo $datacede[0]['Direccion']; ?>" style="width: 100%;"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="menuname" class="control-label col-md-1">Telefono 1:</label>
-                                            <label for="espacio" class="control-label col-md-3"></label>
-                                            <label for="menuname" class="control-label col-md-1">Telefono 2:</label>
+                                            <label for="menuname" class="control-label col-md-2">Telefono 1:</label>
+                                            <label for="espacio" class="control-label col-md-2"></label>
+                                            <label for="menuname" class="control-label col-md-2">Telefono 2:</label>
                                             <label for="espacio" class="control-label col-md-3"></label>
                                             <label for="menuname" class="control-label col-md-1">Fax:</label>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-md-3 col-sm-6  form-group has-feedback">
+                                            <div class="col-md-4 col-sm-6  form-group has-feedback">
                                                 <input type="text" class="form-control has-feedback-left" id="txtTel1" maxlength="9" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="15" value="<?php echo $datacede[0]['Telefono1']; ?>">
                                                 <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                             </div>
-                                            <label for="espacio" class="control-label col-md-1"></label>
-                                            <div class="col-md-3 col-sm-6  form-group has-feedback">
+                                            <div class="col-md-4 col-sm-6  form-group has-feedback">
                                                 <input type="text" class="form-control has-feedback-left" id="txtTel2" maxlength="9" placeholder="ej: 022630922" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="15" value="<?php echo $datacede[0]['Telefono2']; ?>">
                                                 <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                             </div>
-                                            <label for="espacio" class="control-label col-md-1"></label>
-                                            <div class="col-md-3 col-sm-6  form-group has-feedback">
+                                            <div class="col-md-4 col-sm-6  form-group has-feedback">
                                                 <input type="text" class="form-control has-feedback-left" id="txtFax" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="fax" maxlength="10" value="<?php echo $datacede[0]['Fax']; ?>">
                                                 <span class="fa fa-fax form-control-feedback left" aria-hidden="true"></span>
                                             </div>
@@ -154,15 +149,14 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <div class="form-group row">
                                             <label for="menuname" class="control-label col-md-1">Url:</label>
                                             <label for="espacio" class="control-label col-md-3"></label>
-                                            <label for="menuname" class="control-label col-md-1">Nivel Arbol:</label>
+                                            <label for="menuname" class="control-label col-md-2">Nivel Arbol:</label>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-md-3 col-sm-6  form-group has-feedback">
+                                            <div class="col-md-4 col-sm-6  form-group has-feedback">
                                                 <input type="text" class="form-control has-feedback-left" id="txtUrl" maxlength="80" value="<?php echo $datacede[0]['Link']; ?>">
                                                 <span class="fa fa-link form-control-feedback left" aria-hidden="true"></span>
                                             </div>
-                                            <label for="espacio" class="control-label col-md-1"></label>
-                                            <div class="col-md-3 col-sm-6 form-group">
+                                            <div class="col-md-4 col-sm-6 form-group">
                                                 <select class="form-control" id="cboArbol" name="cboarbol" style="width: 100%;">
                                                     <option value="0">--Seleccione Nivel--</option>
                                                     <?php foreach ($nivelarbol as $fila) : ?>
@@ -181,13 +175,6 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                 <br />
                                 <form class="form-horizontal col-md-10 offset-md-1" role="form">
-                                    <!-- <div class="form-group row">
-                                        <label for="menuname" class="control-label col-md-1">Contacto:</label>
-                                        <label for="espacio" class="control-label col-md-3"></label>
-                                        <label for="menuname" class="control-label col-md-1">Cargo:</label>
-                                        <label for="espacio" class="control-label col-md-3"></label>
-                                        <label for="menuname" class="control-label col-md-1">Telefono:</label>
-                                    </div> -->
                                     <div class="form-group row">
                                         <div class="col-md-5 col-sm-8 form-group">
                                             <input type="tel" class="form-control has-feedback-left" id="txtContacto" class="form-control" placeholder="nombre del contacto" maxlength="150" autofocus onKeyUp="this.value=this.value.toUpperCase();">
@@ -215,13 +202,6 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                     </div>
-                                    <!-- <div class="form-group row">
-                                        <label for="menuname" class="control-label col-md-1">Celular:</label>
-                                        <label for="espacio" class="control-label col-md-3"></label>
-                                        <label for="menuname" class="control-label col-md-1">Email 1:</label>
-                                        <label for="espacio" class="control-label col-md-3"></label>
-                                        <label for="menuname" class="control-label col-md-1">Email 2:</label>
-                                    </div> -->
                                     <div class="form-group row">
                                         <div class="col-md-5 col-sm-8 form-group">
                                             <input type="email" class="form-control has-feedback-left" id="txtEmail1" placeholder="e-mail" maxlength="80" onKeyUp="this.value=this.value.toLowerCase();">
@@ -343,11 +323,14 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                         <?php
                                                         
                                                            $disabledit = '';
+                                                           $disableaddcat = '';
                                                          
                                                            if ($dat['Estado'] == 'Inactivo') {
                                                             $disabledit = 'disabled';
+                                                            $disableaddcat = 'disabled';
                                                             } else {
                                                               $disabledit = '';
+                                                              $disableaddcat = '';
                                                             }
                                                         ?>
                                                         <tr id="rowpro_<?php echo $dat['IdPro']; ?>">
@@ -366,7 +349,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                             <td>
                                                                 <div class="text-center">
                                                                     <div class="btn-group">
-                                                                        <button type="button" class="btn btn-outline-primary btn-sm ml-2 btnProCat" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnProCat<?php echo $dat['IdPro'];?>"><i class="fa fa-upload"></i></button>
+                                                                        <button type="button" class="btn btn-outline-primary btn-sm ml-2 btnProCat"<?php echo $disableaddcat; ?> data-toggle="tooltip" data-placement="top" title="catalogos" id="btnProCat<?php echo $dat['IdPro'];?>"><i class="fa fa-upload"></i></button>
                                                                         <button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditPro" <?php echo $disabledit; ?> data-toggle="tooltip" data-placement="top" title="editar" id="btnEditPro<?php echo $dat['IdPro'];?>"><i class="fa fa-pencil-square-o"></i></button>
                                                                     </div>
                                                                 </div>
@@ -394,6 +377,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                         <th>Cod.Catalogo</th>
                                                         <th>Catalogo</th>
                                                         <th style="text-align: center;">Opciones</th>
+                                                        <th style="width:10% ; text-align: center">Estado</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody></tbody>
@@ -427,7 +411,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <label for="producto" class="col-form-label">Producto:</label>
                     <div class="row">
                         <div class="col-md-12 col-sm-6 form-group">
-                            <input type="text" class="form-control has-feedback-left" id="txtProductoEdit" placeholder="" maxlength="80">
+                            <input type="text" class="form-control has-feedback-left" id="txtProductoEdit" maxlength="80">
                             <span class="fa fa-briefcase form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
@@ -536,6 +520,41 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <input type="hidden" name="conid" id="conid">
                 <button type="button" id="btnEditarCon" class="btn btn-info btn-lg btn-block"> Modificar</button>
             </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCATALOGOEDIT" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 35%" role="document">
+        <div class="modal-content" id="myModalBg">
+            <div class="modal-header" id="headercat">
+                <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formCatalogoEdit">
+                <div class="modal-body">
+                    <br/>
+                    <div class="row">
+                        <label for="menuname" class="control-label col-md-2"></label>
+                        <div class="col-md-8 col-sm-8  form-group has-feedback">
+                            <input type="tel" class="form-control has-feedback-left" id="txtCodigoMo" placeholder="codigo" maxlength="10">
+                            <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="menuname" class="control-label col-md-2"></label>
+                        <div class="col-md-8 col-sm-8  form-group has-feedback">
+                            <input type="text" class="form-control has-feedback-left" id="txtCatalogoMo" placeholder="nombre del catalogo" maxlength="250">
+                            <span class="fa fa-file-text form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="row_id" id="hidden_row_id" />
+                    <button type="button" id="btnAddCatalogo" class="btn btn-info btn-lg btn-block"><i class='fa fa-plus'></i> Agregar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

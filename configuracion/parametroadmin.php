@@ -24,9 +24,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </ul>
                         <div class="clearfix"></div>
                     </div>
-
                     <button type="button" class="btn btn-outline-info" id="btnNuevo" data-toggle="tooltip" data-placement="top" title="nuevo parametro" style="margin-bottom:10px"><i class="fa fa-plus"></i></button>
-
                     <div class="x_content">
                         <br />
                         <table id="tabledata" class="table table-striped jambo_table bulk_action" style="width: 100%;">
@@ -41,8 +39,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </thead>
                             <tbody>
                                 <?php
-
-
                                 foreach ($data as $datos) {
                                 ?>
                                     <?php
@@ -65,7 +61,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstadoPa" id="chk<?php echo $datos['ParaId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                                  echo "checked";    } ?> value="<?php echo $datos['ParaId']; ?>" />                                                                                                                
+                                                   echo "checked"; } ?> value="<?php echo $datos['ParaId']; ?>" />                                                                                                                
                                         </td>
                                     </tr>
                                 <?php }
@@ -102,7 +98,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <form class="form-horizontal col-md-10 offset-md-2" role="form">
                                 <fieldset>
-                                    <!-- <label for="menuname" class="col-form-label">Parametro:</label> -->
                                     <div class="row">
                                         <div class="col-md-10 col-sm-6  form-group has-feedback">
                                             <input autofocus type="text" class="form-control has-feedback-left" id="txtParametro" placeholder="nombre del parametro" maxlength="80">
@@ -110,7 +105,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </div>
                                     <br/>
-                                    <!-- <label for="menuname" class="col-form-label">Descripcion:</label> -->
                                     <div class="row">
                                         <div class="col-md-10 col-sm-6 form-group has-feedback">
                                             <textarea name="observa" id="txtDescripcion" class="form-control" placeholder="descripcion" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
@@ -151,7 +145,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary btn-lg btn-block" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                <button type="button" class="btn btn-info" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -167,8 +162,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formParam">
                 <div class="modal-body">
-                    <br />
-                    <!-- <label for="tarea" class="col-form-label">Detalle:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtDetalle" placeholder="nombre del detalle" maxlength="80">
@@ -176,7 +169,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <br/>
-                    <!-- <label for="tarea" class="col-form-label">Valor Texto:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtValorv" placeholder="valor texto" maxlength="255">
@@ -184,7 +176,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <br/>
-                    <!-- <label for="tarea" class="col-form-label">Valor Entero:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" id="txtValori" class="form-control has-feedback-left" placeholder="valor entero" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="5">
@@ -194,7 +185,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAgregar" class="btn btn-info btn-lg btn-block"><i class='fa fa-plus'></i>Agregar</button>
+                    <button type="button" id="btnAgregar" class="btn btn-primary"><i class='fa fa-plus'></i>Agregar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>

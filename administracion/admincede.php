@@ -71,7 +71,6 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </thead>
                             <tbody>
                                 <?php
-
                                 foreach ($data as $datos) {
                                 ?>
                                     <?php
@@ -142,8 +141,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <fieldset>
                                     <br>
                                     <div class="form-group row">
-                                        <!-- <label for="cboprovincia" class="control-label col-md-1">Provincia:</label> -->
-                                        <div class="col-md-5 col-sm-8 form-group">
+                                        <div class="col-md-6 col-sm-8 form-group">
                                             <select class="form-control" id="cboProvincia" name="cboprovincia" style="width: 100%;">
                                                 <option value="0">--Seleccione Provincia--</option>
                                                 <?php foreach ($dataprov as $fila) : ?>
@@ -152,62 +150,49 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <?php endforeach ?>
                                             </select>
                                         </div>
-                                        <label for="espacio" class="control-label col-md-1"></label>
-                                        <!-- <label for="cbocuidad" class="control-label col-md-1">Cuidad:</label> -->
-                                        <div class="col-md-5 col-sm-8 form-group">
+                                        <div class="col-md-6 col-sm-8 form-group">
                                             <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;">
                                                 <option value="0">--Seleccione Ciudad--</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <!-- <label for="menuname" class="control-label col-md-1">Cedente:</label> -->
-                                        <div class="col-md-5 col-sm-8 form-group">
+                                        <div class="col-md-6 col-sm-8 form-group">
                                             <input autofocus type="text" class="form-control has-feedback-left" id="txtCedente" placeholder="nombre del cedente" maxlength="150">
                                             <span class="fa fa-pie-chart form-control-feedback left" aria-hidden="true"></span>
                                         </div>
-                                        <label for="espacio" class="control-label col-md-1"></label>
-                                        <!-- <label for="iconome" class="control-label col-md-1">Ruc:</label> -->
-                                        <div class="col-md-5 col-sm-8 form-group">
+                                        <div class="col-md-6 col-sm-8 form-group">
                                             <input type="text" class="form-control has-feedback-left" id="txtRuc" maxlength="13" placeholder="ruc" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                             <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <!-- <label for="menuname" class="control-label col-md-1">Direccion:</label> -->
-                                        <div class="col-md-11 col-sm-6  form-group has-feedback">
+                                        <div class="col-md-12 col-sm-6  form-group has-feedback">
                                             <textarea name="observa" id="txtDireccion" class="form-control" maxlength="200" placeholder="direccion" onKeyUp="this.value=this.value.toUpperCase();" onkeydown="return (event.keyCode!=13);"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <!-- <label for="menuname" class="control-label col-md-1">fono 1:</label> -->
-                                        <div class="col-md-5 col-sm-8  form-group has-feedback">
+                                        <div class="col-md-6 col-sm-8  form-group has-feedback">
                                             <input type="text" class="form-control has-feedback-left" id="txtTel1" maxlength="9" placeholder="telefono 1" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="telefono1" maxlength="15">
                                             <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                         </div>
-                                        <label for="espacio" class="control-label col-md-1"></label>
-                                        <!-- <label for="iconome" class="control-label col-md-1">fono 2:</label> -->
-                                        <div class="col-md-5 col-sm-8  form-group has-feedback">
+                                        <div class="col-md-6 col-sm-8  form-group has-feedback">
                                             <input type="text" class="form-control has-feedback-left" id="txtTel2" maxlength="9" placeholder="ej: 022222222" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="telefono1" maxlength="15">
                                             <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <!-- <label for="fax" class="control-label col-md-1">Fax:</label> -->
-                                        <div class="col-md-5 col-sm-8  form-group has-feedback">
+                                        <div class="col-md-6 col-sm-8  form-group has-feedback">
                                             <input type="text" class="form-control has-feedback-left" id="txtFax" placeholder="fax" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="fax" maxlength="10">
                                             <span class="fa fa-fax form-control-feedback left" aria-hidden="true"></span>
                                         </div>
-                                        <label for="espacio" class="control-label col-md-1"></label>
-                                        <!-- <label for="iconome" class="control-label col-md-1">Url:</label> -->
-                                        <div class="col-md-5 col-sm-8  form-group has-feedback">
+                                        <div class="col-md-6 col-sm-8  form-group has-feedback">
                                             <input type="text" class="form-control has-feedback-left" id="txtUrl" placeholder="Url" maxlength="80">
                                             <span class="fa fa-link form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <!-- <label for="cboArbol" class="control-label col-md-1">Arbol:</label> -->
-                                        <div class="col-md-5 col-sm-8 form-group">
+                                        <div class="col-md-6 col-sm-8 form-group">
                                             <select class="form-control" id="cboArbol" name="cboarbol" style="width: 100%;">
                                                 <option value="0">--Seleccione Nivel--</option>
                                                 <?php foreach ($nivelarbol as $fila) : ?>
@@ -222,18 +207,12 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <form class="form-horizontal col-md-10 offset-md-1" role="form">
-                                <!-- <div class="form-group row">
-                                    <label for="contacto" class="control-label col-md-1">Contacto:</label>
-                                    <label for="espacio" class="control-label col-md-6"></label>
-                                    <label for="cbomenupadre" class="control-label col-md-1">Cargo:</label> 
-                                </div> -->
                                 <div class="form-group row">
-                                    <div class="col-md-5 col-sm-8 form-group">
+                                    <div class="col-md-6 col-sm-8 form-group">
                                         <input type="tel" class="form-control has-feedback-left" id="txtContacto" placeholder="nombre del contacto" class="form-control" maxlength="150">
                                         <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                                     </div>
-                                    <label for="espacio" class="control-label col-md-2"></label>
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-6">
                                         <select class="form-control" id="cboCargo" name="cbocargo" style="width: 100%;">
                                             <option value="0">--Seleccione Cargo--</option>
                                             <?php foreach ($cargo as $fila) : ?>
@@ -242,34 +221,22 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </select>
                                     </div>
                                 </div>
-                                <!-- <div class="form-group row">
-                                    <label for="contacto" class="control-label col-md-1">Teléfono1:</label>
-                                    <label for="espacio" class="control-label col-md-6"></label>
-                                    <label for="cbomenupadre" class="control-label col-md-1">Celular:</label> 
-                                </div> -->
                                 <div class="form-group row">
-                                    <div class="col-md-5 col-sm-8 form-group">
+                                    <div class="col-md-6 col-sm-8 form-group">
                                         <input type="tel" class="form-control has-feedback-left" id="txtExt" placeholder="022222222" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" name="ext" maxlength="9">
                                         <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                     </div>
-                                    <label for="espacio" class="control-label col-md-2"></label>
-                                    <div class="col-md-5 col-sm-8 form-group">
+                                    <div class="col-md-6 col-sm-8 form-group">
                                         <input type="tel" class="form-control has-feedback-left" id="txtCelular" maxlength="10" placeholder="0999999999" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" maxlength="10">
                                         <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                                     </div>
                                 </div>
-                                <!-- <div class="form-group row">
-                                    <label for="contacto" class="control-label col-md-2">e-mail 1:</label>
-                                    <label for="espacio" class="control-label col-md-5"></label>
-                                    <label for="cbomenupadre" class="control-label col-md-2">e-mail 2:</label> 
-                                </div> -->
                                 <div class="form-group row">
-                                    <div class="col-md-5 col-sm-8 form-group">
+                                    <div class="col-md-6 col-sm-8 form-group">
                                         <input type="email" class="form-control has-feedback-left" id="txtEmail1" placeholder="e-mail" maxlength="80" onKeyUp="this.value=this.value.toLowerCase();">
                                         <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                                     </div>
-                                    <label for="espacio" class="control-label col-md-2"></label>
-                                    <div class="col-md-5 col-sm-8 form-group">
+                                    <div class="col-md-6 col-sm-8 form-group">
                                         <input type="email" class="form-control has-feedback-left" id="txtEmail2" placeholder="example@gmail.com" maxlength="80" onKeyUp="this.value=this.value.toLowerCase();">
                                         <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                                     </div>
@@ -307,15 +274,12 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                             <form class="form-horizontal col-md-10 offset-md-2" role="form">
-                                <!-- <label for="producto" class="col-form-label">Producto:</label> -->
                                 <div class="row">
                                     <div class="col-md-10 col-sm-6 form-group">
                                         <input type="text" class="form-control has-feedback-left" id="txtProducto" placeholder="nombre del producto" maxlength="150">
                                         <span class="fa fa-briefcase form-control-feedback left" aria-hidden="true"></span>
                                     </div>
-
                                 </div>
-                                <!-- <label for="descripcion" class="col-form-label">Descripcion:</label> -->
                                 <div class="row">
                                     <div class="form-group col-md-10 col-sm-6">
                                         <textarea name="observa" id="txtDescripcion" class="form-control" maxlength="250" placeholder="descripcion" onkeydown="return (event.keyCode!=13);"></textarea>
@@ -369,7 +333,8 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info btn-lg btn-block" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                <button type="button" class="btn btn-info" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

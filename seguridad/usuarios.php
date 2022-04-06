@@ -118,37 +118,38 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id="frmUserNew">
                 <br />
                 <div class="modal-body">
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="menuname" class="control-label col-md-1">Nombres:</label>
                         <label for="espacio" class="control-label col-md-3"></label>
                         <label for="menuname" class="control-label col-md-1">Apellidos:</label>
                         <label for="espacio" class="control-label col-md-3"></label>
                         <label for="menuname" class="control-label col-md-1">Login:</label>
-                    </div>
+                    </div> -->
                     <div class="form-group row">
                         <div class="col-md-4 col-sm-4 form-group has-feedback">
-                            <input type="text" class="form-control has-feedback-left" id="txtUsername" maxlength="80" autofocus>
+                            <input type="text" class="form-control has-feedback-left" id="txtUsername" placeholder="nombre usuario" maxlength="80" autofocus>
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-4 col-sm-4 form-group has-feedback">
-                            <input type="text" class="form-control has-feedback-left" id="txtLastname" maxlength="80">
+                            <input type="text" class="form-control has-feedback-left" id="txtLastname" placeholder="apellido usuario" maxlength="80">
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-4 col-sm-4 form-group has-feedback">
-                            <input type="text" class="form-control has-feedback-left" id="txtLogin" maxlength="16" onKeyUp="this.value=this.value.toLowerCase();" autocomplete="off">
+                            <input type="text" class="form-control has-feedback-left" id="txtLogin" placeholder="login" maxlength="16" onKeyUp="this.value=this.value.toLowerCase();" autocomplete="off">
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <br/>
+                    <!-- <div class="form-group row">
                         <label for="menuname" class="control-label col-md-1">Password:</label>
                         <label for="espacio" class="control-label col-md-3"></label>
                         <label for="menuname" class="control-label col-md-1">Perfil:</label>
                         <label for="espacio" class="control-label col-md-3"></label>
                         <label for="menuname" class="control-label col-md-2">Tipo Usuario:</label>
-                    </div>
+                    </div> -->
                     <div class="form-group row">
                         <div class="col-md-4 col-sm-4 form-group has-feedback">
-                            <input type="password" class="form-control has-feedback-left" id="txtPassword" placeholder="" maxlength="50" autocomplete="off">
+                            <input type="password" class="form-control has-feedback-left" id="txtPassword" placeholder="password" maxlength="50" autocomplete="off">
                             <span class="fa fa-eye-slash form-control-feedback left" aria-hidden="true"></span>
                         </div>
                         <div class="col-md-4 col-sm-4">
@@ -160,7 +161,6 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 ?>
                             </select>
                         </div>
-                        
                         <div class="col-md-4 col-sm-4">
                             <select class="form-control col-md-4" id="cboTipoUser" name="cbotipouser" style="width: 100%;">
                                 <?php foreach ($cbotipouser as $fila) { ?>
@@ -169,27 +169,27 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </select>
                         </div>
                     </div>
+                    <br/>
                     <div class="form-group row">
-                        <label for="menuname" class="control-label col-md-1">Departamento:</label>
-                        <label for="espacio" class="control-label col-md-3"></label>
-                        <label for="menuname" class="control-label col-md-2">Cambiar Password:</label>
-                        <label for="menuname" class="control-label col-md-3">Password Caduca:</label>
-                        <label for="menuname" class="control-label col-md-2">Fecha Caduca:</label>
-                    </div>
-                    <div class="form-group row">
-                       <div class="col-md-4 col-sm-4">
+                        <!-- <label for="menuname" class="control-label col-md-1"></label>
+                        <label for="espacio" class="control-label col-md-3"></label> -->
+                        <div class="col-md-4 col-sm-4">
                             <select class="form-control col-md-4" id="cboDepa" name="cbodepa" style="width: 100%;">
                                 <?php foreach ($cbodepa as $fila) : ?>
                                     <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
-                        
+                        <label for="menuname" class="control-label col-md-2">Cambiar Password:</label>
+                        <label for="menuname" class="control-label col-md-3">Password Caduca:</label>
+                        <label for="menuname" class="control-label col-md-2">Fecha Caduca:</label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="espacio" class="control-label col-md-4"></label>
                         <div class="checkbox col-md-2">
                             <input type="checkbox" id="chkCambiar">
                             <label class="form-check-label" id="lblCambiar">NO</label>
                         </div> 
-
                         <div class="checkbox col-md-2">
                             <input type="checkbox" id="chkCaduca">
                             <label class="form-check-label" id="lblCaduca">NO</label>
@@ -215,7 +215,8 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info btn-lg btn-block" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                    <button type="button" class="btn btn-info" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>

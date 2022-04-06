@@ -88,7 +88,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </td>
                     <td style="text-align: center">
                       <input type="checkbox" class="form-check-input chkEstadoSu" id="chk<?php echo $datos['IdSupe']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                      echo "checked";  } ?> value="<?php echo $datos['IdSupe']; ?>" />                                                     
+                          echo "checked";  } ?> value="<?php echo $datos['IdSupe']; ?>" />                                                     
                     </td>
                   </tr>
                 <?php }
@@ -104,7 +104,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="superModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" id="myModalBg">
@@ -119,7 +118,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
           <br/>
           <fieldset>
             <div class="row">
-              <!-- <label for="cedente" class="control-label col-md-1">Cedente</label> -->
               <label for="espacio" class="control-label col-md-2"></label>
               <div class="form-group col-md-8">
                 <select class="form-control" id="cboCedente" name="cbocedente" style="width:100%;">
@@ -132,7 +130,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
               </div>
             </div>
             <div class="row">
-              <!-- <label for="supervisor" class="control-label col-md-1">Supervisor</label> -->
               <label for="espacio" class="control-label col-md-2"></label>
               <div class="form-group col-md-8">
                 <select class="form-control" id="cboSupervisor" name="cbosupervisor" style="width:100%;">
@@ -147,7 +144,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-info btn-lg btn-block" id="btnSaveSu"><i class='fa fa-save'></i> Guardar</button>
+          <button type="submit" class="btn btn-info" id="btnSaveSu"><i class='fa fa-save'></i> Guardar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </form>
     </div>
@@ -208,6 +206,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
               </div>
             </div>
           </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </form>
     </div>

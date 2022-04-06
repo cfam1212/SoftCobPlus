@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    var _provid, _ciudid, _nivelid, _resultcon = [];
+    var _provid, _ciudid, _nivelid,_idproduc, _resultcon = [];
    
 
     $('#btnRegresar').click(function(){        
@@ -697,7 +697,7 @@ $(document).ready(function(){
                         _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _idpro + '" value="' + _producto + '" /></td>';
                         _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _idpro + '" value="' + _descripcion + '" /></td>';
                         _output += '<td><div class="text-center"><div class="btn-group">'
-                        _output += '<button type="button" name="btnProCat" class="btn btn-outline-primary btn-sm ml-2 btnCatPro" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnProCat' + _idpro + '"><i class="fa fa-upload"></i></button>';
+                        _output += '<button type="button" name="btnProCat" class="btn btn-outline-primary btn-sm ml-2 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="btnProCat' + _idpro + '"><i class="fa fa-upload"></i></button>';
                         _output += '<button type="button" name="btnEditPro" class="btn btn-outline-info btn-sm ml-2 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="btnEditPro' + _idpro + '"><i class="fa fa-pencil-square-o"></i></button>';
                         _output +=  '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idpro +
                                 '" ' + _checked + ' value=' + _idpro + '/></div></td>';
@@ -727,11 +727,13 @@ $(document).ready(function(){
         if(_check){
             _estadopro = 'A';
             $("#btnEditPro" + _idproducto).prop("disabled", "");
+            $("#btnProCat" + _idproducto).prop("disabled", "");
            
         }else 
         {
             _estadopro = 'I';
             $("#btnEditPro" + _idproducto).prop("disabled", "disabled");
+            $("#btnProCat" + _idproducto).prop("disabled", "disabled");
         }
     
         $.ajax({
@@ -747,5 +749,87 @@ $(document).ready(function(){
             }                 
         });
     
-      });
+    });
+
+
+    //MODAL CATALOGO
+    $(document).on("click",".btnProCat",function(){
+
+        $("#formCatalogoEdit").trigger("reset"); 
+        row_id = $(this).attr("id");
+        _idproduc = row_id.substring(9);
+        // _producto = $('#idpro' + row_id + '').val();
+        _tipoSave = 'save';
+
+        // alert(_idproduc);
+
+        FunBuscarCatalogo(_idproduc);
+
+        $('#hidden_row_id').val(row_id);
+        $("#headercat").css("background-color","#BCBABE");
+        $("#headercat").css("color","black");
+        $(".modal-title").text("Agregar Catalogo");       
+        $("#btnAgregar").text("Agregar");
+        $("#modalCATALOGOEDIT").modal("show");
+
+    });
+
+    //FUNCION QUE LISTA CATALOGOS EN FUNCION DEL ID DEL PRODUCTO
+
+    function FunBuscarCatalogo(idpro){
+
+        $("#tblcatalogo").empty();
+        _output = '<thead>';
+        _output += '<tr><th style="display: none;">Id</th>';
+        _output += '<th>Producto</th><th>Cod.Catalogo</th><th>Catalogo</th><th style="text-align: center;">Opciones</th><th style="width:10% ; text-align: center">Estado</th></tr></thead>'
+        $('#tblcatalogo').append(_output);
+
+        _output  = '<tbody>';
+        $('#tblcatalogo').append(_output);  
+        
+        $.ajax({
+            url: "../db/cedentecrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {opcion:9, id:idpro},            
+            success: function(data){
+                $.each(data,function(i,item){                    
+                    _idcat = data[i].Id;
+                    _producto = data[i].Producto;
+                    _codigocat = data[i].Codigo;
+                    _catalogo = data[i].Catalogo;
+                    _estado = data[i].Estado;
+
+                    _checked = '';
+
+                    if(_estado == 'A'){
+                        _checked = 'checked';
+                    }   
+                   
+                    _output = '<tr id="rowcat_' + _idcat + '">';
+                    _output += '<td style="display: none;">' + _idcat + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _idcat + '" value="' + _idcat + '" /></td>';                
+                    _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _idcat + '" value="' + _producto + '" /></td>';
+                    _output += '<td>' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _idcat + '" value="' + _codigocat + '" /></td>';
+                    _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _idcat + '" value="' + _catalogo + '" /></td>';
+                    _output += '<td><div class="text-center"><div class="btn-group">'
+                    _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _idcat + '"><i class="fa fa-pencil-square-o"></i></button>';
+                    // _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-2 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                    _output +=  '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idcat +
+                                '" ' + _checked + ' value=' + _idcat + '/></div></td>';
+                    _output += '</tr>';
+                    
+                    $('#tblcatalogo').append(_output);            
+                });
+            },
+            error: function (error) {
+                console.log(error);
+            }                            
+        }); 
+
+        _output  = '</tbody>';
+        $('#tblcatalogo').append(_output);   
+
+
+
+    }
 });

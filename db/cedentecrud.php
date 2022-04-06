@@ -174,7 +174,13 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(4,0,$producto,$descripcion,'','','',$idproducto,0));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
-        break;            
+        break;
+    case 9:
+        $consulta = "CALL sp_New_Catalogo(?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(1,$idproducto,'','','','','',0,0));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
+        break;                  
 
 }
 

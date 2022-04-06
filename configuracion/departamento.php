@@ -100,17 +100,18 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formDepartamento">
                 <div class="modal-body">
-                    <label for="menuname" class="control-label">Departamento:</label>
+                    <!-- <label for="menuname" class="control-label">Departamento:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12  form-group has-feedback">
-                            <input type="tel" class="form-control has-feedback-left" id="txtDepa" maxlength="80" autocomplete="off">
+                            <input type="tel" class="form-control has-feedback-left" id="txtDepa" placeholder="nombre del departamento" maxlength="80" autocomplete="off">
                             <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-outline-info ml-3" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                    <button type="submit" class="btn btn-info" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>

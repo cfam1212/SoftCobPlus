@@ -10,11 +10,22 @@ $(document).ready(function(){
         handle: ".modal-header"
     });     
 
-    $('#cboCedente').select2();
-    $('#cboSupervisor').select2();
-    $('#cboGestor').select2();
+    // $('#cboCedente').select2();
+    // $('#cboSupervisor').select2();
+    // $('#cboGestor').select2();
     $('#cboCedente2').select2();
     $('#cboSupervisor2').select2();
+
+    $("#cboCedente").select2({
+        dropdownParent: $("#superModal")
+    }); 
+    $("#cboSupervisor").select2({
+        dropdownParent: $("#superModal")
+    }); 
+    $("#cboGestor").select2({
+        dropdownParent: $("#modalGestor")
+    });        
+
 
     //agregar-modal
 

@@ -703,8 +703,6 @@ $(document).ready(function(){
         _output += '<th>Producto</th><th>Cod.Catalogo</th><th>Catalogo</th><th style="text-align: center;">Opciones</th></tr></thead>'
         $('#tblcatalogo').append(_output);
         
-        //console.log(_output);
-        
         _output  = '<tbody>';
         $('#tblcatalogo').append(_output);   
                
@@ -953,118 +951,118 @@ $(document).ready(function(){
     };   
 
      //Agencias
-    $('#btnAgencia').click(function(){
+    // $('#btnAgencia').click(function(){
 
-      _codigoagen = $('#txtCodigoAge').val();
-      _agencia = $('#txtAgencia').val();      
-      _cbosucursal = $('#cboSucursal').val();
-      _sucursal =$("#cboSucursal option:selected").text(); 
-      _cbozona = $('#cboZona').val();     
-      _zona =$("#cboZona option:selected").text();
-      _estadoagen = 'Activo';
-      _continuaragen = true;
+    //   _codigoagen = $('#txtCodigoAge').val();
+    //   _agencia = $('#txtAgencia').val();      
+    //   _cbosucursal = $('#cboSucursal').val();
+    //   _sucursal =$("#cboSucursal option:selected").text(); 
+    //   _cbozona = $('#cboZona').val();     
+    //   _zona =$("#cboZona option:selected").text();
+    //   _estadoagen = 'Activo';
+    //   _continuaragen = true;
 
-      if(_codigoagen == '')
-      {
-          mensajesalertify("Ingrese Codigo..!","W","top-right",3);
-          return;
-      } 
+    //   if(_codigoagen == '')
+    //   {
+    //       mensajesalertify("Ingrese Codigo..!","W","top-right",3);
+    //       return;
+    //   } 
       
-      if(_agencia == '')
-      {
-          mensajesalertify("Ingrese Agencia..!","W","top-right",3);
-          return;
-      } 
+    //   if(_agencia == '')
+    //   {
+    //       mensajesalertify("Ingrese Agencia..!","W","top-right",3);
+    //       return;
+    //   } 
 
-      if(_cbosucursal == '0')
-      {
-          mensajesalertify("Seleccione Sucursal..!","W","top-right",3);
-          return;
-      }
+    //   if(_cbosucursal == '0')
+    //   {
+    //       mensajesalertify("Seleccione Sucursal..!","W","top-right",3);
+    //       return;
+    //   }
       
-      $.each(_resultage,function(i,item)
-      {
-          if(item.arryagencia.toUpperCase() == _agencia.toUpperCase())
-          {                        
-              mensajesalertify("Agencia ya Existe..!","W","top-right",3); 
-              _continuaragen = false;
-              return false;
-          }else{
-            _continuaragen = true;
-          }
-      });
+    //   $.each(_resultage,function(i,item)
+    //   {
+    //       if(item.arryagencia.toUpperCase() == _agencia.toUpperCase())
+    //       {                        
+    //           mensajesalertify("Agencia ya Existe..!","W","top-right",3); 
+    //           _continuaragen = false;
+    //           return false;
+    //       }else{
+    //         _continuaragen = true;
+    //       }
+    //   });
 
-      if(_continuaragen)
-      {
-          _countagen++;
-          _output = '<tr id="rowage_' + _countagen + '">';
-          _output += '<td style="display: none;">' + _countagen + ' <input type="hidden" name="hidden_codigo[]" id="codigoagen' + _countagen + '" value="' + _countagen + '" /></td>';                
-          _output += '<td>' + _agencia + ' <input type="hidden" name="hidden_agencia[]" id="txtAgencia' + _countagen + '" value="' + _agencia + '" /></td>';
-          _output += '<td class="text-center">' + _codigoagen + ' <input type="hidden" name="hidden_codigo[]" id="txtCodigoAgen' + _countagen + '" value="' + _codigoagen + '" /></td>';
-          _output += '<td style="display: none;" class="text-center">' + _cbosucursal + ' <input type="hidden" name="hidden_codigosucursal[]" id="codigoSucursal' + _countagen + '" value="' + _cbosucursal + '" /></td>';
-          _output += '<td class="text-center">' + _sucursal + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + _countagen + '" value="' + _sucursal + '" /></td>';
-          _output += '<td style="display: none;" class="text-center">' + _cbozona + ' <input type="hidden" name="hidden_codigozona[]" id="codigoZona' + _countagen + '" value="' + _cbozona + '" /></td>';
-          _output += '<td class="text-center">' + _zona + ' <input type="hidden" name="hidden_zona[]" id="cboZona' + _countagen + '" value="' + _zona + '" /></td>';
-          _output += '<td class="text-center">' + _estadoagen + ' <input type="hidden" name="hidden_email1[]" id="txtEstadoAg' + _countagen + '" value="' + _estadoagen + '" /></td>';
-          _output += '<td><div class="text-center"><div class="btn-group">'
-          _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countagen + '"><i class="fa fa-pencil-square-o"></i></button>';
-          _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-2 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countagen + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-          _output += '</tr>';
+    //   if(_continuaragen)
+    //   {
+    //       _countagen++;
+    //       _output = '<tr id="rowage_' + _countagen + '">';
+    //       _output += '<td style="display: none;">' + _countagen + ' <input type="hidden" name="hidden_codigo[]" id="codigoagen' + _countagen + '" value="' + _countagen + '" /></td>';                
+    //       _output += '<td>' + _agencia + ' <input type="hidden" name="hidden_agencia[]" id="txtAgencia' + _countagen + '" value="' + _agencia + '" /></td>';
+    //       _output += '<td class="text-center">' + _codigoagen + ' <input type="hidden" name="hidden_codigo[]" id="txtCodigoAgen' + _countagen + '" value="' + _codigoagen + '" /></td>';
+    //       _output += '<td style="display: none;" class="text-center">' + _cbosucursal + ' <input type="hidden" name="hidden_codigosucursal[]" id="codigoSucursal' + _countagen + '" value="' + _cbosucursal + '" /></td>';
+    //       _output += '<td class="text-center">' + _sucursal + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + _countagen + '" value="' + _sucursal + '" /></td>';
+    //       _output += '<td style="display: none;" class="text-center">' + _cbozona + ' <input type="hidden" name="hidden_codigozona[]" id="codigoZona' + _countagen + '" value="' + _cbozona + '" /></td>';
+    //       _output += '<td class="text-center">' + _zona + ' <input type="hidden" name="hidden_zona[]" id="cboZona' + _countagen + '" value="' + _zona + '" /></td>';
+    //       _output += '<td class="text-center">' + _estadoagen + ' <input type="hidden" name="hidden_email1[]" id="txtEstadoAg' + _countagen + '" value="' + _estadoagen + '" /></td>';
+    //       _output += '<td><div class="text-center"><div class="btn-group">'
+    //       _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countagen + '"><i class="fa fa-pencil-square-o"></i></button>';
+    //       _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-2 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countagen + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+    //       _output += '</tr>';
           
-          $('#tblagencia').append(_output);
+    //       $('#tblagencia').append(_output);
 
-          _objeto = {
-              arrycodigo : parseInt(_countagen),
-              arryagencia : _agencia,
-              arrycodigoagen : _codigoagen,
-              arrysucursal : _sucursal,
-              arryzona : _zona,
-              arryestado : _estadoagen,
-          }
+    //       _objeto = {
+    //           arrycodigo : parseInt(_countagen),
+    //           arryagencia : _agencia,
+    //           arrycodigoagen : _codigoagen,
+    //           arrysucursal : _sucursal,
+    //           arryzona : _zona,
+    //           arryestado : _estadoagen,
+    //       }
 
-          _resultage.push(_objeto);  
+    //       _resultage.push(_objeto);  
 
-          $('#txtCodigoAge').val('');
-          $('#txtAgencia').val('');          
-          $('#cboSucursal').val('0').change();
-          $('#cboZona').val('0').change();                             
-      }       
-    });
+    //       $('#txtCodigoAge').val('');
+    //       $('#txtAgencia').val('');          
+    //       $('#cboSucursal').val('0').change();
+    //       $('#cboZona').val('0').change();                             
+    //   }       
+    // });
 
     //Modal Agencia-editar
 
-    $(document).on("click",".btnEditAgencia",function(){
-        $("#formAgencia").trigger("reset"); 
-        _idagencia = $(this).attr("id");
-        _agenciaold = $('#txtAgencia' + _idagencia + '').val();
-        _codigoldagen = $('#txtCodigoAgen' + _idagencia + '').val();
-        _sucursalold = $('#codigoSucursal' + _idagencia + '').val();
-        _zonaold = $('#codigoZona' + _idagencia + '').val();
-        _estadoagen = $('#txtEstadoAg' + _idagencia + '').val();
-        _tipoSave = 'edit';
+    // $(document).on("click",".btnEditAgencia",function(){
+    //     $("#formAgencia").trigger("reset"); 
+    //     _idagencia = $(this).attr("id");
+    //     _agenciaold = $('#txtAgencia' + _idagencia + '').val();
+    //     _codigoldagen = $('#txtCodigoAgen' + _idagencia + '').val();
+    //     _sucursalold = $('#codigoSucursal' + _idagencia + '').val();
+    //     _zonaold = $('#codigoZona' + _idagencia + '').val();
+    //     _estadoagen = $('#txtEstadoAg' + _idagencia + '').val();
+    //     _tipoSave = 'edit';
 
 
-        $('#txtAgenciaMo').val(_agenciaold);
-        $('#txtCodigoAgeMo').val(_codigoldagen);
-        $('#cboSucursalMo').val(_sucursalold).change();
-        $('#cboZonaMo').val(_zonaold).change();
+    //     $('#txtAgenciaMo').val(_agenciaold);
+    //     $('#txtCodigoAgeMo').val(_codigoldagen);
+    //     $('#cboSucursalMo').val(_sucursalold).change();
+    //     $('#cboZonaMo').val(_zonaold).change();
 
-        if(_estadoagen == "Activo"){
-            $("#chkEstadoAg").prop("checked", true);
-            $("#lblEstadoAg").text("Activo");
-        }else{
-            $("#chkEstadoAg").prop("checked", false);
-            $("#lblEstadoAg").text("Inactivo");
-        }
+    //     if(_estadoagen == "Activo"){
+    //         $("#chkEstadoAg").prop("checked", true);
+    //         $("#lblEstadoAg").text("Activo");
+    //     }else{
+    //         $("#chkEstadoAg").prop("checked", false);
+    //         $("#lblEstadoAg").text("Inactivo");
+    //     }
   
-        // $('#hidden_row_id').val(row_id);
-        $("#headeragencia").css("background-color","#BCBABE");
-        $("#headeragencia").css("color","black");
-        $(".modal-title").text("Editar Agencia");       
-        $("#btnAgregar").text("Modificar");
-        $("#modalAGENCIA").modal("show");
+    //     // $('#hidden_row_id').val(row_id);
+    //     $("#headeragencia").css("background-color","#BCBABE");
+    //     $("#headeragencia").css("color","black");
+    //     $(".modal-title").text("Editar Agencia");       
+    //     $("#btnAgregar").text("Modificar");
+    //     $("#modalAGENCIA").modal("show");
 
-    });
+    // });
 
     //cheked agencia-modal
     $("#chkEstadoAg").click(function(){
@@ -1112,129 +1110,129 @@ $(document).ready(function(){
 
     //button modificar agencia
 
-    $('#btnEditAgencia').click(function(){
+    // $('#btnEditAgencia').click(function(){
 
-        //debugger;
+    //     //debugger;
 
-        let _continuage = false;
-        let _newagencia = $.trim($('#txtAgenciaMo').val());
-        let _newcodigo = $.trim($('#txtCodigoAgeMo').val());
-        let _newcbosucursal = $('#cboSucursalMo').val();
-        let _newsucursal = $("#cboSucursalMo option:selected").text();
-        let _newcbozona = $('#cboZonaMo').val();
-        let _newzona = $("#cboZonaMo option:selected").text();  
+    //     let _continuage = false;
+    //     let _newagencia = $.trim($('#txtAgenciaMo').val());
+    //     let _newcodigo = $.trim($('#txtCodigoAgeMo').val());
+    //     let _newcbosucursal = $('#cboSucursalMo').val();
+    //     let _newsucursal = $("#cboSucursalMo option:selected").text();
+    //     let _newcbozona = $('#cboZonaMo').val();
+    //     let _newzona = $("#cboZonaMo option:selected").text();  
         
         
-        if(_newagencia == ''){
-            mensajesalertify("Ingrese Agencia..!!","W","top-right",5);
-            return;
-        }
+    //     if(_newagencia == ''){
+    //         mensajesalertify("Ingrese Agencia..!!","W","top-right",5);
+    //         return;
+    //     }
         
-        if(_agenciaold.toUpperCase() != _newagencia.toUpperCase()){
-            $.each(_resultage,function(i,item)
-            {
-                if(item.arryagencia.toUpperCase() == _newagencia.toUpperCase())
-                {
-                    mensajesalertify("Agencia ya Existe..!","W","top-right",3); 
-                    _continuage = false;
-                    return false;
-                }else
-                {
-                    _continuage = true;
-                }
+    //     if(_agenciaold.toUpperCase() != _newagencia.toUpperCase()){
+    //         $.each(_resultage,function(i,item)
+    //         {
+    //             if(item.arryagencia.toUpperCase() == _newagencia.toUpperCase())
+    //             {
+    //                 mensajesalertify("Agencia ya Existe..!","W","top-right",3); 
+    //                 _continuage = false;
+    //                 return false;
+    //             }else
+    //             {
+    //                 _continuage = true;
+    //             }
 
-            });
-        }else  _continuage = true;
+    //         });
+    //     }else  _continuage = true;
 
-        if(_continuage)
-        {
+    //     if(_continuage)
+    //     {
 
-            FunRemoveItemAgencia(_resultage, _agenciaold);
+    //         FunRemoveItemAgencia(_resultage, _agenciaold);
 
-            _objeto = {
-                arrycodigo : parseInt(_idagencia),
-                arryagencia : _newagencia,
-                arrycodigoagen : _newcodigo,
-                arrysucur : _newsucursal,
-                arrysucursal : _newcbosucursal,
-                arryzo : _newzona,
-                arryzona : _newcbozona,
-                arryestado : _estadoagen,
-            }
-               debugger;
-            _resultage.push(_objeto);
+    //         _objeto = {
+    //             arrycodigo : parseInt(_idagencia),
+    //             arryagencia : _newagencia,
+    //             arrycodigoagen : _newcodigo,
+    //             arrysucur : _newsucursal,
+    //             arrysucursal : _newcbosucursal,
+    //             arryzo : _newzona,
+    //             arryzona : _newcbozona,
+    //             arryestado : _estadoagen,
+    //         }
+    //            debugger;
+    //         _resultage.push(_objeto);
             
-            $("#modalAGENCIA").modal("hide"); 
-            // $("tbody").children().remove();
-            $("#tblagencia").empty();
+    //         $("#modalAGENCIA").modal("hide"); 
+    //         // $("tbody").children().remove();
+    //         $("#tblagencia").empty();
 
-            _output = '<thead class="text-center"';
-            _output += '<tr><th style="display: none;">Id</th>';
-            _output += '<th>Agencia</th><th>Codigo</th><th>Sucursal</th><th>Zona</th><th>Estado</th><th>Acciones</th></tr></thead>'
-            $('#tblagencia').append(_output); 
+    //         _output = '<thead class="text-center"';
+    //         _output += '<tr><th style="display: none;">Id</th>';
+    //         _output += '<th>Agencia</th><th>Codigo</th><th>Sucursal</th><th>Zona</th><th>Estado</th><th>Acciones</th></tr></thead>'
+    //         $('#tblagencia').append(_output); 
 
-            _output  = '<tbody>';
-            $('#tblagencia').append(_output); 
+    //         _output  = '<tbody>';
+    //         $('#tblagencia').append(_output); 
 
-            _resultage.sort((a,b) => a.arrycodigo - b.arrycodigo)
+    //         _resultage.sort((a,b) => a.arrycodigo - b.arrycodigo)
 
-            $.each(_resultage, function(i,item){
+    //         $.each(_resultage, function(i,item){
                
-                _output = '<tr id="rowage_' + item.arrycodigo + '">';
-                _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigoagen' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
-                _output += '<td>' + item.arryagencia + ' <input type="hidden" name="hidden_agencia[]" id="txtAgencia' + item.arrycodigo + '" value="' + item.arryagencia + '" /></td>';
-                _output += '<td class="text-center">' + item.arrycodigoagen + ' <input type="hidden" name="hidden_codigo[]" id="txtCodigoAgen' + item.arrycodigo + '" value="' + item.arrycodigoagen + '" /></td>';
-                _output += '<td class="text-center">' + item.arrysucur + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + item.arrycodigo + '" value="' + item.arrysucur + '" /></td>';
-                _output += '<td style="display: none;" class="text-center">' + item.arrysucursal + ' <input type="hidden" name="hidden_codigosucursal[]" id="codigoSucursal' + item.arrycodigo + '" value="' + item.arrysucursal + '" /></td>';
-                _output += '<td class="text-center">' + item.arryzo + ' <input type="hidden" name="hidden_zona[]" id="cboZona' + item.arrycodigo + '" value="' + item.arryzo + '" /></td>';
-                _output += '<td style="display: none;" class="text-center">' + item.arryzona + ' <input type="hidden" name="hidden_codigozona[]" id="codigoZona' + item.arrycodigo + '" value="' + item.arryzona + '" /></td>';
-                _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_email1[]" id="txtEstadoAg' + item.arrycodigo + '" value="' + item.arryestado + '" /></td>';
-                _output += '<td><div class="text-center"><div class="btn-group">'
-                _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
-                _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-                _output += '</tr>';
+    //             _output = '<tr id="rowage_' + item.arrycodigo + '">';
+    //             _output += '<td style="display: none;">' + item.arrycodigo + ' <input type="hidden" name="hidden_codigo[]" id="codigoagen' + item.arrycodigo + '" value="' + item.arrycodigo + '" /></td>';                
+    //             _output += '<td>' + item.arryagencia + ' <input type="hidden" name="hidden_agencia[]" id="txtAgencia' + item.arrycodigo + '" value="' + item.arryagencia + '" /></td>';
+    //             _output += '<td class="text-center">' + item.arrycodigoagen + ' <input type="hidden" name="hidden_codigo[]" id="txtCodigoAgen' + item.arrycodigo + '" value="' + item.arrycodigoagen + '" /></td>';
+    //             _output += '<td class="text-center">' + item.arrysucur + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + item.arrycodigo + '" value="' + item.arrysucur + '" /></td>';
+    //             _output += '<td style="display: none;" class="text-center">' + item.arrysucursal + ' <input type="hidden" name="hidden_codigosucursal[]" id="codigoSucursal' + item.arrycodigo + '" value="' + item.arrysucursal + '" /></td>';
+    //             _output += '<td class="text-center">' + item.arryzo + ' <input type="hidden" name="hidden_zona[]" id="cboZona' + item.arrycodigo + '" value="' + item.arryzo + '" /></td>';
+    //             _output += '<td style="display: none;" class="text-center">' + item.arryzona + ' <input type="hidden" name="hidden_codigozona[]" id="codigoZona' + item.arrycodigo + '" value="' + item.arryzona + '" /></td>';
+    //             _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_email1[]" id="txtEstadoAg' + item.arrycodigo + '" value="' + item.arryestado + '" /></td>';
+    //             _output += '<td><div class="text-center"><div class="btn-group">'
+    //             _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
+    //             _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+    //             _output += '</tr>';
                 
-                $('#tblagencia').append(_output);
-            });
+    //             $('#tblagencia').append(_output);
+    //         });
 
-            _output  = '</tbody>';
-            $('#tblagencia').append(_output);  
-        }
+    //         _output  = '</tbody>';
+    //         $('#tblagencia').append(_output);  
+    //     }
 
-    });
+    // });
 
     //eliminar -agencia-modal
 
-    $(document).on("click",".btnDeleteAgencia",function(){
+    // $(document).on("click",".btnDeleteAgencia",function(){
         
-        _idagen = $(this).attr("id");
+    //     _idagen = $(this).attr("id");
 
-        _agenciadelete = $('#txtAgencia' + _idagen + '').val();
+    //     _agenciadelete = $('#txtAgencia' + _idagen + '').val();
         
-        alertify.confirm('La Agencia sera eliminada..!!', 'Esta seguro de eliminar' +' '+ _agenciadelete +'..?' , function(){ 
+    //     alertify.confirm('La Agencia sera eliminada..!!', 'Esta seguro de eliminar' +' '+ _agenciadelete +'..?' , function(){ 
 
-            FunRemoveItemAgencia(_resultage, _agenciadelete);
-            $('#rowage_' + _idagen + '').remove();
-            _countagen--;
-            mensajesalertify("Agencia Eliminada","E","top-center",2);
-         }
-        , function(){ });
-    });
+    //         FunRemoveItemAgencia(_resultage, _agenciadelete);
+    //         $('#rowage_' + _idagen + '').remove();
+    //         _countagen--;
+    //         mensajesalertify("Agencia Eliminada","E","top-center",2);
+    //      }
+    //     , function(){ });
+    // });
 
-    //Remove Agencia
-    function FunRemoveItemAgencia(arryage, detage)
-    {
-        debugger;
-        $.each(arryage,function(i,item){
-            if(item.arryagencia == detage)
-            {
-                arryage.splice(i, 1);
-                return false;
-            }else{
-                continuar = true;
-            }
-        });        
-    };     
+    // //Remove Agencia
+    // function FunRemoveItemAgencia(arryage, detage)
+    // {
+    //     debugger;
+    //     $.each(arryage,function(i,item){
+    //         if(item.arryagencia == detage)
+    //         {
+    //             arryage.splice(i, 1);
+    //             return false;
+    //         }else{
+    //             continuar = true;
+    //         }
+    //     });        
+    // };     
 
     //GRABAR CEDENTE
 
