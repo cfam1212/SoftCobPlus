@@ -472,10 +472,6 @@ $(document).ready(function(){
             table.deleteRow(tableHeaderRowCount);
         }  
         
-        // if(_estado == 'Activo'){
-        //     _checked = 'checked';
-        // }
-
 
         if(_producto == '')
         {

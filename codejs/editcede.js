@@ -758,10 +758,7 @@ $(document).ready(function(){
         $("#formCatalogoEdit").trigger("reset"); 
         row_id = $(this).attr("id");
         _idproduc = row_id.substring(9);
-        // _producto = $('#idpro' + row_id + '').val();
-        _tipoSave = 'save';
-
-        // alert(_idproduc);
+      
 
         FunBuscarCatalogo(_idproduc);
 
@@ -806,14 +803,13 @@ $(document).ready(function(){
                         _checked = 'checked';
                     }   
                    
-                    _output = '<tr id="rowcat_' + _idcat + '">';
+                    _output =  '<tr id="rowcat_' + _idcat + '">';
                     _output += '<td style="display: none;">' + _idcat + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _idcat + '" value="' + _idcat + '" /></td>';                
                     _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _idcat + '" value="' + _producto + '" /></td>';
                     _output += '<td>' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _idcat + '" value="' + _codigocat + '" /></td>';
                     _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _idcat + '" value="' + _catalogo + '" /></td>';
                     _output += '<td><div class="text-center"><div class="btn-group">'
-                    _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _idcat + '"><i class="fa fa-pencil-square-o"></i></button>';
-                    // _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-2 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+                    _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-2 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _idcat + '"><i class="fa fa-pencil-square-o"></i></button>';
                     _output +=  '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idcat +
                                 '" ' + _checked + ' value=' + _idcat + '/></div></td>';
                     _output += '</tr>';
@@ -828,8 +824,81 @@ $(document).ready(function(){
 
         _output  = '</tbody>';
         $('#tblcatalogo').append(_output);   
+    }
 
+   //AGREGAR CATALOGO-PRODUCTO DIRECTO A LA BDD
+   $(document).on("click","#btnAddCatalogo",function(){
+
+
+     let _codigo = $('#txtCodigoMo').val();
+     let _catalogo = $('#txtCatalogoMo').val();
+     let _estado = 'A';
+     let _continuacat = true;
+
+     if(_codigo == '')
+     {
+         mensajesalertify("Ingrese Codigo..!","W","top-right",3);
+         _continuacat = false;
+         return false;
+        
+     }
+
+     if(_catalogo == '')
+     {
+         mensajesalertify("Ingrese Nombre del Catalogo..!","W","top-right",3);
+         _continuacat = false;
+         return false;
+     }
+
+    if(_continuacat)
+    {
+
+        $.ajax({
+            url: "../db/cedentecrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {opcion:10, id:_idproduc, codigo:_codigo, catalogo:_catalogo, estado:_estado},            
+            success: function(data){
+                if(data[0].Existe == 'Existe'){
+                    mensajesalertify("Catalogo ya Existe..!!","W","top-right",3); 
+                }else{
+                    _idcatalogo = data[0].Id;
+                    _producto = data[0].Producto;
+                    _codigocat = data[0].Codigo;
+                    _catalogo = data[0].Catalogo
+                    _estado = data[0].Estado;
+
+                    _checked = '';
+
+                    if(_estado == 'A'){
+                        _checked = 'checked';
+                    }   
+
+                    _output =  '<tr id="rowcat_' + _idcatalogo + '">';
+                    _output += '<td style="display: none;">' + _idcatalogo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _idcatalogo + '" value="' + _idcatalogo + '" /></td>';                
+                    _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _idcatalogo + '" value="' + _producto + '" /></td>';
+                    _output += '<td>' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _idcatalogo + '" value="' + _codigocat + '" /></td>';
+                    _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _idcatalogo + '" value="' + _catalogo + '" /></td>';
+                    _output += '<td><div class="text-center"><div class="btn-group">'
+                    _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-2 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _idcatalogo + '"><i class="fa fa-pencil-square-o"></i></button></td>';
+                    _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoCa" id="chk' + _idcatalogo +
+                               '" ' + _checked + ' value=' + _idcatalogo + '/></div></td>';
+                    _output += '</tr>';
+                    
+                    $('#tblcatalogo').append(_output);
+
+            
+                    $("#modalCATALOGOEDIT").modal("hide");
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }                            
+        }); 
 
 
     }
+
+   });
+
 });

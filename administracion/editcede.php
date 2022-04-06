@@ -129,7 +129,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="menuname" class="control-label col-md-2">Telefono 1:</label>
                                             <label for="espacio" class="control-label col-md-2"></label>
                                             <label for="menuname" class="control-label col-md-2">Telefono 2:</label>
-                                            <label for="espacio" class="control-label col-md-3"></label>
+                                            <label for="espacio" class="control-label col-md-2"></label>
                                             <label for="menuname" class="control-label col-md-1">Fax:</label>
                                         </div>
                                         <div class="form-group row">
@@ -396,7 +396,6 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="modalEDITPRODUCTO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModalBg">
@@ -424,13 +423,13 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnprodedit" class="btn btn-info btn-lg btn-block"><i class="fa fa-save"> Modificar</i></button>
+                    <button type="button" id="btnprodedit" class="btn btn-info"><i class="fa fa-save"> Modificar</i></button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="modalEDITCONTACTO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModalBg">
@@ -518,7 +517,8 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </form>
             <div class="modal-footer">
                 <input type="hidden" name="conid" id="conid">
-                <button type="button" id="btnEditarCon" class="btn btn-info btn-lg btn-block"> Modificar</button>
+                <button type="button" id="btnEditarCon" class="btn btn-info"> Modificar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -552,7 +552,8 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAddCatalogo" class="btn btn-info btn-lg btn-block"><i class='fa fa-plus'></i> Agregar</button>
+                    <button type="button" id="btnAddCatalogo" class="btn btn-info"><i class='fa fa-plus'></i> Agregar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
