@@ -28,6 +28,7 @@ $resultproducto = (isset($_POST['resultproducto'])) ? $_POST['resultproducto'] :
 $resultcatalogo = (isset($_POST['resultcatalogo'])) ? $_POST['resultcatalogo'] : '';
 $resultagencia = (isset($_POST['resultagencia'])) ? $_POST['resultagencia'] : '';
 $idproducto = (isset($_POST['id'])) ? $_POST['id'] : '0';
+$idcatalogo = (isset($_POST['id'])) ? $_POST['id'] : '0';
 $producto = (isset($_POST['producto'])) ? $_POST['producto'] : '';
 $descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
 $codigocat = (isset($_POST['codigo'])) ? $_POST['codigo'] : '';
@@ -188,7 +189,13 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(2,$idproducto,$codigocat,$catalogo,$estado,'','',0,0));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
-        break;                       
+        break;
+    case 11:// UPDATE CATALOGO-PRODUCTO
+        $consulta = "CALL sp_New_Catalogo(?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(3,0,'',$catalogo,'','','',$idcatalogo,0));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
+        break;                              
 
 }
 

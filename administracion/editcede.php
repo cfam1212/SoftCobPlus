@@ -559,6 +559,42 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
+<div class="modal fade" id="modalEDITCATALOGO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 35%" role="document">
+        <div class="modal-content" id="myModalBg">
+            <div class="modal-header" id="headercat">
+                <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formEdit">
+                <div class="modal-body">
+                    <br/>
+                    <div class="row">
+                        <label for="menuname" class="control-label col-md-2"></label>
+                        <div class="col-md-8 col-sm-8  form-group has-feedback">
+                            <input type="tel" readonly class="form-control has-feedback-left" id="txtCodigo" placeholder="codigo" maxlength="10">
+                            <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="menuname" class="control-label col-md-2"></label>
+                        <div class="col-md-8 col-sm-8  form-group has-feedback">
+                            <input type="text" class="form-control has-feedback-left" id="txtCatalogo" placeholder="nombre del catalogo" maxlength="250">
+                            <span class="fa fa-file-text form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="row_id" id="hidden_row_id" />
+                    <button type="button" id="btnEditCatalogo" class="btn btn-info"><i class='fa fa-plus'></i></button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>

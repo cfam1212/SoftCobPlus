@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    var _provid, _ciudid, _nivelid,_idproduc, _resultcon = [];
+    var _provid, _ciudid, _nivelid,_idproduc, _resultcon = [], _resulcatalogo = [],_catalogold, _idcat;
    
 
     $('#btnRegresar').click(function(){        
@@ -611,7 +611,7 @@ $(document).ready(function(){
                             '" ' + _checked + ' value=' + _idpro + '/></div></td>';
 
 
-                    console.log(_output);
+                  
                     $('#rowpro_' + _idpro + '').html(_output);        
                     
                     $("#modalEDITPRODUCTO").modal("hide");
@@ -809,12 +809,24 @@ $(document).ready(function(){
                     _output += '<td>' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _idcat + '" value="' + _codigocat + '" /></td>';
                     _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _idcat + '" value="' + _catalogo + '" /></td>';
                     _output += '<td><div class="text-center"><div class="btn-group">'
-                    _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-2 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _idcat + '"><i class="fa fa-pencil-square-o"></i></button>';
-                    _output +=  '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idcat +
+                    _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-2 btnEditCat" id="edit' + _idcat + '" data-toggle="tooltip" data-placement="top" title="editar"><i class="fa fa-pencil-square-o"></i></button></div></div></td>';
+                    _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idcat +
                                 '" ' + _checked + ' value=' + _idcat + '/></div></td>';
                     _output += '</tr>';
                     
-                    $('#tblcatalogo').append(_output);            
+                    $('#tblcatalogo').append(_output);  
+
+                    _objeto = {
+                        arrycodigo : parseInt(_idcat),
+                        arryproducto : _producto,
+                        arrycodigocat : _codigocat,
+                        arrycatalogo : _catalogo
+                            }
+                    
+                    _resulcatalogo.push(_objeto);
+                    //  console.log(_resulcatalogo);
+                    
+                    
                 });
             },
             error: function (error) {
@@ -880,12 +892,14 @@ $(document).ready(function(){
                     _output += '<td>' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _idcatalogo + '" value="' + _codigocat + '" /></td>';
                     _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _idcatalogo + '" value="' + _catalogo + '" /></td>';
                     _output += '<td><div class="text-center"><div class="btn-group">'
-                    _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-2 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _idcatalogo + '"><i class="fa fa-pencil-square-o"></i></button></td>';
+                    _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-2 btnEditCat" id="edit' + _idcatalogo + '" data-toggle="tooltip" data-placement="top" title="editar"><i class="fa fa-pencil-square-o"></i></button></div></div></td>';
                     _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoCa" id="chk' + _idcatalogo +
                                '" ' + _checked + ' value=' + _idcatalogo + '/></div></td>';
                     _output += '</tr>';
                     
                     $('#tblcatalogo').append(_output);
+
+                  
 
             
                     $("#modalCATALOGOEDIT").modal("hide");
@@ -900,5 +914,85 @@ $(document).ready(function(){
     }
 
    });
+
+   //MODAL EDITAR CATALOGO
+
+   $(document).on("click",".btnEditCat",function(){
+
+    $("#formEdit").trigger("reset"); 
+    let row_id = $(this).attr("id");
+    _idcat = row_id.substring(4);
+
+    _codigo = $('#txtCodigoCat' + _idcat).val();
+    _catalogold = $('#txtCatalogo' + _idcat).val();
+
+
+    $('#txtCodigo').val(_codigo);
+    $('#txtCatalogo').val(_catalogold);
+
+    $('#hidden_row_id').val(_idcat);
+    $("#headercat").css("background-color","#BCBABE");
+    $("#headercat").css("color","black");
+    $(".modal-title").text("Editar Catalogo");       
+    $("#btnEditCatalogo").text("Modificar");
+    $("#modalEDITCATALOGO").modal("show");
+
+});
+
+// AGREGAR NUEVO CATALOGO DESDE EDITAR MODAL-CATALOGO DIRECTO A LA BDD
+
+$("#btnEditCatalogo").click(function(){
+
+    let  _continuacat = true;
+
+    _newcatalogo = $('#txtCatalogo').val();
+
+   
+
+    if(_newcatalogo == '')
+    {
+        mensajesalertify("Ingrese Nombre del Catalogo..!","W","top-right",3);
+        _continuacat = false;
+        return false;
+    }  
+
+    if(_catalogold.toUpperCase() != _newcatalogo.toUpperCase())
+    {
+        $.each(_resulcatalogo,function(i,item)
+        {
+            if(item.arrycatalogo.toUpperCase() == _newcatalogo.toUpperCase())
+            {                        
+                mensajesalertify("Nombre del Catalogo ya Existe..!!","W","top-right",3); 
+                _continuacat = false;
+                return false;
+            }
+            else _continuacat = true;
+        });
+    }else _continuacat = true;
+
+    if(_continuacat){
+
+        $.ajax({
+            url: "../db/cedenterocrud.php",
+            type: "POST",
+            dataType: "json",
+            data: {id:_idcat, catalogo:_newcatalogo, opcion:11},            
+            success: function(data){
+               
+
+                            
+            },
+            error: function (error) {
+                console.log(error);
+            }                          
+        });
+
+        $("#modalEDITCATALOGO").modal("hide");
+
+
+    }
+
+});
+
 
 });
