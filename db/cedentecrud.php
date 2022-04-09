@@ -195,7 +195,13 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(3,0,'',$catalogo,'','','',$idcatalogo,0));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
-        break;                              
+        break;
+    case 12:// UPDATE ESTADO CATALOGO
+        $consulta = "CALL sp_New_Catalogo(?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(4,0,'','',$estado,'','',$idcatalogo,0));
+        $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
+        break;                                
 
 }
 
