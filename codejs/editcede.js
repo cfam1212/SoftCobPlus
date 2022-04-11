@@ -917,7 +917,6 @@ $(document).ready(function(){
                     $('#tblcatalogo').append(_output);
 
                   
-
             
                     $("#modalCATALOGOEDIT").modal("hide");
                 }
@@ -943,7 +942,6 @@ $(document).ready(function(){
     _codigo = $('#txtCodigoCat' + _idcat).val();
     _catalogold = $('#txtCatalogo' + _idcat).val();
 
-    alert(_idproduc);
 
     $('#txtCodigo').val(_codigo);
     $('#txtCatalogo').val(_catalogold);
