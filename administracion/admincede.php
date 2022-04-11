@@ -458,7 +458,8 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAddCatalogo" class="btn btn-info btn-lg btn-block"><i class='fa fa-plus'></i> Agregar</button>
+                    <button type="button" id="btnAddCatalogo" class="btn btn-primary"><i class='fa fa-plus'></i> Agregar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
