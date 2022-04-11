@@ -23,33 +23,36 @@ require_once '../dashmenu/panel_menu.php';
                 </div>
                 <div class="x_content">
                     <br />
-                    <form class="form-horizontal form-label-left">
+                    <form class="form-horizontal col-md-10 offset-md-1">
+                        <br />
                         <div class="form-group row">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Contraseña Actual:</label>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <input type="password" id="txtcontactual" class="form-control" autocomplete="off" maxlength="50">
-                                <span class="fa fa-key form-control-feedback right" aria-hidden="true"></span>
+                            <label for="espacio" class="control-label col-md-1"></label>
+                            <div class="col-md-10 col-sm-9 col-xs-9">
+                                <input type="password" id="txtcontactual" class="form-control has-feedback-left" autocomplete="off" placeholder="contraseña actual" maxlength="50">
+                                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
                             </div>
                         </div>
+                        <br/>
                         <div class="form-group row">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Nueva Contraseña:</label>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <input type="password" id="txtcontnueva" class="form-control" autocomplete="off" maxlength="50">
-                                <span class="fa fa-key form-control-feedback right" aria-hidden="true"></span>
+                            <label for="espacio" class="control-label col-md-1"></label>
+                            <div class="col-md-10 col-sm-9 col-xs-9">
+                                <input type="password" id="txtcontnueva" class="form-control has-feedback-left" placeholder="nueva contraseña" autocomplete="off" maxlength="50">
+                                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
                             </div>
                         </div>
+                        <br/>
                         <div class="form-group row">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Confirmar:</label>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <input type="password" id="txtconfcont" class="form-control" autocomplete="off" maxlength="50">
-                                <span class="fa fa-check-square-o form-control-feedback right" aria-hidden="true"></span>
+                            <label for="espacio" class="control-label col-md-1"></label>    
+                            <div class="col-md-10 col-sm-9 col-xs-9">
+                                <input type="password" id="txtconfcont" class="form-control has-feedback-left" placeholder="confirmar" autocomplete="off" maxlength="50">
+                                <span class="fa fa-check-square-o form-control-feedback left" aria-hidden="true"></span>
                             </div>
                         </div>
-                        <div class="ln_solid"></div>
-
+                        <br/>
                         <div class="form-group row">
-                            <div class="col-md-9 offset-md-3">
-                                <button type="button" id="btnSave" class="btn btn-outline-info">Guardar</button>
+                            <label for="espacio" class="control-label col-md-1"></label>  
+                            <div class="col-md-10">
+                                <button type="button" id="btnSave" class="btn btn-info btn-lg btn-block">Guardar</button>
                             </div>
                         </div>
                     </form>
