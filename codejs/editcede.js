@@ -537,6 +537,8 @@ $(document).ready(function(){
         _productoold = $('#txtProducto' + _row_id).val();
         _dscripcionold = $('#txtDescripcion' + _row_id).val();
 
+        alert(_row_id);
+
         $('#txtProductoEdit').val(_productoold); 
         $('#txtDescripcionEdit').val(_dscripcionold);
   
@@ -605,16 +607,27 @@ $(document).ready(function(){
                     _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _idpro + '" value="' + _producto + '" /></td>';
                     _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _idpro + '" value="' + _descripcion + '" /></td>';
                     _output += '<td><div class="text-center"><div class="btn-group">'
-                    _output += '<button type="button" name="btnProCat" class="btn btn-outline-primary btn-sm ml-2 btnCatPro" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnProCat' + _idpro + '"><i class="fa fa-upload"></i></button>';
-                    _output += '<button type="button" name="btnEditPro" class="btn btn-outline-info btn-sm ml-2 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="btnEditPro' + _idpro + '"><i class="fa fa-pencil-square-o"></i></button>';
-                    _output +=  '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idpro +
+                    _output += '<button type="button" name="btnProCat" class="btn btn-outline-primary btn-sm ml-2 btnProCat" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnProCat' + _idpro + '"><i class="fa fa-upload"></i></button>';
+                    _output += '<button type="button" name="btnEditPro" class="btn btn-outline-info btn-sm ml-2 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="btnEditPro' + _idpro + '"><i class="fa fa-pencil-square-o"></i></button></div></div></td>';
+                    _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idpro +
                             '" ' + _checked + ' value=' + _idpro + '/></div></td>';
 
 
                   
-                    $('#rowpro_' + _idpro + '').html(_output);        
+                    $('#rowpro_' + _idpro + '').html(_output);  
+                    
+                    console.log(_output);
                     
                     $("#modalEDITPRODUCTO").modal("hide");
+
+                    $("#tblcatalogo").empty();
+                    _output = '<thead>';
+                    _output += '<tr><th style="display: none;">Id</th>';
+                    _output += '<th>Producto</th><th>Cod.Catalogo</th><th>Catalogo</th><th style="text-align: center;">Opciones</th><th style="width:10% ; text-align: center">Estado</th></tr></thead>'
+                    $('#tblcatalogo').append(_output);
+            
+                    _output  = '<tbody></tbody>';
+                    $('#tblcatalogo').append(_output);  
 
                 },
                 error: function (error) {
@@ -758,11 +771,13 @@ $(document).ready(function(){
         $("#formCatalogoEdit").trigger("reset"); 
         row_id = $(this).attr("id");
         _idproduc = row_id.substring(9);
+
+        alert(_idproduc);
       
 
         FunBuscarCatalogo(_idproduc);
 
-        $('#hidden_row_id').val(row_id);
+        $('#hidden_row_id').val(_idproduc);
         $("#headercat").css("background-color","#BCBABE");
         $("#headercat").css("color","black");
         $(".modal-title").text("Agregar Catalogo");       
@@ -928,6 +943,7 @@ $(document).ready(function(){
     _codigo = $('#txtCodigoCat' + _idcat).val();
     _catalogold = $('#txtCatalogo' + _idcat).val();
 
+    alert(_idproduc);
 
     $('#txtCodigo').val(_codigo);
     $('#txtCatalogo').val(_catalogold);
@@ -978,18 +994,50 @@ $("#btnEditCatalogo").click(function(){
             url: "../db/cedentecrud.php",
             type: "POST",
             dataType: "json",
-            data: {id:_idcat, catalogo:_newcatalogo, opcion:11},            
+            data: {id:_idcat, idpro:_idproduc, catalogo:_newcatalogo, opcion:11},            
             success: function(data){
-               
 
+                _idcatalogo = data[0].Id;
+                _producto = data[0].Producto;
+                _codigocat = data[0].Codigo;
+                _catalogo = data[0].Catalogo;
+                _estado = data[0].Estado;
+
+                _checked = '';
+                _deshabilitar = '';
+
+                if(_estado == 'A'){
+                    _checked = 'checked';
+                } else _deshabilitar = 'disabled';    
+
+
+                _output = '<td style="display: none;">' + _idcatalogo + ' <input type="hidden" name="hidden_codigo[]" id="codigo' + _idcatalogo + '" value="' + _idcatalogo + '" /></td>';                
+                _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _idcatalogo + '" value="' + _producto + '" /></td>';
+                _output += '<td>' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _idcatalogo + '" value="' + _codigocat + '" /></td>';
+                _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _idcatalogo + '" value="' + _catalogo + '" /></td>';
+                _output += '<td><div class="text-center"><div class="btn-group">'
+                _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-2 btnEditCat" id="edit' + _idcatalogo + '"  ' + _deshabilitar + ' data-toggle="tooltip" data-placement="top" title="editar"><i class="fa fa-pencil-square-o"></i></button></div></div></td>';
+                _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoCa" id="chk' + _idcatalogo +
+                            '" ' + _checked + ' value=' + _idcatalogo + '/></div></td>';
+
+
+              
+                $('#rowcat_' + _idcatalogo + '').html(_output);        
+                
+                $("#modalEDITCATALOGO").modal("hide");
+
+                console.log(_output);
+
+              
+              
+                  
+    
                             
             },
             error: function (error) {
                 console.log(error);
             }                          
         });
-
-        $("#modalEDITCATALOGO").modal("hide");
 
 
     }
