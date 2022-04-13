@@ -752,7 +752,8 @@ $(document).ready(function(){
         
         $.each(_resultcat,function(i,item)
         {
-            if(item.arryproductocat.toUpperCase() == _produc.toUpperCase() && item.arrycodigocat.toUpperCase() == _codigocat.toUpperCase())
+            if(item.arryproductocat.toUpperCase() == _produc.toUpperCase() && item.arrycodigocat.toUpperCase() == _codigocat.toUpperCase()
+               || (item.arryproductocat.toUpperCase() == _produc.toUpperCase() && item.arrycatalogo.toUpperCase() == _catalogo.toUpperCase())) 
             {                        
                 mensajesalertify("Catalogo ya Existe..!","W","top-right",3); 
                 _continuarcat = false;

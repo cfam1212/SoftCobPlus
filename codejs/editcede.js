@@ -537,7 +537,6 @@ $(document).ready(function(){
         _productoold = $('#txtProducto' + _row_id).val();
         _dscripcionold = $('#txtDescripcion' + _row_id).val();
 
-        alert(_row_id);
 
         $('#txtProductoEdit').val(_productoold); 
         $('#txtDescripcionEdit').val(_dscripcionold);
@@ -588,7 +587,7 @@ $(document).ready(function(){
             $.post({
                 url: "../db/cedentecrud.php",
                 dataType: "json",
-                data: {opcion:8, id: _idprod, producto: _producto, descripcion: _descripcion},            
+                data: {opcion:8, idpro: _idprod, producto: _producto, descripcion: _descripcion},            
                 success: function(data){
                     //debugger;
                     _idpro = data[0].Idpro;
@@ -674,7 +673,6 @@ $(document).ready(function(){
      let _estado = 'A';
      let _continuarproduc = true;
 
-     
 
      if(_producto == '')
      {
@@ -772,8 +770,6 @@ $(document).ready(function(){
         row_id = $(this).attr("id");
         _idproduc = row_id.substring(9);
 
-        alert(_idproduc);
-      
 
         FunBuscarCatalogo(_idproduc);
 
@@ -803,7 +799,7 @@ $(document).ready(function(){
             url: "../db/cedentecrud.php",
             type: "POST",
             dataType: "json",
-            data: {opcion:9, id:idpro},            
+            data: {opcion:9, idpro:idpro},            
             success: function(data){
                 $.each(data,function(i,item){                    
                     _idcat = data[i].Id;
@@ -885,7 +881,7 @@ $(document).ready(function(){
             url: "../db/cedentecrud.php",
             type: "POST",
             dataType: "json",
-            data: {opcion:10, id:_idproduc, codigo:_codigo, catalogo:_catalogo, estado:_estado},            
+            data: {opcion:10, idpro:_idproduc, codigo:_codigo, catalogo:_catalogo, estado:_estado},            
             success: function(data){
                 if(data[0].Existe == 'Existe'){
                     mensajesalertify("Catalogo ya Existe..!!","W","top-right",3); 
@@ -916,7 +912,6 @@ $(document).ready(function(){
                     
                     $('#tblcatalogo').append(_output);
 
-                  
             
                     $("#modalCATALOGOEDIT").modal("hide");
                 }
@@ -941,6 +936,7 @@ $(document).ready(function(){
 
     _codigo = $('#txtCodigoCat' + _idcat).val();
     _catalogold = $('#txtCatalogo' + _idcat).val();
+
 
 
     $('#txtCodigo').val(_codigo);
@@ -972,19 +968,21 @@ $("#btnEditCatalogo").click(function(){
         return false;
     }  
 
-    if(_catalogold.toUpperCase() != _newcatalogo.toUpperCase())
-    {
-        $.each(_resulcatalogo,function(i,item)
-        {
-            if(item.arrycatalogo.toUpperCase() == _newcatalogo.toUpperCase())
-            {                        
-                mensajesalertify("Nombre del Catalogo ya Existe..!!","W","top-right",3); 
-                _continuacat = false;
-                return false;
-            }
-            else _continuacat = true;
-        });
-    }else _continuacat = true;
+    
+
+    // if(_catalogold.toUpperCase() != _newcatalogo.toUpperCase())
+    // {
+    //     $.each(_resulcatalogo,function(i,item)
+    //     {
+    //         if(item.arrycatalogo.toUpperCase() == _newcatalogo.toUpperCase())
+    //         {                        
+    //             mensajesalertify("Nombre del Catalogo ya Existe..!!","W","top-right",3); 
+    //             _continuacat = false;
+    //             return false;
+    //         }
+    //         else _continuacat = true;
+    //     });
+    // }else _continuacat = true;
 
     if(_continuacat){
 
@@ -992,8 +990,12 @@ $("#btnEditCatalogo").click(function(){
             url: "../db/cedentecrud.php",
             type: "POST",
             dataType: "json",
-            data: {id:_idcat, idpro:_idproduc, catalogo:_newcatalogo, opcion:11},            
+            data: {idcat:_idcat, idpro:_idproduc, catalogo:_newcatalogo, opcion:11},            
             success: function(data){
+
+            if(data[0].Existe == 'Existe'){
+                mensajesalertify("Catalogo ya Existe..!!","W","top-right",3); 
+            }else{   
 
                 _idcatalogo = data[0].Id;
                 _producto = data[0].Producto;
@@ -1020,18 +1022,15 @@ $("#btnEditCatalogo").click(function(){
 
 
               
-                $('#rowcat_' + _idcatalogo + '').html(_output);        
+                $('#rowcat_' + _idcatalogo + '').html(_output); 
+                
                 
                 $("#modalEDITCATALOGO").modal("hide");
-
-                console.log(_output);
-
-              
-              
-                  
-    
-                            
-            },
+            }
+                // console.log(_output);
+            
+                
+        },
             error: function (error) {
                 console.log(error);
             }                          
