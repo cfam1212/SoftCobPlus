@@ -34,7 +34,6 @@ $descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
 $codigocat = (isset($_POST['codigo'])) ? $_POST['codigo'] : '';
 $catalogo = (isset($_POST['catalogo'])) ? $_POST['catalogo'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '0';
-$idpro = (isset($_POST['idpro'])) ? $_POST['idpro'] : '0';
 
 
 
@@ -194,7 +193,7 @@ switch($opcion){
     case 11:// UPDATE CATALOGO-PRODUCTO
         $consulta = "CALL sp_New_Catalogo(?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(3,$idpro,'',$catalogo,'','','',$idcatalogo,0));
+        $resultado->execute(array(3,$idproducto,'',$catalogo,'','','',$idcatalogo,0));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);         
         break;
     case 12:// UPDATE ESTADO CATALOGO

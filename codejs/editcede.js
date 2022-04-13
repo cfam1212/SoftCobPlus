@@ -751,7 +751,7 @@ $(document).ready(function(){
             url: "../db/cedentecrud.php",
             type: "POST",
             dataType: "json",
-            data: {id: _idproducto, estado: _estadopro, opcion: 3},
+            data: {idpro: _idproducto, estado: _estadopro, opcion: 3},
             success: function(data){
                
             },
@@ -1063,7 +1063,7 @@ $(document).on("click",".chkEstadoCa",function(){
         url: "../db/cedentecrud.php",
         type: "POST",
         dataType: "json",
-        data: {id: _idcat, estado: _estado, opcion: 12},
+        data: {idcat: _idcat, estado: _estado, opcion: 12},
         success: function(data){
            
         },
