@@ -111,20 +111,10 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
                 <h5 class="modal-title" id="modalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id="frmUserNew">
                 <br />
                 <div class="modal-body">
-                    <!-- <div class="form-group row">
-                        <label for="menuname" class="control-label col-md-1">Nombres:</label>
-                        <label for="espacio" class="control-label col-md-3"></label>
-                        <label for="menuname" class="control-label col-md-1">Apellidos:</label>
-                        <label for="espacio" class="control-label col-md-3"></label>
-                        <label for="menuname" class="control-label col-md-1">Login:</label>
-                    </div> -->
                     <div class="form-group row">
                         <div class="col-md-4 col-sm-4 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtUsername" placeholder="nombre usuario" maxlength="80" autofocus>
@@ -140,13 +130,6 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <br/>
-                    <!-- <div class="form-group row">
-                        <label for="menuname" class="control-label col-md-1">Password:</label>
-                        <label for="espacio" class="control-label col-md-3"></label>
-                        <label for="menuname" class="control-label col-md-1">Perfil:</label>
-                        <label for="espacio" class="control-label col-md-3"></label>
-                        <label for="menuname" class="control-label col-md-2">Tipo Usuario:</label>
-                    </div> -->
                     <div class="form-group row">
                         <div class="col-md-4 col-sm-4 form-group has-feedback">
                             <input type="password" class="form-control has-feedback-left" id="txtPassword" placeholder="password" maxlength="50" autocomplete="off">
@@ -171,8 +154,6 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <br/>
                     <div class="form-group row">
-                        <!-- <label for="menuname" class="control-label col-md-1"></label>
-                        <label for="espacio" class="control-label col-md-3"></label> -->
                         <div class="col-md-4 col-sm-4">
                             <select class="form-control col-md-4" id="cboDepa" name="cbodepa" style="width: 100%;">
                                 <?php foreach ($cbodepa as $fila) : ?>
@@ -215,8 +196,8 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-info" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>

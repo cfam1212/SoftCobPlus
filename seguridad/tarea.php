@@ -101,14 +101,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
                 <h5 class="modal-title" id="modalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <form id="formTarea">
                 <div class="modal-body">
                     <br/>
-                    <!-- <label for="tarea" class="col-form-label">Tarea:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtTarea" placeholder="nombre de la tarea" maxlength="80">
@@ -116,7 +112,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <br/>
-                    <!-- <label for="tarea" class="col-form-label">Ruta:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtRuta" placeholder="ej: ../seguridad/usuario.php" maxlength="">
@@ -124,7 +119,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                     <br/>
-                    <!-- <label for="tarea" class="col-form-label">Icono:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtIcono" placeholder="ej: fa fa-user" maxlength="">
@@ -133,8 +127,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-info" id="btnSave"><i class="fa fa-save"></i> Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-info" id="btnSave"><i class="fa fa-save"></i> Guardar</button>
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>

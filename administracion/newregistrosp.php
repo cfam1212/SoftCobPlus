@@ -109,9 +109,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <div class="modal-content" id="myModalBg">
       <div class="modal-header" id="header">
         <h5 class="modal-title" id="exampleModalLabel">Nuevo Registro</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <form id="formSuper">
         <div class="modal-body">
@@ -144,8 +141,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-info" id="btnSaveSu"><i class='fa fa-save'></i> Guardar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-outline-info" id="btnSaveSu"><i class='fa fa-save'></i> Guardar</button>
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
         </div>
       </form>
     </div>
@@ -157,9 +154,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <div class="modal-content" id="myModalBg">
       <div class="modal-header" id="headercat">
         <h5 class="modal-title" id="modalLabel"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <form id="formGestor">
         <div class="modal-body">
@@ -208,7 +202,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
         </div>
       </form>
     </div>

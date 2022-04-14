@@ -101,20 +101,24 @@ $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
                 <h5 class="modal-title" id="modalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                </button> -->
             </div>
             <form id="formPerfil">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="detalle" class="col-form-label">Descripcion</label>
-                        <input type="text" id="txtDescripcionedit" required class="form-control" maxlength="80">
+                    <label for="detalle" class="col-form-label">Descripcion</label>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 form-group">
+                            <input type="text" class="form-control has-feedback-left" id="txtDescripcionedit" maxlength="80">
+                            <span class="fa fa-briefcase form-control-feedback left" aria-hidden="true"></span>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="row_id" id="hidden_row_id" />
-                        <button type="button" id="btnModificar" class="btn btn-outline-info ml-3"><i class="fa fa-save"></i> Guardar</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="row_id" id="hidden_row_id" />
+                    <button type="button" id="btnModificar" class="btn btn-outline-info"><i class="fa fa-save"></i> Guardar</button>
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">close</button>
                 </div>
             </form>
         </div>

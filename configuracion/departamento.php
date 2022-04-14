@@ -94,13 +94,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
                 <h5 class="modal-title" id="modalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <form id="formDepartamento">
                 <div class="modal-body">
-                    <!-- <label for="menuname" class="control-label">Departamento:</label> -->
                     <div class="row">
                         <div class="col-md-12 col-sm-12  form-group has-feedback">
                             <input type="tel" class="form-control has-feedback-left" id="txtDepa" placeholder="nombre del departamento" maxlength="80" autocomplete="off">
@@ -108,10 +104,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </div>
-
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-info" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-info" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>

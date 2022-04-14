@@ -155,8 +155,8 @@ $(document).ready(function(){
 
                     _estadooculto = '<td style="display: none;" id="tdestado'+_depaid +'">' + _estado + '</td>';
 
-                    _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3 btnEditar"' +
-                            ' id="btnEditar'+ _depaid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                    _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-2 btnEditar"' +
+                            ' id="btnEditar'+ _depaid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-2"'+
                             _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
 
                     if(_opcion == 0){

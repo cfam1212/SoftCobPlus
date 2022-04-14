@@ -86,13 +86,13 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <form method="post" id="user_form">
                                             <div class="table-responsive">
                                                 <table id="tblparameter" class="table table-striped table-condensed jambo_table bulk_action table-borderless" style="width: 100%;">
-                                                    <thead class="text-center">
+                                                    <thead>
                                                         <tr>
                                                             <th style="display: none;">Id</th>
                                                             <th style="display: none;">NOrden</th>
                                                             <th>Detalle</th>
-                                                            <th>Valor Texto</th>
-                                                            <th>Valor Entero</th>
+                                                            <th style="text-align: center">Valor Texto</th>
+                                                            <th style="text-align: center">Valor Entero</th>
                                                             <th style="width:13% ; text-align: center">Opciones</th>
                                                             <th style="width:10% ; text-align: center">Estado</th>
                                                         </tr>
@@ -129,11 +129,18 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                                     } else {
                                                                         $desactivar = '';
                                                                     }
+                                                                        $disabledit = '';
+
+                                                                      if($dat['Estado'] == 'Inactivo'){
+                                                                        $disabledit = 'disabled';
+                                                                      }else{
+                                                                        $disabledit = '';
+                                                                      }
                                                                     ?>
                                                                     <div class="text-center">
                                                                         <div class="btn-group">
                                                                             <button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" data-toggle="tooltip" data-placement="top" title="subir" id="btnUp<?php echo $dat['Orden']; ?>" <?php echo $desactivar; ?>><i class="fa fa-arrow-up"></i></button>
-                                                                            <button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit<?php echo $dat['Orden']; ?>"><i class="fa fa-pencil-square-o"></i></button>
+                                                                            <button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEdit"<?php echo $disabledit; ?> data-toggle="tooltip" data-placement="top" title="editar" id="btnEdit<?php echo $dat['Orden']; ?>"><i class="fa fa-pencil-square-o"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </td>

@@ -282,7 +282,6 @@ $(document).ready(function()
 
             if(_seguir)
             {
-                //FunRemoveItemFromArr(_result, _detalleold);
 
                 $.ajax({
                     url: "../db/parametrocrud.php",
