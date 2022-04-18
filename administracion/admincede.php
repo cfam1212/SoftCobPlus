@@ -165,7 +165,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-12 col-sm-6  form-group has-feedback">
-                                            <textarea name="observa" id="txtDireccion" class="form-control" maxlength="200" placeholder="direccion" onKeyUp="this.value=this.value.toUpperCase();" onkeydown="return (event.keyCode!=13);"></textarea>
+                                            <textarea name="observa" id="txtDireccion" class="form-control" maxlength="200" placeholder="direccion" onkeydown="return (event.keyCode!=13);"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -432,7 +432,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="row">
                         <label for="menuname" class="control-label col-md-2"></label>
                         <div class="col-md-8 col-sm-8  form-group has-feedback">
-                            <input type="tel" class="form-control has-feedback-left" id="txtCodigoMo" placeholder="codigo" maxlength="10">
+                            <input type="tel" class="form-control has-feedback-left" id="txtCodigoMo" placeholder="codigo" onKeyUp="this.value=this.value.toUpperCase();" maxlength="10">
                             <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>

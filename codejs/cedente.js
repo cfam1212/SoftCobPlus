@@ -145,7 +145,7 @@ $(document).ready(function(){
         }    
     });
 
-     //Contactos
+     //AGREGAR NUEVO CONTACTO 
     $('#btnContacto').click(function(){
 
         let _contacto = $('#txtContacto').val();
@@ -179,6 +179,17 @@ $(document).ready(function(){
                     }
                 });
 
+                if(_telefono != '')
+                {
+
+                    valor = document.getElementById("txtExt").value;
+                    if( !(/^\d{9}$/.test(valor)) ) {
+                        mensajesalertify("Telefono incorrecto..!","E","top-right",3); 
+                        //_continuarcon = false;
+                        return false;
+                    }
+                }
+
                 if(_celular != '')
                 {
                     $.each(_resultcon,function(i,item)
@@ -208,7 +219,20 @@ $(document).ready(function(){
                     if (regex.test($('#txtEmail1').val().trim())) {
                         console.log('correcto');                            
                     } else {
-                        mensajesalertify("Email es invalido","E","top-right",3);
+                        mensajesalertify("Email 1 es invalido","E","top-right",3);
+                        _continuarcon = false;   
+                        return;
+                    }        
+                }
+
+                if(_email2 != '')
+                {
+                    var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+                
+                    if (regex.test($('#txtEmail2').val().trim())) {
+                        console.log('correcto');                            
+                    } else {
+                        mensajesalertify("Email 2 es invalido","E","top-right",3);
                         _continuarcon = false;   
                         return;
                     }        
@@ -713,9 +737,7 @@ $(document).ready(function(){
                 _output += '<td>' + item.arryproductocat + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + item.arrycodigo + '" value="' + item.arryproductocat + '" /></td>';
                 _output += '<td>' + item.arrycodigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + item.arrycodigo + '" value="' + item.arrycodigocat + '" /></td>';
                 _output += '<td>' + item.arrycatalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + item.arrycodigo + '" value="' + item.arrycatalogo + '" /></td>';
-                // _output += '<td class="text-center">' + item.arryestado + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + item.arrycodigo + '" value="' + item.arryestado  + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
-                // _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + item.arrycodigo + '"><i class="fa fa-pencil-square-o"></i></button>';
                 _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-2 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + item.arrycodigo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
                 _output += '</tr>';
                 
@@ -733,9 +755,10 @@ $(document).ready(function(){
     //botton-agregar -catalogo-modal
     $('#btnAddCatalogo').click(function(){
 
-    //_newproducto = $('#txtProductoMo').val(_produc);
+
     _codigocat = $('#txtCodigoMo').val();
     _catalogo = $('#txtCatalogoMo').val();
+    _estadocat = 'Activo';
     _continuarcat = true;    
 
     if(_codigocat == '')
@@ -769,10 +792,9 @@ $(document).ready(function(){
             _output += '<td>' + _produc + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _countcatalogo + '" value="' + _produc + '" /></td>';
             _output += '<td>' + _codigocat + ' <input type="hidden" name="hidden_codigocat[]" id="txtCodigoCat' + _countcatalogo + '" value="' + _codigocat + '" /></td>';
             _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _countcatalogo + '" value="' + _catalogo + '" /></td>';
-            // _output += '<td class="text-center">' + _estadocat + ' <input type="hidden" name="hidden_estado[]" id="txtEsTadoCat' + _countcatalogo + '" value="' + _estadocat + '" /></td>';
             _output += '<td><div class="text-center"><div class="btn-group">'
-            // _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-3 btnEditCat" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countcatalogo + '"><i class="fa fa-pencil-square-o"></i></button>';
             _output += '<button type="button" name="btnDeleteCat" class="btn btn-outline-danger btn-sm ml-2 btnDeleteCat" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countcatalogo + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+            // _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoCa" id="chk" "value"=' + _countcatalogo + '/></div></td>';
             _output += '</tr>';
             
             $('#tblcatalogo').append(_output);
@@ -817,18 +839,7 @@ $(document).ready(function(){
     //     $("#modalEDITCATALOGO").modal("show");
     // });
 
-    //checked modal-editar-catalogo
 
-    $("#chkEstadoCat").click(function(){
-        _checked = $("#chkEstadoCat").is(":checked");
-        if(_checked){
-            $("#lblEstadoCat").text("Activo");
-            _estadocat = 'Activo';
-        }else{
-            $("#lblEstadoCat").text("Inactivo");
-            _estadocat = 'Inactivo';
-        }
-    });
 
     //botton-editar-catalogo
      
@@ -947,134 +958,12 @@ $(document).ready(function(){
         });        
     };   
 
-     //Agencias
-    // $('#btnAgencia').click(function(){
-
-    //   _codigoagen = $('#txtCodigoAge').val();
-    //   _agencia = $('#txtAgencia').val();      
-    //   _cbosucursal = $('#cboSucursal').val();
-    //   _sucursal =$("#cboSucursal option:selected").text(); 
-    //   _cbozona = $('#cboZona').val();     
-    //   _zona =$("#cboZona option:selected").text();
-    //   _estadoagen = 'Activo';
-    //   _continuaragen = true;
-
-    //   if(_codigoagen == '')
-    //   {
-    //       mensajesalertify("Ingrese Codigo..!","W","top-right",3);
-    //       return;
-    //   } 
-      
-    //   if(_agencia == '')
-    //   {
-    //       mensajesalertify("Ingrese Agencia..!","W","top-right",3);
-    //       return;
-    //   } 
-
-    //   if(_cbosucursal == '0')
-    //   {
-    //       mensajesalertify("Seleccione Sucursal..!","W","top-right",3);
-    //       return;
-    //   }
-      
-    //   $.each(_resultage,function(i,item)
-    //   {
-    //       if(item.arryagencia.toUpperCase() == _agencia.toUpperCase())
-    //       {                        
-    //           mensajesalertify("Agencia ya Existe..!","W","top-right",3); 
-    //           _continuaragen = false;
-    //           return false;
-    //       }else{
-    //         _continuaragen = true;
-    //       }
-    //   });
-
-    //   if(_continuaragen)
-    //   {
-    //       _countagen++;
-    //       _output = '<tr id="rowage_' + _countagen + '">';
-    //       _output += '<td style="display: none;">' + _countagen + ' <input type="hidden" name="hidden_codigo[]" id="codigoagen' + _countagen + '" value="' + _countagen + '" /></td>';                
-    //       _output += '<td>' + _agencia + ' <input type="hidden" name="hidden_agencia[]" id="txtAgencia' + _countagen + '" value="' + _agencia + '" /></td>';
-    //       _output += '<td class="text-center">' + _codigoagen + ' <input type="hidden" name="hidden_codigo[]" id="txtCodigoAgen' + _countagen + '" value="' + _codigoagen + '" /></td>';
-    //       _output += '<td style="display: none;" class="text-center">' + _cbosucursal + ' <input type="hidden" name="hidden_codigosucursal[]" id="codigoSucursal' + _countagen + '" value="' + _cbosucursal + '" /></td>';
-    //       _output += '<td class="text-center">' + _sucursal + ' <input type="hidden" name="hidden_sucursal[]" id="cboSucursal' + _countagen + '" value="' + _sucursal + '" /></td>';
-    //       _output += '<td style="display: none;" class="text-center">' + _cbozona + ' <input type="hidden" name="hidden_codigozona[]" id="codigoZona' + _countagen + '" value="' + _cbozona + '" /></td>';
-    //       _output += '<td class="text-center">' + _zona + ' <input type="hidden" name="hidden_zona[]" id="cboZona' + _countagen + '" value="' + _zona + '" /></td>';
-    //       _output += '<td class="text-center">' + _estadoagen + ' <input type="hidden" name="hidden_email1[]" id="txtEstadoAg' + _countagen + '" value="' + _estadoagen + '" /></td>';
-    //       _output += '<td><div class="text-center"><div class="btn-group">'
-    //       _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-2 btnEditAgencia" data-toggle="tooltip" data-placement="top" title="editar" id="' + _countagen + '"><i class="fa fa-pencil-square-o"></i></button>';
-    //       _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-2 btnDeleteAgencia" data-toggle="tooltip" data-placement="top" title="eliminar" id="' + _countagen + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-    //       _output += '</tr>';
-          
-    //       $('#tblagencia').append(_output);
-
-    //       _objeto = {
-    //           arrycodigo : parseInt(_countagen),
-    //           arryagencia : _agencia,
-    //           arrycodigoagen : _codigoagen,
-    //           arrysucursal : _sucursal,
-    //           arryzona : _zona,
-    //           arryestado : _estadoagen,
-    //       }
-
-    //       _resultage.push(_objeto);  
-
-    //       $('#txtCodigoAge').val('');
-    //       $('#txtAgencia').val('');          
-    //       $('#cboSucursal').val('0').change();
-    //       $('#cboZona').val('0').change();                             
-    //   }       
-    // });
-
-    //Modal Agencia-editar
-
-    // $(document).on("click",".btnEditAgencia",function(){
-    //     $("#formAgencia").trigger("reset"); 
-    //     _idagencia = $(this).attr("id");
-    //     _agenciaold = $('#txtAgencia' + _idagencia + '').val();
-    //     _codigoldagen = $('#txtCodigoAgen' + _idagencia + '').val();
-    //     _sucursalold = $('#codigoSucursal' + _idagencia + '').val();
-    //     _zonaold = $('#codigoZona' + _idagencia + '').val();
-    //     _estadoagen = $('#txtEstadoAg' + _idagencia + '').val();
-    //     _tipoSave = 'edit';
-
-
-    //     $('#txtAgenciaMo').val(_agenciaold);
-    //     $('#txtCodigoAgeMo').val(_codigoldagen);
-    //     $('#cboSucursalMo').val(_sucursalold).change();
-    //     $('#cboZonaMo').val(_zonaold).change();
-
-    //     if(_estadoagen == "Activo"){
-    //         $("#chkEstadoAg").prop("checked", true);
-    //         $("#lblEstadoAg").text("Activo");
-    //     }else{
-    //         $("#chkEstadoAg").prop("checked", false);
-    //         $("#lblEstadoAg").text("Inactivo");
-    //     }
   
-    //     // $('#hidden_row_id').val(row_id);
-    //     $("#headeragencia").css("background-color","#BCBABE");
-    //     $("#headeragencia").css("color","black");
-    //     $(".modal-title").text("Editar Agencia");       
-    //     $("#btnAgregar").text("Modificar");
-    //     $("#modalAGENCIA").modal("show");
 
-    // });
 
-    //cheked agencia-modal
-    $("#chkEstadoAg").click(function(){
-        let _checkedAge = $("#chkEstadoAg").is(":checked");
 
-        if(_checkedAge){
-            $("#lblEstadoAg").text("Activo");
-            _estadoagen = 'Activo';
-        }else{
-            $("#lblEstadoAg").text("Inactivo");
-            _estadoagen = 'Inactivo';
-        }
-    });
 
-    //Cambiar estado cedente directo BDD
+    //UPDATE ESTADO CEDENTE BDD
 
     $(document).on("click",".chkEstado",function(){ 
         let _rowid = $(this).attr("id");
@@ -1243,7 +1132,6 @@ $(document).ready(function(){
       let _fax = $('#txtFax').val();
       let _url = $('#txtUrl').val();
 
-      //debugger;
       let _cboprovincia = $('#cboProvincia').val();
       let _cbocuidad = $('#cboCiudad').val();
       let _cboarbol = $('#cboArbol').val();
@@ -1266,13 +1154,19 @@ $(document).ready(function(){
           mensajesalertify("Ingrese Cendente..!","W","top-right",3);
           return;
       }
-      
-      if(_cboarbol == '0')
-      {
-        mensajesalertify("Ingrese Nivel del Árbol..!","W","top-right",3);
-        return;
-      }
 
+      if(_ruc != '')
+      {
+
+          valor = document.getElementById("txtRuc").value;
+          if( !(/^\d{13}$/.test(valor)) ) {
+              mensajesalertify("Ruc incorrecto..!","E","top-right",3); 
+              //_continuarcon = false;
+              return false;
+          }
+      }
+      
+  
       if(_fono1 != '')
       {
 
@@ -1295,16 +1189,13 @@ $(document).ready(function(){
           }
       }
 
-      if(_ruc != '')
+      if(_cboarbol == '0')
       {
-
-          valor = document.getElementById("txtTel2").value;
-          if( !(/^\d{13}$/.test(valor)) ) {
-              mensajesalertify("Telefono 2 incorrecto..!","E","top-right",3); 
-              //_continuarcon = false;
-              return false;
-          }
+        mensajesalertify("Ingrese Nivel del Árbol..!","W","top-right",3);
+        return;
       }
+
+   
 
       if(_resultpro.length == 0 ){
         mensajesalertify("Ingrese al menos un producto","E","top-right",3); 

@@ -769,6 +769,7 @@ $(document).ready(function(){
         $("#formCatalogoEdit").trigger("reset"); 
         row_id = $(this).attr("id");
         _idproduc = row_id.substring(9);
+        alert('click');
 
 
         FunBuscarCatalogo(_idproduc);
@@ -822,11 +823,12 @@ $(document).ready(function(){
                     _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _idcat + '" value="' + _catalogo + '" /></td>';
                     _output += '<td><div class="text-center"><div class="btn-group">'
                     _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-2 btnEditCat" id="edit' + _idcat + '" ' + _deshabilitar + ' data-toggle="tooltip" data-placement="top" title="editar"><i class="fa fa-pencil-square-o"></i></button></div></div></td>';
-                    _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoCa" id="chk' + _idcat +
+                    _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoCa" id="chkcat' + _idcat +
                                 '" ' + _checked + ' value=' + _idcat + '/></div></td>';
                     _output += '</tr>';
                     
-                    $('#tblcatalogo').append(_output);  
+                    $('#tblcatalogo').append(_output); 
+                    console.log(_output); 
 
                     _objeto = {
                         arrycodigo : parseInt(_idcat),
@@ -836,7 +838,7 @@ $(document).ready(function(){
                             }
                     
                     _resulcatalogo.push(_objeto);
-                    //  console.log(_resulcatalogo);
+                 
                     
                     
                 });
@@ -906,7 +908,7 @@ $(document).ready(function(){
                     _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _idcatalogo + '" value="' + _catalogo + '" /></td>';
                     _output += '<td><div class="text-center"><div class="btn-group">'
                     _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-2 btnEditCat" id="edit' + _idcatalogo + '"  ' + _deshabilitar + ' data-toggle="tooltip" data-placement="top" title="editar"><i class="fa fa-pencil-square-o"></i></button></div></div></td>';
-                    _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoCa" id="chk' + _idcatalogo +
+                    _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoCa" id="chkcat' + _idcatalogo +
                                '" ' + _checked + ' value=' + _idcatalogo + '/></div></td>';
                     _output += '</tr>';
                     
@@ -970,20 +972,6 @@ $("#btnEditCatalogo").click(function(){
 
     
 
-    // if(_catalogold.toUpperCase() != _newcatalogo.toUpperCase())
-    // {
-    //     $.each(_resulcatalogo,function(i,item)
-    //     {
-    //         if(item.arrycatalogo.toUpperCase() == _newcatalogo.toUpperCase())
-    //         {                        
-    //             mensajesalertify("Nombre del Catalogo ya Existe..!!","W","top-right",3); 
-    //             _continuacat = false;
-    //             return false;
-    //         }
-    //         else _continuacat = true;
-    //     });
-    // }else _continuacat = true;
-
     if(_continuacat){
 
         $.ajax({
@@ -1017,7 +1005,7 @@ $("#btnEditCatalogo").click(function(){
                 _output += '<td>' + _catalogo + ' <input type="hidden" name="hidden_catalogo[]" id="txtCatalogo' + _idcatalogo + '" value="' + _catalogo + '" /></td>';
                 _output += '<td><div class="text-center"><div class="btn-group">'
                 _output += '<button type="button" name="btnEditCat" class="btn btn-outline-info btn-sm ml-2 btnEditCat" id="edit' + _idcatalogo + '"  ' + _deshabilitar + ' data-toggle="tooltip" data-placement="top" title="editar"><i class="fa fa-pencil-square-o"></i></button></div></div></td>';
-                _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoCa" id="chk' + _idcatalogo +
+                _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoCa" id="chkcat' + _idcatalogo +
                             '" ' + _checked + ' value=' + _idcatalogo + '/></div></td>';
 
 
@@ -1045,11 +1033,11 @@ $("#btnEditCatalogo").click(function(){
 
 $(document).on("click",".chkEstadoCa",function(){ 
     let _rowid = $(this).attr("id");
-    let _idcat = _rowid.substring(3);
+    let _idcat = _rowid.substring(6);
     let _check = $("#chk" + _idcat).is(":checked");
     let _estado;
 
-    // alert(_check);
+    alert(_check);
 
     if(_check){
         _estado = 'A'
