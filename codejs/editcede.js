@@ -769,7 +769,7 @@ $(document).ready(function(){
         $("#formCatalogoEdit").trigger("reset"); 
         row_id = $(this).attr("id");
         _idproduc = row_id.substring(9);
-        alert('click');
+       
 
 
         FunBuscarCatalogo(_idproduc);
@@ -826,7 +826,7 @@ $(document).ready(function(){
                     _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoCa" id="chkcat' + _idcat +
                                 '" ' + _checked + ' value=' + _idcat + '/></div></td>';
                     _output += '</tr>';
-                    
+
                     $('#tblcatalogo').append(_output); 
                     console.log(_output); 
 
@@ -1034,7 +1034,7 @@ $("#btnEditCatalogo").click(function(){
 $(document).on("click",".chkEstadoCa",function(){ 
     let _rowid = $(this).attr("id");
     let _idcat = _rowid.substring(6);
-    let _check = $("#chk" + _idcat).is(":checked");
+    let _check = $("#chkcat" + _idcat).is(":checked");
     let _estado;
 
     alert(_check);
