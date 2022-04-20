@@ -103,10 +103,10 @@ switch($opcion){
     case "3": //GRABAR EDITAR MENU
         try
         {
-            $consulta = "UPDATE seguridad_menu SET menu_descripcion=?,menu_estado=?,menu_icono=?,menu_fum=?,menu_uum=?,menu_tum=? 
+            $consulta = "UPDATE seguridad_menu SET menu_descripcion=?,menu_icono=?,menu_fum=?,menu_uum=?,menu_tum=? 
                         WHERE menu_id=? AND empr_id=?";
             $resultado = $conexion->prepare($consulta);
-            $resultado->execute(array($nombremenu,$valestado,$iconome,$currentdate,$userid,$host,$id,$emprid));
+            $resultado->execute(array($nombremenu,$iconome,$currentdate,$userid,$host,$id,$emprid));
             // $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             if($opcionmp == 1)
             {

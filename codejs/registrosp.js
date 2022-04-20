@@ -88,8 +88,8 @@ $(document).ready(function(){
                 _chekestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoSu" id="chk' + _supeid +
                                 '" ' + _checked + ' value=' + _supeid + '/></div></td>';
                 
-                _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-primary btn-sm ml-3 btnAddGe"' +
-                         'id="btnAddGe' + _supeid + '"><i class="fa fa-headphones"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-primary btn-sm ml-2 btnAddGe"' +
+                         'id="btnAddGe' + _supeid + '"><i class="fa fa-headphones"></i></button><button class="btn btn-outline-danger btn-sm ml-2"'+
                          'id="btnEliminarSu" data-toggle="tooltip" data-placement="top" title="eliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'   
 
                 TableDataSup.row.add([_supeid, _cedid,  _cede, _supe, _boton, _chekestado]).draw();

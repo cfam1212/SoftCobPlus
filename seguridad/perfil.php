@@ -59,7 +59,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                                         if ($datos['PerfilId'] == '1') {
                                             $disabledel = 'disabled';
-                                            $disabledit = 'disabled';
+                                            // $disabledit = 'disabled';
                                             $chkestado = 'disabled';
                                         }
 

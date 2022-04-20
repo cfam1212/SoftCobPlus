@@ -708,7 +708,7 @@ $(document).ready(function(){
                         _output += '<td>' + _producto + ' <input type="hidden" name="hidden_producto[]" id="txtProducto' + _idpro + '" value="' + _producto + '" /></td>';
                         _output += '<td>' + _descripcion + ' <input type="hidden" name="hidden_descripcion[]" id="txtDescripcion' + _idpro + '" value="' + _descripcion + '" /></td>';
                         _output += '<td><div class="text-center"><div class="btn-group">'
-                        _output += '<button type="button" name="btnProCat" class="btn btn-outline-primary btn-sm ml-2 btnCatPro" data-toggle="tooltip" data-placement="top" title="agregar catalogo" id="btnProCat' + _idpro + '"><i class="fa fa-upload"></i></button>';
+                        _output += '<button type="button" name="btnProCat" class="btn btn-outline-primary btn-sm ml-2 btnProCat" data-toggle="tooltip" data-placement="top" title="catalogos" id="btnProCat' + _idpro + '"><i class="fa fa-upload"></i></button>';
                         _output += '<button type="button" name="btnEditPro" class="btn btn-outline-info btn-sm ml-2 btnEditPro" data-toggle="tooltip" data-placement="top" title="editar" id="btnEditPro' + _idpro + '"><i class="fa fa-pencil-square-o"></i></button>';
                         _output +=  '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _idpro +
                                 '" ' + _checked + ' value=' + _idpro + '/></div></td>';
@@ -828,7 +828,7 @@ $(document).ready(function(){
                     _output += '</tr>';
 
                     $('#tblcatalogo').append(_output); 
-                    console.log(_output); 
+                    // console.log(_output); 
 
                     _objeto = {
                         arrycodigo : parseInt(_idcat),
@@ -1037,7 +1037,6 @@ $(document).on("click",".chkEstadoCa",function(){
     let _check = $("#chkcat" + _idcat).is(":checked");
     let _estado;
 
-    alert(_check);
 
     if(_check){
         _estado = 'A'

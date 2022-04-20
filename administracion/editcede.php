@@ -177,7 +177,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <form class="form-horizontal col-md-10 offset-md-1" role="form">
                                     <div class="form-group row">
                                         <div class="col-md-5 col-sm-8 form-group">
-                                            <input type="tel" class="form-control has-feedback-left" id="txtContacto" class="form-control" placeholder="nombre del contacto" maxlength="150" autofocus onKeyUp="this.value=this.value.toUpperCase();">
+                                            <input type="tel" class="form-control has-feedback-left" id="txtContacto" class="form-control" placeholder="nombre del contacto" maxlength="150" autofocus>
                                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                         <label for="espacio" class="control-label col-md-1"></label>
@@ -227,11 +227,11 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <thead>
                                                     <tr>
                                                         <th style="width:5%;">Id</th>
-                                                        <th style="width:10%; text-align: center">Contacto</th>
-                                                        <th style="width:20%;">Cargo</th>
+                                                        <th style="width:10%;">Contacto</th>
+                                                        <th style="width:20%; text-align: center">Cargo</th>
                                                         <th style="width:5%; display: none;">CodigoCargo</th>
                                                         <th style="width:10%; text-align: center">Celular</th>
-                                                        <th style="width:10%;">Telefono</th>
+                                                        <th style="width:10%;text-align: center">Telefono</th>
                                                         <th style="width:10%; text-align: center;">Email</th>
                                                         <th style="width:10%; display: none;">Email2</th>
                                                         <th style="width:10%; text-align: center">Opciones</th>
@@ -529,7 +529,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="row">
                         <label for="menuname" class="control-label col-md-2"></label>
                         <div class="col-md-8 col-sm-8  form-group has-feedback">
-                            <input type="tel" class="form-control has-feedback-left" id="txtCodigoMo" placeholder="codigo" maxlength="10">
+                            <input type="tel" class="form-control has-feedback-left" id="txtCodigoMo" placeholder="codigo" maxlength="10" onKeyUp="this.value=this.value.toUpperCase();">
                             <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>

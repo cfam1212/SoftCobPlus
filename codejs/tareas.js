@@ -201,8 +201,8 @@ $(document).ready(function(){
                     _newestado = '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoTa" id="chk' + _tareaid +
                                  '" ' + _checked + ' value=' + _tareaid + '/></div></td>';
 
-                    _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-3 btnEditar"' +
-                             ' id="btnEditar'+ _tareaid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-3"'+
+                    _boton = '<td><div class="text-center"><div class="btn-group"><button class="btn btn-outline-info btn-sm ml-2 btnEditar"' +
+                             ' id="btnEditar'+ _tareaid +'"><i class="fa fa-pencil-square-o"></i></button><button class="btn btn-outline-danger btn-sm ml-2"'+
                             _desactivar + 'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'
                               
                     if(_opcion == 1){

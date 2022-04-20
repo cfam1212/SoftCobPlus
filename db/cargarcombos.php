@@ -10,6 +10,7 @@
     
     $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : 0;
     $id = (isset($_POST['id'])) ? $_POST['id'] : 0;
+    $idciudad = (isset($_POST['idciu'])) ? $_POST['idciu'] : 0;
     
     switch($opcion){
      case 0: //LLENAR CIUDAD
@@ -24,7 +25,13 @@
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(30,0,'','','','','','',$id,0,0,0,0,0));        
         $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);                  
-        break;          
+        break;
+    case 2:
+        $cbo = 'Cedente';
+        $consulta = "CALL sp_New_Cartera(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(2, 0, 0, 0, 0, '', '', '', '', '', $idciudad, 0, 0));
+        $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);              
 
     }
 
