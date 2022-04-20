@@ -29,6 +29,7 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <div class="x_content">
                         <br />
+                        <br />
                         <form class="form-horizontal col-md-10 offset-md-1">
                             <div class="form-group row">
                                 <div class="col-md-5 col-sm-8">
@@ -77,13 +78,13 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <br />
                             <div class="form-group row">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="todosGest" class="form-check-input" checked=""> Todos los Gestores:
+                                    <input type="checkbox" id="chkTodosGest"> Todos los Gestores:
                                 </div>
                             </div>
                             <br />
                             <div class="form-group row">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="porGest" class="form-check-input" checked=""> Por Gestor:
+                                    <input type="checkbox" id="chkPorGest"> Por Gestor:
                                 </div>
                             </div>
                             <br />
@@ -99,7 +100,7 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </select>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <button type="button" class="btn btn-outline-info ml-3" id="btnGestor" data-toggle="tooltip" title="agregar"><i class='fa fa-plus'></i></button>
+                                    <button type="button" class="btn btn-outline-info ml-3" id="btnPorGestor" data-toggle="tooltip" title="agregar gestor"><i class='fa fa-plus'></i></button>
                                 </div>
                             </div>
                             <br />
