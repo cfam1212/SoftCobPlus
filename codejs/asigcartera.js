@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var  _cbocedente, _cboid;
+    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro ;
 
 
     $('#cboCiudad').select2();
@@ -48,20 +48,18 @@ $(document).ready(function(){
         }   
     });
 
+    //COMOBO PARA LLENAR GESTOR CON ID CEDENTE
+
     $('#cboCedente').change(function(){
 
       _cbocedeid = $(this).val();
 
-      alert(_cbocedeid);
-
-      $("#cboGestor").empty();
-      $("#cboGestor").append('<option value=0>--Seleccione Gestor--</option>');
 
       $.ajax({
         dataType: 'html',
         type: 'POST',
         url: '../db/cargarcombos.php',
-        data: {opcion:3},
+        data: {opcion:3, cedeid:_cbocedeid},
       }).done(function(data){
 
         _cbogestor.html(data);
@@ -71,34 +69,72 @@ $(document).ready(function(){
 
     });
 
-    //// EVENTO CHECK TODOS LOS GESTORES
+      //COMOBO PARA LLENAR PRODUCTO CON ID CEDENTE
+      
+    $('#cboCedente').change(function(){
 
-      $("#chkTodosGest").change(function() {
-        if(this.checked) {
+    
 
-            
-          $.ajax({
-            url: "../db/carteracrud.php",
-            type: "POST",
-            dataType: "json",
-            data: {opcion:0},
-            success: function(data){
-                
-              },
-              error: function (error) {
-                  console.log(error);
-              }                  
-          });
+      $.ajax({
+        dataType: 'html',
+        type: 'POST',
+        url: '../db/cargarcombos.php',
+        data: {opcion:4, cedeid:_cbocedeid},
+      }).done(function(data){
 
-        }
+        _cboproducto.html(data);
+        _cboproducto.select2();
       });
 
-      // EVENTO CHECK POR GESTOR
+
+    }); 
+
+
+    //COMOBO PARA LLENAR CATALOGO CON ID PRODUCTO
+
+    $('#cboProducto').change(function(){
+
+    
+      _cbopro = $(this).val();
+
+      $.ajax({
+        dataType: 'html',
+        type: 'POST',
+        url: '../db/cargarcombos.php',
+        data: {opcion:5, proid:_cbopro},
+      }).done(function(data){
+
+        _cbocatalogo.html(data);
+        _cbocatalogo.select2();
+      });
+
+
+    }); 
+
+   
+
+
+
+     //// EVENTO POR GESTORES
 
       $("#chkPorGest").change(function() {
        
-
         $("#divGestor").show();
+        $("#divRegistro").show();
+
+
+        $.ajax({
+          url: "../db/carteracrud.php",
+          type: "POST",
+          dataType: "json",
+          data: {opcion:0},
+          success: function(data){
+              
+            },
+            error: function (error) {
+                console.log(error);
+            }                  
+        });
         
       });
 
@@ -108,8 +144,25 @@ $(document).ready(function(){
 
   $('#btnPorGestor').click(function(){
 
+    let _cbogestor = $('#cboGestor').val();
+    let _gestor = $.trim($("#cboGestor option:selected").text()); 
+    
+    let _numregistros = $('#txtNumReg').val();
 
-     alert('listo');
+    
+
+    if(_cbogestor == '0')
+    {
+        mensajesalertify("Seleccione Gestor..!","W","top-right",3);
+        return;
+    }
+
+    if(_numregistros == '')
+    {
+        mensajesalertify("Ingrese numero de Registros..!","W","top-right",3);
+        return;
+    }
+     
 
   });
 

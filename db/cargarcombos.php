@@ -11,6 +11,8 @@
     $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : 0;
     $id = (isset($_POST['id'])) ? $_POST['id'] : 0;
     $idciudad = (isset($_POST['idciu'])) ? $_POST['idciu'] : 0;
+    $idcedente = (isset($_POST['cedeid'])) ? $_POST['cedeid'] : 0;
+    $idproducto = (isset($_POST['proid'])) ? $_POST['proid'] : 0;
     
     switch($opcion){
      case 0: //LLENAR CIUDAD
@@ -34,12 +36,26 @@
         $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 3:
-        $cbo = 'Gestor'; //LLENAR GESTOR
+        $cbo = 'Gestor'; //LLENAR GESTOR POR CEDENTE ID
         $consulta = "CALL sp_New_Cartera(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(5, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0));
+        $resultado->execute(array(3, 0, $idcedente, 0, 0, '', '', '', '', '', 0, 0, 0));
         $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);
-        break;                  
+        break;
+    case 4:
+        $cbo = 'Gestor'; //LLENAR PRODUCTO POR CEDENTE ID
+        $consulta = "CALL sp_New_Cartera(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(4, 0, $idcedente, 0, 0, '', '', '', '', '', 0, 0, 0));
+        $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 5:
+        $cbo = 'Gestor'; //LLENAR CATALOGO POR PRODUCTO ID
+        $consulta = "CALL sp_New_Cartera(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(5, 0, 0, $idproducto, 0, '', '', '', '', '', 0, 0, 0));
+        $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;                    
 
     }
 

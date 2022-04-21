@@ -280,7 +280,7 @@ $(document).ready(function(){
 
         if(_cbogestor == '0')
         {
-            mensajesalertify("Seleccione Gestor..!","W","top-right",5);
+            mensajesalertify("Seleccione Gestor..!","W","top-right",3);
             return;
         }
 
@@ -291,7 +291,7 @@ $(document).ready(function(){
             data: {idsupervisor: _usuaid, idgestor: _cbogestor, estado: 'A', opcion: 1},
             success: function(data){
                 if(data[0].Existe == 'Existe'){
-                    mensajesalertify("Gestor ya esta Agregado..!","W","top-right",5);  
+                    mensajesalertify("Gestor ya esta Agregado..!","W","top-right",3);  
                 }
                 else{
                     $("#tblagestor").empty();
@@ -372,7 +372,7 @@ $(document).ready(function(){
 
                     _output  = '</tbody>';
                     $('#tblagestor').append(_output); 
-                    mensajesalertify("Gestor Eliminado","E","top-center",5);	                      
+                    mensajesalertify("Gestor Eliminado","E","top-center",2);	                      
                 },
                 error: function (error) {
                     console.log(error);
