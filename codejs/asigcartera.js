@@ -11,8 +11,10 @@ $(document).ready(function(){
 
   
 
-    _opcaccion = $.trim($("#cboCiudad").val());
-    _cbocedente = $('#cboCedente'); 
+   
+    _cbocedente = $('#cboCedente');
+    _cboproducto = $('#cboProducto'); 
+    _cbocatalogo = $('#cboCatalogo');  
     _cbogestor = $('#cboGestor'); 
 
     $('#cboCiudad').change(function(){
@@ -21,24 +23,52 @@ $(document).ready(function(){
         
         $("#cboCedente").empty();
         $("#cboCedente").append('<option value=0>--Seleccione Cedente--</option>');
+
+        $("#cboProducto").empty();
+        $("#cboProducto").append('<option value=0>--Seleccione Producto--</option>');
+
+        $("#cboCatalogo").empty();
+        $("#cboCatalogo").append('<option value=0>--Seleccione Catalogo--</option>');
+
+        $("#cboGestor").empty();
+        $("#cboGestor").append('<option value=0>--Seleccione Gestor--</option>');
        
 
-        if(_cboid !== '0'){ 
+        if(_cboid != '0'){ 
           $.ajax({
-            data: {opcion:2, idciu:_cboid},
             dataType: 'html',
             type: 'POST',
-            url: '../db/cargarcombos.php'
+            url: '../db/cargarcombos.php',
+            data: {opcion:2, idciu:_cboid},
           }).done(function(data){
 
             _cbocedente.html(data);
             _cbocedente.select2();
           });
-        }else{
-            _cbocedente.val('');
-            _cbocedente.empty();
-            _cbocedente.append('<option value=0>--Seleccione Cedente--</option>');            
-        }    
+        }   
+    });
+
+    $('#cboCedente').change(function(){
+
+      _cbocedeid = $(this).val();
+
+      alert(_cbocedeid);
+
+      $("#cboGestor").empty();
+      $("#cboGestor").append('<option value=0>--Seleccione Gestor--</option>');
+
+      $.ajax({
+        dataType: 'html',
+        type: 'POST',
+        url: '../db/cargarcombos.php',
+        data: {opcion:3},
+      }).done(function(data){
+
+        _cbogestor.html(data);
+        _cbogestor.select2();
+      });
+       
+
     });
 
     //// EVENTO CHECK TODOS LOS GESTORES
@@ -66,31 +96,13 @@ $(document).ready(function(){
       // EVENTO CHECK POR GESTOR
 
       $("#chkPorGest").change(function() {
-        if(this.checked) {
+       
 
-          $("#cboGestor").empty();
-          $("#cboGestor").append('<option value=0>--Seleccione Gestor--</option>');
-            
-          $.ajax({
-            data: {opcion:3},
-            dataType: 'html',
-            type: 'POST',
-            url: '../db/cargarcombos.php'
-          }).done(function(data){
-
-            _cbogestor.html(data);
-            _cbogestor.select2();
-          });
-        }else{
-            _cbogestor.val('');
-            _cbogestor.empty();
-            _cbogestor.append('<option value=0>--Seleccione Gestor--</option>');            
-        }  
-
+        $("#divGestor").show();
         
       });
 
-
+ 
 
   //FUNCION AGREGAR POR GESTOR
 
@@ -100,5 +112,7 @@ $(document).ready(function(){
      alert('listo');
 
   });
+
+
 
 });

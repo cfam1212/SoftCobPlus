@@ -53,20 +53,12 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="col-md-5 col-sm-8">
                                     <select class="form-control" id="cboProducto" name="cboproducto" style="width: 100%;">
                                         <option value="0">--Seleccione Producto--</option>
-                                        <?php foreach ($datapro as $fila) : ?>
-                                            <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
-                                            </option>
-                                        <?php endforeach ?>
                                     </select>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="col-md-5 col-sm-8">
-                                <select class="form-control" id="cboCatalogo" name="cbocatalogo" style="width: 100%;">
+                                    <select class="form-control" id="cboCatalogo" name="cbocatalogo" style="width: 100%;">
                                         <option value="0">--Seleccione Catalogo--</option>
-                                        <?php foreach ($datapro as $fila) : ?>
-                                            <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
-                                            </option>
-                                        <?php endforeach ?>
                                     </select>
                                 </div>
                             </div>
@@ -78,25 +70,21 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <br />
                             <div class="form-group row">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="chkTodosGest"> Todos los Gestores:
+                                    <input type="radio" id="chkTodosGest"> Todos los Gestores:
                                 </div>
                             </div>
                             <br />
                             <div class="form-group row">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="chkPorGest"> Por Gestor:
+                                    <input type="radio" id="chkPorGest"> Por Gestor:
                                 </div>
                             </div>
                             <br />
-                            <div class="form-group row">
+                            <div class="form-group row" id="divGestor" style="display: none;">
                                 <label for="gestor" class="control-label col-md-2"></label>
                                 <div class="form-group col-md-6">
                                     <select class="form-control" id="cboGestor" name="cboGestor" style="width:100%;">
                                         <option value="0">--Seleccione Gestor--</option>
-                                        <?php foreach ($gestor as $fila) : ?>
-                                            <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
-                                            </option>
-                                        <?php endforeach ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-2">
@@ -116,8 +104,8 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     <tr>
                                                         <th style="display: none;">Id</th>
                                                         <th>Gestor</th>
+                                                        <th>Registro</th>
                                                         <th style="width:12% ; text-align: center">Opciones</th>
-                                                        <th style="width:10% ; text-align: center">Estado</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody></tbody>

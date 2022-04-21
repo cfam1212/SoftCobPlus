@@ -32,12 +32,14 @@
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(2, 0, 0, 0, 0, '', '', '', '', '', $idciudad, 0, 0));
         $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
     case 3:
         $cbo = 'Gestor'; //LLENAR GESTOR
         $consulta = "CALL sp_New_Cartera(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(5, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0));
-        $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);                  
+        $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;                  
 
     }
 
