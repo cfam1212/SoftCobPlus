@@ -65,15 +65,6 @@ $(document).ready(function(){
         _cbogestor.html(data);
         _cbogestor.select2();
       });
-       
-
-    });
-
-      //COMOBO PARA LLENAR PRODUCTO CON ID CEDENTE
-      
-    $('#cboCedente').change(function(){
-
-    
 
       $.ajax({
         dataType: 'html',
@@ -85,9 +76,13 @@ $(document).ready(function(){
         _cboproducto.html(data);
         _cboproducto.select2();
       });
+       
 
+    });
 
-    }); 
+    
+      
+   
 
 
     //COMOBO PARA LLENAR CATALOGO CON ID PRODUCTO

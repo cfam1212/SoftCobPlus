@@ -30,9 +30,9 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="x_content">
                         <br />
                         <br />
-                        <form class="form-horizontal col-md-10 offset-md-1">
+                        <form class="form-horizontal col-md-10 offset-md-2">
                             <div class="form-group row">
-                                <div class="col-md-5 col-sm-8">
+                                <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;">
                                         <option value="0">--Seleccione Cuidad--</option>
                                         <?php foreach ($dataciu as $fila) : ?>
@@ -42,7 +42,7 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </select>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
-                                <div class="col-md-5 col-sm-8">
+                                <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCedente" name="cbocedente" style="width: 100%;">
                                         <option value="0">--Seleccione Cedente--</option>
                                     </select>
@@ -50,13 +50,13 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <br />
                             <div class="form-group row">
-                                <div class="col-md-5 col-sm-8">
+                                <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboProducto" name="cboproducto" style="width: 100%;">
                                         <option value="0">--Seleccione Producto--</option>
                                     </select>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
-                                <div class="col-md-5 col-sm-8">
+                                <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCatalogo" name="cbocatalogo" style="width: 100%;">
                                         <option value="0">--Seleccione Catalogo--</option>
                                     </select>
@@ -81,7 +81,7 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <br />
                             <div class="form-group row" id="divGestor" style="display: none;">
-                                <label for="gestor" class="control-label col-md-2"></label>
+                                <label for="gestor" class="control-label col-md-1"></label>
                                 <div class="form-group col-md-6">
                                     <select class="form-control" id="cboGestor" name="cboGestor" style="width:100%;">
                                         <option value="0">--Seleccione Gestor--</option>
@@ -92,7 +92,7 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                             <div class="form-group row" id="divRegistro" style="display: none;">
-                                <label for="espacio" class="control-label col-md-3"></label>
+                                <label for="espacio" class="control-label col-md-2"></label>
                                 <div class="col-md-4 col-sm-6 form-group has-feedback">
                                     <input type="text" class="form-control has-feedback-left" id="txtNumReg" placeholder="registros" required onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                     <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
@@ -100,26 +100,20 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <br />
                             <br />
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="col-md-1 col-sm-1">
-                                    </div>
-                                    <div class="col-md-10 col-sm-10">
-                                        <div class="table-responsive">
-                                            <table id="tblagestor" class="table table-striped table-condensed jambo_table bulk_action table-borderless" style="width: 100%;">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="display: none;">Id</th>
-                                                        <th>Gestor</th>
-                                                        <th>Registro</th>
-                                                        <th style="width:12% ; text-align: center">Opciones</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody></tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1">
+                            <div class="form-group row">
+                                <div class="col-md-9 col-sm-10">
+                                    <div class="table-responsive">
+                                        <table id="tblagestor" class="table table-striped table-condensed jambo_table bulk_action table-borderless" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th style="display: none;">Id</th>
+                                                    <th>Gestor</th>
+                                                    <th>Registro</th>
+                                                    <th style="width:12% ; text-align: center">Opciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

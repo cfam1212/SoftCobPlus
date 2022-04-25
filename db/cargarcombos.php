@@ -43,14 +43,14 @@
         $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 4:
-        $cbo = 'Gestor'; //LLENAR PRODUCTO POR CEDENTE ID
+        $cbo = 'Producto'; //LLENAR PRODUCTO POR CEDENTE ID
         $consulta = "CALL sp_New_Cartera(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(4, 0, $idcedente, 0, 0, '', '', '', '', '', 0, 0, 0));
         $dropbox = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 5:
-        $cbo = 'Gestor'; //LLENAR CATALOGO POR PRODUCTO ID
+        $cbo = 'Catalogo'; //LLENAR CATALOGO POR PRODUCTO ID
         $consulta = "CALL sp_New_Cartera(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(5, 0, 0, $idproducto, 0, '', '', '', '', '', 0, 0, 0));
