@@ -83,5 +83,15 @@ $(document).ready(function(){
 
   }); 
 
+  $("#btnProcesar").click(function(){
+
+    alert('ola');
+    document.getElementById('file-input')
+    .addEventListener('change', leerArchivo, false);
+
+  });
+
+
+  
 
 });

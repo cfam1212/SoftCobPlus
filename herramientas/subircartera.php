@@ -62,8 +62,10 @@ $dataciu = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <br />
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" accept="image/*" id="txtArchivo" name="archivo">
+                                    <input type="file" accept=".txt" id="txtArchivo" name="txtArchivo">
                                 </div>
+                                <h3>Contenido del archivo:</h3>
+                                <pre id="contenido-archivo"></pre>                                
                             </div>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" id="btnProcesar" class="btn btn-info">Procesar</button>
