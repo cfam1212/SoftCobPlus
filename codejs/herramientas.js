@@ -114,13 +114,292 @@ $(document).ready(function(){
                         _apellidos = $.trim($(this).text());
                         break;
                     case 3:
-                        _valorv = $.trim($(this).text());
+                        _fechanacimiento = $.trim($(this).text());
                         break;
                     case 4:
-                        _valori = $.trim($(this).text());
+                        _provincia = $.trim($(this).text());
+                        break;
+                    case 5:
+                        _ciudad = $.trim($(this).text());
                         break;
                     case 6:
-                        _estado = $.trim($(this).text());
+                        _direcciondom = $.trim($(this).text());
+                        break;                        
+                    case 7:
+                        _referenciadom = $.trim($(this).text());
+                        break;
+                    case 8:
+                        _direcciontrab = $.trim($(this).text());
+                        break;
+                    case 9:
+                        _referenciatrab = $.trim($(this).text());
+                        break;
+                    case 10:
+                        _email = $.trim($(this).text());
+                        break;
+                    case 11:
+                        _operacion = $.trim($(this).text());
+                        break;
+                    case 12:
+                        _totaldeuda = $.trim($(this).text());
+                        break;
+                    case 13:
+                        _diasmora = $.trim($(this).text());
+                        break;
+                    case 14:
+                        _capitalxvencer = $.trim($(this).text());
+                        break;
+                    case 15:
+                        _capitalvencido = $.trim($(this).text());
+                        break;
+                    case 16:
+                        _capitalmora = $.trim($(this).text());
+                        break;
+                    case 17:
+                        _valorexigible = $.trim($(this).text());
+                        break;
+                    case 18:
+                        _fechaobligacion = $.trim($(this).text());
+                        break;
+                    case 19:
+                        _fechavencimiento = $.trim($(this).text());
+                        break;
+                    case 20:
+                        _fechaultimopago = $.trim($(this).text());
+                        break;
+                    case 21:
+                        _fonodeudor1 = $.trim($(this).text());
+                        break;
+                    case 22:
+                        _fonodeudor2 = $.trim($(this).text());
+                        break;
+                    case 23:
+                        _fonodeudor3 = $.trim($(this).text());
+                        break;
+                    case 24:
+                        _fonodeudor4 = $.trim($(this).text());
+                        break;
+                    case 25:
+                        _fonodeudor5 = $.trim($(this).text());
+                        break;
+                    case 26:
+                        _fonodeudor6 = $.trim($(this).text());
+                        break;
+                    case 27:
+                        _fonodeudor7 = $.trim($(this).text());
+                        break;
+                    case 28:
+                        _fonodeudor8 = $.trim($(this).text());
+                        break;
+                    case 29:
+                        _fonodeudor9 = $.trim($(this).text());
+                        break;
+                    case 30:
+                        _fonodeudor10 = $.trim($(this).text());
+                        break;
+                    case 31:
+                        _cedularef1 = $.trim($(this).text());
+                        break;
+                    case 32:
+                        _nomref1 = $.trim($(this).text());
+                        break;
+                    case 33:
+                        _fono1ref1 = $.trim($(this).text());
+                        break;
+                    case 34:
+                        _fono2ref1 = $.trim($(this).text());
+                        break;
+                    case 35:
+                        _direcdomref1 = $.trim($(this).text());
+                        break;
+                    case 36:
+                        _refdomref1 = $.trim($(this).text());
+                        break;
+                    case 37:
+                        _emailref1 = $.trim($(this).text());
+                        break;
+                    case 38:
+                        _cedularef2 = $.trim($(this).text());
+                        break;
+                    case 39:
+                        _nomref2 = $.trim($(this).text());
+                        break;
+                    case 40:
+                        _fono1ref2 = $.trim($(this).text());
+                        break;
+                    case 41:
+                        _fono2ref2 = $.trim($(this).text());
+                        break;
+                    case 42:
+                        _direcdomref2 = $.trim($(this).text());
+                        break;
+                    case 43:
+                        _refdomref2 = $.trim($(this).text());
+                        break;
+                    case 44:
+                        _emailref2 = $.trim($(this).text());
+                        break;
+                    case 45:
+                        _tipogarante1 = $.trim($(this).text());
+                        break;
+                    case 46:
+                        _cedulagarante1 = $.trim($(this).text());
+                        break;
+                    case 47:
+                        _nombregarante1 = $.trim($(this).text());
+                        break;
+                    case 48:
+                        _direccdomgarante1 = $.trim($(this).text());
+                        break;
+                    case 49:
+                        _referendomgarante1 = $.trim($(this).text());
+                        break;
+                    case 50:
+                        _direcctragarante1 = $.trim($(this).text());
+                        break;
+                    case 51:
+                        _referentragarante1 = $.trim($(this).text());
+                        break;
+                    case 52:
+                        _emailpergarante1 = $.trim($(this).text());
+                        break;
+                    case 53:
+                        _emailtragarante1 = $.trim($(this).text());
+                        break;
+                    case 54:
+                        _fono1garante1 = $.trim($(this).text());
+                        break;
+                    case 55:
+                        _fono2garante1 = $.trim($(this).text());
+                        break;
+                    case 56:
+                        _fono3garante1 = $.trim($(this).text());
+                        break;
+                    case 57:
+                        _tipogarante2 = $.trim($(this).text());
+                        break;
+                    case 58:
+                        _cedulagarante2 = $.trim($(this).text());
+                        break;
+                    case 59:
+                        _nombregarante2 = $.trim($(this).text());
+                        break;
+                    case 60:
+                        _direccdomgarante2 = $.trim($(this).text());
+                        break;
+                    case 61:
+                        _referendomgarante2 = $.trim($(this).text());
+                        break;
+                    case 62:
+                        _direcctragarante2 = $.trim($(this).text());
+                        break;
+                    case 63:
+                        _referentragarante2 = $.trim($(this).text());
+                        break;
+                    case 64:
+                        _emailpergarante2 = $.trim($(this).text());
+                        break;
+                    case 65:
+                        _emailtragarante2 = $.trim($(this).text());
+                        break;
+                    case 66:
+                        _fono1garante2 = $.trim($(this).text());
+                        break;
+                    case 67:
+                        _fono2garante2 = $.trim($(this).text());
+                        break;
+                    case 68:
+                        _fono3garante2 = $.trim($(this).text());
+                        break;                        
+                    case 69:
+                        _adicional1 = $.trim($(this).text());
+                        break;
+                    case 70:
+                        _adicional2 = $.trim($(this).text());
+                        break;
+                    case 71:
+                        _adicional3 = $.trim($(this).text());
+                        break;
+                    case 72:
+                        _adicional4 = $.trim($(this).text());
+                        break;
+                    case 73:
+                        _adicional5 = $.trim($(this).text());
+                        break;
+                    case 74:
+                        _adicional6 = $.trim($(this).text());
+                        break;
+                    case 75:
+                        _adicional7 = $.trim($(this).text());
+                        break;
+                    case 76:
+                        _adicional8 = $.trim($(this).text());
+                        break;
+                    case 77:
+                        _adicional9 = $.trim($(this).text());
+                        break;
+                    case 78:
+                        _adicional10 = $.trim($(this).text());
+                        break;
+                    case 79:
+                        _adicional11 = $.trim($(this).text());
+                        break;
+                    case 80:
+                        _adicional12 = $.trim($(this).text());
+                        break;
+                    case 81:
+                        _adicional13 = $.trim($(this).text());
+                        break;
+                    case 82:
+                        _adicional14 = $.trim($(this).text());
+                        break;
+                    case 83:
+                        _adicional15 = $.trim($(this).text());
+                        break;
+                    case 84:
+                        _adicional16 = $.trim($(this).text());
+                        break;
+                    case 85:
+                        _adicional17 = $.trim($(this).text());
+                        break;
+                    case 86:
+                        _adicional18 = $.trim($(this).text());
+                        break;
+                    case 87:
+                        _adicional19 = $.trim($(this).text());
+                        break;
+                    case 88:
+                        _adicional20 = $.trim($(this).text());
+                        break;
+                    case 89:
+                        _adicional21 = $.trim($(this).text());
+                        break;
+                    case 90:
+                        _adicional22 = $.trim($(this).text());
+                        break;
+                    case 91:
+                        _adicional23 = $.trim($(this).text());
+                        break;
+                    case 92:
+                        _adicional24 = $.trim($(this).text());
+                        break;
+                    case 93:
+                        _adicional25 = $.trim($(this).text());
+                        break;
+                    case 94:
+                        _adicional26 = $.trim($(this).text());
+                        break;
+                    case 95:
+                        _adicional27 = $.trim($(this).text());
+                        break;
+                    case 96:
+                        _adicional28 = $.trim($(this).text());
+                        break;
+                    case 97:
+                        _adicional29 = $.trim($(this).text());
+                        break;
+                    case 98:
+                        _adicional30 = $.trim($(this).text());
                         break;
                 }
             }); 
@@ -130,13 +409,102 @@ $(document).ready(function(){
 
             _objeto = 
             {
-                arrycedula : parseInt(_idpade),
-                arryorden : parseInt(_orden),
-                arrydetalle : _detalle,
-                arryvalorv : _valorv,
-                arryvalori : parseInt(_valori),
-                arryestado : _estado,
-                arrydisable : _deshabilitar        
+                arrycedula : _cedula,
+                arrynombres : _nombres,
+                arryapellidos : _apellidos,
+                arryfechanac : _fechanacimiento,
+                arryprovincia : _provincia,
+                arrydirecdom : _direcciondom,
+                arryrefedom : _referenciadom,
+                arrydirectra : _direcciontrab,
+                arryemail : _email,
+                arrytotaldeuda : _totaldeuda,
+                arrydiasmora : _diasmora,
+                arrycapitalxvencer : _capitalxvencer,
+                arrycapitalvencido : _capitalvencido,
+                arrycapitalmora : _capitalmora,
+                arryvalorexigible : _valorexigible,
+                arryfechaobligacion : _fechaobligacion,
+                arryfechavencimiento : _fechavencimiento,
+                arryfechaultpago : _fechaultimopago,
+                arryfonodeu1 : _fonodeudor1,
+                arryfonodeu2 : _fonodeudor2,
+                arryfonodeu3 : _fonodeudor3,
+                arryfonodeu4 : _fonodeudor4,
+                arryfonodeu5 : _fonodeudor5,
+                arryfonodeu6 : _fonodeudor6,
+                arryfonodeu7 : _fonodeudor7,
+                arryfonodeu8 : _fonodeudor8,
+                arryfonodeu9 : _fonodeudor9,
+                arryfonodeu10 : _fonodeudor10,
+                arryceduref1 : _cedularef1,
+                arrynomref1 : _nomref1,
+                arryfono1ref1 : _fono1ref1,
+                arryfono2ref1 : _fono2ref1,
+                arrydireccdomref1 : _direcdomref1,
+                arryrefedomref1 : _refdomref1,
+                arryemailref1 : _emailref1,
+                arryceduref2 : _cedularef2,
+                arrynomref2 : _nomref2,
+                arryfono1ref2 : _fono1ref2,
+                arryfono2ref2 : _fono2ref2,
+                arrydireccdomref2 : _direcdomref2,
+                arryrefedomref2 : _refdomref2,
+                arryemailref2 : _emailref2,
+                arrytipogarante1 : _tipogarante1,
+                arrycedulagarante1 : _cedulagarante1,
+                arrynomgarante1 : _nombregarante1,
+                arrydirecdomgarante1 : _direccdomgarante1,
+                arryrefdomgarante1 : _referendomgarante1,
+                arrydirectragarante1 : _direcctragarante1,
+                arryreftragarante1 : _referentragarante1,
+                arryemailpergarante1 : _emailpergarante1,
+                arryemailtragarante1 : _emailtragarante1,
+                arryfono1garante1 : _fono1garante1,
+                arryfono2garante1 : _fono2garante1,
+                arryfono3garante1 : _fono3garante1,
+                arrytipogarante2 : _tipogarante2,
+                arrycedulagarante2 : _cedulagarante2,
+                arrynomgarante2 : _nombregarante2,
+                arrydirecdomgarante2 : _direccdomgarante2,
+                arryrefdomgarante2 : _referendomgarante2,
+                arrydirectragarante2 : _direcctragarante2,
+                arryreftragarante2 : _referentragarante2,
+                arryemailpergarante2 : _emailpergarante2,
+                arryemailtragarante2 : _emailtragarante2,
+                arryfono1garante2 : _fono1garante2,
+                arryfono2garante2 : _fono2garante2,
+                arryfono3garante2 : _fono3garante2,
+                arryadicional1 : _adicional1,
+                arryadicional2 : _adicional2,
+                arryadicional3 : _adicional3,
+                arryadicional4 : _adicional4,
+                arryadicional5 : _adicional5,
+                arryadicional6 : _adicional6,
+                arryadicional7 : _adicional7,
+                arryadicional8 : _adicional8,
+                arryadicional9 : _adicional9,
+                arryadicional10 : _adicional10,
+                arryadicional11 : _adicional11,
+                arryadicional12 : _adicional12,
+                arryadicional13 : _adicional13,
+                arryadicional14 : _adicional14,
+                arryadicional15 : _adicional15,
+                arryadicional16 : _adicional16,
+                arryadicional17 : _adicional17,
+                arryadicional18 : _adicional18,
+                arryadicional19 : _adicional19,
+                arryadicional20 : _adicional20,
+                arryadicional21 : _adicional21,
+                arryadicional22 : _adicional22,
+                arryadicional23 : _adicional23,
+                arryadicional24 : _adicional24,
+                arryadicional25 : _adicional25,
+                arryadicional26 : _adicional26,
+                arryadicional27 : _adicional27,
+                arryadicional28 : _adicional28,
+                arryadicional29 : _adicional29,
+                arryadicional30 : _adicional30,
             }
     
             _result.push(_objeto);            
