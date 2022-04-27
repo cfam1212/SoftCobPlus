@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro;
+  var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro, _catalogoid, _result = [];
 
   $('#cboCiudad').select2();
   $('#cboCedente').select2();
@@ -64,32 +64,99 @@ $(document).ready(function(){
   });
   
   
-  $('#cboProducto').change(function(){
+    $('#cboProducto').change(function(){
 
+      
+      _cbopro = $(this).val();
+
+      $.ajax({
+        dataType: 'html',
+        type: 'POST',
+        url: '../db/cargarcombos.php',
+        data: {opcion:5, proid:_cbopro},
+      }).done(function(data){
+
+        _cbocatalogo.html(data);
+        _cbocatalogo.select2();
+      });
+
+
+    }); 
+
+    $('#cboCatalogo').change(function(){
+
+      _catalogoid = $(this).val();
+
+    });    
+
+
+    $("#btnProcesar").click(function(){
+
+      /*let tbldatos = document.getElementById('tablecartera');
+      rowCount = tbldatos.rows.length;*/
+
+      alert(_catalogoid);
+      
+        $("#tablecartera tbody tr").each(function (items) 
+        {
+            let _orden, _detalle, _valorv, _valori, _estado, _idpade;
+            
+            $(this).children("td").each(function (index) 
+            {
+                switch(index){
+                    case 0:
+                        _cedula = $.trim($(this).text());
+                        break;
+                    case 1:
+                        _nombres = $.trim($(this).text());
+                        break;
+                    case 2:
+                        _apellidos = $.trim($(this).text());
+                        break;
+                    case 3:
+                        _valorv = $.trim($(this).text());
+                        break;
+                    case 4:
+                        _valori = $.trim($(this).text());
+                        break;
+                    case 6:
+                        _estado = $.trim($(this).text());
+                        break;
+                }
+            }); 
+            
+            console.log(_idpade);
+            console.log(_orden);
+
+            _objeto = 
+            {
+                arrycedula : parseInt(_idpade),
+                arryorden : parseInt(_orden),
+                arrydetalle : _detalle,
+                arryvalorv : _valorv,
+                arryvalori : parseInt(_valori),
+                arryestado : _estado,
+                arrydisable : _deshabilitar        
+            }
     
-    _cbopro = $(this).val();
-
-    $.ajax({
-      dataType: 'html',
-      type: 'POST',
-      url: '../db/cargarcombos.php',
-      data: {opcion:5, proid:_cbopro},
-    }).done(function(data){
-
-      _cbocatalogo.html(data);
-      _cbocatalogo.select2();
+            _result.push(_objeto);            
+          
+        });
+        
+        $.ajax({
+          url: "../herramientacrud.php",
+          type: "POST",
+          dataType: "json",
+          data: {cedeid: _padeid, producid: _estadopade, catalogoid: _catalogoid, cartera: _result, opcion: 4},
+          success: function(data){
+             
+          },
+          error: function (error) {
+              console.log(error);
+          }                 
+      });          
     });
 
-
-  }); 
-
-  $("#btnProcesar").click(function(){
-
-    alert('ola');
-    document.getElementById('file-input')
-    .addEventListener('change', leerArchivo, false);
-
-  });
 
 
   

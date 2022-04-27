@@ -246,7 +246,6 @@ $(document).ready(function(){
             },
             "sProcessing": "Procesando..."
         }
-    });    
-      
+    });       
 
 });
