@@ -515,7 +515,7 @@ $(document).ready(function(){
           url: "../herramientacrud.php",
           type: "POST",
           dataType: "json",
-          data: {cedeid: _padeid, producid: _estadopade, catalogoid: _catalogoid, cartera: _result, opcion: 4},
+          data: {cedeid: _padeid, producid: _cbopro, catalogoid: _catalogoid, cartera: _result, opcion: 4},
           success: function(data){
              
           },
