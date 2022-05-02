@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro, _catalogoid, _result = [];
+  var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro, _catalogoid, _resultCartera = [];
 
   $('#cboCiudad').select2();
   $('#cboCedente').select2();
@@ -99,7 +99,7 @@ $(document).ready(function(){
       
         $("#tablecartera tbody tr").each(function (items) 
         {
-            let _orden, _detalle, _valorv, _valori, _estado, _idpade;
+            let _cedula, _nombres, _apellidos, _fechanacimiento, _provincia, _ciudad;
             
             $(this).children("td").each(function (index) 
             {
@@ -404,8 +404,8 @@ $(document).ready(function(){
                 }
             }); 
             
-            console.log(_idpade);
-            console.log(_orden);
+            // console.log(_idpade);
+           
 
             _objeto = 
             {
@@ -507,15 +507,15 @@ $(document).ready(function(){
                 arryadicional30 : _adicional30,
             }
     
-            _result.push(_objeto);            
+            _resultCartera.push(_objeto);            
           
         });
         
         $.ajax({
-          url: "../herramientacrud.php",
+          url: "../db/herramientacrud.php",
           type: "POST",
           dataType: "json",
-          data: {cedeid: _padeid, producid: _cbopro, catalogoid: _catalogoid, cartera: _result, opcion: 4},
+          data: {cedeid: _cbocedeid, producid: _cbopro, catalogoid: _catalogoid, cartera: _resultCartera, opcion: 0},
           success: function(data){
              
           },
