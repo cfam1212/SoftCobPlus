@@ -115,6 +115,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
           <br/>
           <fieldset>
             <div class="row">
+               <label for="espacio" class="control-label col-md-2"></label>
+               <label for="cedente" class="control-label col-md-2">Cedente:</label>
+            </div>
+            <div class="row">
               <label for="espacio" class="control-label col-md-2"></label>
               <div class="form-group col-md-8">
                 <select class="form-control" id="cboCedente" name="cbocedente" style="width:100%;">
@@ -125,6 +129,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                   <?php endforeach ?>
                 </select>
               </div>
+            </div>
+            <div class="row">
+               <label for="espacio" class="control-label col-md-2"></label>
+               <label for="supervisor" class="control-label col-md-2">Supervisor:</label>
             </div>
             <div class="row">
               <label for="espacio" class="control-label col-md-2"></label>
@@ -159,6 +167,10 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="modal-body">
           <br/>
           <fieldset>
+            <div class="row">
+               <label for="spacio" class="control-label col-md-2"></label>
+               <label for="gestor" class="control-label col-md-2">Gestor:</label>
+            </div>
             <div class="row">
               <label for="gestor" class="control-label col-md-2"></label>
               <div class="form-group col-md-6">

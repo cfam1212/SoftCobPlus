@@ -61,7 +61,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstadoPa" id="chk<?php echo $datos['ParaId']; ?>" name="check[]" <?php if ($datos['Estado'] == 'Activo') {
-                                                   echo "checked"; } ?> value="<?php echo $datos['ParaId']; ?>" />                                                                                                                
+                                                                                                                                                                    echo "checked";
+                                                                                                                                                                } ?> value="<?php echo $datos['ParaId']; ?>" />
                                         </td>
                                     </tr>
                                 <?php }
@@ -96,22 +97,28 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <form class="form-horizontal col-md-10 offset-md-2" role="form">
                                 <fieldset>
                                     <div class="row">
+                                        <label for="parametro" class="control-label col-md-1">Parametro:</label>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-10 col-sm-6  form-group has-feedback">
                                             <input autofocus type="text" class="form-control has-feedback-left" id="txtParametro" placeholder="nombre del parametro" maxlength="80">
                                             <span class="fa fa-bookmark form-control-feedback left" aria-hidden="true"></span>
                                         </div>
                                     </div>
-                                    <br/>
+                                    <br />
+                                    <div class="row">
+                                        <label for="parametro" class="control-label col-md-1">Descripcion:</label>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-10 col-sm-6 form-group has-feedback">
-                                            <textarea name="observa" id="txtDescripcion" class="form-control" placeholder="descripcion" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
+                                            <textarea name="observa" id="txtDescripcion" class="form-control" placeholder="ingrese una descripcion" maxlength="255" onkeydown="return (event.keyCode!=13);"></textarea>
                                         </div>
                                     </div>
                                 </fieldset>
                             </form>
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                            <br/>
+                            <br />
                             <div class="col-md-12 col-sm-12">
                                 <div class="col-md-1 col-sm-1">
                                 </div>
@@ -162,14 +169,14 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <br/>
+                    <br />
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtValorv" placeholder="valor texto" maxlength="255">
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <br/>
+                    <br />
                     <div class="row">
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" id="txtValori" class="form-control has-feedback-left" placeholder="valor entero" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="5">

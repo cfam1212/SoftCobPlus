@@ -59,7 +59,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="form-group row">
                                 <label for="espacio" class="control-label col-md-1"></label>
-                                <label for="cbomenupadre" class="control-label col-md-1">Menu Padre:</label>
+                                <label for="cbomenupadre" class="control-label col-md-2">Menu Padre:</label>
                             </div>
                             <div class="form-group row">
                                 <label for="espacio" class="control-label col-md-1"></label>

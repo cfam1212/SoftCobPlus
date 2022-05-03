@@ -97,7 +97,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <form id="formDepartamento">
                 <div class="modal-body">
+                    <br/>
                     <div class="row">
+                        <label for="departamento" class="control-label col-md-1">Departamento:</label>
                         <div class="col-md-12 col-sm-12  form-group has-feedback">
                             <input type="tel" class="form-control has-feedback-left" id="txtDepa" placeholder="nombre del departamento" maxlength="80" autocomplete="off">
                             <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>

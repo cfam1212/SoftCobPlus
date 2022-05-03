@@ -32,6 +32,11 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <br />
                         <form class="form-horizontal col-md-10 offset-md-2">
                             <div class="form-group row">
+                                <label for="ciudad" class="control-label col-md-1">Ciudad:</label>
+                                <label for="espacio" class="control-label col-md-4"></label>
+                                <label for="cedente" class="control-label col-md-1">Cedente:</label>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;">
                                         <option value="0">--Seleccione Cuidad--</option>
@@ -48,7 +53,11 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </select>
                                 </div>
                             </div>
-                            <br />
+                            <div class="form-group row">
+                                <label for="producto" class="control-label col-md-1">Producto:</label>
+                                <label for="espacio" class="control-label col-md-4"></label>
+                                <label for="catalogo" class="control-label col-md-1">Catalogo:</label>
+                            </div>
                             <div class="form-group row">
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboProducto" name="cboproducto" style="width: 100%;">
@@ -82,7 +91,7 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <br />
                             <div class="form-group row" id="divGestor" style="display: none;">
                                 <label for="gestor" class="control-label col-md-1"></label>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-5">
                                     <select class="form-control" id="cboGestor" name="cboGestor" style="width:100%;">
                                         <option value="0">--Seleccione Gestor--</option>
                                     </select>
@@ -93,8 +102,8 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="form-group row" id="divRegistro" style="display: none;">
                                 <label for="espacio" class="control-label col-md-2"></label>
-                                <div class="col-md-4 col-sm-6 form-group has-feedback">
-                                    <input type="text" class="form-control has-feedback-left" id="txtNumReg" placeholder="registros" required onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                                <div class="col-md-3 col-sm-6 form-group has-feedback">
+                                    <input type="text" class="form-control has-feedback-left" id="txtNumReg" placeholder="0" required onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                     <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>

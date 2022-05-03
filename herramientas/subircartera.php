@@ -37,6 +37,11 @@
                         <form method="post" class="form-horizontal col-md-10 offset-md-2">
     <?php                   if($SubirCartera == 0) { ?>
                             <div class="form-group row">
+                                    <label for="ciudad" class="control-label col-md-1">Ciudad:</label>
+                                    <label for="espacio" class="control-label col-md-4"></label>
+                                    <label for="cedente" class="control-label col-md-1">Cedente:</label>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;">
                                         <option value="0">--Seleccione Cuidad--</option>
@@ -53,7 +58,11 @@
                                     </select>
                                 </div>
                             </div>
-                            <br />
+                            <div class="form-group row">
+                                <label for="producto" class="control-label col-md-1">Producto:</label>
+                                <label for="espacio" class="control-label col-md-4"></label>
+                                <label for="catalogo" class="control-label col-md-1">Catalogo:</label>
+                            </div>
                             <div class="form-group row">
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboProducto" name="cboproducto" style="width: 100%;">

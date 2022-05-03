@@ -105,7 +105,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <form id="formTarea">
                 <div class="modal-body">
                     <br/>
+                   
                     <div class="row">
+                        <label for="tarea" class="control-label col-md-2">Tarea:</label>
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtTarea" placeholder="nombre de la tarea" maxlength="80">
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
@@ -113,6 +115,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <br/>
                     <div class="row">
+                        <label for="ruta" class="control-label col-md-2">Ruta:</label>
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtRuta" placeholder="ej: ../seguridad/usuario.php" maxlength="">
                             <span class="fa fa-sign-out form-control-feedback left" aria-hidden="true"></span>
@@ -120,6 +123,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <br/>
                     <div class="row">
+                        <label for="tarea" class="control-label col-md-2">Icono:</label>
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtIcono" placeholder="ej: fa fa-user" maxlength="">
                             <span class="fa fa-smile-o form-control-feedback left" aria-hidden="true"></span>

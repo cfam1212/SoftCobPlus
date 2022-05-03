@@ -93,7 +93,10 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         </td>
                                         <td style="text-align: center">
                                             <input type="checkbox" class="form-check-input chkEstadoUs" <?php echo $chkestado; ?> id="chk<?php echo $dat['UserId']; ?>" name="check[]" <?php if ($dat['Estado'] == 'Activo') {
-                                                    echo "checked";  } else { '';   } ?> value="<?php echo $dat['UserId']; ?>" />                                                                                                                                                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                            echo "checked";
+                                                                                                                                                                                        } else {
+                                                                                                                                                                                            '';
+                                                                                                                                                                                        } ?> value="<?php echo $dat['UserId']; ?>" />
                                         </td>
                                     </tr>
                                 <?php }
@@ -116,6 +119,13 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <br />
                 <div class="modal-body">
                     <div class="form-group row">
+                        <label for="nombre" class="control-label col-md-1">Nombre:</label>
+                        <label for="espacio" class="control-label col-md-3"></label>
+                        <label for="menuname" class="control-label col-md-1">Apellido:</label>
+                        <label for="espacio" class="control-label col-md-3"></label>
+                        <label for="menuname" class="control-label col-md-1">Login:</label>
+                    </div>
+                    <div class="form-group row">
                         <div class="col-md-4 col-sm-4 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtUsername" placeholder="nombre usuario" maxlength="80" autofocus>
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
@@ -129,7 +139,14 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
-                    <br/>
+                    <br />
+                    <div class="form-group row">
+                        <label for="nombre" class="control-label col-md-1">Password:</label>
+                        <label for="espacio" class="control-label col-md-3"></label>
+                        <label for="menuname" class="control-label col-md-2">Perfil Usuario:</label>
+                        <label for="espacio" class="control-label col-md-2"></label>
+                        <label for="menuname" class="control-label col-md-2">Tipo Usuario:</label>
+                    </div>
                     <div class="form-group row">
                         <div class="col-md-4 col-sm-4 form-group has-feedback">
                             <input type="password" class="form-control has-feedback-left" id="txtPassword" placeholder="password" maxlength="50" autocomplete="off">
@@ -137,10 +154,10 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="col-md-4 col-sm-4">
                             <select class="form-control col-md-4" id="cboPerfil" name="cboperfil" style="width: 100%;">
-                                <?php 
-                                    foreach ($cboperfil as $fila){
-                                        echo '<option value="' . $fila['Codigo'] .'">' . $fila['Descripcion'] . '</option>';
-                                    }
+                                <?php
+                                foreach ($cboperfil as $fila) {
+                                    echo '<option value="' . $fila['Codigo'] . '">' . $fila['Descripcion'] . '</option>';
+                                }
                                 ?>
                             </select>
                         </div>
@@ -152,7 +169,13 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </select>
                         </div>
                     </div>
-                    <br/>
+                    <br />
+                    <div class="form-group row">
+                        <label for="usuario" class="control-label col-md-4">Departamento Usuario:</label>
+                        <label for="usuario" class="control-label col-md-2">Cambiar Password:</label>
+                        <label for="usuario" class="control-label col-md-3">Password Caduca:</label>
+                        <label for="usuario" class="control-label col-md-2">Fecha Caduca:</label>
+                    </div>
                     <div class="form-group row">
                         <div class="col-md-4 col-sm-4">
                             <select class="form-control col-md-4" id="cboDepa" name="cbodepa" style="width: 100%;">
@@ -161,23 +184,17 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <?php endforeach ?>
                             </select>
                         </div>
-                        <label for="menuname" class="control-label col-md-2">Cambiar Password:</label>
-                        <label for="menuname" class="control-label col-md-3">Password Caduca:</label>
-                        <label for="menuname" class="control-label col-md-2">Fecha Caduca:</label>
-                    </div>
-                    <div class="form-group row">
-                        <label for="espacio" class="control-label col-md-4"></label>
                         <div class="checkbox col-md-2">
                             <input type="checkbox" id="chkCambiar">
                             <label class="form-check-label" id="lblCambiar">NO</label>
-                        </div> 
+                        </div>
                         <div class="checkbox col-md-2">
                             <input type="checkbox" id="chkCaduca">
                             <label class="form-check-label" id="lblCaduca">NO</label>
                         </div>
                         <input type="text" class="form-control col-md-4" id="txtFechacaduca" maxlength="50" disabled placeholder="MM/dd/yyyy ">
                     </div>
-                    <br/>
+                    <br />
                     <div class="form-group row">
                         <label for="espacio" class="control-label col-md-1"></label>
                         <input type="file" accept="image/*" id="txtImagen" name="imagen">
