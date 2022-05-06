@@ -103,26 +103,26 @@ $adicional7 = (isset($_POST['adicional7'])) ? $_POST['adicional7'] : '';
 $adicional8 = (isset($_POST['adicional8'])) ? $_POST['adicional8'] : '';
 $adicional9 = (isset($_POST['adicional9'])) ? $_POST['adicional9'] : '';
 $adicional10 = (isset($_POST['adicional10'])) ? $_POST['adicional10'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
-$adicional1 = (isset($_POST['adicional1'])) ? $_POST['adicional1'] : '';
+$adicional11 = (isset($_POST['adicional11'])) ? $_POST['adicional11'] : '';
+$adicional12 = (isset($_POST['adicional12'])) ? $_POST['adicional12'] : '';
+$adicional13 = (isset($_POST['adicional13'])) ? $_POST['adicional13'] : '';
+$adicional14 = (isset($_POST['adicional14'])) ? $_POST['adicional14'] : '';
+$adicional15 = (isset($_POST['adicional15'])) ? $_POST['adicional15'] : '';
+$adicional16 = (isset($_POST['adicional16'])) ? $_POST['adicional16'] : '';
+$adicional17 = (isset($_POST['adicional17'])) ? $_POST['adicional17'] : '';
+$adicional18 = (isset($_POST['adicional18'])) ? $_POST['adicional18'] : '';
+$adicional19 = (isset($_POST['adicional19'])) ? $_POST['adicional19'] : '';
+$adicional20 = (isset($_POST['adicional20'])) ? $_POST['adicional20'] : '';
+$adicional21 = (isset($_POST['adicional21'])) ? $_POST['adicional21'] : '';
+$adicional22 = (isset($_POST['adicional22'])) ? $_POST['adicional22'] : '';
+$adicional23 = (isset($_POST['adicional23'])) ? $_POST['adicional23'] : '';
+$adicional24 = (isset($_POST['adicional24'])) ? $_POST['adicional24'] : '';
+$adicional25 = (isset($_POST['adicional25'])) ? $_POST['adicional25'] : '';
+$adicional26 = (isset($_POST['adicional26'])) ? $_POST['adicional26'] : '';
+$adicional27 = (isset($_POST['adicional27'])) ? $_POST['adicional27'] : '';
+$adicional28 = (isset($_POST['adicional28'])) ? $_POST['adicional28'] : '';
+$adicional29 = (isset($_POST['adicional29'])) ? $_POST['adicional29'] : '';
+$adicional30 = (isset($_POST['adicional30'])) ? $_POST['adicional30'] : '';
 
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '0';
@@ -143,12 +143,38 @@ switch($opcion){
                                    $referenciadom,$direcciontra,$referenciatra,$email,'','','',0,0,$currentdate,$userid,$host));
         
         $personaid = $resultado->fetchColumn();
+        $propietario = 'TIT';
+        $tipo = 'CEL';
+
+        if($fonodeu1 != ''){
+
+           
+            if(substr($fonodeu1,2)!= '09'){
+                $tipo = 'CON';
+            }
+
+
+        }
 
         $consulta = "CALL sp_Subir_Cuenta_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(0,$personaid,$cedenteid,$productoid,$catalogoid,$operacion,$totaldeuda,$diasmora,
                                    $capitalxvencer,$capitalvencido,$capitalmora,$valorexigible,$fechaobligacion,
                                     $fechavencimiento,$fechaultpago,0,'A'));
+
+        $consulta = "CALL sp_New_Garante_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(0,$personaid,$tipogarante1,$cedulagarante1,$nombregarante1,$direcciondomgara1,$referenciadomgara1,
+                                    $direcciontragara1,$referenciatragara1,$emailpersonalgara1,$emailtrabajogara1,$fono1gara1,
+                                     $fono2gara1,$fono3gara1, $tipogarante2,$cedulagarante2,$nombregarante2,$direcciondomgara2,$referenciadomgara2,
+                                     $direcciontragara2,$referenciatragara2,$emailpersonalgara2,$emailtrabajogara2,$fono1gara2,
+                                    $fono2gara2,$fono3gara2,$currentdate,$userid,$host));
+
+        $consulta = "CALL sp_New_Referencia_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(0,$personaid,$cedularef1,$nombreref1,$fono1ref1,$fono2ref1,$direcciondomref1,$referenciadomref1,
+                                    $emailref1,$cedularef2,$nombreref2,$fono1ref2,$fono2ref2,$direcciondomref2,$referenciadomref2,
+                                    $emailref2,$currentdate,$userid,$host));                            
         break;
                 
             
