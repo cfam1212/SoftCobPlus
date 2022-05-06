@@ -137,30 +137,102 @@ $currentdate = date('Y-m-d H:i:s');
 switch($opcion){
     case 0: //INSERTAR PERSONA 
           
+        if($cedula == '' || $operacion == '' )
+        {
+            return false;
+        }
+
         $consulta = "CALL sp_Subir_Cartera_Persona(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(0,'',$cedula,$nombres,$apellidos,'',$fechanaci,'',$provincia,$ciudad,'',$direcciondom,
                                    $referenciadom,$direcciontra,$referenciatra,$email,'','','',0,0,$currentdate,$userid,$host));
         
         $personaid = $resultado->fetchColumn();
-        $propietario = 'TIT';
-        $tipo = 'CEL';
+        $$tipocliente = 'TIT';
+        $tipotelefono = 'CEL';
 
         if($fonodeu1 != ''){
 
-           
             if(substr($fonodeu1,2)!= '09'){
-                $tipo = 'CON';
+                $tipotelefono = 'CON';
             }
-
-
         }
+
+        if($direcciondom != ''){
+            $tipodireccioncorreo = 'DIRECCION';
+            $definicion = 'DOM';
+            
+            //INSERTAR EN DIRECCION_CORREO
+            //CON REFERENCIADOMICILIO
+        }
+
+        if($direcciontra != ''){
+            $tipodireccioncorreo = 'DIRECCION';
+            $definicion = 'TRA';
+            
+            //INSERTAR EN DIRECCION_CORREO
+            //CON REFERENCIADOMICILIO
+        }        
+
+        if($email != ''){
+            $tipodireccioncorreo = 'CORREO';
+            $definicion = 'PER';
+            
+            //INSERTAR EN DIRECCION_CORREO
+            //CON REFERENCIADOMICILIO
+        }           
 
         $consulta = "CALL sp_Subir_Cuenta_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(array(0,$personaid,$cedenteid,$productoid,$catalogoid,$operacion,$totaldeuda,$diasmora,
                                    $capitalxvencer,$capitalvencido,$capitalmora,$valorexigible,$fechaobligacion,
                                     $fechavencimiento,$fechaultpago,0,'A'));
+
+
+        $tipocliente = 'FAM'; 
+        $tipotelefono = 'CEL';
+
+        if($nombreref1 != '')
+        {
+            if($cedularef1 == ''){
+                $cedularef1 = $cedula;
+            }
+
+            ///INSERT EN TABLA DEUDOR_REFERENCIA
+            $consulta = "CALL sp_New_Referencia_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(0,$personaid,$cedularef1,$nombreref1,$fono1ref1,$fono2ref1,$direcciondomref1,$referenciadomref1,
+                                        $emailref1,$cedularef2,$nombreref2,$fono1ref2,$fono2ref2,$direcciondomref2,$referenciadomref2,
+                                        $emailref2,$currentdate,$userid,$host));   
+            
+            $referenid = $resultado->fetchColumn();
+            
+            if($fono1ref1 != '')
+            {
+                if(substr($fono1ref1,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
+                //INSERT TELEFONOS
+            }
+
+            if($fono2ref1 != '')
+            {
+                if(substr($fono2ref1,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
+                //INSERT TELEFONOS
+            }
+
+            if($direcciondomref1 != ''){
+                $tipodireccioncorreo = 'DIRECCION';
+                $definicion = 'DOM';
+                
+                //INSERT DIRECCION_CORREO
+                //cedula = CEDULA REFERENCIA
+            }
+
+
+        }
 
         $consulta = "CALL sp_New_Garante_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
@@ -170,11 +242,7 @@ switch($opcion){
                                      $direcciontragara2,$referenciatragara2,$emailpersonalgara2,$emailtrabajogara2,$fono1gara2,
                                     $fono2gara2,$fono3gara2,$currentdate,$userid,$host));
 
-        $consulta = "CALL sp_New_Referencia_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(0,$personaid,$cedularef1,$nombreref1,$fono1ref1,$fono2ref1,$direcciondomref1,$referenciadomref1,
-                                    $emailref1,$cedularef2,$nombreref2,$fono1ref2,$fono2ref2,$direcciondomref2,$referenciadomref2,
-                                    $emailref2,$currentdate,$userid,$host));                            
+                         
         break;
                 
             
