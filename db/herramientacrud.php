@@ -302,65 +302,162 @@ switch($opcion){
           
         }           
 
-        // $consulta = "CALL sp_Subir_Cuenta_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        // $resultado = $conexion->prepare($consulta);
-        // $resultado->execute(array(0,$personaid,$cedenteid,$productoid,$catalogoid,$operacion,$totaldeuda,$diasmora,
-        //                            $capitalxvencer,$capitalvencido,$capitalmora,$valorexigible,$fechaobligacion,
-        //                             $fechavencimiento,$fechaultpago,0,$newestado));
+        $consulta = "CALL sp_Subir_Cuenta_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(array(0,$personaid,$cedenteid,$productoid,$catalogoid,$operacion,$totaldeuda,$diasmora,
+                                   $capitalxvencer,$capitalvencido,$capitalmora,$valorexigible,$fechaobligacion,
+                                    $fechavencimiento,$fechaultpago,0,$newestado));
 
 
-        // $tipocliente = 'FAM'; 
-        // $tipotelefono = 'CEL';
+        $tipocliente = 'FAM'; 
+        $tipotelefono = 'CEL';
 
-        // if($nombreref1 != '')
-        // {
-        //     if($cedularef1 == ''){
-        //         $cedularef1 = $cedula;
-        //     }
+        if($nombreref1 != '')
+        {
+            if($cedularef1 == ''){
+                $cedularef1 = $cedula;
+            }
 
-        //     ///INSERT EN TABLA DEUDOR_REFERENCIA
-        //     $consulta = "CALL sp_New_Referencia_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        //     $resultado = $conexion->prepare($consulta);
-        //     $resultado->execute(array(0,$personaid,$cedularef1,$nombreref1,$fono1ref1,$fono2ref1,$direcciondomref1,$referenciadomref1,
-        //                                 $emailref1,$cedularef2,$nombreref2,$fono1ref2,$fono2ref2,$direcciondomref2,$referenciadomref2,
-        //                                 $emailref2,$currentdate,$userid,$host));   
+            ///INSERT EN TABLA DEUDOR_REFERENCIA
+            $consulta = "CALL sp_New_Referencia_Deudor(?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(0,$personaid,$cedularef1,$nombreref1,$tipocliente,$currentdate,$userid,$host));   
             
-        //     $referenid = $resultado->fetchColumn();
+            $referenid = $resultado->fetchColumn();
             
-        //     if($fono1ref1 != '')
-        //     {
-        //         if(substr($fono1ref1,2) != '09'){
-        //             $tipotelefono = 'CON';
-        //         }
-        //         //INSERT TELEFONOS
-        //     }
+            if($fono1ref1 != '')
+            {
+                if(substr($fono1ref1,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
+               
+                $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedenteid,$personaid,$referenid,$fono1ref1,$tipotelefono,$tipocliente,0,
+                                            $newestado,$currentdate,$userid,$host));
+            }
 
-        //     if($fono2ref1 != '')
-        //     {
-        //         if(substr($fono2ref1,2) != '09'){
-        //             $tipotelefono = 'CON';
-        //         }
-        //         //INSERT TELEFONOS
-        //     }
-
-        //     if($direcciondomref1 != ''){
-        //         $tipodireccioncorreo = 'DIRECCION';
-        //         $definicion = 'DOM';
+            if($fono2ref1 != '')
+            {
+                if(substr($fono2ref1,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
                 
-        //         //INSERT DIRECCION_CORREO
-        //         //cedula = CEDULA REFERENCIA
-        //     }
+                $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedenteid,$personaid,$referenid,$fono2ref1,$tipotelefono,$tipocliente,0,
+                                            $newestado,$currentdate,$userid,$host));
+            }
+
+            if($direcciondomref1 != ''){
+                $tipodireccion = 'DIRECCION';
+                $definicion = 'DOM';
+                
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedularef1,$tipodireccion,$tipocliente,$definicion,
+                                       $direcciondomref1,$referenciadomref1,'',$currentdate,$userid,$host));
+            }
+
+            if($emailref1 != ''){
+                $tipodireccion = 'CORREO';
+                $definicion = 'PER';
+    
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedularef1,$tipodireccion,$tipocliente,$definicion,
+                                           '','',$emailref1,$currentdate,$userid,$host));
+              
+            }    
 
 
-        // }
+        }
 
-        // $consulta = "CALL sp_New_Garante_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        // $resultado = $conexion->prepare($consulta);
-        // $resultado->execute(array(0,$personaid,$tipogarante1,$cedulagarante1,$nombregarante1,$direcciondomgara1,$referenciadomgara1,
-        //                             $direcciontragara1,$referenciatragara1,$emailpersonalgara1,$emailtrabajogara1,$fono1gara1,
-        //                              $fono2gara1,$fono3gara1, $tipogarante2,$cedulagarante2,$nombregarante2,$direcciondomgara2,$referenciadomgara2,
-        //                              $direcciontragara2,$referenciatragara2,$emailpersonalgara2,$emailtrabajogara2,$fono1gara2,
-        //                             $fono2gara2,$fono3gara2,$currentdate,$userid,$host));
+        //REFERENCIA  DEUDOR 2
+
+        if($nombreref2 != '')
+        {
+            if($cedularef2 == ''){
+                $cedularef2 = $cedula;
+            }
+
+           
+            $consulta = "CALL sp_New_Referencia_Deudor(?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(0,$personaid,$cedularef2,$nombreref2,$tipocliente,$currentdate,$userid,$host));   
+            
+            $referenid = $resultado->fetchColumn();
+            
+            if($fono1ref2 != '')
+            {
+                if(substr($fono1ref2,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
+               
+                $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedenteid,$personaid,$referenid,$fono1ref2,$tipotelefono,$tipocliente,0,
+                                            $newestado,$currentdate,$userid,$host));
+            }
+
+            if($fono2ref2 != '')
+            {
+                if(substr($fono2ref1,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
+                
+                $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedenteid,$personaid,$referenid,$fono2ref2,$tipotelefono,$tipocliente,0,
+                                            $newestado,$currentdate,$userid,$host));
+            }
+
+            if($direcciondomref2 != ''){
+                $tipodireccion = 'DIRECCION';
+                $definicion = 'DOM';
+                
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedularef1,$tipodireccion,$tipocliente,$definicion,
+                                       $direcciondomref2,$referenciadomref2,'',$currentdate,$userid,$host));
+            }
+
+            if($emailref2 != ''){
+                $tipodireccion = 'CORREO';
+                $definicion = 'PER';
+    
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedularef2,$tipodireccion,$tipocliente,$definicion,
+                                           '','',$emailref2,$currentdate,$userid,$host));
+              
+            }    
+
+
+        }
+
+        // INSERTEAR GARANTE
+
+        $tipocliente = 'FAM'; 
+        $tipotelefono = 'CEL';
+
+        if($nombregarante1 != ''){
+
+            if($cedulagarante1 = ''){
+                 $cedula = $cedulagarante1;
+            }
+
+
+            $consulta = "CALL sp_New_Garante_Deudor(?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(0,$tipocliente,$cedula,$cedulagarante1,$nombregarante1,$currentdate,$userid,$host));
+
+
+        }
+
+
+
+       
 
                          
         break;
