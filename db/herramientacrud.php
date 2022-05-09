@@ -436,15 +436,15 @@ switch($opcion){
 
         }
 
-        // INSERTEAR GARANTE
+        // INSERTEAR GARANTE 1
 
-        $tipocliente = 'FAM'; 
+        $tipocliente = 'GAR'; 
         $tipotelefono = 'CEL';
 
         if($nombregarante1 != ''){
 
             if($cedulagarante1 = ''){
-                 $cedula = $cedulagarante1;
+                  $cedulagarante1 = $cedula;
             }
 
 
@@ -453,11 +453,204 @@ switch($opcion){
             $resultado->execute(array(0,$tipocliente,$cedula,$cedulagarante1,$nombregarante1,$currentdate,$userid,$host));
 
 
+            if($direcciondomgara1 != ''){
+               
+                $tipodireccion = 'DIRECCION';
+                $definicion = 'DOM';
+
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedulagarante1,$tipodireccion,$tipocliente,$definicion,
+                                       $direcciondomgara1,$referenciadomgara1,'',$currentdate,$userid,$host));
+
+            }
+
+            if($direcciontragara1 != ''){
+               
+                $tipodireccion = 'DIRECCION';
+                $definicion = 'TRA';
+
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedulagarante1,$tipodireccion,$tipocliente,$definicion,
+                                       $direcciontragara1,$referenciatragara1,'',$currentdate,$userid,$host));
+
+            }
+
+            if($emailpersonalgara1 != ''){
+               
+                $tipodireccion = 'CORREO';
+                $definicion = 'PER';
+
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedulagarante1,$tipodireccion,$tipocliente,$definicion,
+                                       '','',$emailpersonalgara1,$currentdate,$userid,$host));
+
+            }
+
+            if($emailtrabajogara1 != ''){
+               
+                $tipodireccion = 'CORREO';
+                $definicion = 'TRA';
+
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedulagarante1,$tipodireccion,$tipocliente,$definicion,
+                                       '','',$emailtrabajogara1,$currentdate,$userid,$host));
+
+            }
+
+            if($fono1gara1 != '')
+            {
+                if(substr($fono1gara1,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
+                
+                $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedenteid,$personaid,0,$fono1gara1,$tipotelefono,$tipocliente,0,
+                                            $newestado,$currentdate,$userid,$host));
+            }
+
+            if($fono2gara1 != '')
+            {
+                if(substr($fono2gara1,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
+                
+                $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedenteid,$personaid,0,$fono2gara1,$tipotelefono,$tipocliente,0,
+                                            $newestado,$currentdate,$userid,$host));
+            }
+
+            if($fono3gara1 != '')
+            {
+                if(substr($fono3gara1,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
+                
+                $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedenteid,$personaid,0,$fono3gara1,$tipotelefono,$tipocliente,0,
+                                            $newestado,$currentdate,$userid,$host));
+            }
+
+
         }
 
+         // INSERTEAR GARANTE 2
+
+         if($nombregarante2 != ''){
+
+            if($cedulagarante2 = ''){
+                 $cedulagarante2 = $cedula;
+            }
 
 
-       
+            $consulta = "CALL sp_New_Garante_Deudor(?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(0,$tipocliente,$cedula,$cedulagarante2,$nombregarante2,$currentdate,$userid,$host));
+
+
+            if($direcciondomgara2 != ''){
+               
+                $tipodireccion = 'DIRECCION';
+                $definicion = 'DOM';
+
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedulagarante2,$tipodireccion,$tipocliente,$definicion,
+                                       $direcciondomgara2,$referenciadomgara2,'',$currentdate,$userid,$host));
+
+            }
+
+            if($direcciontragara2 != ''){
+               
+                $tipodireccion = 'DIRECCION';
+                $definicion = 'TRA';
+
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedulagarante2,$tipodireccion,$tipocliente,$definicion,
+                                       $direcciontragara2,$referenciatragara2,'',$currentdate,$userid,$host));
+
+            }
+
+            if($emailpersonalgara2 != ''){
+               
+                $tipodireccion = 'CORREO';
+                $definicion = 'PER';
+
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedulagarante2,$tipodireccion,$tipocliente,$definicion,
+                                       '','',$emailpersonalgara2,$currentdate,$userid,$host));
+
+            }
+
+            if($emailtrabajogara2 != ''){
+               
+                $tipodireccion = 'CORREO';
+                $definicion = 'TRA';
+
+                $consulta = "CALL sp_New_Direccion_Correos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedula,$cedulagarante2,$tipodireccion,$tipocliente,$definicion,
+                                       '','',$emailtrabajogara2,$currentdate,$userid,$host));
+
+            }
+
+            if($fono1gara2 != '')
+            {
+                if(substr($fono1gara2,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
+                
+                $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedenteid,$personaid,0,$fono1gara2,$tipotelefono,$tipocliente,0,
+                                            $newestado,$currentdate,$userid,$host));
+            }
+
+            if($fono2gara2 != '')
+            {
+                if(substr($fono2gara2,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
+                
+                $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedenteid,$personaid,0,$fono2gara2,$tipotelefono,$tipocliente,0,
+                                            $newestado,$currentdate,$userid,$host));
+            }
+
+            if($fono3gara2 != '')
+            {
+                if(substr($fono3gara1,2) != '09'){
+                    $tipotelefono = 'CON';
+                }
+                
+                $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$cedenteid,$personaid,0,$fono3gara2,$tipotelefono,$tipocliente,0,
+                                            $newestado,$currentdate,$userid,$host));
+            }
+
+
+        }
+
+        //CAMPOS ADICIONALES
+
+        if($adicional1 != ''){
+
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,$adicional1,'','','','',
+                                       '','','','','','','','','','','','','','','','','','','','','','','','',''));
+        }
+
 
                          
         break;
