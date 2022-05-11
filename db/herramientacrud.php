@@ -157,7 +157,7 @@ switch($opcion){
 
             if(substr($fonodeu1,2)!= '09'){
                 $tipotelefono = 'CON';
-            }
+            }else{ $tipotelefono = 'CEL';}
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -169,7 +169,7 @@ switch($opcion){
 
                 if(substr($fonodeu2,2)!= '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -182,7 +182,7 @@ switch($opcion){
         if($fonodeu3 != ''){
                 if(substr($fonodeu3,2)!= '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -193,7 +193,7 @@ switch($opcion){
         if($fonodeu4 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }
+            }else{ $tipotelefono = 'CEL';}
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -205,7 +205,7 @@ switch($opcion){
         if($fonodeu5 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }
+            }else{ $tipotelefono = 'CEL';}
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -216,7 +216,7 @@ switch($opcion){
         if($fonodeu6 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }
+            }else{ $tipotelefono = 'CEL';}
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -227,7 +227,7 @@ switch($opcion){
         if($fonodeu7 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }
+            }else{ $tipotelefono = 'CEL';}
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -238,7 +238,7 @@ switch($opcion){
         if($fonodeu8 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }
+            }else{ $tipotelefono = 'CEL';}
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -249,7 +249,7 @@ switch($opcion){
         if($fonodeu9 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }
+            }else{ $tipotelefono = 'CEL';}
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -260,7 +260,7 @@ switch($opcion){
         if($fonodeu10 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }
+            }else{ $tipotelefono = 'CEL';}
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -268,7 +268,7 @@ switch($opcion){
                                         $newestado,$currentdate,$userid,$host));
         }                                    
 
-                           
+              //INSERTAR DIRECCION Y CORREO DEUDOR             
 
         if($direcciondom != ''){
             $tipodireccion = 'DIRECCION';
@@ -329,7 +329,7 @@ switch($opcion){
             {
                 if(substr($fono1ref1,2) != '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
                
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -341,7 +341,7 @@ switch($opcion){
             {
                 if(substr($fono2ref1,2) != '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -392,7 +392,7 @@ switch($opcion){
             {
                 if(substr($fono1ref2,2) != '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
                
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -404,7 +404,7 @@ switch($opcion){
             {
                 if(substr($fono2ref1,2) != '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -444,7 +444,7 @@ switch($opcion){
         if($nombregarante1 != ''){
 
             if($cedulagarante1 = ''){
-                  $cedulagarante1 = $cedula;
+                 $cedula = $cedulagarante1; 
             }
 
 
@@ -505,7 +505,7 @@ switch($opcion){
             {
                 if(substr($fono1gara1,2) != '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -517,7 +517,7 @@ switch($opcion){
             {
                 if(substr($fono2gara1,2) != '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -529,7 +529,7 @@ switch($opcion){
             {
                 if(substr($fono3gara1,2) != '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -545,7 +545,7 @@ switch($opcion){
          if($nombregarante2 != ''){
 
             if($cedulagarante2 = ''){
-                 $cedulagarante2 = $cedula;
+                $cedula = $cedulagarante2; 
             }
 
 
@@ -606,7 +606,7 @@ switch($opcion){
             {
                 if(substr($fono1gara2,2) != '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -618,7 +618,7 @@ switch($opcion){
             {
                 if(substr($fono2gara2,2) != '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -630,7 +630,7 @@ switch($opcion){
             {
                 if(substr($fono3gara1,2) != '09'){
                     $tipotelefono = 'CON';
-                }
+                }else{ $tipotelefono = 'CEL';}
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -645,7 +645,7 @@ switch($opcion){
 
         if($adicional1 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,$adicional1,'','','','',
                                        '','','','','','','','','','','','','','','','','','','','','','','','',''));
@@ -653,7 +653,7 @@ switch($opcion){
 
         if($adicional2 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'',$adicional2 ,'','','',
                                        '','','','','','','','','','','','','','','','','','','','','','','','',''));
@@ -661,7 +661,7 @@ switch($opcion){
 
         if($adicional3 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','',$adicional3,'','',
                                        '','','','','','','','','','','','','','','','','','','','','','','','',''));
@@ -669,7 +669,7 @@ switch($opcion){
 
         if($adicional4 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','',$adicional4 ,'',
                                        '','','','','','','','','','','','','','','','','','','','','','','','',''));
@@ -677,7 +677,7 @@ switch($opcion){
 
         if($adicional5 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','',$adicional5,
                                        '','','','','','','','','','','','','','','','','','','','','','','','',''));
@@ -685,7 +685,7 @@ switch($opcion){
 
         if($adicional6 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        $adicional6,'','','','','','','','','','','','','','','','','','','','','','','',''));
@@ -693,7 +693,7 @@ switch($opcion){
 
         if($adicional7 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '',$adicional7,'','','','','','','','','','','','','','','','','','','','','','',''));
@@ -701,7 +701,7 @@ switch($opcion){
 
         if($adicional8 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','',$adicional8,'','','','','','','','','','','','','','','','','','','','','',''));
@@ -709,7 +709,7 @@ switch($opcion){
 
         if($adicional9 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','',$adicional9,'','','','','','','','','','','','','','','','','','','','',''));
@@ -717,7 +717,7 @@ switch($opcion){
 
         if($adicional10 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','',$adicional10,'','','','','','','','','','','','','','','','','','','',''));
@@ -725,7 +725,7 @@ switch($opcion){
 
         if($adicional11 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','',$adicional11,'','','','','','','','','','','','','','','','','','',''));
@@ -733,7 +733,7 @@ switch($opcion){
 
         if($adicional12 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','',$adicional12,'','','','','','','','','','','','','','','','','',''));
@@ -741,7 +741,7 @@ switch($opcion){
 
         if($adicional13 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','',$adicional13,'','','','','','','','','','','','','','','','',''));
@@ -749,7 +749,7 @@ switch($opcion){
 
         if($adicional14 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','',$adicional14 ,'','','','','','','','','','','','','','','',''));
@@ -757,7 +757,7 @@ switch($opcion){
 
         if($adicional15 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','',$adicional15,'','','','','','','','','','','','','','',''));
@@ -765,7 +765,7 @@ switch($opcion){
 
         if($adicional16 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','',$adicional16,'','','','','','','','','','','','','',''));
@@ -773,7 +773,7 @@ switch($opcion){
 
         if($adicional17 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','',$adicional17,'','','','','','','','','','','','',''));
@@ -781,7 +781,7 @@ switch($opcion){
 
         if($adicional18 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','',$adicional18,'','','','','','','','','','','',''));
@@ -789,7 +789,7 @@ switch($opcion){
 
         if($adicional19 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','',$adicional19,'','','','','','','','','','',''));
@@ -798,7 +798,7 @@ switch($opcion){
         
         if($adicional20 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','','',$adicional20,'','','','','','','','','',''));
@@ -806,7 +806,7 @@ switch($opcion){
 
         if($adicional21 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','','','',$adicional21,'','','','','','','','',''));
@@ -814,7 +814,7 @@ switch($opcion){
 
         if($adicional22 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','','','','',$adicional22,'','','','','','','',''));
@@ -822,7 +822,7 @@ switch($opcion){
 
         if($adicional23 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','','','','','',$adicional23,'','','','','','',''));
@@ -830,7 +830,7 @@ switch($opcion){
 
         if($adicional24 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','','','','','','',$adicional24,'','','','','',''));
@@ -838,7 +838,7 @@ switch($opcion){
 
         if($adicional25 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','','','','','','','',$adicional25,'','','','',''));
@@ -846,7 +846,7 @@ switch($opcion){
 
         if($adicional26 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','','','','','','','','',$adicional26,'','','',''));
@@ -854,7 +854,7 @@ switch($opcion){
 
         if($adicional27 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','','','','','','','','','',$adicional27,'','',''));
@@ -862,7 +862,7 @@ switch($opcion){
 
         if($adicional28 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','','','','','','','','','','',$adicional28,'',''));
@@ -870,7 +870,7 @@ switch($opcion){
 
         if($adicional29 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','','','','','','','','','','','',$adicional29,''));
@@ -878,7 +878,7 @@ switch($opcion){
 
         if($adicional30 != ''){
 
-            $consulta = "CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta ="CALL sp_New_Campos_Adicionales(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute(array(0,$cedenteid,$catalogoid,$personaid,$operacion,'','','','','',
                        '','','','','','','','','','','','','','','','','','','','','','','','',$adicional30));

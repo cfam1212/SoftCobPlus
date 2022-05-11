@@ -24,7 +24,7 @@
         <label>Username:</label>
         <div class="group">
           <i class="fas fa-user"></i>
-          <input type="text" class="form-control" id="username" placeholder="Username" required="required" autocomplete="off" />
+          <input type="text" class="form-control" id="username" placeholder="Username" required="required" autocomplete="off" autofocus />
         </div>
       </div>
       <div class=" w3l-form-group">
