@@ -80,7 +80,7 @@
                             <br />
                             <div class="form-group row">
                                 <div class="custom-file">
-                                    <input type="file" accept=".txt" id="txtArchivo">
+                                    <input type="file" accept=".txt" id="file_input">
                                     <hr>
                                     <script>
 
@@ -147,7 +147,7 @@
                                             document.getElementById('txtArchivo').addEventListener('change', abrirArchivo);
                                         });*/
 
-                                        document.querySelector('#txtArchivo').addEventListener('change', abrirArchivo, false);                                        
+                                        document.querySelector('#file_input').addEventListener('change', abrirArchivo, false);                                        
 
                                     </script>    
                                 </div>
@@ -158,7 +158,7 @@
                             <br />
                             <br />
                             <div class="progress col-md-9">
-                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                <div class="progress-bar" role="progressbar" id="progressBar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                             </div>
                             <div class="form-group row">
                                 <div id="tablares" style="display: none;">
@@ -196,6 +196,8 @@
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>
 <script src="../codejs/herramientas.js" type="text/javascript"></script>
+
+<script></script>
 </body>
 
 </html>

@@ -151,13 +151,17 @@ switch($opcion){
         //INSERTAR TELEFONOS DEUDOR
 
         $tipocliente = 'TIT';
-        $tipotelefono = 'CEL';
+        $tipotelefono = '';
 
         if($fonodeu1 != ''){
 
             if(substr($fonodeu1,2)!= '09'){
                 $tipotelefono = 'CON';
-            }else{ $tipotelefono = 'CEL';}
+            }
+
+            if(substr($fonodeu1,2)== '09'){
+                $tipotelefono = 'CEL';
+            }
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -169,7 +173,12 @@ switch($opcion){
 
                 if(substr($fonodeu2,2)!= '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }
+
+                if(substr($fonodeu2,2)== '09'){
+                    $tipotelefono = 'CEL';
+                }
+
 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -182,7 +191,11 @@ switch($opcion){
         if($fonodeu3 != ''){
                 if(substr($fonodeu3,2)!= '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }
+
+                if(substr($fonodeu3,2)== '09'){
+                    $tipotelefono = 'CEL';
+                }
 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -193,7 +206,11 @@ switch($opcion){
         if($fonodeu4 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }else{ $tipotelefono = 'CEL';}
+            }
+
+            if(substr($fonodeu4,2)== '09'){
+                $tipotelefono = 'CEL';
+            }
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -205,7 +222,10 @@ switch($opcion){
         if($fonodeu5 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }else{ $tipotelefono = 'CEL';}
+            }
+            if(substr($fonodeu5,2)== '09'){
+                $tipotelefono = 'CEL';
+            }
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -216,7 +236,10 @@ switch($opcion){
         if($fonodeu6 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }else{ $tipotelefono = 'CEL';}
+            }
+            if(substr($fonodeu6,2)== '09'){
+                $tipotelefono = 'CEL';
+            }
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -227,7 +250,12 @@ switch($opcion){
         if($fonodeu7 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }else{ $tipotelefono = 'CEL';}
+            }
+
+            if(substr($fonodeu7,2)== '09'){
+                $tipotelefono = 'CEL';
+            }
+
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -236,9 +264,13 @@ switch($opcion){
         }
         
         if($fonodeu8 != ''){
-            if(substr($fonodeu3,2)!= '09'){
+            if(substr($fonodeu8,2)!= '09'){
                 $tipotelefono = 'CON';
-            }else{ $tipotelefono = 'CEL';}
+            }
+
+            if(substr($fonodeu8,2)== '09'){
+                $tipotelefono = 'CEL';
+            }
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -247,9 +279,14 @@ switch($opcion){
         }
         
         if($fonodeu9 != ''){
-            if(substr($fonodeu3,2)!= '09'){
+            if(substr($fonodeu9,2)!= '09'){
                 $tipotelefono = 'CON';
-            }else{ $tipotelefono = 'CEL';}
+            }
+            
+            if(substr($fonodeu9,2)== '09'){
+                $tipotelefono = 'CEL';
+            }
+
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -260,7 +297,12 @@ switch($opcion){
         if($fonodeu10 != ''){
             if(substr($fonodeu3,2)!= '09'){
                 $tipotelefono = 'CON';
-            }else{ $tipotelefono = 'CEL';}
+            }
+            
+            if(substr($fonodeu10,2)== '09'){
+                $tipotelefono = 'CEL';
+            }
+
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -329,7 +371,11 @@ switch($opcion){
             {
                 if(substr($fono1ref1,2) != '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }
+
+                if(substr($fono1ref1,2) == '09'){
+                    $tipotelefono = 'CEL';
+                }
                
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -341,7 +387,11 @@ switch($opcion){
             {
                 if(substr($fono2ref1,2) != '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }
+
+                if(substr($fono2ref1,2) == '09'){
+                    $tipotelefono = 'CEL';
+                }
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -392,7 +442,11 @@ switch($opcion){
             {
                 if(substr($fono1ref2,2) != '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }
+
+                if(substr($fono1ref2,2) == '09'){
+                    $tipotelefono = 'CEL';
+                }
                
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -404,7 +458,11 @@ switch($opcion){
             {
                 if(substr($fono2ref1,2) != '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }
+
+                if(substr($fono2ref1,2) == '09'){
+                    $tipotelefono = 'CEL';
+                }
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -443,8 +501,8 @@ switch($opcion){
 
         if($nombregarante1 != ''){
 
-            if($cedulagarante1 = ''){
-                 $cedula = $cedulagarante1; 
+            if($cedulagarante1 == ''){
+                 $cedulagarante1 = $cedula;
             }
 
 
@@ -505,7 +563,11 @@ switch($opcion){
             {
                 if(substr($fono1gara1,2) != '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }
+
+                if(substr($fono1gara1,2) == '09'){
+                    $tipotelefono = 'CEL';
+                }
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -517,7 +579,11 @@ switch($opcion){
             {
                 if(substr($fono2gara1,2) != '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }
+
+                if(substr($fono2gara1,2) == '09'){
+                    $tipotelefono = 'CEL';
+                }
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -529,7 +595,11 @@ switch($opcion){
             {
                 if(substr($fono3gara1,2) != '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }else
+
+                if(substr($fono3gara1,2) == '09'){
+                    $tipotelefono = 'CEL';
+                }
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -544,8 +614,8 @@ switch($opcion){
 
          if($nombregarante2 != ''){
 
-            if($cedulagarante2 = ''){
-                $cedula = $cedulagarante2; 
+            if($cedulagarante2 == ''){
+                 $cedulagarante2 = $cedula;
             }
 
 
@@ -606,7 +676,11 @@ switch($opcion){
             {
                 if(substr($fono1gara2,2) != '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }
+
+                if(substr($fono1gara2,2) == '09'){
+                    $tipotelefono = 'CEL';
+                }
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -618,7 +692,11 @@ switch($opcion){
             {
                 if(substr($fono2gara2,2) != '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }
+                if(substr($fono2gara2,2) == '09'){
+                    $tipotelefono = 'CEL';
+                }
+
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -628,9 +706,13 @@ switch($opcion){
 
             if($fono3gara2 != '')
             {
-                if(substr($fono3gara1,2) != '09'){
+                if(substr($fono3gara2,2) != '09'){
                     $tipotelefono = 'CON';
-                }else{ $tipotelefono = 'CEL';}
+                }
+
+                if(substr($fono3gara2,2) == '09'){
+                    $tipotelefono = 'CEL';
+                }
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);

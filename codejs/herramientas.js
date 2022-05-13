@@ -92,6 +92,55 @@ $(document).ready(function(){
 
     $("#btnProcesar").click(function(){
 
+        let _cbociudad = $('#cboCiudad').val();
+        let _cbocedente = $('#cboCedente').val();
+        let _cboproducto = $('#cboProducto').val();
+        let _cbocatalogo = $('#cboCatalogo').val();
+
+        if(_cbociudad == '0')
+        {
+            mensajesalertify("Seleccione Ciudad..!","W","top-right",3);
+            return;
+        }
+
+        if(_cbocedente == '0')
+        {
+            mensajesalertify("Seleccione Cedente..!","W","top-right",3);
+            return;
+        }
+
+        if(_cboproducto == '0')
+        {
+            mensajesalertify("Seleccione Producto..!","W","top-right",3);
+            return;
+        }
+
+        if(_cbocatalogo == '0')
+        {
+            mensajesalertify("Seleccione Catalogo..!","W","top-right",3);
+            return;
+        }
+
+
+
+        document.querySelector('#btnProcesar').addEventListener('click', function(){
+
+            if(document.querySelector('#file_input').files.length == 0){
+        
+                mensajesalertify("Seleccione un archivo","E","top-center",3);
+                return;
+        
+                }
+
+            let _inputFile = document.querySelector('#file_input').files[0];
+            let _progressbar = document.querySelector('#progressBar');
+
+            let data = new FormData();
+       
+        });
+
+
+       
       
         $("#tablecartera tbody tr").each(function (items) 
         {
@@ -624,19 +673,24 @@ $(document).ready(function(){
 
                     opcion: 0},
                 success: function(data){
+
+                 
                 
                 },
                 error: function (error) {
                     console.log(error);
                 }                 
-            });    
+            }); 
+            
+          
         });
-
+        
+                $("#cboCiudad").empty();
+                $("#cboCedente").empty();
+                $("#cboProducto").empty();
+                $("#cboCatalogo").empty();
        
 
-
-        
-        
           
     });
 
