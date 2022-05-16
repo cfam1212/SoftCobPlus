@@ -11,6 +11,12 @@ $(document).ready(function(){
   _cboproducto = $('#cboProducto'); 
   _cbocatalogo = $('#cboCatalogo');  
 
+  const form = document.querySelector("#container");
+  fileInput = form.querySelector(".file"),
+  form.addEventListener("click",()=>{
+   fileInput.click();
+  });
+
 
 
   $('#cboCiudad').change(function(){
@@ -685,12 +691,6 @@ $(document).ready(function(){
           
         });
         
-                $("#cboCiudad").empty();
-                $("#cboCedente").empty();
-                $("#cboProducto").empty();
-                $("#cboCatalogo").empty();
-       
-
           
     });
 
