@@ -125,18 +125,20 @@ input[type=checkbox] {
 .wrapper{
   display: flex;
   height: 150px;
-  width: 250px;
+  width: 350px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   border-radius: 5px;
   border: 2px dashed #36A0FF;
+  
 }
 
 .wrapper :where(i,p){
   color: #36A0FF;
   text-align: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .wrapper :where(i){

@@ -17,6 +17,14 @@ $(document).ready(function(){
    fileInput.click();
   });
 
+  let fileName = document.getElementById('file_input');
+  let fileNameField = document.getElementById('file_name');
+
+  fileName.addEventListener('change', function(event){
+      let uploadFileName = event.target.files[0].name;
+      fileNameField.textContent = uploadFileName;
+  });
+
 
 
   $('#cboCiudad').change(function(){
