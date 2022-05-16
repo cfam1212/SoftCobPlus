@@ -81,6 +81,7 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                                             <input type="file" accept=".txt" id="file_input" class="file" hidden>
                                             <i class="fa fa-cloud-upload"></i>
                                             <p>Browse File to Upload</p>
+                                            <label for="label_file">choose a file..</label>
                                     </div>
                                 </div>
                                 <div class="form-group row">
