@@ -11,6 +11,8 @@ $(document).ready(function(){
   _cboproducto = $('#cboProducto'); 
   _cbocatalogo = $('#cboCatalogo');  
 
+  //INPUT FILE
+
   const form = document.querySelector("#container");
   fileInput = form.querySelector(".file"),
   form.addEventListener("click",()=>{
@@ -24,6 +26,10 @@ $(document).ready(function(){
       let uploadFileName = event.target.files[0].name;
       fileNameField.textContent = uploadFileName;
   });
+
+
+
+  
 
 
 
@@ -137,22 +143,21 @@ $(document).ready(function(){
 
 
 
-        document.querySelector('#btnProcesar').addEventListener('click', function(){
+        // document.querySelector('#btnProcesar').addEventListener('click', function(){
 
-            if(document.querySelector('#file_input').files.length == 0){
+        //     if(document.querySelector('#file_input').files.length == 0){
         
-                mensajesalertify("Seleccione un archivo","E","top-center",3);
-                return;
+        //         mensajesalertify("Seleccione un archivo","E","top-center",3);
+        //         return;
         
-                }
+        //         }
 
-            let _inputFile = document.querySelector('#file_input').files[0];
-            let _progressbar = document.querySelector('#progressBar');
+        //     let _inputFile = document.querySelector('#file_input').files[0];
+        //     let _progressbar = document.querySelector('#progressBar');
 
-            let data = new FormData();
+        //     let data = new FormData();
        
-        });
-
+        // });
 
        
       

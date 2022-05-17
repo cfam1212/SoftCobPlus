@@ -115,23 +115,24 @@ input[type=checkbox] {
 }
 
 
-/* .wrapper{
-  width: 300px;
-  padding: 30px;
-  background: white;
-  border-radius: 5px;
-} */
+/*INPUT FILE*/
 
 .wrapper{
   display: flex;
   height: 150px;
   width: 350px;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   flex-direction: column;
   border-radius: 5px;
   border: 2px dashed #36A0FF;
   
+}
+
+#container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wrapper :where(i,p){

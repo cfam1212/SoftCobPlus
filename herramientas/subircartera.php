@@ -32,7 +32,7 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                     <div class="x_content">
                         <br />
                         <br />
-                        <form method="post" class="form-horizontal col-md-10 offset-md-2">
+                        <form method="post" class="form-horizontal col-md-10 offset-md-2" id="formulario">
                             <?php if ($SubirCartera == 0) { ?>
                                 <div class="form-group row">
                                     <label for="ciudad" class="control-label col-md-1">Ciudad:</label>
@@ -81,7 +81,6 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                                             <input type="file" accept=".txt" id="file_input" class="file" hidden>
                                             <i class="fa fa-cloud-upload"></i>
                                             <p>Browse File to Upload</p>
-                                            <!-- <label for="label_file">choose a file..</label> -->
                                             <span>
                                                 <strong>Archivo Seleccionado:</strong>
                                                 <span id="file_name">Ninguno</span>
