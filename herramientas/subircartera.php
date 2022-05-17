@@ -32,7 +32,7 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                     <div class="x_content">
                         <br />
                         <br />
-                        <form method="post" class="form-horizontal col-md-10 offset-md-2" id="formulario">
+                        <form method="post" class="form-horizontal col-md-10 offset-md-2" id="upload_form">
                             <?php if ($SubirCartera == 0) { ?>
                                 <div class="form-group row">
                                     <label for="ciudad" class="control-label col-md-1">Ciudad:</label>
@@ -78,7 +78,7 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                                 <br />
                                 <div class="form-group row">
                                     <div class="wrapper" id="container">
-                                            <input type="file" accept=".txt" id="file_input" class="file" hidden>
+                                            <input type="file" accept=".txt" id="file_input" name="file_input" class="file" hidden>
                                             <i class="fa fa-cloud-upload"></i>
                                             <p>Browse File to Upload</p>
                                             <span>
@@ -160,12 +160,56 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                                     </div>
                                 </div>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" id="btnProcesar" name="btnProcesar" class="btn btn-info">Procesar</button>
+                                    <button type="button" id="btnProcesar" name="btnProcesar" class="btn btn-info" onclick="uploadFile()">Procesar</button>
                                 </div>
                                 <br />
                                 <br />
+                                <script>
+                                    function _(el){
+                                        return document.getElementById(el);
+                                    }
+
+                                    function  uploadFile(){
+                                        var file = _("file_input").files[0];
+                                        // alert(file.name +" | " + file.size +" | "+file.type);
+                                        var formdata = new FormData();
+                                        formdata.append("file_input",file);
+                                        var ajax = new XMLHttpRequest();
+
+                                        ajax.upload.addEventListener("progress",progressHandler,false);
+                                        ajax.addEventListener("load", completeHandler,false);
+                                        ajax.addEventListener("error", errorHandler,false);
+                                        ajax.addEventListener("abort", abortHandler,false);
+
+                                        ajax.open("POST","file_upload_parser.php");
+                                        ajax.send(formdata);
+                                    }
+
+                                    function progressHandler(event){
+                                         _("loades_n_total").innerHTML = "Uploaded" + event.loaded + " bytes of" +event.total;
+                                         var porcent = (event.loaded / event.total) * 100;
+                                         _("progressBar").value =  Math.round(porcent);
+                                         _("status").innerHTML =  Math.round(porcent) + "% uploaded... please wait";
+                                    }
+
+                                    function completeHandler(event){
+                                        _("status").innerHTML =  event.target.responseText;
+                                         _("progressBar").value =  0;   
+                                    }
+                                    
+                                    function errorHandler(event){
+                                        _("status").innerHTML =  "Upload Failed";
+                                    }
+
+                                    function abortHandler(event){
+                                        _("status").innerHTML =  "Upload Aborted";
+                                    }
+
+                                </script>
                                 <div class="progress col-md-9">
-                                    <div class="progress-bar" role="progressbar" id="progressBar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                    <div class="progress-bar" role="progressbar" id="progressBar" value="0" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <h3 id="status"></h3>
+                                    <p id="loades_n_total"></p>
                                 </div>
                                 <div class="form-group row">
                                     <div id="tablares" style="display: none;">
