@@ -32,7 +32,7 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                     <div class="x_content">
                         <br />
                         <br />
-                        <form method="post" class="form-horizontal col-md-10 offset-md-2" id="upload_form">
+                        <form method="post" class="form-horizontal col-md-10 offset-md-2" id="upload_form" enctype="multipart/form-data">
                             <?php if ($SubirCartera == 0) { ?>
                                 <div class="form-group row">
                                     <label for="ciudad" class="control-label col-md-1">Ciudad:</label>
@@ -169,6 +169,7 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                                         return document.getElementById(el);
                                     }
 
+
                                     function  uploadFile(){
                                         var file = _("file_input").files[0];
                                         // alert(file.name +" | " + file.size +" | "+file.type);
@@ -181,7 +182,7 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                                         ajax.addEventListener("error", errorHandler,false);
                                         ajax.addEventListener("abort", abortHandler,false);
 
-                                        ajax.open("POST","file_upload_parser.php");
+                                        ajax.open("POST","../db/file_upload_parser.php");
                                         ajax.send(formdata);
                                     }
 
@@ -207,10 +208,12 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
 
                                 </script>
                                 <div class="progress col-md-9">
-                                    <div class="progress-bar" role="progressbar" id="progressBar" value="0" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <h3 id="status"></h3>
-                                    <p id="loades_n_total"></p>
+                                    <!-- <div class="progress-bar" role="progressBar" id="progressBar" value="0" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div><br/> -->
+                                    <progress id="progressBar" value="0" max="100" style="width: 300px;"></progress>
                                 </div>
+                                <br/>
+                                <h2 id="status"></h2> <br/>
+                                <p id="loades_n_total"></p>
                                 <div class="form-group row">
                                     <div id="tablares" style="display: none;">
 
