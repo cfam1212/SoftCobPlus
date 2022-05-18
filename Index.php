@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Material Login Form a Responsive Widget Template :: w3layouts</title>
+  <title>Login</title>
   <!-- meta tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -40,7 +40,7 @@
     </form>
   </div>
   <footer>
-    <p class="copyright-agileinfo"> &copy; 2018 Material Login Form. All Rights Reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+    <p class="copyright-agileinfo"> &copy; Best Bussinesnes Plus S.A <a href="https://bbplus-ec.com">Best Bussines Plus</a></p>
   </footer>
 
 </body>

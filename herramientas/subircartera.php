@@ -32,8 +32,7 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                     <div class="x_content">
                         <br />
                         <br />
-                        <form method="post" class="form-horizontal col-md-10 offset-md-2" id="upload_form" enctype="multipart/form-data">
-                            <?php if ($SubirCartera == 0) { ?>
+                        <form method="post" class="form-horizontal col-md-10 offset-md-2" id="subircartera" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <label for="ciudad" class="control-label col-md-1">Ciudad:</label>
                                     <label for="espacio" class="control-label col-md-4"></label>
@@ -160,53 +159,10 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                                     </div>
                                 </div>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" id="btnProcesar" name="btnProcesar" class="btn btn-info" onclick="uploadFile()">Procesar</button>
+                                    <button type="button" id="btnProcesar" name="btnProcesar" class="btn btn-info">Procesar</button>
                                 </div>
                                 <br />
                                 <br />
-                                <script>
-                                    function _(el){
-                                        return document.getElementById(el);
-                                    }
-
-
-                                    function  uploadFile(){
-                                        var file = _("file_input").files[0];
-                                        // alert(file.name +" | " + file.size +" | "+file.type);
-                                        var formdata = new FormData();
-                                        formdata.append("file_input",file);
-                                        var ajax = new XMLHttpRequest();
-
-                                        ajax.upload.addEventListener("progress",progressHandler,false);
-                                        ajax.addEventListener("load", completeHandler,false);
-                                        ajax.addEventListener("error", errorHandler,false);
-                                        ajax.addEventListener("abort", abortHandler,false);
-
-                                        ajax.open("POST","../db/file_upload_parser.php");
-                                        ajax.send(formdata);
-                                    }
-
-                                    function progressHandler(event){
-                                         _("loades_n_total").innerHTML = "Uploaded" + event.loaded + " bytes of" +event.total;
-                                         var porcent = (event.loaded / event.total) * 100;
-                                         _("progressBar").value =  Math.round(porcent);
-                                         _("status").innerHTML =  Math.round(porcent) + "% uploaded... please wait";
-                                    }
-
-                                    function completeHandler(event){
-                                        _("status").innerHTML =  event.target.responseText;
-                                         _("progressBar").value =  0;   
-                                    }
-                                    
-                                    function errorHandler(event){
-                                        _("status").innerHTML =  "Upload Failed";
-                                    }
-
-                                    function abortHandler(event){
-                                        _("status").innerHTML =  "Upload Aborted";
-                                    }
-
-                                </script>
                                 <div class="progress col-md-9">
                                     <!-- <div class="progress-bar" role="progressBar" id="progressBar" value="0" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div><br/> -->
                                     <progress id="progressBar" value="0" max="100" style="width: 300px;"></progress>
@@ -219,30 +175,7 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
 
                                     </div>
                                 </div>
-                            <?php               } elseif ($SubirCartera == 1) {
-                                $_POST['cbociudad'] = "";
-                                $_POST['btnProcesar'] = ""; ?>
-
-                                <div class="form-group row">
-                                    <div class="col-md-4 col-sm-8">
-                                        <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;" disabled>
-                                            <option value="0">--Seleccione Cuidad--</option>
-                                            <?php foreach ($dataciu as $fila) : ?>
-                                                <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
-                                                </option>
-                                            <?php endforeach ?>
-                                        </select>
-                                    </div>
-                                    <label for="espacio" class="control-label col-md-1"></label>
-                                    <div class="col-md-4 col-sm-8">
-                                        <select class="form-control" id="cboCedente" name="cbocedente" style="width: 100%;">
-                                            <option value="0">--Seleccione Cedente--</option>
-                                        </select>
-                                    </div>
-                                </div>
-
                         </form>
-                    <?php               }   ?>
                     </div>
                 </div>
             </div>

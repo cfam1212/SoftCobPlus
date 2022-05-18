@@ -1,15 +1,15 @@
 $(document).ready(function(){
 
-  var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro, _catalogoid, _resultCartera = [];
+    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro, _catalogoid, _resultCartera = [];
 
-  $('#cboCiudad').select2();
-  $('#cboCedente').select2();
-  $('#cboProducto').select2();
-  $('#cboCatalogo').select2();
+    $('#cboCiudad').select2();
+    $('#cboCedente').select2();
+    $('#cboProducto').select2();
+    $('#cboCatalogo').select2();
 
-  _cbocedente = $('#cboCedente');
-  _cboproducto = $('#cboProducto'); 
-  _cbocatalogo = $('#cboCatalogo');  
+    _cbocedente = $('#cboCedente');
+    _cboproducto = $('#cboProducto'); 
+    _cbocatalogo = $('#cboCatalogo');  
 
   //INPUT FILE
 
@@ -26,10 +26,6 @@ $(document).ready(function(){
       let uploadFileName = event.target.files[0].name;
       fileNameField.textContent = uploadFileName;
   });
-
-
-
-  
 
 
 
@@ -109,9 +105,51 @@ $(document).ready(function(){
 
     });    
 
+    function _(el){
+        return document.getElementById(el);
+    }
+
+
+    function  uploadFile(){
+        var file = $('#file_input').files[0];
+        alert(file.name +" | " + file.size +" | "+file.type);
+        var formdata = new FormData();
+        formdata.append("#file_input",file);
+        var ajax = new XMLHttpRequest();
+
+        ajax.upload.addEventListener("#progress",progressHandler,false);
+        ajax.addEventListener("load", completeHandler,false);
+        ajax.addEventListener("error", errorHandler,false);
+        ajax.addEventListener("abort", abortHandler,false);
+
+        ajax.open("POST","../db/file_upload_parser.php");
+        ajax.send(formdata);
+    }
+
+    function progressHandler(event){
+         _("loades_n_total").innerHTML = "Uploaded" + event.loaded + " bytes of" +event.total;
+         var porcent = (event.loaded / event.total) * 100;
+         _("progressBar").value =  Math.round(porcent);
+         _("status").innerHTML =  Math.round(porcent) + "% uploaded... please wait";
+    }
+
+    function completeHandler(event){
+        _("status").innerHTML =  event.target.responseText;
+         _("progressBar").value =  0;   
+    }
+    
+    function errorHandler(event){
+        _("status").innerHTML =  "Upload Failed";
+    }
+
+    function abortHandler(event){
+        _("status").innerHTML =  "Upload Aborted";
+    }      
+
 
     $("#btnProcesar").click(function(){
 
+        uploadFile();
         let _cbociudad = $('#cboCiudad').val();
         let _cbocedente = $('#cboCedente').val();
         let _cboproducto = $('#cboProducto').val();
@@ -693,7 +731,7 @@ $(document).ready(function(){
                     opcion: 0},
                 success: function(data){
 
-                 
+                    
                 
                 },
                 error: function (error) {
