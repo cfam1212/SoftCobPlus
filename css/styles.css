@@ -121,11 +121,9 @@ input[type=checkbox] {
   display: flex;
   height: 150px;
   width: 350px;
-  /* align-items: center;
-  justify-content: center; */
   flex-direction: column;
-  border-radius: 5px;
-  border: 2px dashed #36A0FF;
+  border-radius: 6px;
+  border: 3px dashed #36A0FF;
   
 }
 
@@ -149,6 +147,19 @@ input[type=checkbox] {
 }
 
 
+/*PROGRESS BAR*/
+
+.inicio{
+  width: 0%;
+}
+
+.final{
+  width: 100%;
+}
+
+.animacion{
+  transition: all 2s ease .5s;
+}
 
 
 

@@ -111,13 +111,17 @@ $(document).ready(function(){
 
 
     function  uploadFile(){
-        var file = $('#file_input').files[0];
-        alert(file.name +" | " + file.size +" | "+file.type);
+        var file = _("file_input").files[0];
+        // alert(file.name +" | " + file.size +" | "+file.type);
         var formdata = new FormData();
-        formdata.append("#file_input",file);
+
+
+
+        formdata.append("file_input",file);
         var ajax = new XMLHttpRequest();
 
-        ajax.upload.addEventListener("#progress",progressHandler,false);
+
+        ajax.upload.addEventListener("progress",progressHandler,false);
         ajax.addEventListener("load", completeHandler,false);
         ajax.addEventListener("error", errorHandler,false);
         ajax.addEventListener("abort", abortHandler,false);
@@ -127,15 +131,16 @@ $(document).ready(function(){
     }
 
     function progressHandler(event){
-         _("loades_n_total").innerHTML = "Uploaded" + event.loaded + " bytes of" +event.total;
+         $('#loades_n_total').innerHTML = "Uploaded" + event.loaded + " bytes of" +event.total;
          var porcent = (event.loaded / event.total) * 100;
-         _("progressBar").value =  Math.round(porcent);
-         _("status").innerHTML =  Math.round(porcent) + "% uploaded... please wait";
+         $('#progressBar').value =  Math.round(porcent);
+         $('#status').innerHTML =  Math.round(porcent) + "% uploaded... please wait";
+
     }
 
     function completeHandler(event){
-        _("status").innerHTML =  event.target.responseText;
-         _("progressBar").value =  0;   
+        $('#status').innerHTML =  event.target.responseText;
+        $('#progressBar').value =  0;   
     }
     
     function errorHandler(event){
@@ -149,7 +154,7 @@ $(document).ready(function(){
 
     $("#btnProcesar").click(function(){
 
-        uploadFile();
+        
         let _cbociudad = $('#cboCiudad').val();
         let _cbocedente = $('#cboCedente').val();
         let _cboproducto = $('#cboProducto').val();
@@ -178,25 +183,25 @@ $(document).ready(function(){
             mensajesalertify("Seleccione Catalogo..!","W","top-right",3);
             return;
         }
-
-
-
-        // document.querySelector('#btnProcesar').addEventListener('click', function(){
-
-        //     if(document.querySelector('#file_input').files.length == 0){
-        
-        //         mensajesalertify("Seleccione un archivo","E","top-center",3);
-        //         return;
-        
-        //         }
-
-        //     let _inputFile = document.querySelector('#file_input').files[0];
-        //     let _progressbar = document.querySelector('#progressBar');
-
-        //     let data = new FormData();
        
-        // });
 
+        if(document.querySelector('#file_input').files.length == 0){
+    
+            mensajesalertify("Seleccione un archivo","E","top-center",3);
+            return;
+    
+            }
+
+            // uploadFile();
+
+            function animar(){
+                document.getElementById("progressBar").classList.toggle("final");
+            }
+
+            document.getElementById("btnProcesar").onclick =  function(){
+                animar();
+            }
+       
        
       
         $("#tablecartera tbody tr").each(function (items) 

@@ -13,7 +13,7 @@ if(!$fileTmpLoc){
 }
 
 if(move_uploaded_file($fileTmpLoc,"../test_uploads/$fileName")){
-    echo "$fileName upload is complete";
+    echo "upload is complete";
 }else{
     echo "move_uploaded_file fuction failed";
 }
