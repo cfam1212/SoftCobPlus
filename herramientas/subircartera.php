@@ -163,10 +163,16 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                                 </div>
                                 <br />
                                 <br />
-                                <div class="progress col-md-9">
-                                    <div class="progress-bar progress-bar-striped bg-success inicio animacion" role="progressbar" id="progressBar" value="0"  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div><br/>
-                                    <!-- <progress id="progressBar" value="0" max="100" style="width: 300px;"></progress> -->
-                                </div>
+                                <div id="progressBar">
+                                    <div id="progressbar">
+                                    
+                                    </div>  
+                                </div>                                
+                                <!-- <div class="progress col-md-9">
+                                    <div class="progress-label" role="progressbar" id="progressBar" value="0"  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                    <br/>
+                                </div> -->
                                 <br/>
                                 <h2 id="status"></h2> <br/>
                                 <p id="loades_n_total"></p>

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro, _catalogoid, _resultCartera = [];
+    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro, _catalogoid, _resultCartera = [], _exito, _result ;
 
     $('#cboCiudad').select2();
     $('#cboCedente').select2();
@@ -155,6 +155,7 @@ $(document).ready(function(){
     $("#btnProcesar").click(function(){
 
         
+        $("#btnProcesar").prop('disabled:disabled');
         let _cbociudad = $('#cboCiudad').val();
         let _cbocedente = $('#cboCedente').val();
         let _cboproducto = $('#cboProducto').val();
@@ -194,13 +195,13 @@ $(document).ready(function(){
 
             // uploadFile();
 
-            function animar(){
-                document.getElementById("progressBar").classList.toggle("final");
-            }
+            // function animar(){
+            //     document.getElementById("progressBar").classList.toggle("final");
+            // }
 
-            document.getElementById("btnProcesar").onclick =  function(){
-                animar();
-            }
+            // document.getElementById("btnProcesar").onclick =  function(){
+            //     animar();
+            // }
        
        
       
@@ -623,7 +624,10 @@ $(document).ready(function(){
 
        
         _resultCartera.forEach(function(cartera, index) {
-            console.log(`${index} : ${cartera.arrycedula} ${cartera.arrynombres}`);
+            
+            _exito = 0;
+            
+            //console.log(`${index} : ${cartera.arrycedula} ${cartera.arrynombres}`);
 
             $.ajax({
                 url: "../db/herramientacrud.php",
@@ -735,8 +739,9 @@ $(document).ready(function(){
 
                     opcion: 0},
                 success: function(data){
+                       _exito = 1;
 
-                    
+                    move(index);
                 
                 },
                 error: function (error) {
@@ -746,12 +751,28 @@ $(document).ready(function(){
             
           
         });
-        
+
+        if(_exito == 1)
+        {
+            move();
+        }
           
     });
 
+    _result = 0;
+    var progress = document.getElementById("progressbar");
 
-
+    function move(){
+        //alert(widthProgress);
+        setInterval(addFrame, 100);
+         function addFrame(){
+            if(_result < 100){
+                _result = _result + 1;
+                progress.style.width = _result + "%";
+                progress.innerHTML = _result + "%";            
+            }
+        }
+    } 
   
 
 });
