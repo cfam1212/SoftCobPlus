@@ -105,57 +105,57 @@ $(document).ready(function(){
 
     });    
 
-    function _(el){
-        return document.getElementById(el);
-    }
+    // function _(el){
+    //     return document.getElementById(el);
+    // }
 
 
-    function  uploadFile(){
-        var file = _("file_input").files[0];
-        // alert(file.name +" | " + file.size +" | "+file.type);
-        var formdata = new FormData();
+    // function  uploadFile(){
+    //     var file = _("file_input").files[0];
+    //      alert(file.name +" | " + file.size +" | "+file.type);
+    //     var formdata = new FormData();
 
 
 
-        formdata.append("file_input",file);
-        var ajax = new XMLHttpRequest();
+    //     formdata.append("file_input",file);
+    //     var ajax = new XMLHttpRequest();
 
 
-        ajax.upload.addEventListener("progress",progressHandler,false);
-        ajax.addEventListener("load", completeHandler,false);
-        ajax.addEventListener("error", errorHandler,false);
-        ajax.addEventListener("abort", abortHandler,false);
+    //     ajax.upload.addEventListener("progress",progressHandler,false);
+    //     ajax.addEventListener("load", completeHandler,false);
+    //     ajax.addEventListener("error", errorHandler,false);
+    //     ajax.addEventListener("abort", abortHandler,false);
 
-        ajax.open("POST","../db/file_upload_parser.php");
-        ajax.send(formdata);
-    }
+    //     ajax.open("POST","../db/file_upload_parser.php");
+    //     ajax.send(formdata);
+    // }
 
-    function progressHandler(event){
-         $('#loades_n_total').innerHTML = "Uploaded" + event.loaded + " bytes of" +event.total;
-         var porcent = (event.loaded / event.total) * 100;
-         $('#progressBar').value =  Math.round(porcent);
-         $('#status').innerHTML =  Math.round(porcent) + "% uploaded... please wait";
+    // function progressHandler(event){
+    //      $('#loades_n_total').innerHTML = "Uploaded" + event.loaded + " bytes of" +event.total;
+    //      var porcent = (event.loaded / event.total) * 100;
+    //      $('#progressBar').value =  Math.round(porcent);
+    //      $('#status').innerHTML =  Math.round(porcent) + "% uploaded... please wait";
 
-    }
+    // }
 
-    function completeHandler(event){
-        $('#status').innerHTML =  event.target.responseText;
-        $('#progressBar').value =  0;   
-    }
+    // function completeHandler(event){
+    //     $('#status').innerHTML =  event.target.responseText;
+    //     $('#progressBar').value =  0;   
+    // }
     
-    function errorHandler(event){
-        _("status").innerHTML =  "Upload Failed";
-    }
+    // function errorHandler(event){
+    //     _("status").innerHTML =  "Upload Failed";
+    // }
 
-    function abortHandler(event){
-        _("status").innerHTML =  "Upload Aborted";
-    }      
+    // function abortHandler(event){
+    //     _("status").innerHTML =  "Upload Aborted";
+    // }      
 
 
     $("#btnProcesar").click(function(){
 
         
-        $("#btnProcesar").prop('disabled:disabled');
+      
         let _cbociudad = $('#cboCiudad').val();
         let _cbocedente = $('#cboCedente').val();
         let _cboproducto = $('#cboProducto').val();
@@ -193,16 +193,7 @@ $(document).ready(function(){
     
             }
 
-            // uploadFile();
-
-            // function animar(){
-            //     document.getElementById("progressBar").classList.toggle("final");
-            // }
-
-            // document.getElementById("btnProcesar").onclick =  function(){
-            //     animar();
-            // }
-       
+        $("#btnProcesar").prop("disabled", "disabled");
        
       
         $("#tablecartera tbody tr").each(function (items) 
@@ -755,6 +746,8 @@ $(document).ready(function(){
         if(_exito == 1)
         {
             move();
+            var file = _("file_input").files[0];
+            $('#loades_n_total').innerHTML = (file.name +" | " + file.size +" | "+file.type);
         }
           
     });

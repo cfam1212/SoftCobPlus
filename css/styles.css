@@ -149,21 +149,10 @@ input[type=checkbox] {
 
 /*PROGRESS BAR*/
 
-.inicio{
-  width: 0%;
-}
-
-.final{
-  width: 100%;
-}
-
-.animacion{
-  transition: all 2s ease .5s;
-}
 
 #progressBar{
   height: 40px;
-  width: 50%;
+  width: 75%;
   border-radius: 12px;
   background:rgb(233,233,233);  
   border: 2px solid white;
@@ -174,9 +163,19 @@ input[type=checkbox] {
 }
 
 #progressbar{
-  background-color: rgb(50, 111, 152);
+  /* background-color: rgb(50, 111, 152); */
+  background: #00c6ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   width: 0%;
-  border-radius: 12px; 
+  /* animation: load 20s linear 1s;
+  animation-fill-mode: forwards; */
+  transition: all 0.9s;
+  /* transition: all 500ms ease-out; */
+
+  box-shadow: 2px 14px 15px -7px rgba(30, 166, 250, 0.36);
+  border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;

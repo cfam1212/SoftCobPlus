@@ -155,7 +155,7 @@ switch($opcion){
 
         if($fonodeu1 != ''){
 
-            $primervalor = substr($fonodeu1,1);
+            $primervalor = substr($fonodeu1, 0, 1);
             $largo = strlen($fonodeu1);
 
             if(strlen($fonodeu1) > 6 || strlen($fonodeu1) < 11){
@@ -167,7 +167,7 @@ switch($opcion){
                             $fonodeu1 = '0' . $fonodeu1;
 
                         }
-                        break;
+                    break;
                         
                     case "2":
                     case "3":
@@ -199,14 +199,41 @@ switch($opcion){
 
         if($fonodeu2 != ''){
 
-                if(substr($fonodeu2,2)!= '09'){
-                    $tipotelefono = 'CON';
+            $primervalor = substr($fonodeu2, 0, 1);
+            $largo = strlen($fonodeu1);
+
+            if(strlen($fonodeu2) > 6 || strlen($fonodeu2) < 11){
+
+                switch($primervalor){
+                    case "9":
+                        $tipotelefono = 'CEL';
+                        if($largo == 9){
+                            $fonodeu2 = '0' . $fonodeu2;
+
+                        }
+                        break;
+                        
+                    case "2":
+                    case "3":
+                    case "4":
+                    case "5":
+                    case "6":
+                    case "7":
+                    case "8":
+                        $tipotelefono = 'CON';
+
+                        if($largo == 7){
+                            $fonodeu2 = '02' . $fonodeu2;
+                        }
+
+                        if($largo == 8){
+                            $fonodeu2 = '0' . $fonodeu2;
+                        }
+                        
+                    break;
                 }
 
-                if(substr($fonodeu2,2)== '09'){
-                    $tipotelefono = 'CEL';
-                }
-
+            }    
 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -217,13 +244,42 @@ switch($opcion){
             
 
         if($fonodeu3 != ''){
-                if(substr($fonodeu3,2)!= '09'){
-                    $tipotelefono = 'CON';
+
+            $primervalor = substr($fonodeu3, 0, 1);
+            $largo = strlen($fonodeu3);
+
+            if(strlen($fonodeu3) > 6 || strlen($fonodeu3) < 11){
+
+                switch($primervalor){
+                    case "9":
+                        $tipotelefono = 'CEL';
+                        if($largo == 9){
+                            $fonodeu3 = '0' . $fonodeu3;
+
+                        }
+                        break;
+                        
+                    case "2":
+                    case "3":
+                    case "4":
+                    case "5":
+                    case "6":
+                    case "7":
+                    case "8":
+                        $tipotelefono = 'CON';
+
+                        if($largo == 7){
+                            $fonodeu3 = '02' . $fonodeu3;
+                        }
+
+                        if($largo == 8){
+                            $fonodeu3 = '0' . $fonodeu3;
+                        }
+                        
+                    break;
                 }
 
-                if(substr($fonodeu3,2)== '09'){
-                    $tipotelefono = 'CEL';
-                }
+            }    
 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -232,13 +288,43 @@ switch($opcion){
         }
         
         if($fonodeu4 != ''){
-            if(substr($fonodeu3,2)!= '09'){
-                $tipotelefono = 'CON';
-            }
 
-            if(substr($fonodeu4,2)== '09'){
-                $tipotelefono = 'CEL';
-            }
+            $primervalor = substr($fonodeu4, 0, 1);
+            $largo = strlen($fonodeu4);
+
+            if(strlen($fonodeu4) > 6 || strlen($fonodeu4) < 11){
+
+                switch($primervalor){
+                    case "9":
+                        $tipotelefono = 'CEL';
+                        if($largo == 9){
+                            $fonodeu4 = '0' . $fonodeu4;
+
+                        }
+                        break;
+                        
+                    case "2":
+                    case "3":
+                    case "4":
+                    case "5":
+                    case "6":
+                    case "7":
+                    case "8":
+                        $tipotelefono = 'CON';
+
+                        if($largo == 7){
+                            $fonodeu4 = '02' . $fonodeu4;
+                        }
+
+                        if($largo == 8){
+                            $fonodeu4 = '0' . $fonodeu4;
+                        }
+                        
+                    break;
+                }
+
+            }  
+         
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -248,12 +334,43 @@ switch($opcion){
         
         
         if($fonodeu5 != ''){
-            if(substr($fonodeu3,2) != '09'){
-                $tipotelefono = 'CON';
-            }
-            if(substr($fonodeu5,2) == '09'){
-                $tipotelefono = 'CEL';
-            }
+
+            $primervalor = substr($fonodeu5,0,1);
+            $largo = strlen($fonodeu5);
+
+            if(strlen($fonodeu5) > 6 || strlen($fonodeu5) < 11){
+
+                switch($primervalor){
+                    case "9":
+                        $tipotelefono = 'CEL';
+                        if($largo == 9){
+                            $fonodeu5 = '0' . $fonodeu5;
+
+                        }
+                        break;
+                        
+                    case "2":
+                    case "3":
+                    case "4":
+                    case "5":
+                    case "6":
+                    case "7":
+                    case "8":
+                        $tipotelefono = 'CON';
+
+                        if($largo == 7){
+                            $fonodeu5 = '02' . $fonodeu5;
+                        }
+
+                        if($largo == 8){
+                            $fonodeu5 = '0' . $fonodeu5;
+                        }
+                        
+                    break;
+                }
+
+            }  
+          
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -262,12 +379,43 @@ switch($opcion){
         }   
         
         if($fonodeu6 != ''){
-            if(substr($fonodeu3,2)!= '09'){
-                $tipotelefono = 'CON';
-            }
-            if(substr($fonodeu6,2)== '09'){
-                $tipotelefono = 'CEL';
-            }
+
+            $primervalor = substr($fonodeu6,0,1);
+            $largo = strlen($fonodeu6);
+
+            if(strlen($fonodeu6) > 6 || strlen($fonodeu6) < 11){
+
+                switch($primervalor){
+                    case "9":
+                        $tipotelefono = 'CEL';
+                        if($largo == 9){
+                            $fonodeu6 = '0' . $fonodeu6;
+
+                        }
+                        break;
+                        
+                    case "2":
+                    case "3":
+                    case "4":
+                    case "5":
+                    case "6":
+                    case "7":
+                    case "8":
+                        $tipotelefono = 'CON';
+
+                        if($largo == 7){
+                            $fonodeu6 = '02' . $fonodeu6;
+                        }
+
+                        if($largo == 8){
+                            $fonodeu6 = '0' . $fonodeu6;
+                        }
+                        
+                    break;
+                }
+
+            }  
+        
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -276,13 +424,43 @@ switch($opcion){
         }
         
         if($fonodeu7 != ''){
-            if(substr($fonodeu3,2)!= '09'){
-                $tipotelefono = 'CON';
-            }
 
-            if(substr($fonodeu7,2)== '09'){
-                $tipotelefono = 'CEL';
-            }
+            $primervalor = substr($fonodeu7,0,1);
+            $largo = strlen($fonodeu7);
+
+            if(strlen($fonodeu7) > 6 || strlen($fonodeu7) < 11){
+
+                switch($primervalor){
+                    case "9":
+                        $tipotelefono = 'CEL';
+                        if($largo == 9){
+                            $fonodeu7 = '0' . $fonodeu7;
+
+                        }
+                        break;
+                        
+                    case "2":
+                    case "3":
+                    case "4":
+                    case "5":
+                    case "6":
+                    case "7":
+                    case "8":
+                        $tipotelefono = 'CON';
+
+                        if($largo == 7){
+                            $fonodeu7 = '02' . $fonodeu7;
+                        }
+
+                        if($largo == 8){
+                            $fonodeu7 = '0' . $fonodeu7;
+                        }
+                        
+                    break;
+                }
+
+            }  
+      
 
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -292,13 +470,43 @@ switch($opcion){
         }
         
         if($fonodeu8 != ''){
-            if(substr($fonodeu8,2)!= '09'){
-                $tipotelefono = 'CON';
-            }
 
-            if(substr($fonodeu8,2)== '09'){
-                $tipotelefono = 'CEL';
-            }
+            $primervalor = substr($fonodeu8,0,1);
+            $largo = strlen($fonodeu8);
+
+            if(strlen($fonodeu8) > 6 || strlen($fonodeu8) < 11){
+
+                switch($primervalor){
+                    case "9":
+                        $tipotelefono = 'CEL';
+                        if($largo == 9){
+                            $fonodeu8 = '0' . $fonodeu8;
+
+                        }
+                        break;
+                        
+                    case "2":
+                    case "3":
+                    case "4":
+                    case "5":
+                    case "6":
+                    case "7":
+                    case "8":
+                        $tipotelefono = 'CON';
+
+                        if($largo == 7){
+                            $fonodeu8 = '02' . $fonodeu8;
+                        }
+
+                        if($largo == 8){
+                            $fonodeu8 = '0' . $fonodeu8;
+                        }
+                        
+                    break;
+                }
+
+            }  
+           
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
             $resultado = $conexion->prepare($consulta);
@@ -307,13 +515,44 @@ switch($opcion){
         }
         
         if($fonodeu9 != ''){
-            if(substr($fonodeu9,2)!= '09'){
-                $tipotelefono = 'CON';
-            }
-            
-            if(substr($fonodeu9,2)== '09'){
-                $tipotelefono = 'CEL';
-            }
+
+            $primervalor = substr($fonodeu9,0,1);
+            $largo = strlen($fonodeu9);
+
+            if(strlen($fonodeu9) > 6 || strlen($fonodeu9) < 11){
+
+                switch($primervalor){
+                    case "9":
+                        $tipotelefono = 'CEL';
+                        if($largo == 9){
+                            $fonodeu9 = '0' . $fonodeu9;
+
+                        }
+                        break;
+                        
+                    case "2":
+                    case "3":
+                    case "4":
+                    case "5":
+                    case "6":
+                    case "7":
+                    case "8":
+                        $tipotelefono = 'CON';
+
+                        if($largo == 7){
+                            $fonodeu9 = '02' . $fonodeu9;
+                        }
+
+                        if($largo == 8){
+                            $fonodeu9 = '0' . $fonodeu9;
+                        }
+                        
+                    break;
+                }
+
+            }  
+
+       
 
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -323,13 +562,43 @@ switch($opcion){
         }  
         
         if($fonodeu10 != ''){
-            if(substr($fonodeu3,2)!= '09'){
-                $tipotelefono = 'CON';
-            }
-            
-            if(substr($fonodeu10,2)== '09'){
-                $tipotelefono = 'CEL';
-            }
+
+            $primervalor = substr($fonodeu10,0,1);
+            $largo = strlen($fonodeu10);
+
+            if(strlen($fonodeu10) > 6 || strlen($fonodeu10) < 11){
+
+                switch($primervalor){
+                    case "9":
+                        $tipotelefono = 'CEL';
+                        if($largo == 9){
+                            $fonodeu10 = '0' . $fonodeu10;
+
+                        }
+                        break;
+                        
+                    case "2":
+                    case "3":
+                    case "4":
+                    case "5":
+                    case "6":
+                    case "7":
+                    case "8":
+                        $tipotelefono = 'CON';
+
+                        if($largo == 7){
+                            $fonodeu10 = '02' . $fonodeu10;
+                        }
+
+                        if($largo == 8){
+                            $fonodeu10 = '0' . $fonodeu10;
+                        }
+                        
+                    break;
+                }
+
+            }  
+         
 
 
             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -397,13 +666,43 @@ switch($opcion){
             
             if($fono1ref1 != '')
             {
-                if(substr($fono1ref1,2) != '09'){
-                    $tipotelefono = 'CON';
-                }
 
-                if(substr($fono1ref1,2) == '09'){
-                    $tipotelefono = 'CEL';
-                }
+                $primervalor = substr($fono1ref1,0,1);
+                $largo = strlen($fono1ref1);
+    
+                if(strlen($fono1ref1) > 6 || strlen($fono1ref1) < 11){
+    
+                    switch($primervalor){
+                        case "9":
+                            $tipotelefono = 'CEL';
+                            if($largo == 9){
+                                $fono1ref1 = '0' . $fono1ref1;
+    
+                            }
+                            break;
+                            
+                        case "2":
+                        case "3":
+                        case "4":
+                        case "5":
+                        case "6":
+                        case "7":
+                        case "8":
+                            $tipotelefono = 'CON';
+    
+                            if($largo == 7){
+                                $fono1ref1 = '02' . $fono1ref1;
+                            }
+    
+                            if($largo == 8){
+                                $fono1ref1 = '0' . $fono1ref1;
+                            }
+                            
+                        break;
+                    }
+    
+                }  
+             
                
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -413,13 +712,43 @@ switch($opcion){
 
             if($fono2ref1 != '')
             {
-                if(substr($fono2ref1,2) != '09'){
-                    $tipotelefono = 'CON';
-                }
+                $primervalor = substr($fono2ref1,0,1);
+                $largo = strlen($fono2ref1);
 
-                if(substr($fono2ref1,2) == '09'){
-                    $tipotelefono = 'CEL';
-                }
+                
+                if(strlen($fono2ref1) > 6 || strlen($fono2ref1) < 11){
+    
+                    switch($primervalor){
+                        case "9":
+                            $tipotelefono = 'CEL';
+                            if($largo == 9){
+                                $fono2ref1 = '0' . $fono2ref1;
+    
+                            }
+                            break;
+                            
+                        case "2":
+                        case "3":
+                        case "4":
+                        case "5":
+                        case "6":
+                        case "7":
+                        case "8":
+                            $tipotelefono = 'CON';
+    
+                            if($largo == 7){
+                                $fono2ref1 = '02' . $fono2ref1;
+                            }
+    
+                            if($largo == 8){
+                                $fono2ref1 = '0' . $fono2ref1;
+                            }
+                            
+                        break;
+                    }
+    
+                }  
+             
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -468,13 +797,44 @@ switch($opcion){
             
             if($fono1ref2 != '')
             {
-                if(substr($fono1ref2,2) != '09'){
-                    $tipotelefono = 'CON';
-                }
 
-                if(substr($fono1ref2,2) == '09'){
-                    $tipotelefono = 'CEL';
-                }
+                $primervalor = substr($fono1ref2,0,1);
+                $largo = strlen($fono1ref2);
+
+                
+                if(strlen($fono1ref2) > 6 || strlen($fono1ref2) < 11){
+    
+                    switch($primervalor){
+                        case "9":
+                            $tipotelefono = 'CEL';
+                            if($largo == 9){
+                                $fono1ref2 = '0' . $fono1ref2;
+    
+                            }
+                            break;
+                            
+                        case "2":
+                        case "3":
+                        case "4":
+                        case "5":
+                        case "6":
+                        case "7":
+                        case "8":
+                            $tipotelefono = 'CON';
+    
+                            if($largo == 7){
+                                $fono1ref2 = '02' . $fono1ref2;
+                            }
+    
+                            if($largo == 8){
+                                $fono1ref2 = '0' . $fono1ref2;
+                            }
+                            
+                        break;
+                    }
+    
+                }  
+              
                
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -484,13 +844,44 @@ switch($opcion){
 
             if($fono2ref2 != '')
             {
-                if(substr($fono2ref1,2) != '09'){
-                    $tipotelefono = 'CON';
-                }
 
-                if(substr($fono2ref1,2) == '09'){
-                    $tipotelefono = 'CEL';
-                }
+                $primervalor = substr($fono2ref2,0,1);
+                $largo = strlen($fono2ref2);
+
+                
+                if(strlen($fono2ref2) > 6 || strlen($fono2ref2) < 11){
+    
+                    switch($primervalor){
+                        case "9":
+                            $tipotelefono = 'CEL';
+                            if($largo == 9){
+                                $fono2ref2 = '0' . $fono2ref2;
+    
+                            }
+                            break;
+                            
+                        case "2":
+                        case "3":
+                        case "4":
+                        case "5":
+                        case "6":
+                        case "7":
+                        case "8":
+                            $tipotelefono = 'CON';
+    
+                            if($largo == 7){
+                                $fono2ref2 = '02' . $fono2ref2;
+                            }
+    
+                            if($largo == 8){
+                                $fono2ref2 = '0' . $fono2ref2;
+                            }
+                            
+                        break;
+                    }
+    
+                }  
+               
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -589,13 +980,43 @@ switch($opcion){
 
             if($fono1gara1 != '')
             {
-                if(substr($fono1gara1,2) != '09'){
-                    $tipotelefono = 'CON';
-                }
+               
+                $primervalor = substr($fono1gara1,0,1);
+                $largo = strlen($fono1gara1);
 
-                if(substr($fono1gara1,2) == '09'){
-                    $tipotelefono = 'CEL';
-                }
+                
+                if(strlen($fono1gara1) > 6 || strlen($fono1gara1) < 11){
+    
+                    switch($primervalor){
+                        case "9":
+                            $tipotelefono = 'CEL';
+                            if($largo == 9){
+                                $fono1gara1 = '0' . $fono1gara1;
+    
+                            }
+                            break;
+                            
+                        case "2":
+                        case "3":
+                        case "4":
+                        case "5":
+                        case "6":
+                        case "7":
+                        case "8":
+                            $tipotelefono = 'CON';
+    
+                            if($largo == 7){
+                                $fono1gara1 = '02' . $fono1gara1;
+                            }
+    
+                            if($largo == 8){
+                                $fono1gara1 = '0' . $fono1gara1;
+                            }
+                            
+                        break;
+                    }
+    
+                }  
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -605,14 +1026,45 @@ switch($opcion){
 
             if($fono2gara1 != '')
             {
-                if(substr($fono2gara1,2) != '09'){
-                    $tipotelefono = 'CON';
-                }
 
-                if(substr($fono2gara1,2) == '09'){
-                    $tipotelefono = 'CEL';
-                }
+                $primervalor = substr($fono2gara1,0,1);
+                $largo = strlen($fono2gara1);
+
                 
+                if(strlen($fono2gara1) > 6 || strlen($fono2gara1) < 11){
+    
+                    switch($primervalor){
+                        case "9":
+                            $tipotelefono = 'CEL';
+                            if($largo == 9){
+                                $fono2gara1 = '0' . $fono2gara1;
+    
+                            }
+                        case "09": $tipotelefono = 'CEL';    
+                        break;
+                            
+                        case "2":
+                        case "3":
+                        case "4":
+                        case "5":
+                        case "6":
+                        case "7":
+                        case "8":
+                            $tipotelefono = 'CON';
+    
+                            if($largo == 7){
+                                $fono2gara1 = '02' . $fono2gara1;
+                            }
+    
+                            if($largo == 8){
+                                $fono2gara1 = '0' . $fono2gara1;
+                            }
+                            
+                        break;
+                    }
+    
+                }  
+               
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
                 $resultado->execute(array(0,$cedenteid,$personaid,0,$fono2gara1,$tipotelefono,$tipocliente,0,
@@ -621,14 +1073,45 @@ switch($opcion){
 
             if($fono3gara1 != '')
             {
-                if(substr($fono3gara1,2) != '09'){
-                    $tipotelefono = 'CON';
-                }else
 
-                if(substr($fono3gara1,2) == '09'){
-                    $tipotelefono = 'CEL';
-                }
                 
+                $primervalor = substr($fono3gara1,0,1);
+                $largo = strlen($fono3gara1);
+
+                
+                if(strlen($fono3gara1) > 6 || strlen($fono3gara1) < 11){
+    
+                    switch($primervalor){
+                        case "9":
+                            $tipotelefono = 'CEL';
+                            if($largo == 9){
+                                $fono3gara1 = '0' . $fono3gara1;
+    
+                            }
+                            break;
+                            
+                        case "2":
+                        case "3":
+                        case "4":
+                        case "5":
+                        case "6":
+                        case "7":
+                        case "8":
+                            $tipotelefono = 'CON';
+    
+                            if($largo == 7){
+                                $fono3gara1 = '02' . $fono3gara1;
+                            }
+    
+                            if($largo == 8){
+                                $fono3gara1 = '0' . $fono3gara1;
+                            }
+                            
+                        break;
+                    }
+    
+                }  
+               
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
                 $resultado->execute(array(0,$cedenteid,$personaid,0,$fono3gara1,$tipotelefono,$tipocliente,0,
@@ -702,13 +1185,44 @@ switch($opcion){
 
             if($fono1gara2 != '')
             {
-                if(substr($fono1gara2,2) != '09'){
-                    $tipotelefono = 'CON';
-                }
 
-                if(substr($fono1gara2,2) == '09'){
-                    $tipotelefono = 'CEL';
-                }
+                $primervalor = substr($fono1gara2,0,1);
+                $largo = strlen($fono1gara2);
+
+                
+                if(strlen($fono1gara2) > 6 || strlen($fono1gara2) < 11){
+    
+                    switch($primervalor){
+                        case "9":
+                            $tipotelefono = 'CEL';
+                            if($largo == 9){
+                                $fono1gara2 = '0' . $fono1gara2;
+    
+                            }
+                            break;
+                            
+                        case "2":
+                        case "3":
+                        case "4":
+                        case "5":
+                        case "6":
+                        case "7":
+                        case "8":
+                            $tipotelefono = 'CON';
+    
+                            if($largo == 7){
+                                $fono1gara2 = '02' . $fono1gara2;
+                            }
+    
+                            if($largo == 8){
+                                $fono1gara2 = '0' . $fono1gara2;
+                            }
+                            
+                        break;
+                    }
+    
+                }  
+                
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -718,13 +1232,43 @@ switch($opcion){
 
             if($fono2gara2 != '')
             {
-                if(substr($fono2gara2,2) != '09'){
-                    $tipotelefono = 'CON';
-                }
-                if(substr($fono2gara2,2) == '09'){
-                    $tipotelefono = 'CEL';
-                }
+                $primervalor = substr($fono2gara2,0,1);
+                $largo = strlen($fono2gara2);
 
+                
+                if(strlen($fono2gara2) > 6 || strlen($fono2gara2) < 11){
+    
+                    switch($primervalor){
+                        case "9":
+                            $tipotelefono = 'CEL';
+                            if($largo == 9){
+                                $fono2gara2 = '0' . $fono2gara2;
+    
+                            }
+                            break;
+                            
+                        case "2":
+                        case "3":
+                        case "4":
+                        case "5":
+                        case "6":
+                        case "7":
+                        case "8":
+                            $tipotelefono = 'CON';
+    
+                            if($largo == 7){
+                                $fono2gara2 = '02' . $fono2gara2;
+                            }
+    
+                            if($largo == 8){
+                                $fono2gara2 = '0' . $fono2gara2;
+                            }
+                            
+                        break;
+                    }
+    
+                }  
+               
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
@@ -734,13 +1278,44 @@ switch($opcion){
 
             if($fono3gara2 != '')
             {
-                if(substr($fono3gara2,2) != '09'){
-                    $tipotelefono = 'CON';
-                }
 
-                if(substr($fono3gara2,2) == '09'){
-                    $tipotelefono = 'CEL';
-                }
+                $primervalor = substr($fono3gara2,0,1);
+                $largo = strlen($fono3gara2);
+
+                
+                if(strlen($fono3gara2) > 6 || strlen($fono3gara2) < 11){
+    
+                    switch($primervalor){
+                        case "9":
+                            $tipotelefono = 'CEL';
+                            if($largo == 9){
+                                $fono3gara2 = '0' . $fono3gara2;
+    
+                            }
+                            break;
+                            
+                        case "2":
+                        case "3":
+                        case "4":
+                        case "5":
+                        case "6":
+                        case "7":
+                        case "8":
+                            $tipotelefono = 'CON';
+    
+                            if($largo == 7){
+                                $fono3gara2 = '02' . $fono3gara2;
+                            }
+    
+                            if($largo == 8){
+                                $fono3gara2 = '0' . $fono3gara2;
+                            }
+                            
+                        break;
+                    }
+    
+                }  
+             
                 
                 $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                 $resultado = $conexion->prepare($consulta);
