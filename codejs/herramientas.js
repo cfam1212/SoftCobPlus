@@ -746,8 +746,7 @@ $(document).ready(function(){
         if(_exito == 1)
         {
             move();
-            var file = _("file_input").files[0];
-            $('#loades_n_total').innerHTML = (file.name +" | " + file.size +" | "+file.type);
+            uploadFile();
         }
           
     });
@@ -766,6 +765,11 @@ $(document).ready(function(){
             }
         }
     } 
+
+     function  uploadFile(){
+        var file = _("file_input").files[0];
+         alert(file.name +" | " + file.size +" | "+file.type);
+     }
   
 
 });
