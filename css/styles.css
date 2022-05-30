@@ -148,11 +148,13 @@ input[type=checkbox] {
 
 #progressBar{
   height: 40px;
-  width: 75%;
+  width: 40%;
   border-radius: 12px;
   background:rgb(233,233,233);  
   border: 2px solid white;
   border: 12px;
+  display: flex;
+  justify-content: flex-start;
   color: rgb(39,39,39); 
 }
 
@@ -167,9 +169,13 @@ input[type=checkbox] {
   animation-fill-mode: forwards; */
   transition: all 0.9s;
   /* transition: all 500ms ease-out; */
-
+  display: flex;
+  justify-content: center;
+  text-align: end;
   box-shadow: 2px 14px 15px -7px rgba(30, 166, 250, 0.36);
-  border-radius: 50px;
+  border-radius: 12px; 
+ 
+  
  
 }
 

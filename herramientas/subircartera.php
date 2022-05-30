@@ -163,33 +163,31 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                             </div>
                             <br />
                             <br />
-                            <div class="form-group row">
-                                <div id="progressBar">
-                                    <div id="progressbar">
 
-                                    </div>
+                            <div id="progressBar">
+                                <div id="progressbar">
+
                                 </div>
                             </div>
-
                             <!-- <div class="progress col-md-9">
-                                    <div class="progress-label" role="progressbar" id="progressBar" value="0"  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                                    </div>
-                                    <br/>
-                                </div> -->
-                            <br />
-                            <h2 id="status"></h2> <br />
-                            <p id="loades_n_total"></p>
-                            <div class="form-group row">
-                                <div id="tablares" style="display: none;">
-
+                                <div class="progress-label" role="progressbar" id="progressBar" value="0" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                                 </div>
-                            </div>
-                        </form>
+                                <br />
+                    </div> -->
+                    <br />
+                    <h2 id="status"></h2> <br />
+                    <p id="loades_n_total"></p>
+                    <div class="form-group row">
+                        <div id="tablares" style="display: none;">
+
+                        </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>

@@ -731,8 +731,6 @@ $(document).ready(function(){
                     opcion: 0},
                 success: function(data){
                        _exito = 1;
-
-                    move(index);
                 
                 },
                 error: function (error) {
@@ -752,7 +750,14 @@ $(document).ready(function(){
     });
 
     _result = 0;
+
+    var slider = document.getElementById("progressBar");
     var progress = document.getElementById("progressbar");
+
+    var widthBar = parseInt(window.getComputedStyle(progress).width);
+    var widthProgress = parseInt(window.getComputedStyle(slider).width);
+
+    var _result = Math.round((widthBar/widthProgress)* 100);
 
     function move(){
         //alert(widthProgress);
