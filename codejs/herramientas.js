@@ -736,15 +736,15 @@ $(document).ready(function(){
                 error: function (error) {
                     console.log(error);
                 }                 
-            }); 
+            });
             
           
         });
 
-        if(_exito == 1)
+        if(_exito == 0)
         {
             move();
-            uploadFile();
+            //uploadFile();
         }
           
     });
