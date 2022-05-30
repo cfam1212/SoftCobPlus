@@ -744,7 +744,7 @@ $(document).ready(function(){
         if(_exito == 0)
         {
             move();
-            //uploadFile();
+            uploadFile();
         }
           
     });
