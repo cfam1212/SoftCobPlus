@@ -743,7 +743,6 @@ $(document).ready(function(){
         if(_exito == 0)
         {
             move();
-            //uploadFile();
         }
           
     });
@@ -759,7 +758,6 @@ $(document).ready(function(){
     var _result = Math.round((widthBar/widthProgress)* 100);
 
     function move(){
-        //alert(widthProgress);
         setInterval(addFrame, 100);
          function addFrame(){
             if(_result < 100){
@@ -770,10 +768,7 @@ $(document).ready(function(){
         }
     } 
 
-     function  uploadFile(){
-        var file = _("file_input").files[0];
-         alert(file.name +" | " + file.size +" | "+file.type);
-     }
-  
+    // mensajesalertify("Subido con exito","S","bottom-center",3);	
+
 
 });
