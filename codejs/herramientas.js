@@ -727,7 +727,6 @@ $(document).ready(function(){
                     adicional28: cartera.arryadicional28,
                     adicional29: cartera.arryadicional29,
                     adicional: cartera.arryadicional30,
-
                     opcion: 0},
                 success: function(data){
                        _exito = 1;
@@ -744,7 +743,7 @@ $(document).ready(function(){
         if(_exito == 0)
         {
             move();
-            uploadFile();
+            //uploadFile();
         }
           
     });

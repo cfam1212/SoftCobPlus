@@ -6,7 +6,6 @@ $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 $data = null;
 
-ini_set('memory_limit', '2GB');
 
 $userid = $_SESSION["i_usuaid"];
 $host = $_SESSION["s_namehost"];
