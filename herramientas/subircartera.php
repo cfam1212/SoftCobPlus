@@ -159,7 +159,7 @@ if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST
                                 </div>
                             </div>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" id="btnProcesar" name="btnProcesar" class="btn btn-info">Procesar</button>
+                                <button type="button" id="btnProcesar" name="btnProcesar" class="btn btn-outline-info"><i class="fa fa-gears"></i> Procesar</button>
                             </div>
                             <br />
                             <br />
