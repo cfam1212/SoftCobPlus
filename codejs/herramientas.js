@@ -613,12 +613,16 @@ $(document).ready(function(){
           
         });
 
+        console.log(_resultCartera);
+
        
         _resultCartera.forEach(function(cartera, index) {
+
             
             _exito = 0;
             
             //console.log(`${index} : ${cartera.arrycedula} ${cartera.arrynombres}`);
+            debugger;
 
             $.ajax({
                 url: "../db/herramientacrud.php",
@@ -728,7 +732,8 @@ $(document).ready(function(){
                     adicional29: cartera.arryadicional29,
                     adicional: cartera.arryadicional30,
                     opcion: 0},
-                success: function(data){
+                success: function(datos){
+                    console.log(datos);
                        _exito = 1;
                 
                 },
@@ -740,7 +745,7 @@ $(document).ready(function(){
           
         });
 
-        if(_exito == 0)
+        if(_exito == 1)
         {
             move();
         }
