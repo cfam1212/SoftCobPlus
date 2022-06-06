@@ -738,7 +738,7 @@ $(document).ready(function(){
           
         });
 
-        if(_exito == 1)
+        if(datos == 'OK')
         {
             move();
         }
