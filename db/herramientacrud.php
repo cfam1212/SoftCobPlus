@@ -154,7 +154,27 @@
         if($fonodeu1 != ''){
 
             $primervalor = substr($fonodeu1, 0, 1);
+            $segvalor = substr($fonodeu1, 0, 2);
             $largo = strlen($fonodeu1);
+
+            if(strlen($fonodeu1) > 8 || strlen($fonodeu1) < 11){
+             
+                switch($segvalor){
+                    case "09":
+                        $tipotelefono = 'CEL';
+                    break; 
+                    case "02":
+                    case "03":
+                    case "04":
+                    case "05":
+                    case "06":
+                    case "07":
+                    case "08":
+                        $tipotelefono = 'CON';
+                    break;   
+
+                }
+            }
 
             if(strlen($fonodeu1) > 6 || strlen($fonodeu1) < 11){
 
@@ -198,7 +218,27 @@
         if($fonodeu2 != ''){
 
             $primervalor = substr($fonodeu2, 0, 1);
+            $segvalor = substr($fonodeu2, 0, 2);
             $largo = strlen($fonodeu1);
+
+            if(strlen($fonodeu2) > 8 || strlen($fonodeu2) < 11){
+             
+                switch($segvalor){
+                    case "09":
+                        $tipotelefono = 'CEL';
+                    break; 
+                    case "02":
+                    case "03":
+                    case "04":
+                    case "05":
+                    case "06":
+                    case "07":
+                    case "08":
+                        $tipotelefono = 'CON';
+                    break;   
+
+                }
+            }
 
             if(strlen($fonodeu2) > 6 || strlen($fonodeu2) < 11){
 
@@ -244,7 +284,27 @@
         if($fonodeu3 != ''){
 
             $primervalor = substr($fonodeu3, 0, 1);
+            $segvalor = substr($fonodeu3, 0, 2);
             $largo = strlen($fonodeu3);
+
+            if(strlen($fonodeu3) > 8 || strlen($fonodeu3) < 11){
+             
+                switch($segvalor){
+                    case "09":
+                        $tipotelefono = 'CEL';
+                    break; 
+                    case "02":
+                    case "03":
+                    case "04":
+                    case "05":
+                    case "06":
+                    case "07":
+                    case "08":
+                        $tipotelefono = 'CON';
+                    break;   
+
+                }
+            }
 
             if(strlen($fonodeu3) > 6 || strlen($fonodeu3) < 11){
 
@@ -288,7 +348,27 @@
         if($fonodeu4 != ''){
 
             $primervalor = substr($fonodeu4, 0, 1);
+            $segvalor = substr($fonodeu4, 0, 2);
             $largo = strlen($fonodeu4);
+
+            if(strlen($fonodeu4) > 8 || strlen($fonodeu4) < 11){
+             
+                switch($segvalor){
+                    case "09":
+                        $tipotelefono = 'CEL';
+                    break; 
+                    case "02":
+                    case "03":
+                    case "04":
+                    case "05":
+                    case "06":
+                    case "07":
+                    case "08":
+                        $tipotelefono = 'CON';
+                    break;   
+
+                }
+            }
 
             if(strlen($fonodeu4) > 6 || strlen($fonodeu4) < 11){
 
@@ -334,7 +414,27 @@
         if($fonodeu5 != ''){
 
             $primervalor = substr($fonodeu5,0,1);
+            $segvalor = substr($fonodeu5, 0, 2);
             $largo = strlen($fonodeu5);
+
+            if(strlen($fonodeu5) > 8 || strlen($fonodeu5) < 11){
+             
+                switch($segvalor){
+                    case "09":
+                        $tipotelefono = 'CEL';
+                    break; 
+                    case "02":
+                    case "03":
+                    case "04":
+                    case "05":
+                    case "06":
+                    case "07":
+                    case "08":
+                        $tipotelefono = 'CON';
+                    break;   
+
+                }
+            }
 
             if(strlen($fonodeu5) > 6 || strlen($fonodeu5) < 11){
 
@@ -379,7 +479,27 @@
         if($fonodeu6 != ''){
 
             $primervalor = substr($fonodeu6,0,1);
+            $segvalor = substr($fonodeu6, 0, 2);
             $largo = strlen($fonodeu6);
+
+            if(strlen($fonodeu6) > 8 || strlen($fonodeu6) < 11){
+             
+                switch($segvalor){
+                    case "09":
+                        $tipotelefono = 'CEL';
+                    break; 
+                    case "02":
+                    case "03":
+                    case "04":
+                    case "05":
+                    case "06":
+                    case "07":
+                    case "08":
+                        $tipotelefono = 'CON';
+                    break;   
+
+                }
+            }
 
             if(strlen($fonodeu6) > 6 || strlen($fonodeu6) < 11){
 
@@ -424,7 +544,28 @@
         if($fonodeu7 != ''){
 
             $primervalor = substr($fonodeu7,0,1);
+            $segvalor = substr($fonodeu7, 0, 2);
             $largo = strlen($fonodeu7);
+
+            
+            if(strlen($fonodeu7) > 8 || strlen($fonodeu7) < 11){
+             
+                switch($segvalor){
+                    case "09":
+                        $tipotelefono = 'CEL';
+                    break; 
+                    case "02":
+                    case "03":
+                    case "04":
+                    case "05":
+                    case "06":
+                    case "07":
+                    case "08":
+                        $tipotelefono = 'CON';
+                    break;   
+
+                }
+            }
 
             if(strlen($fonodeu7) > 6 || strlen($fonodeu7) < 11){
 
@@ -470,7 +611,27 @@
         if($fonodeu8 != ''){
 
             $primervalor = substr($fonodeu8,0,1);
+            $segvalor = substr($fonodeu8, 0, 2);
             $largo = strlen($fonodeu8);
+
+            if(strlen($fonodeu8) > 8 || strlen($fonodeu8) < 11){
+             
+                switch($segvalor){
+                    case "09":
+                        $tipotelefono = 'CEL';
+                    break; 
+                    case "02":
+                    case "03":
+                    case "04":
+                    case "05":
+                    case "06":
+                    case "07":
+                    case "08":
+                        $tipotelefono = 'CON';
+                    break;   
+
+                }
+            }
 
             if(strlen($fonodeu8) > 6 || strlen($fonodeu8) < 11){
 
@@ -515,7 +676,28 @@
         if($fonodeu9 != ''){
 
             $primervalor = substr($fonodeu9,0,1);
+            $segvalor = substr($fonodeu9, 0, 2);
             $largo = strlen($fonodeu9);
+
+            
+            if(strlen($fonodeu9) > 8 || strlen($fonodeu9) < 11){
+             
+                switch($segvalor){
+                    case "09":
+                        $tipotelefono = 'CEL';
+                    break; 
+                    case "02":
+                    case "03":
+                    case "04":
+                    case "05":
+                    case "06":
+                    case "07":
+                    case "08":
+                        $tipotelefono = 'CON';
+                    break;   
+
+                }
+            }
 
             if(strlen($fonodeu9) > 6 || strlen($fonodeu9) < 11){
 
@@ -559,7 +741,27 @@
         if($fonodeu10 != ''){
 
             $primervalor = substr($fonodeu10,0,1);
+            $segvalor = substr($fonodeu10, 0, 2);
             $largo = strlen($fonodeu10);
+
+            if(strlen($fonodeu10) > 8 || strlen($fonodeu10) < 11){
+             
+                switch($segvalor){
+                    case "09":
+                        $tipotelefono = 'CEL';
+                    break; 
+                    case "02":
+                    case "03":
+                    case "04":
+                    case "05":
+                    case "06":
+                    case "07":
+                    case "08":
+                        $tipotelefono = 'CON';
+                    break;   
+
+                }
+            }
 
             if(strlen($fonodeu10) > 6 || strlen($fonodeu10) < 11){
 
@@ -661,7 +863,27 @@
             {
 
                 $primervalor = substr($fono1ref1,0,1);
+                $segvalor = substr($fono1ref1, 0, 2);
                 $largo = strlen($fono1ref1);
+
+                if(strlen($fono1ref1) > 8 || strlen($fono1ref1) < 11){
+             
+                    switch($segvalor){
+                        case "09":
+                            $tipotelefono = 'CEL';
+                        break; 
+                        case "02":
+                        case "03":
+                        case "04":
+                        case "05":
+                        case "06":
+                        case "07":
+                        case "08":
+                            $tipotelefono = 'CON';
+                        break;   
+    
+                    }
+                }
     
                 if(strlen($fono1ref1) > 6 || strlen($fono1ref1) < 11){
     
@@ -706,7 +928,27 @@
             if($fono2ref1 != '')
             {
                 $primervalor = substr($fono2ref1,0,1);
+                $segvalor = substr($fono2ref1, 0, 2);
                 $largo = strlen($fono2ref1);
+
+                if(strlen($fono2ref1) > 8 || strlen($fono2ref1) < 11){
+             
+                    switch($segvalor){
+                        case "09":
+                            $tipotelefono = 'CEL';
+                        break; 
+                        case "02":
+                        case "03":
+                        case "04":
+                        case "05":
+                        case "06":
+                        case "07":
+                        case "08":
+                            $tipotelefono = 'CON';
+                        break;   
+    
+                    }
+                }
 
                 
                 if(strlen($fono2ref1) > 6 || strlen($fono2ref1) < 11){
@@ -792,7 +1034,27 @@
             {
 
                 $primervalor = substr($fono1ref2,0,1);
+                $segvalor = substr($fono1ref2, 0, 2);
                 $largo = strlen($fono1ref2);
+
+                if(strlen($fono1ref2) > 8 || strlen($fono1ref2) < 11){
+             
+                    switch($segvalor){
+                        case "09":
+                            $tipotelefono = 'CEL';
+                        break; 
+                        case "02":
+                        case "03":
+                        case "04":
+                        case "05":
+                        case "06":
+                        case "07":
+                        case "08":
+                            $tipotelefono = 'CON';
+                        break;   
+    
+                    }
+                }
 
                 
                 if(strlen($fono1ref2) > 6 || strlen($fono1ref2) < 11){
@@ -839,7 +1101,27 @@
             {
 
                 $primervalor = substr($fono2ref2,0,1);
+                $segvalor = substr($fono2ref2, 0, 2);
                 $largo = strlen($fono2ref2);
+
+                if(strlen($fono2ref2) > 8 || strlen($fono2ref2) < 11){
+             
+                    switch($segvalor){
+                        case "09":
+                            $tipotelefono = 'CEL';
+                        break; 
+                        case "02":
+                        case "03":
+                        case "04":
+                        case "05":
+                        case "06":
+                        case "07":
+                        case "08":
+                            $tipotelefono = 'CON';
+                        break;   
+    
+                    }
+                }
 
                 
                 if(strlen($fono2ref2) > 6 || strlen($fono2ref2) < 11){
@@ -975,7 +1257,27 @@
                 {
                 
                     $primervalor = substr($fono1gara1,0,1);
+                    $segvalor = substr($fono1gara1, 0, 2);
                     $largo = strlen($fono1gara1);
+
+                    if(strlen($fono1gara1) > 8 || strlen($fono1gara1) < 11){
+             
+                        switch($segvalor){
+                            case "09":
+                                $tipotelefono = 'CEL';
+                            break; 
+                            case "02":
+                            case "03":
+                            case "04":
+                            case "05":
+                            case "06":
+                            case "07":
+                            case "08":
+                                $tipotelefono = 'CON';
+                            break;   
+        
+                        }
+                    }
 
                     
                     if(strlen($fono1gara1) > 6 || strlen($fono1gara1) < 11){
@@ -1021,7 +1323,27 @@
                 {
 
                     $primervalor = substr($fono2gara1,0,1);
+                    $segvalor = substr($fono2gara1, 0, 2);
                     $largo = strlen($fono2gara1);
+
+                    if(strlen($fono2gara1) > 8 || strlen($fono2gara1) < 11){
+             
+                        switch($segvalor){
+                            case "09":
+                                $tipotelefono = 'CEL';
+                            break; 
+                            case "02":
+                            case "03":
+                            case "04":
+                            case "05":
+                            case "06":
+                            case "07":
+                            case "08":
+                                $tipotelefono = 'CON';
+                            break;   
+        
+                        }
+                    }
 
                     
                     if(strlen($fono2gara1) > 6 || strlen($fono2gara1) < 11){
@@ -1069,7 +1391,27 @@
 
                     
                     $primervalor = substr($fono3gara1,0,1);
+                    $segvalor = substr($fono3gara1, 0, 2);
                     $largo = strlen($fono3gara1);
+
+                    if(strlen($fono3gara1) > 8 || strlen($fono3gara1) < 11){
+             
+                        switch($segvalor){
+                            case "09":
+                                $tipotelefono = 'CEL';
+                            break; 
+                            case "02":
+                            case "03":
+                            case "04":
+                            case "05":
+                            case "06":
+                            case "07":
+                            case "08":
+                                $tipotelefono = 'CON';
+                            break;   
+        
+                        }
+                    }
 
                     
                     if(strlen($fono3gara1) > 6 || strlen($fono3gara1) < 11){
@@ -1180,7 +1522,27 @@
             {
 
                 $primervalor = substr($fono1gara2,0,1);
+                $segvalor = substr($fono1gara2, 0, 2);
                 $largo = strlen($fono1gara2);
+
+                if(strlen($fono1gara2) > 8 || strlen($fono1gara2) < 11){
+             
+                    switch($segvalor){
+                        case "09":
+                            $tipotelefono = 'CEL';
+                        break; 
+                        case "02":
+                        case "03":
+                        case "04":
+                        case "05":
+                        case "06":
+                        case "07":
+                        case "08":
+                            $tipotelefono = 'CON';
+                        break;   
+    
+                    }
+                }
 
                 
                 if(strlen($fono1gara2) > 6 || strlen($fono1gara2) < 11){
@@ -1226,7 +1588,27 @@
             if($fono2gara2 != '')
             {
                 $primervalor = substr($fono2gara2,0,1);
+                $segvalor = substr($fono2gara2, 0, 2);
                 $largo = strlen($fono2gara2);
+
+                if(strlen($fono2gara2) > 8 || strlen($fono2gara2) < 11){
+             
+                    switch($segvalor){
+                        case "09":
+                            $tipotelefono = 'CEL';
+                        break; 
+                        case "02":
+                        case "03":
+                        case "04":
+                        case "05":
+                        case "06":
+                        case "07":
+                        case "08":
+                            $tipotelefono = 'CON';
+                        break;   
+    
+                    }
+                }
 
                 
                 if(strlen($fono2gara2) > 6 || strlen($fono2gara2) < 11){
@@ -1273,7 +1655,27 @@
             {
 
                 $primervalor = substr($fono3gara2,0,1);
+                $segvalor = substr($fono3gara2, 0, 2);
                 $largo = strlen($fono3gara2);
+
+                if(strlen($fono3gara2) > 8 || strlen($fono3gara2) < 11){
+             
+                    switch($segvalor){
+                        case "09":
+                            $tipotelefono = 'CEL';
+                        break; 
+                        case "02":
+                        case "03":
+                        case "04":
+                        case "05":
+                        case "06":
+                        case "07":
+                        case "08":
+                            $tipotelefono = 'CON';
+                        break;   
+    
+                    }
+                }
 
                 
                 if(strlen($fono3gara2) > 6 || strlen($fono3gara2) < 11){
