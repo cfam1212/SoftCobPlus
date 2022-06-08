@@ -1460,9 +1460,8 @@
 
          if($nombregarante2 != ''){
 
-            if($cedulagarante2 == ''){
-                 $cedulagarante2 = $cedula;
-            }
+            if($cedulagarante2 != ''){
+                
 
 
             $consulta = "CALL sp_New_Garante_Deudor(?,?,?,?,?,?,?,?)";
@@ -1718,7 +1717,7 @@
                                             $newestado,$currentdate,$userid,$host));
             }
 
-
+          }
         }
 
         //CAMPOS ADICIONALES

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro, _catalogoid, _resultCartera = [], _exito, _result ;
+    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro, _catalogoid, _resultCartera = [], _exito = 1, _result ;
 
     $('#cboCiudad').select2();
     $('#cboCedente').select2();
@@ -738,10 +738,10 @@ $(document).ready(function(){
           
         });
 
-        if(datos == 'OK')
-        {
-            move();
-        }
+        
+        
+         move();
+        
           
     });
 
@@ -762,6 +762,9 @@ $(document).ready(function(){
                 _result = _result + 1;
                 progress.style.width = _result + "%";
                 progress.innerHTML = _result + "%";            
+            }
+            if(_result == 100){
+                
             }
         }
     } 
