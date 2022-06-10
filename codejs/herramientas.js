@@ -741,6 +741,7 @@ $(document).ready(function(){
         
         
          move();
+      
         
           
     });
@@ -763,11 +764,37 @@ $(document).ready(function(){
                 progress.style.width = _result + "%";
                 progress.innerHTML = _result + "%";            
             }
-            if(_result == 100){
-                
-            }
+            
+       
         }
+
+        if(_result == 100){
+            alert(_result);
+           
+    
+           // // $("#cboCiudad").val("0").change();
+         
+           
+           // $("#cboCedente").empty();
+           // $("#cboCedente").append('<option value=0>--Seleccione Cedente--</option>');
+       
+           // $("#cboProducto").empty();
+           // $("#cboProducto").append('<option value=0>--Seleccione Producto--</option>');
+       
+           // $("#cboCatalogo").empty();
+           // $("#cboCatalogo").append('<option value=0>--Seleccione Catalogo--</option>');
+    
+           // progress.style.width =  "%";
+           // // progress.innerHTML = "<style = 'background:rgb(233,233,233')></style>";   
+           // document.getElementById("progressbar").style.background='black';
+    
+          
+       }
+       
     } 
+
+    
+
 
     // mensajesalertify("Subido con exito","S","bottom-center",3);	
 
