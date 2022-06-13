@@ -65,7 +65,7 @@
     $direcciondomref2 = (isset($_POST['direcciondomref2'])) ? $_POST['direcciondomref2'] : '';
     $referenciadomref2 = (isset($_POST['referenciadomref2'])) ? $_POST['referenciadomref2'] : '';
     $emailref2 = (isset($_POST['emailref2'])) ? $_POST['emailref2'] : '';
-    //CAMPOS PERSONA GARENTE
+    //CAMPOS PERSONA GARENTE 1
     $tipogarante1 = (isset($_POST['tipogarante1'])) ? $_POST['tipogarante1'] : '';
     $cedulagarante1 = (isset($_POST['cedulagarante1'])) ? $_POST['cedulagarante1'] : '';
     $nombregarante1 = (isset($_POST['nombregarante1'])) ? $_POST['nombregarante1'] : '';
@@ -78,7 +78,7 @@
     $fono1gara1 = (isset($_POST['fono1gara1'])) ? $_POST['fono1gara1'] : '0';
     $fono2gara1 = (isset($_POST['fono2gara1'])) ? $_POST['fono2gara1'] : '0';
     $fono3gara1 = (isset($_POST['fono3gara1'])) ? $_POST['fono3gara1'] : '0';
-
+    //CAMPOS PERSONA GARENTE 2
     $tipogarante2 = (isset($_POST['tipogarante2'])) ? $_POST['tipogarante2'] : '';
     $cedulagarante2 = (isset($_POST['cedulagarante2'])) ? $_POST['cedulagarante2'] : '';
     $nombregarante2 = (isset($_POST['nombregarante2'])) ? $_POST['nombregarante2'] : '';
