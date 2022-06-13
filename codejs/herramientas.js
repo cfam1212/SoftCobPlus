@@ -610,7 +610,7 @@ $(document).ready(function(){
             }
         });
 
-        console.log(_resultCartera);
+       // console.log(_resultCartera);
 
        
         _resultCartera.forEach(function(cartera, index) {
