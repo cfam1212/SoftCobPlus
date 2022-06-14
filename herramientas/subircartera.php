@@ -7,18 +7,15 @@ $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(1, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0));
 $dataciu = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-$SubirCartera = 0;
-
-if (isset($_POST['btnProcesar']) and isset($_POST['cbociudad']) and isset($_POST['cbocedente']) and isset($_POST['cboproducto']) and isset($_POST['cbocatalogo'])) {
-    $SubirCartera = 1;
-}
-
+$menuid = (isset($_POST['id'])) ? $_POST['id'] : '';
+$subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
 
 ?>
 <div class="right_col" role="main">
     <div class="">
         <div class="clearfix"></div>
         <div class="row">
+            <input type="hidden" id="subircartera" value="<?php echo $subiocartera ?>">
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">

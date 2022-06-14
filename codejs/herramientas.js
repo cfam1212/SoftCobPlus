@@ -11,6 +11,12 @@ $(document).ready(function(){
     _cboproducto = $('#cboProducto'); 
     _cbocatalogo = $('#cboCatalogo');  
 
+    _mensaje = $('input#subircartera').val();
+
+    if(_mensaje == 'SI'){
+        mensajesalertify("Subido con exito","S","top-center",5);	
+    }    
+
   //INPUT FILE
 
   const form = document.querySelector("#container");
@@ -26,6 +32,9 @@ $(document).ready(function(){
       let uploadFileName = event.target.files[0].name;
       fileNameField.textContent = uploadFileName;
   });
+
+
+  
 
 
 
@@ -727,7 +736,7 @@ $(document).ready(function(){
                     opcion: 0},
                 success: function(datos){
                     console.log(datos);
-                       _exito = 1;
+                    _exito = 1;
                 
                 },
                 error: function (error) {
@@ -738,12 +747,8 @@ $(document).ready(function(){
           
         });
 
-        
-        
          move();
-      
-        
-          
+
     });
 
     _result = 0;
@@ -756,47 +761,34 @@ $(document).ready(function(){
 
     var _result = Math.round((widthBar/widthProgress)* 100);
 
+    //var contar = 0;
     function move(){
-        setInterval(addFrame, 100);
+        interval  = setInterval(addFrame, 100);
          function addFrame(){
+
+            //contar++;
+            if(_result == 100){
+                clearInterval(interval);
+                limpiar();
+                return false;
+            }
+
             if(_result < 100){
                 _result = _result + 1;
                 progress.style.width = _result + "%";
                 progress.innerHTML = _result + "%";            
             }
             
-       
         }
 
-        if(_result == 100){
-            alert(_result);
-           
+    }
     
-           // // $("#cboCiudad").val("0").change();
-         
-           
-           // $("#cboCedente").empty();
-           // $("#cboCedente").append('<option value=0>--Seleccione Cedente--</option>');
-       
-           // $("#cboProducto").empty();
-           // $("#cboProducto").append('<option value=0>--Seleccione Producto--</option>');
-       
-           // $("#cboCatalogo").empty();
-           // $("#cboCatalogo").append('<option value=0>--Seleccione Catalogo--</option>');
-    
-           // progress.style.width =  "%";
-           // // progress.innerHTML = "<style = 'background:rgb(233,233,233')></style>";   
-           // document.getElementById("progressbar").style.background='black';
-    
-          
-       }
-       
-    } 
-
-    
-
-
-    // mensajesalertify("Subido con exito","S","bottom-center",3);	
-
+    function limpiar()
+    {
+        
+        //window.location.href="./subircartera.php";
+        $.redirect('subircartera.php', {'subiocartera': 'SI'});
+        
+    }
 
 });

@@ -21,10 +21,11 @@ $resultado->execute(array(2, $_SESSION["i_emprid"], '', '', '', '', '', '', 0, 0
 $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-<input type="hidden" id="menuid" value="<?php echo $menuid ?>">
+
 <div class="right_col" role="main">
     <div class="clearfix"></div>
     <div class="row">
+        <input type="hidden" id="menuid" value="<?php echo $menuid ?>">
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">

@@ -29,6 +29,7 @@ if($resultado->rowCount() > 0){
     $_SESSION["s_usuario"] = $data[0]['usua_nombres'] . ' ' .  $data[0]['usua_apellidos'];
     $_SESSION["i_usuaid"] = $data[0]['usua_id'];
     $_SESSION["i_emprid"] = $data[0]['empr_id'];
+    $_SESSION["s_login"] = 'loged';
 
     if($data[0]["usua_imagepath"] != ''){
         $_SESSION["s_foto"] = "../images/" . $data[0]['usua_imagepath'];

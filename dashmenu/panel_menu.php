@@ -190,13 +190,13 @@ $padremenu = $resultado->fetchAll(PDO::FETCH_ASSOC);
                       <img src="<?php echo $_SESSION["s_foto"] ?>" alt=""><?php echo $_SESSION["s_usuario"] ?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="javascript:;"> Profile</a>
+                      <a class="dropdown-item"  href="javascript:;"> Perfil</a>
                         <a class="dropdown-item"  href="javascript:;">
                           <span class="badge bg-red pull-right">50%</span>
-                          <span>Settings</span>
+                          <span>Configuraci&oacute;n</span>
                         </a>
-                      <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item" href="../index.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="javascript:;">Ayuda</a>
+                      <a class="dropdown-item" href="../logout.php"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesi&oacute;n</a>
                       
                     </div>
                   </li>
