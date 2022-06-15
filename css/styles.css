@@ -67,8 +67,14 @@ h1 {
 }
 
 /*estilo formulario*/
-.x_content ,.x_title {
+.x_content {
   background-color: #F1F1F2;
+  color: black;
+}
+
+.x_title {
+  /* background-color: #F1F1F2; */
+  background-color: #BCBABE;
   color: black;
 }
 
