@@ -2,6 +2,19 @@
 
 require_once '../dashmenu/panel_menu.php';
 
+@session_start();
+    
+if(isset($_SESSION["s_usuario"])){
+    if($_SESSION["s_login"] != "loged"){
+        header("Location: ./logout.php");
+        exit();
+    } else{
+    }
+} else{
+    header("Location: ./logout.php");
+    exit();
+}
+
 $mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";

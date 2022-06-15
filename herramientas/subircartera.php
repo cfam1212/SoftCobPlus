@@ -2,6 +2,19 @@
 
 require_once '../dashmenu/panel_menu.php';
 
+@session_start();
+    
+if(isset($_SESSION["s_usuario"])){
+    if($_SESSION["s_login"] != "loged"){
+        header("Location: ./logout.php");
+        exit();
+    } else{
+    }
+} else{
+    header("Location: ./logout.php");
+    exit();
+}
+
 $consulta = "CALL sp_New_Cartera(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(1, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0));

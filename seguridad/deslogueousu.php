@@ -1,6 +1,19 @@
 <?php
 require_once '../dashmenu/panel_menu.php'; 
 
+@session_start();
+    
+if(isset($_SESSION["s_usuario"])){
+    if($_SESSION["s_login"] != "loged"){
+        header("Location: ./logout.php");
+        exit();
+    } else{
+    }
+} else{
+    header("Location: ./logout.php");
+    exit();
+}
+
 $consulta = "CALL sp_consulta_datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(26,$_SESSION["i_emprid"],'','','','','','',0,0,0,0,0,0));

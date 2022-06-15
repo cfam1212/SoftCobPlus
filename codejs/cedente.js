@@ -1235,8 +1235,7 @@ $(document).ready(function(){
                                     '" ' + _checked + ' value=' + _idcedente + '/></div></td>';
 
                     _boton = '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-info btn-sm ml-2 btnEditar" data-toggle="tooltip" data-placement="top" title="editar"' +
-                                ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button><button type="button" class="btn btn-outline-danger btn-sm ml-2"' +
-                                'id="btnEliminar"><i class="fa fa-trash-o"></i></button></div></div></td>'
+                                ' id="btnEdit"><i class="fa fa-pencil-square-o"></i></button></div></div></td>'
                     
                     TableData.row.add([_idcedente, _cedente, _provincia, _cuidad, _telefono, _boton, _btnestado]).draw();              
                                 

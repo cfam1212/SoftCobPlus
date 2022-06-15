@@ -2,6 +2,19 @@
 
 require_once '../dashmenu/panel_menu.php';
 
+@session_start();
+    
+if(isset($_SESSION["s_usuario"])){
+    if($_SESSION["s_login"] != "loged"){
+        header("Location: ./logout.php");
+        exit();
+    } else{
+    }
+} else{
+    header("Location: ./logout.php");
+    exit();
+}
+
 $consulta = "CALL sp_New_Departamento(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(0, $_SESSION["i_emprid"], '', '', '', '', '', 0, 0, 0, 0, 0, ''));
@@ -94,6 +107,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
                 <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>    
             </div>
             <form id="formDepartamento">
                 <div class="modal-body">

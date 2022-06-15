@@ -2,6 +2,19 @@
 
 require_once '../dashmenu/panel_menu.php';
 
+@session_start();
+    
+if(isset($_SESSION["s_usuario"])){
+    if($_SESSION["s_login"] != "loged"){
+        header("Location: ./logout.php");
+        exit();
+    } else{
+    }
+} else{
+    header("Location: ./logout.php");
+    exit();
+}
+
 ?>
 
 <input type="hidden" id="txtusuaid" value="<?php echo $_SESSION["i_usuaid"] ?>">
@@ -11,7 +24,7 @@ require_once '../dashmenu/panel_menu.php';
     <div class="">
         <div class="clearfix"></div>
     </div>
-    <div class="row">
+    <div class="row py-5">
         <div class="col-md-3 col-sm-6">
         </div>
         <div class="col-md-6 col-sm-12">
@@ -23,7 +36,7 @@ require_once '../dashmenu/panel_menu.php';
                 </div>
                 <div class="x_content">
                     <br />
-                    <form class="form-horizontal col-md-10 offset-md-1">
+                    <form class="form-horizontal col-md-10 offset-md-1 py-2">
                         <br />
                         <div class="form-group row">
                             <label for="espacio" class="control-label col-md-1"></label>
