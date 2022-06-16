@@ -142,7 +142,6 @@ $(document).ready(function(){
   $('#btnPorGestor').click(function(){
 
    
-
     let _cbogestor = $('#cboGestor').val();
     let _gestor = $.trim($("#cboGestor option:selected").text()); 
     
@@ -215,9 +214,10 @@ $(document).ready(function(){
 
     $("#chkPorGest").prop("checked", false);
 
-
     $("#divGestor").hide();
     $("#divRegistro").hide();
+
+    
 
   });
 
