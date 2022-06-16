@@ -98,8 +98,6 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                             </div>
                             <div class="form-group row">
                                 <div class="custom-file">
-                                    <!-- <input type="file" accept=".txt" id="file_input"> -->
-                                    <br />
                                     <script>
                                         function crearTabla(data) {
                                             const todasFilas = data.split(/\r?\n|\r/);
@@ -173,7 +171,6 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                             </div>
                             <br />
                             <br />
-
                             <div id="progressBar">
                                 <div id="progressbar">
 

@@ -3,14 +3,14 @@
 require_once '../dashmenu/panel_menu.php';
 
 @session_start();
-    
-if(isset($_SESSION["s_usuario"])){
-    if($_SESSION["s_login"] != "loged"){
+
+if (isset($_SESSION["s_usuario"])) {
+    if ($_SESSION["s_login"] != "loged") {
         header("Location: ./logout.php");
         exit();
-    } else{
+    } else {
     }
-} else{
+} else {
     header("Location: ./logout.php");
     exit();
 }
@@ -139,12 +139,17 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <div class="container">
-                            <div class="form-group col-md-2">
-                                <button type="button" class="btn btn-outline-info" id="btnContacto">Guardar</button>
+                            <div class="container">
+                                <div class="form-group col-md-2">
+                                    <button type="button" class="btn btn-outline-info" id="btnProcesar"><i class="fa fa-gears"></i>Procesar</button>
+                                </div>
                             </div>
-                        </div>
+                            <div id="progressBar">
+                                <div id="progressbar">
+
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
