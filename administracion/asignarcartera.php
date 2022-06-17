@@ -88,6 +88,9 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <br />
                             <div class="form-group row">
                                 <label for="registro" class="control-label col-md-2">Total Registros:</label>
+                                <div class="col-md-3 col-sm-6 form-group has-feedback">
+                                    <input type="text" class="form-control has-feedback-left" id="txttotalreg" name="txttotalreg" disabled >
+                                </div>
                             </div>
                             <br />
                             <div class="form-group row">
@@ -128,7 +131,7 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <table id="tblagestor" class="table table-striped table-condensed jambo_table bulk_action table-borderless" style="width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th style="display: none;">Id</th>
+                                                    <th>Id</th>
                                                     <th>Gestor</th>
                                                     <th>Registro</th>
                                                     <th style="width:12% ; text-align: center">Opciones</th>

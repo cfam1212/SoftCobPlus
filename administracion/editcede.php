@@ -135,7 +135,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                                             </div>
                                             <div class="form-group col-md-8 col-sm-6">
-                                                <textarea name="direccion" id="txtDireccion" class="form-control" maxlength="200" onkeydown="return (event.keyCode!=13);" value="<?php echo $datacede[0]['Direccion']; ?>" style="width: 100%;"></textarea>
+                                                <textarea name="direccion" id="txtDireccion" class="form-control" maxlength="200" onkeydown="return (event.keyCode!=13);" style="width: 100%;"><?php echo $datacede[0]['Direccion']; ?></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro;
+    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro, _gestores = [];
 
 
     $('#cboCiudad').select2();
@@ -81,10 +81,6 @@ $(document).ready(function(){
     });
 
     
-      
-   
-
-
     //COMOBO PARA LLENAR CATALOGO CON ID PRODUCTO
 
     $('#cboProducto').change(function(){
@@ -106,10 +102,28 @@ $(document).ready(function(){
 
     }); 
 
+    $('#cboCatalogo').change(function(){
+
+      _cbocata = $(this).val();
+
+      $.ajax({
+        url: "../db/consultadatos.php",
+        type: "POST",
+        dataType: "json",
+        data: {tipo:47, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_cbocedeid, auxi2:_cbopro, auxi3:_cbocata, auxi4:0, auxi5:0, 
+        auxi6:0, opcion:0},
+        success: function(data){
+            
+            $('#txttotalreg').val(data[0].Registros);
+
+        },
+        error: function (error){
+            console.log(error);
+        }
+      });      
+
+    });     
    
-
-
-
      //// EVENTO POR GESTORES
 
       $("#chkPorGest").change(function() {
@@ -161,50 +175,50 @@ $(document).ready(function(){
         return;
     }
 
-        $.ajax({
-          url: "../db/registrocrudsp.php",
-          type: "POST",
-          dataType: "json",
-          data: {idgestor:_cbogestor,numregistros:_numregistros, opcion: 1},
-          success: function(data){
-              if(data[0].Existe == 'Existe'){
-                  mensajesalertify("Gestor ya esta Agregado..!","W","top-right",3);  
-              }
-              else{
-                  $("#tblagestor").empty();
-
-                  _output = '<thead>';
-                  _output += '<tr><th style="display: none;">Id</th>';
-                  _output += '<th>Gestor</th><th>Registro</th><th style="width:12% ; text-align: center">Opciones</th></tr></thead>'
-                  $('#tblagestor').append(_output); 
-          
-                  _output  = '<tbody>';
-                  $('#tblagestor').append(_output);  
-
-                  $.each(data,function(i,item){      
-                      _id = data[i].Id;
-                      _gestor = data[i].Gestor
-                      _numregistro = data[i].Registro
-                      
-                      _output = '<tr id="rowges_' + _id + '">';
-                      _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
-                      _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
-                      _output += '<td>' + _numregistro + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _numregistro + '" /></td>';
-                      _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-              
-                      $('#tblagestor').append(_output); 
-                  });
-                  
-                  _output  = '</tbody>';
-                  $('#tblagestor').append(_output);                     
-              }
-          },
-          error: function (error) {
-              console.log(error);
+    $.ajax({
+      url: "../db/registrocrudsp.php",
+      type: "POST",
+      dataType: "json",
+      data: {idgestor:_cbogestor,numregistros:_numregistros, opcion: 1},
+      success: function(data){
+          if(data[0].Existe == 'Existe'){
+              mensajesalertify("Gestor ya esta Agregado..!","W","top-right",3);  
           }
-      }); 
+          else{
+              $("#tblagestor").empty();
+
+              _output = '<thead>';
+              _output += '<tr><th style="display: none;">Id</th>';
+              _output += '<th>Gestor</th><th>Registro</th><th style="width:12% ; text-align: center">Opciones</th></tr></thead>'
+              $('#tblagestor').append(_output); 
+      
+              _output  = '<tbody>';
+              $('#tblagestor').append(_output);  
+
+              $.each(data,function(i,item){      
+                  _id = data[i].Id;
+                  _gestor = data[i].Gestor
+                  _numregistro = data[i].Registro
+                  
+                  _output = '<tr id="rowges_' + _id + '">';
+                  _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
+                  _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
+                  _output += '<td>' + _numregistro + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _numregistro + '" /></td>';
+                  _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+          
+                  $('#tblagestor').append(_output); 
+              });
+              
+              _output  = '</tbody>';
+              $('#tblagestor').append(_output);                     
+          }
+      },
+      error: function (error) {
+          console.log(error);
+      }
+    }); 
      
-  $('#cboGestor').val('0').change();                  
+      $('#cboGestor').val('0').change();                  
     
   });
 
@@ -217,7 +231,53 @@ $(document).ready(function(){
     $("#divGestor").hide();
     $("#divRegistro").hide();
 
-    
+    $.ajax({
+      dataType: 'json',
+      type: 'POST',
+      url: '../db/consultadatos.php',
+      data: {tipo:48, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_cbocedeid, auxi2:_cbopro, auxi3:_cbocata, auxi4:0, auxi5:0, 
+      auxi6:0, opcion:0},
+      success: function(data){
+          _total = data.length;
+
+          _registros = $('#txttotalreg').val()/_total;
+
+          $("#tblagestor").empty();
+
+          _output = '<thead>';
+          //_output += '<tr><th style="display: none;">Id</th>';
+          _output += '<tr><th>Id</th>';
+          _output += '<th>Gestor</th><th>Registro</th><th style="width:12% ; text-align: center">Opciones</th></tr></thead>'
+          $('#tblagestor').append(_output); 
+
+          _output  = '<tbody>';
+          $('#tblagestor').append(_output);  
+
+          $.each(data,function(i,item){      
+              _id = data[i].Codigo;
+              _gestor = data[i].Descripcion;
+              _numregistro = _registros;
+              
+              _output = '<tr id="rowges_' + _id + '">';
+              _output += '<td>' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
+              _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
+              _output += '<td>' + _numregistro + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _numregistro + '" /></td>';
+              _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+      
+              console.log(_output);
+
+              $('#tblagestor').append(_output); 
+          });
+          
+          _output  = '</tbody>';
+          $('#tblagestor').append(_output);   
+        }, 
+        error: function (error) {
+          console.log(error);
+        }          
+
+    });    
+
 
   });
 
