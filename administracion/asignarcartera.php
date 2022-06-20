@@ -88,9 +88,15 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <br />
                             <div class="form-group row">
                                 <label for="registro" class="control-label col-md-2">Total Registros:</label>
-                                <div class="col-md-3 col-sm-6 form-group has-feedback">
+                                <div class="input-group mb-3 col-md-2">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="basic-addon1">#</span>
+                                    </div>
+                                        <input type="text" class="form-control" id="txttotalreg" name="txttotalreg" disabled aria-label="Username" aria-describedby="basic-addon1" placeholder="0000">
+                                    </div>
+                                <!-- <div class="col-md-3 col-sm-6 form-group has-feedback">
                                     <input type="text" class="form-control has-feedback-left" id="txttotalreg" name="txttotalreg" disabled >
-                                </div>
+                                </div> -->
                             </div>
                             <br />
                             <div class="form-group row">
