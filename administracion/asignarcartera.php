@@ -137,7 +137,7 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                         <table id="tblagestor" class="table table-striped table-condensed jambo_table bulk_action table-borderless" style="width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
+                                                    <th style="display: none;">Id</th>
                                                     <th>Gestor</th>
                                                     <th>Registro</th>
                                                     <th style="width:12% ; text-align: center">Opciones</th>
@@ -149,7 +149,7 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                             <div class="container">
-                                <div class="form-group col-md-2">
+                                <div class="form-group col-md-3">
                                     <button type="button" class="btn btn-outline-info" id="btnProcesar"><i class="fa fa-gears"></i>Procesar</button>
                                 </div>
                             </div>

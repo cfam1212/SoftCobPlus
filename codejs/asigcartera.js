@@ -129,6 +129,14 @@ $(document).ready(function(){
       $("#chkPorGest").change(function() {
 
         $("#chkTodosGest").prop("checked", false);
+        $("#tblagestor").empty();
+        _output = '<thead>';
+        _output += '<tr><th style="display: none;">Id</th>';
+        _output += '<th>Gestor</th><th>Registro</th><th style="width:12% ; text-align: center">Opciones</th></tr></thead>'
+        $('#tblagestor').append(_output); 
+
+        _output  = '<tbody>';
+        $('#tblagestor').append(_output);  
        
         $("#divGestor").show();
         $("#divRegistro").show();
@@ -154,6 +162,35 @@ $(document).ready(function(){
   //FUNCION AGREGAR POR GESTOR
 
   $('#btnPorGestor').click(function(){
+
+    let _cbociudad = $('#cboCiudad').val();
+    let _cbocedente = $('#cboCedente').val();
+    let _cboproducto = $('#cboProducto').val();
+    let _cbocatalogo = $('#cboCatalogo').val();
+
+    if(_cbociudad == '0')
+    {
+        mensajesalertify("Seleccione Ciudad..!","W","top-right",3);
+        return;
+    }
+
+    if(_cbocedente == '0')
+    {
+        mensajesalertify("Seleccione Cedente..!","W","top-right",3);
+        return;
+    }
+
+    if(_cboproducto == '0')
+    {
+        mensajesalertify("Seleccione Producto..!","W","top-right",3);
+        return;
+    }
+
+    if(_cbocatalogo == '0')
+    {
+        mensajesalertify("Seleccione Catalogo..!","W","top-right",3);
+        return;
+    }
 
    
     let _cbogestor = $('#cboGestor').val();
@@ -227,6 +264,7 @@ $(document).ready(function(){
   $('#chkTodosGest').change(function(){
 
     $("#chkPorGest").prop("checked", false);
+    $("#tblagestor").empty();
 
     $("#divGestor").hide();
     $("#divRegistro").hide();
@@ -245,8 +283,7 @@ $(document).ready(function(){
           $("#tblagestor").empty();
 
           _output = '<thead>';
-          //_output += '<tr><th style="display: none;">Id</th>';
-          _output += '<tr><th>Id</th>';
+          _output += '<tr><th style="display: none;">Id</th>';
           _output += '<th>Gestor</th><th>Registro</th><th style="width:12% ; text-align: center">Opciones</th></tr></thead>'
           $('#tblagestor').append(_output); 
 
@@ -259,10 +296,10 @@ $(document).ready(function(){
               _numregistro = _registros;
               
               _output = '<tr id="rowges_' + _id + '">';
-              _output += '<td>' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
+              _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
               _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
               _output += '<td>' + _numregistro + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _numregistro + '" /></td>';
-              _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+              _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td></tr>';
       
               console.log(_output);
 
@@ -289,6 +326,7 @@ $(document).ready(function(){
     let _cbocedente = $('#cboCedente').val();
     let _cboproducto = $('#cboProducto').val();
     let _cbocatalogo = $('#cboCatalogo').val();
+    let _cbogestor = $('#cboGestor').val();
 
 
     if(_cbociudad == '0')
@@ -317,7 +355,13 @@ $(document).ready(function(){
 
     let porgestor = $('#chkPorGest').is(":checked");
     if(!porgestor){
-        mensajesalertify("Seleccione Gestores..!","W","top-right",3);
+        mensajesalertify("Seleccione una opcion para agregar gestores..!","W","top-right",3);
+        return;
+    }
+
+    if(_cbogestor == '0')
+    {
+        mensajesalertify("Seleccione Gestor..!","W","top-right",3);
         return;
     }
 
