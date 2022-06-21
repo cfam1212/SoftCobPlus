@@ -248,7 +248,7 @@ $(document).ready(function(){
               $.each(data,function(i,item){      
                   _id = data[i].Id;
                   _gestor = data[i].Descripcion
-                  _numregistro = _asignarRegistros
+                  _numregistro = _numReg
                   
                   _output = '<tr id="rowges_' + _id + '">';
                   _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
