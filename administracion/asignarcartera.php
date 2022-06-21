@@ -125,7 +125,7 @@ $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="form-group row" id="divRegistro" style="display: none;">
                                 <label for="espacio" class="control-label col-md-2"></label>
                                 <div class="col-md-3 col-sm-6 form-group has-feedback">
-                                    <input type="text" class="form-control has-feedback-left" id="txtNumReg" placeholder="0" required onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                                    <input type="text" class="form-control has-feedback-left" id="txtNumReg" placeholder="0000" required onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                     <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>

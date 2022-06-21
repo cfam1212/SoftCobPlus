@@ -49,6 +49,8 @@ switch($opcion){
         $resultado->execute(array(4,$empreid,'','','','','','',$in_auxi2,0,0,0,0,0));
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);        
         break;
+     
+   
 
         }
 

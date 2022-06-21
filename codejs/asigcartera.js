@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro, _gestores = [];
+    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro, _gestores = [],_asignarRegistros;
 
 
     $('#cboCiudad').select2();
@@ -113,6 +113,7 @@ $(document).ready(function(){
         data: {tipo:47, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_cbocedeid, auxi2:_cbopro, auxi3:_cbocata, auxi4:0, auxi5:0, 
         auxi6:0, opcion:0},
         success: function(data){
+         
             
             $('#txttotalreg').val(data[0].Registros);
 
@@ -212,11 +213,23 @@ $(document).ready(function(){
         return;
     }
 
+          _totalReg = $('#txttotalreg').val();
+          _numReg = $('#txtNumReg').val();
+
+          _asignarRegistros = _totalReg - _numReg;
+          
+
+          $('#txttotalreg').val(_asignarRegistros);
+
+
+
+
     $.ajax({
-      url: "../db/herramientacrud.php",
+      url: "../db/consultadatos.php",
       type: "POST",
       dataType: "json",
-      data: {idgestor:_cbogestor,numregistros:_numregistros,cedeid:_cbocedeid,producid:_cboproducto,catalogoid:_cbocatalogo, opcion: 1},
+      data: {tipo:49, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_cbocedeid, auxi2:_cbopro, auxi3:_cbogestor, auxi4:_numReg, auxi5:_cbocatalogo, 
+             auxi6:0, opcion:2},
       success: function(data){
           if(data[0].Existe == 'Existe'){
               mensajesalertify("Gestor ya esta Agregado..!","W","top-right",3);  
@@ -234,8 +247,8 @@ $(document).ready(function(){
 
               $.each(data,function(i,item){      
                   _id = data[i].Id;
-                  _gestor = data[i].Gestor
-                  _numregistro = data[i].Registro
+                  _gestor = data[i].Descripcion
+                  _numregistro = _asignarRegistros
                   
                   _output = '<tr id="rowges_' + _id + '">';
                   _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
@@ -253,7 +266,7 @@ $(document).ready(function(){
       error: function (error) {
           console.log(error);
       }
-    }); 
+    });  
      
       $('#cboGestor').val('0').change();                  
     
