@@ -14,6 +14,8 @@
     $cedenteid = (isset($_POST['cedeid'])) ? $_POST['cedeid'] : '0';
     $productoid = (isset($_POST['producid'])) ? $_POST['producid'] : '0';
     $catalogoid = (isset($_POST['catalogoid'])) ? $_POST['catalogoid'] : '0';
+    $gestorid = (isset($_POST['idgestor'])) ? $_POST['idgestor'] : '0';
+
     //CAMPOS PERSONA
     $cedula = (isset($_POST['cedula'])) ? $_POST['cedula'] : '';
     $nombres = (isset($_POST['nombres'])) ? $_POST['nombres'] : '';
@@ -1737,7 +1739,14 @@
         $data = 'OK';
                          
         break;
-            
+        //AGRAGAR GESTOR ASIGNADO A CUENTA DEUDOR
+        case 1:   
+
+            $consulta = "CALL sp_Subir_Cuenta_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute(array(1,0,$cedenteid,$productoid,$catalogoid,'','',0,
+                                    '','','','','','','',$gestorid,''));
+        break;
 
     }
 

@@ -213,10 +213,10 @@ $(document).ready(function(){
     }
 
     $.ajax({
-      url: "../db/registrocrudsp.php",
+      url: "../db/herramientacrud.php",
       type: "POST",
       dataType: "json",
-      data: {idgestor:_cbogestor,numregistros:_numregistros, opcion: 1},
+      data: {idgestor:_cbogestor,numregistros:_numregistros,cedeid:_cbocedeid,producid:_cboproducto,catalogoid:_cbocatalogo, opcion: 1},
       success: function(data){
           if(data[0].Existe == 'Existe'){
               mensajesalertify("Gestor ya esta Agregado..!","W","top-right",3);  
