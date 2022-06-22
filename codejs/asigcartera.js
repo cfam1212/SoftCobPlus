@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro, _gestores = [],_asignarRegistros;
+    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro, _gestores = [], _asignarRegistros;
 
 
     $('#cboCiudad').select2();
@@ -168,29 +168,30 @@ $(document).ready(function(){
     let _cbocedente = $('#cboCedente').val();
     let _cboproducto = $('#cboProducto').val();
     let _cbocatalogo = $('#cboCatalogo').val();
+    _continuar = true;
 
     if(_cbociudad == '0')
     {
         mensajesalertify("Seleccione Ciudad..!","W","top-right",3);
-        return;
+        return false;;
     }
 
     if(_cbocedente == '0')
     {
         mensajesalertify("Seleccione Cedente..!","W","top-right",3);
-        return;
+        return false;;
     }
 
     if(_cboproducto == '0')
     {
         mensajesalertify("Seleccione Producto..!","W","top-right",3);
-        return;
+        return false;;
     }
 
     if(_cbocatalogo == '0')
     {
         mensajesalertify("Seleccione Catalogo..!","W","top-right",3);
-        return;
+        return false;;
     }
 
    
@@ -200,75 +201,88 @@ $(document).ready(function(){
     let _numregistros = $('#txtNumReg').val();
 
     
-    
     if(_cbogestor == '0')
     {
         mensajesalertify("Seleccione Gestor..!","W","top-right",3);
-        return;
+        return false;;
     }
 
     if(_numregistros == '')
     {
         mensajesalertify("Ingrese numero de Registros..!","W","top-right",3);
-        return;
+        return false;;
     }
 
-          _totalReg = $('#txttotalreg').val();
-          _numReg = $('#txtNumReg').val();
+    _totalReg = $('#txttotalreg').val();
+    _numReg = $('#txtNumReg').val();
 
-          _asignarRegistros = _totalReg - _numReg;
-          
+    _asignarRegistros = _totalReg - _numReg;
 
-          $('#txttotalreg').val(_asignarRegistros);
-
-
-
-
-    $.ajax({
-      url: "../db/consultadatos.php",
-      type: "POST",
-      dataType: "json",
-      data: {tipo:49, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_cbocedeid, auxi2:_cbopro, auxi3:_cbogestor, auxi4:_numReg, auxi5:_cbocatalogo, 
-             auxi6:0, opcion:2},
-      success: function(data){
-          if(data[0].Existe == 'Existe'){
-              mensajesalertify("Gestor ya tiene asignado cartera..!","W","top-right",3);  
-          }
-          else{
-              $("#tblagestor").empty();
-
-              _output = '<thead>';
-              _output += '<tr><th style="display: none;">Id</th>';
-              _output += '<th>Gestor</th><th>Registro</th><th style="width:12% ; text-align: center">Opciones</th></tr></thead>'
-              $('#tblagestor').append(_output); 
+    if(_gestores.length > 0){
+      $.each(_gestores,function(i,item){
+        if(item.arryid == _cbogestor){
+            mensajesalertify("Gestor ya está Asignado..!!","W","top-right",3);                    
+            _continuar = false;
+            return false;
+        }else _continuar = true;
+      });
       
-              _output  = '<tbody>';
-              $('#tblagestor').append(_output);  
+    }
 
-              $.each(data,function(i,item){      
-                  _id = data[i].Id;
-                  _gestor = data[i].Descripcion
-                  _numregistro = _numReg
-                  
-                  _output = '<tr id="rowges_' + _id + '">';
-                  _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
-                  _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
-                  _output += '<td>' + _numregistro + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _numregistro + '" /></td>';
-                  _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-          
-                  $('#tblagestor').append(_output); 
-              });
-              
-              _output  = '</tbody>';
-              $('#tblagestor').append(_output);                     
-          }
-      },
-      error: function (error) {
-          console.log(error);
+    if(_continuar)
+    {
+
+      $('#cboGestor').val('0').change(); 
+
+      _objeto = 
+      {
+          arryid : _cbogestor,
+          arrygestor : _gestor,
+          arryregistros : _numReg,
       }
-    });  
+
+      _gestores.push(_objeto);     
+      
+
+      $('#txttotalreg').val(_asignarRegistros);
+
+      _output = '<tr id="rowges_' + _cbogestor + '">';
+      _output += '<td style="display: none;">' + _cbogestor + ' <input type="hidden" name="hidden_id[]" id="txtId' + _cbogestor + '" value="' + _cbogestor + '" /></td>';
+      _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _cbogestor + '" value="' + _gestor + '" /></td>';
+      _output += '<td>' + _numReg + ' <input type="hidden" name="hidden_gestor[]" id="txtnumreg' + _cbogestor + '" value="' + _numReg + '" /></td>';
+      _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _cbogestor + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+      $('#tblagestor').append(_output);      
+
+  
+    }
      
-      $('#cboGestor').val('0').change();                  
+           
+    
+    //$("#tblagestor").empty();
+
+
+
+      /*_output = '<thead>';
+      _output += '<tr><th style="display: none;">Id</th>';
+      _output += '<th>Gestor</th><th>Registro</th><th style="width:12% ; text-align: center">Opciones</th></tr></thead>'
+      $('#tblagestor').append(_output); 
+
+      _output  = '<tbody>';
+      $('#tblagestor').append(_output);  
+
+      $.each(_gestores,function(i,item){      
+          
+          _output = '<tr id="rowges_' + item.arryid + '">';
+          _output += '<td style="display: none;">' + item.arryid + ' <input type="hidden" name="hidden_id[]" id="txtId' + item.arryid + '" value="' + item.arryid + '" /></td>';
+          _output += '<td>' + item.arrygestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + item.arryid + '" value="' + item.arrygestor + '" /></td>';
+          _output += '<td>' + item.arryregistros + ' <input type="hidden" name="hidden_gestor[]" id="txtnumreg' + item.arryid + '" value="' + item.arryregistros + '" /></td>';
+          _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + item.arryid + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+
+          $('#tblagestor').append(_output); 
+      });
+
+      _output  = '</tbody>';
+      $('#tblagestor').append(_output);  */      
     
   });
 
@@ -282,6 +296,7 @@ $(document).ready(function(){
     $("#divGestor").hide();
     $("#divRegistro").hide();
 
+
     $.ajax({
       dataType: 'json',
       type: 'POST',
@@ -289,9 +304,21 @@ $(document).ready(function(){
       data: {tipo:48, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_cbocedeid, auxi2:_cbopro, auxi3:_cbocata, auxi4:0, auxi5:0, 
       auxi6:0, opcion:0},
       success: function(data){
-          _total = data.length;
+          _totalgestores = data.length;
+          _numregistros = $('#txttotalreg').val();
+          _sobrante = 0;
 
-          _registros = $('#txttotalreg').val()/_total;
+          _registros = $('#txttotalreg').val()/_totalgestores; 
+          _residuo = _numregistros % _totalgestores; //OBTENER EL RESIDUO (EL MOD)
+
+          if(_residuo > 0)
+          {
+            _registrosrd = Math.floor(_registros); //OBTENER VALOR ENTERO DE DIVISION
+            _totalregistro = _registrosrd * _totalgestores;
+            _sobrante = _numregistros - _totalregistro;
+            _registros = _registrosrd;
+
+          }
 
           $("#tblagestor").empty();
 
@@ -303,18 +330,31 @@ $(document).ready(function(){
           _output  = '<tbody>';
           $('#tblagestor').append(_output);  
 
-          $.each(data,function(i,item){      
+          $.each(data,function(i,item){
+
               _id = data[i].Codigo;
               _gestor = data[i].Descripcion;
-              _numregistro = _registros;
+
+              if(_sobrante > 0){
+                if(i ==  (_totalgestores - 1)){
+                  _registros = _registrosrd + _sobrante;
+                }
+              }
+
+              _objeto = 
+              {
+                  arryid : _id,
+                  arrygestor : _gestor,
+                  arryregistros : _registros,
+              }
+        
+              _gestores.push(_objeto);                   
               
               _output = '<tr id="rowges_' + _id + '">';
               _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
               _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
-              _output += '<td>' + _numregistro + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _numregistro + '" /></td>';
+              _output += '<td>' + _registros + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _registros + '" /></td>';
               _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td></tr>';
-      
-              console.log(_output);
 
               $('#tblagestor').append(_output); 
           });
@@ -327,6 +367,8 @@ $(document).ready(function(){
         }          
 
     });    
+
+    console.log(_gestores);
 
 
   });
@@ -366,19 +408,42 @@ $(document).ready(function(){
         return;
     }
 
-    let porgestor = $('#chkPorGest').is(":checked");
-    if(!porgestor){
+    //let porgestor = $('#chkPorGest').is(":checked");
+
+    /*if(!porgestor){
         mensajesalertify("Seleccione una opcion para agregar gestores..!","W","top-right",3);
         return;
-    }
+    }*/
 
-    if(_cbogestor == '0')
+    /*if(_cbogestor == '0')
     {
         mensajesalertify("Seleccione Gestor..!","W","top-right",3);
         return;
+    }*/
+
+    if(_gestores.length == 0)
+    {
+      mensajesalertify("Seleccione Gestor..!","W","top-right",3);
+      return false;
+
     }
 
-    
+    $.each(_gestores,function(i,item){        
+        $.ajax({
+          url: "../db/consultadatos.php",
+          type: "POST",
+          dataType: "json",
+          data: {tipo:49, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_cbocedeid, auxi2:_cbopro, auxi3:_cbocatalogo, 
+                auxi4:item.arryid, auxi5:item.arryregistros,  auxi6:0, opcion:2},
+          success: function(data){
+              console.log(data);
+          },
+          error: function (error) {
+              console.log(error);
+          }
+        });      
+
+    });
 
        move();
   });
