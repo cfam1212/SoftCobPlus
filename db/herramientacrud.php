@@ -1739,14 +1739,7 @@
         $data = 'OK';
                          
         break;
-        //AGRAGAR GESTOR ASIGNADO A CUENTA DEUDOR
-        // case 1:   
-
-        //     $consulta = "CALL sp_Subir_Cuenta_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        //     $resultado = $conexion->prepare($consulta);
-        //     $resultado->execute(array(1,0,$cedenteid,$productoid,$catalogoid,'','',0,
-        //                             '','','','','','','',$gestorid,''));
-        // break;
+     
 
     }
 

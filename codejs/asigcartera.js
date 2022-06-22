@@ -232,7 +232,7 @@ $(document).ready(function(){
              auxi6:0, opcion:2},
       success: function(data){
           if(data[0].Existe == 'Existe'){
-              mensajesalertify("Gestor ya esta Agregado..!","W","top-right",3);  
+              mensajesalertify("Gestor ya tiene asignado cartera..!","W","top-right",3);  
           }
           else{
               $("#tblagestor").empty();
