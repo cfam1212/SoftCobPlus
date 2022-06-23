@@ -388,6 +388,8 @@ $(document).ready(function(){
        }
               , function(){ });
   });
+
+  console.log(_gestores);
   
   function FunRemoveItemFromArr(arr, deta)
   {
@@ -437,18 +439,7 @@ $(document).ready(function(){
         return;
     }
 
-    //let porgestor = $('#chkPorGest').is(":checked");
-
-    /*if(!porgestor){
-        mensajesalertify("Seleccione una opcion para agregar gestores..!","W","top-right",3);
-        return;
-    }*/
-
-    /*if(_cbogestor == '0')
-    {
-        mensajesalertify("Seleccione Gestor..!","W","top-right",3);
-        return;
-    }*/
+  
 
     if(_gestores.length == 0)
     {
