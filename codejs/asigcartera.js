@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro, _gestores = [], _asignarRegistros;
+    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro, _gestores = [], _asignarRegistros,_count=0;
 
 
     $('#cboCiudad').select2();
@@ -354,7 +354,7 @@ $(document).ready(function(){
               _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
               _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
               _output += '<td>' + _registros + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _registros + '" /></td>';
-              _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td></tr>';
+              _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDeletetg" id="' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td></tr>';
 
               $('#tblagestor').append(_output); 
           });
@@ -372,6 +372,35 @@ $(document).ready(function(){
 
 
   });
+
+    //ELIMAR TODOS LOS GESTORES
+
+    $(document).on("click",".btnDeletetg",function(){
+      row_id = $(this).attr("id");
+  
+      _gestor = $('#txtGestor' + row_id + '').val();
+      
+      alertify.confirm('El Gestor sera eliminado..!!', 'Estas seguro de eliminar'+ ' ' + _gestor +'..?', function(){ 
+                 FunRemoveItemFromArr(_gestores, _gestor);
+                  $('#rowges_' + row_id + '').remove();
+                  _count--;
+                
+       }
+              , function(){ });
+  });
+  
+  function FunRemoveItemFromArr(arr, deta)
+  {
+      $.each(arr,function(i,item){
+          if(item.arrygestor == deta)
+          {
+              arr.splice(i, 1);
+              return false;
+          }else{
+              continuar = true;
+          }
+      });        
+  };
 
   //BOTON PROCESAR
 
