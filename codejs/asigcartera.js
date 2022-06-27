@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro, _gestores = [], _asignarRegistros,_count=0;
+    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro, _gestores = [], _asignarRegistros,_count=0,newvalor;
 
 
     $('#cboCiudad').select2();
@@ -116,6 +116,7 @@ $(document).ready(function(){
          
             
             $('#txttotalreg').val(data[0].Registros);
+            $('#txtTemReg').val(data[0].Registros);
 
         },
         error: function (error){
@@ -281,10 +282,10 @@ $(document).ready(function(){
       auxi6:0, opcion:0},
       success: function(data){
           _totalgestores = data.length;
-          _numregistros = $('#txttotalreg').val();
+          _numregistros = $('#txtTemReg').val();
           _sobrante = 0;
 
-          _registros = $('#txttotalreg').val()/_totalgestores; 
+          _registros = $('#txtTemReg').val()/_totalgestores; 
           _residuo = _numregistros % _totalgestores; //OBTENER EL RESIDUO (EL MOD)
 
           if(_residuo > 0)
@@ -329,7 +330,7 @@ $(document).ready(function(){
               _output = '<tr id="rowges_' + _id + '">';
               _output += '<td style="display: none;">' + _id + ' <input type="hidden" name="hidden_id[]" id="txtId' + _id + '" value="' + _id + '" /></td>';
               _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _gestor + '" /></td>';
-              _output += '<td>' + _registros + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _id + '" value="' + _registros + '" /></td>';
+              _output += '<td>' + _registros + ' <input type="hidden" name="hidden_registros[]" id="txtRegistro' + _id + '" value="' + _registros + '" /></td>';
               _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDeletetg" id="' + _id + '"><i class="fa fa-trash-o"></i></button></div></div></td></tr>';
 
               $('#tblagestor').append(_output); 
@@ -344,6 +345,7 @@ $(document).ready(function(){
 
     });    
 
+     $('#txttotalreg').val('0');
    
 
 
@@ -355,9 +357,14 @@ $(document).ready(function(){
       row_id = $(this).attr("id");
   
       _gestor = $('#txtGestor' + row_id + '').val();
+      _id = $('#txtId' + row_id + '').val();
+      _numreg = $('#txtRegistro' + row_id + '').val();
+    
+
+      console.log(_id);
       
       alertify.confirm('El Gestor sera eliminado..!!', 'Estas seguro de eliminar'+ ' ' + _gestor +'..?', function(){ 
-                 FunRemoveItemFromArr(_gestores, _gestor);
+                 FunRemoveItemFromArr(_gestores, _id,_numreg);
                   $('#rowges_' + row_id + '').remove();
                   _count--;
                 
@@ -367,15 +374,18 @@ $(document).ready(function(){
 
   console.log(_gestores);
   
-  function FunRemoveItemFromArr(arr, deta)
+  function FunRemoveItemFromArr(arr, deta, numreg)
   {
       $.each(arr,function(i,item){
-          if(item.arrygestor == deta)
+          if(item.arryid == deta)
           {
-            // regis = item.arryregistros;
-            // numero = regis.toString();
-            // newvalor = parseInt(numero) + parseInt(_numregistros);
-            //$('#txttotalreg').val(newvalor);
+             regis = item.arryregistros;
+             temreg = $('#txtTemReg').val();
+             totalreg = $('#txttotalreg').val();
+             numero = regis.toString();
+             newvalor = (temreg - numreg) + parseInt(totalreg);
+             console.log(newvalor);
+            $('#txttotalreg').val(newvalor);
               arr.splice(i, 1);
               return false;
               
