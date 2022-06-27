@@ -25,6 +25,8 @@ $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(3, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0));
 $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
+$subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
+
 ?>
 <div class="right_col" role="main">
     <div class="">

@@ -164,6 +164,8 @@ $(document).ready(function(){
 
   $('#btnPorGestor').click(function(){
 
+    document.getElementById('chkTodosGest').disabled = true;
+
     let _cbociudad = $('#cboCiudad').val();
     let _cbocedente = $('#cboCedente').val();
     let _cboproducto = $('#cboProducto').val();
@@ -218,6 +220,7 @@ $(document).ready(function(){
 
     _asignarRegistros = _totalReg - _numReg;
 
+
     if(_gestores.length > 0){
       $.each(_gestores,function(i,item){
         if(item.arryid == _cbogestor){
@@ -250,39 +253,12 @@ $(document).ready(function(){
       _output += '<td style="display: none;">' + _cbogestor + ' <input type="hidden" name="hidden_id[]" id="txtId' + _cbogestor + '" value="' + _cbogestor + '" /></td>';
       _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _cbogestor + '" value="' + _gestor + '" /></td>';
       _output += '<td>' + _numReg + ' <input type="hidden" name="hidden_gestor[]" id="txtnumreg' + _cbogestor + '" value="' + _numReg + '" /></td>';
-      _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + _cbogestor + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+      _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDeletetg" id="' + _cbogestor + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
       $('#tblagestor').append(_output);      
 
   
     }
-     
-           
-    
-    //$("#tblagestor").empty();
-
-
-
-      /*_output = '<thead>';
-      _output += '<tr><th style="display: none;">Id</th>';
-      _output += '<th>Gestor</th><th>Registro</th><th style="width:12% ; text-align: center">Opciones</th></tr></thead>'
-      $('#tblagestor').append(_output); 
-
-      _output  = '<tbody>';
-      $('#tblagestor').append(_output);  
-
-      $.each(_gestores,function(i,item){      
-          
-          _output = '<tr id="rowges_' + item.arryid + '">';
-          _output += '<td style="display: none;">' + item.arryid + ' <input type="hidden" name="hidden_id[]" id="txtId' + item.arryid + '" value="' + item.arryid + '" /></td>';
-          _output += '<td>' + item.arrygestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + item.arryid + '" value="' + item.arrygestor + '" /></td>';
-          _output += '<td>' + item.arryregistros + ' <input type="hidden" name="hidden_gestor[]" id="txtnumreg' + item.arryid + '" value="' + item.arryregistros + '" /></td>';
-          _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDel" id="btnEli' + item.arryid + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-
-          $('#tblagestor').append(_output); 
-      });
-
-      _output  = '</tbody>';
-      $('#tblagestor').append(_output);  */      
+    _numReg = $('#txtNumReg').val('');
     
   });
 
@@ -368,12 +344,12 @@ $(document).ready(function(){
 
     });    
 
-    console.log(_gestores);
+   
 
 
   });
 
-    //ELIMAR TODOS LOS GESTORES
+    //ELIMAR ARREGLOS GESTORES
 
     $(document).on("click",".btnDeletetg",function(){
       row_id = $(this).attr("id");
@@ -396,8 +372,13 @@ $(document).ready(function(){
       $.each(arr,function(i,item){
           if(item.arrygestor == deta)
           {
+            // regis = item.arryregistros;
+            // numero = regis.toString();
+            // newvalor = parseInt(numero) + parseInt(_numregistros);
+            //$('#txttotalreg').val(newvalor);
               arr.splice(i, 1);
               return false;
+              
           }else{
               continuar = true;
           }
@@ -485,7 +466,7 @@ $(document).ready(function(){
           //contar++;
           if(_result == 100){
               clearInterval(interval);
-              // limpiar();
+              limpiar();
               return false;
           }
 
@@ -497,6 +478,13 @@ $(document).ready(function(){
           
       }
 
+  }
+
+  function limpiar()
+  {
+      
+      $.redirect('asignarcartera.php', {'subiocartera': 'SI'});
+      
   }
 
 
