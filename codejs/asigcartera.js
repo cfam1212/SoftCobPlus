@@ -9,8 +9,6 @@ $(document).ready(function(){
     $('#cboCatalogo').select2();
     $('#cboGestor').select2();
 
-  
-
    
     _cbocedente = $('#cboCedente');
     _cboproducto = $('#cboProducto'); 
@@ -126,7 +124,7 @@ $(document).ready(function(){
 
     });     
    
-     //// EVENTO POR GESTORES
+     //// EVENTO CHECKBOX POR GESTORES
 
       $("#chkPorGest").change(function() {
         _gestores = [];
@@ -165,13 +163,10 @@ $(document).ready(function(){
 
  
 
-  //FUNCION AGREGAR POR GESTOR
+  //BOTON AGREGAR POR GESTOR
 
   $('#btnPorGestor').click(function(){
 
-   
-
-    // document.getElementById('chkTodosGest').disabled = true;
 
     let _cbociudad = $('#cboCiudad').val();
     let _cbocedente = $('#cboCedente').val();
