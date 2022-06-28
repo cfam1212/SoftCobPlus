@@ -129,6 +129,7 @@ $(document).ready(function(){
      //// EVENTO POR GESTORES
 
       $("#chkPorGest").change(function() {
+        _gestores = [];
 
         $("#chkTodosGest").prop("checked", false);
         $("#tblagestor").empty();
@@ -142,6 +143,9 @@ $(document).ready(function(){
        
         $("#divGestor").show();
         $("#divRegistro").show();
+
+        totalreg = $('#txtTemReg').val();
+        $('#txttotalreg').val(totalreg);
 
 
         $.ajax({
@@ -165,7 +169,9 @@ $(document).ready(function(){
 
   $('#btnPorGestor').click(function(){
 
-    document.getElementById('chkTodosGest').disabled = true;
+   
+
+    // document.getElementById('chkTodosGest').disabled = true;
 
     let _cbociudad = $('#cboCiudad').val();
     let _cbocedente = $('#cboCedente').val();
@@ -260,6 +266,8 @@ $(document).ready(function(){
   
     }
     _numReg = $('#txtNumReg').val('');
+    $('#cboGestor').val('0').change(); 
+
     
   });
 
@@ -360,8 +368,6 @@ $(document).ready(function(){
       _id = $('#txtId' + row_id + '').val();
       _numreg = $('#txtRegistro' + row_id + '').val();
     
-
-      console.log(_id);
       
       alertify.confirm('El Gestor sera eliminado..!!', 'Estas seguro de eliminar'+ ' ' + _gestor +'..?', function(){ 
                  FunRemoveItemFromArr(_gestores, _id,_numreg);
