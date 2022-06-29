@@ -446,7 +446,7 @@ $(document).ready(function(){
           type: "POST",
           dataType: "json",
           data: {tipo:49, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_cbocedeid, auxi2:_cbopro, auxi3:_cbocatalogo, 
-                auxi4:item.arryid, auxi5:item.arryregistros,  auxi6:0, opcion:2},
+                auxi4:item.arryid, auxi5:item.arryregistros,  auxi6:0},
           success: function(data){
               console.log(data);
           },
