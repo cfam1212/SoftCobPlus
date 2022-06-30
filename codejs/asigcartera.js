@@ -129,6 +129,10 @@ $(document).ready(function(){
       $("#chkPorGest").change(function() {
         _gestores = [];
 
+        // for (let i = _gestores.length; i > 0; i--) {
+        //   _gestores.pop();
+        // }
+
         $("#chkTodosGest").prop("checked", false);
         $("#tblagestor").empty();
         _output = '<thead>';
@@ -233,9 +237,11 @@ $(document).ready(function(){
       });
       
     }
-
+    
+   console.log(_continuar);
     if(_continuar)
     {
+      
 
       $('#cboGestor').val('0').change(); 
 
@@ -246,7 +252,8 @@ $(document).ready(function(){
           arryregistros : _numReg,
       }
 
-      _gestores.push(_objeto);     
+      _gestores.push(_objeto); 
+      console.log(_gestores);    
       
 
       $('#txttotalreg').val(_asignarRegistros);
@@ -254,7 +261,7 @@ $(document).ready(function(){
       _output = '<tr id="rowges_' + _cbogestor + '">';
       _output += '<td style="display: none;">' + _cbogestor + ' <input type="hidden" name="hidden_id[]" id="txtId' + _cbogestor + '" value="' + _cbogestor + '" /></td>';
       _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _cbogestor + '" value="' + _gestor + '" /></td>';
-      _output += '<td>' + _numReg + ' <input type="hidden" name="hidden_gestor[]" id="txtnumreg' + _cbogestor + '" value="' + _numReg + '" /></td>';
+      _output += '<td>' + _numReg + ' <input type="hidden" name="hidden_registros[]" id="txtRegistro' + _cbogestor + '" value="' + _numReg + '" /></td>';
       _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDeletetg" id="' + _cbogestor + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
       $('#tblagestor').append(_output);      
 
@@ -360,9 +367,11 @@ $(document).ready(function(){
       row_id = $(this).attr("id");
   
       _gestor = $('#txtGestor' + row_id + '').val();
+      console.log(_gestor);
       _id = $('#txtId' + row_id + '').val();
+      console.log(_id);
       _numreg = $('#txtRegistro' + row_id + '').val();
-    
+      console.log(_numreg);
       
       alertify.confirm('El Gestor sera eliminado..!!', 'Estas seguro de eliminar'+ ' ' + _gestor +'..?', function(){ 
                  FunRemoveItemFromArr(_gestores, _id,_numreg);
@@ -384,9 +393,15 @@ $(document).ready(function(){
              temreg = $('#txtTemReg').val();
              totalreg = $('#txttotalreg').val();
              numero = regis.toString();
-             newvalor = (temreg - numreg) + parseInt(totalreg);
+             if(totalreg == 0){
+              $('#txttotalreg').val(numero);
+            }else{
+              newvalor = parseInt(numero) + parseInt(totalreg);
+              $('#txttotalreg').val(newvalor);
+            }
+            
              console.log(newvalor);
-            $('#txttotalreg').val(newvalor);
+           
               arr.splice(i, 1);
               return false;
               

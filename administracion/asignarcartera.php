@@ -95,9 +95,12 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                                       <span class="input-group-text" id="basic-addon1">#</span>
                                     </div>
                                         <input type="text" class="form-control" id="txttotalreg" name="txttotalreg" disabled aria-label="Username" aria-describedby="basic-addon1" placeholder="0000">
-                                        <input type="hidden" class="form-control" id="txtTemReg" name="txtTemReg">
+                                        <br/>
+                                        <br/>
+                                      
                                 
                                 </div>
+                                <input type="text" class="form-control" id="txtTemReg" name="txtTemReg">
                             </div>
                             <br />
                             <div class="form-group row">
