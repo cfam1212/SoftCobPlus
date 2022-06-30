@@ -45,13 +45,10 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                     <div class="x_content">
                         <br />
                         <br />
-                        <form class="form-horizontal col-md-10 offset-md-2">
+                        <form class="form-horizontal col-md-12">
+                            <br/>
                             <div class="form-group row">
                                 <label for="ciudad" class="control-label col-md-1">Ciudad:</label>
-                                <label for="espacio" class="control-label col-md-4"></label>
-                                <label for="cedente" class="control-label col-md-1">Cedente:</label>
-                            </div>
-                            <div class="form-group row">
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;">
                                         <option value="0">--Seleccione Cuidad--</option>
@@ -62,24 +59,24 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                                     </select>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="cedente" class="control-label col-md-1">Cedente:</label>
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCedente" name="cbocedente" style="width: 100%;">
                                         <option value="0">--Seleccione Cedente--</option>
                                     </select>
                                 </div>
                             </div>
+                            <br/>
+                            <br/>    
                             <div class="form-group row">
                                 <label for="producto" class="control-label col-md-1">Producto:</label>
-                                <label for="espacio" class="control-label col-md-4"></label>
-                                <label for="catalogo" class="control-label col-md-1">Catalogo:</label>
-                            </div>
-                            <div class="form-group row">
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboProducto" name="cboproducto" style="width: 100%;">
                                         <option value="0">--Seleccione Producto--</option>
                                     </select>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="catalogo" class="control-label col-md-1">Catalogo:</label>
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCatalogo" name="cbocatalogo" style="width: 100%;">
                                         <option value="0">--Seleccione Catalogo--</option>
@@ -89,6 +86,7 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                             <br />
                             <br />
                             <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="registro" class="control-label col-md-2">Total Registros:</label>
                                 <div class="input-group mb-3 col-md-2">
                                     <div class="input-group-prepend">
@@ -97,26 +95,26 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                                         <input type="text" class="form-control" id="txttotalreg" name="txttotalreg" disabled aria-label="Username" aria-describedby="basic-addon1" placeholder="0000">
                                         <br/>
                                         <br/>
-                                      
-                                
                                 </div>
-                                <input type="text" class="form-control" id="txtTemReg" name="txtTemReg">
+                                <input type="hidden" class="form-control" id="txtTemReg" name="txtTemReg">
                             </div>
                             <br />
                             <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="checkbox">
                                     <input type="radio" id="chkTodosGest"> Todos los Gestores:
                                 </div>
                             </div>
                             <br />
                             <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="checkbox">
                                     <input type="radio" id="chkPorGest"> Por Gestor:
                                 </div>
                             </div>
                             <br />
                             <div class="form-group row" id="divGestor" style="display: none;">
-                                <label for="gestor" class="control-label col-md-1"></label>
+                                <label for="gestor" class="control-label col-md-3"></label>
                                 <div class="form-group col-md-5">
                                     <select class="form-control" id="cboGestor" name="cboGestor" style="width:100%;">
                                         <option value="0">--Seleccione Gestor--</option>
@@ -127,8 +125,9 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                                 </div>
                             </div>
                             <div class="form-group row" id="divRegistro" style="display: none;">
-                                <label for="espacio" class="control-label col-md-2"></label>
-                                <div class="col-md-3 col-sm-6 form-group has-feedback">
+                               <label for="espacio" class="control-label col-md-4"></label>
+                                <label for="espacio" class="control-label col-md-1">Registros:</label>
+                                <div class="col-md-2 form-group has-feedback">
                                     <input type="text" class="form-control has-feedback-left" id="txtNumReg" placeholder="0000" required onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                     <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                                 </div>
@@ -136,6 +135,7 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                             <br />
                             <br />
                             <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="col-md-9 col-sm-10">
                                     <div class="table-responsive">
                                         <table id="tblagestor" class="table table-striped table-condensed jambo_table bulk_action table-borderless" style="width: 100%;">
@@ -153,6 +153,7 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                                 </div>
                             </div>
                             <div class="container">
+                                <label for="espacio" class="control-label col-md-1"></label>
                                 <div class="form-group col-md-3">
                                     <button type="button" class="btn btn-outline-info" id="btnProcesar"><i class="fa fa-gears"></i>Procesar</button>
                                 </div>

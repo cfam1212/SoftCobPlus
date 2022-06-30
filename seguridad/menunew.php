@@ -52,7 +52,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="menuname" class="control-label col-md-1">Menu:</label>
                                 <label for="espacio" class="control-label col-md-5"></label>
-                                <label for="menuname" class="control-label col-md-1">Icono Menu:</label>
+                                <label for="menuname" class="control-label col-md-2">Icono Menu:</label>
                             </div>
                             <div class="form-group row">
                                 <label for="espacio" class="control-label col-md-1"></label>

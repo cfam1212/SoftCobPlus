@@ -42,13 +42,10 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                     <div class="x_content">
                         <br />
                         <br />
-                        <form method="post" class="form-horizontal col-md-10 offset-md-2" id="subircartera" enctype="multipart/form-data">
+                        <form method="post" class="form-horizontal col-md-12" id="subircartera" enctype="multipart/form-data">
+                            <br/>
                             <div class="form-group row">
                                 <label for="ciudad" class="control-label col-md-1">Ciudad:</label>
-                                <label for="espacio" class="control-label col-md-4"></label>
-                                <label for="cedente" class="control-label col-md-1">Cedente:</label>
-                            </div>
-                            <div class="form-group row">
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;">
                                         <option value="0">--Seleccione Cuidad--</option>
@@ -59,24 +56,24 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                                     </select>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="cedente" class="control-label col-md-1">Cedente:</label>
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCedente" name="cbocedente" style="width: 100%;">
                                         <option value="0">--Seleccione Cedente--</option>
                                     </select>
                                 </div>
                             </div>
+                            <br/>
+                            <br/>
                             <div class="form-group row">
                                 <label for="producto" class="control-label col-md-1">Producto:</label>
-                                <label for="espacio" class="control-label col-md-4"></label>
-                                <label for="catalogo" class="control-label col-md-1">Catalogo:</label>
-                            </div>
-                            <div class="form-group row">
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboProducto" name="cboproducto" style="width: 100%;">
                                         <option value="0">--Seleccione Producto--</option>
                                     </select>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
+                                <label for="catalogo" class="control-label col-md-1">Catalogo:</label>
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCatalogo" name="cbocatalogo" style="width: 100%;">
                                         <option value="0">--Seleccione Catalogo--</option>
@@ -85,7 +82,9 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                             </div>
                             <br />
                             <br />
+                            <br />
                             <div class="form-group row">
+                                <label for="espacio" class="control-label col-md-3"></label>
                                 <div class="wrapper" id="container">
                                     <input type="file" accept=".txt" id="file_input" name="file_input" class="file" hidden>
                                     <i class="fa fa-cloud-upload"></i>
@@ -166,11 +165,13 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                                     </script>
                                 </div>
                             </div>
+                            <label for="espacio" class="control-label col-md-3"></label>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" id="btnProcesar" name="btnProcesar" class="btn btn-outline-info"><i class="fa fa-gears"></i> Procesar</button>
                             </div>
                             <br />
                             <br />
+                            <label for="espacio" class="control-label col-md-3"></label>
                             <div id="progressBar">
                                 <div id="progressbar">
 
