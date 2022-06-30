@@ -15,6 +15,9 @@ $(document).ready(function(){
     _cbocatalogo = $('#cboCatalogo');  
     _cbogestor = $('#cboGestor'); 
 
+    $('#chkTodosGest').prop('disabled',true);
+    $('#chkPorGest').prop('disabled',true);
+
     $('#cboCiudad').change(function(){
         _cboid = $(this).val(); //obtener el id seleccionado
 
@@ -103,6 +106,9 @@ $(document).ready(function(){
     $('#cboCatalogo').change(function(){
 
       _cbocata = $(this).val();
+      
+      $('#chkTodosGest').prop('disabled',false);
+      $('#chkPorGest').prop('disabled',false);
 
       $.ajax({
         url: "../db/consultadatos.php",
@@ -129,9 +135,6 @@ $(document).ready(function(){
       $("#chkPorGest").change(function() {
         _gestores = [];
 
-        // for (let i = _gestores.length; i > 0; i--) {
-        //   _gestores.pop();
-        // }
 
         $("#chkTodosGest").prop("checked", false);
         $("#tblagestor").empty();
