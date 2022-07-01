@@ -21,6 +21,7 @@ h1 {
     font-weight: normal;
     font-size: 25px;
     font-family: Arial;
+    text-align: center;
    
   }
   h5 {
@@ -269,6 +270,18 @@ input[type=checkbox] {
   text-transform: uppercase;
 
 }
+
+#clock{
+  color: #00c6ff;
+  /* font-size: 30px; */
+  
+}
+
+/* .panel-heading{
+  height: 45px;
+} */
+
+
 
 
 
