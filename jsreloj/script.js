@@ -38,9 +38,9 @@ setInterval(()=>{
     mm.style.strokeDashoffset = 440 - (250 * m) / 60;
     ss.style.strokeDashoffset = 440 - (250 * s) / 60;
 
-    hr_dot.style.transform = `rotate(${h * 30}deg)`;
-    min_dot.style.transform = `rotate(${m * 6}deg)`;
-    sec_dot.style.transform = `rotate(${s * 6}deg)`;
+    //hr_dot.style.transform = `rotate(${h * 30}deg)`;
+    //min_dot.style.transform = `rotate(${m * 6}deg)`;
+    //sec_dot.style.transform = `rotate(${s * 6}deg)`;
 
 });
 

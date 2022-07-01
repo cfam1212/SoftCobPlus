@@ -25,10 +25,18 @@ $resultado = $conexion->prepare($consulta);
 $resultado->execute(array(3, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0));
 $datapro = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-$subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
+$mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
 
 ?>
+
+    <style>
+        .btn {
+            border-radius: 15px;
+        }        
+    </style>
+
 <div class="right_col" role="main">
+    <input type="hidden" id="mensaje" value="<?php echo $mensaje ?>">
     <div class="">
         <div class="clearfix"></div>
         <div class="row">
@@ -128,7 +136,7 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                                <label for="espacio" class="control-label col-md-4"></label>
                                 <label for="espacio" class="control-label col-md-1">Registros:</label>
                                 <div class="col-md-2 form-group has-feedback">
-                                    <input type="text" class="form-control has-feedback-left" id="txtNumReg" placeholder="0000" required onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                                    <input type="text" class="form-control has-feedback-left" id="txtNumReg" maxLength="4" placeholder="0000" required onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                     <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>

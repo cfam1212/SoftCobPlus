@@ -3,10 +3,9 @@ $(document).ready(function(){
 
     _mensaje = $('input#mensaje').val();
     
-    if(_mensaje != ''){
-        // alertify.success(_mensaje,'mensaje', 2, function(){console.log('dismissed');});
-        // mensajesalertify(_mensaje,"S","top-center",5);
-    }
+    /*if(_mensaje != ''){
+        mensajesalertify(_mensaje,"S","top-center",3);
+    }*/
 
     _continuar = true;
     _crear = 'NO', _modificar = 'NO', _eliminar = 'NO';
@@ -129,7 +128,7 @@ $(document).ready(function(){
             mensajesalertify("Perfil tiene Menú/Tareas Asociadas..!!","W","top-right",3);
         }else{
      
-    alertify.confirm('El Perfil sera eliminado..!!', 'Esta seguro de eliminar'+''+ _perfil +'..?', function(){ 
+        alertify.confirm('El Perfil sera eliminado..!!', 'Esta seguro de eliminar'+''+ _perfil +'..?', function(){ 
 
 
         $.ajax({
@@ -214,8 +213,7 @@ $(document).ready(function(){
                 data: {nombreperfil:_perfil, observacion:_observacion, result:_result, estado:_estado, crear:_crear, modificar:_modificar, 
                     eliminar:_eliminar, id:0, opcion:0},          
                 success: function(data){                                        
-                    $.redirect('perfil.php', {});
-                   // $.redirect('perfil.php', mensajesalertify("Guardado con Exito..!!","W","top-right",5));
+                    $.redirect('perfil.php', {'mensaje': 'Guardado con Exito..!'}); 
                 },
                 error: function (error){
                     console.log(error);

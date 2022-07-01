@@ -5,7 +5,7 @@ $(document).ready(function(){
     _deshabilitar, id_now, _ordennow, _checked, _detallenow, _valorvnow, _valorinow, _estadonow, id_ant,
     _ordenant, _detalleant, _valorvant, _valoriant, _estadoant, _resultado;
 
-    _mensaje = $('#mensaje').val();
+    //_mensaje = $('input#mensaje').val();
 
     $("#modalPARAMETER").draggable({
         handle: ".modal-header"
@@ -15,11 +15,10 @@ $(document).ready(function(){
         handle: ".modal-header"
     });  
 
-    if(_mensaje != ''){
+    /*if(_mensaje != ''){
 
         mensajesalertify(_mensaje,"S","top-center",3);
-    }
-
+    }*/
 
     //NUEVO MONDAL
 

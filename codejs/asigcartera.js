@@ -1,7 +1,14 @@
 $(document).ready(function(){
 
-    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro, _gestores = [], _asignarRegistros,_count=0,newvalor;
+    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbogestor,_cbocedeid, _cbopro, _gestores = [], _asignarRegistros,
+        _count=0, newvalor;
 
+    _mensaje = $('#mensaje').val();
+
+    if(_mensaje != ''){
+
+      mensajesalertify(_mensaje,"S","top-center",3);
+    }
 
     $('#cboCiudad').select2();
     $('#cboCedente').select2();
@@ -132,149 +139,159 @@ $(document).ready(function(){
    
      //// EVENTO CHECKBOX POR GESTORES
 
-      $("#chkPorGest").change(function() {
-        _gestores = [];
+    $("#chkPorGest").change(function() {
 
+      _gestores = [];
 
-        $("#chkTodosGest").prop("checked", false);
-        $("#tblagestor").empty();
-        _output = '<thead>';
-        _output += '<tr><th style="display: none;">Id</th>';
-        _output += '<th>Gestor</th><th>Registro</th><th style="width:12% ; text-align: center">Opciones</th></tr></thead>'
-        $('#tblagestor').append(_output); 
+      $("#chkTodosGest").prop("checked", false);
+      $("#tblagestor").empty();
+      _output = '<thead>';
+      _output += '<tr><th style="display: none;">Id</th>';
+      _output += '<th>Gestor</th><th>Registro</th><th style="width:12% ; text-align: center">Opciones</th></tr></thead>'
+      $('#tblagestor').append(_output); 
 
-        _output  = '<tbody>';
-        $('#tblagestor').append(_output);  
-       
-        $("#divGestor").show();
-        $("#divRegistro").show();
+      _output  = '<tbody>';
+      $('#tblagestor').append(_output);  
+      
+      totalreg = $('#txtTemReg').val();
+      $('#txttotalreg').val(totalreg);    
 
-        totalreg = $('#txtTemReg').val();
-        $('#txttotalreg').val(totalreg);
+      if(totalreg == 0)
+      {
+        mensajesalertify("No existe datos para procesar..!","W","top-right",3);
+        $("#chkPorGest").prop("checked", false);
+        return false;
+      }
 
+      $("#divGestor").show();
+      $("#divRegistro").show();
 
-        $.ajax({
-          url: "../db/carteracrud.php",
-          type: "POST",
-          dataType: "json",
-          data: {opcion:0},
-          success: function(data){
-              
-            },
-            error: function (error) {
-                console.log(error);
-            }                  
-        });
-        
+      $.ajax({
+        url: "../db/carteracrud.php",
+        type: "POST",
+        dataType: "json",
+        data: {opcion:0},
+        success: function(data){
+            
+          },
+          error: function (error) {
+              console.log(error);
+          }                  
       });
+      
+    });
 
  
 
   //BOTON AGREGAR POR GESTOR
 
-  $('#btnPorGestor').click(function(){
+    $('#btnPorGestor').click(function(){
 
+      let _cbociudad = $('#cboCiudad').val();
+      let _cbocedente = $('#cboCedente').val();
+      let _cboproducto = $('#cboProducto').val();
+      let _cbocatalogo = $('#cboCatalogo').val();
+      _continuar = true;
 
-    let _cbociudad = $('#cboCiudad').val();
-    let _cbocedente = $('#cboCedente').val();
-    let _cboproducto = $('#cboProducto').val();
-    let _cbocatalogo = $('#cboCatalogo').val();
-    _continuar = true;
-
-    if(_cbociudad == '0')
-    {
-        mensajesalertify("Seleccione Ciudad..!","W","top-right",3);
-        return false;;
-    }
-
-    if(_cbocedente == '0')
-    {
-        mensajesalertify("Seleccione Cedente..!","W","top-right",3);
-        return false;;
-    }
-
-    if(_cboproducto == '0')
-    {
-        mensajesalertify("Seleccione Producto..!","W","top-right",3);
-        return false;;
-    }
-
-    if(_cbocatalogo == '0')
-    {
-        mensajesalertify("Seleccione Catalogo..!","W","top-right",3);
-        return false;;
-    }
-
-   
-    let _cbogestor = $('#cboGestor').val();
-    let _gestor = $.trim($("#cboGestor option:selected").text()); 
-    
-    let _numregistros = $('#txtNumReg').val();
-
-    
-    if(_cbogestor == '0')
-    {
-        mensajesalertify("Seleccione Gestor..!","W","top-right",3);
-        return false;;
-    }
-
-    if(_numregistros == '')
-    {
-        mensajesalertify("Ingrese numero de Registros..!","W","top-right",3);
-        return false;;
-    }
-
-    _totalReg = $('#txttotalreg').val();
-    _numReg = $('#txtNumReg').val();
-
-    _asignarRegistros = _totalReg - _numReg;
-
-
-    if(_gestores.length > 0){
-      $.each(_gestores,function(i,item){
-        if(item.arryid == _cbogestor){
-            mensajesalertify("Gestor ya está Asignado..!!","W","top-right",3);                    
-            _continuar = false;
-            return false;
-        }else _continuar = true;
-      });
-      
-    }
-    
-   console.log(_continuar);
-    if(_continuar)
-    {
-      
-
-      $('#cboGestor').val('0').change(); 
-
-      _objeto = 
+      if(_cbociudad == '0')
       {
-          arryid : _cbogestor,
-          arrygestor : _gestor,
-          arryregistros : _numReg,
+          mensajesalertify("Seleccione Ciudad..!","W","top-right",3);
+          return false;
       }
 
-      _gestores.push(_objeto); 
-      console.log(_gestores);    
-      
+      if(_cbocedente == '0')
+      {
+          mensajesalertify("Seleccione Cedente..!","W","top-right",3);
+          return false;
+      }
 
-      $('#txttotalreg').val(_asignarRegistros);
+      if(_cboproducto == '0')
+      {
+          mensajesalertify("Seleccione Producto..!","W","top-right",3);
+          return false;
+      }
 
-      _output = '<tr id="rowges_' + _cbogestor + '">';
-      _output += '<td style="display: none;">' + _cbogestor + ' <input type="hidden" name="hidden_id[]" id="txtId' + _cbogestor + '" value="' + _cbogestor + '" /></td>';
-      _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _cbogestor + '" value="' + _gestor + '" /></td>';
-      _output += '<td>' + _numReg + ' <input type="hidden" name="hidden_registros[]" id="txtRegistro' + _cbogestor + '" value="' + _numReg + '" /></td>';
-      _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDeletetg" id="' + _cbogestor + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-      $('#tblagestor').append(_output);      
-
-  
-    }
-    _numReg = $('#txtNumReg').val('');
-    $('#cboGestor').val('0').change(); 
+      if(_cbocatalogo == '0')
+      {
+          mensajesalertify("Seleccione Catalogo..!","W","top-right",3);
+          return false;
+      }
 
     
-  });
+      let _cbogestor = $('#cboGestor').val();
+      let _gestor = $.trim($("#cboGestor option:selected").text()); 
+      
+      let _numregistros = $('#txtNumReg').val();
+
+      
+      if(_cbogestor == '0')
+      {
+          mensajesalertify("Seleccione Gestor..!","W","top-right",3);
+          return false;;
+      }
+
+      if(_numregistros == '' || _numregistros == '0')
+      {
+          mensajesalertify("Ingrese numero de Registros..!","W","top-right",3);
+          return false;
+      }
+
+      _totalReg = $('#txttotalreg').val();
+      _numReg = $('#txtNumReg').val();
+
+      _asignarRegistros = _totalReg - _numReg;
+
+
+      if(_gestores.length > 0){
+        $.each(_gestores,function(i,item){
+          if(item.arryid == _cbogestor){
+              mensajesalertify("Gestor ya está Asignado..!","W","top-right",3);                    
+              _continuar = false;
+              return false;
+          }else _continuar = true;
+        });
+      }
+
+
+      if(_asignarRegistros < 0){
+        mensajesalertify("No puede exeder la cantidad de registros..!","W","top-right",3);
+        _continuar = false;
+        return false;      
+      }
+
+      
+      if(_continuar)
+      {
+
+        $('#cboGestor').val('0').change(); 
+
+        _objeto = 
+        {
+            arryid : _cbogestor,
+            arrygestor : _gestor,
+            arryregistros : parseInt(_numReg),
+        }
+
+        _gestores.push(_objeto); 
+        
+
+        $('#txttotalreg').val(_asignarRegistros);
+
+        _output = '<tr id="rowges_' + _cbogestor + '">';
+        _output += '<td style="display: none;">' + _cbogestor + ' <input type="hidden" name="hidden_id[]" id="txtId' + _cbogestor + '" value="' + _cbogestor + '" /></td>';
+        _output += '<td>' + _gestor + ' <input type="hidden" name="hidden_gestor[]" id="txtGestor' + _cbogestor + '" value="' + _gestor + '" /></td>';
+        _output += '<td>' + parseInt(_numReg) + ' <input type="hidden" name="hidden_registros[]" id="txtRegistro' + _cbogestor + '" value="' + parseInt(_numReg) + '" /></td>';
+        _output += '<td><div class="text-center"><div class="btn-group"><button type="button" class="btn btn-outline-danger btn-sm ml-3 btnDeletetg" id="' + _cbogestor + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
+        $('#tblagestor').append(_output);      
+
+    
+      }
+
+      _numReg = $('#txtNumReg').val('');
+      $('#cboGestor').val('0').change(); 
+
+      
+    });
 
   ////FUNCION CHECKBOX TODOS LOS GESTORES
 
@@ -286,6 +303,21 @@ $(document).ready(function(){
     $("#divGestor").hide();
     $("#divRegistro").hide();
 
+    totalreg = $('#txtTemReg').val();
+    $('#txttotalreg').val(totalreg);       
+
+    _output = '<thead>';
+    _output += '<tr><th style="display: none;">Id</th>';
+    _output += '<th>Gestor</th><th>Registro</th><th style="width:12% ; text-align: center">Opciones</th></tr></thead>'
+    _output  = '<tbody></tbody>';
+    $('#tblagestor').append(_output); 
+
+    if(totalreg == 0)
+    {
+      mensajesalertify("No existe datos para procesar..!","W","top-right",3);
+      $("#chkTodosGest").prop("checked", false);
+      return false;
+    }
 
     $.ajax({
       dataType: 'json',
@@ -355,64 +387,54 @@ $(document).ready(function(){
         error: function (error) {
           console.log(error);
         }          
-
     });    
-
      $('#txttotalreg').val('0');
-   
-
 
   });
 
     //ELIMAR ARREGLOS GESTORES
 
-    $(document).on("click",".btnDeletetg",function(){
-      row_id = $(this).attr("id");
-  
-      _gestor = $('#txtGestor' + row_id + '').val();
-      console.log(_gestor);
-      _id = $('#txtId' + row_id + '').val();
-      console.log(_id);
-      _numreg = $('#txtRegistro' + row_id + '').val();
-      console.log(_numreg);
-      
-      alertify.confirm('El Gestor sera eliminado..!!', 'Estas seguro de eliminar'+ ' ' + _gestor +'..?', function(){ 
-                 FunRemoveItemFromArr(_gestores, _id,_numreg);
-                  $('#rowges_' + row_id + '').remove();
-                  _count--;
-                
-       }
-              , function(){ });
-  });
+  $(document).on("click",".btnDeletetg",function(){
+    row_id = $(this).attr("id");
 
-  console.log(_gestores);
-  
-  function FunRemoveItemFromArr(arr, deta, numreg)
-  {
-      $.each(arr,function(i,item){
-          if(item.arryid == deta)
-          {
-             regis = item.arryregistros;
-             temreg = $('#txtTemReg').val();
-             totalreg = $('#txttotalreg').val();
-             numero = regis.toString();
-             if(totalreg == 0){
-              $('#txttotalreg').val(numero);
-            }else{
-              newvalor = parseInt(numero) + parseInt(totalreg);
-              $('#txttotalreg').val(newvalor);
-            }
-            
-             console.log(newvalor);
-           
-              arr.splice(i, 1);
-              return false;
+    _gestor = $('#txtGestor' + row_id + '').val();
+    _id = $('#txtId' + row_id + '').val();
+    _numreg = $('#txtRegistro' + row_id + '').val();
+    
+    alertify.confirm('El Gestor sera eliminado..!!', 'Estas seguro de eliminar'+ ' ' + _gestor +'..?', function(){ 
+                FunRemoveItemFromArr(_gestores, _id,_numreg);
+                $('#rowges_' + row_id + '').remove();
+                _count--;
               
-          }else{
-              continuar = true;
-          }
-      });        
-  };
+      }
+            , function(){ });
+    });
+
+  
+    function FunRemoveItemFromArr(arr, deta, numreg)
+    {
+        $.each(arr,function(i,item){
+            if(item.arryid == deta)
+            {
+              regis = item.arryregistros;
+              temreg = $('#txtTemReg').val();
+              totalreg = $('#txttotalreg').val();
+              numero = regis.toString();
+              if(totalreg == 0){
+                $('#txttotalreg').val(numero);
+              }else{
+                newvalor = parseInt(numero) + parseInt(totalreg);
+                $('#txttotalreg').val(newvalor);
+              }
+              
+                arr.splice(i, 1);
+                return false;
+                
+            }else{
+                continuar = true;
+            }
+        });        
+    };
 
   //BOTON PROCESAR
 
@@ -449,8 +471,6 @@ $(document).ready(function(){
         return;
     }
 
-  
-
     if(_gestores.length == 0)
     {
       mensajesalertify("Seleccione Gestor..!","W","top-right",3);
@@ -466,7 +486,6 @@ $(document).ready(function(){
           data: {tipo:49, auxv1:"", auxv2:"", auxv3:"", auxv4:"", auxv5:"", auxv6:"", auxi1:_cbocedeid, auxi2:_cbopro, auxi3:_cbocatalogo, 
                 auxi4:item.arryid, auxi5:item.arryregistros,  auxi6:0},
           success: function(data){
-              console.log(data);
           },
           error: function (error) {
               console.log(error);
@@ -474,7 +493,6 @@ $(document).ready(function(){
         });      
 
     });
-
        move();
   });
 
@@ -511,11 +529,8 @@ $(document).ready(function(){
 
   function limpiar()
   {
-      
-      $.redirect('asignarcartera.php', {'subiocartera': 'SI'});
+      $.redirect('asignarcartera.php', {'mensaje': 'Cartera Asignada..!'});
       
   }
-
-
 
 });

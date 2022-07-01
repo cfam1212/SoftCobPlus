@@ -728,7 +728,7 @@ $(document).ready(function()
             
                  if(data[0].OK == 'OK-Update'){
 
-                    $.redirect('parametroadmin.php', {}); 
+                    $.redirect('parametroadmin.php', {'mensaje': 'Guardado con Exito..!'}); 
                 }else{
                 
                     mensajesalertify("Nombre del Parámetro ya Existe..!","W","top-center",5);
