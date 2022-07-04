@@ -277,9 +277,9 @@ input[type=checkbox] {
   
 }
 
-/* .panel-heading{
-  height: 45px;
-} */
+.btn {
+  border-radius: 15px;
+}    
 
 
 

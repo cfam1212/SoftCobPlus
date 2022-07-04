@@ -29,11 +29,6 @@ $mensaje = (isset($_POST['mensaje'])) ? $_POST['mensaje'] : '';
 
 ?>
 
-    <style>
-        .btn {
-            border-radius: 15px;
-        }        
-    </style>
 
 <div class="right_col" role="main">
     <input type="hidden" id="mensaje" value="<?php echo $mensaje ?>">
