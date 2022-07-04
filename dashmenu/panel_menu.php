@@ -259,45 +259,5 @@ $padremenu = $resultado->fetchAll(PDO::FETCH_ASSOC);
               </li>
             </ul>
           </nav>
-          <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-              <div class="panel">
-                <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  <h4 class="panel-title"><i class="fa fa-clock-o" id="clock"></i></h4>
-                </a>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                  <div class="panel-body">
-                    <div id="time">
-                      <div class="circle" style="--clr:#3e29ff;">
-                        <!-- <div class="dots hr_dot"></div> -->
-                        <svg>
-                          <circle cx="40" cy="40" r="40"></circle>
-                          <circle cx="40" cy="40" r="40" id="hh"></circle>
-                        </svg>
-                        <div id="hours">00</div>
-                      </div>
-                      <div class="circle" style="--clr:#fee800;">
-                        <!-- <div class="dots min_dot"></div> -->
-                        <svg>
-                          <circle cx="40" cy="40" r="40"></circle>
-                          <circle cx="40" cy="40" r="40" id="mm"></circle>
-                        </svg>
-                        <div id="minutes">00</div>
-                      </div>
-                      <div class="circle" style="--clr:#04fc43;">
-                        <!-- <div class="dots sec_dot"></div> -->
-                        <svg>
-                          <circle cx="40" cy="40" r="40"></circle>
-                          <circle cx="40" cy="40" r="40" id="ss"></circle>
-                        </svg>
-                        <div id="seconds">00</div>
-                      </div>
-                      <div class="ap">
-                        <div id="ampm">AM</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
         </div>
       </div>
