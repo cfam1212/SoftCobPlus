@@ -171,11 +171,11 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalPARAMETER" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal fade" id="modalDETALLE" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModalBg">
-            <div class="modal-header" id="header">
-                <h5 class="modal-title" id="modalLabel"></h5>
+            <div class="modal-header" id="headerDet">
+                <h5 class="modal-titleDet" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>    
@@ -183,6 +183,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <form id="formParam">
                 <div class="modal-body">
                     <div class="row">
+                       <label for="detalle" class="control-label col-md-2">Detalle:</label>
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtDetalle" placeholder="nombre del detalle" maxlength="80">
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
@@ -190,6 +191,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <br />
                     <div class="row">
+                        <label for="valor" class="control-label col-md-3">Valor Texto:</label>
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtValorv" placeholder="valor texto" maxlength="255">
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
@@ -197,6 +199,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <br />
                     <div class="row">
+                        <label for="valor" class="control-label col-md-3">Valor Entero:</label>
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" id="txtValori" class="form-control has-feedback-left" placeholder="valor entero" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="5">
                             <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>

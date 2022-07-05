@@ -122,8 +122,8 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalNewUser" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade" id="modalNewUser" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="header">
                 <h5 class="modal-title" id="modalLabel"></h5>
@@ -134,6 +134,7 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" id="frmUserNew">
                 <br />
                 <div class="modal-body">
+                  <div class="x_content">
                     <div class="form-group row">
                         <label for="nombre" class="control-label col-md-1">Nombre:</label>
                         <label for="espacio" class="control-label col-md-3"></label>
@@ -227,6 +228,7 @@ $cbotipouser = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                         </div>
                     </div>
+                  </div>  
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-info" id="btnSave"><i class='fa fa-save'></i> Guardar</button>

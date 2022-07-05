@@ -5,7 +5,6 @@ $(document).ready(function(){
     _deshabilitar, id_now, _ordennow, _checked, _detallenow, _valorvnow, _valorinow, _estadonow, id_ant,
     _ordenant, _detalleant, _valorvant, _valoriant, _estadoant, _resultado;
 
-    //_mensaje = $('input#mensaje').val();
 
     $("#modalPARAMETER").draggable({
         handle: ".modal-header"
@@ -14,11 +13,6 @@ $(document).ready(function(){
     $("#modalNewParametro").draggable({
         handle: ".modal-header"
     });  
-
-    /*if(_mensaje != ''){
-
-        mensajesalertify(_mensaje,"S","top-center",3);
-    }*/
 
     //NUEVO MONDAL
 
@@ -39,18 +33,18 @@ $(document).ready(function(){
         //$.redirect('parametroedit.php', {'id': _id});
     });
 
-    //modal
+    //MODAL NUEVO DETALLE
     $("#btnAdd").click(function(){        
         $("#formParam").trigger("reset");
-        // $("#divcheck").hide();
-        $("#header").css("background-color","#BCBABE");
-        $("#header").css("color","black");
-        $(".modal-title").text("Nuevo Detalle");  
+        $("#headerDet").css("background-color","#BCBABE");
+        $("#headerDet").css("color","black");
+        $(".modal-titleDet").text("Nuevo Detalle");  
         $("#btnAgregar").text("Agregar");
-        $("#modalPARAMETER").modal("show");
+        $("#modalDETALLE").modal("show");
         _tipoSave = 'add';
         _estado = 'Activo';
-    });    
+    }); 
+
     //nuevo parametro
     $('#btnAgregar').click(function(){
         if($.trim($('#txtDetalle').val()).length == 0)

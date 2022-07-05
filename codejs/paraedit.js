@@ -90,7 +90,7 @@ $(document).ready(function()
         $("#divcheckedit").hide();
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","white");
-        $(".modal-title").text("Nuevo Parametro");  
+        $(".modal-title").text("Nuevo Detalle");  
         $("#btnBoton").text("Agregar");
         $("#modalPARAMETER").modal("show");
         _tipoSave = 'add';
@@ -338,8 +338,6 @@ $(document).ready(function()
 
                 $("#modalPARAMETER").modal("hide");
                 
-                //$("tbody").children().remove();
-                //FunReorganizarEdit(_result.sort((a,b) => a.arryorden - b.arryorden));  
             }
         } 
     });
@@ -375,7 +373,9 @@ $(document).ready(function()
             }                 
         });
 
-    });    
+    });  
+    
+    //BOTON EDITAR DETALLE MODAL
 
     $(document).on("click",".btnEdit",function(){
         $("#formParam").trigger("reset"); 
@@ -387,8 +387,7 @@ $(document).ready(function()
         _detalleold = $('#txtDetalle' + _row_id).val();
         _valorvold = $('#txtValorv' + _row_id).val();
         _valoriold = $('#txtValori' + _row_id ).val();
-        _estadoold = $('#txtEstado' + _row_id ).val();
-        //_deshabilitar = $('#btnUp' + row_id + '').attr('disabled');        
+        _estadoold = $('#txtEstado' + _row_id ).val();    
         _tipoSave = 'edit';
 
         $('#txtDetalle').val(_detalleold);
@@ -397,109 +396,13 @@ $(document).ready(function()
         $('#hidden_row_id').val(_row_id);
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","white");
-        $(".modal-title").text("Editar Parametro");       
+        $(".modal-title").text("Editar Detalle");       
         $("#divcheckedit").show();
         $("#btnBoton").text("Modificar");
         $("#modalPARAMETER").modal("show");
     });
 
-    // $(document).on("click",".btnDelete",function(){
-    //     row_id = $(this).attr("id");
-    //     _detalle = $('#txtDetalle' + row_id + '').val();
-    //     alertify.confirm('El Registro seta eliminado..!!', 'Esta seguro de eliminar..' + ' ' + _detalle + '..?', function(){  mensajesalertify("Registro Eliminado","E","bottom-center",5)	
-                                    
-    //         FunRemoveItemFromArr(_result, _detalle);
-    //         $('#row_' + row_id + '').remove();
-    //         _count--;
-    //         FunReorganizarOrder(_result);
-    //     }
-    //     , function(){});
-    // });
-
-    // function FunRemoveItemFromArr(arr, deta)
-    // {
-    //     $.each(arr,function(i,item){
-    //         if(item.arrydetalle == deta)
-    //         {
-    //             arr.splice(i, 1);
-    //             return false;
-    //         }else{
-    //             continuar = true;
-    //         }
-    //     });        
-    // };
-
-    // function FunReorganizarOrder(arr)
-    // {
-    //     otroval = 0;
-    //     $.each(arr,function(i,item){
-    //         otroval = otroval + 1; 
-    //         FunOrderDelete(otroval,item.arryorden,item.arrydetalle,item.arryvalorv,item.arryvalori,item.arryestado,item.arryid);
-    //         item['arryorden'] = parseInt(otroval);
-    //     });
-        
-    //     FunCambiar_id();
-    // }
-
-    // function FunCambiar_id()
-    // {
-    //     $("#tblparameter tbody tr").each(function (index) {
-    //         _id = $(this).attr('id');
-    //         underScoreIndex = _id.indexOf('_');
-    //         _id = _id.substring(0,underScoreIndex+1)+(parseInt(index)+1);
-    //         $(this).attr('id',_id);
-    //     });        
-    // }    
-
-    /*function FunReorganizarEdit(arr)
-    {        
-        $.each(arr,function(i,item){            
-            FunOrderEdit(item.arryorden,item.arrydetalle,item.arryvalorv,item.arryvalori,item.arryestado,item.arryid);
-        });
-
-    }
-
-    function FunOrderEdit(orden,detalle,valorv,valori,estado,padeid)
-    {
-        if(orden == '1'){
-            _deshabilitar  = 'disabled';
-        }
-        else{
-            _deshabilitar = ''
-        }
-
-        if(estado == 'Activo'){
-            _checknew = 'checked';
-        }else{
-            _checknew = ' ';
-        }
-
-        if(padeid != 0){
-            _deshabilitae = 'disabled';
-            _deshabilitachk = '';
-        }else{
-            _deshabilitae = '';
-            _deshabilitachk = 'disabled';
-        }
-
-        _output = '<td>' + padeid + ' <input type="hidden" name="hidden_padeid[]" id="padeid' + orden + '" value="' + padeid + '" /></td>';
-        _output += '<td>' + orden + ' <input type="hidden" name="hidden_orden[]" id="orden' + orden + '" value="'+ orden + '" /></td>';
-        _output += '<td>' + detalle + ' <input type="hidden" name="hidden_detalle[]" id="txtDetalle' + orden + '" value="' + detalle + '" /></td>';
-        _output += '<td class="text-center">' + valorv + ' <input type="hidden" name="hidden_valorv[]" id="txtValorv' + orden + '" value="'+ valorv + '" /></td>';
-        _output += '<td class="text-center">' + valori + ' <input type="hidden" name="hidden_valori[]" id="txtValori' + orden + '" value="'+ valori + '" /></td>';
-        _output += '<td><div class="text-center"><input type="checkbox" class="form-check-input chkEstadoDe" id="chk' + orden +
-                '" ' + _checknew + ' ' + _deshabilitachk + ' value=' + orden + '/></div></td>'        
-        _output += '<td>' + estado + ' <input type="text" name="hidden_estado[]" id="txtEstado' + orden + '" value="'+ estado + '" /></td>';
-        _output += '<td><div class="text-center"><div class="btn-group">'
-        _output += '<button type="button" name="btnUp" class="btn btn-outline-primary btn-sm btnUp" ' + _deshabilitar + ' id="btnUp' + orden + '"><i class="fa fa-arrow-up"></i></button>';
-        _output += '<button type="button" name="btnEdit" class="btn btn-outline-info btn-sm ml-3 btnEdit" data-toggle="tooltip" data-placement="top" title="editar" id="' + orden + '"><i class="fa fa-pencil-square-o"></i></button>';
-        _output += '<button type="button" name="btnDelete" class="btn btn-outline-danger btn-sm ml-3 btnDelete" ' + _deshabilitae + ' id="'+ orden + '"><i class="fa fa-trash-o"></i></button></div></div></td>';
-        
-        $('#row_' + orden + '').html(_output);
-        //$('#tblparameter').append(_output);     
-            
-    }*/
-
+    //SUBIR DETALLE MODAL
     $(document).on("click",".btnUp",function(){
         
         let row_id = $(this).attr("id");

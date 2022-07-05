@@ -195,6 +195,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <form id="formParam">
                 <div class="modal-body">
                     <div class="row">
+                        <label for="detalle" class="control-label col-md-2">Detalle:</label>
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtDetalle" placeholder="nombre del detalle" maxlength="80">
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
@@ -202,6 +203,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <br/>
                     <div class="row">
+                        <label for="valor" class="control-label col-md-3">Valor Texto:</label>
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtValorv" placeholder="valor texto" maxlength="255">
                             <span class="fa fa-list-ul form-control-feedback left" aria-hidden="true"></span>
@@ -209,6 +211,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <br/>
                     <div class="row">
+                        <label for="valor" class="control-label col-md-3">Valor Entero:</label>
                         <div class="col-md-12 col-sm-12 form-group has-feedback">
                             <input type="text" id="txtValori" class="form-control has-feedback-left" placeholder="valor entero" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" maxlength="5">
                             <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
@@ -217,8 +220,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnBoton" class="btn btn-primary"><i class="fa fa-save"></i></button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnBoton" class="btn btn-outline-primary"><i class="fa fa-save"></i></button>
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
