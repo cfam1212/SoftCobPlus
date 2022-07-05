@@ -444,7 +444,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnprodedit" class="btn btn-outline-info"><i class="fa fa-save"> Modificar</i></button>
+                    <button type="button" id="btnprodedit" class="btn btn-outline-info">Modificar</button>
                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
