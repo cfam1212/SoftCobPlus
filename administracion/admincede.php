@@ -129,8 +129,8 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 <div class="modal fade" id="modalNewCedente" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content" id="myModalBg">
-            <div class="modal-header" id="header">
-                <h5 class="modal-title" id="modalLabel"></h5>
+            <div class="modal-header" id="headerce">
+                <h5 class="modal-titlece" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>    
@@ -502,22 +502,14 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="modal-body">
                     <br />
                     <div class="row">
-                      <label for="espacio" class="control-label col-md-2"></label>
-                      <label for="codigo" class="control-label col-md-2">Codigo:</label>
-                    </div>
-                    <div class="row">
-                        <label for="menuname" class="control-label col-md-2"></label>
+                        <label for="menuname" class="control-label col-md-2">Codigo:</label>
                         <div class="col-md-8 col-sm-8  form-group has-feedback">
-                            <input type="tel" class="form-control has-feedback-left" id="txtCodigoMo" placeholder="codigo" onKeyUp="this.value=this.value.toUpperCase();" maxlength="10">
+                            <input type="tel" class="form-control has-feedback-left" id="txtCodigoMo" placeholder="0" onKeyUp="this.value=this.value.toUpperCase();" maxlength="10">
                             <span class="fa fa-slack form-control-feedback left" aria-hidden="true"></span>
                         </div>
                     </div>
                     <div class="row">
-                      <label for="espacio" class="control-label col-md-2"></label>
-                      <label for="catalogo" class="control-label col-md-2">Catalogo:</label>
-                    </div>
-                    <div class="row">
-                        <label for="menuname" class="control-label col-md-2"></label>
+                        <label for="menuname" class="control-label col-md-2">Catalogo:</label>
                         <div class="col-md-8 col-sm-8  form-group has-feedback">
                             <input type="text" class="form-control has-feedback-left" id="txtCatalogoMo" placeholder="nombre del catalogo" maxlength="250">
                             <span class="fa fa-file-text form-control-feedback left" aria-hidden="true"></span>
@@ -526,7 +518,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="row_id" id="hidden_row_id" />
-                    <button type="button" id="btnAddCatalogo" class="btn btn-outline-primary"><i class='fa fa-plus'></i> Agregar</button>
+                    <button type="button" id="btnAddCatalogo" class="btn btn-outline-primary"><i class='fa fa-plus-circle'></i> Agregar</button>
                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
@@ -536,7 +528,7 @@ $cargo = $resultado->fetchAll(PDO::FETCH_ASSOC);
 <div class="modal fade" id="modalEDITCATALOGO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 35%" role="document">
         <div class="modal-content" id="myModalBg">
-            <div class="modal-header" id="headercatalog">
+            <div class="modal-header" id="headercatalogo">
                 <h5 class="modal-title" id="modalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

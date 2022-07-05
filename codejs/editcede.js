@@ -96,57 +96,6 @@ $(document).ready(function(){
         }                            
     });    
 
-    //console.log(_resultcon);
-
-    /*$("#tblcontacto tbody tr").each(function (items) 
-    {
-        let _codigo, _contacto, _cargo, _cbocargo, _celular, _ext, _email1, _email2;
-        
-        $(this).children("td").each(function (index) 
-        {
-            switch(index){
-                case 0:
-                    _codigo = $.trim($(this).text());
-                    break;
-                case 1:
-                    _contacto = $.trim($(this).text());
-                    break;
-                case 2:
-                    _cargo = $.trim($(this).text());
-                    break;
-                case 3:
-                    _cbocargo = $.trim($(this).text());
-                    break;
-                case 4:
-                    _celular = $.trim($(this).text());
-                    break;
-                case 5:
-                    _ext = $.trim($(this).text());
-                    break;
-                case 6:
-                    _email1 = $.trim($(this).text());
-                    break;
-                case 7:
-                    _email2 = $.trim($(this).text());
-                    break;                    
-            }
-        });        
-        
-        _objeto = {
-            arrycodigo : parseInt(_codigo),
-            arrycontacto : _contacto,
-            arrycargo : _cargo,
-            arrycbocargo : _cbocargo,
-            arrycelular : _celular,
-            arryext : _ext,
-            arryemail1 : _email1,
-            arryemail2 : _email2
-        }
-
-        _resultcon.push(_objeto);
-
-
-    });   */
    
     // GRABAR EDITAR CEDENTE DIRECTO BDD
 
@@ -542,9 +491,9 @@ $(document).ready(function(){
         $('#txtDescripcionEdit').val(_dscripcionold);
   
         $('#hidden_row_id').val(_row_id);
-        $("#headercon").css("background-color","#BCBABE");
-        $("#headercon").css("color","black");
-        $(".modal-title").text("Editar Producto");       
+        $("#headerpro").css("background-color","#BCBABE");
+        $("#headerpro").css("color","black");
+        $(".modal-titlepro").text("Editar Producto");       
         //$("#btnAgregar").text("Modificar");
         $("#modalEDITPRODUCTO").modal("show");
   
@@ -945,9 +894,9 @@ $(document).ready(function(){
     $('#txtCatalogo').val(_catalogold);
 
     $('#hidden_row_id').val(_idcat);
-    $("#headercat").css("background-color","#BCBABE");
-    $("#headercat").css("color","black");
-    $(".modal-title").text("Editar Catalogo");       
+    $("#headercatalogo").css("background-color","#BCBABE");
+    $("#headercatalogo").css("color","black");
+    $(".modal-titlecat").text("Editar Catalogo");       
     $("#btnEditCatalogo").text("Modificar");
     $("#modalEDITCATALOGO").modal("show");
 

@@ -64,16 +64,6 @@ $(document).ready(function(){
         $('#txtRuc').val('');
         $("#cboProvincia").val('0').change();
 
-        // $("#tblproducto").empty();
-        // _output = '<thead>';
-        // _output += '<tr><th style="display: none;">Id</th>';
-        // _output += '<th>Producto</th>';
-        // _output += '<th>Descripcion</th>';
-        // _output += '<th style="width:13% ; text-align: center">Opciones</th>';
-        // _output += '</tr></thead>';
-
-        // $('#tblproducto').append(_output);         
-
 
         let tblrow = 1;
         let tblproducto = document.getElementById('tblproducto');
@@ -99,9 +89,9 @@ $(document).ready(function(){
             tblcatalogo.deleteRow(tblrow);
         }          
 
-        $("#header").css("background-color","#BCBABE");
-        $("#header").css("color","black");
-        $(".modal-title").text("Nuevo Cedente");  
+        $("#headerce").css("background-color","#BCBABE");
+        $("#headerce").css("color","black");
+        $(".modal-titlece").text("Nuevo Cedente");  
         $("#modalNewCedente").modal("show");
     
     });
