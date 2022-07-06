@@ -165,7 +165,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-outline-info" id="btnSaveSu"><i class='fa fa-save'></i> Guardar</button>
+          <button type="submit" class="btn btn-outline-primary" id="btnSaveSu"><i class='fa fa-plus-circle'></i> Agregar</button>
           <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
         </div>
       </form>

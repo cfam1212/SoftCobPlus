@@ -452,7 +452,7 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 <div class="modal fade" id="modalEDITCONTACTO" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 35%" role="document">
+    <div class="modal-dialog modal-lg" style="" role="document">
         <div class="modal-content" id="myModalBg">
             <div class="modal-header" id="headercon">
                 <h5 class="modal-title" id="modalLabel"></h5>
@@ -463,13 +463,15 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <form id="formEditContacto">
                 <div class="modal-body">
                     <div class="col-md-12">
+                        <br/>
                         <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <label for="cbocargo" class="control-label col-md-2">Cargo </label>
-                        </div>
-                        <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <div class="col-md-10 col-sm-9">
+                            <label for="contacto" class="control-label col-md-1">Contacto:</label>
+                            <div class="col-md-5 col-sm-9  form-group has-feedback">
+                                <input type="tel" class="form-control has-feedback-left" id="txtContactoMo" placeholder="" maxlength="150">
+                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            </div>
+                            <label for="cargo" class="control-label col-md-1">Cargo </label>
+                            <div class="col-md-5 col-sm-9">
                                 <select class="form-control" id="cboCargoMo" name="cboCargo1" style="width: 100%;">
                                     <option value="0">--Seleccione Cargo--</option>
                                     <?php foreach ($cargo as $fila) : ?>
@@ -478,57 +480,28 @@ $producto = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </select>
                             </div>
                         </div>
+                        <br/>
                         <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <label for="cbocargo" class="control-label col-md-2">Contacto:</label>
-                        </div>
-                        <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <div class="col-md-10 col-sm-9  form-group has-feedback">
-                                <input type="tel" class="form-control has-feedback-left" id="txtContactoMo" placeholder="" maxlength="150">
-                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            <label for="telefono" class="control-label col-md-1">Telefono:</label>
+                            <div class="col-md-5 col-sm-9  form-group has-feedback">
+                                <input type="tel" class="form-control has-feedback-left" id="txtExtMo" placeholder="" maxlength="9" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
+                                <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <label for="cbocargo" class="control-label col-md-2">Celular:</label>
-                        </div>
-                        <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <div class="col-md-10 col-sm-9  form-group has-feedback">
+                            <label for="celular" class="control-label col-md-1">Celular:</label>
+                            <div class="col-md-5 col-sm-9  form-group has-feedback">
                                 <input type="tel" class="form-control has-feedback-left" id="txtCelularMo" placeholder="" maxlength="10" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
                                 <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                             </div>
                         </div>
+                        <br/>
                         <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <label for="cbocargo" class="control-label col-md-2">Telefono:</label>
-                        </div>
-                        <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <div class="col-md-10 col-sm-9  form-group has-feedback">
-                                <input type="tel" class="form-control has-feedback-left" id="txtExtMo" placeholder="" maxlength="9" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">
-                                <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <label for="cbocargo" class="control-label col-md-2">Email1:</label>
-                        </div>
-                        <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <div class="col-md-10 col-sm-9  form-group has-feedback">
+                            <label for="email1" class="control-label col-md-1">Email1:</label>
+                            <div class="col-md-5 col-sm-9  form-group has-feedback">
                                 <input type="text" class="form-control has-feedback-left" id="txtEmail1Mo" placeholder="" maxlength="80">
                                 <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <label for="cbocargo" class="control-label col-md-2">Email2:</label>
-                        </div>
-                        <div class="form-group row">
-                            <label for="espacio" class="control-label col-md-1"></label>
-                            <div class="col-md-10 col-sm-9  form-group has-feedback">
+                            <label for="email2" class="control-label col-md-1">Email2:</label>
+                            <div class="col-md-5 col-sm-9  form-group has-feedback">
                                 <input type="text" class="form-control has-feedback-left" id="txtEmail2Mo" placeholder="" maxlength="80">
                                 <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                             </div>

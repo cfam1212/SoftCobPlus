@@ -146,7 +146,7 @@ $menump = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <div class="container">
         <div class='btn-group'>
             <button class="btn btn-outline-secondary" id="btnRegresar"><i class='fa fa-undo'> Regresar</i></button>
-            <button class="btn btn-outline-info ml-2" id="btnSave"><i class='fa fa-save'></i> Guardar</button>
+            <button class="btn btn-outline-primary ml-1" id="btnSave"><i class='fa fa-plus-circle'></i> Agregar</button>
         </div>
     </div>
 </div>
