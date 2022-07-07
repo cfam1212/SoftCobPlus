@@ -13,7 +13,10 @@ $(document).ready(function(){
         $("#divcheck").hide();
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
-        $(".modal-title").text("Nueva Tarea");  
+        $(".modal-title").text("Nueva Tarea");
+        $("#btnSave").text("Agregar");
+        $("#btnSave").removeClass("btn btn-outline-info");
+        $("#btnSave").addClass("btn btn-outline-primary");  
         $("#modalTAREA").modal("show");
         _id = 0;
         _opcion = 1;
@@ -45,10 +48,14 @@ $(document).ready(function(){
             $("#lblEstado").text("Inactivos");
         }
 
-        //$("#divcheck").show();
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
         $(".modal-title").text("Editar Tarea");
+        $("#btnSave").text("Modificar");
+        $("#btnSave").removeClass("btn btn-outline-primary");
+        $("#btnSave").addClass("btn btn-outline-info");
+       
+
         $("#modalTAREA").modal("show");
     });
 
