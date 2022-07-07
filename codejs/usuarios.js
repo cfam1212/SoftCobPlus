@@ -27,7 +27,10 @@ $(document).ready(function(){
         // $("#divcheck").hide();
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
-        $(".modal-title").text("Nuevo Usuario");  
+        $(".modal-title").text("Nuevo Usuario");
+        $("#btnSave").html("<i class='fa fa-plus-circle'> Agregar</i>");
+        $("#btnSave").removeClass("btn btn-outline-info");
+        $("#btnSave").addClass("btn btn-outline-primary");    
         $("#modalNewUser").modal("show");
         $("#chkEstado").prop("checked", true);
         $("#chkEstado").prop("disabled", true);
@@ -163,6 +166,9 @@ $(document).ready(function(){
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
         $(".modal-title").text("Editar Usuario");
+        $("#btnSave").text("Modificar");
+        $("#btnSave").removeClass("btn btn-outline-primary");
+        $("#btnSave").addClass("btn btn-outline-info");
         $("#modalNewUser").modal("show");
         
         $("#login").val(_loginold);

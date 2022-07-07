@@ -11,7 +11,10 @@ $(document).ready(function(){
         $("#txtDepa").val('');
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
-        $(".modal-title").text("Nuevo Departamento");  
+        $(".modal-title").text("Nuevo Departamento");
+        $("#btnSave").html("<i class='fa fa-plus-circle'> Agregar</i>");
+        $("#btnSave").removeClass("btn btn-outline-info");
+        $("#btnSave").addClass("btn btn-outline-primary");    
         $("#modalDEPARTAMENTO").modal("show");
         _id = 0;
         _opcion = 0;
@@ -44,6 +47,9 @@ $(document).ready(function(){
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
         $(".modal-title").text("Editar Departamento");
+        $("#btnSave").text("Modificar");
+        $("#btnSave").removeClass("btn btn-outline-primary");
+        $("#btnSave").addClass("btn btn-outline-info");
         $("#modalDEPARTAMENTO").modal("show");
     });    
 

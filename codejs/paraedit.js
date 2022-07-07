@@ -91,7 +91,9 @@ $(document).ready(function()
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","white");
         $(".modal-title").text("Nuevo Detalle");  
-        $("#btnBoton").text("Agregar");
+        $("#btnBoton").html("<i class='fa fa-plus-circle'> Agregar</i>");
+        $("#btnBoton").removeClass("btn btn-outline-info");
+        $("#btnBoton").addClass("btn btn-outline-primary");  
         $("#modalPARAMETER").modal("show");
         _tipoSave = 'add';
         _estado = 'Activo';
@@ -399,6 +401,8 @@ $(document).ready(function()
         $(".modal-title").text("Editar Detalle");       
         $("#divcheckedit").show();
         $("#btnBoton").text("Modificar");
+        $("#btnBoton").removeClass("btn btn-outline-primary");
+        $("#btnBoton").addClass("btn btn-outline-info");
         $("#modalPARAMETER").modal("show");
     });
 

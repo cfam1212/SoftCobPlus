@@ -14,7 +14,7 @@ $(document).ready(function(){
         $("#header").css("background-color","#BCBABE");
         $("#header").css("color","black");
         $(".modal-title").text("Nueva Tarea");
-        $("#btnSave").text("Agregar");
+        $("#btnSave").html("<i class='fa fa-plus-circle'> Agregar</i>");
         $("#btnSave").removeClass("btn btn-outline-info");
         $("#btnSave").addClass("btn btn-outline-primary");  
         $("#modalTAREA").modal("show");

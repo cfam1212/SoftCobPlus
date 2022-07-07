@@ -39,7 +39,8 @@ $(document).ready(function(){
         $("#headerDet").css("background-color","#BCBABE");
         $("#headerDet").css("color","black");
         $(".modal-titleDet").text("Nuevo Detalle");  
-        $("#btnAgregar").text("Agregar");
+        // $("#btnAgregar").text("Agregar");
+        $("#btnAgregar").html("<i class='fa fa-plus-circle'> Agregar</i>");
         $("#modalDETALLE").modal("show");
         _tipoSave = 'add';
         _estado = 'Activo';
