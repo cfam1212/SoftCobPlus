@@ -735,6 +735,7 @@ $(document).ready(function(){
                 }   */     
                 //_resultCartera.push(_objeto); 
             }
+            
         });
 
        // console.log(_resultCartera);
@@ -885,7 +886,7 @@ $(document).ready(function(){
         });
 
          move();*/
-
+         move();
     });
 
     _result = 0;
