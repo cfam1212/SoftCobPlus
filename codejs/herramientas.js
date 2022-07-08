@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro, _catalogoid, _resultCartera = [], _exito = 1, _result ;
+    var  _cbocedente, _cboid, _cboproducto, _cbocatalogo,_cbocedeid, _cbopro, _catalogoid, 
+    _resultCartera = [], _exito = 1, _result ;
 
     $('#cboCiudad').select2();
     $('#cboCedente').select2();
@@ -512,13 +513,131 @@ $(document).ready(function(){
             
             if(_cedula != '')
                 {
-                _objeto = 
+
+                    $.ajax({
+                        url: "../db/herramientacrud.php",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            cedeid: _cbocedeid, 
+                            producid: _cbopro, 
+                            catalogoid: _catalogoid, 
+                            cedula: _cedula,
+                            nombres: _nombres,
+                            apellidos: _apellidos, 
+                            fechanaci: _fechanacimiento, 
+                            provincia: _provincia, 
+                            ciudad: _ciudad,
+                            direcciondom: _direcciondom,
+                            referenciadom: cartera.arryrefedom,
+                            direcciontra: cartera.arrydirectra,
+                            referenciatra: cartera.arryreftrabajo,
+                            email: cartera.arryemail,
+                            operacion: cartera.arryoperacion,
+                            totaldeuda: cartera.arrytotaldeuda,
+                            diasmora: cartera.arrydiasmora,
+                            capitalxvencer: cartera.arrycapitalxvencer,
+                            capitalvencido: cartera.arrycapitalvencido,
+                            capitalmora: cartera.arrycapitalmora,
+                            valorexigible: cartera.arryvalorexigible,
+                            fechaobligacion: cartera.arryfechaobligacion,
+                            fechavencimiento: cartera.arryfechavencimiento,
+                            fechaultpago: cartera.arryfechaultpago,
+                            fonodeu1: cartera.arryfonodeu1,
+                            fonodeu2: cartera.arryfonodeu2,
+                            fonodeu3: cartera.arryfonodeu3,
+                            fonodeu4: cartera.arryfonodeu4,
+                            fonodeu5: cartera.arryfonodeu5,
+                            fonodeu6: cartera.arryfonodeu6,
+                            fonodeu7: cartera.arryfonodeu7,
+                            fonodeu8: cartera.arryfonodeu8,
+                            fonodeu9: cartera.arryfonodeu9,
+                            fonodeu10: cartera.arryfonodeu10,
+                            cedularef1: cartera.arryceduref1,
+                            nombreref1: cartera.arrynomref1,
+                            fono1ref1: cartera.arryfono1ref1,
+                            fono2ref1: cartera.arryfono2ref1,
+                            direcciondomref1: cartera.arrydireccdomref1,
+                            referenciadomref1: cartera.arryrefedomref1,
+                            emailref1: cartera.arryemailref1,
+                            cedularef2: cartera.arryceduref2,
+                            nombreref2: cartera.arrynomref2,
+                            fono1ref2: cartera.arryfono1ref2,
+                            fono2ref2: cartera.arryfono2ref2,
+                            direcciondomref2: cartera.arrydireccdomref2,
+                            referenciadomref2: cartera.arryrefedomref2,
+                            emailref2: cartera.arryemailref2,
+                            tipogarante1: cartera.arrytipogarante1,
+                            cedulagarante1: cartera.arrycedulagarante1,
+                            nombregarante1: cartera.arrynomgarante1,
+                            direcciondomgara1: cartera.arrydirecdomgarante1,
+                            referenciadomgara1: cartera.arryrefdomgarante1,
+                            direcciontragara1: cartera.arrydirectragarante1,
+                            referenciatragara1: cartera.arryreftragarante1,
+                            emailpersonalgara1: cartera.arryemailpergarante1,
+                            emailtrabajogara1: cartera.arryemailtragarante1,
+                            fono1gara1: cartera.arryfono1garante1,
+                            fono2gara1: cartera.arryfono2garante1,
+                            fono3gara1: cartera.arryfono3garante1,
+                            tipogarante2: cartera.arrytipogarante2,
+                            cedulagarante2: cartera.arrycedulagarante2,
+                            nombregarante2: cartera.arrynomgarante2,
+                            direcciondomgara2: cartera.arrydirecdomgarante2,
+                            referenciadomgara2: cartera.arryrefdomgarante2,
+                            direcciontragara2: cartera.arrydirectragarante2,
+                            referenciatragara2: cartera.arryreftragarante2,
+                            emailpersonalgara2: cartera.arryemailpergarante2,
+                            emailtrabajogara2: cartera.arryemailtragarante2,
+                            fono1gara2: cartera.arryfono1garante2,
+                            fono2gara2: cartera.arryfono2garante2,
+                            fono3gara2: cartera.arryfono3garante2,
+                            adicional1: cartera.arryadicional1,
+                            adicional2: cartera.arryadicional2,
+                            adicional3: cartera.arryadicional3,
+                            adicional4: cartera.arryadicional4,
+                            adicional5: cartera.arryadicional5,
+                            adicional6: cartera.arryadicional6,
+                            adicional7: cartera.arryadicional7,
+                            adicional8: cartera.arryadicional8,
+                            adicional9: cartera.arryadicional9,
+                            adicional10: cartera.arryadicional10,
+                            adicional11: cartera.arryadicional11,
+                            adicional12: cartera.arryadicional12,
+                            adicional13: cartera.arryadicional13,
+                            adicional14: cartera.arryadicional14,
+                            adicional15: cartera.arryadicional15,
+                            adicional16: cartera.arryadicional16,
+                            adicional17: cartera.arryadicional17,
+                            adicional8: cartera.arryadicional18,
+                            adicional19: cartera.arryadicional19,
+                            adicional20: cartera.arryadicional20,
+                            adicional21: cartera.arryadicional21,
+                            adicional22: cartera.arryadicional22,
+                            adicional23: cartera.arryadicional23,
+                            adicional24: cartera.arryadicional24,
+                            adicional25: cartera.arryadicional25,
+                            adicional26: cartera.arryadicional26,
+                            adicional27: cartera.arryadicional27,
+                            adicional28: cartera.arryadicional28,
+                            adicional29: cartera.arryadicional29,
+                            adicional: cartera.arryadicional30,
+                            opcion: 0},
+                        success: function(datos){
+                            //console.log(datos);
+                            _exito = 1;            
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }                 
+                    });
+
+                /*_objeto = 
                 {
                     arrycedula : _cedula,
                     arrynombres : _nombres,
                     arryapellidos : _apellidos,
                     arryfechanac : _fechanacimiento,
-                    /*arryprovincia : _provincia,
+                    arryprovincia : _provincia,
                     arryciudad : _ciudad,
                     arrydirecdom : _direcciondom,
                     arryrefedom : _referenciadom,
@@ -614,22 +733,22 @@ $(document).ready(function(){
                     arryadicional29 : _adicional29,
                     arryadicional30 : _adicional30,*/
                 }        
-                _resultCartera.push(_objeto); 
+                //_resultCartera.push(_objeto); 
             }
         });
 
        // console.log(_resultCartera);
 
         //_resultCartera.sort((a,b) => a.arrycedula - b.arrycedula);
-        _resultCartera.sort((a,b)=>a-b); 
+        //_resultCartera.sort((a,b)=>a-b); 
 
-        var parametros = {
+        /*var parametros = {
             "arraypersona" : _resultCartera
-        };
+        };*/
 
         //var response = $.post("../db/herramientascrud1.php", parametros);
     
-        $.ajax({
+        /*$.ajax({
             url: "../db/herramientascrud1.php",
             type: "POST",
             dataType: "json",
@@ -641,7 +760,7 @@ $(document).ready(function(){
             error: function (error) {
                 console.log(error);
             }                 
-        });
+        });*/
        
         /*_resultCartera.forEach(function(cartera, index) {
 
