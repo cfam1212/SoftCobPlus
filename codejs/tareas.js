@@ -31,8 +31,6 @@ $(document).ready(function(){
         _nameoldtarea = _data[1];
         _ruta = _data[2];
         _icono = _data[3]
-        //_estado = $.trim(_fila.find('td:eq(3)').text());
-        //_nameoldtarea = $.trim(_fila.find('td:eq(0)').text());
 
         $("#txtTarea").val(_nameoldtarea);
         $("#txtRuta").val(_ruta);
