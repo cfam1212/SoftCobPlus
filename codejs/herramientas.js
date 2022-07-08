@@ -731,8 +731,8 @@ $(document).ready(function(){
                     arryadicional27 : _adicional27,
                     arryadicional28 : _adicional28,
                     arryadicional29 : _adicional29,
-                    arryadicional30 : _adicional30,*/
-                }        
+                    arryadicional30 : _adicional30,
+                }   */     
                 //_resultCartera.push(_objeto); 
             }
         });
