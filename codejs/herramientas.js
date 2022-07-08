@@ -205,7 +205,7 @@ $(document).ready(function(){
       
         $("#tablecartera tbody tr").each(function (items) 
         {
-            let _cedula, _nombres, _apellidos, _fechanacimiento, _provincia, _ciudad;
+            //let _cedula, _nombres, _apellidos, _fechanacimiento, _provincia, _ciudad;
             
             $(this).children("td").each(function (index) 
             {
@@ -518,7 +518,7 @@ $(document).ready(function(){
                     arrynombres : _nombres,
                     arryapellidos : _apellidos,
                     arryfechanac : _fechanacimiento,
-                    arryprovincia : _provincia,
+                    /*arryprovincia : _provincia,
                     arryciudad : _ciudad,
                     arrydirecdom : _direcciondom,
                     arryrefedom : _referenciadom,
@@ -612,17 +612,38 @@ $(document).ready(function(){
                     arryadicional27 : _adicional27,
                     arryadicional28 : _adicional28,
                     arryadicional29 : _adicional29,
-                    arryadicional30 : _adicional30,
-                }
-        
+                    arryadicional30 : _adicional30,*/
+                }        
                 _resultCartera.push(_objeto); 
             }
         });
 
        // console.log(_resultCartera);
 
+        //_resultCartera.sort((a,b) => a.arrycedula - b.arrycedula);
+        _resultCartera.sort((a,b)=>a-b); 
+
+        var parametros = {
+            "arraypersona" : _resultCartera
+        };
+
+        //var response = $.post("../db/herramientascrud1.php", parametros);
+    
+        $.ajax({
+            url: "../db/herramientascrud1.php",
+            type: "POST",
+            dataType: "json",
+            data: {arraypersona: _resultCartera},
+            success: function(datos){
+                //console.log(datos);
+                _exito = 1;            
+            },
+            error: function (error) {
+                console.log(error);
+            }                 
+        });
        
-        _resultCartera.forEach(function(cartera, index) {
+        /*_resultCartera.forEach(function(cartera, index) {
 
             _exito = 0;
 
@@ -735,19 +756,16 @@ $(document).ready(function(){
                     adicional: cartera.arryadicional30,
                     opcion: 0},
                 success: function(datos){
-                    console.log(datos);
-                    _exito = 1;
-                
+                    //console.log(datos);
+                    _exito = 1;            
                 },
                 error: function (error) {
                     console.log(error);
                 }                 
             });
-            
-          
         });
 
-         move();
+         move();*/
 
     });
 
@@ -777,10 +795,8 @@ $(document).ready(function(){
                 _result = _result + 1;
                 progress.style.width = _result + "%";
                 progress.innerHTML = _result + "%";            
-            }
-            
+            }            
         }
-
     }
     
     function limpiar()
