@@ -110,6 +110,8 @@
 
 <script src="../codejs/funciones.js"></script>
 
+<script src="../js/jquery-ui.min.js"></script>
+
 <script src="../js/custom.min.js"></script>
 
 <script src="../jsreloj/script.js"></script>

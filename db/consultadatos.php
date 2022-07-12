@@ -54,6 +54,22 @@ switch($opcion){
 
         }
 
+        if (isset($_POST['update'])) {
+            foreach($_POST['positions'] as $position) {
+               $index = $position[0];
+               $newPosition = $position[1];
+
+               $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array($in_tipo,$empreid,$index,$newPosition,$in_auxv3,$in_auxv4,$in_auxv5,$in_auxv6,$in_auxi1,$in_auxi2,$in_auxi3,
+                $in_auxi4,$in_auxi5,$in_auxi6));
+                $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+    
+        
+            }
+        }
+
 print json_encode($data, JSON_UNESCAPED_UNICODE);
 
 $conexion = null;
