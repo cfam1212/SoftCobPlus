@@ -18,6 +18,8 @@ $(document).ready(function(){
         mensajesalertify("Subido con exito","S","top-center",5);	
     }    
 
+    $('input#subircartera').val('');
+
   //INPUT FILE
 
   const form = document.querySelector("#container");

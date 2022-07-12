@@ -1,27 +1,60 @@
 <?php
 
-require_once '../dashmenu/panel_menu.php';
+    require_once '../dashmenu/panel_menu.php';
 
-@session_start();
-    
-if(isset($_SESSION["s_usuario"])){
-    if($_SESSION["s_login"] != "loged"){
+    @session_start();
+
+    $userid = $_SESSION["i_usuaid"];
+    $host = $_SESSION["s_namehost"];
+    $empreid = $_SESSION["i_emprid"];    
+        
+    if(isset($_SESSION["s_usuario"])){
+        if($_SESSION["s_login"] != "loged"){
+            header("Location: ./logout.php");
+            exit();
+        } else{
+        }
+    } else{
         header("Location: ./logout.php");
         exit();
-    } else{
     }
-} else{
-    header("Location: ./logout.php");
-    exit();
-}
 
-$consulta = "CALL sp_New_Cartera(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-$resultado = $conexion->prepare($consulta);
-$resultado->execute(array(1, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0));
-$dataciu = $resultado->fetchAll(PDO::FETCH_ASSOC);
+    $consulta = "CALL sp_New_Cartera(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $resultado = $conexion->prepare($consulta);
+    $resultado->execute(array(1, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0));
+    $dataciu = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-$menuid = (isset($_POST['id'])) ? $_POST['id'] : '';
-$subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
+    //$menuid = (isset($_POST['id'])) ? $_POST['id'] : '';
+    $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
+
+    if (isset($_POST['Enviar'])) {
+
+        if (is_uploaded_file($_FILES['file_input']['tmp_name'])) {
+            //echo "<h1>" . "File ". $_FILES['file_input']['name'] ." subido." . "</h1>";
+            //echo "<h2>Datos subidos:</h2>";
+            //readfile($_FILES['file_input']['tmp_name']);
+        }
+    
+        //Import uploaded file to Database
+        $handle = fopen($_FILES['file_input']['tmp_name'], "r");
+    
+        while (($data = fgetcsv($handle, 2000, ";")) !== FALSE) {
+            if($data[0] == 'Cedula' )
+            {
+                
+            }else{        
+
+                $consulta = "CALL sp_Subir_Cartera_Persona(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,'C',$data[0],$data[1],$data[2],'',$data[3],'M',$data[4],
+                $data[5],'S','A',$userid,$host));
+                
+                $personaid = $resultado->fetchColumn();      
+            }
+        }
+        $subiocartera = 'SI';
+        fclose($handle);    
+    }
 
 ?>
 <div class="right_col" role="main">
@@ -42,8 +75,8 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                     <div class="x_content">
                         <br />
                         <br />
-                        <form method="post" class="form-horizontal col-md-12" id="subircartera" enctype="multipart/form-data">
-                            <br/>
+                        <form method="post" class="form-horizontal col-md-12" enctype="multipart/form-data">
+                            <br/>                            
                             <div class="form-group row">
                                 <label for="ciudad" class="control-label col-md-1">Ciudad:</label>
                                 <div class="col-md-4 col-sm-8">
@@ -95,94 +128,16 @@ $subiocartera = (isset($_POST['subiocartera'])) ? $_POST['subiocartera'] : '';
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <div class="custom-file">
-                                    <script>
-                                        function crearTabla(data) {
-                                            const todasFilas = data.split(/\r?\n|\r/);
-                                            let tabla = '<table id="tablecartera" class="table table-striped jambo_table bulk_action table-borderless" style="width: 100%;">';
-                                            for (let fila = 0; fila < todasFilas.length; fila++) {
-                                                if (fila === 0) {
-                                                    tabla += '<thead>';
-                                                    tabla += '<tr>';
-                                                } else {
-                                                    tabla += '<tr>';
-                                                }
-                                                const celdasFila = todasFilas[fila].split('\t');
-                                                for (let rowCell = 0; rowCell < celdasFila.length; rowCell++) {
-                                                    if (fila === 0) {
-                                                        tabla += '<th>';
-                                                        tabla += celdasFila[rowCell];
-                                                        tabla += '</th>';
-                                                    } else {
-                                                        tabla += '<td>';
-                                                        if (rowCell === 3) {
-                                                            //tabla += '<img src="'+celdasFila[rowCell]+'">';
-                                                        } else {
-                                                            tabla += celdasFila[rowCell];
-                                                        }
-                                                        tabla += '</td>';
-                                                    }
-                                                }
-                                                if (fila === 0) {
-                                                    tabla += '</tr>';
-                                                    tabla += '</thead>';
-                                                    tabla += '<tbody>';
-                                                } else {
-                                                    tabla += '</tr>';
-                                                }
-                                            }
-                                            tabla += '</tbody>';
-                                            tabla += '</table>';
-                                            document.querySelector('#tablares').innerHTML = tabla;
-                                        }
 
-                                        function abrirArchivo(evento) {
-
-                                            let archivo = evento.target.files[0];
-
-                                            if (archivo) {
-                                                let reader = new FileReader();
-
-                                                reader.onload = function(e) {
-                                                    crearTabla(e.target.result)
-                                                    /*let contenido = e.target.result;
-                                                    document.getElementById('contenido').innerHTML = contenido;*/
-                                                };
-
-                                                reader.readAsText(archivo);
-
-                                            } else {
-                                                document.getElementById('mensajes').innerHTML = 'No se ha seleccionado ningun archivo';
-                                            }
-                                        }
-
-                                        /*window.addEventListener('load',() => {
-                                            document.getElementById('txtArchivo').addEventListener('change', abrirArchivo);
-                                        });*/
-
-                                        document.querySelector('#file_input').addEventListener('change', abrirArchivo, false);
-                                    </script>
-                                </div>
-                            </div>
                             <label for="espacio" class="control-label col-md-3"></label>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" id="btnProcesar" name="btnProcesar" class="btn btn-outline-info"><i class="fa fa-gears"></i> Procesar</button>
+                            <div class="btn-group" role="group" aria-label="Basic example">                                
+                                <input type='submit' class='btn btn-outline-info' name='Enviar' value='Enviar' id="btnEnviar"  />
                             </div>
                             <br />
                             <br />
                             <label for="espacio" class="control-label col-md-3"></label>
                             <div id="progressBar">
                                 <div id="progressbar">
-
-                                </div>
-                            </div>
-                            <br />
-                            <h2 id="status"></h2> <br />
-                            <p id="loades_n_total"></p>
-                            <div class="form-group row">
-                                <div id="tablares" style="display: none;">
-
                                 </div>
                             </div>
                         </form>
