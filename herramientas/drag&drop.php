@@ -37,31 +37,32 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <br />
             <div class="x_panel">
                 <div class="x_title">
-                    <h2 style="text-align: center;">Drag & Drop</h2>
+                    <h2 style="text-align: center;">Ordenar Menu</h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <br />
-                    <div class="row sortable" id="drop-items">
-                        <?php
-                         foreach ($data as $dataDrag_Drop) {
-                            
-                        ?>
-                            <div class="col-md-6 col-lg-4" data-index="<?php echo $dataDrag_Drop['MenuId']; ?>" data-position="<?php echo $dataDrag_Drop['Posicion']; ?>">
-                                <div class="drop__card">
-                                    <div class="drop__data">
-                                       <i class="<?php echo $dataDrag_Drop['Icono'];?>"></i>
-                                        <div>
-                                            <h4 class="drop__name"><?php echo $dataDrag_Drop['Menu']; ?></h4>
-                                            <span class="drop__profession"></span>
+                    <div class="container top">
+                        <div class="row sortable" id="drop-items">
+                            <?php
+                            foreach ($data as $dataDrag_Drop) {
+                                
+                            ?>
+                                <div class="col-md-8" data-index="<?php echo $dataDrag_Drop['MenuId']; ?>" data-position="<?php echo $dataDrag_Drop['Posicion']; ?>">
+                                    <div class="drop__card">
+                                        <div class="drop__data">
+                                            <i class="<?php echo $dataDrag_Drop['Icono'];?>" id="icono"></i>
+                                            <div>
+                                                <h4 class="drop__name"><?php echo $dataDrag_Drop['Menu']; ?></h4>
+                                                <span class="drop__profession"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php } ?>
+                                <br/>
+                            <?php } ?>
+                        </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
