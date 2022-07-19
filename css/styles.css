@@ -1,16 +1,16 @@
-h1 {
+/* h1 {
     color: #6c2eb9;
     font-weight: normal;
     font-size: 40px;
     font-family: Arial;
   
-  }
-  h2 {
+  } */
+  /* h2 {
     font-weight: normal;
     font-size: 35px;
     font-family: Arial;
     text-align: center;
-  }
+  } */
   h3 {
     font-weight: normal;
     font-size: 30px;
@@ -282,10 +282,15 @@ input[type=checkbox] {
 
 .container{
   box-shadow: 4px 4px 16px #E1E1E1;
+ 
 
 }
 .top{
-  margin-top: 10px;
+  margin-top: 40px;
+}
+
+h1{
+margin: 0;
 }
 
 #icono{
@@ -323,6 +328,21 @@ input[type=checkbox] {
   opacity: 0;
 }
 
+.drop__name{
+  font-size: 1rem;
+  color: #272A3A;
+  font-weight: 500;
+}
+
+.circulo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #cecece;
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+}
 
 
 

@@ -23,42 +23,44 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<input type="hidden" id="txtusuaid" value="<?php echo $_SESSION["i_usuaid"] ?>">
-
 <div class="right_col" role="main">
     <div class="">
         <div class="clearfix"></div>
-    </div>
-    <div class="row py-5">
-        <div class="col-md-3 col-sm-6">
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <br />
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2 style="text-align: center;">Ordenar Menu</h2>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <br />
-                    <div class="container top">
-                        <div class="row sortable" id="drop-items">
-                            <?php
-                            foreach ($data as $dataDrag_Drop) {                                
-                            ?>
-                                <div class="col-md-10 col-lg-4" data-index="<?php echo $dataDrag_Drop['MenuId']; ?>" data-position="<?php echo $dataDrag_Drop['Posicion']; ?>">
-                                    <div class="drop__card">
-                                        <div class="drop__data">
-                                            <i class="<?php echo $dataDrag_Drop['Icono'];?>" id="icono"></i>
-                                            <div>
-                                                <h4 class="drop__name"><?php echo $dataDrag_Drop['Menu']; ?></h4>
-                                                <span class="drop__profession"></span>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Ordenar Menu</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up fa-1x"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        <div class="container top">
+                            <div class="row sortable" id="drop-items">
+                                <?php
+                                foreach ($data as $dataDrag_Drop) {
+                                ?>
+                                    <div class="col-md-6 col-lg-4" data-index="<?php echo $dataDrag_Drop['MenuId']; ?>" data-position="<?php echo $dataDrag_Drop['Posicion']; ?>">
+                                        <div class="drop__card">
+                                            <div class="drop__data">
+                                                <i class="<?php echo $dataDrag_Drop['Icono']; ?>" id="icono"></i>
+                                                <div>
+                                                    <h1 class="drop__name"><?php echo $dataDrag_Drop['Menu']; ?></h1>
+                                                    <span class="drop__profession"></span>
+                                                </div>
+                                            </div>
+                                            <div class="circulo">
+                                                <h2><?php echo $dataDrag_Drop['Posicion']; ?></h2>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <br/>
-                            <?php } ?>
+                                    <br />
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,6 +68,8 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
+
+
 
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>
