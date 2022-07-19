@@ -25,7 +25,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 <input type="hidden" id="txtusuaid" value="<?php echo $_SESSION["i_usuaid"] ?>">
 
-
 <div class="right_col" role="main">
     <div class="">
         <div class="clearfix"></div>
@@ -45,10 +44,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <div class="container top">
                         <div class="row sortable" id="drop-items">
                             <?php
-                            foreach ($data as $dataDrag_Drop) {
-                                
+                            foreach ($data as $dataDrag_Drop) {                                
                             ?>
-                                <div class="col-md-8" data-index="<?php echo $dataDrag_Drop['MenuId']; ?>" data-position="<?php echo $dataDrag_Drop['Posicion']; ?>">
+                                <div class="col-md-10 col-lg-4" data-index="<?php echo $dataDrag_Drop['MenuId']; ?>" data-position="<?php echo $dataDrag_Drop['Posicion']; ?>">
                                     <div class="drop__card">
                                         <div class="drop__data">
                                             <i class="<?php echo $dataDrag_Drop['Icono'];?>" id="icono"></i>
@@ -71,7 +69,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>
-<script src="../codejs/drag&drop.js" type="text/javascript"></script>
+<script src="../codejs/ordenarmenu.js" type="text/javascript"></script>
 
 </body>
 
