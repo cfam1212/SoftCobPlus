@@ -49,7 +49,7 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="drop__data">
                                                 <i class="<?php echo $dataDrag_Drop['Icono']; ?>" id="icono"></i>
                                                 <div>
-                                                    <h1 class="drop__name"><?php echo $dataDrag_Drop['Menu']; ?></h1>
+                                                    <h2 class="drop__name"><?php echo $dataDrag_Drop['Menu']; ?></h2>
                                                     <span class="drop__profession"></span>
                                                 </div>
                                             </div>
