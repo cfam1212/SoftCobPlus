@@ -7,14 +7,13 @@ require_once '../dashmenu/panel_menu.php';
 if (isset($_SESSION["s_usuario"])) {
     if ($_SESSION["s_login"] != "loged") {
         header("Location: ./logout.php");
-        exit();
+        exit(0);
     } else {
     }
 } else {
     header("Location: ./logout.php");
-    exit();
+    exit(0);
 }
-
 
 $consulta = "CALL sp_Consulta_Datos(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $resultado = $conexion->prepare($consulta);
@@ -53,9 +52,9 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     <span class="drop__profession"></span>
                                                 </div>
                                             </div>
-                                            <div class="circulo">
+                                            <!--<div class="circulo">
                                                 <h2><?php echo $dataDrag_Drop['Posicion']; ?></h2>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                     <br />
@@ -68,9 +67,6 @@ $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
-
-
 
 <?php require_once '../dashmenu/panel_footer.php'; ?>
 <script src="../codejs/ordenarmenu.js" type="text/javascript"></script>

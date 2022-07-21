@@ -49,7 +49,7 @@
                 $resultado->execute(array(0,'C',$data[0],$data[1],$data[2],'',$data[3],'M',$data[4],
                 $data[5],'S','A',$userid,$host));
                 
-                $personaid = $resultado->fetchColumn();      
+                $personaid = $resultado->fetchColumn(); 
             }
         }
         $subiocartera = 'SI';

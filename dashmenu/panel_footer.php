@@ -40,7 +40,7 @@
     </div>
   </div>
   <div class="pull-right">
-    El viaje digital tu marca, empieza con nostros <a href="https://www.bbplus-ec.com">Best Business Plus</a>
+    El viaje digital de tu marca, empieza con nostros <a href="https://www.bbplus-ec.com">Best Business Plus</a>
   </div>
   <div class="clearfix"></div>
 </footer>

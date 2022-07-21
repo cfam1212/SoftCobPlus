@@ -1,11 +1,11 @@
 $(document).ready(function(){
 
-    $('.sortable').sortable({
+    $('.sortable').sortable({       
         update: function (event, ui) {
-            $(this).children().each(function (index) {
-                 if ($(this).attr('data-position') != (index+1)) {
-                     $(this).attr('data-position', (index+1)).addClass('updated');
-                 }
+            $(this).children().each(function (index) {                    
+                if ($(this).attr('data-position') != (index+1)) {
+                    $(this).attr('data-position', (index+1)).addClass('updated');
+                }
             });
 
             guardandoPosiciones();
@@ -19,7 +19,7 @@ $(document).ready(function(){
            $(this).removeClass('updated');
         });
 
-        $.ajax({
+        /*$.ajax({
            url: '../db/consultadatos.php',
            method: 'POST',
            dataType: 'text',
@@ -30,7 +30,17 @@ $(document).ready(function(){
            }, success: function (response) {
                 console.log(response);
            }
-        });
+        });*/
+
+        $.ajax({
+            url: '../db/ordenar_menu.php',
+            method: 'POST',
+            dataType: 'json',
+            data: {tipo: 0, orden: positions }, 
+            success: function (response) {
+                 //console.log(response);
+            }
+         });        
     }
 
 
