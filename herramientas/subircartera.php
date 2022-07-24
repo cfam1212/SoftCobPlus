@@ -39,6 +39,7 @@
     $MostarData = 0;
 
     if (isset($_POST['Enviar'])) {
+        
 
         $cedeid = safe($_POST['cbocedente']);
 
@@ -768,19 +769,12 @@
                 }
 
             }
-            $MostarData = 111;
+            $MostarData = 1;
             fclose($handle);
         }
         
-        
-
-
-
-
-
-
         //AL FINAL DE TODO RECARGAR LA PAGINA NUEVAMENTE
-        header("Location: http://localhost:8080/softcobplus/herramientas/subircartera.php");
+        //header("Location: http://localhost:8080/softcobplus/herramientas/subircartera.php");
     }
 
 ?>
@@ -808,18 +802,19 @@
                             <div class="form-group row">
                                 <label for="ciudad" class="control-label col-md-1">Ciudad:</label>
                                 <div class="col-md-4 col-sm-8">
-                                    <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;">
+                                    <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;" required>
                                         <option value="0">--Seleccione Cuidad--</option>
                                         <?php foreach ($dataciu as $fila) : ?>
                                             <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
                                             </option>
                                         <?php endforeach ?>
                                     </select>
+                                    <label id="Ciudad-error" class="error" for="cbociudad" style="display: none;"></label>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="cedente" class="control-label col-md-1">Cedente:</label>
                                 <div class="col-md-4 col-sm-8">
-                                    <select class="form-control" id="cboCedente" name="cbocedente" style="width: 100%;">
+                                    <select class="form-control" id="cboCedente" name="cbocedente" style="width: 100%;" required>
                                         <option value="0">--Seleccione Cedente--</option>
                                     </select>
                                 </div>
@@ -829,14 +824,14 @@
                             <div class="form-group row">
                                 <label for="producto" class="control-label col-md-1">Producto:</label>
                                 <div class="col-md-4 col-sm-8">
-                                    <select class="form-control" id="cboProducto" name="cboproducto" style="width: 100%;">
+                                    <select class="form-control" id="cboProducto" name="cboproducto" style="width: 100%;" required>
                                         <option value="0">--Seleccione Producto--</option>
                                     </select>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="catalogo" class="control-label col-md-1">Catalogo:</label>
                                 <div class="col-md-4 col-sm-8">
-                                    <select class="form-control" id="cboCatalogo" name="cbocatalogo" style="width: 100%;">
+                                    <select class="form-control" id="cboCatalogo" name="cbocatalogo" style="width: 100%;" required>
                                         <option value="0">--Seleccione Catalogo--</option>
                                     </select>
                                 </div>
@@ -859,7 +854,7 @@
 
                             <label for="espacio" class="control-label col-md-3"></label>
                             <div class="btn-group" role="group" aria-label="Basic example">                                
-                                <input type='submit' class='btn btn-outline-info' name='Enviar' value='Enviar' id="btnEnviar"  />
+                                <input type='submit' class='btn btn-outline-info' name='Enviar' value='Subir Cartera' id="btnEnviar"  />
                             </div>
                             <br />
                             <br />
@@ -872,6 +867,7 @@
                         <div>
                             <h1>HOLA</h1>
                         </div>
+                        <a class="btn btn-md btn-primary" href="subircartera.php" role="button">Cargar Nuevamente</a>
 
                 <?php    }  ?>
 
