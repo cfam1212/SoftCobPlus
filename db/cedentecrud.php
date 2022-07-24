@@ -3,6 +3,8 @@
 session_start();
 
 require_once("conexion.php");
+require_once '../funciones/funciones.php';
+
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 $data = null;
@@ -45,7 +47,7 @@ switch($opcion){
 
         $consulta = "CALL sp_New_Cedente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(array(1,$empreid,0,0,0,$cedente,'','','','','','','','','','','',0,0,0,0,''));
+        $resultado->execute(array(1,$empreid,0,0,0,safe($cedente),'','','','','','','','','','','',0,0,0,0,''));
         //$contar = $resultado->fetchAll(PDO::FETCH_ASSOC);
         $contar = $resultado->fetchColumn();
         if($contar == 0)
