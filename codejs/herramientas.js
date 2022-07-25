@@ -40,29 +40,35 @@ $(document).ready(function(){
     _cboid = $(this).val(); //obtener el id seleccionado
 
     $("#cboCedente").empty();
-    $("#cboCedente").append('<option value=0>--Seleccione Cedente--</option>');
+    $("#cboCedente").append('<option value="">--Seleccione Cedente--</option>');
 
     $("#cboProducto").empty();
-    $("#cboProducto").append('<option value=0>--Seleccione Producto--</option>');
+    $("#cboProducto").append('<option value="">--Seleccione Producto--</option>');
 
     $("#cboCatalogo").empty();
-    $("#cboCatalogo").append('<option value=0>--Seleccione Catalogo--</option>');
+    $("#cboCatalogo").append('<option value="">--Seleccione Catalogo--</option>');
 
     $("#cboGestor").empty();
-    $("#cboGestor").append('<option value=0>--Seleccione Gestor--</option>');
+    $("#cboGestor").append('<option value="">--Seleccione Gestor--</option>');
    
 
-    if(_cboid != '0'){ 
+    if(_cboid != ''){ 
+        $("#Ciudad-error").html("");
+        $("#Ciudad-error").hide();        
       $.ajax({
         dataType: 'html',
         type: 'POST',
         url: '../db/cargarcombos.php',
-        data: {opcion:2, idciu:_cboid},
+        data: {opcion:2, idciu:_cboid, tipocbo: 1},
       }).done(function(data){
 
         _cbocedente.html(data);
         _cbocedente.select2();
       });
+    }else{
+        //mensajesalertify("Seleccione Ciudad","W","top-center",5);
+        $("#Ciudad-error").html("Este dato es necesario.");
+        $("#Ciudad-error").show();        
     }   
   });
 

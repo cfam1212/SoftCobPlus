@@ -65,6 +65,20 @@ $padremenu = $resultado->fetchAll(PDO::FETCH_ASSOC);
   <link href="../vendors/bootstrap-daterangepicker/css/daterangepicker.css" rel="stylesheet" />
 
   <link href="../css/custom.min.css" rel="stylesheet">
+
+  <style>
+	    .control-label-required:before { 
+           content:"* ";
+           color:red;
+           font-weight: bold;
+      }
+
+      .error{
+        color:red;
+      }
+
+  </style>
+
 </head>
 
 <body class="nav-md">

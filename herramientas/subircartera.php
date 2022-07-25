@@ -800,10 +800,10 @@
 <?php    if($MostarData == 0) {  ?>
                             <br/>                            
                             <div class="form-group row">
-                                <label for="ciudad" class="control-label col-md-1">Ciudad:</label>
+                                <label for="ciudad" class="control-label-required col-md-1">Ciudad:</label>                                
                                 <div class="col-md-4 col-sm-8">
-                                    <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;" required>
-                                        <option value="0">--Seleccione Cuidad--</option>
+                                    <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;" onfocusout="f_validarciudad(this)" required >
+                                        <option value="">--Seleccione Cuidad--</option>
                                         <?php foreach ($dataciu as $fila) : ?>
                                             <option value="<?= $fila['Codigo'] ?>"><?= $fila['Descripcion'] ?>
                                             </option>
@@ -814,25 +814,25 @@
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="cedente" class="control-label col-md-1">Cedente:</label>
                                 <div class="col-md-4 col-sm-8">
-                                    <select class="form-control" id="cboCedente" name="cbocedente" style="width: 100%;" required>
-                                        <option value="0">--Seleccione Cedente--</option>
+                                    <select class="form-control" id="cboCedente" name="cbocedente" style="width: 100%;" onfocusout="f_validarcedente(this)" required>
+                                        <option value="">--Seleccione Cedente--</option>
                                     </select>
-                                </div>
+                                    <label id="Cedente-error" class="error" for="cboCedente" style="display: none;"></label>
+                                </div>                             
                             </div>
-                            <br/>
-                            <br/>
+                            <br/>                            
                             <div class="form-group row">
                                 <label for="producto" class="control-label col-md-1">Producto:</label>
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboProducto" name="cboproducto" style="width: 100%;" required>
-                                        <option value="0">--Seleccione Producto--</option>
+                                        <option value="">--Seleccione Producto--</option>
                                     </select>
                                 </div>
                                 <label for="espacio" class="control-label col-md-1"></label>
                                 <label for="catalogo" class="control-label col-md-1">Catalogo:</label>
                                 <div class="col-md-4 col-sm-8">
                                     <select class="form-control" id="cboCatalogo" name="cbocatalogo" style="width: 100%;" required>
-                                        <option value="0">--Seleccione Catalogo--</option>
+                                        <option value="">--Seleccione Catalogo--</option>
                                     </select>
                                 </div>
                             </div>
@@ -842,7 +842,7 @@
                             <div class="form-group row">
                                 <label for="espacio" class="control-label col-md-3"></label>
                                 <div class="wrapper" id="container">
-                                    <input type="file" accept=".csv" id="file_input" name="file_input" class="file" hidden>
+                                    <input type="file" accept=".csv" id="file_input" name="file_input" class="file" hidden required>
                                     <i class="fa fa-cloud-upload"></i>
                                     <p>Browse File to Upload</p>
                                     <span>
@@ -882,7 +882,23 @@
 <?php require_once '../dashmenu/panel_footer.php'; ?>
 <script src="../codejs/herramientas.js" type="text/javascript"></script>
 
-<script></script>
+<script>
+    function f_validarciudad(obj)
+    {
+        if(obj.value == ''){
+            mensajesalertify("Seleccione Ciudad","W","top-center",5);
+            $("#Ciudad-error").html("Este dato es necesario.");
+            $("#Ciudad-error").show();
+        }
+    }
+
+    function f_validarcedente(obj){
+        mensajesalertify("Seleccione Cedente","W","top-center",5);
+        $("#Cedente-error").html("Este dato es necesario.");
+        $("#Cedente-error").show();        
+    }
+</script>
+
 </body>
 
 </html>

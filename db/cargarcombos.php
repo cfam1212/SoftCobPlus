@@ -13,6 +13,8 @@
     $idciudad = (isset($_POST['idciu'])) ? $_POST['idciu'] : 0;
     $idcedente = (isset($_POST['cedeid'])) ? $_POST['cedeid'] : 0;
     $idproducto = (isset($_POST['proid'])) ? $_POST['proid'] : 0;
+    $tipocbo = (isset($_POST['tipocbo'])) ? $_POST['tipocbo'] : 0;
+
     
     switch($opcion){
      case 0: //LLENAR CIUDAD
@@ -61,7 +63,12 @@
 
 ?>
 
-<option value="0">--Seleccione <?php echo $cbo ?>--</option>
+<?php if($tipocbo == 1) { ?>
+    <option value="">--Seleccione <?php echo $cbo ?>--</option>
+<?php } else { ?>
+    <option value="0">--Seleccione <?php echo $cbo ?>--</option>
+<?php }  ?>
+
 <?php foreach($dropbox as $opc): //creamos las opciones a partir de los datos obtenidos ?>
-<option value="<?= $opc['Codigo'] ?>"><?= $opc['Descripcion'] ?></option>
+    <option value="<?= $opc['Codigo'] ?>"><?= $opc['Descripcion'] ?></option>
 <?php endforeach; ?>
