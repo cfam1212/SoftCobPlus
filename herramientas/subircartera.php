@@ -1667,7 +1667,7 @@ if (isset($_POST['Enviar'])) {
 
                 //CAMPOS ADICIONALES
 
-                $datosadicionales = $adicional1 . $adicional2 . $adicional3 . $adicional4 . $adicional5;
+                $datosadicionales = $data[69] . $adicional2 . $adicional3 . $adicional4 . $adicional5;
 
                 if ($datosadicionales != '') {
 
@@ -1680,6 +1680,15 @@ if (isset($_POST['Enviar'])) {
                         $adicional28, $adicional29, $adicional30
                     ));
                 }
+
+                //CUENTA DEUDOR
+
+                $consulta = "CALL sp_Subir_Cuenta_Deudor(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                $resultado = $conexion->prepare($consulta);
+                $resultado->execute(array(0,$personaid,$cedenteid,$productoid,$catalogoid,$operacion,$totaldeuda,$diasmora,
+                                        $capitalxvencer,$capitalvencido,$capitalmora,$valorexigible,$fechaobligacion,
+                                            $fechavencimiento,$fechaultpago,0,$newestado));
+    
             }
         }
         $MostarData = 1;
