@@ -76,17 +76,24 @@ $(document).ready(function(){
 
     _cbocedeid = $(this).val();
 
+    if(_cbocedeid != ''){
+        $("#Cedente-error").html("");
+        $("#Cedente-error").hide();             
+    
+        $.ajax({
+        dataType: 'html',
+        type: 'POST',
+        url: '../db/cargarcombos.php',
+        data: {opcion:4, cedeid:_cbocedeid, tipocbo: 1},
+        }).done(function(data){
 
-    $.ajax({
-      dataType: 'html',
-      type: 'POST',
-      url: '../db/cargarcombos.php',
-      data: {opcion:4, cedeid:_cbocedeid},
-    }).done(function(data){
-
-      _cboproducto.html(data);
-      _cboproducto.select2();
-    });
+        _cboproducto.html(data);
+        _cboproducto.select2();
+        });
+    }else{
+        $("#Cedente-error").html("Este dato es necesario.");
+        $("#Cedente-error").show();            
+    }
   });
   
   

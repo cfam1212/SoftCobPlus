@@ -41,7 +41,8 @@ $MostarData = 0;
 if (isset($_POST['Enviar'])) {
 
 
-    $cedeid = safe($_POST['cbocedente']);
+    $cedenteid = safe($_POST['cbocedente']);
+    $productoid = safe($_POST['cboProducto']);
 
     if (is_uploaded_file($_FILES['file_input']['tmp_name'])) {
         //echo "<h1>" . "File ". $_FILES['file_input']['name'] ." subido." . "</h1>";
@@ -1653,7 +1654,6 @@ if (isset($_POST['Enviar'])) {
                                         break;
                                 }
                             }
-
 
                             $consulta = "CALL sp_New_Telefonos(?,?,?,?,?,?,?,?,?,?,?,?)";
                             $resultado = $conexion->prepare($consulta);
