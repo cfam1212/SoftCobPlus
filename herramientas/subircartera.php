@@ -1705,7 +1705,7 @@ if (isset($_POST['Enviar'])) {
         <div class="clearfix"></div>
         <div class="row">
             <input type="hidden" id="subircartera" value="<?php echo $subiocartera ?>">
-            <div class="col-md-12 col-sm-12 ">
+            <div class="col-md-12 col-sm-12">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Subir Cartera</h2>
@@ -1718,12 +1718,14 @@ if (isset($_POST['Enviar'])) {
                     <div class="x_content">
                         <br />
                         <br />
-                        <form method="post" class="form-horizontal col-md-12" enctype="multipart/form-data">
+                        <form method="post" class="form-horizontal" enctype="multipart/form-data">
                             <?php if ($MostarData == 0) {  ?>
                                 <br />
                                 <div class="form-group row">
-                                    <label for="ciudad" class="control-label-required col-md-1">Ciudad:</label>
+                                    <label for="espacio" class="control-label col-md-1"></label>
+                                    
                                     <div class="col-md-4 col-sm-8">
+                                        <label for="ciudad" class="control-label-required">Ciudad:</label>
                                         <select class="form-control" id="cboCiudad" name="cbociudad" style="width: 100%;" onfocusout="f_validarciudad(this)" required>
                                             <option value="">--Seleccione Cuidad--</option>
                                             <?php foreach ($dataciu as $fila) : ?>
@@ -1733,9 +1735,10 @@ if (isset($_POST['Enviar'])) {
                                         </select>
                                         <label id="Ciudad-error" class="error" for="cbociudad" style="display: none;"></label>
                                     </div>
+                                    
                                     <label for="espacio" class="control-label col-md-1"></label>
-                                    <label for="cedente" class="control-label col-md-1">Cedente:</label>
                                     <div class="col-md-4 col-sm-8">
+                                        <label for="cedente" class="control-label-required">Cedente:</label>
                                         <select class="form-control" id="cboCedente" name="cbocedente" style="width: 100%;" onfocusout="f_validarcedente(this)" required>
                                             <option value="">--Seleccione Cedente--</option>
                                         </select>
@@ -1744,15 +1747,17 @@ if (isset($_POST['Enviar'])) {
                                 </div>
                                 <br />
                                 <div class="form-group row">
-                                    <label for="producto" class="control-label col-md-1">Producto:</label>
+                                    <label for="espacio" class="control-label col-md-1"></label>                                    
                                     <div class="col-md-4 col-sm-8">
+                                        <label for="producto" class="control-label-required">Producto:</label>
                                         <select class="form-control" id="cboProducto" name="cboproducto" style="width: 100%;" required>
                                             <option value="">--Seleccione Producto--</option>
                                         </select>
                                     </div>
+                                    
                                     <label for="espacio" class="control-label col-md-1"></label>
-                                    <label for="catalogo" class="control-label col-md-1">Catalogo:</label>
                                     <div class="col-md-4 col-sm-8">
+                                        <label for="catalogo" class="control-label-required">Catalogo:</label>
                                         <select class="form-control" id="cboCatalogo" name="cbocatalogo" style="width: 100%;" required>
                                             <option value="">--Seleccione Catalogo--</option>
                                         </select>
